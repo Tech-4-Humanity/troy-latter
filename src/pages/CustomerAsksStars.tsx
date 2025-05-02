@@ -52,7 +52,7 @@ const asksExamples = {
     star: [
       { label: 'Situation', text: 'PoCs for disaster‑relief command‑and‑control systems often stalled in "innovation theatre," never reaching frontline use—jeopardizing stakeholder confidence and funding.' },
       { label: 'Task', text: 'Forge a Vault‑Unisys rapid‑start PoC framework that delivered working demos in under 48 hours, focused on real‑world scenarios, and fed immediate business value back into the pipeline.' },
-      { label: 'Action', text: 'I leadership in a lean "tiger team," ran two‑day hackathons with Defence and critical‑infra operators, pre-built IaC templates for battlefield clouds and mesh‑enabled edge nodes, and embedded "demo‑ready" agent personas (e.g. Energy Grid Sentinel). We maintained a strict fail‑fast cadence—killing underperforming ideas at mid‑point—and iterated on features based on live operator feedback captured via embedded analytics dashboards.' },
+      { label: 'Action', text: 'I led a lean "tiger team," ran two‑day hackathons with Defence and critical‑infra operators, pre-built IaC templates for battlefield clouds and mesh‑enabled edge nodes, and embedded "demo‑ready" agent personas (e.g. Energy Grid Sentinel). We maintained a strict fail‑fast cadence—killing underperforming ideas at mid‑point—and iterated on features based on live operator feedback captured via embedded analytics dashboards.' },
       { label: 'Outcome', text: 'We delivered the first working command‑and‑control demo in 42 hours—96 hours ahead of standard timelines—earning a $1 million immediate pilot expansion and restoring executive faith in Vault\'s ability to turn rapid innovation into tangible mission impact.' }
     ]
   }
@@ -63,21 +63,24 @@ const CustomerAsksStars = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <PageTitle title="Customer Asks & Vault's Edge" />
+      <PageTitle title="Critical Customer Challenges & Vault Solutions" />
       
       <div className="text-lg mb-8">
-        <p className="mb-6">
-          Vault Cloud, as Australia's only ASD‑certified hyperscale sovereign cloud operator,
-          is uniquely positioned to deliver innovation at scale for national security and
-          critical infrastructure.
+        <p className="mb-4">
+          As Australia's sovereign cloud leader, Vault Cloud delivers innovative solutions for the most pressing challenges 
+          facing government agencies and critical infrastructure operators.
+        </p>
+        <p className="mb-4">
+          Our collaborative approach combines deep expertise in secure cloud architecture with agile delivery methods to 
+          create transformative solutions that meet the unique needs of high-security environments.
         </p>
       </div>
       
       <div className="mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-8">Common Customer Challenges</h2>
+        <h2 className="text-2xl font-semibold text-vault-primary mb-8">Real-World Impact Stories</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {Object.entries(asksExamples).map(([key, example]) => (
-            <Card key={key} className="overflow-hidden">
+            <Card key={key} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div 
                 className="cursor-pointer"
                 onClick={() => setOpenKey(openKey === key ? null : key)}
@@ -92,7 +95,9 @@ const CustomerAsksStars = () => {
               </div>
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-vault-primary mb-2">{example.title}</h3>
-                <p className="text-vault-secondary text-sm mb-3">Click for Details</p>
+                <p className="text-vault-secondary text-sm mb-3">
+                  {openKey === key ? "Click to hide details" : "Click for full STAR story"}
+                </p>
                 {openKey === key && (
                   <div className="bg-vault-light p-4 rounded-lg text-left space-y-3 animate-fade-in">
                     {example.star.map((item) => (
@@ -110,6 +115,14 @@ const CustomerAsksStars = () => {
       </div>
       
       <Separator className="my-10 bg-vault-accent/30" />
+      
+      <div className="mb-12">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">How Vault Addresses Customer Needs</h2>
+        <p className="text-lg mb-6">
+          Our innovative approach transforms complex security and operational challenges into strategic advantages, 
+          delivering measurable outcomes through cutting-edge technology solutions built specifically for high-security environments.
+        </p>
+      </div>
     </div>
   );
 };
