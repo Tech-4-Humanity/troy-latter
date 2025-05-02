@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -76,12 +77,16 @@ const CustomerAsksStars = () => {
       
       <div className="text-lg mb-8">
         <p className="mb-4">
-          As Australia's sovereign cloud leader, Vault Cloud delivers innovative solutions for the most pressing challenges 
-          facing government agencies and critical infrastructure operators.
+          With innovation comes many opportunities—some immediate customer needs are expanded on below.
         </p>
         <p className="mb-4">
-          Our collaborative approach combines deep expertise in secure cloud architecture with agile delivery methods to 
-          create transformative solutions that meet the unique needs of high-security environments.
+          As Australia's sovereign cloud leader, Vault Cloud delivers cutting‑edge solutions for the toughest challenges 
+          facing government agencies and critical infrastructure operators. Our collaborative approach pairs deep expertise in secure, 
+          zero‑trust architectures with agile delivery methods to co‑design transformative capabilities that meet the unique demands 
+          of high‑security environments.
+        </p>
+        <p className="mb-4">
+          Here are a few of our current innovation activities, developed hand‑in‑hand with our customers:
         </p>
       </div>
       
