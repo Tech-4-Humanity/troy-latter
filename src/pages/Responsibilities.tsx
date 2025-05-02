@@ -18,7 +18,7 @@ const Responsibilities = () => {
         <h2 className="text-2xl font-semibold text-vault-primary mb-8">My Leadership Examples</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <FeatureCard
-            title="Strategy & Execution"
+            title="NatSec Fluency"
             imageSrc="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80"
           >
             <div className="space-y-4">
@@ -27,16 +27,16 @@ const Responsibilities = () => {
                   <summary className="font-medium text-vault-primary cursor-pointer">Click to reveal STAR story</summary>
                   <div className="pt-4 space-y-4">
                     <p className="text-vault-secondary">
-                      <span className="font-medium">Situation:</span> As Oracle's APAC Cloud Architect, I was brought in by Interpol to address a critical gap: ten regional bureaus were each running their own isolated AI proofs of concept, duplicating work and budget without any shared roadmap or compliance framework.
+                      <span className="font-medium">Situation:</span> Unisys was engaged by the Department of Defence and Health to roll out an AI-driven patient triage system for field hospitals—but there was no established framework to ensure it met the highest national‑security and medical compliance standards.
                     </p>
                     <p className="text-vault-secondary">
-                      <span className="font-medium">Task:</span> My mandate was to shape and prioritise a unified, mission‑critical R&D pipeline of first‑of‑a‑kind AI PoCs that would deliver tangible breakthroughs for global law enforcement, while enforcing Oracle's SDLC guardrails and meeting Interpol's stringent cross‑border data sovereignty requirements.
+                      <span className="font-medium">Task:</span> Establish a repeatable governance model that would allow AI triage technology to be deployed rapidly across military medical units, while satisfying ASD, ACSC and health‑regulator requirements.
                     </p>
                     <p className="text-vault-secondary">
-                      <span className="font-medium">Action:</span> I led "Working Backwards" strategy workshops with Interpol's CTO council and regional technology leads, translating crime‑fighting objectives into an impact/effort scoring model. We mapped out a phased six‑month roadmap, built automated compliance gates into our CI/CD pipelines using Terraform Sentinel and Oracle Cloud Guardrails, and embedded continuous policy checks aligned to Interpol's governance rules.
+                      <span className="font-medium">Action:</span> I formed and led a joint working group with Unisys engineers, Defence policy officers and health regulators. We mapped out all compliance checkpoints—from data handling to model validation—then built a clear "AI Governance Playbook." This guide aligned AI outputs to clinical protocols and security policies, trained operations teams through live simulations, and embedded automated compliance reviews into every deployment approval.
                     </p>
                     <p className="text-vault-secondary">
-                      <span className="font-medium">Outcome:</span> Within twelve weeks, we delivered four high‑impact PoCs—from automated cross‑border forensic video analysis to a sovereign LLM summarisation engine—unlocking a €7 million follow‑on pipeline, slashing "concept‑to‑funding" lead times by 60%, and earning executive approval to transition two pilots into global production in the next quarter.
+                      <span className="font-medium">Outcome:</span> Within 3 months, the playbook was approved by both ASD and the health regulator. The AI triage system was safely deployed to 20 field units, cutting average patient assessment time by 35% and reducing medical backlog by 60%, all while passing every audit with zero findings—and securing a $2 M multi‑year support contract.
                     </p>
                   </div>
                 </details>
