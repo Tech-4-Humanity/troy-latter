@@ -45,14 +45,28 @@ const Responsibilities = () => {
           </FeatureCard>
 
           <FeatureCard
-            title="Agile Team Scaling"
+            title="Collaboration & Leadership"
             imageSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80"
           >
             <div className="space-y-4">
               <div className="bg-vault-light p-6 rounded-lg">
-                <p className="text-vault-secondary">
-                  Led a small innovation team (4 engineers) facing increasing demands from multiple business units and external partners. Scale team capabilities while maintaining high quality standards and rapid delivery pace. Implemented structured hiring process focused on versatile full-stack engineers. Introduced two-week "innovation sprints" with dedicated discovery and delivery phases. Created modular PoC architecture to enable component reuse across projects. Grew team to 10 engineers while maintaining culture and quality. Increased delivery velocity by 40% and tripled PoC output. Reduced average time-to-MVP from 8 weeks to 3 weeks. Achieved 95% stakeholder satisfaction rating across all projects.
-                </p>
+                <details>
+                  <summary className="font-medium text-vault-primary cursor-pointer">Click to reveal STAR story</summary>
+                  <div className="pt-4 space-y-4">
+                    <p className="text-vault-secondary">
+                      <span className="font-medium">Situation:</span> During severe monsoon floods across ASEAN, regional governments struggled to coordinate warnings and search‑and‑rescue when fixed internet and cellular networks went offline. Without a unified communications platform, thousands of residents remained unaware of rising floodwaters until it was too late.
+                    </p>
+                    <p className="text-vault-secondary">
+                      <span className="font-medium">Task:</span> Partner with AWS and multiple ASEAN government agencies, telcos and social media providers to architect and deliver an end‑to‑end emergency alert and rescue coordination system that worked seamlessly—even in disconnected environments—and scaled across seven countries.
+                    </p>
+                    <p className="text-vault-secondary">
+                      <span className="font-medium">Action:</span> I formed and led a high‑trust "Tiger Team" comprising AWS Solutions Architects, government disaster‑management leads, telco engineers and social‑media API specialists. We ran design‑thinking workshops to map stakeholder needs, then built a prototype on AWS using Lambda, SNS and API Gateway to broadcast multi‑channel alerts via Twitter, Facebook and SMS. To bridge offline gaps, we deployed AWS IoT Greengrass edge nodes powered by satellite backhaul and integrated local radio gateways. We held live field drills with first responders, collecting real‑time feedback and iterating daily in 24‑hour sprints.
+                    </p>
+                    <p className="text-vault-secondary">
+                      <span className="font-medium">Outcome:</span> Within eight weeks, the pilot system delivered 500,000 hyper‑local alerts, cut average rescue response times by 50%, and enabled direct coordination of 150 successful rescues—all with zero data lost outside sovereign AWS regions. The success unlocked a $2 million regional rollout contract and cemented AWS's reputation as the go‑to partner for mission‑critical, cross‑border emergency services.
+                    </p>
+                  </div>
+                </details>
               </div>
             </div>
           </FeatureCard>
