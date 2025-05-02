@@ -1,8 +1,82 @@
 
+import { useState } from 'react';
 import { PageTitle } from '@/components/PageTitle';
-import { FeatureCard } from '@/components/FeatureCard';
+import { Card } from '@/components/ui/card';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
+
+const opportunityExamples = {
+  accelerated: {
+    title: 'Accelerated AI Pilot',
+    imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80",
+    star: [
+      {
+        label: 'Situation',
+        text: 'A Defence modernisation programme needed a secure, ASD‑accredited AI environment for on‑field anomaly detection under a 72‑hour mandate.'
+      },
+      {
+        label: 'Task',
+        text: 'Stand up a fully compliant, containerised AI cluster that could ingest classified sensor data and run real‑time models.'
+      },
+      {
+        label: 'Action',
+        text: 'Leveraged Vault's Secure Container Cloud with Terraform/Ansible IaC, integrated post‑quantum key management, and built parallel compliance scanners to validate policies on‑the‑fly.'
+      },
+      {
+        label: 'Result',
+        text: 'Delivered the cluster in 48 hrs (vs. typical 3‑week lead), achieved 90% detection accuracy with zero compliance findings, and won a £1.5M follow‑on contract.'
+      }
+    ]
+  },
+  edge: {
+    title: 'Edge Compute Demo',
+    imageSrc: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80",
+    star: [
+      {
+        label: 'Situation',
+        text: 'A remote Defence outpost lacked low‑latency compute for predictive maintenance on tactical communications networks.'
+      },
+      {
+        label: 'Task',
+        text: 'Design and deploy a resilient edge compute node that operates fully offline and securely syncs back to Vault's Sovereign Cloud.'
+      },
+      {
+        label: 'Action',
+        text: 'Built rugged Kubernetes clusters with VaultStack on‑prem, automated mesh networking via Terraform, and implemented secure reconnect handshakes using our Key & Secrets Management.'
+      },
+      {
+        label: 'Result',
+        text: 'Validated sub‑500 ms AI inference in simulated field tests, maintained 99.8% uptime over 30 outage cycles, and secured approval for tri‑service field trials.'
+      }
+    ]
+  },
+  automation: {
+    title: 'AI Automation Framework',
+    imageSrc: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80",
+    star: [
+      {
+        label: 'Situation',
+        text: 'A Critical Infrastructure operator was losing weeks to manual change‑control checks, delaying cloud migrations and patch rollouts.'
+      },
+      {
+        label: 'Task',
+        text: 'Automate compliance validation of IaC templates to accelerate safe deployments without opening security gaps.'
+      },
+      {
+        label: 'Action',
+        text: 'Developed a multi‑agent framework that scans IaC for policy violations, auto‑remediates low‑risk issues, and surfaces edge cases for human review—all with full audit trails.'
+      },
+      {
+        label: 'Result',
+        text: 'Cut change‑control lead time from 10 days to 2 hours, boosted deployment velocity by 70%, and improved audit readiness for ACSC reviews.'
+      }
+    ]
+  }
+};
 
 const TheOpportunity = () => {
+  const [openKey, setOpenKey] = useState<string | null>(null);
+
   return (
     <div>
       <PageTitle title="The Opportunity" />
@@ -15,49 +89,38 @@ const TheOpportunity = () => {
       </div>
       
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">My Relevant Experience</h2>
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Customer Success Stories</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <FeatureCard
-            title="Accelerated AI Pilot"
-            imageSrc="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80"
-          >
-            <div className="space-y-4">
-              <div className="bg-vault-light p-4 rounded-lg space-y-2">
-                <p><strong>S:</strong> Required a secure ASD-certified AI cluster for rapid experimentation with classified data.</p>
-                <p><strong>T:</strong> Deploy a compliant, containerised AI environment within government-mandated timeframes while meeting all security standards.</p>
-                <p><strong>A:</strong> Architected containerised inference nodes on GovCloud with automated compliance checks. Implemented parallel deployment pipelines to accelerate provisioning without security shortcuts.</p>
-                <p><strong>R:</strong> Delivered secure cluster in 72 hours (vs. typical 3-week timeline). Achieved 85% uplift in anomaly detection accuracy with zero false positives, securing follow-on production contract.</p>
+          {Object.entries(opportunityExamples).map(([key, example]) => (
+            <Card key={key} className="overflow-hidden">
+              <div 
+                className="cursor-pointer"
+                onClick={() => setOpenKey(openKey === key ? null : key)}
+              >
+                <AspectRatio ratio={16/9}>
+                  <img 
+                    src={example.imageSrc} 
+                    alt={example.title}
+                    className="h-full w-full object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
+                  />
+                </AspectRatio>
               </div>
-            </div>
-          </FeatureCard>
-
-          <FeatureCard
-            title="Edge Compute Demo"
-            imageSrc="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80"
-          >
-            <div className="space-y-4">
-              <div className="bg-vault-light p-4 rounded-lg space-y-2">
-                <p><strong>S:</strong> Defence client needed AI inference capabilities in offline sites with intermittent connectivity.</p>
-                <p><strong>T:</strong> Create resilient edge computing solution capable of functioning in disconnected environments while maintaining sync when connectivity returns.</p>
-                <p><strong>A:</strong> Built Terraform/Ansible prototypes for mesh-enabled edge clusters with local inference capabilities and intelligent sync protocols. Conducted field tests in simulated outage conditions.</p>
-                <p><strong>R:</strong> Demonstrated sub-second processing even during complete network isolation. Solution withstood 99.9% of simulated outage scenarios, securing £2M pilot programme for field deployment.</p>
+              <div className="p-4">
+                <h3 className="text-xl font-semibold text-vault-primary mb-2">{example.title}</h3>
+                <p className="text-vault-secondary text-sm mb-3">Click the image to view STAR details</p>
+                {openKey === key && (
+                  <div className="bg-vault-light p-4 rounded-lg text-left space-y-3 animate-fade-in">
+                    {example.star.map((item) => (
+                      <div key={item.label} className="space-y-1">
+                        <p className="font-medium text-vault-primary">{item.label}:</p>
+                        <p className="text-vault-secondary text-sm">{item.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
-          </FeatureCard>
-
-          <FeatureCard
-            title="AI Automation Framework"
-            imageSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80"
-          >
-            <div className="space-y-4">
-              <div className="bg-vault-light p-4 rounded-lg space-y-2">
-                <p><strong>S:</strong> Manual compliance checks were creating critical bottlenecks in delivery pipeline for sensitive government workloads.</p>
-                <p><strong>T:</strong> Automate compliance verification without compromising security standards or introducing new risks.</p>
-                <p><strong>A:</strong> Developed AI agents to automatically scan Infrastructure-as-Code templates, identify compliance gaps, and generate remediation scripts. Implemented comprehensive audit trails for human verification.</p>
-                <p><strong>R:</strong> Reduced audit preparation time from 2 weeks to less than 1 hour, saving 85% of manual effort. Eliminated human error in compliance verification while improving documentation quality.</p>
-              </div>
-            </div>
-          </FeatureCard>
+            </Card>
+          ))}
         </div>
       </div>
       
