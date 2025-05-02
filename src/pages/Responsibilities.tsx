@@ -1,3 +1,4 @@
+
 import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
 import { Separator } from '@/components/ui/separator';
@@ -17,7 +18,7 @@ const Responsibilities = () => {
         <h2 className="text-2xl font-semibold text-vault-primary mb-8">My Leadership Examples</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <FeatureCard
-            title="NatSec Fluency"
+            title="Security Framework Excellence"
             imageSrc="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80"
           >
             <div className="space-y-4">
