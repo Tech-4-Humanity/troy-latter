@@ -1,4 +1,3 @@
-
 import { PageTitle } from '@/components/PageTitle';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -8,13 +7,13 @@ import { FeatureCard } from '@/components/FeatureCard';
 
 const skillExamples = {
   sovereign: {
-    title: "Sovereign AI Deployment",
+    title: "Sovereign AI Deployment (AWS)",
     imageSrc: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80",
     star: [
-      { label: 'Situation', text: 'Intelligence analysts required AI summarisation capabilities without sending data to external platforms.' },
-      { label: 'Task',      text: 'Build a secure, compliant on-premises LLM solution that meets stringent intelligence community standards.' },
-      { label: 'Action',    text: 'Deployed containerised on-prem LLM with comprehensive audit logs and token-level telemetry. Implemented fine-tuning pipeline for domain-specific knowledge and created classifier guardails to prevent sensitive data exposure.' },
-      { label: 'Result',    text: 'Delivered solution enabling 60% faster intelligence brief creation while maintaining complete data sovereignty. Zero data leaks or security incidents after 8 months in production environment.' }
+      { label: 'Situation', text: 'A top‑tier Australian intelligence agency partnered with AWS to deploy AI‑driven document summarisation, but their strict data‑sovereignty policies forbade any sensitive content from ever leaving their secure premises.' },
+      { label: 'Task', text: 'Deliver a fully on‑premises LLM service—leveraging AWS Outposts—that met the agency\'s rigorous audit, encryption, and access‑control requirements, while enabling analysts to generate rapid, accurate intelligence briefings.' },
+      { label: 'Action', text: 'I assembled and led a dedicated AWS team onsite, oversaw the rack‑and‑stack of Outposts hardware, and collaborated directly with intelligence analysts to tailor the fine‑tuned model to their domain. We embedded comprehensive audit logging, real‑time token telemetry, and classifier‑based bias/hallucination guardrails to ensure every output adhered to security mandates. Continuous feedback loops with the end‑users drove rapid iterations, and I presented fortnightly demos to the agency\'s CTO council.' },
+      { label: 'Result', text: 'Within eight months of launch, the solution cut briefing‑prep time by 60%—shrinking a multi‑day task into a 30‑minute analytic sprint—while maintaining 100% data‑sovereignty compliance and recording zero security incidents. This success secured a $1.8 million, multi‑year support and expansion agreement, and set the standard template for future sovereign AI deployments across the government.' }
     ]
   },
   edge: {
@@ -71,7 +70,6 @@ const You = () => {
               </div>
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-vault-primary mb-2">{example.title}</h3>
-                <p className="text-vault-secondary text-sm mb-3">Click 4 Details</p>
                 {openKey === key && (
                   <div className="bg-vault-light p-4 rounded-lg text-left space-y-3 animate-fade-in">
                     {example.star.map((item) => (
