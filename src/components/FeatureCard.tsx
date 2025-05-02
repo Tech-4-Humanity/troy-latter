@@ -11,13 +11,13 @@ interface FeatureCardProps {
 }
 
 export const FeatureCard = ({ title, imageSrc, children }: FeatureCardProps) => {
-  const [showStar, setShowStar] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
   
   return (
     <Card className="overflow-hidden transition-all hover:shadow-md">
       <div 
         className="w-full h-48 overflow-hidden cursor-pointer relative"
-        onClick={() => setShowStar(!showStar)}
+        onClick={() => setShowDetails(!showDetails)}
       >
         <img 
           src={imageSrc} 
@@ -25,14 +25,14 @@ export const FeatureCard = ({ title, imageSrc, children }: FeatureCardProps) => 
           className="w-full h-full object-cover transition-transform hover:scale-105"
         />
         <div className="absolute bottom-2 right-2 bg-vault-primary text-white px-2 py-1 text-xs rounded">
-          {showStar ? "Hide STAR Details" : "Click 4 Details"}
+          {showDetails ? "Hide Details" : "Click for more information"}
         </div>
       </div>
       <CardContent className="p-6">
         <div className="flex flex-col items-start gap-4">
           <h3 className="text-xl font-semibold">{title}</h3>
           
-          {showStar && children}
+          {showDetails && children}
         </div>
       </CardContent>
     </Card>

@@ -10,68 +10,17 @@ const opportunityExamples = {
   accelerated: {
     title: 'Accelerated AI Pilot',
     imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80",
-    star: [
-      {
-        label: 'Situation',
-        text: 'A Defence modernisation programme needed a secure, ASD‑accredited AI environment for on‑field anomaly detection under a 72‑hour mandate.'
-      },
-      {
-        label: 'Task',
-        text: 'Stand up a fully compliant, containerised AI cluster that could ingest classified sensor data and run real‑time models.'
-      },
-      {
-        label: 'Action',
-        text: "Leveraged Vault's Secure Container Cloud with Terraform/Ansible IaC, integrated post‑quantum key management, and built parallel compliance scanners to validate policies on‑the‑fly."
-      },
-      {
-        label: 'Result',
-        text: 'Delivered the cluster in 48 hrs (vs. typical 3‑week lead), achieved 90% detection accuracy with zero compliance findings, and won a £1.5M follow‑on contract.'
-      }
-    ]
+    content: 'A Defence modernisation programme needed a secure, ASD‑accredited AI environment for on‑field anomaly detection under a 72‑hour mandate. Stand up a fully compliant, containerised AI cluster that could ingest classified sensor data and run real‑time models. Leveraged Vault\'s Secure Container Cloud with Terraform/Ansible IaC, integrated post‑quantum key management, and built parallel compliance scanners to validate policies on‑the‑fly. Delivered the cluster in 48 hrs (vs. typical 3‑week lead), achieved 90% detection accuracy with zero compliance findings, and won a £1.5M follow‑on contract.'
   },
   edge: {
     title: 'Edge Compute for Pacific HADR',
     imageSrc: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80",
-    star: [
-      {
-        label: 'Situation',
-        text: 'During a joint Pacific humanitarian assistance and disaster relief exercise, it became clear that our partners—spanning defence forces, NGOs, and regional aid agencies—lacked reliable, low‑latency compute in austere, disconnected environments.'
-      },
-      {
-        label: 'Task',
-        text: "Tasked with demonstrating Vault Cloud's sovereign edge capabilities, I assembled a fleet of AWS Snowcone devices and partnered with multi‑country teams to design an end‑to‑end edge compute solution."
-      },
-      {
-        label: 'Action',
-        text: 'We scripted Terraform and Ansible playbooks to deploy containerized AI inference nodes that could process satellite imagery and sensor feeds on‑site, then automatically synchronize encrypted data back to our sovereign cloud when connectivity returned.'
-      },
-      {
-        label: 'Result',
-        text: 'The proof‑of‑concept ran flawlessly: sub‑second inference during simulated outages, secure data handoff to Canberra, and zero configuration drift. This success not only validated our approach but also opened conversations about official funding, operational approvals, and identifying a permanent deployment owner.'
-      }
-    ]
+    content: 'During a joint Pacific humanitarian assistance and disaster relief exercise, it became clear that our partners—spanning defence forces, NGOs, and regional aid agencies—lacked reliable, low‑latency compute in austere, disconnected environments. Tasked with demonstrating Vault Cloud\'s sovereign edge capabilities, I assembled a fleet of AWS Snowcone devices and partnered with multi‑country teams to design an end‑to‑end edge compute solution. We scripted Terraform and Ansible playbooks to deploy containerized AI inference nodes that could process satellite imagery and sensor feeds on‑site, then automatically synchronize encrypted data back to our sovereign cloud when connectivity returned. The proof‑of‑concept ran flawlessly: sub‑second inference during simulated outages, secure data handoff to Canberra, and zero configuration drift. This success not only validated our approach but also opened conversations about official funding, operational approvals, and identifying a permanent deployment owner.'
   },
   automation: {
     title: 'AI Automation Framework',
     imageSrc: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80",
-    star: [
-      {
-        label: 'Situation',
-        text: 'A Critical Infrastructure operator was losing weeks to manual change‑control checks, delaying cloud migrations and patch rollouts.'
-      },
-      {
-        label: 'Task',
-        text: 'Automate compliance validation of IaC templates to accelerate safe deployments without opening security gaps.'
-      },
-      {
-        label: 'Action',
-        text: 'Developed a multi‑agent framework that scans IaC for policy violations, auto‑remediates low‑risk issues, and surfaces edge cases for human review—all with full audit trails.'
-      },
-      {
-        label: 'Result',
-        text: 'Cut change‑control lead time from 10 days to 2 hours, boosted deployment velocity by 70%, and improved audit readiness for ACSC reviews.'
-      }
-    ]
+    content: 'A Critical Infrastructure operator was losing weeks to manual change‑control checks, delaying cloud migrations and patch rollouts. Automate compliance validation of IaC templates to accelerate safe deployments without opening security gaps. Developed a multi‑agent framework that scans IaC for policy violations, auto‑remediates low‑risk issues, and surfaces edge cases for human review—all with full audit trails. Cut change‑control lead time from 10 days to 2 hours, boosted deployment velocity by 70%, and improved audit readiness for ACSC reviews.'
   }
 };
 
@@ -108,15 +57,10 @@ const TheOpportunity = () => {
               </div>
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-vault-primary mb-2">{example.title}</h3>
-                <p className="text-vault-secondary text-sm mb-3">Click the image to view STAR details</p>
+                <p className="text-vault-secondary text-sm mb-3">Click the image for more information</p>
                 {openKey === key && (
                   <div className="bg-vault-light p-4 rounded-lg text-left space-y-3 animate-fade-in">
-                    {example.star.map((item) => (
-                      <div key={item.label} className="space-y-1">
-                        <p className="font-medium text-vault-primary">{item.label}:</p>
-                        <p className="text-vault-secondary text-sm">{item.text}</p>
-                      </div>
-                    ))}
+                    <p className="text-vault-secondary text-sm">{example.content}</p>
                   </div>
                 )}
               </div>
