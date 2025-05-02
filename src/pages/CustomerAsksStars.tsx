@@ -72,13 +72,14 @@ const CustomerAsksStars = () => {
 
   return (
     <div>
-      <PageTitle title="Customer Asks" />
-      
-      <div className="mb-6">
-        <p className="text-lg text-vault-secondary">
-          Real-world challenges our customers face that you'll help solve through innovation.
-        </p>
-      </div>
+      <h1 className="text-3xl font-bold mb-4">
+        Customer Asks & Vault's Edge
+      </h1>
+      <p className="text-gray-700 mb-8">
+        Vault Cloud, as Australia's only ASD‑certified hyperscale sovereign cloud operator,
+        is uniquely positioned to deliver innovation at scale for national security and
+        critical infrastructure.
+      </p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {Object.entries(asksExamples).map(([key, example]) => (
