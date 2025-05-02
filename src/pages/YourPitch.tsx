@@ -30,15 +30,6 @@ const YourPitch = () => {
         <li>Automated compliance pipelines reducing audit prep from 2 weeks to &lt;1 hr, saving agencies $2M+ in effort.</li>
       </ul>
 
-      {/* STAR Highlight */}
-      <div className="bg-vault-light p-6 rounded-xl border border-gray-200 shadow-md mb-8">
-        <h2 className="text-2xl font-semibold mb-4 text-vault-primary">STAR Highlight: Cross‑Agency AI Governance Hub</h2>
-        <p className="mb-2"><strong className="text-vault-primary">Situation:</strong> Three siloed AI pilots across DoH, DoE and Home Affairs faced manual compliance hurdles.</p>
-        <p className="mb-2"><strong className="text-vault-primary">Task:</strong> Unify these pilots onto a single, compliant platform delivering new models in days, not months.</p>
-        <p className="mb-2"><strong className="text-vault-primary">Action:</strong> Leveraged Vault's Government Cloud—spun up a central AI Governance Hub with Secure Internet Gateway, real‑time audit agents, and token telemetry; led Working Backwards workshops to align stakeholder needs.</p>
-        <p className="mb-2"><strong className="text-vault-primary">Outcome:</strong> Cut compliance overhead by 85%, rolled out 5 new models in 8 weeks, and secured $4M in executive‑backed funding.</p>
-      </div>
-
       {/* Call to Action */}
       <div className="text-center">
         <Link 
