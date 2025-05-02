@@ -28,6 +28,7 @@ export const FeatureCard = ({ title, description, imageSrc, children, icon: Icon
       for (const child of childContent) {
         if (React.isValidElement(child) && 
             child.props && 
+            child.props.className && 
             typeof child.props.className === 'string' && 
             child.props.className.includes('bg-vault-light')) {
           starContent = child;
