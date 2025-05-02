@@ -15,21 +15,6 @@ const TheOpportunity = () => {
         </p>
       </div>
       
-      <div className="space-y-6 mb-10">
-        <h2 className="text-2xl font-semibold text-vault-primary">Key Aspects</h2>
-        <ul className="list-disc list-inside space-y-3 pl-4">
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Bleeding‑edge R&D:</span> Validate first‑of‑a‑kind concepts with real-world impact, not corporate theatre. Push the boundaries of what's possible.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">High‑Autonomy, High‑Impact:</span> Direct collaboration with our visionary CEO on strategic initiatives that will define Vault's future direction.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Mission‑Critical Scale:</span> Drive PoCs into Vault's core offerings for Defence and Critical Infrastructure with national security implications.
-          </li>
-        </ul>
-      </div>
-
       <div className="mb-8">
         <h2 className="text-2xl font-semibold text-vault-primary mb-6">My Relevant Experience</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -69,6 +54,21 @@ const TheOpportunity = () => {
             </div>
           </FeatureCard>
         </div>
+      </div>
+      
+      <div className="space-y-6 mb-10">
+        <h2 className="text-2xl font-semibold text-vault-primary">Key Aspects</h2>
+        <ul className="list-disc list-inside space-y-3 pl-4">
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Bleeding‑edge R&D:</span> Validate first‑of‑a‑kind concepts with real-world impact, not corporate theatre. Push the boundaries of what's possible.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">High‑Autonomy, High‑Impact:</span> Direct collaboration with our visionary CEO on strategic initiatives that will define Vault's future direction.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Mission‑Critical Scale:</span> Drive PoCs into Vault's core offerings for Defence and Critical Infrastructure with national security implications.
+          </li>
+        </ul>
       </div>
       
       <div className="space-y-6 mb-10">
