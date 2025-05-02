@@ -65,7 +65,7 @@ const TheOpportunity = () => {
             <div className="space-y-2">
               <p><strong>Situation:</strong> Manual compliance checks slowed delivery.</p>
               <p><strong>Action:</strong> Developed AI agents to auto-scan IaC and report deviations.</p>
-              <p><strong>Result:</strong> Reduced audit prep from 2 weeks to <1 hour, saving 85% manual effort.</p>
+              <p><strong>Result:</strong> Reduced audit prep from 2 weeks to &lt;1 hour, saving 85% manual effort.</p>
             </div>
           </FeatureCard>
         </div>
