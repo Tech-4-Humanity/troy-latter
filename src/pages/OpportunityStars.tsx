@@ -1,8 +1,5 @@
 
-import { useState } from 'react';
 import { PageTitle } from '@/components/PageTitle';
-import { Card } from '@/components/ui/card';
-import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { FeatureCard } from '@/components/FeatureCard';
 
 const opportunityExamples = {
