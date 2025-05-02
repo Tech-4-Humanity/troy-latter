@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import { PageTitle } from '@/components/PageTitle';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 
@@ -69,6 +68,9 @@ const asksExamples = {
 
 const CustomerAsksStars = () => {
   const [openKey, setOpenKey] = useState<string | null>(null);
+
+  // Ensure we're correctly rendering all 6 cards by logging the entries
+  console.log("Number of cards:", Object.keys(asksExamples).length);
 
   return (
     <div>
