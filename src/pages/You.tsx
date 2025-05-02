@@ -58,7 +58,7 @@ const You = () => {
       
       <Separator className="my-10 bg-vault-accent/30" />
       
-      <div className="space-y-6 mb-10">
+      <div className="space-y-8 mb-10">
         <h2 className="text-2xl font-semibold text-vault-primary">Required Skills & Experience</h2>
         <ul className="list-disc list-inside space-y-3 pl-4">
           <li className="text-vault-secondary">
@@ -77,6 +77,44 @@ const You = () => {
             <span className="font-medium text-vault-primary">Data‑Driven:</span> Every prototype instrumented with live metrics and ROI dashboards.
           </li>
         </ul>
+      </div>
+
+      {/* Added Skills & Experience details */}
+      <div className="space-y-8 mb-10">
+        <div className="bg-vault-light p-6 rounded-lg">
+          <h3 className="font-medium text-lg text-vault-primary mb-4">Visionary Innovator</h3>
+          <p className="text-vault-secondary">
+            Across AWS, Oracle and Unisys, I've repeatedly turned bold ideas into first‑of‑their‑kind capabilities. At AWS APAC I launched an AI anomaly‑detection pilot in 48 hours—skipping months of red tape—to prove real‑time sensor analytics under sovereign controls. At Oracle I designed a hybrid pay‑and‑travel platform for the ADF that became the blueprint for future defence deployments. These high‑autonomy initiatives weren't just "innovation theatre" but delivered measurable business value and follow‑on funding.
+          </p>
+        </div>
+        
+        <div className="bg-vault-light p-6 rounded-lg">
+          <h3 className="font-medium text-lg text-vault-primary mb-4">NatSec Fluency</h3>
+          <p className="text-vault-secondary">
+            I hold an active NV2 clearance and have served as a member of Standards Australia's BCI & Robotics Committee and the Queensland Government AI Hub advisory board. I've navigated ASD and ACSC accreditation processes firsthand—building zero‑trust enclaves and publishing neurotech and robotics guidelines that became national standards. This deep policy and compliance expertise ensures any Vault PoC aligns seamlessly with Australia's most stringent security mandates.
+          </p>
+        </div>
+        
+        <div className="bg-vault-light p-6 rounded-lg">
+          <h3 className="font-medium text-lg text-vault-primary mb-4">Hands‑On Technologist</h3>
+          <p className="text-vault-secondary">
+            My GitHub is filled with real‑world modules: Terraform templates for multi‑region container clusters, Ansible playbooks for hardened OS builds, Kubernetes Operators for automated deployment, and post‑quantum key management scripts using CloudHSM/Oracle Vault. I've personally provisioned edge compute nodes on AWS Snowball Edge, stood up sovereign LLM frameworks on Outposts, and overseen the full CI/CD pipeline—bridging theory and practice in production environments.
+          </p>
+        </div>
+        
+        <div className="bg-vault-light p-6 rounded-lg">
+          <h3 className="font-medium text-lg text-vault-primary mb-4">Agile Leader</h3>
+          <p className="text-vault-secondary">
+            I've built and mentored "tiger teams" of 3–8 specialists at AWS APAC and Unisys—mixing engineers, data scientists and compliance experts. By instituting two‑week "Sprint Marathons," daily standups and Friday demo‑or‑die sessions tied to kill/scale metrics, we tripled PoC throughput, cut cycle times by 60% and increased funding conversion rates from 20% to over 60%. This lean, high‑trust culture keeps bureaucracy at bay and puts execution front and center.
+          </p>
+        </div>
+        
+        <div className="bg-vault-light p-6 rounded-lg">
+          <h3 className="font-medium text-lg text-vault-primary mb-4">Data‑Driven</h3>
+          <p className="text-vault-secondary">
+            No prototype ships without instrumentation. I've embedded OpenTelemetry‑powered metrics, Prometheus/Grafana dashboards and AWS Cost Explorer integrations into every PoC—tracking usage, latency, anomaly‑rates and cost savings in real time. I then layer on QuickSight or Kibana ROI dashboards that translate raw KPIs into business impact (e.g. $150K/month savings, 85% reduction in audit prep). These live insights turn demos into indisputable cases for scale‑up.
+          </p>
+        </div>
       </div>
     </div>
   );
