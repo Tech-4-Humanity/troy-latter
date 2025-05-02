@@ -2,106 +2,176 @@
 import { useState } from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
+import { Card, CardContent } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-// Define the customer asks examples
-const customerAsksData = {
-  compliance: {
-    title: "Compliance & Audit Fatigue",
-    imageSrc: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&q=80",
-    star: [
-      { label: 'Situation', text: 'The Department of Human Services spent two weeks manually preparing ASD/ACSC compliance reports for myGov.' },
-      { label: 'Task', text: 'Automate compliance checks and generate audit-ready reports without lowering security standards.' },
-      { label: 'Action', text: 'Built a Continuous Compliance Agent that scanned Terraform and Ansible definitions in real time, surfaced policy drifts, and auto-generated ASD-compliant audit documents.' },
-      { label: 'Outcome', text: 'Reduced audit prep from 2 weeks to under 1 hour and cut manual effort by 85%, significantly accelerating certification cycles.' },
-    ]
-  },
-  threat: {
-    title: "Threat Detection Overload",
-    imageSrc: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80",
-    star: [
-      { label: 'Situation', text: 'A major transport client at AWS faced over 1,200 security alerts per day, overwhelming their SOC and delaying incident response.' },
-      { label: 'Task', text: 'Filter noise, surface genuine threats, and automate initial containment steps.' },
-      { label: 'Action', text: 'Deployed an Autonomous Anomaly-Detection Agent trained on customer network baselines and a Multi-Agent Playbook Orchestrator to auto-launch forensic and containment workflows.' },
-      { label: 'Outcome', text: 'Cut false positives by 92% and reduced mean-time-to-contain from 4 hours to 20 minutes, improving overall security posture.' },
-    ]
-  },
-  sovereign: {
-    title: "Sovereign AI & LLM Risks",
-    imageSrc: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80",
-    star: [
-      { label: 'Situation', text: 'Unisys intelligence analysts needed on-prem Generative AI capabilities but feared data leakage and model hallucinations.' },
-      { label: 'Task', text: 'Deliver an audited, self-hosted LLM framework with strict governance and bias controls.' },
-      { label: 'Action', text: 'Architected an ASD-certified on-prem LLM cluster with token-level telemetry, Bias & Hallucination Guard agents, and fine-tuning pipelines.' },
-      { label: 'Outcome', text: 'Enabled analysts to process 10,000+ pages/day with 98% accuracy, and maintained zero data leak incidents over 12 months.' },
-    ]
-  },
-  cost: {
-    title: "Operational Cost Creep",
-    imageSrc: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80",
-    star: [
-      { label: 'Situation', text: 'An AWS energy sector client was overspending by 25% monthly due to manual resource provisioning and idle VMs.' },
-      { label: 'Task', text: 'Implement automated rightsizing and predictive capacity planning to optimize costs without service impact.' },
-      { label: 'Action', text: 'Deployed an Autonomous Resource Broker and a Predictive Capacity Forecasting pipeline on CIC to schedule and resize workloads.' },
-      { label: 'Outcome', text: 'Achieved 28% monthly cost savings, eliminated surprise egress charges, and maintained performance SLAs.' },
-    ]
-  },
-  agility: {
-    title: "Speed & Agility in High‑Stakes",
-    imageSrc: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80",
-    star: [
-      { label: 'Situation', text: 'An Oracle digital‑twin PoC had stalled for 10 weeks without delivering measurable value.' },
-      { label: 'Task', text: 'Accelerate PoC delivery to demonstrate tangible outcomes within 48 hours.' },
-      { label: 'Action', text: 'Implemented a Rapid-Start PoC Generator with sector-specific IaC templates and pre-trained Demo Agents like "CityOps Coordinator."' },
-      { label: 'Outcome', text: 'Delivered a working demo in 42 hours, secured a $1M follow-on contract, and adopted the framework enterprise-wide.' },
-    ]
-  },
-  frameworks: {
-    title: "Innovation Frameworks",
-    imageSrc: "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&q=80",
-    star: [
-      { label: 'Situation', text: 'Teams lacked structured processes for ideation and rapid validation, leading to low PoC success rates.' },
-      { label: 'Task', text: 'Embed proven techniques—Design Thinking, Working Backwards, Lean UX—to streamline ideation and prototyping.' },
-      { label: 'Action', text: 'Ran Working Backwards workshops with stakeholders, introduced Lean UX sprints, and codified a kill-or-scale decision framework.' },
-      { label: 'Outcome', text: 'Halved ideation-to-PoC time, increased stakeholder alignment by 40%, and doubled successful PoC conversions within one quarter.' },
-    ]
-  }
-};
-
-const CustomerAsks = () => {
-  // Add console log to verify data
-  console.log("Customer Asks Data:", Object.keys(customerAsksData));
-  
+const About = () => {
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold mb-4">
-        Customer Asks & Vault's Edge
+    <div className="py-12 px-6 max-w-4xl mx-auto">
+      {/* Header Section */}
+      <h1 className="text-3xl md:text-4xl font-bold mb-6 text-vault-primary">
+        Australia's sovereign cloud deserves world‑class innovators—here's how I deliver.
       </h1>
-      <p className="text-gray-700 mb-8">
-        Vault Cloud, as Australia's only ASD‑certified hyperscale sovereign cloud operator,
-        is uniquely positioned to deliver innovation at scale for national security and
-        critical infrastructure.
-      </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Object.entries(customerAsksData).map(([key, ask]) => (
-          <FeatureCard
-            key={key}
-            title={ask.title}
-            imageSrc={ask.imageSrc}
+      <div className="flex flex-col md:flex-row gap-8 mb-8">
+        <div className="md:w-2/3">
+          <p className="text-lg text-vault-secondary mb-4">
+            I'm Troy Latter, a technology leader with 15 years of experience architecting and deploying sovereign‑grade AI, security and cloud solutions for AWS, Unisys and Oracle across APAC.
+          </p>
+          
+          <ul className="list-disc list-outside ml-5 text-vault-secondary mb-8 space-y-2">
+            <li>Delivered an ASD‑certified Government Cloud enclave in 4 months—now the blueprint for every future sovereign launch.</li>
+            <li>Built a Rapid‑Start PoC framework that cut time‑to‑demo from 10 weeks to 48 hours, unlocking $4 M in follow‑on funding.</li>
+            <li>Automated compliance pipelines that reduced audit preparation from 2 weeks to under 1 hour, saving agencies over $2 M in effort.</li>
+          </ul>
+          
+          <a 
+            href="https://www.linkedin.com/in/troylatter" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#0077B5] text-white px-4 py-2 rounded-lg hover:bg-[#005885] transition"
           >
-            <div className="space-y-3">
-              {ask.star.map((item) => (
-                <div key={item.label} className="space-y-1">
-                  <p className="font-medium text-vault-primary">{item.label}:</p>
-                  <p className="text-vault-secondary text-sm">{item.text}</p>
-                </div>
-              ))}
-            </div>
-          </FeatureCard>
-        ))}
+            <Linkedin size={20} />
+            <span>Connect on LinkedIn</span>
+          </a>
+        </div>
+        
+        <div className="md:w-1/3 flex justify-center">
+          <div className="overflow-hidden rounded-lg shadow-lg">
+            <img 
+              src="/lovable-uploads/0802b80f-8d0e-4e6c-b22c-90790f6ab929.png" 
+              alt="Troy Latter" 
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      <Separator className="my-8 bg-vault-accent/30" />
+
+      {/* About Troy Section */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4 text-vault-primary">About Troy</h2>
+        <p className="text-vault-secondary mb-6">
+          I specialize in transforming mission‑critical PoCs into production‑grade capabilities under zero‑trust and government compliance. Whether leading "tiger teams" of engineers or collaborating with C‑suite stakeholders, I thrive on solving complex national‑security challenges with elegant, scalable technology.
+        </p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <Card>
+          <CardContent className="pt-6">
+            <h3 className="font-medium text-lg text-vault-primary mb-2">Why Vault?</h3>
+            <p className="text-vault-secondary">
+              Vault's vision of a sovereign, hyperscale cloud aligns perfectly with my passion and track record. As Australia's first ASD‑certified cloud provider, Vault has proven its commitment to security and innovation. I'm eager to join the team driving the next wave of mission‑critical capabilities for Defence, Intelligence and critical infrastructure.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="pt-6">
+            <h3 className="font-medium text-lg text-vault-primary mb-2">Why This Role?</h3>
+            <p className="text-vault-secondary">
+              Hands‑on R&D—building prototypes that move fast, learn fast, and scale—is where I do my best work. Reporting directly to a visionary CEO, I'll shape and execute Vault's innovation pipeline, turning bleeding‑edge concepts into real‑world solutions that integrate seamlessly into your core offerings.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Separator className="my-8 bg-vault-accent/30" />
+
+      {/* Why Me Section */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4 text-vault-primary">Why Me?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card>
+            <CardContent className="pt-6">
+              <h3 className="font-medium text-lg text-vault-primary mb-2">Cleared & Connected</h3>
+              <p className="text-vault-secondary">
+                NV2 clearance and Standards Australia BCI & Robotics committee membership give me deep NatSec fluency.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="pt-6">
+              <h3 className="font-medium text-lg text-vault-primary mb-2">Proven Innovator</h3>
+              <p className="text-vault-secondary">
+                Over 10 first‑of‑a‑kind solutions delivered under mission‑grade SLAs for intelligence and defence clients.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="pt-6">
+              <h3 className="font-medium text-lg text-vault-primary mb-2">Technical Depth</h3>
+              <p className="text-vault-secondary">
+                Hands‑on expertise with Kubernetes, IaC, post‑quantum key management and sovereign LLM frameworks—backed by real GitHub proof.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="pt-6">
+              <h3 className="font-medium text-lg text-vault-primary mb-2">Agile Leadership</h3>
+              <p className="text-vault-secondary">
+                Built and mentored lean "tiger teams," embedding a fail‑fast, high‑trust culture that consistently triples PoC throughput and secures multi‑million‑dollar funding.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      <Separator className="my-8 bg-vault-accent/30" />
+
+      {/* My Motivation Section */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4 text-vault-primary">My Motivation</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card>
+            <CardContent className="pt-6">
+              <h3 className="font-medium text-lg text-vault-primary mb-2">Mission Alignment</h3>
+              <p className="text-vault-secondary">
+                I've spent my career safeguarding Australia's digital frontiers—Vault's sovereign mandate is the natural next step.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="pt-6">
+              <h3 className="font-medium text-lg text-vault-primary mb-2">Strategic Impact</h3>
+              <p className="text-vault-secondary">
+                From classified AI enclaves to battlefield‑grade edge nodes, I deliver solutions that matter and generate millions in strategic value.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="pt-6">
+              <h3 className="font-medium text-lg text-vault-primary mb-2">Cultural Fit</h3>
+              <p className="text-vault-secondary">
+                I thrive in founder‑driven, rapid‑innovation environments that value bold experimentation and unwavering execution.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Call to Action */}
+      <div className="text-center mt-12">
+        <p className="text-xl text-vault-primary font-medium mb-6">
+          Let's pioneer the future of Australia's sovereign cloud—together.
+        </p>
+        <Link 
+          to="/your-pitch" 
+          className="inline-block bg-vault-accent text-white px-6 py-3 rounded-lg hover:bg-vault-accent/90 transition font-medium"
+        >
+          View My Pitch
+        </Link>
       </div>
     </div>
   );
 };
 
-export default CustomerAsks;
+export default About;
