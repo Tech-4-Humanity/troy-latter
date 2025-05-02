@@ -72,14 +72,28 @@ const Responsibilities = () => {
           </FeatureCard>
 
           <FeatureCard
-            title="Fail-Fast Culture"
+            title="Innovation & Engineering"
             imageSrc="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80"
           >
             <div className="space-y-4">
               <div className="bg-vault-light p-6 rounded-lg">
-                <p className="text-vault-secondary">
-                  Innovation projects were suffering from bureaucratic processes and delayed decision-making, with PoCs lingering in development for months. Accelerate innovation cycle time by embracing fail-fast principles and removing organisational barriers. Implemented lean Kanban system with WIP limits. Established clear "kill criteria" for all projects with bi-weekly go/no-go decision points. Created innovation showcase framework for rapid stakeholder feedback. Reduced average innovation cycle time from 16 weeks to 4 weeks. Improved resource allocation by identifying non-viable concepts early. Significantly enhanced stakeholder trust through transparent process and consistent delivery.
-                </p>
+                <details>
+                  <summary className="font-medium text-vault-primary cursor-pointer">Click to reveal STAR story</summary>
+                  <div className="pt-4 space-y-4">
+                    <p className="text-vault-secondary">
+                      <span className="font-medium">Situation:</span> At Oracle APAC, the Australian Defence Force relied on a legacy, paper‑driven system to manage pay and travel allowances for 60,000 personnel—resulting in frequent reconciliation errors, delayed payments of up to six weeks, and low soldier morale.
+                    </p>
+                    <p className="text-vault-secondary">
+                      <span className="font-medium">Task:</span> Architect and prototype a secure, cloud‑native pay and travel‑allowance platform that would run in Oracle Cloud Infrastructure, meet defence's zero‑trust and audit requirements, and automate end‑to‑end allowance processing with Infrastructure‑as‑Code.
+                    </p>
+                    <p className="text-vault-secondary">
+                      <span className="font-medium">Action:</span> I led a cross‑disciplinary team of Oracle cloud engineers and defence IT specialists. We designed Terraform modules to provision multi‑region OCI compartments, networking and Kubernetes clusters with automated Istio‑backed mTLS. Using Ansible, we scripted microservices deployments that ingested HR data, calculated entitlements, and triggered payments via secure API calls. We embedded Oracle Cloud Guard and OCI Vault for key management, and set up a GitOps pipeline with automated policy scans for each change. I presented the prototype at a national defence tech symposium, wrote the accompanying whitepaper, and built a financial model showing TCO and ROI.
+                    </p>
+                    <p className="text-vault-secondary">
+                      <span className="font-medium">Outcome:</span> The prototype cut end‑to‑end allowance processing from 6 weeks to under 24 hours, eliminated manual reconciliation errors (0 % error rate in pilot), and demonstrated projected annual savings of $3 million. The business case secured CDF and Treasury sign‑off for a $5 million production rollout next fiscal year—cementing Oracle's edge in sovereign defence solutions.
+                    </p>
+                  </div>
+                </details>
               </div>
             </div>
           </FeatureCard>
