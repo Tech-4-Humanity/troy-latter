@@ -1,7 +1,7 @@
 
 import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
-import { Building, Shield, Database, Server, Globe } from 'lucide-react';
+import { Shield, Database, Server, Globe, Clock, FileText, AlertTriangle, Activity, Zap } from 'lucide-react';
 
 const About = () => {
   return (
@@ -16,41 +16,120 @@ const About = () => {
       </div>
       
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Customer Challenges We're Solving</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Tomorrow's Customer Needs</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <FeatureCard
-            icon={Globe}
-            title="Sovereign AI Operations"
-            imageSrc="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80"
+            icon={Shield}
+            title="Compliance & Audit Fatigue"
           >
-            <div className="space-y-2">
-              <p><strong>Challenge:</strong> Government agencies need AI capabilities without foreign data exposure.</p>
-              <p><strong>Innovation:</strong> Isolated LLM training infrastructure with zero external dependencies.</p>
-              <p><strong>Impact:</strong> On-shore AI with complete data sovereignty and audit capabilities.</p>
+            <div className="space-y-4">
+              <p className="font-medium">Problem: Agencies waste weeks manually gathering logs, checking configs and proving compliance to ASD/ACSC.</p>
+              <p className="font-medium">AI + Agents PoCs:</p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Continuous Compliance Agent – real‑time IaC scan + auto audit reports</li>
+                <li>Policy‑Driven Remediation Bot – suggests/enacts approved fix‑playbooks</li>
+                <li>ChatOps Compliance Concierge – LLM chat interface for on‑demand compliance queries</li>
+              </ul>
+              
+              <div className="mt-4 bg-vault-light p-4 rounded-md">
+                <p className="font-semibold">🔹 Troy's STAR:</p>
+                <p><strong>Situation:</strong> At the Department of Human Services, audit prep for myGov took ~2 weeks.</p>
+                <p><strong>Task:</strong> Automate compliance checks and reporting.</p>
+                <p><strong>Action:</strong> Built an AI "watchdog" agent that scanned Terraform/Ansible configs and auto‑generated ASD‑ready reports.</p>
+                <p><strong>Result:</strong> Reduced audit prep time from 2 weeks to under 1 hour, and cut manual effort by 85%.</p>
+              </div>
             </div>
           </FeatureCard>
 
           <FeatureCard
-            icon={Server}
-            title="Battlefield-Ready Cloud"
-            imageSrc="https://images.unsplash.com/photo-1551038247-3d9af20df552?auto=format&fit=crop&q=80"
+            icon={AlertTriangle}
+            title="Threat Detection & Incident Response Overload"
           >
-            <div className="space-y-2">
-              <p><strong>Challenge:</strong> Defence needs secure compute in disconnected environments.</p>
-              <p><strong>Innovation:</strong> Ruggedized, portable cloud nodes with mesh networking.</p>
-              <p><strong>Impact:</strong> Mission-critical analysis capabilities in forward operating bases.</p>
+            <div className="space-y-4">
+              <p className="font-medium">Problem: Defence SOCs drown in false alerts and lack automation to contain threats.</p>
+              <p className="font-medium">AI + Agents PoCs:</p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Autonomous Anomaly‑Detection Agent – federated model to surface only true positives</li>
+                <li>Multi‑Agent Playbook Orchestrator – auto‑assembles forensics, containment, comms</li>
+                <li>Predictive Threat Forecasting – ML pipeline modelling TTPs for pre‑emptive hardening</li>
+              </ul>
+              
+              <div className="mt-4 bg-vault-light p-4 rounded-md">
+                <p className="font-semibold">🔹 Troy's STAR:</p>
+                <p><strong>Situation:</strong> At AWS, a major transport client faced 1,200+ security alerts/day.</p>
+                <p><strong>Task:</strong> Drastically cut false positives and accelerate response.</p>
+                <p><strong>Action:</strong> Deployed a custom anomaly‑detection agent trained on their traffic patterns, plus a coordinating bot to trigger containment scripts.</p>
+                <p><strong>Result:</strong> Reduced alerts by 92%, improved mean‑time‑to‑contain from 4 hrs to 20 mins.</p>
+              </div>
             </div>
           </FeatureCard>
 
           <FeatureCard
             icon={Database}
-            title="Critical Infrastructure Protection"
-            imageSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80"
+            title="Sovereign AI & LLM Risks"
           >
-            <div className="space-y-2">
-              <p><strong>Challenge:</strong> Energy/utility companies facing increased cyber threats.</p>
-              <p><strong>Innovation:</strong> Zero-trust OT/IT segregation with real-time threat modeling.</p>
-              <p><strong>Impact:</strong> Reduced attack surface and continuous compliance monitoring.</p>
+            <div className="space-y-4">
+              <p className="font-medium">Problem: Agencies crave Generative AI for intel analysis but fear data leakage and "hallucinations."</p>
+              <p className="font-medium">AI + Agents PoCs:</p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>On‑Prem Sovereign LLM Framework – self‑hosted cluster with token telemetry & fine‑tuning controls</li>
+                <li>Document‑Intelligence Agent – ingests classified docs, auto‑tags Impact Levels, cross‑links findings</li>
+                <li>Bias & Hallucination Guard – agent layer that validates LLM outputs vs. internal KB</li>
+              </ul>
+              
+              <div className="mt-4 bg-vault-light p-4 rounded-md">
+                <p className="font-semibold">🔹 Troy's STAR:</p>
+                <p><strong>Situation:</strong> At Unisys, intelligence analysts needed rapid document summarisation under full audit.</p>
+                <p><strong>Task:</strong> Deliver a compliant, on‑prem LLM solution.</p>
+                <p><strong>Action:</strong> Architected and deployed an ASD‑certified LLM cluster, plus an agent to auto‑validate outputs.</p>
+                <p><strong>Result:</strong> Analysts cut research time by 60%, with zero data‑leak incidents in 12 months.</p>
+              </div>
+            </div>
+          </FeatureCard>
+
+          <FeatureCard
+            icon={Activity}
+            title="Operational Inefficiency & Cost Creep"
+          >
+            <div className="space-y-4">
+              <p className="font-medium">Problem: Critical‑infra teams over‑provision VMs/storage and do manual capacity planning.</p>
+              <p className="font-medium">AI + Agents PoCs:</p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Autonomous Resource Broker – rightsizes/schedules workloads for 30% cost savings</li>
+                <li>Predictive Capacity Planning – neural forecasts for peak‑demand prep</li>
+                <li>FinOps Advisor Agent – conversational AI explaining cost anomalies and optimisations</li>
+              </ul>
+              
+              <div className="mt-4 bg-vault-light p-4 rounded-md">
+                <p className="font-semibold">🔹 Troy's STAR:</p>
+                <p><strong>Situation:</strong> An energy provider on AWS was overspending by 25% monthly.</p>
+                <p><strong>Task:</strong> Optimize resource utilisation with minimal manual ops.</p>
+                <p><strong>Action:</strong> Rolled out an agent to monitor usage metrics and auto‑rightsizing policies.</p>
+                <p><strong>Result:</strong> Delivered 28% monthly cost savings, with no performance impact.</p>
+              </div>
+            </div>
+          </FeatureCard>
+
+          <FeatureCard
+            icon={Zap}
+            title="Speed & Agility in High‑Stakes Environments"
+          >
+            <div className="space-y-4">
+              <p className="font-medium">Problem: PoCs stall for months—innovation theatre that never reaches production.</p>
+              <p className="font-medium">AI + Agents PoCs:</p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Rapid‑Start PoC Generator – IaC template library with AI prompts, live in &lt;1 hr</li>
+                <li>Mission‑Tailored Demo Agents – drop‑in persona agents (e.g. "Energy Grid Sentinel")</li>
+                <li>Fail‑Fast Insights Dashboard – surfaces feature usage vs. ignore rates for next sprint</li>
+              </ul>
+              
+              <div className="mt-4 bg-vault-light p-4 rounded-md">
+                <p className="font-semibold">🔹 Troy's STAR:</p>
+                <p><strong>Situation:</strong> At Oracle, a federal digital‑twin PoC dragged on 10 weeks.</p>
+                <p><strong>Task:</strong> Accelerate to demo in 48 hrs.</p>
+                <p><strong>Action:</strong> Published a Terraform/Ansible template pack and pre‑trained demo agent "CityOps Coordinator."</p>
+                <p><strong>Result:</strong> Live demo delivered in 42 hrs, securing an immediate $1 M follow‑on contract.</p>
+              </div>
             </div>
           </FeatureCard>
         </div>
