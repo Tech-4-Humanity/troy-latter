@@ -97,59 +97,47 @@ const Responsibilities = () => {
         <h2 className="text-2xl font-semibold text-vault-primary">Key Responsibilities</h2>
         <ul className="list-disc list-inside space-y-4 pl-4">
           <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Strategy & Execution:</span> Shape and prioritise Vault's R&D pipeline to deliver measurable breakthroughs while maintaining SDLC integrity in regulated environments.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Collaboration & Leadership:</span> Build high‑trust teams and partner with Defence, Intelligence and domain experts to validate concepts and scale innovations.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Innovation & Engineering:</span> Design, build and test IaC prototypes: from battlefield clusters to LLM frameworks with technical evangelism and business case translation.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Culture & Pace:</span> Embed a fail‑fast mindset—iterate quickly, learn and scale.
+            <span className="font-medium text-vault-primary">Blueprint to Breakthrough:</span>
             <div className="bg-vault-light p-6 mt-3 rounded-lg">
               <div className="space-y-4">
                 <p className="text-vault-secondary">
-                  <span className="font-medium">Situation:</span> At Amazon APAC's Rapid Innovation Lab, PoCs routinely languished for 12 weeks, with only 20% ever winning follow‑on funding—eroding stakeholder trust and slowing business impact.
-                </p>
-                <p className="text-vault-secondary">
-                  <span className="font-medium">Task:</span> Inject Amazon's "Day 1" bias for action to slash cycle times, maximize high‑value experiments, and reestablish confidence in rapid innovation.
-                </p>
-                <p className="text-vault-secondary">
-                  <span className="font-medium">Action:</span> I personally pushed the fast‑pace ethos at Amazon—launching two‑week "Sprint Marathons" with Friday C‑suite Demo Days, hard kill/scale metrics tied directly to projected ROI, and a live "Innovation Scoreboard" tracking time‑to‑insight and funding likelihood. I convinced senior leaders to back immediate pivot or kill decisions, embedded daily standups, and coached teams to treat every sprint as a business mini‑investment.
-                </p>
-                <p className="text-vault-secondary">
-                  <span className="font-medium">Outcome:</span> In six months, PoC duration collapsed from 12 weeks to 4 weeks, throughput tripled, funding conversion jumped from 20% to 65%, and we unlocked a $6 million innovation pipeline—with executive sponsor satisfaction soaring to a 4.8/5 rating.
+                  When Interpol asked Oracle to turn scattered AI experiments across ten bureaus into a coherent global program, I stepped in to own the execution strategy. I led "Working Backwards" workshops with CTOs and regional CIOs, built an impact/effort scoring model tied to mission KPIs, and mapped out a six‑month PoC roadmap. By embedding automated compliance gates and demo‑or‑die reviews into our CI/CD pipeline, we launched four first‑of‑their‑kind AI pilots in 12 weeks—unlocking a $7 million follow‑on pipeline, cutting concept‑to‑funding time by 60%, and earning executive sign‑off to move two into full production.
                 </p>
               </div>
             </div>
           </li>
           <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Customer Validation:</span> Demo PoCs, gather feedback, and refine real‑world applications.
+            <span className="font-medium text-vault-primary">Tiger Teams & Trusted Partnerships:</span>
             <div className="bg-vault-light p-6 mt-3 rounded-lg">
               <div className="space-y-4">
                 <p className="text-vault-secondary">
-                  <span className="font-medium">Situation:</span> A major Australian financial institution sought to migrate 200 legacy applications to Google Cloud and adopt G Suite for collaboration—but their board mandated that all customer and transactional data remain strictly onshore under sovereign‑data requirements.
-                </p>
-                <p className="text-vault-secondary">
-                  <span className="font-medium">Task:</span> Prove that a hybrid Google Cloud / G Suite solution could move critical apps, secure data residency, and enhance business operations—without any data ever leaving Australian jurisdiction.
-                </p>
-                <p className="text-vault-secondary">
-                  <span className="font-medium">Action:</span> I formed and led a cross‑organizational "Tiger Team" with Google engineers and the bank's security, legal and operations leads. We stood up a PoC in GCP's Sydney region, using Migrate for Compute Engine to containerize representative apps, enforced data‑in‑region via VPC Service Controls, and rolled out G Suite with custom DLP rules. Over three weeks, we conducted daily user‑feedback workshops with frontline bankers and compliance officers, iterated on single‑sign‑on and permission models, and presented weekly progress demos to executives—embedding feedback into each sprint.
-                </p>
-                <p className="text-vault-secondary">
-                  <span className="font-medium">Outcome:</span> The pilot achieved 99.9% reliability, cut application onboarding time from four weeks to 24 hours, and boosted collaboration metrics by 35%. Armed with these results and a clear ROI model, the bank green‑lit a $10 million full‑scale migration, cementing Google Cloud and G Suite as the foundation for its sovereign‑data digital transformation.
+                  During ASEAN monsoon floods, regional governments and NGOs had no resilient alerts platform when networks collapsed. Tasked by AWS APAC, I formed a six‑person "tiger team," brought in satellite, telco and social‑media SMEs, and ran rapid design sprints to deliver an edge‑mesh alert system. We deployed Snowball Edge and Greengrass nodes, integrated multi‑channel push via SMS, Twitter and Facebook, and iterated daily with first responders. The live demo cut rescue‑coordination delays by 50%, handled 500,000+ alerts, and led to a $2 million regional rollout— cementing our reputation for high‑trust, hands‑on collaboration.
                 </p>
               </div>
             </div>
           </li>
           <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Technical Evangelism:</span> Represent Vault at industry forums, publish whitepapers, host Tech Talks.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Business Case Translation:</span> Convert PoC results into ROI‑driven proposals for executive buy‑in.
+            <span className="font-medium text-vault-primary">Edge Engineering & Real‑World Prototypes:</span>
+            <div className="bg-vault-light p-6 mt-3 rounded-lg">
+              <div className="space-y-4">
+                <p className="text-vault-secondary">
+                  When the ADF's Secure Content & Collaboration program needed deployable cloud nodes, Unisys had no turnkey solution. I led a four‑person core squad (plus systems‑engineering experts) through 48‑hour PoC sprints—designing, building and field‑testing rugged Kubernetes clusters on AWS Snowball Edge that met zero‑trust standards and survived shock, heat and total isolation. Our fail‑fast culture discarded underperforming form‑factors after each sprint, doubled down on a hardened rack‑mount build, and demoed live at a Defence Innovation Forum. The result: a 75% cut in prototype validation time, sub‑second AI inference under extreme conditions, and a $5 million funding approval to fold these battlefield‑grade nodes into Unisys's core critical‑infrastructure offerings.
+                </p>
+              </div>
+            </div>
           </li>
         </ul>
+        
+        <div className="bg-vault-accent/10 p-6 rounded-lg mt-8">
+          <p className="text-vault-primary font-medium text-lg mb-4">Each of these stories demonstrates exactly how I:</p>
+          <ul className="list-disc list-inside space-y-2 text-vault-secondary">
+            <li>Take a vision and craft its execution roadmap</li>
+            <li>Lead small, high‑performing squads with domain experts</li>
+            <li>Drive a fast‑paced, fail‑fast culture that prioritises real impact</li>
+            <li>Design, build and validate bleeding‑edge prototypes under real‑world constraints</li>
+            <li>Collect customer feedback and translate PoCs into multi‑million‑dollar programs</li>
+          </ul>
+        </div>
       </div>
     </div>
   );
