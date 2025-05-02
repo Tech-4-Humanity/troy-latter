@@ -1,7 +1,7 @@
 
 import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
-import { Shield, Database, Server, Globe, Clock, FileText, AlertTriangle, Activity, Zap } from 'lucide-react';
+import { Shield, Database, Server, AlertTriangle, Activity, Zap } from 'lucide-react';
 
 const About = () => {
   return (
@@ -21,6 +21,7 @@ const About = () => {
           <FeatureCard
             icon={Shield}
             title="Compliance & Audit Fatigue"
+            imageSrc="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5"
           >
             <div className="space-y-4">
               <p className="font-medium">Problem: Agencies waste weeks manually gathering logs, checking configs and proving compliance to ASD/ACSC.</p>
@@ -44,6 +45,7 @@ const About = () => {
           <FeatureCard
             icon={AlertTriangle}
             title="Threat Detection & Incident Response Overload"
+            imageSrc="https://images.unsplash.com/photo-1605810230434-7631ac76ec81"
           >
             <div className="space-y-4">
               <p className="font-medium">Problem: Defence SOCs drown in false alerts and lack automation to contain threats.</p>
@@ -67,6 +69,7 @@ const About = () => {
           <FeatureCard
             icon={Database}
             title="Sovereign AI & LLM Risks"
+            imageSrc="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7"
           >
             <div className="space-y-4">
               <p className="font-medium">Problem: Agencies crave Generative AI for intel analysis but fear data leakage and "hallucinations."</p>
@@ -90,6 +93,7 @@ const About = () => {
           <FeatureCard
             icon={Activity}
             title="Operational Inefficiency & Cost Creep"
+            imageSrc="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
           >
             <div className="space-y-4">
               <p className="font-medium">Problem: Critical‑infra teams over‑provision VMs/storage and do manual capacity planning.</p>
@@ -113,6 +117,7 @@ const About = () => {
           <FeatureCard
             icon={Zap}
             title="Speed & Agility in High‑Stakes Environments"
+            imageSrc="https://images.unsplash.com/photo-1518770660439-4636190af475"
           >
             <div className="space-y-4">
               <p className="font-medium">Problem: PoCs stall for months—innovation theatre that never reaches production.</p>
