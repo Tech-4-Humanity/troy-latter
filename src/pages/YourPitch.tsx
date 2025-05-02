@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import VideoEmbed from '../components/VideoEmbed';
 import { Card, CardContent } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 const YourPitch = () => {
   return (
@@ -30,6 +31,8 @@ const YourPitch = () => {
         <li>Built a Rapid‑Start PoC framework that cut time‑to‑demo from 10 weeks to 48 hrs, unlocking $4M follow‑on funding.</li>
         <li>Automated compliance pipelines reducing audit prep from 2 weeks to &lt;1 hr, saving agencies $2M+ in effort.</li>
       </ul>
+
+      <Separator className="my-8 bg-vault-accent/30" />
 
       {/* About Troy Section */}
       <div className="mb-8">
@@ -71,6 +74,8 @@ const YourPitch = () => {
           </CardContent>
         </Card>
 
+        <Separator className="my-8 bg-vault-accent/30" />
+
         <Card>
           <CardContent className="pt-6">
             <h3 className="font-medium text-lg text-vault-primary mb-2">Application Motivations</h3>
@@ -88,6 +93,8 @@ const YourPitch = () => {
           </CardContent>
         </Card>
       </div>
+
+      <Separator className="my-8 bg-vault-accent/30" />
 
       {/* Call to Action */}
       <div className="text-center">

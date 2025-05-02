@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { Separator } from '@/components/ui/separator';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 
 const opportunityExamples = {
@@ -124,6 +125,8 @@ const TheOpportunity = () => {
         </div>
       </div>
       
+      <Separator className="my-8 bg-vault-accent/30" />
+      
       <div className="space-y-6 mb-10">
         <h2 className="text-2xl font-semibold text-vault-primary">Key Aspects</h2>
         <ul className="list-disc list-inside space-y-3 pl-4">
@@ -138,6 +141,8 @@ const TheOpportunity = () => {
           </li>
         </ul>
       </div>
+      
+      <Separator className="my-8 bg-vault-accent/30" />
       
       <div className="space-y-6 mb-10">
         <h2 className="text-2xl font-semibold text-vault-primary">Key Responsibilities</h2>
