@@ -1,16 +1,16 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import { ChevronDown } from 'lucide-react';
 
 const routes = [
-  { path: '/head-of-innovation', label: 'Role Overview' },
+  { path: '/your-pitch', label: 'About Troy' },
   { path: '/about', label: 'About Vault' },
   { path: '/the-opportunity', label: 'The Opportunity' },
   { path: '/responsibilities', label: 'Responsibilities' },
-  { path: '/you', label: 'Your Profile' },
+  { path: '/you', label: 'Skills & Experience' },
   { path: '/faqs', label: 'FAQs' },
-  { path: '/your-pitch', label: 'About Troy' },
 ];
 
 export const Navbar = () => {

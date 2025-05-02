@@ -6,7 +6,7 @@ import { Lightbulb, Shield, Code } from 'lucide-react';
 const You = () => {
   return (
     <div>
-      <PageTitle title="Your Profile" />
+      <PageTitle title="Skills & Experience" />
       
       <div className="text-center mb-10">
         <p className="text-lg max-w-3xl mx-auto">
