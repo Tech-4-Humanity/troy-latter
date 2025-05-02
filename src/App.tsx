@@ -9,6 +9,7 @@ import { Layout } from "./components/Layout";
 import Index from "./pages/Index";
 import CustomerAsks from "./pages/About";
 import TheOpportunity from "./pages/TheOpportunity";
+import OpportunityStars from "./pages/OpportunityStars";
 import Responsibilities from "./pages/Responsibilities";
 import You from "./pages/You";
 import FAQs from "./pages/FAQs";
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/customer-asks" element={<CustomerAsks />} />
             <Route path="/customer-asks-stars" element={<CustomerAsksStars />} />
             <Route path="/the-opportunity" element={<TheOpportunity />} />
+            <Route path="/opportunity-stars" element={<OpportunityStars />} />
             <Route path="/responsibilities" element={<Responsibilities />} />
             <Route path="/you" element={<You />} />
             <Route path="/your-profile-stars" element={<YourProfileStars />} />
