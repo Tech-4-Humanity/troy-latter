@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ExternalLink } from 'lucide-react';
 
 const routes = [
   { path: '/head-of-innovation', label: 'Role Overview' },
@@ -23,13 +23,19 @@ export const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center">
+            <a 
+              href="https://vaultcloud.com.au/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center hover:opacity-90 transition-opacity"
+            >
               <img 
                 src="/lovable-uploads/debf0aec-1583-4cf6-9bce-523fdf3eb009.png" 
                 alt="Vault Cloud" 
                 className="h-10" 
               />
-            </Link>
+              <ExternalLink className="ml-1 h-4 w-4 text-vault-accent opacity-75" />
+            </a>
           </div>
 
           {/* Desktop Navigation */}
