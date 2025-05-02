@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import VideoEmbed from '../components/VideoEmbed';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
@@ -12,13 +10,6 @@ const YourPitch = () => {
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-vault-primary">
         Australia's sovereign cloud is only as strong as its innovators—here's how Troy builds that strength.
       </h1>
-
-      {/* Video Intro */}
-      <VideoEmbed
-        src="https://loom.com/embed/your-30sec-intro"
-        caption="Watch Troy's 30‑second pitch"
-        className="mb-8"
-      />
 
       {/* 2‑Line Bio + Key Wins */}
       <p className="text-lg text-vault-secondary mb-4">
