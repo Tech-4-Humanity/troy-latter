@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 const About = () => {
   return (
@@ -28,7 +29,7 @@ const About = () => {
           </ul>
           
           <a 
-            href="https://www.linkedin.com/in/troylatter" 
+            href="https://www.linkedin.com/in/theinnovater" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#0077B5] text-white px-4 py-2 rounded-lg hover:bg-[#005885] transition"
@@ -163,12 +164,32 @@ const About = () => {
         <p className="text-xl text-vault-primary font-medium mb-6">
           Let's pioneer the future of Australia's sovereign cloud—together.
         </p>
-        <Link 
-          to="/your-pitch" 
-          className="inline-block bg-vault-accent text-white px-6 py-3 rounded-lg hover:bg-vault-accent/90 transition font-medium"
-        >
-          View My Pitch
-        </Link>
+        <div className="flex justify-center items-center mb-6">
+          <a 
+            href="https://www.linkedin.com/in/theinnovater/recent-activity/all/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-white border border-gray-300 px-6 py-3 rounded-lg hover:bg-gray-50 transition font-medium"
+          >
+            <Linkedin size={20} />
+            <span>View My Recent Activity</span>
+          </a>
+        </div>
+        
+        <RadioGroup defaultValue="default" className="flex gap-4 justify-center">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="default" id="r1" />
+            <label htmlFor="r1">Option 1</label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="option2" id="r2" />
+            <label htmlFor="r2">Option 2</label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="option3" id="r3" />
+            <label htmlFor="r3">Option 3</label>
+          </div>
+        </RadioGroup>
       </div>
     </div>
   );

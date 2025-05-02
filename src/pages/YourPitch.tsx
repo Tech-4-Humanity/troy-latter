@@ -1,6 +1,4 @@
-
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Linkedin } from 'lucide-react';
@@ -105,26 +103,17 @@ const YourPitch = () => {
 
       {/* Call to Action */}
       <div className="text-center">
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-          <Link 
-            to="/you" 
-            className="inline-block bg-vault-accent text-white px-6 py-3 rounded-lg hover:bg-vault-accent/90 transition font-medium"
+        <Button variant="outline" asChild>
+          <a 
+            href="https://www.linkedin.com/in/theinnovater/recent-activity/all/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2"
           >
-            Explore My Skills & Experience
-          </Link>
-          
-          <Button variant="outline" asChild>
-            <a 
-              href="https://www.linkedin.com/in/theinnovater/recent-activity/all/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2"
-            >
-              <Linkedin size={20} />
-              <span>View My Recent Activity</span>
-            </a>
-          </Button>
-        </div>
+            <Linkedin size={20} />
+            <span>View My Recent Activity</span>
+          </a>
+        </Button>
       </div>
     </div>
   );
