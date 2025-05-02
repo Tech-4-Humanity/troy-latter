@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
@@ -5,10 +6,10 @@ import { ChevronDown } from 'lucide-react';
 
 const routes = [
   { path: '/your-pitch', label: 'About Troy' },
-  { path: '/customer-asks', label: 'Customer Asks' },
   { path: '/the-opportunity', label: 'The Opportunity' },
   { path: '/responsibilities', label: 'Responsibilities' },
   { path: '/you', label: 'Skills & Experience' },
+  { path: '/customer-asks', label: 'Customer Asks' },
   { path: '/faqs', label: 'FAQs' },
 ];
 
