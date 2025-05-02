@@ -4,7 +4,7 @@ import { PageTitle } from '@/components/PageTitle';
 const YourPitch = () => {
   return (
     <div>
-      <PageTitle title="Your Personal Pitch" />
+      <PageTitle title="About Me" />
       
       <div className="space-y-8">
         <div>
