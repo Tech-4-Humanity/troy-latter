@@ -20,7 +20,7 @@ const opportunityExamples = {
       },
       {
         label: 'Action',
-        text: 'Leveraged Vault's Secure Container Cloud with Terraform/Ansible IaC, integrated post‑quantum key management, and built parallel compliance scanners to validate policies on‑the‑fly.'
+        text: "Leveraged Vault's Secure Container Cloud with Terraform/Ansible IaC, integrated post‑quantum key management, and built parallel compliance scanners to validate policies on‑the‑fly."
       },
       {
         label: 'Result',
@@ -38,7 +38,7 @@ const opportunityExamples = {
       },
       {
         label: 'Task',
-        text: 'Design and deploy a resilient edge compute node that operates fully offline and securely syncs back to Vault's Sovereign Cloud.'
+        text: "Design and deploy a resilient edge compute node that operates fully offline and securely syncs back to Vault's Sovereign Cloud."
       },
       {
         label: 'Action',
