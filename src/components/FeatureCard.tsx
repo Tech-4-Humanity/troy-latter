@@ -14,9 +14,9 @@ export const FeatureCard = ({ title, imageSrc, children }: FeatureCardProps) => 
   const [showDetails, setShowDetails] = useState(false);
   
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-md">
+    <Card className="overflow-hidden transition-all hover:shadow-lg">
       <div 
-        className="w-full h-48 overflow-hidden cursor-pointer relative"
+        className="w-full h-56 overflow-hidden cursor-pointer relative"
         onClick={() => setShowDetails(!showDetails)}
       >
         <img 
@@ -24,13 +24,13 @@ export const FeatureCard = ({ title, imageSrc, children }: FeatureCardProps) => 
           alt={title}
           className="w-full h-full object-cover transition-transform hover:scale-105"
         />
-        <div className="absolute bottom-2 right-2 bg-vault-primary text-white px-2 py-1 text-xs rounded">
-          {showDetails ? "Hide Details" : "Click for more information"}
+        <div className="absolute bottom-2 right-2 bg-vault-primary text-white px-3 py-1 rounded text-sm">
+          {showDetails ? "Hide details" : "Click for more information"}
         </div>
       </div>
       <CardContent className="p-6">
         <div className="flex flex-col items-start gap-4">
-          <h3 className="text-xl font-semibold">{title}</h3>
+          <h3 className="text-xl font-semibold text-vault-primary">{title}</h3>
           
           {showDetails && children}
         </div>

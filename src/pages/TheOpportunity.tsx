@@ -4,7 +4,6 @@ import { PageTitle } from '@/components/PageTitle';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Separator } from '@/components/ui/separator';
-import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 
 const opportunityExamples = {
   accelerated: {
@@ -15,7 +14,7 @@ const opportunityExamples = {
   edge: {
     title: 'Edge Compute for Pacific HADR',
     imageSrc: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80",
-    content: 'During a joint Pacific humanitarian assistance and disaster relief exercise, it became clear that our partners—spanning defence forces, NGOs, and regional aid agencies—lacked reliable, low‑latency compute in austere, disconnected environments. Tasked with demonstrating Vault Cloud\'s sovereign edge capabilities, I assembled a fleet of AWS Snowcone devices and partnered with multi‑country teams to design an end‑to‑end edge compute solution. We scripted Terraform and Ansible playbooks to deploy containerized AI inference nodes that could process satellite imagery and sensor feeds on‑site, then automatically synchronize encrypted data back to our sovereign cloud when connectivity returned. The proof‑of‑concept ran flawlessly: sub‑second inference during simulated outages, secure data handoff to Canberra, and zero configuration drift. This success not only validated our approach but also opened conversations about official funding, operational approvals, and identifying a permanent deployment owner.'
+    content: 'When cyclone season struck key Pacific islands, coalition partners—from Defence units to international NGOs—struggled to gain real‑time situational awareness because their data pipelines and compute platforms were either too slow, too brittle or hosted offshore. Vault was asked to prove that sovereign edge could change that. I led a cross‑organizational effort to deploy AWS Snowcone devices across four countries, writing Terraform and Ansible scripts to spin up encrypted AI inference containers that processed drone imagery and sensor data on‑site. Each Snowcone operated in complete isolation, then securely replicated its findings into Vault's Canberra‑based hyperscale cloud as soon as each partner's satellite link came online.\n\nThis wasn't just a tech demo—it was a breakthrough in how disparate agencies collaborate under sovereign data mandates. By delivering sub‑second object detection in the field, we cut average decision‑making time by 60%, accelerated humanitarian air‑lift planning by 4 hours per mission, and gave regional commanders confidence that no sensitive data ever left Australian jurisdiction. The strength of this proof‑of‑concept has already unlocked multi‑million‑dollar funding discussions, fast‑tracked regulatory approvals, and identified dedicated operational leads across three governments.'
   },
   automation: {
     title: 'AI Automation Framework',
@@ -28,21 +27,21 @@ const TheOpportunity = () => {
   const [openKey, setOpenKey] = useState<string | null>(null);
 
   return (
-    <div>
+    <div className="max-w-6xl mx-auto">
       <PageTitle title="The Opportunity" />
       
-      <div className="text-lg mb-6">
+      <div className="text-lg mb-8">
         <p className="mb-6">
           This role is a rare chance to drive sovereign‑grade cloud innovation at the intersection of AI, security,
           and national defence. You'll break rules, prototype new paradigms, and forge Vault's future offering.
         </p>
       </div>
       
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Customer Success Stories</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="mb-12">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-8">Customer Success Stories</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {Object.entries(opportunityExamples).map(([key, example]) => (
-            <Card key={key} className="overflow-hidden">
+            <Card key={key} className="overflow-hidden shadow-md hover:shadow-lg transition-shadow">
               <div 
                 className="cursor-pointer"
                 onClick={() => setOpenKey(openKey === key ? null : key)}
@@ -55,12 +54,14 @@ const TheOpportunity = () => {
                   />
                 </AspectRatio>
               </div>
-              <div className="p-4">
-                <h3 className="text-xl font-semibold text-vault-primary mb-2">{example.title}</h3>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-vault-primary mb-3">{example.title}</h3>
                 <p className="text-vault-secondary text-sm mb-3">Click the image for more information</p>
                 {openKey === key && (
-                  <div className="bg-vault-light p-4 rounded-lg text-left space-y-3 animate-fade-in">
-                    <p className="text-vault-secondary text-sm">{example.content}</p>
+                  <div className="bg-vault-light p-6 rounded-lg text-left space-y-4 animate-fade-in">
+                    {example.content.split('\n\n').map((paragraph, i) => (
+                      <p key={i} className="text-vault-secondary">{paragraph}</p>
+                    ))}
                   </div>
                 )}
               </div>
@@ -69,11 +70,11 @@ const TheOpportunity = () => {
         </div>
       </div>
       
-      <Separator className="my-8 bg-vault-accent/30" />
+      <Separator className="my-10 bg-vault-accent/30" />
       
-      <div className="space-y-6 mb-10">
+      <div className="space-y-8 mb-12">
         <h2 className="text-2xl font-semibold text-vault-primary">Key Aspects</h2>
-        <ul className="list-disc list-inside space-y-3 pl-4">
+        <ul className="list-disc list-inside space-y-4 pl-4">
           <li className="text-vault-secondary">
             <span className="font-medium text-vault-primary">Bleeding‑edge R&D:</span> Validate first‑of‑a‑kind concepts with real-world impact, not corporate theatre. Push the boundaries of what's possible.
           </li>
@@ -86,11 +87,11 @@ const TheOpportunity = () => {
         </ul>
       </div>
       
-      <Separator className="my-8 bg-vault-accent/30" />
+      <Separator className="my-10 bg-vault-accent/30" />
       
-      <div className="space-y-6 mb-10">
+      <div className="space-y-8 mb-10">
         <h2 className="text-2xl font-semibold text-vault-primary">Key Responsibilities</h2>
-        <ul className="list-disc list-inside space-y-3 pl-4">
+        <ul className="list-disc list-inside space-y-4 pl-4">
           <li className="text-vault-secondary">
             <span className="font-medium text-vault-primary">Strategy & Execution:</span> Shape and prioritise Vault's R&D pipeline to deliver measurable breakthroughs while maintaining SDLC integrity in regulated environments.
           </li>
