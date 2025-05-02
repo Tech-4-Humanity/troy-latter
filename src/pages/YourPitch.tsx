@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { Linkedin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const YourPitch = () => {
   return (
@@ -23,6 +25,19 @@ const YourPitch = () => {
         <li>Built a Rapid-Start PoC framework that cut time-to-demo from 10 weeks to 48 hrs, unlocking $4M follow-on funding.</li>
         <li>Automated compliance pipelines reducing audit prep from 2 weeks to &lt;1 hr, saving agencies $2M+ in effort.</li>
       </ul>
+
+      {/* LinkedIn Connect Button */}
+      <div className="mb-8">
+        <a 
+          href="https://www.linkedin.com/in/theinnovater/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-[#0077B5] text-white px-4 py-2 rounded-lg hover:bg-[#005885] transition"
+        >
+          <Linkedin size={20} />
+          <span>Connect with Troy on LinkedIn</span>
+        </a>
+      </div>
 
       <Separator className="my-8 bg-vault-accent/30" />
 
@@ -90,12 +105,26 @@ const YourPitch = () => {
 
       {/* Call to Action */}
       <div className="text-center">
-        <Link 
-          to="/you" 
-          className="inline-block bg-vault-accent text-white px-6 py-3 rounded-lg hover:bg-vault-accent/90 transition font-medium"
-        >
-          Explore My Skills & Experience
-        </Link>
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <Link 
+            to="/you" 
+            className="inline-block bg-vault-accent text-white px-6 py-3 rounded-lg hover:bg-vault-accent/90 transition font-medium"
+          >
+            Explore My Skills & Experience
+          </Link>
+          
+          <Button variant="outline" asChild>
+            <a 
+              href="https://www.linkedin.com/in/theinnovater/recent-activity/all/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2"
+            >
+              <Linkedin size={20} />
+              <span>View My Recent Activity</span>
+            </a>
+          </Button>
+        </div>
       </div>
     </div>
   );
