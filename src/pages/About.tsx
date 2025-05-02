@@ -3,10 +3,10 @@ import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
 import { Shield, Database, Server, AlertTriangle, Activity, Zap } from 'lucide-react';
 
-const About = () => {
+const CustomerAsks = () => {
   return (
     <div>
-      <PageTitle title="About Vault Cloud" />
+      <PageTitle title="Customer Asks" />
       
       <div className="text-center mb-10">
         <p className="text-lg max-w-3xl mx-auto">
@@ -158,4 +158,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default CustomerAsks;

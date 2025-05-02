@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
 
 import Index from "./pages/Index";
-import About from "./pages/About";
+import CustomerAsks from "./pages/About";
 import TheOpportunity from "./pages/TheOpportunity";
 import Responsibilities from "./pages/Responsibilities";
 import You from "./pages/You";
@@ -27,7 +27,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/your-pitch" element={<YourPitch />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/customer-asks" element={<CustomerAsks />} />
             <Route path="/the-opportunity" element={<TheOpportunity />} />
             <Route path="/responsibilities" element={<Responsibilities />} />
             <Route path="/you" element={<You />} />
