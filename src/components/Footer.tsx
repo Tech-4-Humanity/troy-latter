@@ -42,27 +42,6 @@ export const Footer = () => {
                 </Link>
               </div>
             </div>
-            <div>
-              <h3 className="text-vault-accent font-semibold mb-2 text-sm">External Links</h3>
-              <div className="space-y-1">
-                <a 
-                  href="https://vaultcloud.com.au/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200 block"
-                >
-                  Vault Cloud Website
-                </a>
-                <a 
-                  href="https://www.cyber.gov.au/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200 block"
-                >
-                  Australian Cyber Security Centre
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
