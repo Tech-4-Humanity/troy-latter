@@ -61,46 +61,79 @@ const TheOpportunity = () => {
       
       <div className="space-y-8 mb-12">
         <h2 className="text-2xl font-semibold text-vault-primary">Key Aspects</h2>
-        <ul className="list-disc list-inside space-y-4 pl-4">
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Bleeding‑edge R&D:</span> Validate first‑of‑a‑kind concepts with real-world impact, not corporate theatre. Push the boundaries of what's possible.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">High‑Autonomy, High‑Impact:</span> Direct collaboration with our visionary CEO on strategic initiatives that will define Vault's future direction.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Mission‑Critical Scale:</span> Drive PoCs into Vault's core offerings for Defence and Critical Infrastructure with national security implications.
-          </li>
-        </ul>
+        <div className="space-y-8">
+          <div>
+            <h3 className="font-medium text-xl text-vault-primary">Proven First‑of‑a‑Kind R&D</h3>
+            <p className="text-vault-secondary mt-2">
+              Bleeding‑edge concepts, real-world impact<br/>
+              At AWS, I led a two‑day AI anomaly‑detection pilot in 48 hours (vs. 3 weeks), embedding real sensor feeds and hitting 90% accuracy under ASD‑grade controls. At Unisys, I spun up battlefield‑ready Kubernetes clusters on Snowball Edge in under one week—surviving shock, heat and network outages. These aren't slide decks; they're hardened prototypes that won follow‑on funding.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-medium text-xl text-vault-primary">Empowered Autonomous Innovation</h3>
+            <p className="text-vault-secondary mt-2">
+              High‑autonomy, high‑impact leadership<br/>
+              At Oracle APAC, I built and mentored a four‑person "tiger team" with embedded SMEs to smash through bureaucracy. We ran sprint marathons with "demo‑or‑die" gates, killing underperformers overnight and doubling PoC success rates. Executives saw that speed plus rigor drives real breakthroughs.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-medium text-xl text-vault-primary">Mission‑Critical Scale</h3>
+            <p className="text-vault-secondary mt-2">
+              From lab demos into core offerings<br/>
+              Whether it was rolling out an on‑prem LLM for a top‑tier intelligence agency (saving 60% in briefing time) or delivering a sovereign pay‑and‑travel platform for the Australian Defence Force (cutting a six‑week backlog to 24 hours), I've translated prototypes into million‑dollar production lines—exactly the scale Vault needs.
+            </p>
+          </div>
+        </div>
       </div>
       
       <Separator className="my-10 bg-vault-accent/30" />
       
       <div className="space-y-8 mb-10">
-        <h2 className="text-2xl font-semibold text-vault-primary">Key Responsibilities</h2>
-        <ul className="list-disc list-inside space-y-4 pl-4">
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Strategy & Execution:</span> Shape and prioritise Vault's R&D pipeline to deliver measurable breakthroughs while maintaining SDLC integrity in regulated environments.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Collaboration & Leadership:</span> Build high‑trust teams and partner with Defence, Intelligence and domain experts to validate concepts and scale innovations.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Innovation & Engineering:</span> Design, build and test IaC prototypes: from battlefield clusters to LLM frameworks with technical evangelism and business case translation.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Culture & Pace:</span> Embed a fail‑fast mindset—iterate quickly, learn and scale.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Customer Validation:</span> Demo PoCs, gather feedback, and refine real‑world applications.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Technical Evangelism:</span> Represent Vault at industry forums, publish whitepapers, host Tech Talks.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Business Case Translation:</span> Convert PoC results into ROI‑driven proposals for executive buy‑in.
-          </li>
-        </ul>
+        <h2 className="text-2xl font-semibold text-vault-primary">How I Drive Vault's Vision</h2>
+        <div className="space-y-8">
+          <div>
+            <h3 className="font-medium text-xl text-vault-primary">From Vision to Roadmap</h3>
+            <p className="text-vault-secondary mt-2">
+              Shape and prioritise the innovation pipeline<br/>
+              At Unisys I took five siloed AI pilots across government, ran Working‑Backwards strategy sprints, and delivered a six‑month PoC roadmap that unlocked an $8 M follow‑on pipeline in 12 weeks.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-medium text-xl text-vault-primary">Building Tiger Teams</h3>
+            <p className="text-vault-secondary mt-2">
+              Lead small, high‑trust squads with external experts<br/>
+              At AWS APAC I formed a lean group of five data scientists and DevOps engineers, ran two‑week "Sprint Marathons," and achieved a 65% PoC funding conversion—tripling throughput and restoring executive faith.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-medium text-xl text-vault-primary">Breaking the Prototype‑to‑Reality Barrier</h3>
+            <p className="text-vault-secondary mt-2">
+              Design, build and test bleeding‑edge IaC demos<br/>
+              At Oracle I authored modular playbooks and orchestrated CI/CD tests for rugged edge clusters and LLM frameworks—then presented live demos to Defence leadership, securing $5 M in production funding.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-medium text-xl text-vault-primary">Culture & Pace</h3>
+            <p className="text-vault-secondary mt-2">
+              Embed a fail‑fast, learn‑fast ethos<br/>
+              I've introduced weekly "kill/scale" criteria, Friday C‑suite Demo Days, and real‑time innovation dashboards at every company—cutting PoC cycle times from 12 weeks to as little as 4 weeks.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-medium text-xl text-vault-primary">Customer‑first Validation</h3>
+            <p className="text-vault-secondary mt-2">
+              Showcase PoCs, iterate on feedback<br/>
+              I've demoed AI agents and edge‑mesh solutions at AWS summits, Unisys innovation forums and government roadshows—capturing operator feedback that directly drove our next sprint and built customer evangelists.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-medium text-xl text-vault-primary">Technical Evangelism & Business Case Translation</h3>
+            <p className="text-vault-secondary mt-2">
+              Bridge R&D to board‑room buy‑in<br/>
+              Whether publishing whitepapers on neurotech standards, hosting Tech Talks for 200+ executives, or crafting ROI models that secured $2–5 M in follow‑on contracts, I've turned technical wins into strategic wins for every stakeholder.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
