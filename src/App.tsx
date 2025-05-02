@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
 
 import Index from "./pages/Index";
-import CustomerAsks from "./pages/About";
+import CustomerAsks from "./pages/CustomerAsksStars"; // Changed from About to CustomerAsksStars
 import TheOpportunity from "./pages/TheOpportunity";
 import OpportunityStars from "./pages/OpportunityStars";
 import Responsibilities from "./pages/Responsibilities";
