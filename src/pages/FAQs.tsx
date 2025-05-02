@@ -1,6 +1,7 @@
 
 import { PageTitle } from '@/components/PageTitle';
-import { FileQuestion, Award, Layers, Users, ArrowUp, ChartLine, Shield, Rocket, FileCode, FileAlert } from 'lucide-react';
+import { FileQuestion, Award, Layers, Users, ArrowUp, ChartLine, Shield, Rocket, FileCode, AlertTriangle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const FAQs = () => {
   return (
@@ -83,7 +84,7 @@ const FAQs = () => {
           </li>
           
           <li className="flex items-start">
-            <FileAlert className="text-vault-accent mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+            <AlertTriangle className="text-vault-accent mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
               <p className="font-semibold">Risk & Recovery</p>
               <p>"What risk‑mitigation practices does Vault use when pushing bleeding‑edge prototypes, and how do we ensure rapid recovery or rollback if a PoC hits an unexpected barrier?"</p>
@@ -97,15 +98,21 @@ const FAQs = () => {
         <ul className="space-y-3">
           <li className="flex items-start">
             <span className="text-vault-accent font-bold mr-2">•</span>
-            <span><strong>90-Day Plan Template:</strong> A fillable roadmap to map objectives, stakeholders & metrics.</span>
+            <Link to="/resources/90-day-plan" className="hover:text-vault-accent transition-colors">
+              <span><strong>90-Day Plan Template:</strong> A fillable roadmap to map objectives, stakeholders & metrics.</span>
+            </Link>
           </li>
           <li className="flex items-start">
             <span className="text-vault-accent font-bold mr-2">•</span>
-            <span><strong>Vault Whitepapers & Tech Talks:</strong> Deep dives on sovereign AI, zero-trust architecture & battlefield clouds.</span>
+            <Link to="/resources/whitepapers" className="hover:text-vault-accent transition-colors">
+              <span><strong>Vault Whitepapers & Tech Talks:</strong> Deep dives on sovereign AI, zero-trust architecture & battlefield clouds.</span>
+            </Link>
           </li>
           <li className="flex items-start">
             <span className="text-vault-accent font-bold mr-2">•</span>
-            <span><strong>Lean Business Canvas:</strong> A streamlined canvas for developing and validating concise business models from PoC insights.</span>
+            <Link to="/resources/lean-canvas" className="hover:text-vault-accent transition-colors">
+              <span><strong>Lean Business Canvas:</strong> A streamlined canvas for developing and validating concise business models from PoC insights.</span>
+            </Link>
           </li>
         </ul>
       </div>

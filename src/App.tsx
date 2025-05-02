@@ -18,6 +18,9 @@ import YourProfileStars from "./pages/YourProfileStars";
 import CustomerAsksStars from "./pages/CustomerAsksStars";
 import HeadOfInnovation from "./pages/HeadOfInnovation";
 import NotFound from "./pages/NotFound";
+import NinetyDayPlan from "./pages/NinetyDayPlan";
+import Whitepapers from "./pages/Whitepapers";
+import LeanCanvas from "./pages/LeanCanvas";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +43,9 @@ const App = () => (
             <Route path="/you" element={<You />} />
             <Route path="/your-profile-stars" element={<YourProfileStars />} />
             <Route path="/faqs" element={<FAQs />} />
+            <Route path="/resources/90-day-plan" element={<NinetyDayPlan />} />
+            <Route path="/resources/whitepapers" element={<Whitepapers />} />
+            <Route path="/resources/lean-canvas" element={<LeanCanvas />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
