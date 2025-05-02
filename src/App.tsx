@@ -12,7 +12,6 @@ import About from "./pages/About";
 import TheOpportunity from "./pages/TheOpportunity";
 import Responsibilities from "./pages/Responsibilities";
 import You from "./pages/You";
-import WhyIApplied from "./pages/WhyIApplied";
 import FAQs from "./pages/FAQs";
 import YourPitch from "./pages/YourPitch";
 import NotFound from "./pages/NotFound";
@@ -33,7 +32,6 @@ const App = () => (
             <Route path="/the-opportunity" element={<TheOpportunity />} />
             <Route path="/responsibilities" element={<Responsibilities />} />
             <Route path="/you" element={<You />} />
-            <Route path="/why-i-applied" element={<WhyIApplied />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/your-pitch" element={<YourPitch />} />
             <Route path="*" element={<NotFound />} />
