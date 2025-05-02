@@ -8,10 +8,10 @@ const TheOpportunity = () => {
     <div>
       <PageTitle title="The Opportunity" />
       
-      <div className="text-center mb-10">
-        <p className="text-lg max-w-3xl mx-auto">
-          This role is unlike any other at Vault. You will shape the future of Australia's sovereign tech capability by breaking
-          free of rules to demonstrate the potential future of cloud and national security systems.
+      <div className="text-lg mb-6">
+        <p className="mb-6">
+          This role is a rare chance to drive sovereign‑grade cloud innovation at the intersection of AI, security,
+          and national defense. You'll break rules, prototype new paradigms, and forge Vault's future offering.
         </p>
       </div>
       
