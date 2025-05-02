@@ -1,16 +1,29 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 const YourPitch = () => {
+  const [viewOption, setViewOption] = useState('profile');
+
   return (
     <div className="py-12 px-6 max-w-4xl mx-auto">
       {/* Elevator Hook */}
-      <h1 className="text-3xl md:text-4xl font-bold mb-6 text-vault-primary">
-        Australia's sovereign cloud is only as strong as its innovators—here's how Troy builds that strength.
-      </h1>
+      <div className="flex flex-col md:flex-row gap-6 items-center mb-8">
+        <Avatar className="h-32 w-32 border-2 border-vault-accent">
+          <AvatarImage src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952" alt="Troy Latter" />
+          <AvatarFallback>TL</AvatarFallback>
+        </Avatar>
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold mb-6 text-vault-primary">
+            Australia's sovereign cloud is only as strong as its innovators—here's how Troy builds that strength.
+          </h1>
+        </div>
+      </div>
 
       {/* 2-Line Bio + Key Wins */}
       <p className="text-lg text-vault-secondary mb-4">
@@ -101,17 +114,34 @@ const YourPitch = () => {
 
       <Separator className="my-8 bg-vault-accent/30" />
 
-      {/* Call to Action */}
+      {/* Call to Action with Radio Group */}
       <div className="text-center">
+        <div className="mb-6">
+          <RadioGroup 
+            value={viewOption} 
+            onValueChange={setViewOption}
+            className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4 justify-center"
+          >
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="profile" id="profile" />
+              <label htmlFor="profile" className="cursor-pointer">View Troy's profile</label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="activity" id="activity" />
+              <label htmlFor="activity" className="cursor-pointer">View Troy's activity</label>
+            </div>
+          </RadioGroup>
+        </div>
+
         <Button variant="outline" asChild>
           <a 
-            href="https://www.linkedin.com/in/theinnovater/recent-activity/all/" 
+            href={viewOption === 'profile' ? 'https://www.linkedin.com/in/theinnovater/' : 'https://www.linkedin.com/in/theinnovater/recent-activity/all/'} 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2"
           >
             <Linkedin size={20} />
-            <span>View My Recent Activity</span>
+            <span>{viewOption === 'profile' ? "View Troy's Profile" : "View Troy's Activity"}</span>
           </a>
         </Button>
       </div>
