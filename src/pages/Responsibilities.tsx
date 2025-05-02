@@ -14,33 +14,6 @@ const Responsibilities = () => {
         </p>
       </div>
       
-      <div className="space-y-6 mb-10">
-        <h2 className="text-2xl font-semibold text-vault-primary">Key Responsibilities</h2>
-        <ul className="list-disc list-inside space-y-3 pl-4">
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Strategy & Execution:</span> Shape and prioritize Vault's R&D pipeline to deliver measurable breakthroughs while maintaining SDLC integrity in regulated environments.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Collaboration & Leadership:</span> Build high‑trust teams and partner with Defence, Intelligence and domain experts to validate concepts and scale innovations.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Innovation & Engineering:</span> Design, build and test IaC prototypes: from battlefield clusters to LLM frameworks with technical evangelism and business case translation.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Culture & Pace:</span> Embed a fail‑fast mindset—iterate quickly, learn and scale.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Customer Validation:</span> Demo PoCs, gather feedback, and refine real‑world applications.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Technical Evangelism:</span> Represent Vault at industry forums, publish whitepapers, host Tech Talks.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Business Case Translation:</span> Convert PoC results into ROI‑driven proposals for executive buy‑in.
-          </li>
-        </ul>
-      </div>
-      
       <div className="mb-8">
         <h2 className="text-2xl font-semibold text-vault-primary mb-6">My Leadership Examples</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -80,6 +53,33 @@ const Responsibilities = () => {
             </div>
           </FeatureCard>
         </div>
+      </div>
+      
+      <div className="space-y-6 mb-10">
+        <h2 className="text-2xl font-semibold text-vault-primary">Key Responsibilities</h2>
+        <ul className="list-disc list-inside space-y-3 pl-4">
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Strategy & Execution:</span> Shape and prioritize Vault's R&D pipeline to deliver measurable breakthroughs while maintaining SDLC integrity in regulated environments.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Collaboration & Leadership:</span> Build high‑trust teams and partner with Defence, Intelligence and domain experts to validate concepts and scale innovations.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Innovation & Engineering:</span> Design, build and test IaC prototypes: from battlefield clusters to LLM frameworks with technical evangelism and business case translation.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Culture & Pace:</span> Embed a fail‑fast mindset—iterate quickly, learn and scale.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Customer Validation:</span> Demo PoCs, gather feedback, and refine real‑world applications.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Technical Evangelism:</span> Represent Vault at industry forums, publish whitepapers, host Tech Talks.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Business Case Translation:</span> Convert PoC results into ROI‑driven proposals for executive buy‑in.
+          </li>
+        </ul>
       </div>
     </div>
   );
