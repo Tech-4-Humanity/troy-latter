@@ -14,7 +14,7 @@ const YourPitch = () => {
       {/* Elevator Hook */}
       <div className="flex flex-col md:flex-row gap-6 items-center mb-8">
         <Avatar className="h-32 w-32 border-2 border-vault-accent">
-          <AvatarImage src="/lovable-uploads/9aa17449-1c27-48be-9aaf-34170ae5e122.png" alt="Troy Latter" />
+          <AvatarImage src="/lovable-uploads/1a555a46-8cd9-4fa1-a20f-3de9522aa198.png" alt="Troy Latter" />
           <AvatarFallback>TL</AvatarFallback>
         </Avatar>
         <div>
