@@ -116,6 +116,25 @@ const Responsibilities = () => {
           </li>
           <li className="text-vault-secondary">
             <span className="font-medium text-vault-primary">Culture & Pace:</span> Embed a fail‑fast mindset—iterate quickly, learn and scale.
+            <div className="bg-vault-light p-6 mt-3 rounded-lg">
+              <details>
+                <summary className="font-medium text-vault-primary cursor-pointer">Click to reveal STAR story</summary>
+                <div className="pt-4 space-y-4">
+                  <p className="text-vault-secondary">
+                    <span className="font-medium">Situation:</span> At Amazon APAC's Rapid Innovation Lab, PoCs routinely languished for 12 weeks, with only 20% ever winning follow‑on funding—eroding stakeholder trust and slowing business impact.
+                  </p>
+                  <p className="text-vault-secondary">
+                    <span className="font-medium">Task:</span> Inject Amazon's "Day 1" bias for action to slash cycle times, maximize high‑value experiments, and reestablish confidence in rapid innovation.
+                  </p>
+                  <p className="text-vault-secondary">
+                    <span className="font-medium">Action:</span> I personally pushed the fast‑pace ethos at Amazon—launching two‑week "Sprint Marathons" with Friday C‑suite Demo Days, hard kill/scale metrics tied directly to projected ROI, and a live "Innovation Scoreboard" tracking time‑to‑insight and funding likelihood. I convinced senior leaders to back immediate pivot or kill decisions, embedded daily standups, and coached teams to treat every sprint as a business mini‑investment.
+                  </p>
+                  <p className="text-vault-secondary">
+                    <span className="font-medium">Outcome:</span> In six months, PoC duration collapsed from 12 weeks to 4 weeks, throughput tripled, funding conversion jumped from 20% to 65%, and we unlocked a $6 million innovation pipeline—with executive sponsor satisfaction soaring to a 4.8/5 rating.
+                  </p>
+                </div>
+              </details>
+            </div>
           </li>
           <li className="text-vault-secondary">
             <span className="font-medium text-vault-primary">Customer Validation:</span> Demo PoCs, gather feedback, and refine real‑world applications.
