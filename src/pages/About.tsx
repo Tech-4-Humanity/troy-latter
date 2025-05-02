@@ -1,3 +1,4 @@
+
 import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
 import { Shield, Database, Server, AlertTriangle, Activity, Zap } from 'lucide-react';
@@ -15,7 +16,7 @@ const About = () => {
       </div>
       
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Tomorrow's Customer Needs</h2>
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Tomorrow's Customers need Innovation</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <FeatureCard
             icon={Shield}
