@@ -25,7 +25,7 @@ export const FeatureCard = ({ title, imageSrc, children }: FeatureCardProps) => 
           className="w-full h-full object-cover transition-transform hover:scale-105"
         />
         <div className="absolute bottom-2 right-2 bg-vault-primary text-white px-2 py-1 text-xs rounded">
-          {showStar ? "Hide STAR Details" : "Show STAR Details"}
+          {showStar ? "Hide STAR Details" : "Click 4 Details"}
         </div>
       </div>
       <CardContent className="p-6">
