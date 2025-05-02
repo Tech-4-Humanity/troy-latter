@@ -7,6 +7,7 @@ import { Separator } from '@/components/ui/separator';
 import { Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const About = () => {
   return (
@@ -27,16 +28,6 @@ const About = () => {
             <li>Built a Rapid-Start PoC framework that cut time-to-demo from 10 weeks to 48 hours, unlocking $4 M in follow-on funding.</li>
             <li>Automated compliance pipelines that reduced audit preparation from 2 weeks to under 1 hour, saving agencies over $2 M in effort.</li>
           </ul>
-          
-          <a 
-            href="https://www.linkedin.com/in/theinnovater" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#0077B5] text-white px-4 py-2 rounded-lg hover:bg-[#005885] transition"
-          >
-            <Linkedin size={20} />
-            <span>Connect on LinkedIn</span>
-          </a>
         </div>
         
         <div className="md:w-1/3 flex justify-center">
@@ -164,7 +155,7 @@ const About = () => {
         <p className="text-xl text-vault-primary font-medium mb-6">
           Let's pioneer the future of Australia's sovereign cloud—together.
         </p>
-        <div className="flex justify-center items-center mb-6">
+        <div className="flex justify-center items-center gap-4 mb-6">
           <a 
             href="https://www.linkedin.com/in/theinnovater/recent-activity/all/" 
             target="_blank" 
@@ -173,6 +164,16 @@ const About = () => {
           >
             <Linkedin size={20} />
             <span>View My Recent Activity</span>
+          </a>
+          
+          <a 
+            href="https://www.linkedin.com/in/theinnovater" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#0077B5] text-white px-6 py-3 rounded-lg hover:bg-[#005885] transition font-medium"
+          >
+            <Linkedin size={20} />
+            <span>View Troy on LinkedIn</span>
           </a>
         </div>
         
