@@ -1,8 +1,8 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 
 const routes = [
   { path: '/your-pitch', label: 'About Troy' },
@@ -15,16 +15,15 @@ const routes = [
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const location = useLocation();
+  
   return (
-    <header className="bg-vault-primary text-white shadow-md">
+    <header className="bg-vault-primary text-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
-            <a 
-              href="https://vaultcloud.com.au/" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <Link 
+              to="/head-of-innovation"
               className="flex items-center hover:opacity-90 transition-opacity"
             >
               <img 
@@ -32,7 +31,7 @@ export const Navbar = () => {
                 alt="Vault Cloud" 
                 className="h-10" 
               />
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -41,7 +40,9 @@ export const Navbar = () => {
               <Link
                 key={route.path}
                 to={route.path}
-                className="text-gray-100 hover:text-vault-accent transition-colors duration-200 text-sm font-medium"
+                className={`text-gray-100 hover:text-vault-accent transition-colors duration-200 text-sm font-medium px-2 py-1 border-b-2 ${
+                  location.pathname === route.path ? 'border-vault-accent text-vault-accent' : 'border-transparent'
+                }`}
               >
                 {route.label}
               </Link>
@@ -52,11 +53,15 @@ export const Navbar = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-white"
+            className="md:hidden text-white hover:bg-vault-primary/80"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <span className="sr-only">Toggle menu</span>
-            <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${isMobileMenuOpen ? 'rotate-180' : ''}`} />
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </Button>
         </div>
 
@@ -68,7 +73,9 @@ export const Navbar = () => {
                 <Link
                   key={route.path}
                   to={route.path}
-                  className="text-gray-200 hover:text-vault-accent transition-colors duration-200 text-sm font-medium px-2 py-1"
+                  className={`text-gray-200 hover:text-vault-accent transition-colors duration-200 text-sm font-medium px-2 py-1 ${
+                    location.pathname === route.path ? 'bg-vault-primary/30 text-vault-accent rounded' : ''
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {route.label}
