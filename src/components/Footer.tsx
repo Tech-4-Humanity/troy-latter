@@ -18,7 +18,7 @@ export const Footer = () => {
               />
             </Link>
             <p className="text-gray-300 text-sm">
-              © {currentYear} Vault Cloud. All rights reserved.
+              © {currentYear} REAL Innovation starts
             </p>
             <p className="text-gray-400 text-xs mt-1">
               Australia's sovereign cloud provider
