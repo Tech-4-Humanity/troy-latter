@@ -5,11 +5,11 @@ import { Separator } from '@/components/ui/separator';
 
 const Responsibilities = () => {
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-7xl mx-auto">
       <PageTitle title="Responsibilities" />
       
-      <div className="text-center mb-10">
-        <p className="text-lg max-w-4xl mx-auto">
+      <div className="text-lg mb-8">
+        <p className="mb-6">
           As Head of Innovation, you'll drive breakthrough initiatives while building a culture of rapid experimentation and measurable outcomes.
         </p>
       </div>
@@ -90,7 +90,7 @@ const Responsibilities = () => {
                       <span className="font-medium">Action:</span> I led a cross‑disciplinary team of Oracle cloud engineers and defence IT specialists. We designed Terraform modules to provision multi‑region OCI compartments, networking and Kubernetes clusters with automated Istio‑backed mTLS. Using Ansible, we scripted microservices deployments that ingested HR data, calculated entitlements, and triggered payments via secure API calls. We embedded Oracle Cloud Guard and OCI Vault for key management, and set up a GitOps pipeline with automated policy scans for each change. I presented the prototype at a national defence tech symposium, wrote the accompanying whitepaper, and built a financial model showing TCO and ROI.
                     </p>
                     <p className="text-vault-secondary">
-                      <span className="font-medium">Outcome:</span> The prototype cut end‑to‑end allowance processing from 6 weeks to under 24 hours, eliminated manual reconciliation errors (0 % error rate in pilot), and demonstrated projected annual savings of $3 million. The business case secured CDF and Treasury sign‑off for a $5 million production rollout next fiscal year—cementing Oracle's edge in sovereign defence solutions.
+                      <span className="font-medium">Outcome:</span> The prototype cut end‑to‑end allowance processing from 6 weeks to under 24 hours, eliminated manual reconciliation errors (0% error rate in pilot), and demonstrated projected annual savings of $3 million. The business case secured CDF and Treasury sign‑off for a $5 million production rollout next fiscal year—cementing Oracle's edge in sovereign defence solutions.
                     </p>
                   </div>
                 </details>
@@ -102,7 +102,7 @@ const Responsibilities = () => {
       
       <Separator className="my-10 bg-vault-accent/30" />
       
-      <div className="space-y-8 mb-12">
+      <div className="space-y-8 mb-10">
         <h2 className="text-2xl font-semibold text-vault-primary">Key Responsibilities</h2>
         <ul className="list-disc list-inside space-y-4 pl-4">
           <li className="text-vault-secondary">

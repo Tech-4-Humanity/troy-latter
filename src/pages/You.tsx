@@ -3,6 +3,8 @@ import { PageTitle } from '@/components/PageTitle';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { useState } from 'react';
+import { Separator } from '@/components/ui/separator';
+import { FeatureCard } from '@/components/FeatureCard';
 
 const skillExamples = {
   sovereign: {
@@ -41,18 +43,18 @@ const You = () => {
   const [openKey, setOpenKey] = useState<string | null>(null);
   
   return (
-    <div>
+    <div className="max-w-7xl mx-auto">
       <PageTitle title="Skills & Experience" />
       
-      <div className="text-center mb-10">
-        <p className="text-lg max-w-3xl mx-auto">
+      <div className="text-lg mb-8">
+        <p className="mb-6">
           You bring breakthrough innovation skills and national‑security domain mastery, with proven delivery in regulated environments.
         </p>
       </div>
       
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">My Matching Experience</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="mb-12">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-8">My Matching Experience</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {Object.entries(skillExamples).map(([key, example]) => (
             <Card key={key} className="overflow-hidden">
               <div 
@@ -85,6 +87,8 @@ const You = () => {
           ))}
         </div>
       </div>
+      
+      <Separator className="my-10 bg-vault-accent/30" />
       
       <div className="space-y-6 mb-10">
         <h2 className="text-2xl font-semibold text-vault-primary">Required Skills & Experience</h2>

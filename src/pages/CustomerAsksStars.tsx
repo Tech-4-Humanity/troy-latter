@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { PageTitle } from '@/components/PageTitle';
+import { Separator } from '@/components/ui/separator';
 
 const asksExamples = {
   compliance: {
@@ -71,47 +72,54 @@ const CustomerAsksStars = () => {
   const [openKey, setOpenKey] = useState<string | null>(null);
 
   return (
-    <div>
+    <div className="max-w-7xl mx-auto">
       <PageTitle title="Customer Asks & Vault's Edge" />
       
-      <p className="text-gray-700 mb-8">
-        Vault Cloud, as Australia's only ASD‑certified hyperscale sovereign cloud operator,
-        is uniquely positioned to deliver innovation at scale for national security and
-        critical infrastructure.
-      </p>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Object.entries(asksExamples).map(([key, example]) => (
-          <Card key={key} className="overflow-hidden">
-            <div 
-              className="cursor-pointer"
-              onClick={() => setOpenKey(openKey === key ? null : key)}
-            >
-              <AspectRatio ratio={16/9}>
-                <img 
-                  src={example.imageSrc} 
-                  alt={example.title}
-                  className="h-full w-full object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
-                />
-              </AspectRatio>
-            </div>
-            <div className="p-4">
-              <h3 className="text-xl font-semibold text-vault-primary mb-2">{example.title}</h3>
-              <p className="text-vault-secondary text-sm mb-3">Click 4 Details</p>
-              {openKey === key && (
-                <div className="bg-vault-light p-4 rounded-lg text-left space-y-3 animate-fade-in">
-                  {example.star.map((item) => (
-                    <div key={item.label} className="space-y-1">
-                      <p className="font-medium text-vault-primary">{item.label}:</p>
-                      <p className="text-vault-secondary text-sm">{item.text}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </Card>
-        ))}
+      <div className="text-lg mb-8">
+        <p className="mb-6">
+          Vault Cloud, as Australia's only ASD‑certified hyperscale sovereign cloud operator,
+          is uniquely positioned to deliver innovation at scale for national security and
+          critical infrastructure.
+        </p>
       </div>
+      
+      <div className="mb-12">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-8">Common Customer Challenges</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {Object.entries(asksExamples).map(([key, example]) => (
+            <Card key={key} className="overflow-hidden">
+              <div 
+                className="cursor-pointer"
+                onClick={() => setOpenKey(openKey === key ? null : key)}
+              >
+                <AspectRatio ratio={16/9}>
+                  <img 
+                    src={example.imageSrc} 
+                    alt={example.title}
+                    className="h-full w-full object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
+                  />
+                </AspectRatio>
+              </div>
+              <div className="p-4">
+                <h3 className="text-xl font-semibold text-vault-primary mb-2">{example.title}</h3>
+                <p className="text-vault-secondary text-sm mb-3">Click 4 Details</p>
+                {openKey === key && (
+                  <div className="bg-vault-light p-4 rounded-lg text-left space-y-3 animate-fade-in">
+                    {example.star.map((item) => (
+                      <div key={item.label} className="space-y-1">
+                        <p className="font-medium text-vault-primary">{item.label}:</p>
+                        <p className="text-vault-secondary text-sm">{item.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+      
+      <Separator className="my-10 bg-vault-accent/30" />
     </div>
   );
 };
