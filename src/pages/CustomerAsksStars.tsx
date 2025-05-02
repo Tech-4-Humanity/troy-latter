@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -46,14 +45,14 @@ const asksExamples = {
       { label: 'Outcome', text: 'The operator achieved 28% monthly cost savings—roughly $500K per month—without any service degradation. Predictive scaling cut capacity spikes by 80%, and the success case secured a $1 million annual managed service agreement to roll out the solution grid‑wide.' }
     ]
   },
-  agility: {
-    title: 'Speed & Agility in High‑Stakes',
+  blueprints: {
+    title: 'Blueprints for Breakthroughs',
     imageSrc: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80",
     star: [
-      { label: 'Situation', text: 'PoCs for disaster‑relief command‑and‑control systems often stalled in "innovation theatre," never reaching frontline use—jeopardizing stakeholder confidence and funding.' },
-      { label: 'Task', text: 'Forge a Vault‑Unisys rapid‑start PoC framework that delivered working demos in under 48 hours, focused on real‑world scenarios, and fed immediate business value back into the pipeline.' },
-      { label: 'Action', text: 'I led a lean "tiger team," ran two‑day hackathons with Defence and critical‑infra operators, pre-built IaC templates for battlefield clouds and mesh‑enabled edge nodes, and embedded "demo‑ready" agent personas (e.g. Energy Grid Sentinel). We maintained a strict fail‑fast cadence—killing underperforming ideas at mid‑point—and iterated on features based on live operator feedback captured via embedded analytics dashboards.' },
-      { label: 'Outcome', text: 'We delivered the first working command‑and‑control demo in 42 hours—96 hours ahead of standard timelines—earning a $1 million immediate pilot expansion and restoring executive faith in Vault\'s ability to turn rapid innovation into tangible mission impact.' }
+      { label: 'Situation', text: 'Multiple Vault PoC teams were working in isolation, lacking consistent processes for ideation, validation and go/no‑go decisions—resulting in long ramp‑up times, uneven stakeholder buy‑in, and fewer than 1 in 5 PoCs ever reaching production.' },
+      { label: 'Task', text: 'Embed a suite of proven innovation methods and activities—ranging from Design Thinking to public hackathons—to create a fast, repeatable pipeline that drives real‑world breakthroughs and a culture of empowered experimentation.' },
+      { label: 'Action', text: 'Launched monthly Design Thinking Bootcamps to map user journeys and uncover high‑value problem areas. Ran bi‑weekly Working Backwards Workshops with C‑suite and frontline customers to define success metrics before writing a single line of code. Instituted Lean UX Sprints—two‑day rapid prototyping sessions where cross‑functional "tiger teams" built and tested mockups with real users. Hosted public Innovation Days and Tech Talks to showcase early prototypes, gather feedback, and build external excitement. Piloted Open Innovation Challenges, inviting subject‑matter experts and university partners to contribute templates, playbooks and code samples. Codified a Kill‑or‑Scale Decision Framework with clear criteria around strategic impact, technical feasibility and compliance readiness.' },
+      { label: 'Outcome', text: 'Within one quarter, we halved the average ideation‑to‑PoC timeline from 8 weeks to 4 weeks, raised stakeholder alignment scores by 40%, and doubled the PoC success rate—transforming Vault\'s R&D from ad‑hoc experiments into a disciplined, high‑output engine.' }
     ]
   }
 };
