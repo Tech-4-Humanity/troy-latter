@@ -1,7 +1,5 @@
-
 import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
-import { Shield, Database, Server, AlertTriangle, Activity, Zap } from 'lucide-react';
 
 const About = () => {
   return (
@@ -16,10 +14,9 @@ const About = () => {
       </div>
       
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Tomorrow's Customer Needs</h2>
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Tomorrow's Customers Innovation needs</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <FeatureCard
-            icon={Shield}
             title="Compliance & Audit Fatigue"
             imageSrc="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5"
           >
@@ -43,7 +40,6 @@ const About = () => {
           </FeatureCard>
 
           <FeatureCard
-            icon={AlertTriangle}
             title="Threat Detection & Incident Response Overload"
             imageSrc="https://images.unsplash.com/photo-1605810230434-7631ac76ec81"
           >
@@ -67,7 +63,6 @@ const About = () => {
           </FeatureCard>
 
           <FeatureCard
-            icon={Database}
             title="Sovereign AI & LLM Risks"
             imageSrc="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7"
           >
@@ -91,7 +86,6 @@ const About = () => {
           </FeatureCard>
 
           <FeatureCard
-            icon={Activity}
             title="Operational Inefficiency & Cost Creep"
             imageSrc="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
           >
@@ -115,7 +109,6 @@ const About = () => {
           </FeatureCard>
 
           <FeatureCard
-            icon={Zap}
             title="Speed & Agility in High‑Stakes Environments"
             imageSrc="https://images.unsplash.com/photo-1518770660439-4636190af475"
           >
