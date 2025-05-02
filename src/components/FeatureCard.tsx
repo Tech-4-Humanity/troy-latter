@@ -6,11 +6,12 @@ import { Card, CardContent } from "@/components/ui/card";
 interface FeatureCardProps {
   icon: LucideIcon;
   title: string;
-  description: string;
+  description?: string;
   imageSrc?: string;
+  children?: React.ReactNode;
 }
 
-export const FeatureCard = ({ icon: Icon, title, description, imageSrc }: FeatureCardProps) => {
+export const FeatureCard = ({ icon: Icon, title, description, imageSrc, children }: FeatureCardProps) => {
   return (
     <Card className="overflow-hidden transition-all hover:shadow-md">
       {imageSrc && (
@@ -28,7 +29,8 @@ export const FeatureCard = ({ icon: Icon, title, description, imageSrc }: Featur
             <Icon className="h-6 w-6" />
           </div>
           <h3 className="text-xl font-semibold">{title}</h3>
-          <p className="text-vault-secondary">{description}</p>
+          {description && <p className="text-vault-secondary">{description}</p>}
+          {children}
         </div>
       </CardContent>
     </Card>

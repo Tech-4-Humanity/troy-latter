@@ -14,47 +14,72 @@ const Responsibilities = () => {
         </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-        <FeatureCard
-          icon={ListChecks}
-          title="Strategy & Execution"
-          description="Shape and prioritize Vault's R&D pipeline to deliver measurable breakthroughs while maintaining SDLC integrity in regulated environments."
-          imageSrc="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80"
-        />
-        <FeatureCard
-          icon={Handshake}
-          title="Collaboration & Leadership"
-          description="Build high‑trust teams and partner with Defence, Intelligence and domain experts to validate concepts and scale innovations."
-          imageSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80"
-        />
-        <FeatureCard
-          icon={Lightbulb}
-          title="Innovation & Engineering"
-          description="Design, build and test IaC prototypes: from battlefield clusters to LLM frameworks with technical evangelism and business case translation."
-          imageSrc="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80"
-        />
-      </div>
-      
-      <div className="mt-10">
-        <h3 className="text-xl font-semibold mb-4 text-vault-primary">Additional Responsibilities</h3>
-        <ul className="space-y-3">
-          <li className="flex items-start">
-            <span className="text-vault-accent font-bold mr-2">•</span>
-            <span><strong>Culture & Pace:</strong> Embed a fail‑fast mindset—iterate quickly, learn and scale.</span>
+      <div className="space-y-6 mb-10">
+        <h2 className="text-2xl font-semibold text-vault-primary">Key Responsibilities</h2>
+        <ul className="list-disc list-inside space-y-3 pl-4">
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Strategy & Execution:</span> Shape and prioritize Vault's R&D pipeline to deliver measurable breakthroughs while maintaining SDLC integrity in regulated environments.
           </li>
-          <li className="flex items-start">
-            <span className="text-vault-accent font-bold mr-2">•</span>
-            <span><strong>Customer Validation:</strong> Demo PoCs, gather feedback, and refine real‑world applications.</span>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Collaboration & Leadership:</span> Build high‑trust teams and partner with Defence, Intelligence and domain experts to validate concepts and scale innovations.
           </li>
-          <li className="flex items-start">
-            <span className="text-vault-accent font-bold mr-2">•</span>
-            <span><strong>Technical Evangelism:</strong> Represent Vault at industry forums, publish whitepapers, host Tech Talks.</span>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Innovation & Engineering:</span> Design, build and test IaC prototypes: from battlefield clusters to LLM frameworks with technical evangelism and business case translation.
           </li>
-          <li className="flex items-start">
-            <span className="text-vault-accent font-bold mr-2">•</span>
-            <span><strong>Business Case Translation:</strong> Convert PoC results into ROI‑driven proposals for executive buy‑in.</span>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Culture & Pace:</span> Embed a fail‑fast mindset—iterate quickly, learn and scale.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Customer Validation:</span> Demo PoCs, gather feedback, and refine real‑world applications.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Technical Evangelism:</span> Represent Vault at industry forums, publish whitepapers, host Tech Talks.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Business Case Translation:</span> Convert PoC results into ROI‑driven proposals for executive buy‑in.
           </li>
         </ul>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">My Leadership Examples</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <FeatureCard
+            icon={ListChecks}
+            title="R&D Roadmap Delivery"
+            imageSrc="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80"
+          >
+            <div className="space-y-2">
+              <p><strong>Situation:</strong> Lack of unified AI roadmap.</p>
+              <p><strong>Action:</strong> Facilitated workshops & built a prioritized PoC pipeline.</p>
+              <p><strong>Outcome:</strong> Launched 5 PoCs & generated $3M pipeline in 12 weeks.</p>
+            </div>
+          </FeatureCard>
+
+          <FeatureCard
+            icon={Handshake}
+            title="Agile Team Scaling"
+            imageSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80"
+          >
+            <div className="space-y-2">
+              <p><strong>Situation:</strong> Small team with high demand.</p>
+              <p><strong>Action:</strong> Expanded team & introduced sprint-based innovation cycles.</p>
+              <p><strong>Outcome:</strong> Delivery velocity +40%; PoC output tripled.</p>
+            </div>
+          </FeatureCard>
+
+          <FeatureCard
+            icon={Lightbulb}
+            title="Fail-Fast Culture"
+            imageSrc="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80"
+          >
+            <div className="space-y-2">
+              <p><strong>Situation:</strong> Bureaucratic PoC delays.</p>
+              <p><strong>Action:</strong> Implemented lean Kanban & strict kill criteria.</p>
+              <p><strong>Outcome:</strong> Cut cycle time from 16 to 4 weeks; improved stakeholder trust.</p>
+            </div>
+          </FeatureCard>
+        </div>
       </div>
     </div>
   );
