@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -15,7 +14,7 @@ const YourPitch = () => {
       {/* Elevator Hook */}
       <div className="flex flex-col md:flex-row gap-6 items-center mb-8">
         <Avatar className="h-32 w-32 border-2 border-vault-accent">
-          <AvatarImage src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952" alt="Troy Latter" />
+          <AvatarImage src="/lovable-uploads/9aa17449-1c27-48be-9aaf-34170ae5e122.png" alt="Troy Latter" />
           <AvatarFallback>TL</AvatarFallback>
         </Avatar>
         <div>
@@ -36,19 +35,6 @@ const YourPitch = () => {
         <li>Built a Rapid-Start PoC framework that cut time-to-demo from 10 weeks to 48 hrs, unlocking $4M follow-on funding.</li>
         <li>Automated compliance pipelines reducing audit prep from 2 weeks to &lt;1 hr, saving agencies $2M+ in effort.</li>
       </ul>
-
-      {/* LinkedIn Connect Button */}
-      <div className="mb-8">
-        <a 
-          href="https://www.linkedin.com/in/theinnovater/" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-[#0077B5] text-white px-4 py-2 rounded-lg hover:bg-[#005885] transition"
-        >
-          <Linkedin size={20} />
-          <span>Connect with Troy on LinkedIn</span>
-        </a>
-      </div>
 
       <Separator className="my-8 bg-vault-accent/30" />
 
@@ -110,40 +96,6 @@ const YourPitch = () => {
             </ul>
           </CardContent>
         </Card>
-      </div>
-
-      <Separator className="my-8 bg-vault-accent/30" />
-
-      {/* Call to Action with Radio Group */}
-      <div className="text-center">
-        <div className="mb-6">
-          <RadioGroup 
-            value={viewOption} 
-            onValueChange={setViewOption}
-            className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4 justify-center"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="profile" id="profile" />
-              <label htmlFor="profile" className="cursor-pointer">View Troy's profile</label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="activity" id="activity" />
-              <label htmlFor="activity" className="cursor-pointer">View Troy's activity</label>
-            </div>
-          </RadioGroup>
-        </div>
-
-        <Button variant="outline" asChild>
-          <a 
-            href={viewOption === 'profile' ? 'https://www.linkedin.com/in/theinnovater/' : 'https://www.linkedin.com/in/theinnovater/recent-activity/all/'} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2"
-          >
-            <Linkedin size={20} />
-            <span>{viewOption === 'profile' ? "View Troy's Profile" : "View Troy's Activity"}</span>
-          </a>
-        </Button>
       </div>
     </div>
   );
