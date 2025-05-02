@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { PageTitle } from '@/components/PageTitle';
 
 const asksExamples = {
   compliance: {
@@ -11,7 +12,7 @@ const asksExamples = {
       { label: 'Situation', text: 'The Department of Human Services spent two weeks manually preparing ASD/ACSC compliance reports for myGov.' },
       { label: 'Task',      text: 'Automate compliance checks and generate audit-ready reports without lowering security standards.' },
       { label: 'Action',    text: 'Built a Continuous Compliance Agent that scanned Terraform and Ansible definitions in real time, surfaced policy drifts, and auto-generated ASD-compliant audit documents.' },
-      { label: 'Outcome',   text: 'Reduced audit prep from 2 weeks to under 1 hour and cut manual effort by 85%, significantly accelerating certification cycles.' }
+      { label: 'Result',   text: 'Reduced audit prep from 2 weeks to under 1 hour and cut manual effort by 85%, significantly accelerating certification cycles.' }
     ]
   },
   threat: {
@@ -21,7 +22,7 @@ const asksExamples = {
       { label: 'Situation', text: 'A major transport client at AWS faced over 1,200 security alerts per day, overwhelming their SOC and delaying incident response.' },
       { label: 'Task',      text: 'Filter noise, surface genuine threats, and automate initial containment steps.' },
       { label: 'Action',    text: 'Deployed an Autonomous Anomaly-Detection Agent trained on customer network baselines and a Multi-Agent Playbook Orchestrator to auto-launch forensic and containment workflows.' },
-      { label: 'Outcome',   text: 'Cut false positives by 92% and reduced mean-time-to-contain from 4 hours to 20 minutes, improving overall security posture.' }
+      { label: 'Result',   text: 'Cut false positives by 92% and reduced mean-time-to-contain from 4 hours to 20 minutes, improving overall security posture.' }
     ]
   },
   sovereign: {
@@ -31,7 +32,7 @@ const asksExamples = {
       { label: 'Situation', text: 'Unisys intelligence analysts needed on-prem Generative AI capabilities but feared data leakage and model hallucinations.' },
       { label: 'Task',      text: 'Deliver an audited, self-hosted LLM framework with strict governance and bias controls.' },
       { label: 'Action',    text: 'Architected an ASD-certified on-prem LLM cluster with token-level telemetry, Bias & Hallucination Guard agents, and fine-tuning pipelines.' },
-      { label: 'Outcome',   text: 'Enabled analysts to process 10,000+ pages/day with 98% accuracy, and maintained zero data leak incidents over 12 months.' }
+      { label: 'Result',   text: 'Enabled analysts to process 10,000+ pages/day with 98% accuracy, and maintained zero data leak incidents over 12 months.' }
     ]
   },
   cost: {
@@ -41,7 +42,7 @@ const asksExamples = {
       { label: 'Situation', text: 'An AWS energy sector client was overspending by 25% monthly due to manual resource provisioning and idle VMs.' },
       { label: 'Task',      text: 'Implement automated rightsizing and predictive capacity planning to optimize costs without service impact.' },
       { label: 'Action',    text: 'Deployed an Autonomous Resource Broker and a Predictive Capacity Forecasting pipeline on CIC to schedule and resize workloads.' },
-      { label: 'Outcome',   text: 'Achieved 28% monthly cost savings, eliminated surprise egress charges, and maintained performance SLAs.' }
+      { label: 'Result',   text: 'Achieved 28% monthly cost savings, eliminated surprise egress charges, and maintained performance SLAs.' }
     ]
   },
   agility: {
@@ -51,7 +52,7 @@ const asksExamples = {
       { label: 'Situation', text: 'An Oracle digital‑twin PoC had stalled for 10 weeks without delivering measurable value.' },
       { label: 'Task',      text: 'Accelerate PoC delivery to demonstrate tangible outcomes within 48 hours.' },
       { label: 'Action',    text: 'Implemented a Rapid-Start PoC Generator with sector-specific IaC templates and pre-trained Demo Agents like "CityOps Coordinator."' },
-      { label: 'Outcome',   text: 'Delivered a working demo in 42 hours, secured a $1M follow-on contract, and adopted the framework enterprise-wide.' }
+      { label: 'Result',   text: 'Delivered a working demo in 42 hours, secured a $1M follow-on contract, and adopted the framework enterprise-wide.' }
     ]
   },
   frameworks: {
@@ -61,7 +62,7 @@ const asksExamples = {
       { label: 'Situation', text: 'Teams lacked structured processes for ideation and rapid validation, leading to low PoC success rates.' },
       { label: 'Task',      text: 'Embed proven techniques—Design Thinking, Working Backwards, Lean UX—to streamline ideation and prototyping.' },
       { label: 'Action',    text: 'Ran Working Backwards workshops with stakeholders, introduced Lean UX sprints, and codified a kill-or-scale decision framework.' },
-      { label: 'Outcome',   text: 'Halved ideation-to-PoC time, increased stakeholder alignment by 40%, and doubled successful PoC conversions within one quarter.' }
+      { label: 'Result',   text: 'Halved ideation-to-PoC time, increased stakeholder alignment by 40%, and doubled successful PoC conversions within one quarter.' }
     ]
   }
 };
@@ -69,14 +70,10 @@ const asksExamples = {
 const CustomerAsksStars = () => {
   const [openKey, setOpenKey] = useState<string | null>(null);
 
-  // Ensure we're correctly rendering all 6 cards by logging the entries
-  console.log("Number of cards:", Object.keys(asksExamples).length);
-
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-4">
-        Customer Asks & Vault's Edge
-      </h1>
+      <PageTitle title="Customer Asks & Vault's Edge" />
+      
       <p className="text-gray-700 mb-8">
         Vault Cloud, as Australia's only ASD‑certified hyperscale sovereign cloud operator,
         is uniquely positioned to deliver innovation at scale for national security and
