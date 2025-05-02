@@ -70,7 +70,7 @@ const YourPitch = () => {
                 <p className="text-vault-secondary">
                   Delivered ASD‑accredited enclaves at AWS and classified PoCs at Unisys under mission SLAs.
                   My experience spans the entire lifecycle of secure cloud solutions, from initial concept
-                  to ASD-certified production deployments for intelligence and defense clients.
+                  to ASD-certified production deployments for intelligence and defence clients.
                 </p>
               </div>
             </li>
@@ -82,7 +82,7 @@ const YourPitch = () => {
                   I thrive in founder‑driven, fail‑fast, high‑autonomy teams—exactly Vault's ethos.
                   Throughout my career, I've consistently delivered best results in environments that 
                   value rapid innovation, technical excellence, and mission focus—all hallmarks of 
-                  Vault's organizational culture.
+                  Vault's organisational culture.
                 </p>
               </div>
             </li>

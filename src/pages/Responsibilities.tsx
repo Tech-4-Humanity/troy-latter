@@ -1,3 +1,4 @@
+
 import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
 
@@ -21,10 +22,10 @@ const Responsibilities = () => {
           >
             <div className="space-y-4">
               <div className="bg-vault-light p-4 rounded-lg space-y-2">
-                <p><strong>S:</strong> Joined a high-growth defense tech company with siloed AI initiatives across multiple business units.</p>
-                <p><strong>T:</strong> Consolidated fragmented R&D efforts into a unified roadmap and establish clear prioritization criteria.</p>
+                <p><strong>S:</strong> Joined a high-growth defence tech company with siloed AI initiatives across multiple business units.</p>
+                <p><strong>T:</strong> Consolidated fragmented R&D efforts into a unified roadmap and establish clear prioritisation criteria.</p>
                 <p><strong>A:</strong> Conducted cross-functional workshops with technical and business stakeholders. Created evaluation framework for initiatives based on technical feasibility, market potential and strategic alignment. Established quarterly review cadence for roadmap updates.</p>
-                <p><strong>R:</strong> Delivered cohesive AI roadmap that secured C-level buy-in. Successfully launched 5 proof-of-concepts that generated $3M in qualified pipeline within 12 weeks. Improved cross-team collaboration and reduced duplicate efforts by 30%.</p>
+                <p><strong>R:</strong> Delivered cohesive AI roadmap that secured C-level buy-in. Successfully launched 5 proof-of-concepts that generated £3M in qualified pipeline within 12 weeks. Improved cross-team collaboration and reduced duplicate efforts by 30%.</p>
               </div>
             </div>
           </FeatureCard>
@@ -50,7 +51,7 @@ const Responsibilities = () => {
             <div className="space-y-4">
               <div className="bg-vault-light p-4 rounded-lg space-y-2">
                 <p><strong>S:</strong> Innovation projects were suffering from bureaucratic processes and delayed decision-making, with PoCs lingering in development for months.</p>
-                <p><strong>T:</strong> Accelerate innovation cycle time by embracing fail-fast principles and removing organizational barriers.</p>
+                <p><strong>T:</strong> Accelerate innovation cycle time by embracing fail-fast principles and removing organisational barriers.</p>
                 <p><strong>A:</strong> Implemented lean Kanban system with WIP limits. Established clear "kill criteria" for all projects with bi-weekly go/no-go decision points. Created innovation showcase framework for rapid stakeholder feedback.</p>
                 <p><strong>R:</strong> Reduced average innovation cycle time from 16 weeks to 4 weeks. Improved resource allocation by identifying non-viable concepts early. Significantly enhanced stakeholder trust through transparent process and consistent delivery.</p>
               </div>
@@ -63,7 +64,7 @@ const Responsibilities = () => {
         <h2 className="text-2xl font-semibold text-vault-primary">Key Responsibilities</h2>
         <ul className="list-disc list-inside space-y-3 pl-4">
           <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Strategy & Execution:</span> Shape and prioritize Vault's R&D pipeline to deliver measurable breakthroughs while maintaining SDLC integrity in regulated environments.
+            <span className="font-medium text-vault-primary">Strategy & Execution:</span> Shape and prioritise Vault's R&D pipeline to deliver measurable breakthroughs while maintaining SDLC integrity in regulated environments.
           </li>
           <li className="text-vault-secondary">
             <span className="font-medium text-vault-primary">Collaboration & Leadership:</span> Build high‑trust teams and partner with Defence, Intelligence and domain experts to validate concepts and scale innovations.

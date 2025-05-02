@@ -107,7 +107,7 @@ const CustomerAsks = () => {
               <div className="mt-4 bg-vault-light p-4 rounded-md">
                 <p className="font-semibold">🔹 Troy's STAR:</p>
                 <p><strong>Situation:</strong> An energy provider on AWS was overspending by 25% monthly.</p>
-                <p><strong>Task:</strong> Optimize resource utilisation with minimal manual ops.</p>
+                <p><strong>Task:</strong> Optimise resource utilisation with minimal manual ops.</p>
                 <p><strong>Action:</strong> Rolled out an agent to monitor usage metrics and auto‑rightsizing policies.</p>
                 <p><strong>Result:</strong> Delivered 28% monthly cost savings, with no performance impact.</p>
               </div>
@@ -133,7 +133,7 @@ const CustomerAsks = () => {
                 <p><strong>Situation:</strong> At Oracle, a federal digital‑twin PoC dragged on 10 weeks.</p>
                 <p><strong>Task:</strong> Accelerate to demo in 48 hrs.</p>
                 <p><strong>Action:</strong> Published a Terraform/Ansible template pack and pre‑trained demo agent "CityOps Coordinator."</p>
-                <p><strong>Result:</strong> Live demo delivered in 42 hrs, securing an immediate $1 M follow‑on contract.</p>
+                <p><strong>Result:</strong> Live demo delivered in 42 hrs, securing an immediate £1 M follow‑on contract.</p>
               </div>
             </div>
           </FeatureCard>

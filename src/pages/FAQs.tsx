@@ -19,7 +19,7 @@ const FAQs = () => {
           </li>
           <li className="flex items-start">
             <span className="text-vault-accent font-bold mr-2">•</span>
-            <span><strong>How do you prioritize & fund PoCs vs. core product development?</strong></span>
+            <span><strong>How do you prioritise & fund PoCs vs. core product development?</strong></span>
           </li>
           <li className="flex items-start">
             <span className="text-vault-accent font-bold mr-2">•</span>

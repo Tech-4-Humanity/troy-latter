@@ -22,9 +22,9 @@ const You = () => {
           >
             <div className="space-y-4">
               <div className="bg-vault-light p-4 rounded-lg space-y-2">
-                <p><strong>S:</strong> Intelligence analysts required AI summarization capabilities without sending data to external platforms.</p>
+                <p><strong>S:</strong> Intelligence analysts required AI summarisation capabilities without sending data to external platforms.</p>
                 <p><strong>T:</strong> Build a secure, compliant on-premises LLM solution that meets stringent intelligence community standards.</p>
-                <p><strong>A:</strong> Deployed containerized on-prem LLM with comprehensive audit logs and token-level telemetry. Implemented fine-tuning pipeline for domain-specific knowledge and created classifier guardails to prevent sensitive data exposure.</p>
+                <p><strong>A:</strong> Deployed containerised on-prem LLM with comprehensive audit logs and token-level telemetry. Implemented fine-tuning pipeline for domain-specific knowledge and created classifier guardails to prevent sensitive data exposure.</p>
                 <p><strong>R:</strong> Delivered solution enabling 60% faster intelligence brief creation while maintaining complete data sovereignty. Zero data leaks or security incidents after 8 months in production environment.</p>
               </div>
             </div>
@@ -38,7 +38,7 @@ const You = () => {
               <div className="bg-vault-light p-4 rounded-lg space-y-2">
                 <p><strong>S:</strong> Critical infrastructure sites required computing capabilities in locations with unreliable connectivity.</p>
                 <p><strong>T:</strong> Design and implement a resilient edge computing solution capable of maintaining operations during extended network outages.</p>
-                <p><strong>A:</strong> Developed Terraform and Ansible automation to deploy Kubernetes-based mesh clusters. Created intelligent replication mechanism for configuration and data synchronization when connectivity was restored.</p>
+                <p><strong>A:</strong> Developed Terraform and Ansible automation to deploy Kubernetes-based mesh clusters. Created intelligent replication mechanism for configuration and data synchronisation when connectivity was restored.</p>
                 <p><strong>R:</strong> Successfully demonstrated uninterrupted operations during simulated 72-hour network outages. Solution was adopted as standard for all remote sites, improving operational resilience.</p>
               </div>
             </div>

@@ -10,7 +10,7 @@ const TheOpportunity = () => {
       <div className="text-lg mb-6">
         <p className="mb-6">
           This role is a rare chance to drive sovereign‑grade cloud innovation at the intersection of AI, security,
-          and national defense. You'll break rules, prototype new paradigms, and forge Vault's future offering.
+          and national defence. You'll break rules, prototype new paradigms, and forge Vault's future offering.
         </p>
       </div>
       
@@ -24,8 +24,8 @@ const TheOpportunity = () => {
             <div className="space-y-4">
               <div className="bg-vault-light p-4 rounded-lg space-y-2">
                 <p><strong>S:</strong> Required a secure ASD-certified AI cluster for rapid experimentation with classified data.</p>
-                <p><strong>T:</strong> Deploy a compliant, containerized AI environment within government-mandated timeframes while meeting all security standards.</p>
-                <p><strong>A:</strong> Architected containerized inference nodes on GovCloud with automated compliance checks. Implemented parallel deployment pipelines to accelerate provisioning without security shortcuts.</p>
+                <p><strong>T:</strong> Deploy a compliant, containerised AI environment within government-mandated timeframes while meeting all security standards.</p>
+                <p><strong>A:</strong> Architected containerised inference nodes on GovCloud with automated compliance checks. Implemented parallel deployment pipelines to accelerate provisioning without security shortcuts.</p>
                 <p><strong>R:</strong> Delivered secure cluster in 72 hours (vs. typical 3-week timeline). Achieved 85% uplift in anomaly detection accuracy with zero false positives, securing follow-on production contract.</p>
               </div>
             </div>
@@ -37,10 +37,10 @@ const TheOpportunity = () => {
           >
             <div className="space-y-4">
               <div className="bg-vault-light p-4 rounded-lg space-y-2">
-                <p><strong>S:</strong> Defense client needed AI inference capabilities in offline sites with intermittent connectivity.</p>
+                <p><strong>S:</strong> Defence client needed AI inference capabilities in offline sites with intermittent connectivity.</p>
                 <p><strong>T:</strong> Create resilient edge computing solution capable of functioning in disconnected environments while maintaining sync when connectivity returns.</p>
                 <p><strong>A:</strong> Built Terraform/Ansible prototypes for mesh-enabled edge clusters with local inference capabilities and intelligent sync protocols. Conducted field tests in simulated outage conditions.</p>
-                <p><strong>R:</strong> Demonstrated sub-second processing even during complete network isolation. Solution withstood 99.9% of simulated outage scenarios, securing $2M pilot program for field deployment.</p>
+                <p><strong>R:</strong> Demonstrated sub-second processing even during complete network isolation. Solution withstood 99.9% of simulated outage scenarios, securing £2M pilot programme for field deployment.</p>
               </div>
             </div>
           </FeatureCard>
@@ -80,7 +80,7 @@ const TheOpportunity = () => {
         <h2 className="text-2xl font-semibold text-vault-primary">Key Responsibilities</h2>
         <ul className="list-disc list-inside space-y-3 pl-4">
           <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Strategy & Execution:</span> Shape and prioritize Vault's R&D pipeline to deliver measurable breakthroughs while maintaining SDLC integrity in regulated environments.
+            <span className="font-medium text-vault-primary">Strategy & Execution:</span> Shape and prioritise Vault's R&D pipeline to deliver measurable breakthroughs while maintaining SDLC integrity in regulated environments.
           </li>
           <li className="text-vault-secondary">
             <span className="font-medium text-vault-primary">Collaboration & Leadership:</span> Build high‑trust teams and partner with Defence, Intelligence and domain experts to validate concepts and scale innovations.
