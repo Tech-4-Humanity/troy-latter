@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -125,14 +124,6 @@ const CustomerAsksStars = () => {
       </div>
       
       <Separator className="my-10 bg-vault-accent/30" />
-      
-      <div className="mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">How Vault Addresses Customer Needs</h2>
-        <p className="text-lg mb-6">
-          Our innovative approach transforms complex security and operational challenges into strategic advantages, 
-          delivering measurable outcomes through cutting-edge technology solutions built specifically for high-security environments.
-        </p>
-      </div>
     </div>
   );
 };
