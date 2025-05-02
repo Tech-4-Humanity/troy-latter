@@ -16,7 +16,7 @@ export const FeatureCard = ({ title, imageSrc, children }: FeatureCardProps) => 
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg">
       <div 
-        className="w-full h-56 overflow-hidden cursor-pointer relative"
+        className="w-full h-64 overflow-hidden cursor-pointer relative"
         onClick={() => setShowDetails(!showDetails)}
       >
         <img 
@@ -32,7 +32,11 @@ export const FeatureCard = ({ title, imageSrc, children }: FeatureCardProps) => 
         <div className="flex flex-col items-start gap-4">
           <h3 className="text-xl font-semibold text-vault-primary">{title}</h3>
           
-          {showDetails && children}
+          {showDetails && (
+            <div className="bg-vault-light/70 p-4 rounded-lg w-full animate-fade-in">
+              {children}
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>

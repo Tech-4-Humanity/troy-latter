@@ -4,22 +4,23 @@ import { PageTitle } from '@/components/PageTitle';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Separator } from '@/components/ui/separator';
+import { FeatureCard } from '@/components/FeatureCard';
 
 const opportunityExamples = {
   accelerated: {
     title: 'Accelerated AI Pilot',
     imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80",
-    content: 'A Defence modernisation programme needed a secure, ASD‑accredited AI environment for on‑field anomaly detection under a 72‑hour mandate. Stand up a fully compliant, containerised AI cluster that could ingest classified sensor data and run real‑time models. Leveraged Vault\'s Secure Container Cloud with Terraform/Ansible IaC, integrated post‑quantum key management, and built parallel compliance scanners to validate policies on‑the‑fly. Delivered the cluster in 48 hrs (vs. typical 3‑week lead), achieved 90% detection accuracy with zero compliance findings, and won a £1.5M follow‑on contract.'
+    content: "A Defence modernisation programme needed a secure, ASD‑accredited AI environment for on‑field anomaly detection under a 72‑hour mandate. Stand up a fully compliant, containerised AI cluster that could ingest classified sensor data and run real‑time models. Leveraged Vault's Secure Container Cloud with Terraform/Ansible IaC, integrated post‑quantum key management, and built parallel compliance scanners to validate policies on‑the‑fly. Delivered the cluster in 48 hrs (vs. typical 3‑week lead), achieved 90% detection accuracy with zero compliance findings, and won a £1.5M follow‑on contract."
   },
   edge: {
     title: 'Edge Compute for Pacific HADR',
     imageSrc: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80",
-    content: 'When cyclone season struck key Pacific islands, coalition partners—from Defence units to international NGOs—struggled to gain real‑time situational awareness because their data pipelines and compute platforms were either too slow, too brittle or hosted offshore. Vault was asked to prove that sovereign edge could change that. I led a cross‑organizational effort to deploy AWS Snowcone devices across four countries, writing Terraform and Ansible scripts to spin up encrypted AI inference containers that processed drone imagery and sensor data on‑site. Each Snowcone operated in complete isolation, then securely replicated its findings into Vault's Canberra‑based hyperscale cloud as soon as each partner's satellite link came online.\n\nThis wasn't just a tech demo—it was a breakthrough in how disparate agencies collaborate under sovereign data mandates. By delivering sub‑second object detection in the field, we cut average decision‑making time by 60%, accelerated humanitarian air‑lift planning by 4 hours per mission, and gave regional commanders confidence that no sensitive data ever left Australian jurisdiction. The strength of this proof‑of‑concept has already unlocked multi‑million‑dollar funding discussions, fast‑tracked regulatory approvals, and identified dedicated operational leads across three governments.'
+    content: "When cyclone season struck key Pacific islands, coalition partners—from Defence units to international NGOs—struggled to gain real‑time situational awareness because their data pipelines and compute platforms were either too slow, too brittle or hosted offshore. Vault was asked to prove that sovereign edge could change that. I led a cross‑organizational effort to deploy AWS Snowcone devices across four countries, writing Terraform and Ansible scripts to spin up encrypted AI inference containers that processed drone imagery and sensor data on‑site. Each Snowcone operated in complete isolation, then securely replicated its findings into Vault's Canberra‑based hyperscale cloud as soon as each partner's satellite link came online.\n\nThis wasn't just a tech demo—it was a breakthrough in how disparate agencies collaborate under sovereign data mandates. By delivering sub‑second object detection in the field, we cut average decision‑making time by 60%, accelerated humanitarian air‑lift planning by 4 hours per mission, and gave regional commanders confidence that no sensitive data ever left Australian jurisdiction. The strength of this proof‑of‑concept has already unlocked multi‑million‑dollar funding discussions, fast‑tracked regulatory approvals, and identified dedicated operational leads across three governments."
   },
   automation: {
     title: 'AI Automation Framework',
     imageSrc: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80",
-    content: 'A Critical Infrastructure operator was losing weeks to manual change‑control checks, delaying cloud migrations and patch rollouts. Automate compliance validation of IaC templates to accelerate safe deployments without opening security gaps. Developed a multi‑agent framework that scans IaC for policy violations, auto‑remediates low‑risk issues, and surfaces edge cases for human review—all with full audit trails. Cut change‑control lead time from 10 days to 2 hours, boosted deployment velocity by 70%, and improved audit readiness for ACSC reviews.'
+    content: "A Critical Infrastructure operator was losing weeks to manual change‑control checks, delaying cloud migrations and patch rollouts. Automate compliance validation of IaC templates to accelerate safe deployments without opening security gaps. Developed a multi‑agent framework that scans IaC for policy violations, auto‑remediates low‑risk issues, and surfaces edge cases for human review—all with full audit trails. Cut change‑control lead time from 10 days to 2 hours, boosted deployment velocity by 70%, and improved audit readiness for ACSC reviews."
   }
 };
 
@@ -27,7 +28,7 @@ const TheOpportunity = () => {
   const [openKey, setOpenKey] = useState<string | null>(null);
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-7xl mx-auto">
       <PageTitle title="The Opportunity" />
       
       <div className="text-lg mb-8">
@@ -41,31 +42,17 @@ const TheOpportunity = () => {
         <h2 className="text-2xl font-semibold text-vault-primary mb-8">Customer Success Stories</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {Object.entries(opportunityExamples).map(([key, example]) => (
-            <Card key={key} className="overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <div 
-                className="cursor-pointer"
-                onClick={() => setOpenKey(openKey === key ? null : key)}
-              >
-                <AspectRatio ratio={16/9}>
-                  <img 
-                    src={example.imageSrc} 
-                    alt={example.title}
-                    className="h-full w-full object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
-                  />
-                </AspectRatio>
+            <FeatureCard
+              key={key}
+              title={example.title}
+              imageSrc={example.imageSrc}
+            >
+              <div className="text-vault-secondary space-y-4">
+                {example.content.split('\n\n').map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-vault-primary mb-3">{example.title}</h3>
-                <p className="text-vault-secondary text-sm mb-3">Click the image for more information</p>
-                {openKey === key && (
-                  <div className="bg-vault-light p-6 rounded-lg text-left space-y-4 animate-fade-in">
-                    {example.content.split('\n\n').map((paragraph, i) => (
-                      <p key={i} className="text-vault-secondary">{paragraph}</p>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </Card>
+            </FeatureCard>
           ))}
         </div>
       </div>
