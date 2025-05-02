@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { LucideIcon } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 
 interface FeatureCardProps {
@@ -7,9 +8,10 @@ interface FeatureCardProps {
   description?: string;
   imageSrc: string;
   children?: React.ReactNode;
+  icon?: LucideIcon;
 }
 
-export const FeatureCard = ({ title, description, imageSrc, children }: FeatureCardProps) => {
+export const FeatureCard = ({ title, description, imageSrc, children, icon: Icon }: FeatureCardProps) => {
   const [showStar, setShowStar] = useState(false);
   
   // Extract STAR content from children if it exists
@@ -60,6 +62,11 @@ export const FeatureCard = ({ title, description, imageSrc, children }: FeatureC
       </div>
       <CardContent className="p-6">
         <div className="flex flex-col items-start gap-4">
+          {Icon && (
+            <div className="rounded-full bg-vault-light p-3 text-vault-primary">
+              <Icon className="h-6 w-6" />
+            </div>
+          )}
           <h3 className="text-xl font-semibold">{title}</h3>
           {description && <p className="text-vault-secondary">{description}</p>}
           
