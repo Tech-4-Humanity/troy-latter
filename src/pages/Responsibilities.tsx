@@ -18,14 +18,28 @@ const Responsibilities = () => {
         <h2 className="text-2xl font-semibold text-vault-primary mb-8">My Leadership Examples</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <FeatureCard
-            title="R&D Roadmap Delivery"
+            title="Strategy & Execution"
             imageSrc="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80"
           >
             <div className="space-y-4">
               <div className="bg-vault-light p-6 rounded-lg">
-                <p className="text-vault-secondary">
-                  Joined a high-growth defence tech company with siloed AI initiatives across multiple business units. Consolidated fragmented R&D efforts into a unified roadmap and establish clear prioritisation criteria. Conducted cross-functional workshops with technical and business stakeholders. Created evaluation framework for initiatives based on technical feasibility, market potential and strategic alignment. Established quarterly review cadence for roadmap updates. Delivered cohesive AI roadmap that secured C-level buy-in. Successfully launched 5 proof-of-concepts that generated £3M in qualified pipeline within 12 weeks. Improved cross-team collaboration and reduced duplicate efforts by 30%.
-                </p>
+                <details>
+                  <summary className="font-medium text-vault-primary cursor-pointer">Click to reveal STAR story</summary>
+                  <div className="pt-4 space-y-4">
+                    <p className="text-vault-secondary">
+                      <span className="font-medium">Situation:</span> As Oracle's APAC Cloud Architect, I was brought in by Interpol to address a critical gap: ten regional bureaus were each running their own isolated AI proofs of concept, duplicating work and budget without any shared roadmap or compliance framework.
+                    </p>
+                    <p className="text-vault-secondary">
+                      <span className="font-medium">Task:</span> My mandate was to shape and prioritise a unified, mission‑critical R&D pipeline of first‑of‑a‑kind AI PoCs that would deliver tangible breakthroughs for global law enforcement, while enforcing Oracle's SDLC guardrails and meeting Interpol's stringent cross‑border data sovereignty requirements.
+                    </p>
+                    <p className="text-vault-secondary">
+                      <span className="font-medium">Action:</span> I led "Working Backwards" strategy workshops with Interpol's CTO council and regional technology leads, translating crime‑fighting objectives into an impact/effort scoring model. We mapped out a phased six‑month roadmap, built automated compliance gates into our CI/CD pipelines using Terraform Sentinel and Oracle Cloud Guardrails, and embedded continuous policy checks aligned to Interpol's governance rules.
+                    </p>
+                    <p className="text-vault-secondary">
+                      <span className="font-medium">Outcome:</span> Within twelve weeks, we delivered four high‑impact PoCs—from automated cross‑border forensic video analysis to a sovereign LLM summarisation engine—unlocking a €7 million follow‑on pipeline, slashing "concept‑to‑funding" lead times by 60%, and earning executive approval to transition two pilots into global production in the next quarter.
+                    </p>
+                  </div>
+                </details>
               </div>
             </div>
           </FeatureCard>
