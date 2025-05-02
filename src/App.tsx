@@ -13,6 +13,7 @@ import Responsibilities from "./pages/Responsibilities";
 import You from "./pages/You";
 import FAQs from "./pages/FAQs";
 import YourPitch from "./pages/YourPitch";
+import YourProfileStars from "./pages/YourProfileStars";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/the-opportunity" element={<TheOpportunity />} />
             <Route path="/responsibilities" element={<Responsibilities />} />
             <Route path="/you" element={<You />} />
+            <Route path="/your-profile-stars" element={<YourProfileStars />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
