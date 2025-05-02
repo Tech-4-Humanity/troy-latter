@@ -2,11 +2,6 @@
 import React, { useState } from 'react';
 import { LucideIcon } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  HoverCard,
-  HoverCardTrigger,
-  HoverCardContent
-} from "@/components/ui/hover-card";
 
 interface FeatureCardProps {
   icon: LucideIcon;
@@ -31,7 +26,12 @@ export const FeatureCard = ({ icon: Icon, title, description, imageSrc, children
       const mainContentElements = [];
       
       for (const child of childContent) {
-        if (React.isValidElement(child) && child.props.className?.includes('bg-vault-light')) {
+        if (React.isValidElement(child) && 
+            typeof child.props === 'object' && 
+            child.props !== null &&
+            child.props.className &&
+            typeof child.props.className === 'string' && 
+            child.props.className.includes('bg-vault-light')) {
           starContent = child;
         } else {
           mainContentElements.push(child);
