@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
@@ -11,15 +12,15 @@ const YourPitch = () => {
         Australia's sovereign cloud is only as strong as its innovators—here's how Troy builds that strength.
       </h1>
 
-      {/* 2‑Line Bio + Key Wins */}
+      {/* 2-Line Bio + Key Wins */}
       <p className="text-lg text-vault-secondary mb-4">
-        I'm Troy Latter—a technology leader with 15 years driving sovereign‑grade AI, security and infrastructure
+        I'm Troy Latter—a technology leader with 15 years driving sovereign-grade AI, security and infrastructure
         programs at AWS, Unisys and Oracle across APAC.
       </p>
       
       <ul className="list-disc list-outside ml-5 text-vault-secondary mb-8 space-y-2">
-        <li>Delivered an ASD‑certified Government Cloud enclave in 4 months, template for all future sovereign launches.</li>
-        <li>Built a Rapid‑Start PoC framework that cut time‑to‑demo from 10 weeks to 48 hrs, unlocking $4M follow‑on funding.</li>
+        <li>Delivered an ASD-certified Government Cloud enclave in 4 months, template for all future sovereign launches.</li>
+        <li>Built a Rapid-Start PoC framework that cut time-to-demo from 10 weeks to 48 hrs, unlocking $4M follow-on funding.</li>
         <li>Automated compliance pipelines reducing audit prep from 2 weeks to &lt;1 hr, saving agencies $2M+ in effort.</li>
       </ul>
 
@@ -72,13 +73,13 @@ const YourPitch = () => {
             <h3 className="font-medium text-lg text-vault-primary mb-2">Application Motivations</h3>
             <ul className="space-y-4 text-vault-secondary">
               <li>
-                <strong className="text-vault-primary">Mission Alignment:</strong> Vault's sovereign, hyperscale mandate matches my passion for secure national‑security tech. I've dedicated my career to building secure, compliant cloud solutions for government and critical infrastructure, making this role a natural progression.
+                <strong className="text-vault-primary">Mission Alignment:</strong> Vault's sovereign, hyperscale mandate matches my passion for secure national-security tech. I've dedicated my career to building secure, compliant cloud solutions for government and critical infrastructure, making this role a natural progression.
               </li>
               <li>
-                <strong className="text-vault-primary">Proven Track Record:</strong> Delivered ASD‑accredited enclaves at AWS and classified PoCs at Unisys under mission SLAs. My experience spans the entire lifecycle of secure cloud solutions, from initial concept to ASD-certified production deployments for intelligence and defence clients.
+                <strong className="text-vault-primary">Proven Track Record:</strong> Delivered ASD-accredited enclaves at AWS and classified PoCs at Unisys under mission SLAs. My experience spans the entire lifecycle of secure cloud solutions, from initial concept to ASD-certified production deployments for intelligence and defence clients.
               </li>
               <li>
-                <strong className="text-vault-primary">Culture Fit:</strong> I thrive in founder‑driven, fail‑fast, high‑autonomy teams—exactly Vault's ethos. Throughout my career, I've consistently delivered best results in environments that value rapid innovation, technical excellence, and mission focus—all hallmarks of Vault's organisational culture.
+                <strong className="text-vault-primary">Culture Fit:</strong> I thrive in founder-driven, fail-fast, high-autonomy teams—exactly Vault's ethos. Throughout my career, I've consistently delivered best results in environments that value rapid innovation, technical excellence, and mission focus—all hallmarks of Vault's organisational culture.
               </li>
             </ul>
           </CardContent>

@@ -45,11 +45,11 @@ const FAQs = () => {
         <ul className="space-y-3">
           <li className="flex items-start">
             <span className="text-vault-accent font-bold mr-2">•</span>
-            <span><strong>90‑Day Plan Template:</strong> A fillable roadmap to map objectives, stakeholders & metrics.</span>
+            <span><strong>90-Day Plan Template:</strong> A fillable roadmap to map objectives, stakeholders & metrics.</span>
           </li>
           <li className="flex items-start">
             <span className="text-vault-accent font-bold mr-2">•</span>
-            <span><strong>Vault Whitepapers & Tech Talks:</strong> Deep dives on sovereign AI, zero‑trust architecture & battlefield clouds.</span>
+            <span><strong>Vault Whitepapers & Tech Talks:</strong> Deep dives on sovereign AI, zero-trust architecture & battlefield clouds.</span>
           </li>
           <li className="flex items-start">
             <span className="text-vault-accent font-bold mr-2">•</span>

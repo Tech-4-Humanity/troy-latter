@@ -12,18 +12,18 @@ const About = () => {
     <div className="py-12 px-6 max-w-4xl mx-auto">
       {/* Header Section */}
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-vault-primary">
-        Australia's sovereign cloud deserves world‑class innovators—here's how I deliver.
+        Australia's sovereign cloud deserves world-class innovators—here's how I deliver.
       </h1>
 
       <div className="flex flex-col md:flex-row gap-8 mb-8">
         <div className="md:w-2/3">
           <p className="text-lg text-vault-secondary mb-4">
-            I'm Troy Latter, a technology leader with 15 years of experience architecting and deploying sovereign‑grade AI, security and cloud solutions for AWS, Unisys and Oracle across APAC.
+            I'm Troy Latter, a technology leader with 15 years of experience architecting and deploying sovereign-grade AI, security and cloud solutions for AWS, Unisys and Oracle across APAC.
           </p>
           
           <ul className="list-disc list-outside ml-5 text-vault-secondary mb-8 space-y-2">
-            <li>Delivered an ASD‑certified Government Cloud enclave in 4 months—now the blueprint for every future sovereign launch.</li>
-            <li>Built a Rapid‑Start PoC framework that cut time‑to‑demo from 10 weeks to 48 hours, unlocking $4 M in follow‑on funding.</li>
+            <li>Delivered an ASD-certified Government Cloud enclave in 4 months—now the blueprint for every future sovereign launch.</li>
+            <li>Built a Rapid-Start PoC framework that cut time-to-demo from 10 weeks to 48 hours, unlocking $4 M in follow-on funding.</li>
             <li>Automated compliance pipelines that reduced audit preparation from 2 weeks to under 1 hour, saving agencies over $2 M in effort.</li>
           </ul>
           
@@ -55,7 +55,7 @@ const About = () => {
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 text-vault-primary">About Troy</h2>
         <p className="text-vault-secondary mb-6">
-          I specialize in transforming mission‑critical PoCs into production‑grade capabilities under zero‑trust and government compliance. Whether leading "tiger teams" of engineers or collaborating with C‑suite stakeholders, I thrive on solving complex national‑security challenges with elegant, scalable technology.
+          I specialise in transforming mission-critical PoCs into production-grade capabilities under zero-trust and government compliance. Whether leading "tiger teams" of engineers or collaborating with C-suite stakeholders, I thrive on solving complex national-security challenges with elegant, scalable technology.
         </p>
       </div>
       
@@ -64,7 +64,7 @@ const About = () => {
           <CardContent className="pt-6">
             <h3 className="font-medium text-lg text-vault-primary mb-2">Why Vault?</h3>
             <p className="text-vault-secondary">
-              Vault's vision of a sovereign, hyperscale cloud aligns perfectly with my passion and track record. As Australia's first ASD‑certified cloud provider, Vault has proven its commitment to security and innovation. I'm eager to join the team driving the next wave of mission‑critical capabilities for Defence, Intelligence and critical infrastructure.
+              Vault's vision of a sovereign, hyperscale cloud aligns perfectly with my passion and track record. As Australia's first ASD-certified cloud provider, Vault has proven its commitment to security and innovation. I'm eager to join the team driving the next wave of mission-critical capabilities for Defence, Intelligence and critical infrastructure.
             </p>
           </CardContent>
         </Card>
@@ -73,7 +73,7 @@ const About = () => {
           <CardContent className="pt-6">
             <h3 className="font-medium text-lg text-vault-primary mb-2">Why This Role?</h3>
             <p className="text-vault-secondary">
-              Hands‑on R&D—building prototypes that move fast, learn fast, and scale—is where I do my best work. Reporting directly to a visionary CEO, I'll shape and execute Vault's innovation pipeline, turning bleeding‑edge concepts into real‑world solutions that integrate seamlessly into your core offerings.
+              Hands-on R&D—building prototypes that move fast, learn fast, and scale—is where I do my best work. Reporting directly to a visionary CEO, I'll shape and execute Vault's innovation pipeline, turning bleeding-edge concepts into real-world solutions that integrate seamlessly into your core offerings.
             </p>
           </CardContent>
         </Card>
@@ -98,7 +98,7 @@ const About = () => {
             <CardContent className="pt-6">
               <h3 className="font-medium text-lg text-vault-primary mb-2">Proven Innovator</h3>
               <p className="text-vault-secondary">
-                Over 10 first‑of‑a‑kind solutions delivered under mission‑grade SLAs for intelligence and defence clients.
+                Over 10 first-of-a-kind solutions delivered under mission-grade SLAs for intelligence and defence clients.
               </p>
             </CardContent>
           </Card>
@@ -107,7 +107,7 @@ const About = () => {
             <CardContent className="pt-6">
               <h3 className="font-medium text-lg text-vault-primary mb-2">Technical Depth</h3>
               <p className="text-vault-secondary">
-                Hands‑on expertise with Kubernetes, IaC, post‑quantum key management and sovereign LLM frameworks—backed by real GitHub proof.
+                Hands-on expertise with Kubernetes, IaC, post-quantum key management and sovereign LLM frameworks—backed by real GitHub proof.
               </p>
             </CardContent>
           </Card>
@@ -116,7 +116,7 @@ const About = () => {
             <CardContent className="pt-6">
               <h3 className="font-medium text-lg text-vault-primary mb-2">Agile Leadership</h3>
               <p className="text-vault-secondary">
-                Built and mentored lean "tiger teams," embedding a fail‑fast, high‑trust culture that consistently triples PoC throughput and secures multi‑million‑dollar funding.
+                Built and mentored lean "tiger teams," embedding a fail-fast, high-trust culture that consistently triples PoC throughput and secures multi-million-dollar funding.
               </p>
             </CardContent>
           </Card>
@@ -142,7 +142,7 @@ const About = () => {
             <CardContent className="pt-6">
               <h3 className="font-medium text-lg text-vault-primary mb-2">Strategic Impact</h3>
               <p className="text-vault-secondary">
-                From classified AI enclaves to battlefield‑grade edge nodes, I deliver solutions that matter and generate millions in strategic value.
+                From classified AI enclaves to battlefield-grade edge nodes, I deliver solutions that matter and generate millions in strategic value.
               </p>
             </CardContent>
           </Card>
@@ -151,7 +151,7 @@ const About = () => {
             <CardContent className="pt-6">
               <h3 className="font-medium text-lg text-vault-primary mb-2">Cultural Fit</h3>
               <p className="text-vault-secondary">
-                I thrive in founder‑driven, rapid‑innovation environments that value bold experimentation and unwavering execution.
+                I thrive in founder-driven, rapid-innovation environments that value bold experimentation and unwavering execution.
               </p>
             </CardContent>
           </Card>
