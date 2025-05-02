@@ -15,21 +15,6 @@ const About = () => {
         </p>
       </div>
       
-      <div className="space-y-6 mb-10">
-        <h2 className="text-2xl font-semibold text-vault-primary">Our Foundation</h2>
-        <ul className="list-disc list-inside space-y-3 pl-4">
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">100% Australian‑owned:</span> Secure data centres strategically located in Canberra & Sydney with full sovereignty guarantees.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Security by Design:</span> Zero‑Trust networking architecture, quantum‑hardened key management & SCEC Zone 5 Security Operations Centre.
-          </li>
-          <li className="text-vault-secondary">
-            <span className="font-medium text-vault-primary">Innovation DNA:</span> First‑of‑a‑Kind PoCs in sovereign AI, battlefield clouds and regulated environments for critical infrastructure.
-          </li>
-        </ul>
-      </div>
-      
       <div className="mb-8">
         <h2 className="text-2xl font-semibold text-vault-primary mb-6">Customer Challenges We're Solving</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -69,6 +54,21 @@ const About = () => {
             </div>
           </FeatureCard>
         </div>
+      </div>
+      
+      <div className="space-y-6 mb-10">
+        <h2 className="text-2xl font-semibold text-vault-primary">Our Foundation</h2>
+        <ul className="list-disc list-inside space-y-3 pl-4">
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">100% Australian‑owned:</span> Secure data centres strategically located in Canberra & Sydney with full sovereignty guarantees.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Security by Design:</span> Zero‑Trust networking architecture, quantum‑hardened key management & SCEC Zone 5 Security Operations Centre.
+          </li>
+          <li className="text-vault-secondary">
+            <span className="font-medium text-vault-primary">Innovation DNA:</span> First‑of‑a‑Kind PoCs in sovereign AI, battlefield clouds and regulated environments for critical infrastructure.
+          </li>
+        </ul>
       </div>
     </div>
   );
