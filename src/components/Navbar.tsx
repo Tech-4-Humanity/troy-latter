@@ -23,10 +23,12 @@ export const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2">
-              <span className="font-bold text-xl">Vault Cloud</span>
-              <span className="text-vault-accent">|</span>
-              <span className="text-vault-accent text-sm">Innovation Hub</span>
+            <Link to="/" className="flex items-center">
+              <img 
+                src="/lovable-uploads/debf0aec-1583-4cf6-9bce-523fdf3eb009.png" 
+                alt="Vault Cloud" 
+                className="h-10" 
+              />
             </Link>
           </div>
 
