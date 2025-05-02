@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
-import { ChevronDown, ExternalLink } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const routes = [
   { path: '/head-of-innovation', label: 'Role Overview' },
@@ -34,7 +34,6 @@ export const Navbar = () => {
                 alt="Vault Cloud" 
                 className="h-10" 
               />
-              <ExternalLink className="ml-1 h-4 w-4 text-vault-accent opacity-75" />
             </a>
           </div>
 
