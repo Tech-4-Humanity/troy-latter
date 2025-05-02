@@ -30,24 +30,24 @@ const opportunityExamples = {
     ]
   },
   edge: {
-    title: 'Edge Compute Demo',
+    title: 'Edge Compute for Pacific HADR',
     imageSrc: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80",
     star: [
       {
         label: 'Situation',
-        text: 'A remote Defence outpost lacked low‑latency compute for predictive maintenance on tactical communications networks.'
+        text: 'During a joint Pacific humanitarian assistance and disaster relief exercise, it became clear that our partners—spanning defence forces, NGOs, and regional aid agencies—lacked reliable, low‑latency compute in austere, disconnected environments.'
       },
       {
         label: 'Task',
-        text: "Design and deploy a resilient edge compute node that operates fully offline and securely syncs back to Vault's Sovereign Cloud."
+        text: "Tasked with demonstrating Vault Cloud's sovereign edge capabilities, I assembled a fleet of AWS Snowcone devices and partnered with multi‑country teams to design an end‑to‑end edge compute solution."
       },
       {
         label: 'Action',
-        text: 'Built rugged Kubernetes clusters with VaultStack on‑prem, automated mesh networking via Terraform, and implemented secure reconnect handshakes using our Key & Secrets Management.'
+        text: 'We scripted Terraform and Ansible playbooks to deploy containerized AI inference nodes that could process satellite imagery and sensor feeds on‑site, then automatically synchronize encrypted data back to our sovereign cloud when connectivity returned.'
       },
       {
         label: 'Result',
-        text: 'Validated sub‑500 ms AI inference in simulated field tests, maintained 99.8% uptime over 30 outage cycles, and secured approval for tri‑service field trials.'
+        text: 'The proof‑of‑concept ran flawlessly: sub‑second inference during simulated outages, secure data handoff to Canberra, and zero configuration drift. This success not only validated our approach but also opened conversations about official funding, operational approvals, and identifying a permanent deployment owner.'
       }
     ]
   },
