@@ -55,6 +55,16 @@ const asksExamples = {
       { label: 'Action', text: 'Launched monthly Design Thinking Bootcamps to map user journeys and uncover high‑value problem areas. Ran bi‑weekly Working Backwards Workshops with C‑suite and frontline customers to define success metrics before writing a single line of code. Instituted Lean UX Sprints—two‑day rapid prototyping sessions where cross‑functional "tiger teams" built and tested mockups with real users. Hosted public Innovation Days and Tech Talks to showcase early prototypes, gather feedback, and build external excitement. Piloted Open Innovation Challenges, inviting subject‑matter experts and university partners to contribute templates, playbooks and code samples. Codified a Kill‑or‑Scale Decision Framework with clear criteria around strategic impact, technical feasibility and compliance readiness.' },
       { label: 'Outcome', text: 'Within one quarter, we halved the average ideation‑to‑PoC timeline from 8 weeks to 4 weeks, raised stakeholder alignment scores by 40%, and doubled the PoC success rate—transforming Vault\'s R&D from ad‑hoc experiments into a disciplined, high‑output engine.' }
     ]
+  },
+  security: {
+    title: 'Complex Security Compliance',
+    imageSrc: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80",
+    star: [
+      { label: 'Situation', text: 'A critical defence agency needed to migrate sensitive workloads to the cloud while maintaining PROTECTED-level security controls and demonstrating continuous compliance with the ISM.' },
+      { label: 'Task', text: 'Design and implement a zero-trust cloud architecture with real-time compliance monitoring that could pass rigorous ASD certification within an accelerated timeline.' },
+      { label: 'Action', text: 'Led a combined technical and compliance team to architect a multi-layered security approach. Implemented automated security boundary controls with hardware security modules and encryption key rotation. Developed a continuous compliance dashboard that mapped all cloud configurations to specific ISM controls and alerted on any drift. Created custom audit trails and implemented least-privilege access controls across all system boundaries. Conducted weekly tabletop exercises with security stakeholders to validate controls against emerging threats.' },
+      { label: 'Outcome', text: 'Successfully achieved ASD certification in record time (6 weeks vs typical 6 months). Delivered a security framework that automated 85% of compliance checks and reduced audit preparation by 70%. The solution became a reference architecture adopted by three additional defence agencies, generating $4.5M in follow-on contracts.' }
+    ]
   }
 };
 
@@ -128,4 +138,3 @@ const CustomerAsksStars = () => {
 };
 
 export default CustomerAsksStars;
-
