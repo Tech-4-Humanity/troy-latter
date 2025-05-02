@@ -1,4 +1,3 @@
-
 import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
 import { Separator } from '@/components/ui/separator';
@@ -138,6 +137,25 @@ const Responsibilities = () => {
           </li>
           <li className="text-vault-secondary">
             <span className="font-medium text-vault-primary">Customer Validation:</span> Demo PoCs, gather feedback, and refine real‑world applications.
+            <div className="bg-vault-light p-6 mt-3 rounded-lg">
+              <details>
+                <summary className="font-medium text-vault-primary cursor-pointer">Click to reveal STAR story</summary>
+                <div className="pt-4 space-y-4">
+                  <p className="text-vault-secondary">
+                    <span className="font-medium">Situation:</span> A major Australian financial institution sought to migrate 200 legacy applications to Google Cloud and adopt G Suite for collaboration—but their board mandated that all customer and transactional data remain strictly onshore under sovereign‑data requirements.
+                  </p>
+                  <p className="text-vault-secondary">
+                    <span className="font-medium">Task:</span> Prove that a hybrid Google Cloud / G Suite solution could move critical apps, secure data residency, and enhance business operations—without any data ever leaving Australian jurisdiction.
+                  </p>
+                  <p className="text-vault-secondary">
+                    <span className="font-medium">Action:</span> I formed and led a cross‑organizational "Tiger Team" with Google engineers and the bank's security, legal and operations leads. We stood up a PoC in GCP's Sydney region, using Migrate for Compute Engine to containerize representative apps, enforced data‑in‑region via VPC Service Controls, and rolled out G Suite with custom DLP rules. Over three weeks, we conducted daily user‑feedback workshops with frontline bankers and compliance officers, iterated on single‑sign‑on and permission models, and presented weekly progress demos to executives—embedding feedback into each sprint.
+                  </p>
+                  <p className="text-vault-secondary">
+                    <span className="font-medium">Outcome:</span> The pilot achieved 99.9% reliability, cut application onboarding time from four weeks to 24 hours, and boosted collaboration metrics by 35%. Armed with these results and a clear ROI model, the bank green‑lit a $10 million full‑scale migration, cementing Google Cloud and G Suite as the foundation for its sovereign‑data digital transformation.
+                  </p>
+                </div>
+              </details>
+            </div>
           </li>
           <li className="text-vault-secondary">
             <span className="font-medium text-vault-primary">Technical Evangelism:</span> Represent Vault at industry forums, publish whitepapers, host Tech Talks.
