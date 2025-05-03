@@ -14,7 +14,7 @@ const opportunityExamples = {
   edge: {
     title: 'Edge Compute for Pacific HADR',
     imageSrc: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80",
-    content: "Situation: At the behest of the Royal Australian Navy, multiple defence units and humanitarian agencies lacked real‑time analytic capabilities in the field during Pacific disaster relief operations. They needed to process sensitive imagery and sensor data on‑site—under strict sovereign data requirements—and then sync only approved outputs back into AWS.\n\nTask: Prove that a fleet of AWS Snowcone edge devices could:\n\nRun AI inference on classified data in austere, disconnected environments.\n\nAutomatically and securely synchronize only vetted results to AWS Cloud.\n\nUncover where this edge‑to‑cloud pattern delivers lasting business value for defence and critical infrastructure.\n\nAction: I led a joint AWS‑Navy‑NGO \"tiger team,\" kicking off with Working Backwards workshops to align on mission‑critical use cases. We developed Terraform/Ansible modules to automate Snowcone provisioning, embedded AWS IoT Greengrass for on‑device inference pipelines, and built encrypted S3 sync scripts that only transmitted approved metadata back to AWS. Throughout 24‑hour sprint cycles, we ran simulated network outages, gathered user feedback, and tuned our mesh and security protocols.\n\nOutcome: The PoC delivered sub‑second object detection on live disaster imagery, reducing decision cycles by 60% and cutting air‑lift planning time from 8 hours to 4 hours per mission. Critically, the exercise surfaced a clear business opportunity: an AWS Outposts‑backed edge service that can slash egress costs by 30%, empower frontline units with sovereign‑controlled compute, and unlock multi‑million‑dollar region expansions—paving the way for Vault‑powered edge solutions of the future."
+    content: "Situation: At the behest of the Royal Australian Navy, multiple defence units and humanitarian agencies lacked real‑time analytic capabilities in the field during Pacific disaster relief operations. They needed to process sensitive imagery and sensor data on‑site—under strict sovereign data requirements—and then sync only approved outputs back into AWS.\n\nTask: Prove that a fleet of AWS Snowcone edge devices could:\n\nRun AI inference on classified data in austere, disconnected environments.\n\nAutomatically and securely synchronize only vetted results to AWS Cloud.\n\nUncover where this edge‑to‑cloud pattern delivers lasting business value for defence and critical infrastructure.\n\nAction: I led a joint AWS‑Navy‑NGO \"tiger team,\" kicking off with Working Backwards workshops to align on mission‑critical use cases. We developed Terraform/Ansible modules to automate Snowcone provisioning, embedded AWS IoT Greengrass for on‑device inference pipelines, and built encrypted S3 sync scripts that only transmitted approved metadata back to AWS. Throughout 24‑hour sprint cycles, we ran simulated network outages, gathered user feedback, and tuned our mesh and security protocols.\n\nOutcome: The PoC delivered sub‑second object detection on live disaster imagery, reducing decision cycles by 60% and cutting air‑lift planning time from 8 hours to 4 hours per mission. Critically, the exercise surfaced a clear business opportunity: an AWS Outposts‑backed edge service that can slash egress costs by 30%, empower frontline units with sovereign‑controlled compute, and unlock multi‑million‑dollar region expansions���paving the way for Vault‑powered edge solutions of the future."
   },
   automation: {
     title: 'Automation Framework',
@@ -28,17 +28,15 @@ const TheOpportunity = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <PageTitle title="The Opportunity" />
+      <PageTitle title="Customer Success Stories" />
       
       <div className="text-lg mb-8">
         <p className="mb-6">
-          This role is a rare chance to drive sovereign‑grade cloud innovation at the intersection of AI, security,
-          and national defence. You'll break rules, prototype new paradigms, and forge Vault's future offering.
+          I've built and scaled mission-critical cloud and IoT platforms at AWS and Oracle for national-security clients; now I'm here to break the mold at Vault—rapid-fire prototyping, rule-breaking innovation, and forging the future of sovereign cloud.
         </p>
       </div>
       
       <div className="mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-8">Customer Success Stories</h2>
         <div className="grid grid-cols-1 gap-8">
           {Object.entries(opportunityExamples).map(([key, example]) => (
             <FeatureCard
