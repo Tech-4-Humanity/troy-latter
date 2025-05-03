@@ -19,14 +19,14 @@ const YourPitch = () => {
         </Avatar>
         <div>
           <h1 className="text-3xl md:text-4xl font-bold mb-6 text-vault-primary">
-            Australia's sovereign cloud is only as strong as its innovators—here's how Troy builds that strength.
+            Australia's sovereign cloud is only as strong as its innovators - here's how Troy builds that strength.
           </h1>
         </div>
       </div>
 
       {/* 2-Line Bio + Key Wins */}
       <p className="text-lg text-vault-secondary mb-4">
-        I'm Troy Latter—a technology leader with 15 years driving sovereign-grade AI, security and infrastructure
+        I'm Troy Latter - a technology leader with 15 years driving sovereign-grade AI, security and infrastructure
         programs at AWS, Unisys and Oracle across APAC.
       </p>
       
@@ -46,7 +46,7 @@ const YourPitch = () => {
           <CardContent className="pt-6">
             <h3 className="font-medium text-lg text-vault-primary mb-2">Tell Me About Yourself</h3>
             <p className="text-vault-secondary">
-              I'm Troy Latter—a technology leader with 15 years in sovereign cloud, AI-driven automation and national-security transformation for AWS, Unisys and Oracle across APAC. I thrive on turning mission-critical PoCs into production-grade capabilities under stringent compliance and zero-trust controls.
+              I'm Troy Latter - a technology leader with 15 years in sovereign cloud, AI-driven automation and national-security transformation for AWS, Unisys and Oracle across APAC. I thrive on turning mission-critical PoCs into production-grade capabilities under stringent compliance and zero-trust controls.
             </p>
           </CardContent>
         </Card>
@@ -64,7 +64,7 @@ const YourPitch = () => {
           <CardContent className="pt-6">
             <h3 className="font-medium text-lg text-vault-primary mb-2">Why This Role?</h3>
             <p className="text-vault-secondary">
-              Hands-on R&D under a visionary CEO is where I deliver my best work—rapid PoCs, strategic roadmap and seamless integration into core products. This position combines my passion for innovation with my deep expertise in secure, sovereign cloud technologies.
+              Hands-on R&D under a visionary CEO is where I deliver my best work - rapid PoCs, strategic roadmap and seamless integration into core products. This position combines my passion for innovation with my deep expertise in secure, sovereign cloud technologies.
             </p>
           </CardContent>
         </Card>
@@ -91,7 +91,7 @@ const YourPitch = () => {
                 <strong className="text-vault-primary">Proven Track Record:</strong> Delivered ASD-accredited enclaves at AWS and classified PoCs at Unisys under mission SLAs. My experience spans the entire lifecycle of secure cloud solutions, from initial concept to ASD-certified production deployments for intelligence and defence clients.
               </li>
               <li>
-                <strong className="text-vault-primary">Culture Fit:</strong> I thrive in founder-driven, fail-fast, high-autonomy teams—exactly Vault's ethos. Throughout my career, I've consistently delivered best results in environments that value rapid innovation, technical excellence, and mission focus—all hallmarks of Vault's organisational culture.
+                <strong className="text-vault-primary">Culture Fit:</strong> I thrive in founder-driven, fail-fast, high-autonomy teams - exactly Vault's ethos. Throughout my career, I've consistently delivered best results in environments that value rapid innovation, technical excellence, and mission focus - all hallmarks of Vault's organisational culture.
               </li>
             </ul>
           </CardContent>

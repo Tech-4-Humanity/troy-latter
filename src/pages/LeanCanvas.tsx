@@ -22,7 +22,7 @@ const LeanCanvas = () => {
         
         <h2 className="text-2xl font-semibold mb-4 text-vault-primary">Coming Soon</h2>
         <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-          We're developing a specialised Lean Business Canvas tailored for defence-grade innovation projects. This framework will help you rapidly validate and develop business models from PoC insights, with specific considerations for security compliance, sovereign requirements, and mission-critical stakeholder needs.
+          We're developing a specialised Lean Business Canvas tailored for defence - grade innovation projects. This framework will help you rapidly validate and develop business models from PoC insights, with specific considerations for security compliance, sovereign requirements, and mission - critical stakeholder needs.
         </p>
         
         <div className="bg-white p-4 rounded-md border border-gray-200 mb-6 inline-block">

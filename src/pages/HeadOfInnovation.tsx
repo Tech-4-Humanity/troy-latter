@@ -9,7 +9,7 @@ const HeadOfInnovation = () => {
       <div className="bg-gradient-to-r from-vault-primary to-vault-primary/80 text-white rounded-xl p-8 md:p-12 shadow-lg text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">Head of Innovation</h1>
         <p className="text-xl md:text-2xl text-gray-100 mb-8 max-w-2xl mx-auto">
-          Lead bleeding‑edge innovation for Australia's sovereign cloud
+          Lead bleeding - edge innovation for Australia's sovereign cloud
         </p>
         <div className="flex justify-center mb-8">
           <img 
@@ -31,7 +31,7 @@ const HeadOfInnovation = () => {
           <h2 className="text-2xl md:text-3xl font-bold text-vault-primary m-0">Vault Cloud Innovation Hub</h2>
         </div>
         <p className="text-lg text-vault-secondary leading-relaxed">
-          Vault Cloud is Australia's only ASD‑certified hyperscale sovereign cloud operator, 
+          Vault Cloud is Australia's only ASD - certified hyperscale sovereign cloud operator, 
           uniquely positioned to deliver innovation at scale for national security and critical 
           infrastructure. Our Innovation Hub serves as the catalyst for next-generation secure 
           cloud solutions that address the most pressing challenges facing Australia's most 
