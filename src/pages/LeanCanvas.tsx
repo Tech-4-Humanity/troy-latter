@@ -26,7 +26,7 @@ const LeanCanvas = () => {
         </p>
         
         <div className="bg-white p-4 rounded-md border border-gray-200 mb-6 inline-block">
-          <p className="text-sm font-medium">Expected release: August 2025</p>
+          <p className="text-sm font-medium">Expected release: July 2025</p>
         </div>
         
         <Button asChild className="mt-2">
