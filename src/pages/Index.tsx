@@ -20,7 +20,7 @@ const Index = () => {
       
       <div className="flex justify-center mt-10">
         <Button size="lg" className="bg-[#56A4E3] hover:bg-[#4290D3] text-white text-lg px-8 py-6 h-auto rounded-md" asChild>
-          <Link to="/your-pitch">
+          <Link to="/about-troy">
             Explore Troy's Application
           </Link>
         </Button>

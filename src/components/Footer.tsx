@@ -31,7 +31,7 @@ export const Footer = () => {
                 <Link to="/" className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200">
                   Home
                 </Link>
-                <Link to="/your-pitch" className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200">
+                <Link to="/about-troy" className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200">
                   About Troy
                 </Link>
                 <Link to="/the-opportunity" className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200">

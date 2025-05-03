@@ -33,7 +33,8 @@ const App = () => (
         <Layout>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/your-pitch" element={<YourPitch />} />
+            <Route path="/about-troy" element={<AboutTroy />} />
+            <Route path="/your-pitch" element={<Navigate to="/about-troy" />} />
             <Route path="/customer-asks" element={<CustomerAsks />} />
             <Route path="/customer-asks-stars" element={<CustomerAsksStars />} />
             <Route path="/the-opportunity" element={<TheOpportunity />} />
@@ -45,7 +46,6 @@ const App = () => (
             <Route path="/resources/90-day-plan" element={<NinetyDayPlan />} />
             <Route path="/resources/whitepapers" element={<Whitepapers />} />
             <Route path="/resources/lean-canvas" element={<LeanCanvas />} />
-            <Route path="/about-troy" element={<AboutTroy />} />
             {/* Redirect from head-of-innovation to home page */}
             <Route path="/head-of-innovation" element={<Navigate to="/" />} />
             <Route path="*" element={<NotFound />} />

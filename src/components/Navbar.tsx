@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 
 const routes = [
-  { path: '/your-pitch', label: 'About Troy' },
+  { path: '/about-troy', label: 'About Troy' },
   { path: '/the-opportunity', label: 'The Opportunity' },
   { path: '/responsibilities', label: 'Responsibilities' },
   { path: '/you', label: 'Skills & Experience' },
