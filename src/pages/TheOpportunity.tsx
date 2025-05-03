@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card } from '@/components/ui/card';
@@ -32,7 +33,7 @@ const TheOpportunity = () => {
       
       <div className="text-lg mb-8">
         <p className="mb-6">
-          I've built and scaled mission-critical cloud and IoT platforms at AWS and Oracle for national-security clients; now I'm here to break the mold at Vault—rapid-fire prototyping, rule-breaking innovation, and forging the future of sovereign cloud.
+          I've built and scaled mission-critical cloud and IoT platforms at AWS and Oracle for national-security clients; now I'm here to break the mold at Vault—rapid-fire prototyping, respectful rule-breaking innovation, and forging the future of sovereign cloud.
         </p>
       </div>
       
