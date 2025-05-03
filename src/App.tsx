@@ -16,7 +16,6 @@ import FAQs from "./pages/FAQs";
 import YourPitch from "./pages/YourPitch";
 import YourProfileStars from "./pages/YourProfileStars";
 import CustomerAsksStars from "./pages/CustomerAsksStars";
-import HeadOfInnovation from "./pages/HeadOfInnovation";
 import NotFound from "./pages/NotFound";
 import NinetyDayPlan from "./pages/NinetyDayPlan";
 import Whitepapers from "./pages/Whitepapers";
@@ -34,7 +33,6 @@ const App = () => (
         <Layout>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/head-of-innovation" element={<HeadOfInnovation />} />
             <Route path="/your-pitch" element={<YourPitch />} />
             <Route path="/customer-asks" element={<CustomerAsks />} />
             <Route path="/customer-asks-stars" element={<CustomerAsksStars />} />

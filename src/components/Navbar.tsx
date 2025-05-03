@@ -18,12 +18,12 @@ export const Navbar = () => {
   const location = useLocation();
   
   return (
-    <header className="bg-vault-primary text-white shadow-lg sticky top-0 z-50">
+    <header className="bg-[#0A101E] text-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
             <Link 
-              to="/head-of-innovation"
+              to="/"
               className="flex items-center hover:opacity-90 transition-opacity"
             >
               <img 
@@ -40,8 +40,8 @@ export const Navbar = () => {
               <Link
                 key={route.path}
                 to={route.path}
-                className={`text-gray-100 hover:text-vault-accent transition-colors duration-200 text-sm font-medium px-2 py-1 border-b-2 ${
-                  location.pathname === route.path ? 'border-vault-accent text-vault-accent' : 'border-transparent'
+                className={`text-gray-100 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-1 border-b-2 ${
+                  location.pathname === route.path ? 'border-[#56A4E3] text-[#56A4E3]' : 'border-transparent'
                 }`}
               >
                 {route.label}
@@ -53,7 +53,7 @@ export const Navbar = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-white hover:bg-vault-primary/80"
+            className="md:hidden text-white hover:bg-[#0A101E]/80"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <span className="sr-only">Toggle menu</span>
@@ -73,8 +73,8 @@ export const Navbar = () => {
                 <Link
                   key={route.path}
                   to={route.path}
-                  className={`text-gray-200 hover:text-vault-accent transition-colors duration-200 text-sm font-medium px-2 py-1 ${
-                    location.pathname === route.path ? 'bg-vault-primary/30 text-vault-accent rounded' : ''
+                  className={`text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-1 ${
+                    location.pathname === route.path ? 'bg-[#0A101E]/30 text-[#56A4E3] rounded' : ''
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
