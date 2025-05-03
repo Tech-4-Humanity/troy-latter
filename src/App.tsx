@@ -21,6 +21,7 @@ import NotFound from "./pages/NotFound";
 import NinetyDayPlan from "./pages/NinetyDayPlan";
 import Whitepapers from "./pages/Whitepapers";
 import LeanCanvas from "./pages/LeanCanvas";
+import AboutTroy from "./pages/AboutTroy";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
             <Route path="/resources/90-day-plan" element={<NinetyDayPlan />} />
             <Route path="/resources/whitepapers" element={<Whitepapers />} />
             <Route path="/resources/lean-canvas" element={<LeanCanvas />} />
+            <Route path="/about-troy" element={<AboutTroy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
