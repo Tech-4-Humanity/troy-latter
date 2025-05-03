@@ -18,7 +18,7 @@ const profileExamples = {
       },
       {
         label: 'Outcome',
-        text: 'Reduced PoC spin‑up time by 70% and improved cross‑agency AI adoption by 50% within three months.'
+        text: 'Reduced PoC spin-up time by 70% and improved cross-agency AI adoption by 50% within three months.'
       }
     ]
   },
@@ -73,7 +73,7 @@ const YourProfileStars = () => {
         </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6">
         {Object.entries(profileExamples).map(([key, example]) => (
           <FeatureCard
             key={key}

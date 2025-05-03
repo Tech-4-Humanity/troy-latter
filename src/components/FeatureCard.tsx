@@ -22,7 +22,7 @@ export const FeatureCard = ({
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg">
       <div 
-        className="w-full h-64 overflow-hidden cursor-pointer relative"
+        className="w-full h-72 overflow-hidden cursor-pointer relative"
         onClick={() => setShowDetails(!showDetails)}
       >
         <img 
@@ -35,7 +35,7 @@ export const FeatureCard = ({
         </div>
       </div>
       <CardContent className="p-6">
-        <div className="flex flex-col items-start gap-4">
+        <div className="flex flex-col items-start gap-4 w-full">
           <div className="flex items-center gap-2">
             {Icon && <Icon className="text-vault-primary h-5 w-5" />}
             <h3 className="text-xl font-semibold text-vault-primary">{title}</h3>
