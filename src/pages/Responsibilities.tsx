@@ -9,7 +9,7 @@ import { ImpactScoring } from '@/components/responsibilities/ImpactScoring';
 const Responsibilities = () => {
   return (
     <div className="max-w-7xl mx-auto">
-      <PageTitle title="Responsibilities" />
+      <PageTitle title="Initiatives" />
       
       <div className="text-lg mb-8">
         <p className="mb-6">

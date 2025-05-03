@@ -5,7 +5,6 @@ import { LeadershipCard } from './LeadershipCard';
 export const LeadershipExamples = () => {
   return (
     <div className="mb-12">
-      <h2 className="text-2xl font-semibold text-vault-primary mb-8">My Leadership Examples</h2>
       <div className="grid grid-cols-1 gap-8">
         <LeadershipCard
           title="Security Framework Excellence"
