@@ -64,6 +64,8 @@ const You = () => {
 
       {/* Skills & Experience details */}
       <div className="space-y-8 mb-10">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Additional Experiences</h2>
+        
         <div className="bg-vault-light p-6 rounded-lg">
           <h3 className="font-medium text-lg text-vault-primary mb-4">Visionary Innovator</h3>
           <p className="text-vault-secondary">
