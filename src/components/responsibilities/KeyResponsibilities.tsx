@@ -5,7 +5,6 @@ import { KeyResponsibility } from './KeyResponsibility';
 export const KeyResponsibilities = () => {
   return (
     <div className="space-y-8 mb-10">
-      <h2 className="text-2xl font-semibold text-vault-primary">Key Responsibilities</h2>
       <ul className="list-disc list-inside space-y-4 pl-4">
         <KeyResponsibility
           title="Blueprint to Breakthrough"
