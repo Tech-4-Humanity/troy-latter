@@ -8,7 +8,7 @@ const routes = [
   { path: '/your-pitch', label: 'About Troy' },
   { path: '/the-opportunity', label: 'The Opportunity' },
   { path: '/responsibilities', label: 'Responsibilities' },
-  { path: '/you', label: 'My Matching Experience' },
+  { path: '/you', label: 'Skills & Experience' },
   { path: '/customer-asks', label: 'Customer Asks' },
   { path: '/faqs', label: 'FAQs' },
 ];

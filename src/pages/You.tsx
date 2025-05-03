@@ -1,4 +1,3 @@
-
 import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
 import { Separator } from '@/components/ui/separator';
@@ -34,16 +33,15 @@ const skillExamples = {
 const You = () => {
   return (
     <div className="max-w-7xl mx-auto">
-      <PageTitle title="Skills & Experience" />
+      <PageTitle title="My Matching Experience" />
       
       <div className="text-lg mb-8">
         <p className="mb-6">
-          You bring breakthrough innovation skills and national‑security domain mastery, with proven delivery in regulated environments.
+          Breakthrough innovation skills, national‑security domain mastery, with proven delivery in regulated environments.
         </p>
       </div>
       
       <div className="mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-8">My Matching Experience</h2>
         <div className="grid grid-cols-1 gap-8">
           {Object.entries(skillExamples).map(([key, example]) => (
             <FeatureCard
