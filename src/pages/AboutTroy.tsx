@@ -21,9 +21,20 @@ const AboutTroy = () => {
         </div>
       </section>
 
-      {/* Achievements & Profile */}
+      {/* Profile Image and Achievements */}
       <section className="container mx-auto px-6 py-8">
         <div className="grid md:grid-cols-2 gap-12 items-start">
+          {/* Profile Image */}
+          <div className="flex justify-center">
+            <div className="rounded-lg overflow-hidden shadow-lg border border-gray-100 max-w-md">
+              <img 
+                src="/lovable-uploads/83bdd2b0-6ff7-412c-983a-f1baf27538c4.png" 
+                alt="Troy Latter" 
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+
           {/* Key Achievements */}
           <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
             <h2 className="text-2xl font-semibold mb-6 text-vault-primary">Key Achievements</h2>
@@ -39,17 +50,19 @@ const AboutTroy = () => {
               </li>
             </ul>
           </div>
+        </div>
+      </section>
 
-          {/* About Troy */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-            <h2 className="text-2xl font-semibold mb-6 text-vault-primary">About Troy</h2>
-            <p className="mb-4 text-gray-700 leading-relaxed">
-              A visionary technologist and strategic leader, Troy specializes in transforming mission‑critical proofs of concept into production-grade capabilities under zero‑trust and stringent compliance controls. He has built battlefield‑ready edge clusters, deployed sovereign LLM frameworks, and driven multi‑million‑dollar innovation pipelines for top‑tier government and enterprise clients.
-            </p>
-            <p className="mb-4 text-gray-700 leading-relaxed">
-              Troy holds an active NV2 security clearance and serves on Standards Australia's BCI & Robotics Committee as well as the QLD Government AI Hub advisory board. His unique blend of policy fluency, hands‑on technical expertise, and agile leadership makes him ideally placed to guide Vault Cloud's next wave of sovereign innovation.
-            </p>
-          </div>
+      {/* About Troy */}
+      <section className="container mx-auto px-6 py-8">
+        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+          <h2 className="text-2xl font-semibold mb-6 text-vault-primary">About Troy</h2>
+          <p className="mb-4 text-gray-700 leading-relaxed">
+            A visionary technologist and strategic leader, Troy specializes in transforming mission‑critical proofs of concept into production-grade capabilities under zero‑trust and stringent compliance controls. He has built battlefield‑ready edge clusters, deployed sovereign LLM frameworks, and driven multi‑million‑dollar innovation pipelines for top‑tier government and enterprise clients.
+          </p>
+          <p className="mb-4 text-gray-700 leading-relaxed">
+            Troy holds an active NV2 security clearance and serves on Standards Australia's BCI & Robotics Committee as well as the QLD Government AI Hub advisory board. His unique blend of policy fluency, hands‑on technical expertise, and agile leadership makes him ideally placed to guide Vault Cloud's next wave of sovereign innovation.
+          </p>
         </div>
       </section>
     </div>
