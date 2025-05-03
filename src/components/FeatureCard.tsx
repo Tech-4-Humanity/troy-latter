@@ -10,7 +10,13 @@ interface FeatureCardProps {
   icon?: React.ElementType;
 }
 
-export const FeatureCard = ({ title, imageSrc, children }: FeatureCardProps) => {
+export const FeatureCard = ({ 
+  title, 
+  description, 
+  imageSrc, 
+  children, 
+  icon: Icon 
+}: FeatureCardProps) => {
   const [showDetails, setShowDetails] = useState(false);
   
   return (
@@ -30,7 +36,14 @@ export const FeatureCard = ({ title, imageSrc, children }: FeatureCardProps) => 
       </div>
       <CardContent className="p-6">
         <div className="flex flex-col items-start gap-4">
-          <h3 className="text-xl font-semibold text-vault-primary">{title}</h3>
+          <div className="flex items-center gap-2">
+            {Icon && <Icon className="text-vault-primary h-5 w-5" />}
+            <h3 className="text-xl font-semibold text-vault-primary">{title}</h3>
+          </div>
+          
+          {description && !showDetails && (
+            <p className="text-vault-secondary text-sm">{description}</p>
+          )}
           
           {showDetails && (
             <div className="bg-vault-light/70 p-4 rounded-lg w-full animate-fade-in">

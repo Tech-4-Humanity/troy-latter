@@ -1,8 +1,7 @@
 
 import { useState } from 'react';
 import { PageTitle } from '@/components/PageTitle';
-import { Card } from '@/components/ui/card';
-import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { FeatureCard } from '@/components/FeatureCard';
 
 const profileExamples = {
   visionary: {
@@ -76,36 +75,20 @@ const YourProfileStars = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {Object.entries(profileExamples).map(([key, example]) => (
-          <Card key={key} className="overflow-hidden">
-            <div 
-              className="cursor-pointer"
-              onClick={() => setOpenKey(openKey === key ? null : key)}
-            >
-              <AspectRatio ratio={16/9}>
-                <img 
-                  src={example.imageSrc} 
-                  alt={example.title}
-                  className="h-full w-full object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
-                />
-              </AspectRatio>
-            </div>
-            <div className="p-4">
-              <h3 className="text-xl font-semibold text-vault-primary mb-2">{example.title}</h3>
-              <p className="text-vault-secondary text-sm mb-3">
-                {openKey === key ? "Click to hide details" : "Click for more information"}
-              </p>
-              {openKey === key && (
-                <div className="bg-vault-light p-4 rounded-lg text-left space-y-3 animate-fade-in">
-                  {example.star.map((item) => (
-                    <div key={item.label} className="space-y-1">
-                      <p className="font-medium text-vault-primary">{item.label}:</p>
-                      <p className="text-vault-secondary text-sm">{item.text}</p>
-                    </div>
-                  ))}
+          <FeatureCard
+            key={key}
+            title={example.title}
+            imageSrc={example.imageSrc}
+          >
+            <div className="space-y-3 text-left">
+              {example.star.map((item) => (
+                <div key={item.label} className="space-y-1">
+                  <p className="font-medium text-vault-primary">{item.label}:</p>
+                  <p className="text-vault-secondary text-sm">{item.text}</p>
                 </div>
-              )}
+              ))}
             </div>
-          </Card>
+          </FeatureCard>
         ))}
       </div>
     </div>

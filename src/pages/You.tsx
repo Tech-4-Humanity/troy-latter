@@ -5,7 +5,7 @@ import { Separator } from '@/components/ui/separator';
 
 const skillExamples = {
   sovereign: {
-    title: "Sovereign AI Deployment (AWS)",
+    title: "Sovereign AI Deployment",
     imageSrc: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80",
     content: "Situation: A top‑tier Australian intelligence agency partnered with AWS to deploy AI‑driven document summarisation, but their strict data‑sovereignty policies forbade any sensitive content from ever leaving their secure premises.\n\nTask: Deliver a fully on‑premises LLM service—leveraging AWS Outposts—that met the agency's rigorous audit, encryption, and access‑control requirements, while enabling analysts to generate rapid, accurate intelligence briefings.\n\nAction: I assembled and led a dedicated AWS team onsite, oversaw the rack‑and‑stack of Outposts hardware, and collaborated directly with intelligence analysts to tailor the fine‑tuned model to their domain. We embedded comprehensive audit logging, real‑time token telemetry, and classifier‑based bias/hallucination guardrails to ensure every output adhered to security mandates. Continuous feedback loops with the end‑users drove rapid iterations, and I presented fortnightly demos to the agency's CTO council.\n\nOutcome: Within eight months of launch, the solution cut briefing‑prep time by 60%—shrinking a multi‑day task into a 30‑minute analytic sprint—while maintaining 100% data‑sovereignty compliance and recording zero security incidents. This success secured a $1.8 million, multi‑year support and expansion agreement, and set the standard template for future sovereign AI deployments across the government."
   },
@@ -58,7 +58,7 @@ const You = () => {
       
       <Separator className="my-10 bg-vault-accent/30" />
 
-      {/* Added Skills & Experience details */}
+      {/* Skills & Experience details */}
       <div className="space-y-8 mb-10">
         <div className="bg-vault-light p-6 rounded-lg">
           <h3 className="font-medium text-lg text-vault-primary mb-4">Visionary Innovator</h3>
