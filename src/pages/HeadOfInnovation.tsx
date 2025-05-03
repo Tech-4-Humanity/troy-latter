@@ -6,7 +6,7 @@ import { ChevronRight } from 'lucide-react';
 const HeadOfInnovation = () => {
   return (
     <div className="space-y-12">
-      <div className="bg-gradient-to-r from-vault-primary to-vault-primary/80 text-white rounded-xl p-8 md:p-12 shadow-lg text-center">
+      <div className="bg-[#141E33] text-white p-8 md:p-12 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Head of Innovation</h1>
         <p className="text-xl md:text-2xl text-gray-100 mb-8 max-w-2xl mx-auto">
           Leading bleeding - edge innovation for Australia's sovereign cloud
@@ -18,7 +18,7 @@ const HeadOfInnovation = () => {
             className="h-28" 
           />
         </div>
-        <Button size="lg" className="bg-vault-accent hover:bg-vault-accent/90 text-white" asChild>
+        <Button size="lg" className="bg-[#56A4E3] hover:bg-[#4290D3] text-white" asChild>
           <Link to="/your-pitch" className="flex items-center">
             Explore Opportunity <ChevronRight className="ml-1 h-4 w-4" />
           </Link>
@@ -26,7 +26,7 @@ const HeadOfInnovation = () => {
       </div>
       
       <div className="flex justify-center mt-6">
-        <Button size="lg" className="bg-vault-accent hover:bg-vault-accent/90 text-white" asChild>
+        <Button size="lg" className="bg-[#56A4E3] hover:bg-[#4290D3] text-white" asChild>
           <Link to="/your-pitch">
             Explore Troy's Application
           </Link>
