@@ -4,7 +4,6 @@ import { PageTitle } from '@/components/PageTitle';
 import { Separator } from '@/components/ui/separator';
 import { LeadershipExamples } from '@/components/responsibilities/LeadershipExamples';
 import { KeyResponsibilities } from '@/components/responsibilities/KeyResponsibilities';
-import { ImpactScoring } from '@/components/responsibilities/ImpactScoring';
 
 const Responsibilities = () => {
   return (
@@ -22,10 +21,6 @@ const Responsibilities = () => {
       <Separator className="my-10 bg-vault-accent/30" />
       
       <KeyResponsibilities />
-      
-      <Separator className="my-10 bg-vault-accent/30" />
-      
-      <ImpactScoring />
       
       <Separator className="my-10 bg-vault-accent/30" />
       
