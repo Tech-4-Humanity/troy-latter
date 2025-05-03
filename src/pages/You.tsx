@@ -1,4 +1,3 @@
-
 import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
 import { Separator } from '@/components/ui/separator';
@@ -39,7 +38,7 @@ const You = () => {
       
       <div className="mb-12">
         <h2 className="text-2xl font-semibold text-vault-primary mb-8">My Matching Experience</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8">
           {Object.entries(skillExamples).map(([key, example]) => (
             <FeatureCard
               key={key}

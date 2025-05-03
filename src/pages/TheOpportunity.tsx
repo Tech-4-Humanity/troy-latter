@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card } from '@/components/ui/card';
@@ -40,7 +39,7 @@ const TheOpportunity = () => {
       
       <div className="mb-12">
         <h2 className="text-2xl font-semibold text-vault-primary mb-8">Customer Success Stories</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8">
           {Object.entries(opportunityExamples).map(([key, example]) => (
             <FeatureCard
               key={key}

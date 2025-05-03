@@ -22,7 +22,7 @@ export const FeatureCard = ({
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg">
       <div 
-        className="w-full h-72 overflow-hidden cursor-pointer relative"
+        className="w-full h-96 overflow-hidden cursor-pointer relative"
         onClick={() => setShowDetails(!showDetails)}
       >
         <img 
