@@ -10,9 +10,16 @@ const AboutTroy = () => {
       {/* Page Title */}
       <PageTitle title="Troy Latter: The Innovator Powering Vault's Future" />
       
-      {/* Hero Section */}
+      {/* Hero Section with Fixed Background */}
       <section className="relative bg-gray-900 text-white py-16 md:py-20 rounded-lg overflow-hidden mb-10 md:mb-12">
-        <div className="absolute inset-0 bg-[url('/placeholder.svg')] bg-cover bg-center opacity-30"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-30"
+          style={{ 
+            backgroundImage: "url('/lovable-uploads/42060213-a44a-4960-a413-f2f2798fbbce.png')", 
+            backgroundPosition: 'center',
+            backgroundSize: 'cover'
+          }}
+        ></div>
         <div className="relative container mx-auto px-4 md:px-6">
           <p className="mt-4 text-lg md:text-xl max-w-3xl">
             Troy Latter has officially joined Vault Cloud as Head of Innovation, bringing over 15 years of pioneering sovereign‑grade AI, security and cloud transformation across APAC for AWS, Unisys and Oracle.
