@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const routes = [
   { path: '/your-pitch', label: 'About Troy' },
@@ -35,13 +35,13 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
+          <nav className="hidden md:flex space-x-8">
             {routes.map((route) => (
               <Link
                 key={route.path}
                 to={route.path}
-                className={`text-gray-100 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-1 border-b-2 ${
-                  location.pathname === route.path ? 'border-[#56A4E3] text-[#56A4E3]' : 'border-transparent'
+                className={`text-white hover:text-[#56A4E3] transition-colors duration-200 text-base font-medium px-2 py-1 ${
+                  location.pathname === route.path ? 'text-[#56A4E3]' : ''
                 }`}
               >
                 {route.label}
