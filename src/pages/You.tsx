@@ -1,3 +1,4 @@
+
 import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
 import { Separator } from '@/components/ui/separator';
@@ -22,6 +23,11 @@ const skillExamples = {
     title: "Business Case Translation",
     imageSrc: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80",
     content: "Situation: The Department of Home Affairs had just seen a successful on‑prem AI PoC for document analysis, but despite the clear technical wins, there was no funding commitment to turn it into a production service. Executives needed a compelling, data‑backed business case to green‑light the next phase.\n\nTask: Lead a small, high‑performing team—augmented by an external financial modelling SME—to package the PoC into a robust ROI proposal, translating raw performance metrics into strategic value aligned with national‑security and operational efficiency goals.\n\nAction: I ran intensive 'Working Backwards' sessions with Home Affairs leadership to map PoC outcomes to mission KPIs (e.g., reduced processing time, improved compliance posture). We instrumented the PoC with live dashboards showing throughput and error rates, then built a TCO model contrasting the new service against legacy workflows. I personally delivered bespoke demos to the Secretary's office and hosted a Tech Talk at the Government AI Hub to evangelise the solution's impact.\n\nOutcome: The proposal demonstrated a projected 70% reduction in manual review costs—saving $4.8 million over three years—while cutting average document‑processing time from 24 hours to 45 minutes. This clear, quantifiable story convinced the executive committee to approve a $5 million production funding round, embedding the PoC into AWS's core offerings for critical‑infrastructure workloads."
+  },
+  smartBuilding: {
+    title: "APAC Smart Building IoT Platform",
+    imageSrc: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80",
+    content: "Situation: A government owned Asset Management team needed a unified, real-time IoT platform to monitor 1,200 smart buildings—data was siloed, latency was high, and storage costs were unbounded.\n\nTask: Architect a resilient edge-to-cloud pipeline with secure VPC meshes, high-throughput storage tiers, and automated data-lifecycle management to deliver sub-second analytics.\n\nAction: I led a cross-functional squad to deploy Greengrass edge gateways on Raspberry Pi clusters, defined multi-AZ VPC peering and Transit Gateway architectures, and built Kinesis Data Streams → Lambda → S3 data lakes with lifecycle rules. All infra was codified in Terraform + Ansible; we implemented S3 Replication across regions and leveraged EFS with lifecycle archiving to Glacier.\n\nOutcome: The platform ingested 12,000 sensor events/sec at < 150 ms latency, cut storage costs by 40%, and enabled real-time energy dashboards—driving 15% operational savings within four months."
   }
 };
 
