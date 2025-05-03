@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -72,7 +73,7 @@ const CustomerAsksStars = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <PageTitle title="Critical Customer Challenges & Vault Solutions" />
+      <PageTitle title="Anticipating Customer Challenges & Vault Solutions" />
       
       <div className="text-lg mb-8">
         <p className="mb-4">
