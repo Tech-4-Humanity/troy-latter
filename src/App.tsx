@@ -3,11 +3,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
 
 import Index from "./pages/Index";
-import CustomerAsks from "./pages/CustomerAsksStars"; // Changed from About to CustomerAsksStars
+import CustomerAsks from "./pages/CustomerAsksStars";
 import TheOpportunity from "./pages/TheOpportunity";
 import OpportunityStars from "./pages/OpportunityStars";
 import Responsibilities from "./pages/Responsibilities";
@@ -46,6 +46,8 @@ const App = () => (
             <Route path="/resources/whitepapers" element={<Whitepapers />} />
             <Route path="/resources/lean-canvas" element={<LeanCanvas />} />
             <Route path="/about-troy" element={<AboutTroy />} />
+            {/* Redirect from head-of-innovation to home page */}
+            <Route path="/head-of-innovation" element={<Navigate to="/" />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
