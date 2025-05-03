@@ -88,7 +88,7 @@ const CustomerAsksStars = () => {
       </div>
       
       <div className="mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-8">Real-World Impact Stories</h2>
+        <h2 className="text-2xl font-semibold text-vault-primary mb-8">Future Real-World Impact Stories</h2>
         <div className="space-y-8">
           {Object.entries(asksExamples).map(([key, example]) => (
             <div key={key} className="w-full">
