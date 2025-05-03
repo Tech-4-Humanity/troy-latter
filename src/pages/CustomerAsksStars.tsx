@@ -77,7 +77,7 @@ const CustomerAsksStars = () => {
       
       <div className="text-lg mb-8">
         <p className="mb-4">
-          With innovation comes many opportunities—some immediate customer needs are expanded on below.
+          With innovation comes many opportunities, and both current/future customers are looking at the areas below - for business, technical and security reasons.
         </p>
         <p className="mb-4">
           As Australia's sovereign cloud leader, Vault Cloud delivers cutting‑edge solutions for the toughest challenges 
@@ -110,7 +110,7 @@ const CustomerAsksStars = () => {
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-vault-primary mb-2">{example.title}</h3>
                 <p className="text-vault-secondary text-sm mb-3">
-                  {openKey === key ? "Click to hide details" : "Click for full STAR story"}
+                  {openKey === key ? "Click to hide details" : "Click for more information"}
                 </p>
                 {openKey === key && (
                   <div className="bg-vault-light p-4 rounded-lg text-left space-y-3 animate-fade-in">
