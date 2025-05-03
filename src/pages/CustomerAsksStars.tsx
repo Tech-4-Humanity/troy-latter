@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -84,9 +83,6 @@ const CustomerAsksStars = () => {
           facing government agencies and critical infrastructure operators. Our collaborative approach pairs deep expertise in secure, 
           zero‑trust architectures with agile delivery methods to co‑design transformative capabilities that meet the unique demands 
           of high‑security environments.
-        </p>
-        <p className="mb-4">
-          Here are a few of our current innovation activities, developed hand‑in‑hand with our customers:
         </p>
       </div>
       
