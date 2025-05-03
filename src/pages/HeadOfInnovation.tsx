@@ -7,9 +7,9 @@ const HeadOfInnovation = () => {
   return (
     <div className="space-y-12">
       <div className="bg-gradient-to-r from-vault-primary to-vault-primary/80 text-white rounded-xl p-8 md:p-12 shadow-lg text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">Head of Innovation</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Head of Innovation</h1>
         <p className="text-xl md:text-2xl text-gray-100 mb-8 max-w-2xl mx-auto">
-          Lead bleeding - edge innovation for Australia's sovereign cloud
+          Leading bleeding - edge innovation for Australia's sovereign cloud
         </p>
         <div className="flex justify-center mb-8">
           <img 
