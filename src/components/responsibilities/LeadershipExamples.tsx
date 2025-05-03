@@ -26,6 +26,15 @@ export const LeadershipExamples = () => {
         />
 
         <LeadershipCard
+          title="Oracle APAC Startup & Scale-Up Accelerator"
+          imageSrc="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80"
+          situation="Oracle APAC lacked a structured channel to onboard and scale high-growth startups on OCI—limiting pipeline and regional developer talent."
+          task="Launch and lead the Oracle APAC Innovation Centre in Singapore, creating a Startup & Scale-Up Accelerator that converts trial credits into paid contracts and develops a local talent pipeline."
+          action={'Founded the Innovation Centre, recruited 30 early-stage and scale-up startups across fintech, healthtech and govtech. Allocated $500K in OCI credits, provided lab access and one-on-one mentorship from senior architects. Ran monthly hackathons and Demo Days with C-suite execs, then automated a "Credits-to-Contracts" process integrating PoC success metrics into Oracle\'s sales funnel. Built a developer academy that certified 150 engineers on OCI services.'}
+          outcome={'Over 12 months accelerated 50 startups, achieved a 60% conversion rate (30 startups) into paying customers—driving $3M ARR—and established a vibrant ecosystem of 150 certified OCI architects and regional VC partners.'}
+        />
+
+        <LeadershipCard
           title="Innovation & Engineering"
           imageSrc="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80"
           situation="At Oracle APAC, the Australian Defence Force relied on a legacy, paper-driven system to manage pay and travel allowances for 60,000 personnel—resulting in frequent reconciliation errors, delayed payments of up to six weeks, and low soldier morale."
