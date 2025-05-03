@@ -30,7 +30,7 @@ const Responsibilities = () => {
       <Separator className="my-10 bg-vault-accent/30" />
       
       <div className="space-y-8 mb-10">
-        <h2 className="text-2xl font-semibold text-vault-primary">Evangelism, Partners and The Power of Achieving Through Others</h2>
+        <h2 className="text-2xl font-semibold text-vault-primary">Demo or Die</h2>
         <div className="space-y-8">
           <div>
             <h3 className="font-medium text-xl text-vault-primary">Building Ecosystem Alliances</h3>
