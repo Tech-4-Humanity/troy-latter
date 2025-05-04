@@ -56,8 +56,8 @@ const WhatIsInnovation = () => {
         <div className="md:w-2/5 flex flex-col items-center justify-center">
           <div className="max-w-md">
             <img 
-              src="/lovable-uploads/d1d43e12-c5da-44f5-ad97-6d5bb332f11e.png"
-              alt="Innovation Partnership" 
+              src="/lovable-uploads/21d8626a-dcf2-4933-b949-d1e72347b2c7.png"
+              alt="Australian Government Trade and Investment Commission" 
               className="w-full h-auto object-contain rounded-lg shadow-md" 
             />
             <p className="text-sm text-gray-600 mt-2 italic text-center">

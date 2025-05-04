@@ -3,6 +3,7 @@ import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { ContentCard } from '@/components/ContentCard';
 import { ListItem } from '@/components/ListItem';
+import { Card, CardContent } from '@/components/ui/card';
 
 const InnovationDefinition = () => {
   const definitionItems = [
@@ -37,13 +38,28 @@ const InnovationDefinition = () => {
       <PageTitle title="What Is Innovation?" />
       
       <section className="mb-12">
-        <ContentCard className="mb-8">
-          <ul className="list-disc list-outside ml-5 space-y-6 text-gray-700">
-            {definitionItems.map((item, index) => (
-              <ListItem key={index} title={item.title} description={item.description} />
-            ))}
-          </ul>
-        </ContentCard>
+        <div className="flex flex-col md:flex-row gap-8 mb-8">
+          <div className="md:w-1/3">
+            <img 
+              src="/lovable-uploads/21d8626a-dcf2-4933-b949-d1e72347b2c7.png" 
+              alt="Australian Government Trade and Investment Commission" 
+              className="w-full h-auto object-cover rounded-lg shadow-md" 
+            />
+            <p className="text-sm text-gray-600 mt-2 italic text-center">
+              Partnership with Australian Government Trade and Investment Commission
+            </p>
+          </div>
+          
+          <Card className="md:w-2/3 border rounded-xl overflow-hidden">
+            <CardContent className="p-6">
+              <ul className="list-disc list-outside ml-5 space-y-6 text-gray-700">
+                {definitionItems.map((item, index) => (
+                  <ListItem key={index} title={item.title} description={item.description} />
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
       </section>
     </div>
   );
