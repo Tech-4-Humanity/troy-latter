@@ -26,7 +26,7 @@ const CustomerAsksStars = () => {
     },
     {
       title: "Building Tiger Teams",
-      description: "Lead small, high‑trust squads with external experts. At AWS APAC I formed a lean group of five data scientists and DevOps engineers, ran two‑week "Sprint Marathons," and achieved a 65% PoC funding conversion—tripling throughput and restoring executive faith."
+      description: "Lead small, high‑trust squads with external experts. At AWS APAC I formed a lean group of five data scientists and DevOps engineers, ran two‑week \"Sprint Marathons,\" and achieved a 65% PoC funding conversion—tripling throughput and restoring executive faith."
     },
     {
       title: "Breaking the Prototype‑to‑Reality Barrier",
@@ -34,7 +34,7 @@ const CustomerAsksStars = () => {
     },
     {
       title: "Culture & Pace",
-      description: "Embed a fail‑fast, learn‑fast ethos. I've introduced weekly "kill/scale" criteria, Friday C‑suite Demo Days, and real‑time innovation dashboards at every company—cutting PoC cycle times from 12 weeks to as little as 4 weeks."
+      description: "Embed a fail‑fast, learn‑fast ethos. I've introduced weekly \"kill/scale\" criteria, Friday C‑suite Demo Days, and real‑time innovation dashboards at every company—cutting PoC cycle times from 12 weeks to as little as 4 weeks."
     },
     {
       title: "Customer‑first Validation",
