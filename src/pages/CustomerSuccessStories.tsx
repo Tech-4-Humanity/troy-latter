@@ -86,11 +86,11 @@ const CustomerSuccessStories = () => {
         </Card>
         
         <div className="md:w-2/5 flex items-center">
-          <div className="w-full px-4">
+          <div className="w-full px-6">
             <img 
               src="/lovable-uploads/db7906e5-94ae-461a-a914-e3ca5ba5b126.png" 
               alt="Innovation technology visualization" 
-              className="w-5/6 mx-auto h-auto rounded-lg shadow-lg object-cover" 
+              className="w-3/5 mx-auto h-auto rounded-lg shadow-lg object-cover" 
             />
             <p className="text-sm text-gray-500 italic mt-3 text-center">
               Next-generation technology solutions driving customer innovation
