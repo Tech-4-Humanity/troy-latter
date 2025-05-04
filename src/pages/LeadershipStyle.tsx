@@ -51,12 +51,12 @@ const LeadershipStyle = () => {
         <div className="flex flex-col md:flex-row gap-8 mb-8">
           <div className="md:w-1/3">
             <img 
-              src="/lovable-uploads/4a63c7d3-72f3-45cc-9aaf-1e2b78c70a7b.png" 
-              alt="Leadership Award" 
-              className="w-full h-auto object-contain rounded-lg shadow-md" 
+              src="/lovable-uploads/6c065077-2a06-4fc0-8ee5-a1aebd89d0b8.png" 
+              alt="Leadership Recognition" 
+              className="w-full h-auto object-cover rounded-lg shadow-md" 
             />
             <p className="text-sm text-gray-600 mt-2 italic text-center">
-              Recognition for innovative leadership approaches
+              Recognition for leadership excellence
             </p>
           </div>
           

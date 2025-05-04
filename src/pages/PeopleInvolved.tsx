@@ -3,6 +3,7 @@ import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { ContentCard } from '@/components/ContentCard';
 import { ListItem } from '@/components/ListItem';
+import { Card, CardContent } from '@/components/ui/card';
 
 const PeopleInvolved = () => {
   const peopleCategories = [
@@ -41,21 +42,28 @@ const PeopleInvolved = () => {
       <PageTitle title="People Involved" />
       
       <section className="mb-12">
-        <div className="mb-8">
-          <img 
-            src="/lovable-uploads/7e6000f2-9818-40fc-9191-2549b09f49da.png" 
-            alt="People Involved" 
-            className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
-          />
+        <div className="flex flex-col md:flex-row gap-8 mb-8">
+          <div className="md:w-1/3">
+            <img 
+              src="/lovable-uploads/99250b03-5ffe-4fee-a51d-8f8636ad4975.png" 
+              alt="People Collaboration" 
+              className="w-full h-auto object-cover rounded-lg shadow-md" 
+            />
+            <p className="text-sm text-gray-600 mt-2 italic text-center">
+              Collaborative partnerships drive innovation success
+            </p>
+          </div>
+          
+          <Card className="md:w-2/3 border rounded-xl overflow-hidden">
+            <CardContent className="p-6">
+              <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
+                {peopleCategories.map((item, index) => (
+                  <ListItem key={index} title={item.title} description={item.description} />
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
         </div>
-        
-        <ContentCard className="mb-8">
-          <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
-            {peopleCategories.map((item, index) => (
-              <ListItem key={index} title={item.title} description={item.description} />
-            ))}
-          </ul>
-        </ContentCard>
         
         <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-10">
           <p className="text-gray-700 italic">
