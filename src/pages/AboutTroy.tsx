@@ -70,7 +70,7 @@ const AboutTroy = () => {
             <CardContent className="p-6">
               <h2 className="text-2xl font-semibold mb-5 text-vault-primary">About Troy</h2>
               <p className="mb-4 text-gray-700 leading-relaxed">
-                A visionary technologist and strategic leader, Troy has guided governments and enterprises through some of their toughest digital transformations. From building battlefield‑ready Kubernetes clusters on Snowball Edge to architecting on‑prem LLM environments for top‑secret document analysis, he thrives on solving mission‑critical challenges under zero‑trust and stringent compliance.
+                A visionary technologist and strategic leader, Troy has guided governments and enterprises through some of their toughest digital transformations. From building battlefield‑ready assets in the field to architecting on‑prem LLM environments for top‑secret document analysis, he thrives on solving mission‑critical challenges under zero‑trust and stringent compliance.
               </p>
               <p className="text-gray-700 leading-relaxed">
                 A member of Standards Australia's BCI & Robotics Committee and the QLD Government AI Hub advisory board, Troy is equally at home presenting whitepapers at global forums as he is coaching "tiger teams" in rapid‑sprint rooms.
@@ -94,7 +94,7 @@ const AboutTroy = () => {
             <CardContent className="p-6">
               <h2 className="text-2xl font-semibold mb-5 text-vault-primary">Why This Role?</h2>
               <p className="text-gray-700 leading-relaxed">
-                This position offers the perfect blend of hands‑on R&D and strategic vision: reporting directly to a founder‑CEO, Troy will shape Vault's entire innovation pipeline—rapidly prototyping first‑of‑a‑kind concepts (from battlefield cloud nodes to sovereign LLM frameworks), embedding a fail‑fast culture, and translating every breakthrough into core product features and executive‑ready business cases.
+                This position offers the perfect blend of hands‑on R&D and strategic vision: reporting directly to our founder‑CEO, Troy will shape Vault's entire innovation pipeline - across all iondustry sectors rapidly prototyping first‑of‑a‑kind concepts (from battlefield cloud nodes to sovereign LLM frameworks), embedding a fail‑fast culture, and translating every breakthrough into core product features and executive‑ready business cases.
               </p>
             </CardContent>
           </Card>
