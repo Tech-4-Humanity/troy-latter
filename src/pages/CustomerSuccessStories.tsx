@@ -43,12 +43,28 @@ const CustomerSuccessStories = () => {
     <div className="animate-fade-in">
       <PageTitle title="Customer Success Stories" />
       
-      <div className="mb-8">
-        <img 
-          src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" 
-          alt="Customer Success" 
-          className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
-        />
+      {/* New side-by-side layout for top section */}
+      <div className="flex flex-col md:flex-row gap-6 mb-12">
+        <div className="md:w-1/2">
+          <img 
+            src="/lovable-uploads/b33dd7aa-5f8b-465b-940a-276e2a6e0996.png" 
+            alt="Innovation Leadership" 
+            className="w-full h-auto rounded-lg shadow-lg object-cover" 
+          />
+        </div>
+        <div className="md:w-1/2 flex flex-col justify-center">
+          <h2 className="text-2xl font-bold text-vault-primary mb-4">Delivering Customer Success</h2>
+          <p className="text-gray-700 mb-3">
+            My proven track record of delivering innovative solutions has created measurable impact 
+            across government and enterprise clients. I focus on understanding customer needs deeply, 
+            building the right teams, and implementing practical solutions that drive real business outcomes.
+          </p>
+          <p className="text-gray-700">
+            From national security projects to digital transformation initiatives, my approach is 
+            consistent: align technology with mission, build collaborative teams, and focus on 
+            delivering tangible results that matter.
+          </p>
+        </div>
       </div>
       
       <Card className="border rounded-xl overflow-hidden mb-12">
