@@ -7,7 +7,7 @@ const UpcomingProjects = () => {
   const projects = [
     {
       title: "Digital Health Cloud (QLD Health)",
-      description: "K8s microservices, zero‑trust, regional sovereignty → 99.99% SLA."
+      description: "K8s microservices, zero-trust, regional sovereignty → 99.99% SLA."
     },
     {
       title: "Procurement Analytics (DoF)",
@@ -15,11 +15,11 @@ const UpcomingProjects = () => {
     },
     {
       title: "Sovereign Hybrid Cloud (Def Intel)",
-      description: "Air‑gapped K8s + policy‑as‑code → IL2/IL3 compliance, 50% faster deploys."
+      description: "Air-gapped K8s + policy-as-code → IL2/IL3 compliance, 50% faster deploys."
     },
     {
       title: "Economic Data Mesh (Treasury)",
-      description: "Federated streams + lineage → near‑real‑time dashboards, 85% faster reporting."
+      description: "Federated streams + lineage → near-real-time dashboards, 85% faster reporting."
     },
     {
       title: "Cyber Resilience (DVA)",
