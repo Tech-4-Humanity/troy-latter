@@ -110,35 +110,6 @@ const CustomerAsksStars = () => {
           </CardContent>
         </Card>
       </div>
-      
-      {/* Additional content section with another video */}
-      <div className="mt-16 mb-10">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-8 text-center">Technical Leadership in Action</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="order-2 lg:order-1 flex flex-col justify-center">
-            <Card className="border-0 shadow-lg">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-medium text-vault-primary mb-4">Leading Innovation at Scale</h3>
-                <p className="text-vault-secondary mb-4">
-                  Watch this technical deep dive into how I've led innovation teams to deliver
-                  cutting-edge solutions that meet real business needs and drive strategic outcomes.
-                </p>
-                <p className="text-vault-secondary">
-                  From concept to production, I've guided teams through the entire innovation lifecycle,
-                  ensuring that technical excellence translates into business value.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-          <div className="order-1 lg:order-2">
-            <VideoEmbed 
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-              caption="Innovation Leadership: From Concept to Production"
-              className="shadow-lg rounded-lg overflow-hidden"
-            />
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
