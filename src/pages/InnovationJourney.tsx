@@ -34,6 +34,7 @@ const InnovationJourney = () => {
       <PageTitle title="My Innovation Journey" />
 
       <section className="mb-8">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Highlights</h2>
         <ContentCard>
           <div className="prose max-w-none">
             <h3 className="text-xl font-bold text-vault-primary mb-4">Chief Innovation Adviser, Oracle (2016–2019)</h3>
@@ -71,6 +72,7 @@ const InnovationJourney = () => {
       </section>
 
       <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Case Studies</h2>
         <div className="grid grid-cols-1 gap-8">
           <LeadershipCard
             title="Security Framework Excellence"
