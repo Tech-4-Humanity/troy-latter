@@ -2,6 +2,7 @@
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
+import { LeadershipCard } from '@/components/responsibilities/LeadershipCard';
 
 const LeadershipStyle = () => {
   const leadershipStyles = [
@@ -46,42 +47,60 @@ const LeadershipStyle = () => {
     }
   ];
 
+  // Using the STAR method examples from LeadershipCard component
+  const leadershipExamples = [
+    {
+      title: "Leading Platform Innovation",
+      imageSrc: "/lovable-uploads/81cbb272-6a07-41e1-8167-796bc17aa764.png",
+      situation: "Enterprise customers struggling with complex regulatory compliance across multiple cloud environments.",
+      task: "Create a unified platform to simplify governance and accelerate product delivery.",
+      action: "Led cross-functional team to develop a platform that automated compliance checks, standardized infrastructure, and provided self-service tools.",
+      outcome: "Reduced time-to-production by 60%, eliminated 85% of manual compliance work, and enabled 3x faster innovation cycles."
+    }
+  ];
+
   return (
     <div className="animate-fade-in">
       <PageTitle title="My Leadership Style" />
       
       <section className="mb-12">
-        <div className="flex flex-col md:flex-row gap-8 mb-8">
-          <div className="md:w-2/5 flex flex-col items-center justify-center">
-            <div className="max-w-xs">
-              <img 
-                src="/lovable-uploads/81cbb272-6a07-41e1-8167-796bc17aa764.png" 
-                alt="Leadership Award" 
-                className="w-full h-auto object-contain rounded-lg shadow-md" 
-              />
-            </div>
-          </div>
-          
-          <Card className="md:w-3/5 border rounded-xl overflow-hidden">
-            <CardContent className="p-6">
-              <ul className="space-y-4">
-                {leadershipStyles.map((style, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="text-xl mr-3">•</span>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-800 mb-1">{style.title}</h3>
-                      <p className="text-gray-700 bg-gray-100 p-2 rounded">{style.description}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+        {/* Leadership example using STAR method */}
+        <div className="mb-12">
+          {leadershipExamples.map((example, index) => (
+            <LeadershipCard
+              key={index}
+              title={example.title}
+              imageSrc={example.imageSrc}
+              situation={example.situation}
+              task={example.task}
+              action={example.action}
+              outcome={example.outcome}
+            />
+          ))}
         </div>
         
+        {/* Leadership styles */}
+        <Card className="border rounded-xl overflow-hidden mb-8">
+          <CardContent className="p-6">
+            <h2 className="text-xl font-semibold text-vault-primary mb-4">Leadership Principles</h2>
+            <ul className="space-y-4">
+              {leadershipStyles.map((style, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="text-xl mr-3 text-vault-accent">•</span>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-1">{style.title}</h3>
+                    <p className="text-gray-700 bg-gray-100 p-2 rounded">{style.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+        
+        {/* Leadership qualities */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {leadershipQualities.map((quality, index) => (
-            <Card key={index} className="bg-white shadow-sm">
+            <Card key={index} className="bg-white shadow-sm hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold text-vault-primary mb-4">{quality.title}</h3>
                 <p className="text-gray-700 whitespace-pre-line">{quality.description}</p>
