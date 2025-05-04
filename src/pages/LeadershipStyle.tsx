@@ -55,8 +55,8 @@ const LeadershipStyle = () => {
           <div className="md:w-2/5 flex flex-col items-center justify-center">
             <div className="max-w-xs">
               <img 
-                src="/lovable-uploads/c0aa3a3a-8f54-4814-a860-8528547cd5e2.png" 
-                alt="Leadership Discussion" 
+                src="/lovable-uploads/81cbb272-6a07-41e1-8167-796bc17aa764.png" 
+                alt="Leadership Award" 
                 className="w-full h-auto object-contain rounded-lg shadow-md" 
               />
             </div>
