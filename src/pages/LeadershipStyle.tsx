@@ -55,9 +55,6 @@ const LeadershipStyle = () => {
                 alt="Leadership Recognition Award" 
                 className="w-full h-auto object-contain rounded-lg shadow-md" 
               />
-              <p className="text-sm text-gray-600 mt-2 italic text-center">
-                please ask
-              </p>
             </div>
           </div>
           
