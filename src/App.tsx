@@ -29,6 +29,7 @@ import InnovationFrameworks from "./pages/InnovationFrameworks";
 import LeadershipStyle from "./pages/LeadershipStyle";
 import PeopleInvolved from "./pages/PeopleInvolved";
 import UpcomingProjects from "./pages/UpcomingProjects";
+import StrategicProjects from "./pages/StrategicProjects";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
             <Route path="/leadership-style" element={<LeadershipStyle />} />
             <Route path="/people-involved" element={<PeopleInvolved />} />
             <Route path="/upcoming-projects" element={<UpcomingProjects />} />
+            <Route path="/strategic-projects" element={<StrategicProjects />} /> {/* Added the new hidden route */}
             <Route path="/your-pitch" element={<Navigate to="/about-troy" />} />
             <Route path="/customer-asks" element={<CustomerAsks />} />
             <Route path="/customer-asks-stars" element={<CustomerAsksStars />} />
