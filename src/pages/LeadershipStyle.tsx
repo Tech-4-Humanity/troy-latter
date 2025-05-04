@@ -66,13 +66,8 @@ const LeadershipStyle = () => {
             className="max-h-80 object-contain rounded-md shadow-md"
           />
         </div>
-      </div>
-      
-      {/* Leadership Principles */}
-      <div className="space-y-8 mb-10">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Leadership Principles</h2>
-        
-        <div className="bg-vault-light p-6 rounded-lg">
+        <div className="md:w-2/3 p-6">
+          <h2 className="text-2xl font-semibold text-vault-primary mb-6">Leadership Principles</h2>
           <ul className="space-y-6">
             {leadershipStyles.map((style, index) => (
               <li key={index}>
