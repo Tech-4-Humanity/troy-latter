@@ -89,16 +89,31 @@ const InnovationDefinition = () => {
         </div>
       </section>
       
-      {/* Added Frameworks section */}
+      {/* Frameworks section with image on the right */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-vault-primary mb-6">Frameworks I Use</h2>
-        <ContentCard>
-          <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
-            {frameworkItems.map((item, index) => (
-              <ListItem key={index} title={item.title} description={item.description} />
-            ))}
-          </ul>
-        </ContentCard>
+        
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="lg:w-2/3">
+            <ContentCard>
+              <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
+                {frameworkItems.map((item, index) => (
+                  <ListItem key={index} title={item.title} description={item.description} />
+                ))}
+              </ul>
+            </ContentCard>
+          </div>
+          
+          <div className="lg:w-1/3 flex items-center justify-center">
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80" 
+                alt="Innovation frameworks visualization" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );
