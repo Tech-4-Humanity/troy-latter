@@ -3,6 +3,8 @@ import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
 import { LeadershipCard } from '@/components/responsibilities/LeadershipCard';
+import { FeatureCard } from '@/components/FeatureCard';
+import { Separator } from '@/components/ui/separator';
 
 const LeadershipStyle = () => {
   const leadershipStyles = [
@@ -51,7 +53,7 @@ const LeadershipStyle = () => {
   const leadershipExamples = [
     {
       title: "Leading Platform Innovation",
-      imageSrc: "/lovable-uploads/81cbb272-6a07-41e1-8167-796bc17aa764.png",
+      imageSrc: "/lovable-uploads/f9deef88-c299-4f35-ad6f-4585c24d056a.png",
       situation: "Enterprise customers struggling with complex regulatory compliance across multiple cloud environments.",
       task: "Create a unified platform to simplify governance and accelerate product delivery.",
       action: "Led cross-functional team to develop a platform that automated compliance checks, standardized infrastructure, and provided self-service tools.",
@@ -60,55 +62,65 @@ const LeadershipStyle = () => {
   ];
 
   return (
-    <div className="animate-fade-in">
+    <div className="max-w-7xl mx-auto animate-fade-in">
       <PageTitle title="My Leadership Style" />
       
-      <section className="mb-12">
-        {/* Leadership example using STAR method */}
-        <div className="mb-12">
+      <div className="text-lg mb-8">
+        <p className="mb-6">
+          Leadership driven by clear principles, empathy, and measurable outcomes.
+        </p>
+      </div>
+      
+      <div className="mb-12">
+        <div className="grid grid-cols-1 gap-8">
           {leadershipExamples.map((example, index) => (
-            <LeadershipCard
+            <FeatureCard
               key={index}
               title={example.title}
               imageSrc={example.imageSrc}
-              situation={example.situation}
-              task={example.task}
-              action={example.action}
-              outcome={example.outcome}
-            />
+            >
+              <div className="text-vault-secondary space-y-4">
+                <p><span className="font-medium">Situation:</span> {example.situation}</p>
+                <p><span className="font-medium">Task:</span> {example.task}</p>
+                <p><span className="font-medium">Action:</span> {example.action}</p>
+                <p><span className="font-medium">Outcome:</span> {example.outcome}</p>
+              </div>
+            </FeatureCard>
           ))}
         </div>
+      </div>
+      
+      <Separator className="my-10 bg-vault-accent/30" />
+      
+      {/* Leadership Principles */}
+      <div className="space-y-8 mb-10">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Leadership Principles</h2>
         
-        {/* Leadership styles */}
-        <Card className="border rounded-xl overflow-hidden mb-8">
-          <CardContent className="p-6">
-            <h2 className="text-xl font-semibold text-vault-primary mb-4">Leadership Principles</h2>
-            <ul className="space-y-4">
-              {leadershipStyles.map((style, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-xl mr-3 text-vault-accent">•</span>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-1">{style.title}</h3>
-                    <p className="text-gray-700 bg-gray-100 p-2 rounded">{style.description}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
+        <div className="bg-vault-light p-6 rounded-lg">
+          <ul className="space-y-6">
+            {leadershipStyles.map((style, index) => (
+              <li key={index}>
+                <h3 className="font-medium text-lg text-vault-primary mb-2">{style.title}</h3>
+                <p className="text-vault-secondary">{style.description}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      
+      {/* Leadership Qualities */}
+      <div className="space-y-8 mb-10">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Leadership Qualities</h2>
         
-        {/* Leadership qualities */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {leadershipQualities.map((quality, index) => (
-            <Card key={index} className="bg-white shadow-sm hover:shadow-md transition-shadow">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold text-vault-primary mb-4">{quality.title}</h3>
-                <p className="text-gray-700 whitespace-pre-line">{quality.description}</p>
-              </CardContent>
-            </Card>
+            <div key={index} className="bg-vault-light p-6 rounded-lg">
+              <h3 className="font-medium text-lg text-vault-primary mb-4">{quality.title}</h3>
+              <p className="text-vault-secondary whitespace-pre-line">{quality.description}</p>
+            </div>
           ))}
         </div>
-      </section>
+      </div>
     </div>
   );
 };
