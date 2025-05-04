@@ -1,84 +1,108 @@
-
-import { useState } from 'react';
-import { Card } from '@/components/ui/card';
+import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
-import { Separator } from '@/components/ui/separator';
-import { FeatureCard } from '@/components/FeatureCard';
+import { Card, CardContent } from '@/components/ui/card';
 
 const CustomerAsksStars = () => {
-  const [openKey, setOpenKey] = useState<string | null>(null);
+  const successStories = [
+    {
+      title: "$3B Digital Precinct (AWS)",
+      description: "Unified cloud ops, 70% faster provisioning, single-pane catalogue."
+    },
+    {
+      title: "Halal Food Traceability (Oracle)",
+      description: "Blockchain proofs-of-origin pilot → 40% drop in exceptions."
+    },
+    {
+      title: "RFT-Parsing & Scoring (Unisys)",
+      description: "NLP pipeline + SFIA scoring → 60% faster shortlists."
+    },
+    {
+      title: "National Cyber Resilience (Indonesia)",
+      description: "AI anomaly detection + SOAR runbooks → 70% MTTR reduction."
+    }
+  ];
 
+  const breakthroughStories = [
+    {
+      title: "Blueprint to Breakthrough",
+      description: "When Interpol needed to turn scattered AI experiments into a global programme, I ran \"Working Backwards\" workshops with CTOs/CIOs, scored use-cases against mission KPIs, then embedded compliance gates and \"demo or die\" reviews.\n\nIn 12 weeks we launched four first-of-their-kind AI pilots, unlocked a $7 M follow-on pipeline, cut concept-to-funding time by 60%, and got executive sign-off on two full-production rollouts."
+    },
+    {
+      title: "Tiger Teams & Trusted Partnerships",
+      description: "During ASEAN monsoon floods, I formed a six-person AWS \"tiger team\" with satellite, telco & social-media experts to build an edge-mesh alert platform on Snowball Edge & Greengrass.\n\nLive demos with first responders cut coordination delays 50%, handled 500K+ alerts and seeded a $2 M regional rollout."
+    },
+    {
+      title: "Edge Engineering & Real-World Prototypes",
+      description: "For the ADF's Secure Content programme, I led 48-hour PoC sprints to field-test shock-proof Kubernetes clusters on Snowball Edge.\n\nBy discarding failed form-factors each sprint, we achieved sub-second AI inference under isolation, cut validation time 75%, and secured $5 M to productise battlefield-grade nodes."
+    }
+  ];
+  
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="animate-fade-in">
       <PageTitle title="Inspiration" />
       
-      <div className="text-lg mb-8">
-        <p className="mb-4">
-          With innovation comes many opportunities, and both current/future customers are looking at the areas below - for business, technical and security reasons.
-        </p>
-        <p className="mb-4">
-          As Australia's sovereign cloud leader, Vault Cloud delivers cutting‑edge solutions for the toughest challenges 
-          facing government agencies and critical infrastructure operators. Our collaborative approach pairs deep expertise in secure, 
-          zero‑trust architectures with agile delivery methods to co‑design transformative capabilities that meet the unique demands 
-          of high‑security environments.
-        </p>
-      </div>
-      
-      <div className="mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">How I Will Drive Vault's Vision</h2>
-        
-        <div className="space-y-8 mb-10">
-          <div>
-            <h3 className="font-medium text-xl text-vault-primary">From Vision to Roadmap</h3>
-            <p className="text-vault-secondary mt-2">
-              Shape and prioritise the innovation pipeline<br/>
-              At Unisys I took five siloed AI pilots across government, ran Working‑Backwards strategy sprints, and delivered a six‑month PoC roadmap that unlocked an $8 M follow‑on pipeline in 12 weeks.
-            </p>
-          </div>
-          
-          <div>
-            <h3 className="font-medium text-xl text-vault-primary">Building Tiger Teams</h3>
-            <p className="text-vault-secondary mt-2">
-              Lead small, high‑trust squads with external experts<br/>
-              At AWS APAC I formed a lean group of five data scientists and DevOps engineers, ran two‑week "Sprint Marathons," and achieved a 65% PoC funding conversion - tripling throughput and restoring executive faith.
-            </p>
-          </div>
-          
-          <div>
-            <h3 className="font-medium text-xl text-vault-primary">Breaking the Prototype‑to‑Reality Barrier</h3>
-            <p className="text-vault-secondary mt-2">
-              Design, build and test bleeding‑edge IaC demos<br/>
-              At Oracle I authored modular playbooks and orchestrated CI/CD tests for rugged edge clusters and LLM frameworks - then presented live demos to Defence leadership, securing $5 M in production funding.
-            </p>
-          </div>
-          
-          <div>
-            <h3 className="font-medium text-xl text-vault-primary">Culture & Pace</h3>
-            <p className="text-vault-secondary mt-2">
-              Embed a fail‑fast, learn‑fast ethos<br/>
-              I've introduced weekly "kill/scale" criteria, Friday C‑suite Demo Days, and real‑time innovation dashboards at every company - cutting PoC cycle times from 12 weeks to as little as 4 weeks.
-            </p>
-          </div>
-          
-          <div>
-            <h3 className="font-medium text-xl text-vault-primary">Customer‑first Validation</h3>
-            <p className="text-vault-secondary mt-2">
-              Showcase PoCs, iterate on feedback<br/>
-              I've demoed AI agents and edge‑mesh solutions at AWS summits, Unisys innovation forums and government roadshows - capturing operator feedback that directly drove our next sprint and built customer evangelists.
-            </p>
-          </div>
-          
-          <div>
-            <h3 className="font-medium text-xl text-vault-primary">Technical Evangelism & Business Case Translation</h3>
-            <p className="text-vault-secondary mt-2">
-              Bridge R&D to board‑room buy‑in<br/>
-              Whether publishing whitepapers on neurotech standards, hosting Tech Talks for 200+ executives, or crafting ROI models that secured $2–5 M in follow‑on contracts, I've turned technical wins into strategic wins for every stakeholder.
-            </p>
-          </div>
+      {/* New side-by-side layout for top section */}
+      <div className="flex flex-col md:flex-row gap-6 mb-12">
+        <div className="md:w-1/2">
+          <img 
+            src="/lovable-uploads/c399236d-6c48-4f68-ac88-f45ca2128b22.png" 
+            alt="Profile" 
+            className="w-full h-auto rounded-lg shadow-lg object-cover" 
+          />
+          <p className="mt-2 text-sm text-center text-gray-600">please ask</p>
+        </div>
+        <div className="md:w-1/2 flex flex-col justify-center">
+          <h2 className="text-2xl font-bold text-vault-primary mb-4">Innovation Inspiration</h2>
+          <p className="text-gray-700 mb-3">
+            Innovation comes from understanding the challenges our customers face and creating solutions 
+            that deliver real value. My approach is to listen deeply to customer needs and translate 
+            them into practical technology solutions.
+          </p>
+          <p className="text-gray-700">
+            Through years of experience across diverse industries, I've developed a keen sense for 
+            identifying opportunities where technology can make a meaningful difference. The inspiration 
+            for my work comes from seeing the positive impact of well-designed solutions.
+          </p>
         </div>
       </div>
       
-      <Separator className="my-10 bg-vault-accent/30" />
+      <Card className="border rounded-xl overflow-hidden mb-12">
+        <CardContent className="p-8">
+          <ul className="space-y-6">
+            {successStories.map((story, index) => (
+              <li key={index} className="flex items-start">
+                <span className="text-xl mr-3">•</span>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-1">{story.title}</h3>
+                  <p className="text-gray-700 bg-gray-100 p-2 rounded">{story.description}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+      
+      <h2 className="text-2xl font-bold text-vault-primary mb-6">Deep Dive Case Studies</h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {breakthroughStories.map((story, index) => (
+          <Card key={index} className="bg-white shadow-md hover:shadow-lg transition-shadow">
+            <CardContent className="p-6">
+              <h3 className="text-xl font-semibold text-vault-primary mb-4">{story.title}</h3>
+              {story.description.split("\n\n").map((paragraph, i) => (
+                <p key={i} className="text-gray-700 mb-4 last:mb-0">{paragraph}</p>
+              ))}
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+      
+      <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+        <p className="text-gray-700 italic">
+          These deep dives illustrate how I craft an execution roadmap, lead small high-performing squads, 
+          drive a fail-fast culture and translate PoCs into multi-million-dollar programmes.
+        </p>
+      </div>
     </div>
   );
 };
