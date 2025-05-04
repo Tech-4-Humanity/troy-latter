@@ -37,6 +37,29 @@ const PeopleInvolved = () => {
     }
   ];
 
+  const innovationInitiatives = [
+    {
+      title: "Government Industry Engagement",
+      description: "Working with Australian Government Trade and Investment Commission to drive innovation initiatives across public sector."
+    },
+    {
+      title: "AWS Innovation Factory",
+      description: "Led AWS' innovation accelerator focusing on generative AI, medical devices and Zambrero CSR."
+    },
+    {
+      title: "Oracle Labs FastTrack",
+      description: "Machine learning for post-quantum cryptography; blockchain & dynamic data masking."
+    },
+    {
+      title: "First POC Verified Model",
+      description: "Created $1.7 million in converted pipeline and trained 30+ sellers in 6 months."
+    },
+    {
+      title: "Edge & Sovereign Cloud",
+      description: "Pioneered on-prem innovation for sovereignty-sensitive sectors (defence, critical infrastructure)."
+    }
+  ];
+
   return (
     <div className="animate-fade-in">
       <PageTitle title="People Involved" />
@@ -71,6 +94,17 @@ const PeopleInvolved = () => {
             Building strong relationships with champions at each level creates momentum and ensures alignment.
           </p>
         </div>
+      </section>
+      
+      <section className="mb-12">
+        <ContentCard>
+          <h3 className="text-xl font-bold text-vault-primary mb-4">Innovation Initiatives</h3>
+          <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
+            {innovationInitiatives.map((item, index) => (
+              <ListItem key={index} title={item.title} description={item.description} />
+            ))}
+          </ul>
+        </ContentCard>
       </section>
     </div>
   );
