@@ -49,9 +49,9 @@ const LeadershipStyle = () => {
       <section className="mb-12">
         <div className="mb-8">
           <img 
-            src="/lovable-uploads/83bdd2b0-6ff7-412c-983a-f1baf27538c4.png" 
-            alt="Leadership Team" 
-            className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
+            src="/lovable-uploads/4a63c7d3-72f3-45cc-9aaf-1e2b78c70a7b.png" 
+            alt="Leadership Award" 
+            className="w-full max-w-md mx-auto h-auto object-contain rounded-lg shadow-md mb-6" 
           />
         </div>
         
