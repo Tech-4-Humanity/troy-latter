@@ -11,7 +11,6 @@ const routes = [
   { path: '/innovation-journey', label: 'Innovation Journey' },
   { path: '/customer-success-stories', label: 'Success Stories' },
   { path: '/innovation-frameworks', label: 'Frameworks' },
-  { path: '/faqs', label: 'FAQs' },
 ];
 
 export const Navbar = () => {

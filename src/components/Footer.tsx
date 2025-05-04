@@ -13,7 +13,7 @@ export const Footer = () => {
     { path: '/innovation-journey', label: 'Innovation Journey' },
     { path: '/customer-success-stories', label: 'Success Stories' },
     { path: '/innovation-frameworks', label: 'Frameworks' },
-    { path: '/faqs', label: 'FAQs' },
+    { path: '/faqs', label: 'FAQs' }, // Added FAQs to the footer navigation
   ];
   
   // Secondary navigation items moved to footer
@@ -21,9 +21,9 @@ export const Footer = () => {
     { path: '/resources/90-day-plan', label: '90-Day Plan' },
     { path: '/resources/whitepapers', label: 'Whitepapers' },
     { path: '/resources/lean-canvas', label: 'Lean Canvas' },
-    { path: '/your-profile-stars', label: 'Your Profile Stars' },
-    { path: '/opportunity-stars', label: 'Opportunity Stars' },
-    { path: '/customer-asks-stars', label: 'Customer Asks Stars' },
+    // Removed: { path: '/your-profile-stars', label: 'Your Profile Stars' },
+    // Removed: { path: '/opportunity-stars', label: 'Opportunity Stars' },
+    // Removed: { path: '/customer-asks-stars', label: 'Customer Asks Stars' },
   ];
   
   // Pages moved from navbar to footer - removed the specified pages
@@ -38,7 +38,7 @@ export const Footer = () => {
   const leadershipPages = [
     { path: '/leadership-style', label: 'Leadership Style' },
     { path: '/people-involved', label: 'People Involved' },
-    { path: '/upcoming-projects', label: 'Upcoming Projects' },
+    // Removed: { path: '/upcoming-projects', label: 'Upcoming Projects' },
   ];
   
   return (
