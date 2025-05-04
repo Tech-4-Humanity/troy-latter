@@ -5,6 +5,17 @@ import { Link } from 'react-router-dom';
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   
+  // Main navigation routes - these will be in the footer navbar section
+  const routes = [
+    { path: '/', label: 'Home' },
+    { path: '/about-troy', label: 'About Troy' },
+    { path: '/innovation-definition', label: 'Innovation Definition' },
+    { path: '/innovation-journey', label: 'Innovation Journey' },
+    { path: '/customer-success-stories', label: 'Success Stories' },
+    { path: '/innovation-frameworks', label: 'Frameworks' },
+    { path: '/faqs', label: 'FAQs' },
+  ];
+  
   // Secondary navigation items moved to footer
   const resourceLinks = [
     { path: '/resources/90-day-plan', label: '90-Day Plan' },

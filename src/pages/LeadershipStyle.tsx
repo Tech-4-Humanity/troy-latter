@@ -4,46 +4,44 @@ import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
 
 const LeadershipStyle = () => {
+  const leadershipStyles = [
+    {
+      title: "Think Big",
+      description: "Amazon‑rated extremely high on Think Big, pushing teams toward bold visions."
+    },
+    {
+      title: "Empathy‑Driven Collaboration",
+      description: "Mentored on AI‑agent design, built e‑learning & live webinars, frequent speaker."
+    },
+    {
+      title: "Right, Accurate, Real‑Time Data",
+      description: "Early SMS alerts for sales targets; self‑serve dashboards for all audiences."
+    },
+    {
+      title: "Transparent Communication",
+      description: "Live dashboards + show & tell events; tailored updates for execs vs teams."
+    }
+  ];
+
   return (
     <div className="animate-fade-in">
       <PageTitle title="My Leadership Style" />
       
-      <section className="mb-12">
-        <div className="mb-8">
-          <img 
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" 
-            alt="Leadership Style" 
-            className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
-          />
-        </div>
-        
-        <Card className="bg-white shadow-sm">
-          <CardContent className="p-6 md:p-8">
-            <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
-              <li>
-                <span className="font-semibold">Think Big</span>
-                <br /> 
-                Amazon‑rated extremely high on Think Big, pushing teams toward bold visions.
+      <Card className="border rounded-xl overflow-hidden">
+        <CardContent className="p-8">
+          <ul className="space-y-6">
+            {leadershipStyles.map((style, index) => (
+              <li key={index} className="flex items-start">
+                <span className="text-xl mr-3">•</span>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-1">{style.title}</h3>
+                  <p className="text-gray-700 bg-gray-100 p-2 rounded">{style.description}</p>
+                </div>
               </li>
-              <li>
-                <span className="font-semibold">Empathy‑Driven Collaboration</span>
-                <br /> 
-                Mentored on AI‑agent design, built e‑learning & live webinars, frequent speaker.
-              </li>
-              <li>
-                <span className="font-semibold">Right, Accurate, Real‑Time Data</span>
-                <br /> 
-                Early SMS alerts for sales targets; self‑serve dashboards for all audiences.
-              </li>
-              <li>
-                <span className="font-semibold">Transparent Communication</span>
-                <br /> 
-                Live dashboards + show & tell events; tailored updates for execs vs teams.
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
-      </section>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
     </div>
   );
 };
