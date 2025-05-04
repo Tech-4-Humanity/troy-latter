@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
@@ -121,26 +120,6 @@ const InnovationJourney = () => {
               </p>
             </div>
           </div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="bg-white shadow-sm">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold text-vault-primary mb-4">Visionary Innovator</h3>
-              <p className="text-gray-700">
-                Across AWS, Oracle and Unisys, I've repeatedly turned bold ideas into first‑of‑their‑kind capabilities. At AWS APAC I launched an AI anomaly‑detection pilot in 48 hours—skipping months of red tape—to prove real‑time sensor analytics under sovereign controls. At Oracle I designed a hybrid pay‑and‑travel platform for the ADF that became the blueprint for future defence deployments. These high‑autonomy initiatives weren't just "innovation theatre" but delivered measurable business value and follow‑on funding.
-              </p>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-white shadow-sm">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold text-vault-primary mb-4">NatSec Fluency</h3>
-              <p className="text-gray-700">
-                I hold an active NV2 clearance and have served as a member of Standards Australia's BCI & Robotics Committee and the Queensland Government AI Hub advisory board. I've navigated ASD and ACSC accreditation processes firsthand—building zero‑trust enclaves and publishing neurotech and robotics guidelines that became national standards. This deep policy and compliance expertise ensures any Vault PoC aligns seamlessly with Australia's most stringent security mandates.
-              </p>
-            </CardContent>
-          </Card>
         </div>
       </section>
     </div>

@@ -9,7 +9,7 @@ export const Footer = () => {
   const routes = [
     { path: '/', label: 'Home' },
     { path: '/about-troy', label: 'About Troy' },
-    { path: '/innovation-definition', label: 'Innovation Definition' },
+    { path: '/innovation-definition', label: 'Innovation' },
     { path: '/innovation-journey', label: 'Innovation Journey' },
     { path: '/customer-success-stories', label: 'Customer Success' },
     { path: '/innovation-frameworks', label: 'Frameworks' },

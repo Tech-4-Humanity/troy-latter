@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
@@ -6,7 +7,7 @@ import { Menu, X } from 'lucide-react';
 // Main navigation routes - these will be in the top navbar
 const routes = [
   { path: '/about-troy', label: 'About Troy' },
-  { path: '/innovation-definition', label: 'Innovation Definition' },
+  { path: '/innovation-definition', label: 'Innovation' },
   { path: '/innovation-journey', label: 'Innovation Journey' },
   { path: '/customer-success-stories', label: 'Customer Success' },
   { path: '/innovation-frameworks', label: 'Frameworks' },
