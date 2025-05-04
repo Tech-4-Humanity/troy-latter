@@ -58,7 +58,7 @@ const CustomerAsksStars = () => {
             alt="Profile" 
             className="w-full h-auto rounded-lg shadow-lg object-cover" 
           />
-          <p className="mt-2 text-sm text-center text-gray-600">please ask</p>
+          {/* Removed the "please ask" caption */}
         </div>
         <div className="md:w-1/2 flex flex-col justify-center">
           <h2 className="text-2xl font-bold text-vault-primary mb-4">How I Will Drive Vault's Vision</h2>
