@@ -4,6 +4,7 @@ import { PageTitle } from '@/components/PageTitle';
 import { ContentCard } from '@/components/ContentCard';
 import { ListItem } from '@/components/ListItem';
 import { Card, CardContent } from '@/components/ui/card';
+import VideoEmbed from '@/components/VideoEmbed';
 
 const InnovationDefinition = () => {
   const definitionItems = [
@@ -91,13 +92,31 @@ const InnovationDefinition = () => {
       
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-vault-primary mb-6">Frameworks I Use</h2>
-        <ContentCard>
-          <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
-            {frameworkItems.map((item, index) => (
-              <ListItem key={index} title={item.title} description={item.description} />
-            ))}
-          </ul>
-        </ContentCard>
+        
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="lg:w-2/3">
+            <ContentCard>
+              <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
+                {frameworkItems.map((item, index) => (
+                  <ListItem key={index} title={item.title} description={item.description} />
+                ))}
+              </ul>
+            </ContentCard>
+          </div>
+          
+          <div className="lg:w-1/3 flex flex-col items-center justify-center">
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="/lovable-uploads/ead44fd7-64c1-42e0-839d-1d412cc2bfe6.png" 
+                alt="The Working Backwards process" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <p className="text-sm text-gray-600 mt-2 italic text-center">
+              Amazon's Working Backwards process
+            </p>
+          </div>
+        </div>
       </section>
     </div>
   );
