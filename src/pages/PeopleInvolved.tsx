@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
-import { Card, CardContent } from '@/components/ui/card';
+import { ContentCard } from '@/components/ContentCard';
+import { ListItem } from '@/components/ListItem';
 
 const PeopleInvolved = () => {
   const peopleCategories = [
@@ -48,19 +49,13 @@ const PeopleInvolved = () => {
           />
         </div>
         
-        <Card className="bg-white shadow-sm mb-8">
-          <CardContent className="p-6 md:p-8">
-            <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
-              {peopleCategories.map((category, index) => (
-                <li key={index}>
-                  <span className="font-semibold">{category.title}</span>
-                  <br /> 
-                  {category.description}
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
+        <ContentCard className="mb-8">
+          <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
+            {peopleCategories.map((item, index) => (
+              <ListItem key={index} title={item.title} description={item.description} />
+            ))}
+          </ul>
+        </ContentCard>
         
         <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-10">
           <p className="text-gray-700 italic">

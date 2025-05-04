@@ -1,9 +1,37 @@
 
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
-import { Card, CardContent } from '@/components/ui/card';
+import { ContentCard } from '@/components/ContentCard';
+import { ListItem } from '@/components/ListItem';
 
 const InnovationFrameworks = () => {
+  const frameworkItems = [
+    {
+      title: "Amazon's Culture of Innovation",
+      description: "Working Backwards, Two‑Pizza Teams, Day 1 Mindset."
+    },
+    {
+      title: "Experiment‑to‑Leadership Pathway",
+      description: "Bottom‑up hackathons → top‑down sponsorship; Hackathon → Pilot → Gate → Scale."
+    },
+    {
+      title: "Design Thinking & Empathy Mapping",
+      description: "Deep customer immersion, rapid prototyping guided by user journeys."
+    },
+    {
+      title: "Systems Thinking & Orderly Mapping",
+      description: "Visualise processes, identify leverage points, de‑risk complexity."
+    },
+    {
+      title: "Lean Business Canvas",
+      description: "One‑page plan for alignment, pivots and stakeholder buy‑in."
+    },
+    {
+      title: "Lean & Six Sigma",
+      description: "Continuous improvement through waste elimination and data‑driven controls."
+    }
+  ];
+
   return (
     <div className="animate-fade-in">
       <PageTitle title="Frameworks I Use" />
@@ -17,42 +45,13 @@ const InnovationFrameworks = () => {
           />
         </div>
         
-        <Card className="bg-white shadow-sm">
-          <CardContent className="p-6 md:p-8">
-            <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
-              <li>
-                <span className="font-semibold">Amazon's Culture of Innovation</span>
-                <br /> 
-                Working Backwards, Two‑Pizza Teams, Day 1 Mindset.
-              </li>
-              <li>
-                <span className="font-semibold">Experiment‑to‑Leadership Pathway</span>
-                <br /> 
-                Bottom‑up hackathons → top‑down sponsorship; Hackathon → Pilot → Gate → Scale.
-              </li>
-              <li>
-                <span className="font-semibold">Design Thinking & Empathy Mapping</span>
-                <br /> 
-                Deep customer immersion, rapid prototyping guided by user journeys.
-              </li>
-              <li>
-                <span className="font-semibold">Systems Thinking & Orderly Mapping</span>
-                <br /> 
-                Visualise processes, identify leverage points, de‑risk complexity.
-              </li>
-              <li>
-                <span className="font-semibold">Lean Business Canvas</span>
-                <br /> 
-                One‑page plan for alignment, pivots and stakeholder buy‑in.
-              </li>
-              <li>
-                <span className="font-semibold">Lean & Six Sigma</span>
-                <br /> 
-                Continuous improvement through waste elimination and data‑driven controls.
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
+        <ContentCard>
+          <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
+            {frameworkItems.map((item, index) => (
+              <ListItem key={index} title={item.title} description={item.description} />
+            ))}
+          </ul>
+        </ContentCard>
       </section>
     </div>
   );
