@@ -39,7 +39,7 @@ const InnovationFrameworks = () => {
       <section className="mb-12">
         <div className="mb-8">
           <img 
-            src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6" 
+            src="/lovable-uploads/0802b80f-8d0e-4e6c-b22c-90790f6ab929.png" 
             alt="Innovation Frameworks" 
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
           />

@@ -43,7 +43,7 @@ const PeopleInvolved = () => {
       <section className="mb-12">
         <div className="mb-8">
           <img 
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" 
+            src="/lovable-uploads/7e6000f2-9818-40fc-9191-2549b09f49da.png" 
             alt="People Involved" 
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
           />
