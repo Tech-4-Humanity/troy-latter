@@ -33,6 +33,33 @@ const InnovationDefinition = () => {
     }
   ];
 
+  const frameworkItems = [
+    {
+      title: "Amazon's Culture of Innovation",
+      description: "Working Backwards, Two‑Pizza Teams, Day 1 Mindset."
+    },
+    {
+      title: "Experiment‑to‑Leadership Pathway",
+      description: "Bottom‑up hackathons → top‑down sponsorship; Hackathon → Pilot → Gate → Scale."
+    },
+    {
+      title: "Design Thinking & Empathy Mapping",
+      description: "Deep customer immersion, rapid prototyping guided by user journeys."
+    },
+    {
+      title: "Systems Thinking & Orderly Mapping",
+      description: "Visualise processes, identify leverage points, de‑risk complexity."
+    },
+    {
+      title: "Lean Business Canvas",
+      description: "One‑page plan for alignment, pivots and stakeholder buy‑in."
+    },
+    {
+      title: "Lean & Six Sigma",
+      description: "Continuous improvement through waste elimination and data‑driven controls."
+    }
+  ];
+
   return (
     <div className="animate-fade-in">
       <PageTitle title="What Is Innovation?" />
@@ -60,6 +87,18 @@ const InnovationDefinition = () => {
             </CardContent>
           </Card>
         </div>
+      </section>
+      
+      {/* Added Frameworks section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Frameworks I Use</h2>
+        <ContentCard>
+          <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
+            {frameworkItems.map((item, index) => (
+              <ListItem key={index} title={item.title} description={item.description} />
+            ))}
+          </ul>
+        </ContentCard>
       </section>
     </div>
   );
