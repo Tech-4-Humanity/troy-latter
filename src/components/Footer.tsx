@@ -10,7 +10,6 @@ export const Footer = () => {
     { path: '/resources/90-day-plan', label: '90-Day Plan' },
     { path: '/resources/whitepapers', label: 'Whitepapers' },
     { path: '/resources/lean-canvas', label: 'Lean Canvas' },
-    { path: '/innovation-frameworks', label: 'Frameworks' },
   ];
   
   return (
@@ -34,14 +33,8 @@ export const Footer = () => {
             </p>
           </div>
           
-          {/* Frameworks and FAQs */}
+          {/* FAQs only - Frameworks removed */}
           <div className="flex flex-col justify-start">
-            <Link 
-              to="/innovation-frameworks" 
-              className="text-vault-accent hover:text-vault-accent text-lg font-medium transition-colors duration-200 mb-2"
-            >
-              Frameworks
-            </Link>
             <Link 
               to="/faqs" 
               className="text-vault-accent hover:text-vault-accent text-lg font-medium transition-colors duration-200"
