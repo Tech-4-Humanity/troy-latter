@@ -9,15 +9,10 @@ const InnovationDefinition = () => {
       <PageTitle title="What Is Innovation?" />
       
       <section className="mb-12">
-        <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mb-8">
           <img 
             src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" 
             alt="Innovation Concept" 
-            className="w-full h-64 object-cover rounded-lg shadow-md" 
-          />
-          <img 
-            src="/lovable-uploads/bf147ab3-0108-47ff-b51e-20b4591c6e9d.png" 
-            alt="Innovation Partnership" 
             className="w-full h-64 object-cover rounded-lg shadow-md" 
           />
         </div>
