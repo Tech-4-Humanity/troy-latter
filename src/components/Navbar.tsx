@@ -9,10 +9,9 @@ const routes = [
   { path: '/about-troy', label: 'About Troy' },
   { path: '/innovation-definition', label: 'Innovation' },
   { path: '/innovation-journey', label: 'Innovation Journey' },
-  { path: '/customer-success-stories', label: 'Customer Success' },
-  { path: '/innovation-frameworks', label: 'Frameworks' },
-  { path: '/leadership-style', label: 'Leadership Style' },
   { path: '/people-involved', label: 'It\'s People' },
+  { path: '/leadership-style', label: 'Leadership Style' },
+  { path: '/customer-success-stories', label: 'Customer Success' },
 ];
 
 export const Navbar = () => {

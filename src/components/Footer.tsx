@@ -10,6 +10,7 @@ export const Footer = () => {
     { path: '/resources/90-day-plan', label: '90-Day Plan' },
     { path: '/resources/whitepapers', label: 'Whitepapers' },
     { path: '/resources/lean-canvas', label: 'Lean Canvas' },
+    { path: '/innovation-frameworks', label: 'Frameworks' },
   ];
   
   return (
