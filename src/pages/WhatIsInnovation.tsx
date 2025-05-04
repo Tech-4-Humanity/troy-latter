@@ -53,18 +53,20 @@ const WhatIsInnovation = () => {
   return (
     <div className="animate-fade-in space-y-8">
       <div className="flex flex-col md:flex-row md:items-start gap-8">
-        <div className="md:w-1/3">
-          <img 
-            src="/lovable-uploads/a8c16df2-19a7-4e1a-a18d-8725f2dc5820.png"
-            alt="Innovation Concept" 
-            className="w-full h-auto object-cover rounded-lg shadow-md"
-          />
-          <p className="text-sm text-gray-600 mt-2 italic text-center">
-            Building innovative solutions that transform businesses
-          </p>
+        <div className="md:w-2/5 flex flex-col items-center justify-center">
+          <div className="max-w-md">
+            <img 
+              src="/lovable-uploads/d1d43e12-c5da-44f5-ad97-6d5bb332f11e.png"
+              alt="Innovation Partnership" 
+              className="w-full h-auto object-contain rounded-lg shadow-md" 
+            />
+            <p className="text-sm text-gray-600 mt-2 italic text-center">
+              Partnership with Australian Government Trade and Investment Commission
+            </p>
+          </div>
         </div>
         
-        <div className="md:w-2/3">
+        <div className="md:w-3/5">
           <PageTitle title="What Is Innovation?" />
           <Card className="bg-white shadow-sm mb-6">
             <CardContent className="p-6">
