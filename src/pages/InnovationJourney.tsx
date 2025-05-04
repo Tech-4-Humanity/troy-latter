@@ -81,9 +81,6 @@ const InnovationJourney = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <p className="text-sm text-gray-600 mt-2 italic text-center">
-              Strategic partnerships with Oracle and AWS
-            </p>
           </div>
         </div>
       </section>
