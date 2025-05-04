@@ -61,7 +61,7 @@ const InnovationJourney = () => {
       </section>
       
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Highlights</h2>
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Scaling Innovation</h2>
         <ContentCard>
           <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
             {journeyItems.map((item, index) => (
