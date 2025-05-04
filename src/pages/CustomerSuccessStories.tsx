@@ -67,22 +67,37 @@ const CustomerSuccessStories = () => {
         </div>
       </div>
       
-      {/* Return to single column layout for success stories section */}
-      <Card className="border rounded-xl overflow-hidden mb-12">
-        <CardContent className="p-8">
-          <ul className="space-y-6">
-            {successStories.map((story, index) => (
-              <li key={index} className="flex items-start">
-                <span className="text-xl mr-3">•</span>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-1">{story.title}</h3>
-                  <p className="text-gray-700 bg-gray-100 p-2 rounded">{story.description}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+      {/* Modified success stories section with side-by-side layout */}
+      <div className="flex flex-col md:flex-row gap-8 mb-12">
+        <Card className="border rounded-xl overflow-hidden md:w-3/5">
+          <CardContent className="p-8">
+            <ul className="space-y-6">
+              {successStories.map((story, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="text-xl mr-3">•</span>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-1">{story.title}</h3>
+                    <p className="text-gray-700 bg-gray-100 p-2 rounded">{story.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+        
+        <div className="md:w-2/5 flex items-center">
+          <div className="w-full">
+            <img 
+              src="/lovable-uploads/db7906e5-94ae-461a-a914-e3ca5ba5b126.png" 
+              alt="Innovation technology visualization" 
+              className="w-full h-auto rounded-lg shadow-lg object-cover"
+            />
+            <p className="text-sm text-gray-500 italic mt-3 text-center">
+              Next-generation technology solutions driving customer innovation
+            </p>
+          </div>
+        </div>
+      </div>
       
       <h2 className="text-2xl font-bold text-vault-primary mb-6">Deep Dive Case Studies</h2>
       
