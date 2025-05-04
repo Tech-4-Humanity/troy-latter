@@ -1,27 +1,39 @@
 
 import { useState } from 'react';
 import { PageTitle } from '@/components/PageTitle';
-import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { FeatureCard } from '@/components/FeatureCard';
 import VideoEmbed from '@/components/VideoEmbed';
 import { Button } from '@/components/ui/button';
-import { Play } from 'lucide-react';
+import { Play, Youtube } from 'lucide-react';
 
 const TheOpportunity = () => {
-  const [openKey, setOpenKey] = useState<string | null>(null);
-
   return (
     <div className="max-w-7xl mx-auto">
       <PageTitle title="Customer Success Stories" />
       
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-10 bg-vault-light rounded-lg overflow-hidden">
-        <div className="md:col-span-3 p-6">
-          <div className="text-lg">
-            <p className="mb-4">
-              I've built and scaled mission-critical cloud and IoT platforms at AWS and Oracle for national-security clients; now I'm here to break the mould at Vault - rapid-fire prototyping, respectful rule-breaking innovation, and forging the future of sovereign cloud.
-            </p>
-            <div className="mt-6">
+      {/* Hero section with video */}
+      <div className="mb-10 bg-vault-light rounded-lg overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Video container - takes full width on mobile, half on desktop */}
+          <div className="w-full h-full min-h-[300px]">
+            <VideoEmbed 
+              src="https://www.youtube.com/embed/-BXyJSr_6Tg" 
+              caption="AI, Progress, New Roles, and the Ethics of Tech"
+              className="h-full"
+            />
+          </div>
+          
+          {/* Text content */}
+          <div className="p-6 flex flex-col justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-vault-primary mb-4">Cloud & IoT Innovation Podcast</h2>
+              <p className="text-lg mb-6">
+                I've built and scaled mission-critical cloud and IoT platforms at AWS and Oracle for national-security clients; now I'm here to break the mould at Vault - rapid-fire prototyping, respectful rule-breaking innovation, and forging the future of sovereign cloud.
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 mt-4">
               <Button className="flex items-center gap-2 bg-vault-accent hover:bg-vault-accent/80">
                 <Play size={16} />
                 <a 
@@ -33,15 +45,19 @@ const TheOpportunity = () => {
                   Listen to the full podcast
                 </a>
               </Button>
+              
+              <Button variant="outline" className="flex items-center gap-2 border-vault-accent text-vault-accent hover:bg-vault-accent/10">
+                <Youtube size={16} />
+                <a 
+                  href="https://www.youtube.com/watch?v=-BXyJSr_6Tg" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  View on YouTube
+                </a>
+              </Button>
             </div>
           </div>
-        </div>
-        <div className="md:col-span-2">
-          <VideoEmbed 
-            src="https://www.youtube.com/embed/-BXyJSr_6Tg" 
-            caption="Cloud & IoT Innovation Podcast"
-            className="h-full"
-          />
         </div>
       </div>
       
