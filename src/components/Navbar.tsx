@@ -8,7 +8,10 @@ import { Menu, X } from 'lucide-react';
 const routes = [
   { path: '/', label: 'Home' },
   { path: '/about-troy', label: 'About Troy' },
-  { path: '/what-is-innovation', label: 'What Is Innovation' },
+  { path: '/innovation-definition', label: 'Innovation Definition' },
+  { path: '/innovation-journey', label: 'Innovation Journey' },
+  { path: '/customer-success-stories', label: 'Success Stories' },
+  { path: '/innovation-frameworks', label: 'Frameworks' },
   { path: '/faqs', label: 'FAQs' },
 ];
 
@@ -34,12 +37,12 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
+          <nav className="hidden md:flex space-x-4">
             {routes.map((route) => (
               <Link
                 key={route.path}
                 to={route.path}
-                className={`text-white hover:text-[#56A4E3] transition-colors duration-200 text-base font-medium px-2 py-1 ${
+                className={`text-white hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-1 ${
                   location.pathname === route.path ? 'text-[#56A4E3]' : ''
                 }`}
               >

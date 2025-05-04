@@ -22,6 +22,13 @@ import Whitepapers from "./pages/Whitepapers";
 import LeanCanvas from "./pages/LeanCanvas";
 import AboutTroy from "./pages/AboutTroy";
 import WhatIsInnovation from "./pages/WhatIsInnovation";
+import InnovationDefinition from "./pages/InnovationDefinition";
+import InnovationJourney from "./pages/InnovationJourney";
+import CustomerSuccessStories from "./pages/CustomerSuccessStories";
+import InnovationFrameworks from "./pages/InnovationFrameworks";
+import LeadershipStyle from "./pages/LeadershipStyle";
+import PeopleInvolved from "./pages/PeopleInvolved";
+import UpcomingProjects from "./pages/UpcomingProjects";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +43,13 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about-troy" element={<AboutTroy />} />
             <Route path="/what-is-innovation" element={<WhatIsInnovation />} />
+            <Route path="/innovation-definition" element={<InnovationDefinition />} />
+            <Route path="/innovation-journey" element={<InnovationJourney />} />
+            <Route path="/customer-success-stories" element={<CustomerSuccessStories />} />
+            <Route path="/innovation-frameworks" element={<InnovationFrameworks />} />
+            <Route path="/leadership-style" element={<LeadershipStyle />} />
+            <Route path="/people-involved" element={<PeopleInvolved />} />
+            <Route path="/upcoming-projects" element={<UpcomingProjects />} />
             <Route path="/your-pitch" element={<Navigate to="/about-troy" />} />
             <Route path="/customer-asks" element={<CustomerAsks />} />
             <Route path="/customer-asks-stars" element={<CustomerAsksStars />} />
