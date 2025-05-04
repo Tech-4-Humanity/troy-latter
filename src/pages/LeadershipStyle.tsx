@@ -2,8 +2,7 @@
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
-import { LeadershipCard } from '@/components/responsibilities/LeadershipCard';
-import { FeatureCard } from '@/components/FeatureCard';
+import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 
 const LeadershipStyle = () => {
@@ -49,17 +48,14 @@ const LeadershipStyle = () => {
     }
   ];
 
-  // Using the STAR method examples from LeadershipCard component
-  const leadershipExamples = [
-    {
-      title: "Leading Platform Innovation",
-      imageSrc: "/lovable-uploads/f9deef88-c299-4f35-ad6f-4585c24d056a.png",
-      situation: "Enterprise customers struggling with complex regulatory compliance across multiple cloud environments.",
-      task: "Create a unified platform to simplify governance and accelerate product delivery.",
-      action: "Led cross-functional team to develop a platform that automated compliance checks, standardized infrastructure, and provided self-service tools.",
-      outcome: "Reduced time-to-production by 60%, eliminated 85% of manual compliance work, and enabled 3x faster innovation cycles."
-    }
-  ];
+  // STAR method example
+  const leadershipExample = {
+    title: "Leading Platform Innovation",
+    situation: "Enterprise customers struggling with complex regulatory compliance across multiple cloud environments.",
+    task: "Create a unified platform to simplify governance and accelerate product delivery.",
+    action: "Led cross-functional team to develop a platform that automated compliance checks, standardized infrastructure, and provided self-service tools.",
+    outcome: "Reduced time-to-production by 60%, eliminated 85% of manual compliance work, and enabled 3x faster innovation cycles."
+  };
 
   return (
     <div className="max-w-7xl mx-auto animate-fade-in">
@@ -71,22 +67,25 @@ const LeadershipStyle = () => {
         </p>
       </div>
       
+      {/* Main feature section with image and text side-by-side */}
       <div className="mb-12">
-        <div className="grid grid-cols-1 gap-8">
-          {leadershipExamples.map((example, index) => (
-            <FeatureCard
-              key={index}
-              title={example.title}
-              imageSrc={example.imageSrc}
-            >
-              <div className="text-vault-secondary space-y-4">
-                <p><span className="font-medium">Situation:</span> {example.situation}</p>
-                <p><span className="font-medium">Task:</span> {example.task}</p>
-                <p><span className="font-medium">Action:</span> {example.action}</p>
-                <p><span className="font-medium">Outcome:</span> {example.outcome}</p>
-              </div>
-            </FeatureCard>
-          ))}
+        <div className="flex flex-col md:flex-row bg-vault-light rounded-lg overflow-hidden">
+          <div className="md:w-1/3 p-6 flex justify-center items-center">
+            <img 
+              src="/lovable-uploads/18765b1c-6ca0-4c50-81c2-95882a6f9fa4.png" 
+              alt="Leadership Recognition Plaque" 
+              className="max-h-80 object-contain rounded-md shadow-md"
+            />
+          </div>
+          <div className="md:w-2/3 p-6">
+            <h3 className="text-xl font-semibold text-vault-primary mb-4">{leadershipExample.title}</h3>
+            <div className="space-y-4 text-vault-secondary">
+              <p><span className="font-medium">Situation:</span> {leadershipExample.situation}</p>
+              <p><span className="font-medium">Task:</span> {leadershipExample.task}</p>
+              <p><span className="font-medium">Action:</span> {leadershipExample.action}</p>
+              <p><span className="font-medium">Outcome:</span> {leadershipExample.outcome}</p>
+            </div>
+          </div>
         </div>
       </div>
       
