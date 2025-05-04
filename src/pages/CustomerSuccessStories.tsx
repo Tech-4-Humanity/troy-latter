@@ -27,11 +27,11 @@ const CustomerSuccessStories = () => {
   const breakthroughStories = [
     {
       title: "Blueprint to Breakthrough",
-      description: "When Interpol needed to turn scattered AI experiments into a global program, I ran "Working Backwards" workshops with CTOs/CIOs, scored use‑cases against mission KPIs, then embedded compliance gates and "demo or die" reviews.\n\nIn 12 weeks we launched four first‑of‑their‑kind AI pilots, unlocked a $7 M follow‑on pipeline, cut concept‑to‑funding time by 60 %, and got executive sign‑off on two full‑production rollouts."
+      description: "When Interpol needed to turn scattered AI experiments into a global program, I ran \"Working Backwards\" workshops with CTOs/CIOs, scored use‑cases against mission KPIs, then embedded compliance gates and \"demo or die\" reviews.\n\nIn 12 weeks we launched four first‑of‑their‑kind AI pilots, unlocked a $7 M follow‑on pipeline, cut concept‑to‑funding time by 60 %, and got executive sign‑off on two full‑production rollouts."
     },
     {
       title: "Tiger Teams & Trusted Partnerships",
-      description: "During ASEAN monsoon floods, I formed a six‑person AWS "tiger team" with satellite, telco & social‑media experts to build an edge‑mesh alert platform on Snowball Edge & Greengrass.\n\nLive demos with first responders cut coordination delays 50 %, handled 500K+ alerts and seeded a $2 M regional rollout."
+      description: "During ASEAN monsoon floods, I formed a six‑person AWS \"tiger team\" with satellite, telco & social‑media experts to build an edge‑mesh alert platform on Snowball Edge & Greengrass.\n\nLive demos with first responders cut coordination delays 50 %, handled 500K+ alerts and seeded a $2 M regional rollout."
     },
     {
       title: "Edge Engineering & Real‑World Prototypes",
