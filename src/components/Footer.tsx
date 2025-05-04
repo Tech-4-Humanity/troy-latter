@@ -18,7 +18,7 @@ export const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {/* Logo and legal */}
-          <div className="mb-6 md:mb-0">
+          <div>
             <Link to="/" className="inline-block">
               <img 
                 src="/lovable-uploads/debf0aec-1583-4cf6-9bce-523fdf3eb009.png" 
@@ -35,7 +35,7 @@ export const Footer = () => {
           </div>
           
           {/* FAQs - no heading */}
-          <div className="flex flex-col">
+          <div className="flex flex-col justify-start">
             <Link 
               to="/faqs" 
               className="text-vault-accent hover:text-vault-accent text-lg font-medium transition-colors duration-200"
