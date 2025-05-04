@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
@@ -48,7 +47,7 @@ const CustomerAsksStars = () => {
   
   return (
     <div className="animate-fade-in">
-      <PageTitle title="Vision" />
+      <PageTitle title="Force Multiplication" />
       
       {/* Side-by-side layout for top section */}
       <div className="flex flex-col md:flex-row gap-6 mb-12">
@@ -58,7 +57,6 @@ const CustomerAsksStars = () => {
             alt="Profile" 
             className="w-full h-auto rounded-lg shadow-lg object-cover" 
           />
-          {/* Removed the "please ask" caption */}
         </div>
         <div className="md:w-1/2 flex flex-col justify-center">
           <h2 className="text-2xl font-bold text-vault-primary mb-4">How I Will Drive Vault's Vision</h2>
