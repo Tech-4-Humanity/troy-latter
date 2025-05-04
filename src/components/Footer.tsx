@@ -1,50 +1,23 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   
-  // Main navigation routes - these will be in the footer navbar section
-  const routes = [
-    { path: '/', label: 'Home' },
-    { path: '/about-troy', label: 'About Troy' },
-    { path: '/innovation-definition', label: 'Innovation' },
-    { path: '/innovation-journey', label: 'Innovation Journey' },
-    { path: '/customer-success-stories', label: 'Customer Success' },
-    { path: '/innovation-frameworks', label: 'Frameworks' },
-    { path: '/faqs', label: 'FAQs' }, // Added FAQs to the footer navigation
-  ];
-  
-  // Secondary navigation items moved to footer
+  // Resource links to keep in footer
   const resourceLinks = [
     { path: '/resources/90-day-plan', label: '90-Day Plan' },
     { path: '/resources/whitepapers', label: 'Whitepapers' },
     { path: '/resources/lean-canvas', label: 'Lean Canvas' },
-    // Removed: { path: '/your-profile-stars', label: 'Your Profile Stars' },
-    // Removed: { path: '/opportunity-stars', label: 'Opportunity Stars' },
-    // Removed: { path: '/customer-asks-stars', label: 'Customer Asks Stars' },
   ];
   
-  // Pages moved from navbar to footer - removed the specified pages
-  const mainPagesInFooter = [
-    // Removed: { path: '/the-opportunity', label: 'The Opportunity' },
-    // Removed: { path: '/responsibilities', label: 'Responsibilities' },
-    // Removed: { path: '/you', label: 'Skills & Experience' },
-    // Removed: { path: '/customer-asks', label: 'Customer Asks' },
-  ];
-  
-  // New leadership pages in footer
-  const leadershipPages = [
-    // Removed: { path: '/leadership-style', label: 'Leadership Style' },
-    // Removed: { path: '/people-involved', label: 'People Involved' },
-    // Removed: { path: '/upcoming-projects', label: 'Upcoming Projects' },
-  ];
+  // FAQs link
+  const faqsLink = { path: '/faqs', label: 'FAQs' };
   
   return (
     <footer className="bg-vault-primary text-white py-8 border-t border-vault-primary/50 mt-12">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="mb-6 md:mb-0">
             <Link to="/" className="inline-block">
               <img 
@@ -62,41 +35,14 @@ export const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-vault-accent font-semibold mb-3 text-sm">Navigation</h3>
+            <h3 className="text-vault-accent font-semibold mb-3 text-sm">FAQs</h3>
             <div className="grid grid-cols-1 gap-y-2">
-              {routes.map((route) => (
-                <Link 
-                  key={route.path}
-                  to={route.path} 
-                  className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200"
-                >
-                  {route.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-          
-          <div>
-            <h3 className="text-vault-accent font-semibold mb-3 text-sm">Key Pages</h3>
-            <div className="grid grid-cols-1 gap-y-2">
-              {mainPagesInFooter.map((route) => (
-                <Link 
-                  key={route.path}
-                  to={route.path} 
-                  className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200"
-                >
-                  {route.label}
-                </Link>
-              ))}
-              {leadershipPages.map((route) => (
-                <Link 
-                  key={route.path}
-                  to={route.path} 
-                  className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200"
-                >
-                  {route.label}
-                </Link>
-              ))}
+              <Link 
+                to={faqsLink.path} 
+                className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200"
+              >
+                {faqsLink.label}
+              </Link>
             </div>
           </div>
           
