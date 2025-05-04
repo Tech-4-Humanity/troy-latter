@@ -43,6 +43,14 @@ const CustomerSuccessStories = () => {
     <div className="animate-fade-in">
       <PageTitle title="Customer Success Stories" />
       
+      <div className="mb-8">
+        <img 
+          src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" 
+          alt="Customer Success" 
+          className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
+        />
+      </div>
+      
       <Card className="border rounded-xl overflow-hidden mb-12">
         <CardContent className="p-8">
           <ul className="space-y-6">

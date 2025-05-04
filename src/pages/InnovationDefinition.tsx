@@ -11,7 +11,7 @@ const InnovationDefinition = () => {
       <section className="mb-12">
         <div className="mb-8">
           <img 
-            src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" 
+            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" 
             alt="Innovation Concept" 
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
           />

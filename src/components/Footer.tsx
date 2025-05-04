@@ -11,7 +11,7 @@ export const Footer = () => {
     { path: '/about-troy', label: 'About Troy' },
     { path: '/innovation-definition', label: 'Innovation Definition' },
     { path: '/innovation-journey', label: 'Innovation Journey' },
-    { path: '/customer-success-stories', label: 'Success Stories' },
+    { path: '/customer-success-stories', label: 'Customer Success' },
     { path: '/innovation-frameworks', label: 'Frameworks' },
     { path: '/faqs', label: 'FAQs' }, // Added FAQs to the footer navigation
   ];
