@@ -2,7 +2,6 @@
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
-import { LeadershipExamples } from '@/components/responsibilities/LeadershipExamples';
 
 const LeadershipStyle = () => {
   const leadershipStyles = [
@@ -31,15 +30,15 @@ const LeadershipStyle = () => {
   const leadershipQualities = [
     {
       title: "Hands‑On Technologist",
-      description: "My GitHub is filled with real‑world modules: Terraform templates for multi‑region container clusters, Ansible playbooks for hardened OS builds, Kubernetes Operators for automated deployment, and post‑quantum key management scripts using CloudHSM/Oracle Vault. I've personally provisioned edge compute nodes on AWS Snowball Edge, stood up sovereign LLM frameworks on Outposts, and overseen the full CI/CD pipeline—bridging theory and practice in production environments."
+      description: "My GitHub is filled with real‑world modules: Terraform templates for multi‑region container clusters, Ansible playbooks for hardened OS builds, Kubernetes Operators for automated deployment, and post‑quantum key management scripts using CloudHSM/Oracle Vault. I've personally provisioned edge compute nodes on AWS Snowball Edge, stood up sovereign LLM frameworks on Outposts, and overseen the full CI/CD pipeline - bridging theory and practice in production environments."
     },
     {
       title: "Agile Leader",
-      description: "I've built and mentored \"tiger teams\" of 3–8 specialists at AWS APAC and Unisys—mixing engineers, data scientists and compliance experts. By instituting two‑week \"Sprint Marathons,\" daily standups and Friday demo‑or‑die sessions tied to kill/scale metrics, we tripled PoC throughput, cut cycle times by 60% and increased funding conversion rates from 20% to over 60%. This lean, high‑trust culture keeps bureaucracy at bay and puts execution front and center."
+      description: "I've built and mentored \"tiger teams\" of 3-8 specialists at AWS APAC and Unisys - mixing engineers, data scientists and compliance experts. By instituting two‑week \"Sprint Marathons,\" daily standups and Friday demo‑or‑die sessions tied to kill/scale metrics, we tripled PoC throughput, cut cycle times by 60% and increased funding conversion rates from 20% to over 60%. This lean, high‑trust culture keeps bureaucracy at bay and puts execution front and center."
     },
     {
       title: "Data‑Driven",
-      description: "No prototype ships without instrumentation. I've embedded OpenTelemetry‑powered metrics, Prometheus/Grafana dashboards and AWS Cost Explorer integrations into every PoC—tracking usage, latency, anomaly‑rates and cost savings in real time. I then layer on QuickSight or Kibana ROI dashboards that translate raw KPIs into business impact (e.g. $150K/month savings, 85% reduction in audit prep). These live insights turn demos into indisputable cases for scale‑up."
+      description: "No prototype ships without instrumentation. I've embedded OpenTelemetry‑powered metrics, Prometheus/Grafana dashboards and AWS Cost Explorer integrations into every PoC - tracking usage, latency, anomaly‑rates and cost savings in real time. I then layer on QuickSight or Kibana ROI dashboards that translate raw KPIs into business impact (e.g. $150K/month savings, 85% reduction in audit prep). These live insights turn demos into indisputable cases for scale‑up."
     }
   ];
 
@@ -90,8 +89,6 @@ const LeadershipStyle = () => {
           ))}
         </div>
       </section>
-      
-      <LeadershipExamples />
     </div>
   );
 };
