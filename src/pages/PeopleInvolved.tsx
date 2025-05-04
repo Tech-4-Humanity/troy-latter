@@ -33,7 +33,7 @@ const PeopleInvolved = () => {
     },
     {
       title: "Customer Innovation Councils & Advocates",
-      description: "Built embedded PoC councils with key customers—turned 5 case‑studies into $8 M in follow‑on business and created a network of vocal promoters."
+      description: "Built embedded PoC councils with key customers—turned 5 case‑studies into $8 M in follow-on business and created a network of vocal promoters."
     }
   ];
 

@@ -32,7 +32,7 @@ const profileExamples = {
       },
       {
         label: 'Action',
-        text: "Architected a zero - trust Government Cloud enclave with post - quantum key management and continuous compliance pipelines."
+        text: "Architected a zero-trust Government Cloud enclave with post-quantum key management and continuous compliance pipelines."
       },
       {
         label: 'Outcome',
@@ -41,7 +41,7 @@ const profileExamples = {
     ]
   },
   technologist: {
-    title: 'Hands - On Technologist',
+    title: 'Hands-On Technologist',
     imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80",
     star: [
       {

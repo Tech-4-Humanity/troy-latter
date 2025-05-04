@@ -74,7 +74,7 @@ const WhatIsInnovation = () => {
                 Innovation is about creating meaningful change that delivers real value. It's not just about new ideas, but about implementing solutions that transform how we work and live.
               </p>
               <p className="text-gray-700">
-                Through my career at organizations like AWS, Oracle, and Unisys, I've developed approaches that drive practical innovation with measurable outcomes. Explore the sections below to learn more.
+                Through my career at organisations like AWS, Oracle, and Unisys, I've developed approaches that drive practical innovation with measurable outcomes. Explore the sections below to learn more.
               </p>
             </CardContent>
           </Card>

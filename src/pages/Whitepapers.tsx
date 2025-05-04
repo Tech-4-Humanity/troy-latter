@@ -22,7 +22,7 @@ const Whitepapers = () => {
         
         <h2 className="text-2xl font-semibold mb-4 text-vault-primary">Coming Soon</h2>
         <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-          Our technical team is preparing a curated collection of whitepapers and technical talks covering sovereign AI implementations, zero - trust architecture for classified environments, and battlefield - ready cloud deployments. These resources will provide valuable insights into Vault's technical capabilities and innovation roadmap.
+          Our technical team is preparing a curated collection of whitepapers and technical talks covering sovereign AI implementations, zero-trust architecture for classified environments, and battlefield-ready cloud deployments. These resources will provide valuable insights into Vault's technical capabilities and innovation roadmap.
         </p>
         
         <div className="bg-white p-4 rounded-md border border-gray-200 mb-6 inline-block">

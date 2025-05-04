@@ -27,7 +27,7 @@ const YourPitch = () => {
       {/* 2-Line Bio + Key Wins */}
       <p className="text-lg text-vault-secondary mb-4">
         I'm Troy Latter - a technology leader with 15 years driving sovereign-grade AI, security and infrastructure
-        programs at AWS, Unisys and Oracle across APAC.
+        programmes at AWS, Unisys and Oracle across APAC.
       </p>
       
       <ul className="list-disc list-outside ml-5 text-vault-secondary mb-8 space-y-2">
