@@ -1,27 +1,9 @@
+
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
 
 const CustomerAsksStars = () => {
-  const successStories = [
-    {
-      title: "$3B Digital Precinct (AWS)",
-      description: "Unified cloud ops, 70% faster provisioning, single-pane catalogue."
-    },
-    {
-      title: "Halal Food Traceability (Oracle)",
-      description: "Blockchain proofs-of-origin pilot → 40% drop in exceptions."
-    },
-    {
-      title: "RFT-Parsing & Scoring (Unisys)",
-      description: "NLP pipeline + SFIA scoring → 60% faster shortlists."
-    },
-    {
-      title: "National Cyber Resilience (Indonesia)",
-      description: "AI anomaly detection + SOAR runbooks → 70% MTTR reduction."
-    }
-  ];
-
   const breakthroughStories = [
     {
       title: "Blueprint to Breakthrough",
@@ -37,11 +19,38 @@ const CustomerAsksStars = () => {
     }
   ];
   
+  const drivingVisionItems = [
+    {
+      title: "From Vision to Roadmap",
+      description: "Shape and prioritise the innovation pipeline. At Unisys I took five siloed AI pilots across government, ran Working‑Backwards strategy sprints, and delivered a six‑month PoC roadmap that unlocked an $8 M follow‑on pipeline in 12 weeks."
+    },
+    {
+      title: "Building Tiger Teams",
+      description: "Lead small, high‑trust squads with external experts. At AWS APAC I formed a lean group of five data scientists and DevOps engineers, ran two‑week "Sprint Marathons," and achieved a 65% PoC funding conversion—tripling throughput and restoring executive faith."
+    },
+    {
+      title: "Breaking the Prototype‑to‑Reality Barrier",
+      description: "Design, build and test bleeding‑edge IaC demos. At Oracle I authored modular playbooks and orchestrated CI/CD tests for rugged edge clusters and LLM frameworks—then presented live demos to Defence leadership, securing $5 M in production funding."
+    },
+    {
+      title: "Culture & Pace",
+      description: "Embed a fail‑fast, learn‑fast ethos. I've introduced weekly "kill/scale" criteria, Friday C‑suite Demo Days, and real‑time innovation dashboards at every company—cutting PoC cycle times from 12 weeks to as little as 4 weeks."
+    },
+    {
+      title: "Customer‑first Validation",
+      description: "Showcase PoCs, iterate on feedback. I've demoed AI agents and edge‑mesh solutions at AWS summits, Unisys innovation forums and government roadshows—capturing operator feedback that directly drove our next sprint and built customer evangelists."
+    },
+    {
+      title: "Technical Evangelism & Business Case Translation",
+      description: "Bridge R&D to board‑room buy‑in. Whether publishing whitepapers on neurotech standards, hosting Tech Talks for 200+ executives, or crafting ROI models that secured $2–5 M in follow‑on contracts, I've turned technical wins into strategic wins for every stakeholder."
+    }
+  ];
+  
   return (
     <div className="animate-fade-in">
       <PageTitle title="Inspiration" />
       
-      {/* New side-by-side layout for top section */}
+      {/* Side-by-side layout for top section */}
       <div className="flex flex-col md:flex-row gap-6 mb-12">
         <div className="md:w-1/2">
           <img 
@@ -52,35 +61,24 @@ const CustomerAsksStars = () => {
           <p className="mt-2 text-sm text-center text-gray-600">please ask</p>
         </div>
         <div className="md:w-1/2 flex flex-col justify-center">
-          <h2 className="text-2xl font-bold text-vault-primary mb-4">Innovation Inspiration</h2>
-          <p className="text-gray-700 mb-3">
-            Innovation comes from understanding the challenges our customers face and creating solutions 
-            that deliver real value. My approach is to listen deeply to customer needs and translate 
-            them into practical technology solutions.
-          </p>
-          <p className="text-gray-700">
-            Through years of experience across diverse industries, I've developed a keen sense for 
-            identifying opportunities where technology can make a meaningful difference. The inspiration 
-            for my work comes from seeing the positive impact of well-designed solutions.
-          </p>
+          <h2 className="text-2xl font-bold text-vault-primary mb-4">How I Will Drive Vault's Vision</h2>
+          <Card className="border rounded-xl overflow-hidden">
+            <CardContent className="p-6">
+              <ul className="space-y-6">
+                {drivingVisionItems.map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="text-xl mr-3">•</span>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-800 mb-1">{item.title}</h3>
+                      <p className="text-gray-700">{item.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
         </div>
       </div>
-      
-      <Card className="border rounded-xl overflow-hidden mb-12">
-        <CardContent className="p-8">
-          <ul className="space-y-6">
-            {successStories.map((story, index) => (
-              <li key={index} className="flex items-start">
-                <span className="text-xl mr-3">•</span>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-1">{story.title}</h3>
-                  <p className="text-gray-700 bg-gray-100 p-2 rounded">{story.description}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
       
       <h2 className="text-2xl font-bold text-vault-primary mb-6">Deep Dive Case Studies</h2>
       
