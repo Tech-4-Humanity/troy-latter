@@ -34,8 +34,14 @@ export const Footer = () => {
             </p>
           </div>
           
-          {/* FAQs - no heading */}
+          {/* Frameworks and FAQs */}
           <div className="flex flex-col justify-start">
+            <Link 
+              to="/innovation-frameworks" 
+              className="text-vault-accent hover:text-vault-accent text-lg font-medium transition-colors duration-200 mb-2"
+            >
+              Frameworks
+            </Link>
             <Link 
               to="/faqs" 
               className="text-vault-accent hover:text-vault-accent text-lg font-medium transition-colors duration-200"
