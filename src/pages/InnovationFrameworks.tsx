@@ -37,21 +37,27 @@ const InnovationFrameworks = () => {
       <PageTitle title="Frameworks I Use" />
       
       <section className="mb-12">
-        <div className="mb-8">
-          <img 
-            src="/lovable-uploads/0802b80f-8d0e-4e6c-b22c-90790f6ab929.png" 
-            alt="Innovation Frameworks" 
-            className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
-          />
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="lg:w-2/3">
+            <ContentCard>
+              <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
+                {frameworkItems.map((item, index) => (
+                  <ListItem key={index} title={item.title} description={item.description} />
+                ))}
+              </ul>
+            </ContentCard>
+          </div>
+          
+          <div className="lg:w-1/3 flex items-center justify-center">
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80" 
+                alt="Innovation frameworks visualization" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
         </div>
-        
-        <ContentCard>
-          <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
-            {frameworkItems.map((item, index) => (
-              <ListItem key={index} title={item.title} description={item.description} />
-            ))}
-          </ul>
-        </ContentCard>
       </section>
     </div>
   );
