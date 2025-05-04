@@ -35,12 +35,12 @@ const InnovationJourney = () => {
       <section className="mb-12">
         <div className="mb-8">
           <img 
-            src="/lovable-uploads/f9deef88-c299-4f35-ad6f-4585c24d056a.png" 
-            alt="Government Innovation Partnership" 
+            src="/lovable-uploads/a8c16df2-19a7-4e1a-a18d-8725f2dc5820.png" 
+            alt="Innovation Partnership" 
             className="w-full max-w-3xl mx-auto h-auto object-contain rounded-lg shadow-md mb-6" 
           />
           <p className="text-gray-700 text-center italic">
-            Building innovation partnerships with government agencies for digital transformation
+            Building innovation partnerships with key stakeholders and organizations
           </p>
         </div>
         
