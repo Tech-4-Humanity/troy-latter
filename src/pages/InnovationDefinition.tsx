@@ -12,7 +12,7 @@ const InnovationDefinition = () => {
     },
     {
       title: "It drives change",
-      description: "Change is complex and often stalls when only one "winner" emerges."
+      description: "Change is complex and often stalls when only one \"winner\" emerges."
     },
     {
       title: "True innovation finds multiple winners",
