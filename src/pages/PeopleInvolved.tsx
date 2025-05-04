@@ -30,14 +30,14 @@ const PeopleInvolved = () => {
     {
       title: "Customers & Citizens",
       description: "End‑users whose needs and feedback create multiple winners."
-    },
-    {
-      title: "Customer Innovation Councils & Advocates",
-      description: "Built embedded PoC councils with key customers—turned 5 case‑studies into $8 M in follow-on business and created a network of vocal promoters."
     }
   ];
 
   const innovationInitiatives = [
+    {
+      title: "Customer Innovation Councils & Advocates",
+      description: "Built embedded PoC councils with key customers—turned 5 case‑studies into $8 M in follow-on business and created a network of vocal promoters."
+    },
     {
       title: "Government Industry Engagement",
       description: "Working with Australian Government Trade and Investment Commission to drive innovation initiatives across public sector."
