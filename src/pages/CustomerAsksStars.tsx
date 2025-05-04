@@ -48,7 +48,7 @@ const CustomerAsksStars = () => {
   
   return (
     <div className="animate-fade-in">
-      <PageTitle title="Inspiration" />
+      <PageTitle title="Vision" />
       
       {/* Side-by-side layout for top section */}
       <div className="flex flex-col md:flex-row gap-6 mb-12">
