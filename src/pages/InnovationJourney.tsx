@@ -31,7 +31,7 @@ const InnovationJourney = () => {
   return (
     <div className="animate-fade-in">
       <PageTitle title="My Innovation Journey" />
-      
+
       <section className="mb-12">
         <div className="mb-8">
           <img 
@@ -43,7 +43,9 @@ const InnovationJourney = () => {
             Building innovation partnerships with key stakeholders and organizations
           </p>
         </div>
-        
+      </section>
+      
+      <section className="mb-12">
         <ContentCard>
           <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
             {journeyItems.map((item, index) => (
