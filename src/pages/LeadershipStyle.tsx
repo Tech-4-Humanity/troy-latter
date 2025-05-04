@@ -29,16 +29,20 @@ const LeadershipStyle = () => {
 
   const leadershipQualities = [
     {
-      title: "Hands‑On Technologist",
-      description: "My GitHub is filled with real‑world modules: Terraform templates for multi‑region container clusters, Ansible playbooks for hardened OS builds, Kubernetes Operators for automated deployment, and post‑quantum key management scripts using CloudHSM/Oracle Vault. I've personally provisioned edge compute nodes on AWS Snowball Edge, stood up sovereign LLM frameworks on Outposts, and overseen the full CI/CD pipeline - bridging theory and practice in production environments."
+      title: "Why I'm Your Go‑To Technologist",
+      description: "Hands‑On Generalist\nI move fast from whiteboard to production—building cloud‑native stacks, edge prototypes and security controls that go live in days, not months. Always curious and never afraid to ask, I bridge gaps by tapping into broad relationships across teams and vendors, connecting dots that speed outcomes."
     },
     {
-      title: "Agile Leader",
-      description: "I've built and mentored \"tiger teams\" of 3-8 specialists at AWS APAC and Unisys - mixing engineers, data scientists and compliance experts. By instituting two‑week \"Sprint Marathons,\" daily standups and Friday demo‑or‑die sessions tied to kill/scale metrics, we tripled PoC throughput, cut cycle times by 60% and increased funding conversion rates from 20% to over 60%. This lean, high‑trust culture keeps bureaucracy at bay and puts execution front and center."
+      title: "Agile Catalyst",
+      description: "I lead small, high‑trust \"tiger teams\" of engineers, data scientists and compliance experts through two‑week sprints, daily standups and Friday kill/scale demos. This collaborative, learn‑fast culture tripled our proof‑of‑concept throughput, cut delivery cycles by 60% and lifted pilot funding conversion from 20% to over 60%."
     },
     {
-      title: "Data‑Driven",
-      description: "No prototype ships without instrumentation. I've embedded OpenTelemetry‑powered metrics, Prometheus/Grafana dashboards and AWS Cost Explorer integrations into every PoC - tracking usage, latency, anomaly‑rates and cost savings in real time. I then layer on QuickSight or Kibana ROI dashboards that translate raw KPIs into business impact (e.g. $150K/month savings, 85% reduction in audit prep). These live insights turn demos into indisputable cases for scale‑up."
+      title: "Outcome‑Obsessed",
+      description: "Every project ships with live dashboards—usage, performance and cost visible in real time. By translating metrics into hard business value (for example, $150K/month saved and 85% faster audit prep), I turn prototypes into must‑scale initiatives."
+    },
+    {
+      title: "Team‑First Collaborator",
+      description: "People are at the heart of every solution. I invest in coaching, knowledge‑sharing and cross‑functional workshops that empower everyone to contribute ideas and learn new skills. By building inclusive, psychologically safe environments, we unlock creativity, accelerate problem‑solving and make big goals feel achievable."
     }
   ];
 
@@ -75,12 +79,12 @@ const LeadershipStyle = () => {
           </Card>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {leadershipQualities.map((quality, index) => (
             <Card key={index} className="bg-white shadow-sm">
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold text-vault-primary mb-4">{quality.title}</h3>
-                <p className="text-gray-700">{quality.description}</p>
+                <p className="text-gray-700 whitespace-pre-line">{quality.description}</p>
               </CardContent>
             </Card>
           ))}
