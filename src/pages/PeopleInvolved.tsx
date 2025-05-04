@@ -73,7 +73,7 @@ const PeopleInvolved = () => {
               className="w-full h-auto object-cover rounded-lg shadow-md" 
             />
             <p className="text-sm text-gray-600 mt-2 italic text-center">
-              Collaborative partnerships drive innovation success
+              It's always about the people!
             </p>
           </div>
           
