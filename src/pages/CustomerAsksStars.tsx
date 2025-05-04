@@ -7,23 +7,23 @@ const CustomerAsksStars = () => {
   const drivingVisionItems = [
     {
       title: "From Vision to Roadmap",
-      description: "Shape and prioritise the innovation pipeline. At Unisys I took five siloed AI pilots across government, ran Working‑Backwards strategy sprints, and delivered a six‑month PoC roadmap that unlocked an $8 M follow‑on pipeline in 12 weeks."
+      description: "Shape and prioritise the innovation pipeline. At Unisys I took five siloed AI pilots across Dyson, learnt new code, found new parners, and delivered a six‑month PoC roadmap that unlocked an $8 M follow‑on pipeline in 12 weeks."
     },
     {
-      title: "Building Tiger Teams",
-      description: "Lead small, high‑trust squads with external experts. At AWS APAC I formed a lean group of five data scientists and DevOps engineers, ran two‑week \"Sprint Marathons,\" and achieved a 65% PoC funding conversion—tripling throughput and restoring executive faith."
+      title: "Building 2 Pizza Teams",
+      description: "Lead small, high‑trust teams with external experts. At AWS I formed a lean group of diverse experts vto run two‑week \"Sprint Marathons,\" and achieved a 65% PoC funding conversion - tripling throughput and restoring executive faith."
     },
     {
       title: "Breaking the Prototype‑to‑Reality Barrier",
-      description: "Design, build and test bleeding‑edge IaC demos. At Oracle I authored modular playbooks and orchestrated CI/CD tests for rugged edge clusters and LLM frameworks—then presented live demos to Defence leadership, securing $5 M in production funding."
+      description: "Design, build and test bleeding‑edge IaC demos. At Oracle I authored modular playbooks and orchestrated go to market resources, presented live demos to Defence leadership, securing $5 M in production funding."
     },
     {
       title: "Culture & Pace",
-      description: "Embed a fail‑fast, learn‑fast ethos. I've introduced weekly \"kill/scale\" criteria, Friday C‑suite Demo Days, and real‑time innovation dashboards at every company—cutting PoC cycle times from 12 weeks to as little as 4 weeks."
+      description: "Embed a fail‑fast, learn‑fast ethos. I've introduced weekly \"kill/scale\" criteria, Friday C‑suite Demo Days, and real‑time innovation dashboards at every company - cutting PoC cycle times from 12 weeks to as little as 4 weeks."
     },
     {
       title: "Customer‑first Validation",
-      description: "Showcase PoCs, iterate on feedback. I've demoed AI agents and edge‑mesh solutions at AWS summits, Unisys innovation forums and government roadshows—capturing operator feedback that directly drove our next sprint and built customer evangelists."
+      description: "Showcase PoCs, iterate on feedback. I've demoed AI agents and edge‑mesh solutions at AWS summits, Unisys innovation forums and government roadshows - capturing operator feedback that directly drove our next sprint and built customer evangelists."
     },
     {
       title: "Technical Evangelism & Business Case Translation",
