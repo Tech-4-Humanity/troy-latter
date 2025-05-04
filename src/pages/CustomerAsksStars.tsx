@@ -73,7 +73,7 @@ const CustomerAsksStars = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <PageTitle title="Vision" />
+      <PageTitle title="Inspiration" />
       
       <div className="text-lg mb-8">
         <p className="mb-4">

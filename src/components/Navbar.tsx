@@ -12,7 +12,7 @@ const routes = [
   { path: '/customer-success-stories', label: 'Customer Success' },
   { path: '/people-involved', label: 'Humans' },
   { path: '/leadership-style', label: 'Leadership' },
-  { path: '/vision', label: 'Vision' },
+  { path: '/inspiration', label: 'Inspiration' },
 ];
 
 export const Navbar = () => {

@@ -53,9 +53,10 @@ const App = () => (
             <Route path="/upcoming-projects" element={<UpcomingProjects />} />
             <Route path="/strategic-projects" element={<StrategicProjects />} /> 
             <Route path="/your-pitch" element={<Navigate to="/about-troy" />} />
-            <Route path="/customer-asks" element={<Navigate to="/vision" />} />
-            <Route path="/vision" element={<CustomerAsksStars />} />
-            <Route path="/customer-asks-stars" element={<Navigate to="/vision" />} />
+            <Route path="/customer-asks" element={<Navigate to="/inspiration" />} />
+            <Route path="/inspiration" element={<CustomerAsksStars />} />
+            <Route path="/vision" element={<Navigate to="/inspiration" />} />
+            <Route path="/customer-asks-stars" element={<Navigate to="/inspiration" />} />
             <Route path="/the-opportunity" element={<TheOpportunity />} />
             <Route path="/opportunity-stars" element={<OpportunityStars />} />
             <Route path="/responsibilities" element={<Responsibilities />} />
