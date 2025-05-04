@@ -62,13 +62,30 @@ const InnovationJourney = () => {
       
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-vault-primary mb-6">Scaling Innovation</h2>
-        <ContentCard>
-          <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
-            {journeyItems.map((item, index) => (
-              <ListItem key={index} title={item.title} description={item.description} />
-            ))}
-          </ul>
-        </ContentCard>
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="md:w-2/3">
+            <ContentCard>
+              <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
+                {journeyItems.map((item, index) => (
+                  <ListItem key={index} title={item.title} description={item.description} />
+                ))}
+              </ul>
+            </ContentCard>
+          </div>
+          
+          <div className="md:w-1/3">
+            <div className="rounded-lg overflow-hidden shadow-lg h-full">
+              <img 
+                src="/lovable-uploads/24ae2c57-fff3-40ab-88f1-3ad34c248fc1.png" 
+                alt="Oracle and AWS innovation partnerships" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <p className="text-sm text-gray-600 mt-2 italic text-center">
+              Strategic partnerships with Oracle and AWS
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="mb-12">
