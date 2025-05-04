@@ -39,8 +39,8 @@ const CustomerAsksStars = () => {
       <div className="flex flex-col md:flex-row gap-6 mb-12">
         <div className="md:w-1/2">
           <img 
-            src="/lovable-uploads/c399236d-6c48-4f68-ac88-f45ca2128b22.png" 
-            alt="Profile" 
+            src="/lovable-uploads/c0aa3a3a-8f54-4814-a860-8528547cd5e2.png" 
+            alt="Leadership Discussion" 
             className="w-full h-auto rounded-lg shadow-lg object-cover" 
           />
         </div>
@@ -68,4 +68,3 @@ const CustomerAsksStars = () => {
 };
 
 export default CustomerAsksStars;
-
