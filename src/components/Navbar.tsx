@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
@@ -11,6 +10,8 @@ const routes = [
   { path: '/innovation-journey', label: 'Innovation Journey' },
   { path: '/customer-success-stories', label: 'Customer Success' },
   { path: '/innovation-frameworks', label: 'Frameworks' },
+  { path: '/leadership-style', label: 'Leadership Style' },
+  { path: '/people-involved', label: 'It\'s People' },
 ];
 
 export const Navbar = () => {

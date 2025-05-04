@@ -31,13 +31,13 @@ export const Footer = () => {
     // Removed: { path: '/the-opportunity', label: 'The Opportunity' },
     // Removed: { path: '/responsibilities', label: 'Responsibilities' },
     // Removed: { path: '/you', label: 'Skills & Experience' },
-    { path: '/customer-asks', label: 'Customer Asks' },
+    // Removed: { path: '/customer-asks', label: 'Customer Asks' },
   ];
   
   // New leadership pages in footer
   const leadershipPages = [
-    { path: '/leadership-style', label: 'Leadership Style' },
-    { path: '/people-involved', label: 'People Involved' },
+    // Removed: { path: '/leadership-style', label: 'Leadership Style' },
+    // Removed: { path: '/people-involved', label: 'People Involved' },
     // Removed: { path: '/upcoming-projects', label: 'Upcoming Projects' },
   ];
   
