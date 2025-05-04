@@ -47,10 +47,15 @@ const LeadershipStyle = () => {
       <PageTitle title="My Leadership Style" />
       
       <section className="mb-12">
-        <div className="mb-8">
+        <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           <img 
             src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" 
             alt="Leadership Team" 
+            className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
+          />
+          <img 
+            src="/lovable-uploads/7e6000f2-9818-40fc-9191-2549b09f49da.png" 
+            alt="Leadership Recognition Award" 
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
           />
         </div>
