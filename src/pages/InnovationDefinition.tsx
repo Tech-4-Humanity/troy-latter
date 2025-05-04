@@ -105,11 +105,11 @@ const InnovationDefinition = () => {
           </div>
           
           <div className="lg:w-1/3 flex flex-col items-center justify-center">
-            <div className="rounded-lg overflow-hidden shadow-lg">
+            <div className="rounded-lg overflow-hidden shadow-lg h-full">
               <img 
                 src="/lovable-uploads/ead44fd7-64c1-42e0-839d-1d412cc2bfe6.png" 
                 alt="The Working Backwards process" 
-                className="w-full h-auto object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
             <p className="text-sm text-gray-600 mt-2 italic text-center">
