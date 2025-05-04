@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { ContentCard } from '@/components/ContentCard';
@@ -62,7 +61,7 @@ const PeopleInvolved = () => {
 
   return (
     <div className="animate-fade-in">
-      <PageTitle title="People Involved" />
+      <PageTitle title="Achieving through others" />
       
       <section className="mb-12">
         <div className="flex flex-col md:flex-row gap-8 mb-8">
