@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { ContentCard } from '@/components/ContentCard';
@@ -97,7 +98,7 @@ const PeopleInvolved = () => {
       
       <section className="mb-12">
         <ContentCard>
-          <h3 className="text-xl font-bold text-vault-primary mb-4">Innovation Initiatives</h3>
+          <h3 className="text-xl font-bold text-vault-primary mb-4">Humans in the Loop</h3>
           <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
             {innovationInitiatives.map((item, index) => (
               <ListItem key={index} title={item.title} description={item.description} />
