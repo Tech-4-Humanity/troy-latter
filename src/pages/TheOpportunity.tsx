@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card } from '@/components/ui/card';
@@ -58,7 +57,7 @@ const TheOpportunity = () => {
       <Separator className="my-10 bg-vault-accent/30" />
       
       <div className="space-y-8 mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary">Key Aspects</h2>
+        <h2 className="text-2xl font-semibold text-vault-primary">The Many Faces of Innovation</h2>
         <div className="space-y-8">
           <div>
             <h3 className="font-medium text-xl text-vault-primary">Proven First‑of‑a‑Kind R&D</h3>
