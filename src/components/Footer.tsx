@@ -10,6 +10,9 @@ export const Footer = () => {
     { path: '/resources/90-day-plan', label: '90-Day Plan' },
     { path: '/resources/whitepapers', label: 'Whitepapers' },
     { path: '/resources/lean-canvas', label: 'Lean Canvas' },
+    { path: '/your-profile-stars', label: 'Your Profile Stars' },
+    { path: '/opportunity-stars', label: 'Opportunity Stars' },
+    { path: '/customer-asks-stars', label: 'Customer Asks Stars' },
   ];
   
   return (
@@ -55,7 +58,7 @@ export const Footer = () => {
             
             <div>
               <h3 className="text-vault-accent font-semibold mb-2 text-sm">Resources</h3>
-              <div className="flex flex-col space-y-1">
+              <div className="grid grid-cols-2 md:grid-cols-1 gap-x-8 gap-y-1">
                 {secondaryRoutes.map((route) => (
                   <Link 
                     key={route.path}

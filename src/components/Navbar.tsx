@@ -6,6 +6,7 @@ import { Menu, X } from 'lucide-react';
 
 // Main navigation routes - these will be in the top navbar
 const routes = [
+  { path: '/', label: 'Home' },
   { path: '/about-troy', label: 'About Troy' },
   { path: '/what-is-innovation', label: 'What Is Innovation' },
   { path: '/the-opportunity', label: 'The Opportunity' },
@@ -13,13 +14,6 @@ const routes = [
   { path: '/you', label: 'Skills & Experience' },
   { path: '/customer-asks', label: 'Customer Asks' },
   { path: '/faqs', label: 'FAQs' },
-];
-
-// Secondary routes - these will be moved to footer or submenus
-const secondaryRoutes = [
-  { path: '/resources/90-day-plan', label: '90-Day Plan' },
-  { path: '/resources/whitepapers', label: 'Whitepapers' },
-  { path: '/resources/lean-canvas', label: 'Lean Canvas' },
 ];
 
 export const Navbar = () => {
