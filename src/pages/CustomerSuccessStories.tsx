@@ -51,7 +51,6 @@ const CustomerSuccessStories = () => {
             alt="Innovation Leadership" 
             className="w-full h-auto rounded-lg shadow-lg object-cover" 
           />
-          <p className="mt-2 text-sm text-center text-gray-600">please ask</p>
         </div>
         <div className="md:w-1/2 flex flex-col justify-center">
           <h2 className="text-2xl font-bold text-vault-primary mb-4">Delivering Customer Success</h2>
