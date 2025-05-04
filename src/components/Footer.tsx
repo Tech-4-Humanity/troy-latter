@@ -26,11 +26,11 @@ export const Footer = () => {
     { path: '/customer-asks-stars', label: 'Customer Asks Stars' },
   ];
   
-  // Pages moved from navbar to footer
+  // Pages moved from navbar to footer - removed the specified pages
   const mainPagesInFooter = [
-    { path: '/the-opportunity', label: 'The Opportunity' },
-    { path: '/responsibilities', label: 'Responsibilities' },
-    { path: '/you', label: 'Skills & Experience' },
+    // Removed: { path: '/the-opportunity', label: 'The Opportunity' },
+    // Removed: { path: '/responsibilities', label: 'Responsibilities' },
+    // Removed: { path: '/you', label: 'Skills & Experience' },
     { path: '/customer-asks', label: 'Customer Asks' },
   ];
   
