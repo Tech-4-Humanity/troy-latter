@@ -10,55 +10,80 @@ const WhatIsInnovation = () => {
       title: "Innovation Definition",
       path: "/innovation-definition",
       description: "What makes something innovative and how it drives change",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f"
     },
     {
       title: "My Innovation Journey",
       path: "/innovation-journey",
       description: "Career highlights and innovation milestones across Oracle, AWS, and Unisys",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085"
     },
     {
       title: "Customer Success Stories",
       path: "/customer-success-stories",
       description: "Notable innovation outcomes from customer engagements",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81"
+      image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9"
     },
     {
       title: "Frameworks I Use",
       path: "/innovation-frameworks",
       description: "Key innovation methodologies and approaches",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+      image: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b"
     },
     {
       title: "Leadership Style",
       path: "/leadership-style",
       description: "Innovation leadership principles and approaches",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f"
     },
     {
       title: "People Involved",
       path: "/people-involved",
       description: "Key stakeholders in successful innovation",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085"
     },
     {
       title: "Upcoming Projects",
       path: "/upcoming-projects",
       description: "Innovation projects in the pipeline",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81"
+      image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9"
     }
   ];
 
   return (
     <div className="animate-fade-in space-y-8">
-      <PageTitle title="What Is Innovation?" />
+      <div className="flex flex-col md:flex-row md:items-start gap-8">
+        <div className="md:w-1/3">
+          <img 
+            src="/lovable-uploads/a8c16df2-19a7-4e1a-a18d-8725f2dc5820.png"
+            alt="Innovation Concept" 
+            className="w-full h-auto object-cover rounded-lg shadow-md"
+          />
+          <p className="text-sm text-gray-600 mt-2 italic text-center">
+            Building innovative solutions that transform businesses
+          </p>
+        </div>
+        
+        <div className="md:w-2/3">
+          <PageTitle title="What Is Innovation?" />
+          <Card className="bg-white shadow-sm mb-6">
+            <CardContent className="p-6">
+              <p className="text-gray-700 mb-4">
+                Innovation is about creating meaningful change that delivers real value. It's not just about new ideas, but about implementing solutions that transform how we work and live.
+              </p>
+              <p className="text-gray-700">
+                Through my career at organizations like AWS, Oracle, and Unisys, I've developed approaches that drive practical innovation with measurable outcomes. Explore the sections below to learn more.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {innovationPages.map((page) => (
           <Link to={page.path} key={page.path} className="group">
             <Card className="h-full hover:shadow-lg transition-all duration-300">
-              <div className="h-48 overflow-hidden relative">
+              <div className="h-40 overflow-hidden relative">
                 <img 
                   src={page.image} 
                   alt={page.title} 
