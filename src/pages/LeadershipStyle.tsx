@@ -48,15 +48,6 @@ const LeadershipStyle = () => {
     }
   ];
 
-  // STAR method example
-  const leadershipExample = {
-    title: "Leading Platform Innovation",
-    situation: "Enterprise customers struggling with complex regulatory compliance across multiple cloud environments.",
-    task: "Create a unified platform to simplify governance and accelerate product delivery.",
-    action: "Led cross-functional team to develop a platform that automated compliance checks, standardized infrastructure, and provided self-service tools.",
-    outcome: "Reduced time-to-production by 60%, eliminated 85% of manual compliance work, and enabled 3x faster innovation cycles."
-  };
-
   return (
     <div className="max-w-7xl mx-auto animate-fade-in">
       <PageTitle title="My Leadership Style" />
@@ -67,29 +58,15 @@ const LeadershipStyle = () => {
         </p>
       </div>
       
-      {/* Main feature section with image and text side-by-side */}
-      <div className="mb-12">
-        <div className="flex flex-col md:flex-row bg-vault-light rounded-lg overflow-hidden">
-          <div className="md:w-1/3 p-6 flex justify-center items-center">
-            <img 
-              src="/lovable-uploads/18765b1c-6ca0-4c50-81c2-95882a6f9fa4.png" 
-              alt="Leadership Recognition Plaque" 
-              className="max-h-80 object-contain rounded-md shadow-md"
-            />
-          </div>
-          <div className="md:w-2/3 p-6">
-            <h3 className="text-xl font-semibold text-vault-primary mb-4">{leadershipExample.title}</h3>
-            <div className="space-y-4 text-vault-secondary">
-              <p><span className="font-medium">Situation:</span> {leadershipExample.situation}</p>
-              <p><span className="font-medium">Task:</span> {leadershipExample.task}</p>
-              <p><span className="font-medium">Action:</span> {leadershipExample.action}</p>
-              <p><span className="font-medium">Outcome:</span> {leadershipExample.outcome}</p>
-            </div>
-          </div>
+      <div className="flex flex-col md:flex-row bg-vault-light rounded-lg overflow-hidden mb-12">
+        <div className="md:w-1/3 p-6 flex justify-center items-center">
+          <img 
+            src="/lovable-uploads/18765b1c-6ca0-4c50-81c2-95882a6f9fa4.png" 
+            alt="Leadership Recognition Plaque" 
+            className="max-h-80 object-contain rounded-md shadow-md"
+          />
         </div>
       </div>
-      
-      <Separator className="my-10 bg-vault-accent/30" />
       
       {/* Leadership Principles */}
       <div className="space-y-8 mb-10">
@@ -106,6 +83,8 @@ const LeadershipStyle = () => {
           </ul>
         </div>
       </div>
+      
+      <Separator className="my-10 bg-vault-accent/30" />
       
       {/* Leadership Qualities */}
       <div className="space-y-8 mb-10">
