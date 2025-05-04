@@ -2,6 +2,7 @@
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 const PeopleInvolved = () => {
   return (
@@ -17,7 +18,7 @@ const PeopleInvolved = () => {
           />
         </div>
         
-        <Card className="bg-white shadow-sm">
+        <Card className="bg-white shadow-sm mb-8">
           <CardContent className="p-6 md:p-8">
             <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
               <li>
@@ -50,9 +51,21 @@ const PeopleInvolved = () => {
                 <br /> 
                 End‑users whose needs and feedback create multiple winners.
               </li>
+              <li>
+                <span className="font-semibold">Customer Innovation Councils & Advocates</span>
+                <br /> 
+                Built embedded PoC councils with key customers—turned 5 case‑studies into $8 M in follow‑on business and created a network of vocal promoters.
+              </li>
             </ul>
           </CardContent>
         </Card>
+        
+        <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <p className="text-gray-700 italic">
+            Successful innovation requires collaboration across all stakeholders, from policy makers to end users.
+            Building strong relationships with champions at each level creates momentum and ensures alignment.
+          </p>
+        </div>
       </section>
     </div>
   );

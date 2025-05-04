@@ -37,6 +37,8 @@ const InnovationJourney = () => {
                 • Deployed edge‑powered meshed networks for low‑latency IoT in urban and remote zones.
                 <br />
                 • Advised on AI policy & legislation balancing innovation with public trust.
+                <br />
+                • At AWS APAC, founded a cross‑industry AI consortium (ISVs, research bodies, agencies) → 3× faster partner certifications & $15 M new marketplace revenue in year 1.
               </li>
               <li>
                 <span className="font-semibold">APAC CTO & Head of Strategic Foresight, Unisys (2024–Mar '25)</span>

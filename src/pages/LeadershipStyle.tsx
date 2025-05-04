@@ -21,6 +21,10 @@ const LeadershipStyle = () => {
     {
       title: "Transparent Communication",
       description: "Live dashboards + show & tell events; tailored updates for execs vs teams."
+    },
+    {
+      title: "Thought Leadership & Visibility",
+      description: "Keynoted AWS Public Sector Summit and Defence+Industry, published peer‑reviewed ML/security papers, and led exec briefings that generated 40+ qualified leads/quarter."
     }
   ];
 
