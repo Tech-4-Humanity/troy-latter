@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import VideoEmbed from '@/components/VideoEmbed';
 import { Button } from '@/components/ui/button';
-import { Play, Youtube } from 'lucide-react';
+import { Youtube } from 'lucide-react';
 
 const CustomerAsksStars = () => {
   const drivingVisionItems = [
@@ -61,18 +60,6 @@ const CustomerAsksStars = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
-              <Button className="flex items-center gap-2 bg-vault-accent hover:bg-vault-accent/80">
-                <Play size={16} />
-                <a 
-                  href="https://www.youtube.com/watch?v=-BXyJSr_6Tg" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-white"
-                >
-                  Listen to the full podcast
-                </a>
-              </Button>
-              
               <Button variant="outline" className="flex items-center gap-2 border-vault-accent text-vault-accent hover:bg-vault-accent/10">
                 <Youtube size={16} />
                 <a 
