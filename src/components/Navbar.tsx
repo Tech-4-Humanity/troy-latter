@@ -6,7 +6,6 @@ import { Menu, X } from 'lucide-react';
 
 // Main navigation routes - these will be in the top navbar
 const routes = [
-  { path: '/', label: 'Home' },
   { path: '/about-troy', label: 'About Troy' },
   { path: '/innovation-definition', label: 'Innovation Definition' },
   { path: '/innovation-journey', label: 'Innovation Journey' },
