@@ -9,10 +9,6 @@ const routes = [
   { path: '/', label: 'Home' },
   { path: '/about-troy', label: 'About Troy' },
   { path: '/what-is-innovation', label: 'What Is Innovation' },
-  { path: '/the-opportunity', label: 'The Opportunity' },
-  { path: '/responsibilities', label: 'Responsibilities' },
-  { path: '/you', label: 'Skills & Experience' },
-  { path: '/customer-asks', label: 'Customer Asks' },
   { path: '/faqs', label: 'FAQs' },
 ];
 

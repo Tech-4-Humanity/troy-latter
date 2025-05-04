@@ -15,6 +15,14 @@ export const Footer = () => {
     { path: '/customer-asks-stars', label: 'Customer Asks Stars' },
   ];
   
+  // Pages moved from navbar to footer
+  const mainPagesInFooter = [
+    { path: '/the-opportunity', label: 'The Opportunity' },
+    { path: '/responsibilities', label: 'Responsibilities' },
+    { path: '/you', label: 'Skills & Experience' },
+    { path: '/customer-asks', label: 'Customer Asks' },
+  ];
+  
   return (
     <footer className="bg-vault-primary text-white py-8 border-t border-vault-primary/50 mt-12">
       <div className="container mx-auto px-4">
@@ -47,12 +55,24 @@ export const Footer = () => {
                 <Link to="/what-is-innovation" className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200">
                   What Is Innovation
                 </Link>
-                <Link to="/the-opportunity" className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200">
-                  The Opportunity
+                <Link to="/faqs" className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200">
+                  FAQs
                 </Link>
-                <Link to="/customer-asks" className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200">
-                  Customer Asks
-                </Link>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="text-vault-accent font-semibold mb-2 text-sm">Key Pages</h3>
+              <div className="grid grid-cols-2 md:grid-cols-1 gap-x-8 gap-y-1">
+                {mainPagesInFooter.map((route) => (
+                  <Link 
+                    key={route.path}
+                    to={route.path} 
+                    className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200"
+                  >
+                    {route.label}
+                  </Link>
+                ))}
               </div>
             </div>
             
