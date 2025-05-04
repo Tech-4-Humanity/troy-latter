@@ -2,6 +2,7 @@
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
+import { LeadershipExamples } from '@/components/responsibilities/LeadershipExamples';
 
 const LeadershipStyle = () => {
   const leadershipStyles = [
@@ -47,29 +48,34 @@ const LeadershipStyle = () => {
       <PageTitle title="My Leadership Style" />
       
       <section className="mb-12">
-        <div className="mb-8">
-          <img 
-            src="/lovable-uploads/4a63c7d3-72f3-45cc-9aaf-1e2b78c70a7b.png" 
-            alt="Leadership Award" 
-            className="w-full max-w-md mx-auto h-auto object-contain rounded-lg shadow-md mb-6" 
-          />
+        <div className="flex flex-col md:flex-row gap-8 mb-8">
+          <div className="md:w-1/3">
+            <img 
+              src="/lovable-uploads/4a63c7d3-72f3-45cc-9aaf-1e2b78c70a7b.png" 
+              alt="Leadership Award" 
+              className="w-full h-auto object-contain rounded-lg shadow-md" 
+            />
+            <p className="text-sm text-gray-600 mt-2 italic text-center">
+              Recognition for innovative leadership approaches
+            </p>
+          </div>
+          
+          <Card className="md:w-2/3 border rounded-xl overflow-hidden">
+            <CardContent className="p-6">
+              <ul className="space-y-4">
+                {leadershipStyles.map((style, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="text-xl mr-3">•</span>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-800 mb-1">{style.title}</h3>
+                      <p className="text-gray-700 bg-gray-100 p-2 rounded">{style.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
         </div>
-        
-        <Card className="border rounded-xl overflow-hidden mb-8">
-          <CardContent className="p-8">
-            <ul className="space-y-6">
-              {leadershipStyles.map((style, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-xl mr-3">•</span>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-1">{style.title}</h3>
-                    <p className="text-gray-700 bg-gray-100 p-2 rounded">{style.description}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {leadershipQualities.map((quality, index) => (
@@ -82,6 +88,8 @@ const LeadershipStyle = () => {
           ))}
         </div>
       </section>
+      
+      <LeadershipExamples />
     </div>
   );
 };
