@@ -4,13 +4,22 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 
+// Main navigation routes - these will be in the top navbar
 const routes = [
   { path: '/about-troy', label: 'About Troy' },
+  { path: '/what-is-innovation', label: 'What Is Innovation' },
   { path: '/the-opportunity', label: 'The Opportunity' },
   { path: '/responsibilities', label: 'Responsibilities' },
   { path: '/you', label: 'Skills & Experience' },
   { path: '/customer-asks', label: 'Customer Asks' },
   { path: '/faqs', label: 'FAQs' },
+];
+
+// Secondary routes - these will be moved to footer or submenus
+const secondaryRoutes = [
+  { path: '/resources/90-day-plan', label: '90-Day Plan' },
+  { path: '/resources/whitepapers', label: 'Whitepapers' },
+  { path: '/resources/lean-canvas', label: 'Lean Canvas' },
 ];
 
 export const Navbar = () => {
@@ -35,7 +44,7 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-6">
             {routes.map((route) => (
               <Link
                 key={route.path}

@@ -21,6 +21,7 @@ import NinetyDayPlan from "./pages/NinetyDayPlan";
 import Whitepapers from "./pages/Whitepapers";
 import LeanCanvas from "./pages/LeanCanvas";
 import AboutTroy from "./pages/AboutTroy";
+import WhatIsInnovation from "./pages/WhatIsInnovation";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about-troy" element={<AboutTroy />} />
+            <Route path="/what-is-innovation" element={<WhatIsInnovation />} />
             <Route path="/your-pitch" element={<Navigate to="/about-troy" />} />
             <Route path="/customer-asks" element={<CustomerAsks />} />
             <Route path="/customer-asks-stars" element={<CustomerAsksStars />} />
