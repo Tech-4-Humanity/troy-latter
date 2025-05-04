@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
@@ -8,6 +9,7 @@ const routes = [
   { path: '/about-troy', label: 'About Troy' },
   { path: '/innovation-definition', label: 'Innovation?' },
   { path: '/innovation-journey', label: 'Innovation Journey' },
+  { path: '/vision', label: 'Vision' },
   { path: '/people-involved', label: 'Humans' },
   { path: '/leadership-style', label: 'Leadership' },
   { path: '/customer-success-stories', label: 'Customer Success' },

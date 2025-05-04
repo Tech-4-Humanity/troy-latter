@@ -51,10 +51,11 @@ const App = () => (
             <Route path="/leadership-style" element={<LeadershipStyle />} />
             <Route path="/people-involved" element={<PeopleInvolved />} />
             <Route path="/upcoming-projects" element={<UpcomingProjects />} />
-            <Route path="/strategic-projects" element={<StrategicProjects />} /> {/* Added the new hidden route */}
+            <Route path="/strategic-projects" element={<StrategicProjects />} /> 
             <Route path="/your-pitch" element={<Navigate to="/about-troy" />} />
-            <Route path="/customer-asks" element={<CustomerAsks />} />
-            <Route path="/customer-asks-stars" element={<CustomerAsksStars />} />
+            <Route path="/customer-asks" element={<Navigate to="/vision" />} />
+            <Route path="/vision" element={<CustomerAsksStars />} />
+            <Route path="/customer-asks-stars" element={<Navigate to="/vision" />} />
             <Route path="/the-opportunity" element={<TheOpportunity />} />
             <Route path="/opportunity-stars" element={<OpportunityStars />} />
             <Route path="/responsibilities" element={<Responsibilities />} />
@@ -64,7 +65,6 @@ const App = () => (
             <Route path="/resources/90-day-plan" element={<NinetyDayPlan />} />
             <Route path="/resources/whitepapers" element={<Whitepapers />} />
             <Route path="/resources/lean-canvas" element={<LeanCanvas />} />
-            {/* Redirect from head-of-innovation to home page */}
             <Route path="/head-of-innovation" element={<Navigate to="/" />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
