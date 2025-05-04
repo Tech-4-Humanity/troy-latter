@@ -30,6 +30,21 @@ const AboutTroy = () => {
         </div>
       </section>
 
+      {/* About Troy Section - Moved higher */}
+      <section className="container mx-auto px-4 md:px-6 mb-10">
+        <Card className="bg-white shadow-sm">
+          <CardContent className="p-6">
+            <h2 className="text-2xl font-semibold mb-5 text-vault-primary">About Troy</h2>
+            <p className="mb-4 text-gray-700 leading-relaxed">
+              A visionary technologist and strategic leader, Troy has guided governments and enterprises through some of their toughest digital transformations. From building battlefield‑ready assets in the field to architecting on‑prem LLM environments for top‑secret document analysis, he thrives on solving mission‑critical challenges under zero‑trust and stringent compliance.
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              A member of Standards Australia's BCI & Robotics Committee and the QLD Government AI Hub advisory board, Troy is equally at home presenting whitepapers at global forums as he is coaching "tiger teams" in rapid‑sprint rooms.
+            </p>
+          </CardContent>
+        </Card>
+      </section>
+
       {/* Main Content Area */}
       <section className="container mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start mb-10">
@@ -62,21 +77,6 @@ const AboutTroy = () => {
               />
             </div>
           </div>
-        </div>
-
-        {/* About Troy & Additional Sections */}
-        <div className="grid md:grid-cols-1 gap-8 mb-10">
-          <Card className="bg-white shadow-sm">
-            <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold mb-5 text-vault-primary">About Troy</h2>
-              <p className="mb-4 text-gray-700 leading-relaxed">
-                A visionary technologist and strategic leader, Troy has guided governments and enterprises through some of their toughest digital transformations. From building battlefield‑ready assets in the field to architecting on‑prem LLM environments for top‑secret document analysis, he thrives on solving mission‑critical challenges under zero‑trust and stringent compliance.
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                A member of Standards Australia's BCI & Robotics Committee and the QLD Government AI Hub advisory board, Troy is equally at home presenting whitepapers at global forums as he is coaching "tiger teams" in rapid‑sprint rooms.
-              </p>
-            </CardContent>
-          </Card>
         </div>
 
         {/* Why Vault & Why This Role */}
