@@ -49,18 +49,20 @@ const LeadershipStyle = () => {
       
       <section className="mb-12">
         <div className="flex flex-col md:flex-row gap-8 mb-8">
-          <div className="md:w-1/3">
-            <img 
-              src="/lovable-uploads/6c065077-2a06-4fc0-8ee5-a1aebd89d0b8.png" 
-              alt="Leadership Recognition" 
-              className="w-full h-auto object-cover rounded-lg shadow-md" 
-            />
-            <p className="text-sm text-gray-600 mt-2 italic text-center">
-              Recognition for leadership excellence
-            </p>
+          <div className="md:w-2/5 flex flex-col items-center justify-center">
+            <div className="max-w-xs">
+              <img 
+                src="/lovable-uploads/e0c0dbd3-5de7-4176-888c-6e824e01110d.png" 
+                alt="Leadership Recognition Award" 
+                className="w-full h-auto object-contain rounded-lg shadow-md" 
+              />
+              <p className="text-sm text-gray-600 mt-2 italic text-center">
+                Military leadership recognition award
+              </p>
+            </div>
           </div>
           
-          <Card className="md:w-2/3 border rounded-xl overflow-hidden">
+          <Card className="md:w-3/5 border rounded-xl overflow-hidden">
             <CardContent className="p-6">
               <ul className="space-y-4">
                 {leadershipStyles.map((style, index) => (
