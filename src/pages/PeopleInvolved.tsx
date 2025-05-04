@@ -40,15 +40,10 @@ const PeopleInvolved = () => {
       <PageTitle title="People Involved" />
       
       <section className="mb-12">
-        <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mb-8">
           <img 
             src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" 
             alt="People Involved" 
-            className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
-          />
-          <img 
-            src="/lovable-uploads/ce528944-88d3-4675-b368-9033493d6631.png" 
-            alt="Partnership and Collaboration" 
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
           />
         </div>
