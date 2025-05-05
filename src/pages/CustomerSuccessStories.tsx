@@ -47,7 +47,7 @@ const CustomerSuccessStories = () => {
       <div className="flex flex-col md:flex-row gap-6 mb-12">
         <div className="md:w-1/2">
           <img 
-            src="/lovable-uploads/b33dd7aa-5f8b-465b-940a-276e2a6e0996.png" 
+            src="/lovable-uploads/5082db7f-2070-4c23-baa2-647e9d5b8818.png" 
             alt="Innovation Leadership" 
             className="w-full h-auto rounded-lg shadow-lg object-cover" 
           />
