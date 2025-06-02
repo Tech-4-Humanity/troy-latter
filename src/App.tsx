@@ -17,8 +17,7 @@ import NinetyDayPlan from "./pages/NinetyDayPlan";
 import Whitepapers from "./pages/Whitepapers";
 import LeanCanvas from "./pages/LeanCanvas";
 
-// Legacy redirects for old URLs
-import AboutTroy from "./pages/AboutTroy";
+// Legacy pages that are still accessible but redirected
 import InnovationDefinition from "./pages/InnovationDefinition";
 import InnovationJourney from "./pages/InnovationJourney";
 import InnovationFrameworks from "./pages/InnovationFrameworks";
@@ -49,10 +48,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/executive-profile" element={<ExecutiveProfile />} />
             <Route path="/core-competencies" element={<CoreCompetencies />} />
-            <Route path="/industry-expertise" element={<Navigate to="/core-competencies" />} />
             <Route path="/customer-success-stories" element={<CustomerSuccessStories />} />
-            <Route path="/thought-leadership" element={<Navigate to="/customer-success-stories" />} />
-            <Route path="/current-roles" element={<Navigate to="/executive-profile" />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faqs" element={<FAQs />} />
             
@@ -61,8 +57,12 @@ const App = () => (
             <Route path="/resources/whitepapers" element={<Whitepapers />} />
             <Route path="/resources/lean-canvas" element={<LeanCanvas />} />
             
-            {/* Legacy redirects - maintain old URLs for bookmarks */}
-            <Route path="/about-troy" element={<Navigate to="/executive-profile" />} />
+            {/* Navigation redirects - consolidate similar content */}
+            <Route path="/industry-expertise" element={<Navigate to="/core-competencies" replace />} />
+            <Route path="/thought-leadership" element={<Navigate to="/customer-success-stories" replace />} />
+            <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />
+            
+            {/* Legacy content that still exists */}
             <Route path="/innovation-definition" element={<InnovationDefinition />} />
             <Route path="/innovation-journey" element={<InnovationJourney />} />
             <Route path="/innovation-frameworks" element={<InnovationFrameworks />} />
@@ -70,7 +70,6 @@ const App = () => (
             <Route path="/people-involved" element={<PeopleInvolved />} />
             <Route path="/upcoming-projects" element={<UpcomingProjects />} />
             <Route path="/strategic-projects" element={<StrategicProjects />} />
-            <Route path="/inspiration" element={<CustomerAsksStars />} />
             <Route path="/customer-asks-stars" element={<CustomerAsksStars />} />
             <Route path="/opportunity-stars" element={<OpportunityStars />} />
             <Route path="/responsibilities" element={<Responsibilities />} />
@@ -79,9 +78,13 @@ const App = () => (
             <Route path="/the-opportunity" element={<TheOpportunity />} />
             <Route path="/your-pitch" element={<YourPitch />} />
             <Route path="/what-is-innovation" element={<WhatIsInnovation />} />
-            <Route path="/customer-asks" element={<Navigate to="/inspiration" />} />
-            <Route path="/vision" element={<Navigate to="/inspiration" />} />
-            <Route path="/head-of-innovation" element={<Navigate to="/" />} />
+            
+            {/* Legacy redirects - maintain old URLs for bookmarks */}
+            <Route path="/about-troy" element={<Navigate to="/executive-profile" replace />} />
+            <Route path="/inspiration" element={<CustomerAsksStars />} />
+            <Route path="/customer-asks" element={<Navigate to="/customer-asks-stars" replace />} />
+            <Route path="/vision" element={<Navigate to="/customer-asks-stars" replace />} />
+            <Route path="/head-of-innovation" element={<Navigate to="/" replace />} />
             
             <Route path="*" element={<NotFound />} />
           </Routes>
