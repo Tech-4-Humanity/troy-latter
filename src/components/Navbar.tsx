@@ -4,15 +4,15 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 
-// Main navigation routes - these will be in the top navbar
+// Main navigation routes - executive focused
 const routes = [
-  { path: '/about-troy', label: 'About Troy' },
-  { path: '/innovation-definition', label: 'Innovation?' },
-  { path: '/innovation-journey', label: 'Innovation Journey' },
+  { path: '/executive-profile', label: 'Executive Profile' },
+  { path: '/core-competencies', label: 'Core Competencies' },
+  { path: '/industry-expertise', label: 'Industry Expertise' },
   { path: '/customer-success-stories', label: 'Success Stories' },
-  { path: '/people-involved', label: 'Collaborations' },
-  { path: '/leadership-style', label: 'Leadership' },
-  { path: '/inspiration', label: 'Vision' },
+  { path: '/thought-leadership', label: 'Thought Leadership' },
+  { path: '/current-roles', label: 'Current Roles' },
+  { path: '/contact', label: 'Contact' },
 ];
 
 export const Navbar = () => {
@@ -31,12 +31,15 @@ export const Navbar = () => {
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center mr-3">
                 <span className="text-lg font-bold">TL</span>
               </div>
-              <span className="text-xl font-semibold">Troy Latter</span>
+              <div>
+                <span className="text-xl font-semibold">Troy Latter</span>
+                <div className="text-xs text-gray-300">VP | CTO & CIO Leader</div>
+              </div>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-4">
+          <nav className="hidden lg:flex space-x-4">
             {routes.map((route) => (
               <Link
                 key={route.path}
@@ -54,7 +57,7 @@ export const Navbar = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-white hover:bg-[#0A101E]/80"
+            className="lg:hidden text-white hover:bg-[#0A101E]/80"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <span className="sr-only">Toggle menu</span>
@@ -68,7 +71,7 @@ export const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-700 animate-fade-in">
+          <div className="lg:hidden py-4 border-t border-gray-700 animate-fade-in">
             <nav className="flex flex-col space-y-3 pb-4">
               {routes.map((route) => (
                 <Link
