@@ -41,22 +41,22 @@ const CustomerSuccessStories = () => {
 
   return (
     <div className="animate-fade-in">
-      <PageTitle title="Customer Success Stories" />
+      <PageTitle title="Client Success Stories & Project Highlights" />
       
       {/* New side-by-side layout for top section */}
       <div className="flex flex-col md:flex-row gap-6 mb-12">
         <div className="md:w-1/2">
           <img 
             src="/lovable-uploads/5082db7f-2070-4c23-baa2-647e9d5b8818.png" 
-            alt="Innovation Leadership" 
+            alt="Innovation Leadership in Action" 
             className="w-full h-auto rounded-lg shadow-lg object-cover" 
           />
         </div>
         <div className="md:w-1/2 flex flex-col justify-center">
-          <h2 className="text-2xl font-bold text-vault-primary mb-4">Delivering Customer Success</h2>
+          <h2 className="text-2xl font-bold text-brand-primary mb-4">Delivering Client Success</h2>
           <p className="text-gray-700 mb-3">
             My proven track record of delivering innovative solutions has created measurable impact 
-            across government and enterprise clients. I focus on understanding customer needs deeply, 
+            across government and enterprise clients. I focus on understanding client needs deeply, 
             building the right teams, and implementing practical solutions that drive real business outcomes.
           </p>
           <p className="text-gray-700">
@@ -93,19 +93,19 @@ const CustomerSuccessStories = () => {
               className="w-3/5 mx-auto h-auto rounded-lg shadow-lg object-cover" 
             />
             <p className="text-sm text-gray-500 italic mt-3 text-center">
-              Next-generation technology solutions driving customer innovation
+              Next-generation technology solutions driving client innovation
             </p>
           </div>
         </div>
       </div>
       
-      <h2 className="text-2xl font-bold text-vault-primary mb-6">Deep Dive Case Studies</h2>
+      <h2 className="text-2xl font-bold text-brand-primary mb-6">Deep Dive Case Studies</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {breakthroughStories.map((story, index) => (
           <Card key={index} className="bg-white shadow-md hover:shadow-lg transition-shadow">
             <CardContent className="p-6">
-              <h3 className="text-xl font-semibold text-vault-primary mb-4">{story.title}</h3>
+              <h3 className="text-xl font-semibold text-brand-primary mb-4">{story.title}</h3>
               {story.description.split("\n\n").map((paragraph, i) => (
                 <p key={i} className="text-gray-700 mb-4 last:mb-0">{paragraph}</p>
               ))}

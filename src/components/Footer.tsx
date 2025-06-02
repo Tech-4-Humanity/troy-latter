@@ -13,31 +13,29 @@ export const Footer = () => {
   ];
   
   return (
-    <footer className="bg-vault-primary text-white py-8 border-t border-vault-primary/50 mt-12">
+    <footer className="bg-brand-primary text-white py-8 border-t border-brand-primary/50 mt-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {/* Logo and legal */}
           <div>
             <Link to="/" className="inline-block">
-              <img 
-                src="/lovable-uploads/debf0aec-1583-4cf6-9bce-523fdf3eb009.png" 
-                alt="Vault Cloud" 
-                className="h-10 mb-4" 
-              />
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center mb-4">
+                <span className="text-lg font-bold">TL</span>
+              </div>
             </Link>
             <p className="text-gray-300 text-sm">
-              © {currentYear} REAL Innovation starts
+              © {currentYear} Troy Latter
             </p>
             <p className="text-gray-400 text-xs mt-1">
-              Australia's sovereign cloud provider
+              Innovation & Technology Leadership
             </p>
           </div>
           
-          {/* FAQs only - Frameworks removed */}
+          {/* FAQs only */}
           <div className="flex flex-col justify-start">
             <Link 
               to="/faqs" 
-              className="text-vault-accent hover:text-vault-accent text-lg font-medium transition-colors duration-200"
+              className="text-brand-accent hover:text-brand-accent text-lg font-medium transition-colors duration-200"
             >
               FAQs
             </Link>
@@ -45,13 +43,13 @@ export const Footer = () => {
           
           {/* Resources section */}
           <div>
-            <h3 className="text-vault-accent font-medium mb-3 text-lg">Resources</h3>
+            <h3 className="text-brand-accent font-medium mb-3 text-lg">Resources</h3>
             <div className="grid grid-cols-1 gap-y-2">
               {resourceLinks.map((route) => (
                 <Link 
                   key={route.path}
                   to={route.path} 
-                  className="text-gray-300 hover:text-vault-accent text-sm transition-colors duration-200"
+                  className="text-gray-300 hover:text-brand-accent text-sm transition-colors duration-200"
                 >
                   {route.label}
                 </Link>

@@ -28,7 +28,7 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
-				vault: {
+				brand: {
 					primary: '#0F172A',   // Deep navy blue
 					secondary: '#64748B', // Light steel blue
 					accent: '#0EA5E9',    // Bright teal

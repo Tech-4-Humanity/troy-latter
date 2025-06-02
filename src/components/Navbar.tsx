@@ -9,8 +9,8 @@ const routes = [
   { path: '/about-troy', label: 'About Troy' },
   { path: '/innovation-definition', label: 'Innovation?' },
   { path: '/innovation-journey', label: 'Innovation Journey' },
-  { path: '/customer-success-stories', label: 'Customer Success' },
-  { path: '/people-involved', label: 'Humans' },
+  { path: '/customer-success-stories', label: 'Success Stories' },
+  { path: '/people-involved', label: 'Collaborations' },
   { path: '/leadership-style', label: 'Leadership' },
   { path: '/inspiration', label: 'Vision' },
 ];
@@ -28,11 +28,10 @@ export const Navbar = () => {
               to="/"
               className="flex items-center hover:opacity-90 transition-opacity"
             >
-              <img 
-                src="/lovable-uploads/debf0aec-1583-4cf6-9bce-523fdf3eb009.png" 
-                alt="Vault Cloud" 
-                className="h-10" 
-              />
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center mr-3">
+                <span className="text-lg font-bold">TL</span>
+              </div>
+              <span className="text-xl font-semibold">Troy Latter</span>
             </Link>
           </div>
 

@@ -10,15 +10,15 @@ const About = () => {
   return (
     <div className="py-12 px-6 max-w-4xl mx-auto">
       {/* Header Section */}
-      <PageTitle title="Critical Customer Challenges & Vault Solutions" />
+      <PageTitle title="Technology Challenges & Innovative Solutions" />
       
       <div className="text-lg mb-8">
         <p className="mb-4">
-          As Australia's sovereign cloud leader, Vault Cloud tackles the most pressing challenges 
+          As an experienced technology leader, I specialize in tackling the most pressing challenges 
           facing government agencies and critical infrastructure operators. 
         </p>
         <p className="mb-6">
-          Our innovative solutions combine deep expertise in secure cloud architecture with agile 
+          My innovative solutions combine deep expertise in secure cloud architecture with agile 
           delivery methods to create transformative outcomes for high-security environments.
         </p>
       </div>
@@ -31,19 +31,19 @@ const About = () => {
         >
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <Shield size={18} className="text-vault-primary" />
+              <Shield size={18} className="text-brand-primary" />
               <p className="font-medium">Challenge:</p>
             </div>
             <p className="text-sm">
-              Government agencies spend weeks on manual audit preparation, tying up scarce security teams 
+              Organizations spend weeks on manual audit preparation, tying up scarce security teams 
               and delaying critical feature releases.
             </p>
             <div className="flex items-center gap-2 mt-2">
               <Shield size={18} className="text-green-600" />
-              <p className="font-medium">Vault Solution:</p>
+              <p className="font-medium">Solution:</p>
             </div>
             <p className="text-sm">
-              Our Continuous Compliance Agent automates audit preparation, reducing effort by 85% and 
+              Continuous Compliance automation reduces audit preparation effort by 85% and 
               certification time by half.
             </p>
           </div>
@@ -55,7 +55,7 @@ const About = () => {
         >
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <Shield size={18} className="text-vault-primary" />
+              <Shield size={18} className="text-brand-primary" />
               <p className="font-medium">Challenge:</p>
             </div>
             <p className="text-sm">
@@ -64,10 +64,10 @@ const About = () => {
             </p>
             <div className="flex items-center gap-2 mt-2">
               <Shield size={18} className="text-green-600" />
-              <p className="font-medium">Vault Solution:</p>
+              <p className="font-medium">Solution:</p>
             </div>
             <p className="text-sm">
-              Our Anomaly-Detection Agent and Playbook Orchestrator cut false positives by 92% and 
+              AI-powered anomaly detection and playbook orchestration cut false positives by 92% and 
               reduce containment time from hours to minutes.
             </p>
           </div>
@@ -79,20 +79,20 @@ const About = () => {
         >
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <Cpu size={18} className="text-vault-primary" />
+              <Cpu size={18} className="text-brand-primary" />
               <p className="font-medium">Challenge:</p>
             </div>
             <p className="text-sm">
-              Intelligence agencies need generative AI for document analysis but fear sending 
+              Organizations need generative AI for document analysis but fear sending 
               classified data to cloud LLM services.
             </p>
             <div className="flex items-center gap-2 mt-2">
               <Cpu size={18} className="text-green-600" />
-              <p className="font-medium">Vault Solution:</p>
+              <p className="font-medium">Solution:</p>
             </div>
             <p className="text-sm">
-              Our fully on-prem sovereign LLM framework with hardware-backed key management and 
-              "Hallucination Guard" cuts research cycles by 60%.
+              Fully on-prem sovereign LLM frameworks with hardware-backed key management and 
+              "Hallucination Guard" cut research cycles by 60%.
             </p>
           </div>
         </FeatureCard>
@@ -103,7 +103,7 @@ const About = () => {
         >
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <LineChart size={18} className="text-vault-primary" />
+              <LineChart size={18} className="text-brand-primary" />
               <p className="font-medium">Challenge:</p>
             </div>
             <p className="text-sm">
@@ -112,10 +112,10 @@ const About = () => {
             </p>
             <div className="flex items-center gap-2 mt-2">
               <LineChart size={18} className="text-green-600" />
-              <p className="font-medium">Vault Solution:</p>
+              <p className="font-medium">Solution:</p>
             </div>
             <p className="text-sm">
-              Our Autonomous Resource Broker with ML forecasting cuts monthly costs by 28% 
+              Autonomous Resource management with ML forecasting cuts monthly costs by 28% 
               ($500K/month) without service degradation.
             </p>
           </div>
@@ -127,7 +127,7 @@ const About = () => {
         >
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <Database size={18} className="text-vault-primary" />
+              <Database size={18} className="text-brand-primary" />
               <p className="font-medium">Challenge:</p>
             </div>
             <p className="text-sm">
@@ -136,10 +136,10 @@ const About = () => {
             </p>
             <div className="flex items-center gap-2 mt-2">
               <Database size={18} className="text-green-600" />
-              <p className="font-medium">Vault Solution:</p>
+              <p className="font-medium">Solution:</p>
             </div>
             <p className="text-sm">
-              Our Knowledge Graph platform extracts, structures, and preserves institutional 
+              Knowledge Graph platforms extract, structure, and preserve institutional 
               expertise, reducing onboarding time by 65%.
             </p>
           </div>
@@ -151,7 +151,7 @@ const About = () => {
         >
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <LightbulbIcon size={18} className="text-vault-primary" />
+              <LightbulbIcon size={18} className="text-brand-primary" />
               <p className="font-medium">Challenge:</p>
             </div>
             <p className="text-sm">
@@ -160,23 +160,23 @@ const About = () => {
             </p>
             <div className="flex items-center gap-2 mt-2">
               <LightbulbIcon size={18} className="text-green-600" />
-              <p className="font-medium">Vault Solution:</p>
+              <p className="font-medium">Solution:</p>
             </div>
             <p className="text-sm">
-              Our integrated innovation methods cut ideation-to-PoC time in half and double 
+              Integrated innovation methodologies cut ideation-to-PoC time in half and double 
               the PoC success rate through disciplined experimentation.
             </p>
           </div>
         </FeatureCard>
       </div>
       
-      <Separator className="my-8 bg-vault-accent/30" />
+      <Separator className="my-8 bg-brand-accent/30" />
       
       {/* Value Proposition */}
       <div className="mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">How Vault Addresses Customer Needs</h2>
+        <h2 className="text-2xl font-semibold text-brand-primary mb-6">Innovation-Driven Solutions</h2>
         <p className="text-lg mb-6">
-          Our innovative approach transforms complex security and operational challenges into strategic advantages, 
+          My approach transforms complex security and operational challenges into strategic advantages, 
           delivering measurable outcomes through cutting-edge technology solutions built specifically for high-security environments.
         </p>
         
@@ -184,16 +184,16 @@ const About = () => {
           <CardContent className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-lg font-medium text-vault-primary mb-3">Sovereign by Design</h3>
-                <p className="text-vault-secondary">
-                  Every solution we build maintains complete data sovereignty and meets the highest security standards
-                  required by Australian government agencies and critical infrastructure operators.
+                <h3 className="text-lg font-medium text-brand-primary mb-3">Security by Design</h3>
+                <p className="text-brand-secondary">
+                  Every solution maintains complete data sovereignty and meets the highest security standards
+                  required by government agencies and critical infrastructure operators.
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-medium text-vault-primary mb-3">Rapid Innovation Cycle</h3>
-                <p className="text-vault-secondary">
-                  Our agile delivery approach cuts time-to-value, with most solutions delivering measurable 
+                <h3 className="text-lg font-medium text-brand-primary mb-3">Rapid Innovation Cycle</h3>
+                <p className="text-brand-secondary">
+                  Agile delivery approach cuts time-to-value, with most solutions delivering measurable 
                   improvements within 90 days of project inception.
                 </p>
               </div>

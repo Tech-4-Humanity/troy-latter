@@ -14,7 +14,7 @@ const UpcomingProjects = () => {
       description: "Serverless NLP RFT pipelines → 60% faster reviews & auditable shortlists."
     },
     {
-      title: "Sovereign Hybrid Cloud (Def Intel)",
+      title: "Sovereign Hybrid Cloud (Defence Intelligence)",
       description: "Air-gapped K8s + policy-as-code → IL2/IL3 compliance, 50% faster deploys."
     },
     {
@@ -29,7 +29,7 @@ const UpcomingProjects = () => {
 
   return (
     <div className="animate-fade-in">
-      <PageTitle title="Upcoming Customer Innovation Projects" />
+      <PageTitle title="Innovation Project Portfolio" />
       
       <Card className="border rounded-xl overflow-hidden">
         <CardContent className="p-8">
