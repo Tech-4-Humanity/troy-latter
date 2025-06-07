@@ -37,25 +37,28 @@ const Index = () => {
       icon: Award,
       title: "Former APAC CTO",
       description: "Led technology strategy across Asia-Pacific region",
-      color: "bg-blue-500"
+      color: "bg-blue-500",
+      image: "/lovable-uploads/5082db7f-2070-4c23-baa2-647e9d5b8818.png"
     },
     {
       icon: Zap,
       title: "AI & Digital Innovation",
       description: "Pioneered AI-enabled government solutions for millions",
-      color: "bg-green-500"
+      color: "bg-green-500",
+      image: "/lovable-uploads/db7906e5-94ae-461a-a914-e3ca5ba5b126.png"
     },
     {
       icon: Target,
       title: "Sales Excellence",
       description: "300% YoY improvement in solution attachment rates",
-      color: "bg-purple-500"
+      color: "bg-purple-500",
+      image: "/lovable-uploads/81cbb272-6a07-41e1-8167-796bc17aa764.png"
     }
   ];
 
   return (
     <div className="space-y-20">
-      {/* Hero Section with Background */}
+      {/* Hero Section with Professional Background */}
       <div className="relative bg-gradient-to-br from-[#0A101E] via-[#1a2332] to-[#0f1b2e] text-white px-8 py-24 md:py-32 text-center -mt-8 mx-[-24px] overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 opacity-10">
@@ -109,8 +112,8 @@ const Index = () => {
             <div className="relative">
               <div className="relative z-10">
                 <img 
-                  src="/lovable-uploads/83bdd2b0-6ff7-412c-983a-f1baf27538c4.png" 
-                  alt="Troy Latter" 
+                  src="/lovable-uploads/0802b80f-8d0e-4e6c-b22c-90790f6ab929.png" 
+                  alt="Enterprise Technology Leadership" 
                   className="w-80 h-80 mx-auto rounded-2xl shadow-2xl object-cover border-4 border-white/20"
                 />
               </div>
@@ -120,14 +123,14 @@ const Index = () => {
         </div>
       </div>
       
-      {/* Key Metrics with Enhanced Design */}
+      {/* Key Metrics with Supporting Image */}
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-brand-primary mb-4">Impact & Achievement</h2>
           <p className="text-xl text-gray-600">Proven track record of delivering transformational results</p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {keyMetrics.map((metric, index) => (
             <Card key={index} className="text-center group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg">
               <CardContent className="p-8">
@@ -143,9 +146,17 @@ const Index = () => {
             </Card>
           ))}
         </div>
+        
+        <div className="text-center">
+          <img 
+            src="/lovable-uploads/18765b1c-6ca0-4c50-81c2-95882a6f9fa4.png" 
+            alt="Digital Transformation Network" 
+            className="w-full max-w-4xl mx-auto rounded-xl shadow-lg"
+          />
+        </div>
       </div>
       
-      {/* Key Achievements with Visual Cards */}
+      {/* Key Achievements with Industry Images */}
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-brand-primary mb-4">Core Expertise Areas</h2>
@@ -156,14 +167,19 @@ const Index = () => {
           {achievements.map((achievement, index) => (
             <Card key={index} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg overflow-hidden">
               <CardContent className="p-0">
-                <div className={`${achievement.color} h-2 w-full`}></div>
-                <div className="p-8">
-                  <div className="flex items-center mb-4">
-                    <div className={`${achievement.color} w-12 h-12 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform`}>
-                      <achievement.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold text-brand-primary">{achievement.title}</h3>
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={achievement.image} 
+                    alt={achievement.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  <div className={`absolute top-4 left-4 ${achievement.color} w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                    <achievement.icon className="h-6 w-6 text-white" />
                   </div>
+                </div>
+                <div className="p-8">
+                  <h3 className="text-xl font-bold text-brand-primary mb-3">{achievement.title}</h3>
                   <p className="text-gray-700 leading-relaxed">{achievement.description}</p>
                 </div>
               </CardContent>
@@ -172,12 +188,12 @@ const Index = () => {
         </div>
       </div>
       
-      {/* Executive Summary with Enhanced Design */}
+      {/* Executive Summary with Professional Photo */}
       <div className="max-w-6xl mx-auto">
         <Card className="border-0 shadow-xl bg-gradient-to-br from-white to-gray-50">
           <CardContent className="p-12">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
+            <div className="grid lg:grid-cols-3 gap-12 items-center">
+              <div className="lg:col-span-2">
                 <h2 className="text-3xl font-bold text-brand-primary mb-6">Executive Summary</h2>
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
                   A strategic technology leader with proven track record building CIO/CTO networks and translating complex technical solutions into business value for C-suite executives. Deep multi-cloud expertise (AWS, Azure, GCP) with hands-on experience in AI-enabled enterprise solutions, data architecture, and digital transformation at scale.
@@ -191,6 +207,16 @@ const Index = () => {
               </div>
               
               <div className="space-y-6">
+                <div className="text-center">
+                  <img 
+                    src="/lovable-uploads/83bdd2b0-6ff7-412c-983a-f1baf27538c4.png" 
+                    alt="Troy Latter" 
+                    className="w-48 h-48 mx-auto rounded-2xl shadow-lg object-cover border-4 border-gray-100 mb-4"
+                  />
+                  <p className="text-sm text-gray-600 font-medium">Troy Latter</p>
+                  <p className="text-xs text-gray-500">VP Strategic Technology Advisor</p>
+                </div>
+                
                 <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
                   <h4 className="font-semibold text-brand-primary mb-2">Current Leadership Roles</h4>
                   <ul className="text-sm text-gray-600 space-y-1">
