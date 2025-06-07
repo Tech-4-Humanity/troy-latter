@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +8,7 @@ import { Layout } from "./components/Layout";
 import Index from "./pages/Index";
 import ExecutiveProfile from "./pages/ExecutiveProfile";
 import CoreCompetencies from "./pages/CoreCompetencies";
+import IndustryExpertise from "./pages/IndustryExpertise";
 import CustomerSuccessStories from "./pages/CustomerSuccessStories";
 import Contact from "./pages/Contact";
 import FAQs from "./pages/FAQs";
@@ -48,6 +48,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/executive-profile" element={<ExecutiveProfile />} />
             <Route path="/core-competencies" element={<CoreCompetencies />} />
+            <Route path="/industry-expertise" element={<IndustryExpertise />} />
             <Route path="/customer-success-stories" element={<CustomerSuccessStories />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faqs" element={<FAQs />} />
@@ -58,7 +59,6 @@ const App = () => (
             <Route path="/resources/lean-canvas" element={<LeanCanvas />} />
             
             {/* Navigation redirects - consolidate similar content */}
-            <Route path="/industry-expertise" element={<Navigate to="/core-competencies" replace />} />
             <Route path="/thought-leadership" element={<Navigate to="/customer-success-stories" replace />} />
             <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />
             

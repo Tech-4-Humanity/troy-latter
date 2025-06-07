@@ -2,13 +2,14 @@
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
-import { Users, TrendingUp, Settings, Briefcase } from 'lucide-react';
+import { Users, TrendingUp, Settings, Briefcase, Award, Target } from 'lucide-react';
 
 const CoreCompetencies = () => {
   const competencies = [
     {
       icon: Users,
       title: "Strategic Leadership",
+      image: "/lovable-uploads/7e6000f2-9818-40fc-9191-2549b09f49da.png",
       skills: [
         "CIO advisory and stakeholder management",
         "Digital transformation strategy development",
@@ -20,6 +21,7 @@ const CoreCompetencies = () => {
     {
       icon: TrendingUp,
       title: "Sales Excellence",
+      image: "/lovable-uploads/24ae2c57-fff3-40ab-88f1-3ad34c248fc1.png",
       skills: [
         "Enterprise account management and growth",
         "C-suite relationship building and influence",
@@ -31,6 +33,7 @@ const CoreCompetencies = () => {
     {
       icon: Settings,
       title: "Solution Architecture",
+      image: "/lovable-uploads/f9deef88-c299-4f35-ad6f-4585c24d056a.png",
       skills: [
         "Multi-cloud integration (AWS, Azure, GCP)",
         "AI/ML platform implementation and strategy",
@@ -42,6 +45,7 @@ const CoreCompetencies = () => {
     {
       icon: Briefcase,
       title: "Industry Expertise",
+      image: "/lovable-uploads/99250b03-5ffe-4fee-a51d-8f8636ad4975.png",
       skills: [
         "Government and public sector transformation",
         "Telecommunications infrastructure and innovation",
@@ -81,26 +85,73 @@ const CoreCompetencies = () => {
   };
 
   return (
-    <div className="animate-fade-in">
+    <div className="animate-fade-in space-y-12">
       <PageTitle title="Core Competencies & Technical Expertise" />
       
-      {/* Core Competencies Grid */}
-      <div className="grid md:grid-cols-2 gap-8 mb-12">
-        {competencies.map((competency, index) => (
-          <Card key={index} className="h-full">
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <competency.icon className="h-8 w-8 text-brand-accent mr-3" />
-                <h2 className="text-xl font-bold text-brand-primary">{competency.title}</h2>
+      {/* Hero Section with Background */}
+      <div className="bg-gradient-to-br from-brand-primary to-[#1a2332] text-white py-16 rounded-2xl overflow-hidden">
+        <div className="container mx-auto px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Technology Leadership Expertise</h2>
+              <p className="text-lg text-gray-200 mb-6">
+                Comprehensive technical and leadership capabilities spanning cloud architecture, 
+                AI/ML implementation, enterprise sales, and strategic transformation across 
+                multiple industry sectors.
+              </p>
+              <div className="bg-white/10 p-6 rounded-xl">
+                <h3 className="font-semibold mb-3">Competency Highlights</h3>
+                <ul className="text-sm space-y-2">
+                  <li>• 15+ AWS, Azure, GCP certifications</li>
+                  <li>• $350M+ in enterprise sales generated</li>
+                  <li>• 200+ C-level relationships across APAC</li>
+                  <li>• 50+ digital transformation projects</li>
+                </ul>
               </div>
-              <ul className="space-y-3">
-                {competency.skills.map((skill, skillIndex) => (
-                  <li key={skillIndex} className="flex items-start">
-                    <span className="text-brand-accent mr-3 mt-1 text-sm">▪</span>
-                    <span className="text-gray-700">{skill}</span>
-                  </li>
-                ))}
-              </ul>
+            </div>
+            <div className="flex justify-center">
+              <img 
+                src="/lovable-uploads/c399236d-6c48-4f68-ac88-f45ca2128b22.png" 
+                alt="Technology Leadership" 
+                className="w-80 h-64 rounded-xl shadow-2xl object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Core Competencies with Side-by-Side Layout */}
+      <div className="space-y-12">
+        <h2 className="text-3xl font-bold text-brand-primary text-center">Strategic Competencies</h2>
+        
+        {competencies.map((competency, index) => (
+          <Card key={index} className="overflow-hidden shadow-xl">
+            <CardContent className="p-0">
+              <div className={`grid md:grid-cols-2 gap-0`}>
+                <div className={`${index % 2 === 1 ? 'md:order-2' : ''}`}>
+                  <img 
+                    src={competency.image} 
+                    alt={competency.title} 
+                    className="w-full h-80 object-cover"
+                  />
+                </div>
+                <div className={`p-10 ${index % 2 === 1 ? 'md:order-1' : ''}`}>
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-teal-500 rounded-xl flex items-center justify-center mr-4">
+                      <competency.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-brand-primary">{competency.title}</h3>
+                  </div>
+                  <ul className="space-y-4">
+                    {competency.skills.map((skill, skillIndex) => (
+                      <li key={skillIndex} className="flex items-start">
+                        <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                        <span className="text-gray-700">{skill}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </CardContent>
           </Card>
         ))}
@@ -108,30 +159,40 @@ const CoreCompetencies = () => {
 
       {/* Technical Skills Detailed */}
       <div className="space-y-8">
-        <h2 className="text-2xl font-bold text-brand-primary mb-6">Technical Skills & Certifications</h2>
+        <h2 className="text-3xl font-bold text-brand-primary text-center">Technical Skills & Certifications</h2>
         
-        {Object.entries(technicalSkills).map(([category, skills], index) => (
-          <Card key={index}>
-            <CardContent className="p-8">
-              <h3 className="text-xl font-semibold text-brand-primary mb-4">{category}</h3>
-              <ul className="grid md:grid-cols-2 gap-3">
-                {skills.map((skill, skillIndex) => (
-                  <li key={skillIndex} className="flex items-start">
-                    <span className="text-brand-accent mr-3 mt-1 text-sm">▪</span>
-                    <span className="text-gray-700 text-sm">{skill}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        ))}
+        <div className="grid md:grid-cols-2 gap-8">
+          {Object.entries(technicalSkills).map(([category, skills], index) => (
+            <Card key={index} className="hover:shadow-lg transition-all">
+              <CardContent className="p-8">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-teal-500 rounded-xl flex items-center justify-center mr-4">
+                    {index === 0 && <Settings className="h-6 w-6 text-white" />}
+                    {index === 1 && <Target className="h-6 w-6 text-white" />}
+                    {index === 2 && <Award className="h-6 w-6 text-white" />}
+                    {index === 3 && <Briefcase className="h-6 w-6 text-white" />}
+                  </div>
+                  <h3 className="text-xl font-semibold text-brand-primary">{category}</h3>
+                </div>
+                <ul className="space-y-3">
+                  {skills.map((skill, skillIndex) => (
+                    <li key={skillIndex} className="flex items-start">
+                      <span className="text-brand-accent mr-3 mt-1 text-sm">▪</span>
+                      <span className="text-gray-700 text-sm">{skill}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
 
       {/* Professional Certifications */}
-      <Card className="mt-8">
-        <CardContent className="p-8">
-          <h2 className="text-2xl font-bold text-brand-primary mb-6">Professional Certifications</h2>
-          <div className="grid md:grid-cols-3 gap-4">
+      <Card className="overflow-hidden">
+        <CardContent className="p-10">
+          <h2 className="text-2xl font-bold text-brand-primary mb-8 text-center">Professional Certifications</h2>
+          <div className="grid md:grid-cols-4 gap-4">
             {[
               "AWS Professional Solutions Architect",
               "Azure AI Engineer Associate", 
@@ -143,7 +204,7 @@ const CoreCompetencies = () => {
               "IT4IT Foundations",
               "Science of Happiness (Yale)"
             ].map((cert, index) => (
-              <div key={index} className="bg-brand-light p-4 rounded-lg text-center">
+              <div key={index} className="bg-gradient-to-r from-blue-50 to-teal-50 p-4 rounded-lg text-center border border-blue-100 hover:shadow-md transition-all">
                 <span className="text-sm font-medium text-brand-primary">{cert}</span>
               </div>
             ))}
