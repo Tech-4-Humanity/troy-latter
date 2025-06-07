@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
@@ -111,8 +110,8 @@ const CoreCompetencies = () => {
             </div>
             <div className="flex justify-center">
               <img 
-                src="/lovable-uploads/c399236d-6c48-4f68-ac88-f45ca2128b22.png" 
-                alt="Technology Leadership" 
+                src="/lovable-uploads/f9deef88-c299-4f35-ad6f-4585c24d056a.png" 
+                alt="Technology Architecture and Solutions" 
                 className="w-80 h-64 rounded-xl shadow-2xl object-cover"
               />
             </div>
@@ -120,7 +119,7 @@ const CoreCompetencies = () => {
         </div>
       </div>
       
-      {/* Core Competencies with Side-by-Side Layout */}
+      {/* Strategic Competencies with Side-by-Side Layout */}
       <div className="space-y-12">
         <h2 className="text-3xl font-bold text-brand-primary text-center">Strategic Competencies</h2>
         

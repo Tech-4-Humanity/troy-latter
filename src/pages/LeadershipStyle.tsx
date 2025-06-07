@@ -61,8 +61,8 @@ const LeadershipStyle = () => {
       <div className="flex flex-col md:flex-row bg-vault-light rounded-lg overflow-hidden mb-12">
         <div className="md:w-1/3 p-6 flex justify-center items-center">
           <img 
-            src="/lovable-uploads/18765b1c-6ca0-4c50-81c2-95882a6f9fa4.png" 
-            alt="Leadership Recognition Plaque" 
+            src="/lovable-uploads/7e6000f2-9818-40fc-9191-2549b09f49da.png" 
+            alt="Strategic Leadership and Team Collaboration" 
             className="max-h-80 object-contain rounded-md shadow-md"
           />
         </div>

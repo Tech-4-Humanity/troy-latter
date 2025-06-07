@@ -27,7 +27,7 @@ const CustomerSuccessStories = () => {
   const breakthroughStories = [
     {
       title: "Blueprint to Breakthrough",
-      image: "/lovable-uploads/18765b1c-6ca0-4c50-81c2-95882a6f9fa4.png",
+      image: "/lovable-uploads/99250b03-5ffe-4fee-a51d-8f8636ad4975.png",
       description: "When Interpol needed to turn scattered data operations and experiments into a global programme, I ran \"Design Thinking\" workshops with global stakeholders, scored use-cases against mission KPIs, then embedded compliance gates and \"demo or die\" reviews.\n\nIn 12 weeks we launched four first-of-their-kind pilots, unlocked a $7 M follow-on pipeline, cut concept-to-funding time by 60%, and got executive sign-off on two full-production rollouts."
     },
     {
@@ -69,8 +69,8 @@ const CustomerSuccessStories = () => {
             </div>
             <div className="flex justify-center">
               <img 
-                src="/lovable-uploads/5082db7f-2070-4c23-baa2-647e9d5b8818.png" 
-                alt="Innovation Leadership in Action" 
+                src="/lovable-uploads/24ae2c57-fff3-40ab-88f1-3ad34c248fc1.png" 
+                alt="Client Success and Business Growth" 
                 className="w-80 h-64 rounded-xl shadow-2xl object-cover"
               />
             </div>
@@ -100,12 +100,12 @@ const CustomerSuccessStories = () => {
         <div className="flex items-center">
           <div className="w-full px-6">
             <img 
-              src="/lovable-uploads/e0c0dbd3-5de7-4176-888c-6e824e01110d.png" 
-              alt="Innovation technology visualization" 
+              src="/lovable-uploads/db7906e5-94ae-461a-a914-e3ca5ba5b126.png" 
+              alt="AI-powered technology solutions" 
               className="w-full h-auto rounded-lg shadow-lg object-cover" 
             />
             <p className="text-sm text-gray-500 italic mt-3 text-center">
-              Next-generation technology solutions driving client innovation
+              AI-powered innovation driving client transformation
             </p>
           </div>
         </div>

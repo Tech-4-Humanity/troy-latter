@@ -56,8 +56,8 @@ export const MetricsSection = () => {
       
       <div className="text-center">
         <img 
-          src="/lovable-uploads/18765b1c-6ca0-4c50-81c2-95882a6f9fa4.png" 
-          alt="Digital Transformation Network" 
+          src="/lovable-uploads/c399236d-6c48-4f68-ac88-f45ca2128b22.png" 
+          alt="Enterprise Technology Innovation Metrics" 
           className="w-full max-w-4xl mx-auto rounded-xl shadow-lg"
         />
       </div>
