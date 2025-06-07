@@ -6,8 +6,8 @@ export const ExecutiveSummarySection = () => {
     <div className="max-w-6xl mx-auto">
       <Card className="border-0 shadow-xl bg-gradient-to-br from-white to-gray-50">
         <CardContent className="p-12">
-          <div className="grid lg:grid-cols-3 gap-12 items-center">
-            <div className="lg:col-span-2">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div>
               <h2 className="text-3xl font-bold text-brand-primary mb-6">Executive Summary</h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
                 A strategic technology leader with proven track record building CIO/CTO networks and translating complex technical solutions into business value for C-suite executives. Deep multi-cloud expertise (AWS, Azure, GCP) with hands-on experience in AI-enabled enterprise solutions, data architecture, and digital transformation at scale.
@@ -21,16 +21,6 @@ export const ExecutiveSummarySection = () => {
             </div>
             
             <div className="space-y-6">
-              <div className="text-center">
-                <img 
-                  src="/lovable-uploads/83bdd2b0-6ff7-412c-983a-f1baf27538c4.png" 
-                  alt="Troy Latter" 
-                  className="w-48 h-48 mx-auto rounded-2xl shadow-lg object-cover border-4 border-gray-100 mb-4"
-                />
-                <p className="text-sm text-gray-600 font-medium">Troy Latter</p>
-                <p className="text-xs text-gray-500">VP Strategic Technology Advisor</p>
-              </div>
-              
               <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
                 <h4 className="font-semibold text-brand-primary mb-2">Current Leadership Roles</h4>
                 <ul className="text-sm text-gray-600 space-y-1">
@@ -48,6 +38,16 @@ export const ExecutiveSummarySection = () => {
                   <li>• Azure AI Engineer Associate</li>
                   <li>• GCP Certified</li>
                   <li>• TOGAF & IT4IT Foundations</li>
+                </ul>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                <h4 className="font-semibold text-brand-primary mb-2">Industry Recognition</h4>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  <li>• Keynote Speaker - AWS Public Sector Summit</li>
+                  <li>• Defense+Industry Conference Speaker</li>
+                  <li>• Published ML/Security Research Papers</li>
+                  <li>• 40+ Qualified Leads Generated Per Quarter</li>
                 </ul>
               </div>
             </div>
