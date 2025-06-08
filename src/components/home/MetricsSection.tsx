@@ -37,7 +37,7 @@ export const MetricsSection = () => {
         <p className="text-xl text-gray-600">Proven track record of delivering transformational results</p>
       </div>
       
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {keyMetrics.map((metric, index) => (
           <Card key={index} className="text-center group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg">
             <CardContent className="p-8">
@@ -52,14 +52,6 @@ export const MetricsSection = () => {
             </CardContent>
           </Card>
         ))}
-      </div>
-      
-      <div className="text-center">
-        <img 
-          src="/lovable-uploads/c399236d-6c48-4f68-ac88-f45ca2128b22.png" 
-          alt="Enterprise Technology Innovation Metrics" 
-          className="w-full max-w-4xl mx-auto rounded-xl shadow-lg"
-        />
       </div>
     </div>
   );
