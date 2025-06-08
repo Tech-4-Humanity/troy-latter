@@ -23,7 +23,7 @@ export const CTASection = () => {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-          <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-brand-primary text-lg px-10 py-6 h-auto rounded-lg transition-all" asChild>
+          <Button size="lg" variant="outline" className="border-white text-white bg-white/10 hover:bg-white hover:text-brand-primary text-lg px-10 py-6 h-auto rounded-lg transition-all" asChild>
             <Link to="/contact">
               Get In Touch
             </Link>
