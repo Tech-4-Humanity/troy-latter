@@ -36,7 +36,7 @@ export const ShieldAIPresentation = () => {
       <nav className="bg-slate-900/80 backdrop-blur-sm border-b border-slate-700 sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap items-center justify-between py-3">
-            <h1 className="text-white font-bold text-lg">Shield AI BD Presentation</h1>
+            <h1 className="text-white font-bold text-lg">Shield AI</h1>
             <div className="flex flex-wrap gap-2 text-xs">
               {presentationPages.map((page) => (
                 <button
