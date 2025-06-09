@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PresentationPage } from '../types';
 
@@ -12,7 +11,7 @@ export const strategyPages: PresentationPage[] = [
         <div className="rounded-lg overflow-hidden">
           <img 
             src="https://www.dcms.uscg.mil/Portals/10/082820_RDTE_Master_MainPage.png" 
-            alt="V-BAT drone patrolling coastline"
+            alt="V-BAT drone patrolling coastline for maritime surveillance operations"
             className="w-full h-64 object-cover rounded-lg"
           />
         </div>
@@ -21,10 +20,10 @@ export const strategyPages: PresentationPage[] = [
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Defense Market Dominance</h3>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                My strategic vision positions Hivemind to dominate ADF autonomy by leading critical programs like LAND 156 and SEA 129 while systematically outpacing competitors like Anduril's Ghost and DroneShield's established contracts through superior decentralized AI capabilities.
+                My strategic vision positions Hivemind to dominate ADF autonomy by leading critical programs like LAND 156 and SEA 129 while systematically outpacing competitors like Anduril's Ghost and DroneShield's established contracts through superior decentralized AI capabilities proven in Ukraine's contested electromagnetic environment.
               </p>
               <p>
-                This approach leverages Hivemind's unique value proposition—proven resilience in Ukraine's contested electromagnetic environment—to establish market leadership in Australia's defense sector while building pathways to broader Indo-Pacific partnerships.
+                Mission Syracuse provides rapid deployment pathways with 3-6 month integration timelines, while CASG's 60% decision weight ensures Hivemind's 10-hour endurance meets LAND 156's capability criteria. This approach leverages Standing Offer SON4095403 for direct Pacific UAV sales channels and establishes market leadership in Australia's defense sector while building pathways to broader Indo-Pacific partnerships.
               </p>
             </div>
           </div>
@@ -32,17 +31,17 @@ export const strategyPages: PresentationPage[] = [
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Revenue Diversification</h3>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                Non-defense markets provide crucial revenue bridges during ADF's 12-36 month procurement cycles. Australian Border Force's Maritime Operations Group presents immediate $1M-$5M surveillance opportunities, building on their 2024 DJI trials experience.
+                Non-defense markets provide crucial revenue bridges during ADF's 12-36 month procurement cycles. Australian Border Force's Maritime Operations Group presents immediate $1M-$5M surveillance opportunities, building on their 2024 DJI trials experience, while DCCEEW environmental monitoring contracts offer additional $2M revenue streams.
               </p>
               <p>
-                Environmental monitoring contracts through DCCEEW offer additional $2M revenue streams while AUKUS Pillar II ISR trials targeting $15M by 2027 align with trilateral strategic objectives and demonstrate scalability beyond Australian markets.
+                AUKUS Pillar II ISR trials targeting $15M by 2027 with DARPA and RAF 617 Squadron align with trilateral strategic objectives and demonstrate scalability beyond Australian markets. The IRAP readiness pathway ensures Q3 2025 compliance through strategic 6-9 month ACSC assessment, with Appen and Fivecast partnerships reinforcing 30% Australian Industry Capability requirements for sustained pipeline development.
               </p>
             </div>
           </div>
         </div>
       </div>
     ),
-    speakerNotes: "My strategic vision positions Hivemind to dominate ADF autonomy, leading LAND 156 and SEA 129 while outpacing Anduril's Ghost and DroneShield's contracts with superior decentralized AI. I'll drive AUKUS Pillar II ISR trials by 2027 with DARPA and RAF 617 Squadron, targeting a $15M contract, aligning with trilateral focus. Non-defense markets bridge ADF's 12-36 month cycles: ABF's Maritime Operations Group offers $1M-$5M surveillance deals, building on their 2024 DJI trials, and DCCEEW's $2M environmental UAS contracts add revenue. CASG's 60% decision weight drives success, with Hivemind's 10-hour endurance meeting LAND 156's capability criteria."
+    speakerNotes: "My strategic vision positions Hivemind to dominate ADF autonomy, leading LAND 156's counter-UAS and SEA 129's maritime ISR by outpacing Anduril's Ghost—lacking ADF traction—and DroneShield's $10M LAND 19/7 sensor contracts with superior decentralized AI, proven in Ukraine's contested electromagnetic environment. I'll drive AUKUS Pillar II ISR trials by 2027 with DARPA and RAF 617 Squadron, targeting a $15M contract, aligning with trilateral strategic objectives and leveraging Mission Syracuse for rapid deployment proof. Non-defense markets bridge ADF's 12-36 month procurement cycles: ABF's Maritime Operations Group offers $1M-$5M surveillance deals, building on their 2024 DJI trials via maritime expos with DAFF, and DCCEEW's $2M environmental UAS contracts add revenue, accessed via Standing Offer SON4095403. CASG's 60% decision weight drives success, with Hivemind's likely 10-hour endurance meeting LAND 156's 40% capability, 30% cost criteria, informed by my AUSTENDER expertise. The IRAP gap spurs a 6-9 month ACSC assessment, ensuring Q3 2025 compliance, with AWS compliance mitigating delays if needed—a risk managed from my ISR projects. To match ADF's Indo-Pacific tempo, I'll ensure 3-6 month integration with operator training. If competitors lobby, Appen and Fivecast partnerships for 30% AIC reinforce our bid, ensuring a $20M+ pipeline by day 90, grounded in my prime relationships and procurement mastery."
   },
   {
     id: 7,
