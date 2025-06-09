@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -28,6 +27,36 @@ export const ShieldAIPresentation = () => {
     if (currentPage > 1) {
       goToPage(currentPage - 1);
     }
+  };
+
+  // Function to format speaker notes into paragraphs
+  const formatSpeakerNotes = (notes: string) => {
+    // Split by sentence endings followed by spaces, but keep sentences together that are part of the same thought
+    const sentences = notes.split(/(?<=[.!?])\s+(?=[A-Z])/);
+    const paragraphs: string[] = [];
+    let currentParagraph = '';
+    
+    sentences.forEach((sentence, index) => {
+      currentParagraph += sentence;
+      
+      // Start a new paragraph after certain conditions
+      const shouldBreakParagraph = 
+        sentence.includes('(Page ') || // Break after page references
+        sentence.length > 200 || // Break after long sentences
+        (index > 0 && sentences[index - 1] && sentences[index - 1].includes('—')) || // Break after em dashes
+        sentence.includes('. ') && currentParagraph.length > 150; // Break after periods in long paragraphs
+      
+      if (shouldBreakParagraph || index === sentences.length - 1) {
+        if (currentParagraph.trim()) {
+          paragraphs.push(currentParagraph.trim());
+          currentParagraph = '';
+        }
+      } else {
+        currentParagraph += ' ';
+      }
+    });
+    
+    return paragraphs.filter(p => p.length > 0);
   };
 
   return (
@@ -92,9 +121,24 @@ export const ShieldAIPresentation = () => {
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent>
-                <div className="px-4 pb-4">
-                  <div className="bg-slate-700/30 rounded-lg p-4 text-slate-200 leading-relaxed">
-                    {currentPageData.speakerNotes}
+                <div className="px-6 pb-6">
+                  <div className="bg-gradient-to-br from-slate-700/40 to-slate-800/40 rounded-xl p-6 border border-slate-600/30">
+                    <div className="space-y-4">
+                      {formatSpeakerNotes(currentPageData.speakerNotes).map((paragraph, index) => (
+                        <p 
+                          key={index} 
+                          className="text-slate-200 leading-relaxed text-sm lg:text-base font-light"
+                          style={{ textAlign: 'justify' }}
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                    <div className="mt-6 pt-4 border-t border-slate-600/50">
+                      <p className="text-slate-400 text-xs italic">
+                        Strategic talking points for presentation delivery
+                      </p>
+                    </div>
                   </div>
                 </div>
               </CollapsibleContent>
