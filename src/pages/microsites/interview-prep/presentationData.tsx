@@ -82,8 +82,12 @@ export const presentationPages: PresentationPage[] = [
     subtitle: "Aligning with Shield AI's Mission",
     content: (
       <div className="space-y-6">
-        <div className="bg-gray-100 rounded-lg p-4 text-center">
-          <p className="text-sm text-gray-600 italic">Image: V-BAT with Lockheed/Northrop logos</p>
+        <div className="rounded-lg overflow-hidden">
+          <img 
+            src="/lovable-uploads/24ae2c57-fff3-40ab-88f1-3ad34c248fc1.png" 
+            alt="V-BAT with Lockheed/Northrop logos ecosystem"
+            className="w-full h-64 object-contain rounded-lg bg-white p-4"
+          />
         </div>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse border border-gray-300">
