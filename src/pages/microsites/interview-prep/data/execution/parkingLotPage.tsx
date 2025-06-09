@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PresentationPage } from '../../types';
 
@@ -19,6 +18,7 @@ export const parkingLotPage: PresentationPage = {
           <h3 className="text-lg font-semibold text-gray-800 mb-4">Market Landscape & Procurement</h3>
           <ul className="space-y-2 text-sm text-gray-700">
             <li>• AUSTENDER: LAND 129, LAND 156, Mission Syracuse</li>
+            <li>• <strong>Mission Syracuse:</strong> Advanced Strategic Capabilities Accelerator (ASCA) initiative developing sovereign counter small uncrewed aerial systems (CsUAS) capabilities. Focuses on advanced technology to intercept drones, integrating with existing ADF systems. Complements LAND 156 for comprehensive CsUAS detection, tracking, and neutralization. Proposals due via AusTender by June 6, 2025.</li>
             <li>• Standing Offers: SON4095403</li>
             <li>• Sovereign Industrial Capability</li>
             <li>• IRAP Certification</li>
