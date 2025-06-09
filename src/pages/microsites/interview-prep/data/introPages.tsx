@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { PresentationPage } from '../types';
 
@@ -12,8 +10,8 @@ export const introPages: PresentationPage[] = [
       <div className="space-y-6">
         <div className="rounded-lg overflow-hidden shadow-lg">
           <img 
-            src="https://www.nationaldefensemagazine.org/-/media/sites/magazine/2023/11/v-bat-teams-pr.jpg" 
-            alt="V-BAT drone team in Indo-Pacific theater"
+            src="https://supportourtroops.org/images/04_V_BAT_uncrewed_aerial_vehicle_UAV__USS_Carter_Hall_reconnaissance_Support_Our_Troops.jpg" 
+            alt="V-BAT uncrewed aerial vehicle on USS Carter Hall for reconnaissance operations"
             className="w-full h-64 object-cover rounded-lg"
           />
         </div>
@@ -128,4 +126,3 @@ export const introPages: PresentationPage[] = [
     speakerNotes: "Shield AI's legacy of firsts, AI-piloted drones in combat, tail-sitting V-BAT, and autonomous F-16 flights (Page 125), inspires my contribution to their ADF dominance, proving their readiness for real-world impact in contested zones. My HoloOrg expertise in multi-agent orchestration, honed with David Baxter, ensures Hivemind's swarm logic thrives in GPS-denied environments, outpacing Anduril's Ghost with Ukraine-proven resilience under intense jamming. AWS Top Secret deployments, where I've secured ISR systems, align Hivemind's edge computing with LAND 156's counter-UAS and ISR needs, leveraging Snowcone for tactical edge operations, a capability I've tested in high-risk theaters. My procurement pathways, navigating AUSTENDER, Standing Offer SON4095403, and IRAP readiness, address the current gap (Page 136) with a 6-9 month ACSC assessment, ensuring compliance by Q3 2025 to meet CASG's 60% decision weight (Page 127). Operator trust, central to my human-centric design, empowers ADF warfighters by enhancing decision-making, contrasting with DroneShield's $10M LAND 19/7 sensor focus, which lacks swarm autonomy. Real-world fit is validated: V-BAT's Ukraine ISR and my AWS edge deployments demonstrate readiness. To match ADF's Indo-Pacific tempo, I'll ensure 3-6 month integration with operator training, using Mission Syracuse (Page 134) as a proof point for rapid deployment. Risks like IRAP delays are mitigated with AWS compliance, and if competitors lobby, I'll leverage Appen and Fivecast partnerships for 30% AIC to reinforce our bid. Non-defense markets, ABF's $1M pilot mirroring DJI trials and DCCEEW's $2M environmental UAS contracts, bridge ADF's 12-36 month cycles, accessed via my procurement expertise. AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, utilizing Sentient's ViDAR (Page 135), target $15M, aligning with trilateral goals. This depth, rooted in my prime relationships, delivers a $20M+ pipeline, positioning me to win for Shield AI by showcasing operational and strategic mastery."
   }
 ];
-
