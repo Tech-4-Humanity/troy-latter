@@ -32,7 +32,7 @@ const CoreCompetencies = () => {
     {
       icon: Settings,
       title: "Solution Architecture",
-      image: "/lovable-uploads/f9deef88-c299-4f35-ad6f-4585c24d056a.png",
+      image: "https://res.cloudinary.com/dkkd45ayz/image/upload/f_auto,dpr_auto,q_auto,fl_progressive/w_1.0,h_0.8431568431568431568431568432,c_fill,g_auto/w_2048,h_1152,c_scale/saab/33099",
       skills: [
         "Multi-cloud integration (AWS, Azure, GCP)",
         "AI/ML platform implementation and strategy",
