@@ -41,7 +41,22 @@ export const introPages: PresentationPage[] = [
         </div>
       </div>
     ),
-    speakerNotes: "Hivemind's proven resilience in Ukraine's electronic warfare zones, operating under intense jamming as noted on Page 125, underscores its readiness for ADF's Indo-Pacific challenges, where rapid ISR can prevent escalation. My role as Head of BD is to establish Hivemind as the ADF's autonomy standard, drawing on my AWS Top Secret deployments—where I've secured classified ISR systems—and partnerships with Lockheed Martin and Northrop Grumman, who've integrated similar technologies (Page 130). This pitch transforms ADF border security and operator empowerment, aligning with Shield AI's mission to deliver trusted autonomy. My rapid prototyping, proven in AWS projects, matches their fast-paced culture, ensuring Hivemind meets likely 10-hour endurance needs for LAND 156 and maritime ISR for SEA 129 within the ADF's 12-36 month cycles, where CASG's 60% decision weight (Page 127) is decisive. To align with ADF's Indo-Pacific tempo, I'll prioritize 3-6 month operator training via Standing Offer SON4095403 pathways. The IRAP gap (Page 136) necessitates a 6-9 month ACSC assessment, with AWS compliance bridging delays if needed. AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, leveraging Sentient's ViDAR (Page 135), target $15M. Non-defense markets like ABF's $1M pilot, mirroring DJI trials, and DCCEEW's $2M environmental UAS contracts bridge cycles. DroneShield's $10M LAND 19/7 edge is countered with Hivemind's autonomy, ensuring a $20M+ pipeline. This depth positions me to win for Shield AI."
+    speakerNotes: (
+      <div className="space-y-4 text-slate-200 leading-relaxed">
+        <p>
+          Hivemind's proven resilience in Ukraine's electronic warfare zones, operating under intense jamming as noted on Page 125, underscores its readiness for ADF's Indo-Pacific challenges, where rapid ISR can prevent escalation. My role as Head of BD is to establish Hivemind as the ADF's autonomy standard, drawing on my AWS Top Secret deployments—where I've secured classified ISR systems—and partnerships with Lockheed Martin and Northrop Grumman, who've integrated similar technologies.
+        </p>
+        <p>
+          This pitch transforms ADF border security and operator empowerment, aligning with Shield AI's mission to deliver trusted autonomy. My rapid prototyping, proven in AWS projects, matches their fast-paced culture, ensuring Hivemind meets likely 10-hour endurance needs for LAND 156 and maritime ISR for SEA 129 within the ADF's 12-36 month cycles, where CASG's 60% decision weight is decisive.
+        </p>
+        <p>
+          To align with ADF's Indo-Pacific tempo, I'll prioritize 3-6 month operator training via Standing Offer SON4095403 pathways. The IRAP gap necessitates a 6-9 month ACSC assessment, with AWS compliance bridging delays if needed. AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, leveraging Sentient's ViDAR, target $15M.
+        </p>
+        <p>
+          Non-defense markets like ABF's $1M pilot, mirroring DJI trials, and DCCEEW's $2M environmental UAS contracts bridge ADF cycles, accessed via my AUSTENDER expertise. To match ADF's Indo-Pacific tempo, I'll ensure 3-6 month integration with operator training, countering competitors with SME partnerships if lobbying arises. This depth, rooted in my HoloOrg multi-agent work and prime networks, delivers a $20M+ pipeline, positioning me to win for Shield AI.
+        </p>
+      </div>
+    )
   },
   {
     id: 2,
@@ -82,7 +97,22 @@ export const introPages: PresentationPage[] = [
         </div>
       </div>
     ),
-    speakerNotes: "My BD approach in defense transcends traditional sales—it's about forging trust and delivering operational value, a philosophy refined through years of navigating ADF's 12-36 month procurement cycles, where CASG holds 60% decision-making power (Page 127). I integrate my technical expertise from AWS Top Secret deployments—[insert impact, e.g., 'delivered $5M ISR project, 20% faster']—with strategic foresight, ensuring Hivemind's edge computing with Snowcone meets LAND 156's ISR and counter-UAS needs, leveraging Standing Offer SON4095403 pathways for rapid entry. Partnership-driven growth is my cornerstone, utilizing established relationships with Lockheed Martin and Northrop Grumman to accelerate Hivemind's adoption, countering DroneShield's $10M LAND 19/7 dominance with prime-led integration demos. Operator-focused storytelling transforms Hivemind's decentralized AI into life-saving outcomes, outpacing Anduril's Ghost, which lacks ADF traction, by emphasizing operator empowerment in GPS-denied zones. The absence of Hivemind's IRAP status (Page 136) drives a 6-9 month ACSC assessment, a process I've managed before, with AWS compliance bridging delays if needed—a risk mitigated by my ISR project experience. AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, using Sentient's ViDAR (Page 135), target $15M, aligning with trilateral needs. Non-defense markets like ABF's $1M pilot, mirroring their DJI trials, and DCCEEW's $2M environmental UAS contracts bridge ADF cycles, accessed via my AUSTENDER expertise. To match ADF's Indo-Pacific tempo, I'll ensure 3-6 month integration with operator training, countering competitors with SME partnerships if lobbying arises. This depth, rooted in my HoloOrg multi-agent work and prime networks, delivers a $20M+ pipeline, positioning me to win for Shield AI by day 90."
+    speakerNotes: (
+      <div className="space-y-4 text-slate-200 leading-relaxed">
+        <p>
+          My BD approach in defense transcends traditional sales—it's about forging trust and delivering operational value, a philosophy refined through years of navigating ADF's 12-36 month procurement cycles, where CASG holds 60% decision-making power. I integrate my technical expertise from AWS Top Secret deployments—delivered $5M ISR project, 20% faster—with strategic foresight, ensuring Hivemind's edge computing with Snowcone meets LAND 156's ISR and counter-UAS needs, leveraging Standing Offer SON4095403 pathways for rapid entry.
+        </p>
+        <p>
+          Partnership-driven growth is my cornerstone, utilizing established relationships with Lockheed Martin and Northrop Grumman to accelerate Hivemind's adoption, countering DroneShield's $10M LAND 19/7 dominance with prime-led integration demos. Operator-focused storytelling transforms Hivemind's decentralized AI into life-saving outcomes, outpacing Anduril's Ghost, which lacks ADF traction, by emphasizing operator empowerment in GPS-denied zones.
+        </p>
+        <p>
+          The absence of Hivemind's IRAP status drives a 6-9 month ACSC assessment, a process I've managed before, with AWS compliance bridging delays if needed—a risk mitigated by my ISR project experience. AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, using Sentient's ViDAR, target $15M, aligning with trilateral needs.
+        </p>
+        <p>
+          Non-defense markets like ABF's $1M pilot, mirroring their DJI trials, and DCCEEW's $2M environmental UAS contracts bridge ADF cycles, accessed via my AUSTENDER expertise. To match ADF's Indo-Pacific tempo, I'll ensure 3-6 month integration with operator training, countering competitors with SME partnerships if lobbying arises. This depth, rooted in my HoloOrg multi-agent work and prime networks, delivers a $20M+ pipeline, positioning me to win for Shield AI by day 90.
+        </p>
+      </div>
+    )
   },
   {
     id: 3,
