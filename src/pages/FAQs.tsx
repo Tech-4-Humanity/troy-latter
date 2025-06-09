@@ -6,112 +6,118 @@ import { Link } from 'react-router-dom';
 const FAQs = () => {
   return (
     <div>
-      <PageTitle title="FAQs & Candidate Resources" />
+      <PageTitle title="Frequently Asked Questions" />
       
-      <div className="bg-vault-light p-6 rounded-lg border border-gray-200 my-6">
-        <h2 className="text-xl font-semibold mb-4 text-vault-primary">Key Questions</h2>
+      <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 my-6">
+        <h2 className="text-xl font-semibold mb-4 text-gray-900">About Troy Latter - Key Questions</h2>
         <ul className="space-y-4">
           <li className="flex items-start">
-            <FileQuestion className="text-vault-accent mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+            <FileQuestion className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
-              <p className="font-semibold">Defining Early Wins</p>
-              <p>"Which three mission - critical customer problems do you expect the Innovation team to solve in the first 90 days - and what business impact (e.g. cost savings, readiness improvements) will define success?"</p>
+              <p className="font-semibold">What makes Troy unique as a strategic technology leader?</p>
+              <p>Troy combines deep technical expertise (AWS Top Secret clearance, multi-cloud certifications) with proven business development capabilities in defense and enterprise markets. His experience spans from hands-on system architecture to C-suite strategic advisory roles, making him equally effective in technical deep-dives and boardroom discussions.</p>
             </div>
           </li>
           
           <li className="flex items-start">
-            <Layers className="text-vault-accent mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+            <Layers className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
-              <p className="font-semibold">Innovation Pipeline & Governance</p>
-              <p>"How is the R&D pipeline currently structured, funded and governed? What review cadence and decision authorities exist for kill - or - scale calls?"</p>
+              <p className="font-semibold">How does Troy approach innovation leadership?</p>
+              <p>Troy's innovation methodology focuses on rapid prototyping, customer co-design, and scalable implementation. He believes in "innovation with purpose" - ensuring every R&D initiative aligns with clear business outcomes and customer value propositions, while maintaining technical excellence and security compliance.</p>
             </div>
           </li>
           
           <li className="flex items-start">
-            <Rocket className="text-vault-accent mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+            <Rocket className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
-              <p className="font-semibold">Inherited PoCs & Strategic Alignment</p>
-              <p>"Which live PoCs or prototypes will I inherit, and how do they map to Vault's top strategic priorities - particularly for Defence, Intelligence and Critical Infrastructure?"</p>
+              <p className="font-semibold">What is Troy's track record in defense and security markets?</p>
+              <p>Troy has successfully navigated complex defense procurement cycles, held AWS Top Secret clearance, and built relationships with major primes including Lockheed Martin and Northrop Grumman. His experience includes ISR systems, autonomous platforms, and multi-agent AI architectures for mission-critical applications.</p>
             </div>
           </li>
           
           <li className="flex items-start">
-            <Users className="text-vault-accent mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+            <Users className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
-              <p className="font-semibold">Customer Engagement Model</p>
-              <p>"What is the established process for co - designing and validating PoCs with Defence, Intelligence and Critical Infrastructure customers? Who are the key champions and how often do we meet?"</p>
+              <p className="font-semibold">How does Troy build and lead high-performing teams?</p>
+              <p>Troy's leadership philosophy centers on "servant leadership" - empowering team members, fostering psychological safety, and creating environments where innovation thrives. He combines technical mentorship with strategic vision, ensuring teams understand both the "how" and the "why" behind their work.</p>
             </div>
           </li>
           
           <li className="flex items-start">
-            <ArrowUp className="text-vault-accent mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+            <ArrowUp className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
-              <p className="font-semibold">From Prototype to Production</p>
-              <p>"What frameworks and hand - off mechanisms are in place to translate successful PoCs into Vault's core offerings (e.g. funding gates, product team integration, compliance certifications)?"</p>
+              <p className="font-semibold">What is Troy's approach to scaling technology solutions?</p>
+              <p>Troy excels at taking proof-of-concepts to production-ready solutions. His methodology includes robust architecture design, compliance frameworks, and phased rollout strategies that minimize risk while maximizing business impact. He's particularly skilled at navigating regulatory requirements in defense and critical infrastructure sectors.</p>
             </div>
           </li>
           
           <li className="flex items-start">
-            <ChartLine className="text-vault-accent mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+            <ChartLine className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
-              <p className="font-semibold">Measuring Breakthroughs</p>
-              <p>"How does Vault define and report 'innovation ROI' - in terms of revenue, operational readiness, risk reduction or customer adoption - to the CEO and board?"</p>
+              <p className="font-semibold">How does Troy measure success in innovation roles?</p>
+              <p>Troy defines success through multiple metrics: technical delivery (on-time, on-budget, exceeding performance requirements), business impact (revenue growth, cost reduction, market expansion), and strategic positioning (competitive advantage, thought leadership, partnership development).</p>
             </div>
           </li>
           
           <li className="flex items-start">
-            <Shield className="text-vault-accent mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+            <Shield className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
-              <p className="font-semibold">Regulatory & Sovereign Controls</p>
-              <p>"Given Vault's ASD certification and zero - trust mandate, how are regulatory and compliance checkpoints embedded into each PoC sprint, and who owns those controls?"</p>
+              <p className="font-semibold">What is Troy's expertise in security and compliance?</p>
+              <p>Troy maintains AGSVA NV2 clearance and has extensive experience with IRAP assessments, AWS compliance frameworks, and defense security protocols. He understands how to balance innovation velocity with security requirements, ensuring solutions meet both technical and regulatory standards.</p>
             </div>
           </li>
           
           <li className="flex items-start">
-            <Award className="text-vault-accent mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+            <Award className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
-              <p className="font-semibold">Team Structure & External Expertise</p>
-              <p>"What is the current Innovation team's makeup, and how do we engage external SMEs or academic partners to accelerate first - of - a - kind R&D?"</p>
+              <p className="font-semibold">What certifications and credentials does Troy hold?</p>
+              <p>Troy is an AWS Solutions Architect, Azure AI Engineer, and GCP certified professional. He serves on the QLD Government AI Hub Board and holds Standards Australia Business Continuity Institute credentials. His academic background includes advanced studies in AI/ML and innovation management.</p>
             </div>
           </li>
           
           <li className="flex items-start">
-            <FileCode className="text-vault-accent mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+            <FileCode className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
-              <p className="font-semibold">Technical Evangelism & Culture</p>
-              <p>"What forums or channels does Vault use to showcase new capabilities - both internally (e.g. leadership demos) and externally (industry conferences, whitepapers)?"</p>
+              <p className="font-semibold">How does Troy stay current with emerging technologies?</p>
+              <p>Troy maintains active involvement in research communities, contributes to industry whitepapers, and regularly engages with academic institutions including QUT and TAS. He believes in continuous learning and applies emerging technologies through controlled pilots before scaling to production environments.</p>
             </div>
           </li>
           
           <li className="flex items-start">
-            <AlertTriangle className="text-vault-accent mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+            <AlertTriangle className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
-              <p className="font-semibold">Risk & Recovery</p>
-              <p>"What risk - mitigation practices does Vault use when pushing bleeding - edge prototypes, and how do we ensure rapid recovery or rollback if a PoC hits an unexpected barrier?"</p>
+              <p className="font-semibold">How does Troy handle risk management in innovation projects?</p>
+              <p>Troy implements structured risk frameworks that balance innovation velocity with prudent oversight. He uses staged gates, rapid feedback loops, and "fail-fast" methodologies to minimize exposure while maximizing learning. His approach includes contingency planning and clear escalation paths for both technical and business risks.</p>
             </div>
           </li>
         </ul>
       </div>
       
-      <div className="bg-vault-light p-6 rounded-lg border border-gray-200 my-6">
-        <h2 className="text-xl font-semibold mb-4 text-vault-primary">Bonus Resources</h2>
+      <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 my-6">
+        <h2 className="text-xl font-semibold mb-4 text-gray-900">Portfolio Resources</h2>
         <ul className="space-y-3">
           <li className="flex items-start">
-            <span className="text-vault-accent font-bold mr-2">•</span>
-            <Link to="/resources/90-day-plan" className="hover:text-vault-accent transition-colors">
-              <span><strong>90-Day Plan Template:</strong> A fillable roadmap to map objectives, stakeholders & metrics.</span>
+            <span className="text-blue-600 font-bold mr-2">•</span>
+            <Link to="/executive-profile" className="hover:text-blue-600 transition-colors">
+              <span><strong>Executive Profile:</strong> Comprehensive overview of Troy's leadership experience and strategic capabilities.</span>
             </Link>
           </li>
           <li className="flex items-start">
-            <span className="text-vault-accent font-bold mr-2">•</span>
-            <Link to="/resources/whitepapers" className="hover:text-vault-accent transition-colors">
-              <span><strong>Vault Whitepapers & Tech Talks:</strong> Deep dives on sovereign AI, zero - trust architecture & battlefield clouds.</span>
+            <span className="text-blue-600 font-bold mr-2">•</span>
+            <Link to="/resources/whitepapers" className="hover:text-blue-600 transition-colors">
+              <span><strong>Technical Whitepapers:</strong> Deep dives on AI, cloud architecture, and innovation frameworks authored by Troy.</span>
             </Link>
           </li>
           <li className="flex items-start">
-            <span className="text-vault-accent font-bold mr-2">•</span>
-            <Link to="/resources/lean-canvas" className="hover:text-vault-accent transition-colors">
-              <span><strong>Lean Business Canvas:</strong> A streamlined canvas for developing and validating concise business models from PoC insights.</span>
+            <span className="text-blue-600 font-bold mr-2">•</span>
+            <Link to="/resources/lean-canvas" className="hover:text-blue-600 transition-colors">
+              <span><strong>Innovation Methodology:</strong> Troy's proven frameworks for strategic planning and business model development.</span>
+            </Link>
+          </li>
+          <li className="flex items-start">
+            <span className="text-blue-600 font-bold mr-2">•</span>
+            <Link to="/customer-success-stories" className="hover:text-blue-600 transition-colors">
+              <span><strong>Success Stories:</strong> Case studies demonstrating Troy's impact across defense, enterprise, and innovation sectors.</span>
             </Link>
           </li>
         </ul>
