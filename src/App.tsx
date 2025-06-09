@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import { MicrositeLayout } from "./components/microsites/MicrositeLayout";
 
 import Index from "./pages/Index";
 import ExecutiveProfile from "./pages/ExecutiveProfile";
@@ -16,6 +17,10 @@ import NotFound from "./pages/NotFound";
 import NinetyDayPlan from "./pages/NinetyDayPlan";
 import Whitepapers from "./pages/Whitepapers";
 import LeanCanvas from "./pages/LeanCanvas";
+
+// Microsite pages
+import MicrositeIndex from "./pages/microsites/MicrositeIndex";
+import InterviewPrepIndex from "./pages/microsites/interview-prep/Index";
 
 // Legacy pages that are still accessible but redirected
 import InnovationDefinition from "./pages/InnovationDefinition";
@@ -42,53 +47,55 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Layout>
-          <Routes>
-            {/* Main navigation routes */}
-            <Route path="/" element={<Index />} />
-            <Route path="/executive-profile" element={<ExecutiveProfile />} />
-            <Route path="/core-competencies" element={<CoreCompetencies />} />
-            <Route path="/industry-expertise" element={<IndustryExpertise />} />
-            <Route path="/customer-success-stories" element={<CustomerSuccessStories />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/faqs" element={<FAQs />} />
-            
-            {/* Resources */}
-            <Route path="/resources/90-day-plan" element={<NinetyDayPlan />} />
-            <Route path="/resources/whitepapers" element={<Whitepapers />} />
-            <Route path="/resources/lean-canvas" element={<LeanCanvas />} />
-            
-            {/* Navigation redirects - consolidate similar content */}
-            <Route path="/thought-leadership" element={<Navigate to="/customer-success-stories" replace />} />
-            <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />
-            
-            {/* Legacy content that still exists */}
-            <Route path="/innovation-definition" element={<InnovationDefinition />} />
-            <Route path="/innovation-journey" element={<InnovationJourney />} />
-            <Route path="/innovation-frameworks" element={<InnovationFrameworks />} />
-            <Route path="/leadership-style" element={<LeadershipStyle />} />
-            <Route path="/people-involved" element={<PeopleInvolved />} />
-            <Route path="/upcoming-projects" element={<UpcomingProjects />} />
-            <Route path="/strategic-projects" element={<StrategicProjects />} />
-            <Route path="/customer-asks-stars" element={<CustomerAsksStars />} />
-            <Route path="/opportunity-stars" element={<OpportunityStars />} />
-            <Route path="/responsibilities" element={<Responsibilities />} />
-            <Route path="/you" element={<You />} />
-            <Route path="/your-profile-stars" element={<YourProfileStars />} />
-            <Route path="/the-opportunity" element={<TheOpportunity />} />
-            <Route path="/your-pitch" element={<YourPitch />} />
-            <Route path="/what-is-innovation" element={<WhatIsInnovation />} />
-            
-            {/* Legacy redirects - maintain old URLs for bookmarks */}
-            <Route path="/about-troy" element={<Navigate to="/executive-profile" replace />} />
-            <Route path="/inspiration" element={<CustomerAsksStars />} />
-            <Route path="/customer-asks" element={<Navigate to="/customer-asks-stars" replace />} />
-            <Route path="/vision" element={<Navigate to="/customer-asks-stars" replace />} />
-            <Route path="/head-of-innovation" element={<Navigate to="/" replace />} />
-            
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
+        <Routes>
+          {/* Main site routes with main layout */}
+          <Route path="/" element={<Layout><Index /></Layout>} />
+          <Route path="/executive-profile" element={<Layout><ExecutiveProfile /></Layout>} />
+          <Route path="/core-competencies" element={<Layout><CoreCompetencies /></Layout>} />
+          <Route path="/industry-expertise" element={<Layout><IndustryExpertise /></Layout>} />
+          <Route path="/customer-success-stories" element={<Layout><CustomerSuccessStories /></Layout>} />
+          <Route path="/contact" element={<Layout><Contact /></Layout>} />
+          <Route path="/faqs" element={<Layout><FAQs /></Layout>} />
+          
+          {/* Resources */}
+          <Route path="/resources/90-day-plan" element={<Layout><NinetyDayPlan /></Layout>} />
+          <Route path="/resources/whitepapers" element={<Layout><Whitepapers /></Layout>} />
+          <Route path="/resources/lean-canvas" element={<Layout><LeanCanvas /></Layout>} />
+          
+          {/* Microsite routes with separate layout */}
+          <Route path="/microsites" element={<MicrositeLayout><MicrositeIndex /></MicrositeLayout>} />
+          <Route path="/microsites/interview-prep" element={<MicrositeLayout><InterviewPrepIndex /></MicrositeLayout>} />
+          
+          {/* Navigation redirects - consolidate similar content */}
+          <Route path="/thought-leadership" element={<Navigate to="/customer-success-stories" replace />} />
+          <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />
+          
+          {/* Legacy content that still exists */}
+          <Route path="/innovation-definition" element={<Layout><InnovationDefinition /></Layout>} />
+          <Route path="/innovation-journey" element={<Layout><InnovationJourney /></Layout>} />
+          <Route path="/innovation-frameworks" element={<Layout><InnovationFrameworks /></Layout>} />
+          <Route path="/leadership-style" element={<Layout><LeadershipStyle /></Layout>} />
+          <Route path="/people-involved" element={<Layout><PeopleInvolved /></Layout>} />
+          <Route path="/upcoming-projects" element={<Layout><UpcomingProjects /></Layout>} />
+          <Route path="/strategic-projects" element={<Layout><StrategicProjects /></Layout>} />
+          <Route path="/customer-asks-stars" element={<Layout><CustomerAsksStars /></Layout>} />
+          <Route path="/opportunity-stars" element={<Layout><OpportunityStars /></Layout>} />
+          <Route path="/responsibilities" element={<Layout><Responsibilities /></Layout>} />
+          <Route path="/you" element={<Layout><You /></Layout>} />
+          <Route path="/your-profile-stars" element={<Layout><YourProfileStars /></Layout>} />
+          <Route path="/the-opportunity" element={<Layout><TheOpportunity /></Layout>} />
+          <Route path="/your-pitch" element={<Layout><YourPitch /></Layout>} />
+          <Route path="/what-is-innovation" element={<Layout><WhatIsInnovation /></Layout>} />
+          
+          {/* Legacy redirects - maintain old URLs for bookmarks */}
+          <Route path="/about-troy" element={<Navigate to="/executive-profile" replace />} />
+          <Route path="/inspiration" element={<Layout><CustomerAsksStars /></Layout>} />
+          <Route path="/customer-asks" element={<Navigate to="/customer-asks-stars" replace />} />
+          <Route path="/vision" element={<Navigate to="/customer-asks-stars" replace />} />
+          <Route path="/head-of-innovation" element={<Navigate to="/" replace />} />
+          
+          <Route path="*" element={<Layout><NotFound /></Layout>} />
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
