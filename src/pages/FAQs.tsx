@@ -1,4 +1,3 @@
-
 import { PageTitle } from '@/components/PageTitle';
 import { FileQuestion, Award, Layers, Users, ArrowUp, ChartLine, Shield, Rocket, FileCode, AlertTriangle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -71,7 +70,7 @@ const FAQs = () => {
             <Award className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
               <p className="font-semibold">What certifications and credentials does Troy hold?</p>
-              <p>Troy is an AWS Solutions Architect, Azure AI Engineer, and GCP certified professional. He serves on the QLD Government AI Hub Board and holds Standards Australia Business Continuity Institute credentials. His academic background includes advanced studies in AI/ML and innovation management.</p>
+              <p>Troy is an AWS Solutions Architect, Azure AI Certified, and GCP certified professional. He serves on the QLD Government AI Hub Board and holds Standards Australia Business Continuity Institute credentials. His academic background includes advanced studies in AI/ML and innovation management.</p>
             </div>
           </li>
           

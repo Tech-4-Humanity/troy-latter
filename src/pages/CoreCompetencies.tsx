@@ -58,7 +58,7 @@ const CoreCompetencies = () => {
   const technicalSkills = {
     "Cloud Platforms & Architecture": [
       "AWS Professional Solutions Architect (EC2, S3, Lambda, SageMaker, Bedrock)",
-      "Microsoft Azure AI Engineer Associate (Functions, ML Studio, Cognitive Services)",
+      "Microsoft Azure AI Certified (Functions, ML Studio, Cognitive Services)",
       "Google Cloud Platform Certified (BigQuery, Kubernetes Engine, Vertex AI)",
       "Oracle Cloud Infrastructure (Autonomous Database, Analytics Cloud)",
       "Multi-cloud strategy, hybrid architectures, cost optimization"
@@ -194,7 +194,7 @@ const CoreCompetencies = () => {
           <div className="grid md:grid-cols-4 gap-4">
             {[
               "AWS Professional Solutions Architect",
-              "Azure AI Engineer Associate", 
+              "Azure AI Certified", 
               "GCP Certified",
               "PRINCE2 Practitioner",
               "Prosci ADKAR Change Management",

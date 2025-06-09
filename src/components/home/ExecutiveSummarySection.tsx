@@ -35,7 +35,7 @@ export const ExecutiveSummarySection = () => {
                 <h4 className="font-semibold text-brand-primary mb-2">Key Certifications</h4>
                 <ul className="text-sm text-gray-600 space-y-1">
                   <li>• AWS Professional Solutions Architect</li>
-                  <li>• Azure AI Engineer Associate</li>
+                  <li>• Azure AI Certified</li>
                   <li>• GCP Certified</li>
                   <li>• TOGAF & IT4IT Foundations</li>
                 </ul>
