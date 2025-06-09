@@ -22,7 +22,7 @@ const IndustryExpertise = () => {
     {
       icon: Building,
       title: "Financial Services",
-      image: "/lovable-uploads/db7906e5-94ae-461a-a914-e3ca5ba5b126.png",
+      image: "https://www.idfcfirstbank.com/content/dam/idfcfirstbank/images/blog/mobile-banking/how-new-age-banking-is-transforming-the-banking-industry-717x404.jpg",
       description: "Modernizing core banking systems and enabling digital-first customer experiences",
       expertise: [
         "Core banking system modernization",
@@ -93,8 +93,8 @@ const IndustryExpertise = () => {
             </div>
             <div className="flex justify-center">
               <img 
-                src="/lovable-uploads/0802b80f-8d0e-4e6c-b22c-90790f6ab929.png" 
-                alt="Industry Innovation Leadership" 
+                src="https://media.licdn.com/dms/image/v2/C4E12AQHyoP9OemtkZw/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1574977609060?e=1754524800&v=beta&t=tilBzUYzPUnLWU74hCH8lTyDo2vzmdQIOsvnM3mcbqI" 
+                alt="Digital Innovation and Technology Leadership" 
                 className="w-80 h-64 rounded-xl shadow-2xl object-cover"
               />
             </div>
@@ -113,7 +113,7 @@ const IndustryExpertise = () => {
                 <div className={`${index % 2 === 1 ? 'md:order-2' : ''}`}>
                   <img 
                     src={industry.image} 
-                    alt={industry.title === "Telecommunications" ? "6G Technology and Future Business Impact" : industry.title} 
+                    alt={industry.title === "Telecommunications" ? "6G Technology and Future Business Impact" : industry.title === "Financial Services" ? "New Age Banking and Digital Transformation" : industry.title} 
                     className="w-full h-80 object-cover"
                   />
                 </div>

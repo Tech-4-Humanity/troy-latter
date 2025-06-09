@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
@@ -32,7 +31,7 @@ const CustomerSuccessStories = () => {
     },
     {
       title: "Tiger Teams & Trusted Partnerships",
-      image: "/lovable-uploads/1a555a46-8cd9-4fa1-a20f-3de9522aa198.png",
+      image: "https://theaseanpost.com/sites/default/files/2020-11/11AM-WIRE-FRI-13112020.jpg",
       description: "During ASEAN monsoon floods, I formed a six-person AWS \"tiger team\" with satellite, telco & social-media experts to build an edge-mesh alert platform across 6 countries, IRT for free.\n\nLive demos with first responders cut coordination delays 50%, handled 500K+ alerts and seeded a $2 M regional rollout."
     },
     {
@@ -123,7 +122,7 @@ const CustomerSuccessStories = () => {
                   <div className={`${index % 2 === 1 ? 'md:order-2' : ''}`}>
                     <img 
                       src={story.image} 
-                      alt={story.title} 
+                      alt={story.title === "Tiger Teams & Trusted Partnerships" ? "ASEAN Regional Cooperation and Technology Integration" : story.title} 
                       className="w-full h-80 object-cover"
                     />
                   </div>
