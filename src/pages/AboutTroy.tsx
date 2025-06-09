@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
 
 const AboutTroy = () => {
@@ -47,9 +45,9 @@ const AboutTroy = () => {
 
       {/* Main Content Area */}
       <section className="container mx-auto px-4 md:px-6">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start mb-10">
+        <div className="mb-10">
           {/* Why Troy Section */}
-          <div className="order-2 md:order-1">
+          <div>
             <h2 className="text-2xl font-semibold mb-5 text-brand-primary">Why Choose Troy?</h2>
             <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
               <li>
@@ -65,17 +63,6 @@ const AboutTroy = () => {
                 <span className="font-semibold">Agile Leadership:</span> Built high‑trust "tiger teams" that triple PoC throughput and secure multi‑million‑dollar follow‑on budgets.
               </li>
             </ul>
-          </div>
-
-          {/* Profile Image */}
-          <div className="order-1 md:order-2 flex justify-center md:justify-end">
-            <div className="w-full max-w-md">
-              <img 
-                src="/lovable-uploads/83bdd2b0-6ff7-412c-983a-f1baf27538c4.png" 
-                alt="Troy Latter" 
-                className="w-full rounded-lg shadow-md object-cover"
-              />
-            </div>
           </div>
         </div>
 

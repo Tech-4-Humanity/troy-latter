@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -12,11 +11,7 @@ const YourPitch = () => {
   return (
     <div className="py-12 px-6 max-w-4xl mx-auto">
       {/* Elevator Hook */}
-      <div className="flex flex-col md:flex-row gap-6 items-center mb-8">
-        <Avatar className="h-32 w-32 border-2 border-vault-accent">
-          <AvatarImage src="/lovable-uploads/1a555a46-8cd9-4fa1-a20f-3de9522aa198.png" alt="Troy Latter" />
-          <AvatarFallback>TL</AvatarFallback>
-        </Avatar>
+      <div className="flex flex-col gap-6 mb-8">
         <div>
           <h1 className="text-3xl md:text-4xl font-bold mb-6 text-vault-primary">
             Australia's sovereign cloud is only as strong as its innovators - here's how Troy builds that strength.
