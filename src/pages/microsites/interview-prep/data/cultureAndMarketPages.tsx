@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { PresentationPage } from '../types';
 
@@ -33,7 +34,7 @@ export const cultureAndMarketPages: PresentationPage[] = [
               <tr>
                 <td className="border border-gray-300 p-3 font-medium">Honor & Integrity</td>
                 <td className="border border-gray-300 p-3">Ethical conduct in mission execution</td>
-                <td className="border border-gray-300 p-3">Championed transparency in AUSTENDER procurement for LAND 156</td>
+                <td className="border border-gray-300 p-3">On numerous trips to foreign countries, maintained ethical standards when challenged. For customers, worked with their principles and families in the field. Managed SC2S secure communications and HR-related programs with Oracle involving PII and operational data</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3 font-medium">Servant Leadership</td>
@@ -55,7 +56,7 @@ export const cultureAndMarketPages: PresentationPage[] = [
         </div>
       </div>
     ),
-    speakerNotes: "This table isn't just a checklist - it's proof of my lived alignment with Shield AI's culture. My AWS COVID response work triangulated policy, sales and tech teams across ASEAN, embodying mission-critical focus with rapid cross-functional coordination. Honor and integrity shine through my transparent navigation of AUSTENDER and Standing Offers, ensuring ethical procurement for LAND 156. Servant leadership drives my Queensland Government AI Hub advisory role, empowering state agencies with ethical AI governance frameworks. Pursuit of excellence is evident in my ABF technology transformation, mapping and sharing data across Pacific countries, setting regional collaboration benchmarks. Human empowerment, central to my leadership philosophy, includes developing successor talent and delivering customer solutions that unlock banking, provide health outcomes, and enable infrastructure through digital twins."
+    speakerNotes: "This table isn't just a checklist - it's proof of my lived alignment with Shield AI's culture. My AWS COVID response work triangulated policy, sales and tech teams across ASEAN, embodying mission-critical focus with rapid cross-functional coordination. Honor and integrity shine through maintaining ethical standards during numerous foreign trips, working with customer principles and families in the field, and managing SC2S secure communications plus Oracle HR programs involving PII and operational data. Servant leadership drives my Queensland Government AI Hub advisory role, empowering state agencies with ethical AI governance frameworks. Pursuit of excellence is evident in my ABF technology transformation, mapping and sharing data across Pacific countries, setting regional collaboration benchmarks. Human empowerment, central to my leadership philosophy, includes developing successor talent and delivering customer solutions that unlock banking, provide health outcomes, and enable infrastructure through digital twins."
   },
   {
     id: 5,
