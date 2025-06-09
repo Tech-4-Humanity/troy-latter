@@ -10,9 +10,9 @@ export const cultureAndMarketPages: PresentationPage[] = [
       <div className="space-y-6">
         <div className="rounded-lg overflow-hidden">
           <img 
-            src="/lovable-uploads/24ae2c57-fff3-40ab-88f1-3ad34c248fc1.png" 
-            alt="V-BAT with Lockheed/Northrop logos ecosystem"
-            className="w-full h-64 object-contain rounded-lg bg-white p-4"
+            src="https://shield.ai/wp-content/uploads/2025/03/values-4.jpg" 
+            alt="Shield AI core values and principles"
+            className="w-full h-64 object-cover rounded-lg"
           />
         </div>
         <div className="overflow-x-auto">
