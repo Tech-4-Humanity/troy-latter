@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PresentationPage } from '../types';
 
@@ -76,10 +75,10 @@ export const cultureAndMarketPages: PresentationPage[] = [
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Market Opportunities</h3>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                The Australian Defence Force presents significant opportunities across multiple programs including LAND 129 for ISR capabilities, LAND 156 for Counter-UAS systems, and Mission Syracuse for rapid counter-UAS deployment. These programs represent billions in potential contracts over the next decade.
+                The Australian Defence Force presents significant opportunities across multiple programs including LAND 129 for ISR capabilities—enhancing Insitu's Integrator with Hivemind's multi-agent orchestration—and LAND 156 for Counter-UAS systems, where autonomous swarm capabilities outshine traditional sensor approaches. Mission Syracuse offers rapid deployment pathways with 3-6 month integration timelines.
               </p>
               <p>
-                Standing Offers like SON4095403 for Pacific UAVs provide direct sales channels, while the recent Sentient acquisition demonstrates ADF's commitment to sovereign capability development, creating additional pathways for Hivemind integration.
+                Standing Offers like SON4095403 for Pacific UAVs provide direct sales channels, while the recent Sentient acquisition demonstrates ADF's commitment to sovereign capability development and 30% Australian Industry Capability priorities, creating strategic pathways for Hivemind integration through established procurement frameworks.
               </p>
             </div>
           </div>
@@ -87,16 +86,16 @@ export const cultureAndMarketPages: PresentationPage[] = [
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Strategic Positioning</h3>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                IRAP readiness is crucial for classified deployments, and while Hivemind currently lacks this certification, my experience with ACSC assessments provides a clear pathway to compliance. Prime contractor relationships with Lockheed Martin and Northrop Grumman, combined with AWS Snowcone for edge ISR, create powerful integration opportunities.
+                IRAP readiness is crucial for classified deployments, and while Hivemind currently lacks this certification, my experience with ACSC assessments provides a clear 6-9 month pathway to Q3 2025 compliance. Prime contractor relationships with Lockheed Martin and Northrop Grumman, combined with AWS Snowcone for edge ISR, create powerful integration opportunities that counter competitors' limited ADF traction.
               </p>
               <p>
-                This strategic positioning enables Shield AI to compete effectively against established players like DroneShield while leveraging superior autonomous capabilities that have proven themselves in Ukraine's contested electromagnetic environment.
+                AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, utilizing Sentient's ViDAR capabilities, target $15M opportunities. Non-defense markets including ABF pilots and DCCEEW environmental contracts provide bridge opportunities during ADF's 12-36 month procurement cycles, ensuring sustained pipeline development and market presence.
               </p>
             </div>
           </div>
         </div>
       </div>
     ),
-    speakerNotes: "My market research positions Shield AI to seize ADF opportunities, starting with LAND 129's ISR potential and LAND 156's counter-UAS demand, where Hivemind's autonomy outshines DroneShield's sensors. Mission Syracuse's rapid deployment focus, backed by ASCA, aligns with my innovation track record, while SON4095403 offers a direct sales channel for Pacific UAVs, leveraging my AUSTENDER expertise. Sovereign capability, enhanced by Sentient's acquisition, meets ADF's 30% AIC priority, supported by my TAS and QUT connections. IRAP readiness, absent for Hivemind, drives my 6-9 month ACSC assessment plan, ensuring compliance by Q3 2025. Primes like Lockheed and Northrop, plus AWS Snowcone, enable edge ISR, countering Anduril's limited traction."
+    speakerNotes: "My market research positions Shield AI to seize ADF opportunities, starting with LAND 129's ISR potential—enhancing Insitu's Integrator with Hivemind's multi-agent orchestration (Page 130)—and LAND 156's counter-UAS demand, outshining DroneShield's $10M LAND 19/7 sensors with swarm autonomy. Mission Syracuse's rapid deployment focus, backed by ASCA (Page 134), aligns with my innovation track record, offering a 3-6 month integration proof point to meet ADF's urgent needs. Standing Offer SON4095403 provides a direct sales channel for Pacific UAVs, leveraging my AUSTENDER expertise to navigate CASG's 60% decision weight (Page 127). Sovereign capability, enhanced by Sentient's acquisition (Page 125), meets ADF's 30% AIC priority, supported by my TAS and QUT partnerships. IRAP readiness, absent for Hivemind (Page 136), drives a 6-9 month ACSC assessment, ensuring Q3 2025 compliance, with AWS compliance mitigating delays if needed—a risk managed from my ISR projects. Primes like Lockheed and Northrop, plus AWS Snowcone, enable edge ISR, countering Anduril's limited ADF traction with Ukraine-proven deployments. Non-defense markets—ABF's $1M pilot mirroring DJI trials and DCCEEW's $2M environmental UAS contracts—bridge ADF's 12-36 month cycles, accessed via my procurement skills. AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, using Sentient's ViDAR (Page 135), target $15M, aligning with trilateral goals. If competitors lobby, Appen and Fivecast partnerships for 30% AIC reinforce our bid, ensuring a $20M+ pipeline that matches ADF's Indo-Pacific tempo."
   }
 ];
