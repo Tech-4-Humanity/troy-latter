@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -65,7 +66,6 @@ const App = () => (
           <Route path="/microsites/interview-prep" element={<MicrositeLayout><InterviewPrepIndex /></MicrositeLayout>} />
           
           {/* Navigation redirects - consolidate similar content */}
-          <Route path="/thought-leadership" element={<Navigate to="/industry-expertise" replace />} />
           <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />
           
           {/* Legacy content that still exists */}

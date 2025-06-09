@@ -8,7 +8,6 @@ const routes = [
   { path: '/executive-profile', label: 'Executive Profile' },
   { path: '/core-competencies', label: 'Core Competencies' },
   { path: '/industry-expertise', label: 'Industry Expertise' },
-  { path: '/thought-leadership', label: 'Thought Leadership' },
   { path: '/current-roles', label: 'Current Roles' },
 ];
 
