@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, Linkedin } from 'lucide-react';
@@ -11,7 +9,6 @@ export const Footer = () => {
   const mainLinks = [
     { path: '/executive-profile', label: 'Executive Profile' },
     { path: '/core-competencies', label: 'Core Competencies' },
-    { path: '/customer-success-stories', label: 'Success Stories' },
     { path: '/contact', label: 'Contact' },
   ];
   
