@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
@@ -37,7 +36,7 @@ const IndustryExpertise = () => {
     {
       icon: Zap,
       title: "Telecommunications",
-      image: "/lovable-uploads/81cbb272-6a07-41e1-8167-796bc17aa764.png",
+      image: "https://specials-images.forbesimg.com/imageserve/641417a086955414b976a1f2/6G-Is-Coming--What-Will-Be-The-Business-Impact-/960x0.jpg?fit=scale",
       description: "Network modernization and 5G infrastructure deployment strategies",
       expertise: [
         "5G network architecture and edge computing",
@@ -114,7 +113,7 @@ const IndustryExpertise = () => {
                 <div className={`${index % 2 === 1 ? 'md:order-2' : ''}`}>
                   <img 
                     src={industry.image} 
-                    alt={industry.title} 
+                    alt={industry.title === "Telecommunications" ? "6G Technology and Future Business Impact" : industry.title} 
                     className="w-full h-80 object-cover"
                   />
                 </div>
