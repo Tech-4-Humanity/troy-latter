@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { PresentationPage } from '../types';
 
@@ -41,22 +42,7 @@ export const introPages: PresentationPage[] = [
         </div>
       </div>
     ),
-    speakerNotes: (
-      <div className="space-y-4 text-slate-200 leading-relaxed">
-        <p>
-          Hivemind's proven resilience in Ukraine's electronic warfare zones, operating under intense jamming as noted on Page 125, underscores its readiness for ADF's Indo-Pacific challenges, where rapid ISR can prevent escalation. My role as Head of BD is to establish Hivemind as the ADF's autonomy standard, drawing on my AWS Top Secret deployments—where I've secured classified ISR systems—and partnerships with Lockheed Martin and Northrop Grumman, who've integrated similar technologies.
-        </p>
-        <p>
-          This pitch transforms ADF border security and operator empowerment, aligning with Shield AI's mission to deliver trusted autonomy. My rapid prototyping, proven in AWS projects, matches their fast-paced culture, ensuring Hivemind meets likely 10-hour endurance needs for LAND 156 and maritime ISR for SEA 129 within the ADF's 12-36 month cycles, where CASG's 60% decision weight is decisive.
-        </p>
-        <p>
-          To align with ADF's Indo-Pacific tempo, I'll prioritize 3-6 month operator training via Standing Offer SON4095403 pathways. The IRAP gap necessitates a 6-9 month ACSC assessment, with AWS compliance bridging delays if needed. AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, leveraging Sentient's ViDAR, target $15M.
-        </p>
-        <p>
-          Non-defense markets like ABF's $1M pilot, mirroring DJI trials, and DCCEEW's $2M environmental UAS contracts bridge ADF cycles, accessed via my AUSTENDER expertise. To match ADF's Indo-Pacific tempo, I'll ensure 3-6 month integration with operator training, countering competitors with SME partnerships if lobbying arises. This depth, rooted in my HoloOrg multi-agent work and prime networks, delivers a $20M+ pipeline, positioning me to win for Shield AI.
-        </p>
-      </div>
-    )
+    speakerNotes: "Hivemind's proven resilience in Ukraine's electronic warfare zones, operating under intense jamming as noted on Page 125, underscores its readiness for ADF's Indo-Pacific challenges, where rapid ISR can prevent escalation. My role as Head of BD is to establish Hivemind as the ADF's autonomy standard, drawing on my AWS Top Secret deployments—where I've secured classified ISR systems—and partnerships with Lockheed Martin and Northrop Grumman, who've integrated similar technologies. This pitch transforms ADF border security and operator empowerment, aligning with Shield AI's mission to deliver trusted autonomy. My rapid prototyping, proven in AWS projects, matches their fast-paced culture, ensuring Hivemind meets likely 10-hour endurance needs for LAND 156 and maritime ISR for SEA 129 within the ADF's 12-36 month cycles, where CASG's 60% decision weight is decisive. To align with ADF's Indo-Pacific tempo, I'll prioritize 3-6 month operator training via Standing Offer SON4095403 pathways. The IRAP gap necessitates a 6-9 month ACSC assessment, with AWS compliance bridging delays if needed. AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, leveraging Sentient's ViDAR, target $15M. Non-defense markets like ABF's $1M pilot, mirroring DJI trials, and DCCEEW's $2M environmental UAS contracts bridge ADF cycles, accessed via my AUSTENDER expertise. To match ADF's Indo-Pacific tempo, I'll ensure 3-6 month integration with operator training, countering competitors with SME partnerships if lobbying arises. This depth, rooted in my HoloOrg multi-agent work and prime networks, delivers a $20M+ pipeline, positioning me to win for Shield AI."
   },
   {
     id: 2,
@@ -97,22 +83,7 @@ export const introPages: PresentationPage[] = [
         </div>
       </div>
     ),
-    speakerNotes: (
-      <div className="space-y-4 text-slate-200 leading-relaxed">
-        <p>
-          My BD approach in defense transcends traditional sales—it's about forging trust and delivering operational value, a philosophy refined through years of navigating ADF's 12-36 month procurement cycles, where CASG holds 60% decision-making power. I integrate my technical expertise from AWS Top Secret deployments—delivered $5M ISR project, 20% faster—with strategic foresight, ensuring Hivemind's edge computing with Snowcone meets LAND 156's ISR and counter-UAS needs, leveraging Standing Offer SON4095403 pathways for rapid entry.
-        </p>
-        <p>
-          Partnership-driven growth is my cornerstone, utilizing established relationships with Lockheed Martin and Northrop Grumman to accelerate Hivemind's adoption, countering DroneShield's $10M LAND 19/7 dominance with prime-led integration demos. Operator-focused storytelling transforms Hivemind's decentralized AI into life-saving outcomes, outpacing Anduril's Ghost, which lacks ADF traction, by emphasizing operator empowerment in GPS-denied zones.
-        </p>
-        <p>
-          The absence of Hivemind's IRAP status drives a 6-9 month ACSC assessment, a process I've managed before, with AWS compliance bridging delays if needed—a risk mitigated by my ISR project experience. AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, using Sentient's ViDAR, target $15M, aligning with trilateral needs.
-        </p>
-        <p>
-          Non-defense markets like ABF's $1M pilot, mirroring their DJI trials, and DCCEEW's $2M environmental UAS contracts bridge ADF cycles, accessed via my AUSTENDER expertise. To match ADF's Indo-Pacific tempo, I'll ensure 3-6 month integration with operator training, countering competitors with SME partnerships if lobbying arises. This depth, rooted in my HoloOrg multi-agent work and prime networks, delivers a $20M+ pipeline, positioning me to win for Shield AI by day 90.
-        </p>
-      </div>
-    )
+    speakerNotes: "My BD approach in defense transcends traditional sales—it's about forging trust and delivering operational value, a philosophy refined through years of navigating ADF's 12-36 month procurement cycles, where CASG holds 60% decision-making power. I integrate my technical expertise from AWS Top Secret deployments—delivered $5M ISR project, 20% faster—with strategic foresight, ensuring Hivemind's edge computing with Snowcone meets LAND 156's ISR and counter-UAS needs, leveraging Standing Offer SON4095403 pathways for rapid entry. Partnership-driven growth is my cornerstone, utilizing established relationships with Lockheed Martin and Northrop Grumman to accelerate Hivemind's adoption, countering DroneShield's $10M LAND 19/7 dominance with prime-led integration demos. Operator-focused storytelling transforms Hivemind's decentralized AI into life-saving outcomes, outpacing Anduril's Ghost, which lacks ADF traction, by emphasizing operator empowerment in GPS-denied zones. The absence of Hivemind's IRAP status drives a 6-9 month ACSC assessment, a process I've managed before, with AWS compliance bridging delays if needed—a risk mitigated by my ISR project experience. AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, using Sentient's ViDAR, target $15M, aligning with trilateral needs. Non-defense markets like ABF's $1M pilot, mirroring their DJI trials, and DCCEEW's $2M environmental UAS contracts bridge ADF cycles, accessed via my AUSTENDER expertise. To match ADF's Indo-Pacific tempo, I'll ensure 3-6 month integration with operator training, countering competitors with SME partnerships if lobbying arises. This depth, rooted in my HoloOrg multi-agent work and prime networks, delivers a $20M+ pipeline, positioning me to win for Shield AI by day 90."
   },
   {
     id: 3,
@@ -127,40 +98,28 @@ export const introPages: PresentationPage[] = [
             className="w-full h-64 object-cover rounded-lg"
           />
         </div>
-        <div className="space-y-4">
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border-l-4 border-blue-500">
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">Shield AI's Legacy of Firsts</h3>
-            <ul className="space-y-3 text-gray-700">
-              <li className="flex items-start">
-                <span className="text-blue-500 font-bold mr-2">•</span>
-                <span>First AI-piloted drone in combat operations</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-blue-500 font-bold mr-2">•</span>
-                <span>Revolutionary tail-sitting V-BAT drone technology</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-blue-500 font-bold mr-2">•</span>
-                <span>Breakthrough autonomous F-16 combat flight capabilities</span>
-              </li>
-            </ul>
+        <div className="space-y-6">
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border-l-4 border-blue-500">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Shield AI's Legacy of Firsts</h3>
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                Shield AI has established itself as the pioneer in AI-piloted drone technology with groundbreaking achievements including the first AI-piloted drone in combat operations, revolutionary tail-sitting V-BAT drone technology, and breakthrough autonomous F-16 combat flight capabilities.
+              </p>
+              <p>
+                These innovations represent not just technological advancement but operational superiority in contested environments, where human-machine teaming becomes critical for mission success and operator safety.
+              </p>
+            </div>
           </div>
-          <div className="bg-gradient-to-r from-orange-50 to-red-50 p-6 rounded-lg border-l-4 border-orange-500">
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">My Strategic Contributions</h3>
-            <ul className="space-y-3 text-gray-700">
-              <li className="flex items-start">
-                <span className="text-orange-500 font-bold mr-2">•</span>
-                <span>Multi-agent orchestration expertise (HoloOrg platform)</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-orange-500 font-bold mr-2">•</span>
-                <span>AWS secure deployment experience with classified systems</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-orange-500 font-bold mr-2">•</span>
-                <span>Established procurement pathways and operator trust frameworks</span>
-              </li>
-            </ul>
+          <div className="bg-gradient-to-r from-orange-50 to-red-50 p-8 rounded-lg border-l-4 border-orange-500">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">My Strategic Contributions</h3>
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                My expertise in multi-agent orchestration through the HoloOrg platform, combined with AWS secure deployment experience in classified systems, positions me to accelerate Shield AI's market penetration in Australia's defense sector.
+              </p>
+              <p>
+                Through established procurement pathways and operator trust frameworks, I bring immediate access to decision-makers and the regulatory navigation expertise essential for rapid deployment of advanced autonomous systems.
+              </p>
+            </div>
           </div>
         </div>
       </div>

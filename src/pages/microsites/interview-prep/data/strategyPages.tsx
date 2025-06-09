@@ -16,11 +16,30 @@ export const strategyPages: PresentationPage[] = [
             className="w-full h-64 object-cover rounded-lg"
           />
         </div>
-        <ul className="space-y-3 text-gray-700">
-          <li>• Defense Use Case: Lead LAND 156, SEA 129, AUKUS, outpacing Anduril and DroneShield</li>
-          <li>• Why Unique: Hivemind's AI, ViDAR for AUKUS; ABF/DCCEEW bridge cycles</li>
-          <li>• Impact: Defence dominance, $1M-$5M non-defense deals</li>
-        </ul>
+        <div className="space-y-6">
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border-l-4 border-blue-500">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Defense Market Dominance</h3>
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                My strategic vision positions Hivemind to dominate ADF autonomy by leading critical programs like LAND 156 and SEA 129 while systematically outpacing competitors like Anduril's Ghost and DroneShield's established contracts through superior decentralized AI capabilities.
+              </p>
+              <p>
+                This approach leverages Hivemind's unique value proposition—proven resilience in Ukraine's contested electromagnetic environment—to establish market leadership in Australia's defense sector while building pathways to broader Indo-Pacific partnerships.
+              </p>
+            </div>
+          </div>
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-lg border-l-4 border-green-500">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Revenue Diversification</h3>
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                Non-defense markets provide crucial revenue bridges during ADF's 12-36 month procurement cycles. Australian Border Force's Maritime Operations Group presents immediate $1M-$5M surveillance opportunities, building on their 2024 DJI trials experience.
+              </p>
+              <p>
+                Environmental monitoring contracts through DCCEEW offer additional $2M revenue streams while AUKUS Pillar II ISR trials targeting $15M by 2027 align with trilateral strategic objectives and demonstrate scalability beyond Australian markets.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     ),
     speakerNotes: "My strategic vision positions Hivemind to dominate ADF autonomy, leading LAND 156 and SEA 129 while outpacing Anduril's Ghost and DroneShield's contracts with superior decentralized AI. I'll drive AUKUS Pillar II ISR trials by 2027 with DARPA and RAF 617 Squadron, targeting a $15M contract, aligning with trilateral focus. Non-defense markets bridge ADF's 12-36 month cycles: ABF's Maritime Operations Group offers $1M-$5M surveillance deals, building on their 2024 DJI trials, and DCCEEW's $2M environmental UAS contracts add revenue. CASG's 60% decision weight drives success, with Hivemind's 10-hour endurance meeting LAND 156's capability criteria."
@@ -38,11 +57,30 @@ export const strategyPages: PresentationPage[] = [
             className="w-full h-64 object-contain rounded-lg bg-white p-4"
           />
         </div>
-        <ul className="space-y-3 text-gray-700">
-          <li>• Defense Use Case: Consortium with AWS, Lockheed, Appen, Fivecast for tenders ($240M funding)</li>
-          <li>• Why Unique: Global scale, 30% AIC via TAS, QUT, AIDN</li>
-          <li>• Impact: Sovereign, winning solutions for CASG, AUKUS</li>
-        </ul>
+        <div className="space-y-6">
+          <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-lg border-l-4 border-purple-500">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Strategic Consortium Building</h3>
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                Shield AI's $5.3B valuation, backed by $240M funding, enables substantial $10M-$50M V-BAT fleet deployments, as demonstrated in Japan's JMSDF contract. I'll build a powerful consortium combining AWS for cloud infrastructure, Lockheed Martin for systems integration, Appen for Hivemind training capabilities, and Fivecast for ISR analytics.
+              </p>
+              <p>
+                This ecosystem approach ensures 30% Australian Industry Capability through partnerships with TAS's Brisbane R&D facilities and QUT's innovation networks, while AIDN connections provide access to specialized SMEs for LAND 156 and SEA 129 requirements.
+              </p>
+            </div>
+          </div>
+          <div className="bg-gradient-to-r from-orange-50 to-yellow-50 p-8 rounded-lg border-l-4 border-orange-500">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Accelerated Market Entry</h3>
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                My established relationships with defense primes accelerate adoption pathways, aligning with CASG's 60% decision-making influence while the current IRAP gap drives a strategic 6-9 month ACSC assessment timeline for compliance.
+              </p>
+              <p>
+                This partnership-driven approach outpaces DroneShield's local advantages by combining global scale with sovereign capability requirements, ensuring rapid market penetration while maintaining regulatory compliance and operator trust.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     ),
     speakerNotes: "Shield AI's $5.3B valuation, backed by $240M funding, enables $10M-$50M V-BAT fleet deals, as seen in Japan's JMSDF contract. I'd build a consortium with AWS for cloud infrastructure, Lockheed Martin for integration, Appen for Hivemind training ($500K), and Fivecast for ISR analytics ($1M), ensuring 30% AIC via TAS's Brisbane R&D and QUT's innovation. AIDN's network connects SMEs for LAND 156 and SEA 129, outpacing DroneShield's local edge. My prime relationships accelerate adoption, aligning with CASG's 60% weight, while the IRAP gap drives a 6-9 month ACSC assessment. Non-defense markets—ABF's pilot and DCCEEW's contracts—bridge ADF cycles."

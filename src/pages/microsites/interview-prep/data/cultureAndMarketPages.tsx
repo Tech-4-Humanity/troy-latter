@@ -71,13 +71,30 @@ export const cultureAndMarketPages: PresentationPage[] = [
             className="w-full h-64 object-contain rounded-lg bg-white p-8"
           />
         </div>
-        <ul className="space-y-3 text-gray-700">
-          <li>• AUSTENDER: LAND 129 (ISR), LAND 156 (Counter-UAS), Mission Syracuse (Counter-UAS)</li>
-          <li>• Standing Offers: SON4095403 (Pacific UAVs)</li>
-          <li>• Sovereign Capability: Sentient acquisition</li>
-          <li>• IRAP Readiness: Crucial for classified deployments</li>
-          <li>• Primes & AWS: Lockheed, Northrop, Snowcone for edge ISR</li>
-        </ul>
+        <div className="space-y-6">
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border-l-4 border-blue-500">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Market Opportunities</h3>
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                The Australian Defence Force presents significant opportunities across multiple programs including LAND 129 for ISR capabilities, LAND 156 for Counter-UAS systems, and Mission Syracuse for rapid counter-UAS deployment. These programs represent billions in potential contracts over the next decade.
+              </p>
+              <p>
+                Standing Offers like SON4095403 for Pacific UAVs provide direct sales channels, while the recent Sentient acquisition demonstrates ADF's commitment to sovereign capability development, creating additional pathways for Hivemind integration.
+              </p>
+            </div>
+          </div>
+          <div className="bg-gradient-to-r from-green-50 to-teal-50 p-8 rounded-lg border-l-4 border-green-500">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Strategic Positioning</h3>
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                IRAP readiness is crucial for classified deployments, and while Hivemind currently lacks this certification, my experience with ACSC assessments provides a clear pathway to compliance. Prime contractor relationships with Lockheed Martin and Northrop Grumman, combined with AWS Snowcone for edge ISR, create powerful integration opportunities.
+              </p>
+              <p>
+                This strategic positioning enables Shield AI to compete effectively against established players like DroneShield while leveraging superior autonomous capabilities that have proven themselves in Ukraine's contested electromagnetic environment.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     ),
     speakerNotes: "My market research positions Shield AI to seize ADF opportunities, starting with LAND 129's ISR potential and LAND 156's counter-UAS demand, where Hivemind's autonomy outshines DroneShield's sensors. Mission Syracuse's rapid deployment focus, backed by ASCA, aligns with my innovation track record, while SON4095403 offers a direct sales channel for Pacific UAVs, leveraging my AUSTENDER expertise. Sovereign capability, enhanced by Sentient's acquisition, meets ADF's 30% AIC priority, supported by my TAS and QUT connections. IRAP readiness, absent for Hivemind, drives my 6-9 month ACSC assessment plan, ensuring compliance by Q3 2025. Primes like Lockheed and Northrop, plus AWS Snowcone, enable edge ISR, countering Anduril's limited traction."
