@@ -16,7 +16,7 @@ const PeopleInvolved = () => {
       description: "CIOs, board members and deputies funding and mandating innovation."
     },
     {
-      title: "Sales & Go‑to‑Market Teams",
+      title: "Sales & Go-to-Market Teams",
       description: "Sales, channel and marketing leads capturing signals and driving adoption."
     },
     {
@@ -25,18 +25,18 @@ const PeopleInvolved = () => {
     },
     {
       title: "Partners & Ecosystem",
-      description: "ISVs, integrators, research institutions co‑innovating on pilots."
+      description: "ISVs, integrators, research institutions co-innovating on pilots."
     },
     {
       title: "Customers & Citizens",
-      description: "End‑users whose needs and feedback create multiple winners."
+      description: "End-users whose needs and feedback create multiple winners."
     }
   ];
 
   const innovationInitiatives = [
     {
       title: "Customer Innovation Councils & Advocates",
-      description: "Built embedded PoC councils with key customers—turned 5 case‑studies into $8 M in follow-on business and created a network of vocal promoters."
+      description: "Built embedded PoC councils with key customers. Turned 5 case-studies into $8 M in follow-on business and created a network of vocal promoters."
     },
     {
       title: "Government Industry Engagement",

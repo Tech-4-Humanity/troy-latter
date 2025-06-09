@@ -9,15 +9,15 @@ const LeadershipStyle = () => {
   const leadershipStyles = [
     {
       title: "Think Big",
-      description: "Amazon‑rated extremely high on Think Big, pushing teams toward bold visions."
+      description: "Amazon-rated extremely high on Think Big, pushing teams toward bold visions."
     },
     {
-      title: "Empathy‑Driven Collaboration",
-      description: "Mentored on AI‑agent design, built e‑learning & live webinars, frequent speaker."
+      title: "Empathy-Driven Collaboration",
+      description: "Mentored on AI-agent design, built e-learning & live webinars, frequent speaker."
     },
     {
-      title: "Right, Accurate, Real‑Time Data",
-      description: "Early SMS alerts for sales targets; self‑serve dashboards for all audiences."
+      title: "Right, Accurate, Real-Time Data",
+      description: "Early SMS alerts for sales targets; self-serve dashboards for all audiences."
     },
     {
       title: "Transparent Communication",
@@ -25,26 +25,26 @@ const LeadershipStyle = () => {
     },
     {
       title: "Thought Leadership & Visibility",
-      description: "Keynoted AWS Public Sector Summit and Defence+Industry, published peer‑reviewed ML/security papers, and led exec briefings that generated 40+ qualified leads/quarter."
+      description: "Keynoted AWS Public Sector Summit and Defence+Industry, published peer-reviewed ML/security papers, and led exec briefings that generated 40+ qualified leads/quarter."
     }
   ];
 
   const leadershipQualities = [
     {
-      title: "Why I'm Your Go‑To Technologist",
-      description: "Hands‑On Generalist\nI move fast from whiteboard to production—building cloud‑native stacks, edge prototypes and security controls that go live in days, not months. Always curious and never afraid to ask, I bridge gaps by tapping into broad relationships across teams and vendors, connecting dots that speed outcomes."
+      title: "Why I'm Your Go-To Technologist",
+      description: "Hands-On Generalist\nI move fast from whiteboard to production, building cloud-native stacks, edge prototypes and security controls that go live in days, not months. Always curious and never afraid to ask, I bridge gaps by tapping into broad relationships across teams and vendors, connecting dots that speed outcomes."
     },
     {
       title: "Agile Catalyst",
-      description: "I lead small, high‑trust \"tiger teams\" of engineers, data scientists and compliance experts through two‑week sprints, daily standups and Friday kill/scale demos. This collaborative, learn‑fast culture tripled our proof‑of‑concept throughput, cut delivery cycles by 60% and lifted pilot funding conversion from 20% to over 60%."
+      description: "I lead small, high-trust \"tiger teams\" of engineers, data scientists and compliance experts through two-week sprints, daily standups and Friday kill/scale demos. This collaborative, learn-fast culture tripled our proof-of-concept throughput, cut delivery cycles by 60% and lifted pilot funding conversion from 20% to over 60%."
     },
     {
-      title: "Outcome‑Obsessed",
-      description: "Every project ships with live dashboards—usage, performance and cost visible in real time. By translating metrics into hard business value (for example, $150K/month saved and 85% faster audit prep), I turn prototypes into must‑scale initiatives."
+      title: "Outcome-Obsessed",
+      description: "Every project ships with live dashboards: usage, performance and cost visible in real time. By translating metrics into hard business value (for example, $150K/month saved and 85% faster audit prep), I turn prototypes into must-scale initiatives."
     },
     {
-      title: "Team‑First Collaborator",
-      description: "People are at the heart of every solution. I invest in coaching, knowledge‑sharing and cross‑functional workshops that empower everyone to contribute ideas and learn new skills. By building inclusive, psychologically safe environments, we unlock creativity, accelerate problem‑solving and make big goals feel achievable."
+      title: "Team-First Collaborator",
+      description: "People are at the heart of every solution. I invest in coaching, knowledge-sharing and cross-functional workshops that empower everyone to contribute ideas and learn new skills. By building inclusive, psychologically safe environments, we unlock creativity, accelerate problem-solving and make big goals feel achievable."
     }
   ];
 

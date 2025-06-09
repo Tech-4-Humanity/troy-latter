@@ -1,3 +1,4 @@
+
 import { PageTitle } from '@/components/PageTitle';
 import { FileQuestion, Award, Layers, Users, ArrowUp, ChartLine, Shield, Rocket, FileCode, AlertTriangle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -22,7 +23,7 @@ const FAQs = () => {
             <Layers className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
               <p className="font-semibold">How does Troy approach innovation leadership?</p>
-              <p>Troy's innovation methodology focuses on rapid prototyping, customer co-design, and scalable implementation. He believes in "innovation with purpose" - ensuring every R&D initiative aligns with clear business outcomes and customer value propositions, while maintaining technical excellence and security compliance.</p>
+              <p>Troy's innovation methodology focuses on rapid prototyping, customer co-design, and scalable implementation. He believes in "innovation with purpose", ensuring every R&D initiative aligns with clear business outcomes and customer value propositions, while maintaining technical excellence and security compliance.</p>
             </div>
           </li>
           
@@ -38,7 +39,7 @@ const FAQs = () => {
             <Users className="text-blue-600 mr-3 mt-1 h-5 w-5 flex-shrink-0" />
             <div>
               <p className="font-semibold">How does Troy build and lead high-performing teams?</p>
-              <p>Troy's leadership philosophy centers on "servant leadership" - empowering team members, fostering psychological safety, and creating environments where innovation thrives. He combines technical mentorship with strategic vision, ensuring teams understand both the "how" and the "why" behind their work.</p>
+              <p>Troy's leadership philosophy centers on "servant leadership", empowering team members, fostering psychological safety, and creating environments where innovation thrives. He combines technical mentorship with strategic vision, ensuring teams understand both the "how" and the "why" behind their work.</p>
             </div>
           </li>
           

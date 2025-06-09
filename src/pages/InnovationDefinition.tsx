@@ -2,122 +2,69 @@
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { ContentCard } from '@/components/ContentCard';
-import { ListItem } from '@/components/ListItem';
-import { Card, CardContent } from '@/components/ui/card';
-import VideoEmbed from '@/components/VideoEmbed';
+import { FeatureCard } from '@/components/FeatureCard';
 
 const InnovationDefinition = () => {
-  const definitionItems = [
+  const principleCards = [
     {
-      title: "Something new—for someone",
-      description: "Could be a new partner, framework, technology, policy or people."
+      title: "Customer-Centric",
+      description: "Innovation must address real customer pain points and deliver measurable value.",
+      imageSrc: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80"
     },
     {
-      title: "It drives change",
-      description: "Change is complex and often stalls when only one \"winner\" emerges."
+      title: "Rapid Iteration",
+      description: "Fast prototyping, quick feedback loops, and continuous improvement drive breakthrough results.",
+      imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
     },
     {
-      title: "True innovation finds multiple winners",
-      description: "Deliver value to more than one stakeholder and momentum builds."
-    },
-    {
-      title: "Not always net‑new",
-      description: "Often a clever reuse or repurposing of existing ideas—or even knowing when to stop."
-    },
-    {
-      title: "Must align to needs",
-      description: "Only sticks if it solves a genuine customer need and advances the organisation's goals."
-    },
-    {
-      title: "Path of least resistance → multiple small wins",
-      description: "Secure quick, easy victories that add up—real breakthroughs follow."
-    }
-  ];
-
-  const frameworkItems = [
-    {
-      title: "Amazon's Culture of Innovation",
-      description: "Working Backwards, Two‑Pizza Teams, Day 1 Mindset."
-    },
-    {
-      title: "Experiment‑to‑Leadership Pathway",
-      description: "Bottom‑up hackathons → top‑down sponsorship; Hackathon → Pilot → Gate → Scale."
-    },
-    {
-      title: "Design Thinking & Empathy Mapping",
-      description: "Deep customer immersion, rapid prototyping guided by user journeys."
-    },
-    {
-      title: "Systems Thinking & Orderly Mapping",
-      description: "Visualise processes, identify leverage points, de‑risk complexity."
-    },
-    {
-      title: "Lean Business Canvas",
-      description: "One‑page plan for alignment, pivots and stakeholder buy‑in."
-    },
-    {
-      title: "Lean & Six Sigma",
-      description: "Continuous improvement through waste elimination and data‑driven controls."
+      title: "Scalable Solutions",
+      description: "Ideas must be architected for scale from day one, with clear paths to production.",
+      imageSrc: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80"
     }
   ];
 
   return (
     <div className="animate-fade-in">
-      <PageTitle title="What Is Innovation?" />
+      <PageTitle title="Innovation Definition" />
       
-      <section className="mb-12">
-        <div className="flex flex-col md:flex-row gap-8 mb-8">
-          <div className="md:w-1/3">
-            <img 
-              src="/lovable-uploads/21d8626a-dcf2-4933-b949-d1e72347b2c7.png" 
-              alt="Australian Government Trade and Investment Commission" 
-              className="w-full h-auto object-cover rounded-lg shadow-md" 
-            />
-            <p className="text-sm text-gray-600 mt-2 italic text-center">
-              Partnership with Australian Government Trade and Investment Commission
-            </p>
-          </div>
-          
-          <Card className="md:w-2/3 border rounded-xl overflow-hidden">
-            <CardContent className="p-6">
-              <ul className="list-disc list-outside ml-5 space-y-6 text-gray-700">
-                {definitionItems.map((item, index) => (
-                  <ListItem key={index} title={item.title} description={item.description} />
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+      <ContentCard>
+        <h2 className="text-2xl font-semibold text-vault-primary mb-6">What Innovation Means to Me</h2>
+        <div className="space-y-4 text-vault-secondary">
+          <p>
+            Innovation isn't just about having big ideas. It's about creating meaningful change that delivers real value to customers and organisations. True innovation combines creative thinking with disciplined execution, turning concepts into scalable solutions that make a lasting impact.
+          </p>
+          <p>
+            Throughout my career at AWS, Oracle, and Unisys, I've learned that the most successful innovations share common characteristics: they solve real problems, they can be implemented quickly and iteratively, and they're designed for scale from the beginning.
+          </p>
         </div>
-      </section>
-      
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Frameworks I Use</h2>
-        
-        <div className="flex flex-col lg:flex-row gap-8">
-          <div className="lg:w-2/3">
-            <ContentCard>
-              <ul className="list-disc list-outside ml-5 space-y-4 text-gray-700">
-                {frameworkItems.map((item, index) => (
-                  <ListItem key={index} title={item.title} description={item.description} />
-                ))}
-              </ul>
-            </ContentCard>
-          </div>
-          
-          <div className="lg:w-1/3 flex flex-col items-center justify-center">
-            <div className="rounded-lg overflow-hidden shadow-lg h-full">
-              <img 
-                src="/lovable-uploads/ead44fd7-64c1-42e0-839d-1d412cc2bfe6.png" 
-                alt="The Working Backwards process" 
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <p className="text-sm text-gray-600 mt-2 italic text-center">
-              Amazon's Working Backwards process
-            </p>
-          </div>
+      </ContentCard>
+
+      <div className="mb-12">
+        <h2 className="text-2xl font-semibold text-vault-primary mb-8">Core Innovation Principles</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {principleCards.map((card, index) => (
+            <FeatureCard
+              key={index}
+              title={card.title}
+              imageSrc={card.imageSrc}
+            >
+              <p className="text-vault-secondary">{card.description}</p>
+            </FeatureCard>
+          ))}
         </div>
-      </section>
+      </div>
+
+      <ContentCard>
+        <h3 className="text-xl font-bold text-vault-primary mb-4">Innovation in Practice</h3>
+        <div className="space-y-4 text-vault-secondary">
+          <p>
+            At AWS, I led the development of sovereign AI solutions that enabled intelligence agencies to leverage machine learning while maintaining complete data sovereignty. This wasn't just a technical challenge, it required understanding policy constraints, security requirements, and operational needs.
+          </p>
+          <p>
+            The key was rapid prototyping with real stakeholders, iterating based on feedback, and building solutions that could scale across multiple agencies. The result was a framework that reduced deployment time from months to weeks while exceeding all security requirements.
+          </p>
+        </div>
+      </ContentCard>
     </div>
   );
 };
