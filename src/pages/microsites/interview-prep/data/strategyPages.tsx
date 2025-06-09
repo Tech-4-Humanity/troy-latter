@@ -51,9 +51,9 @@ export const strategyPages: PresentationPage[] = [
       <div className="space-y-6">
         <div className="rounded-lg overflow-hidden">
           <img 
-            src="/lovable-uploads/24ae2c57-fff3-40ab-88f1-3ad34c248fc1.png" 
-            alt="V-BAT with AWS/TAS/Appen logos ecosystem"
-            className="w-full h-64 object-contain rounded-lg bg-white p-4"
+            src="https://cdn.prod.website-files.com/65ef3f78a5f37299a050e119/65ef3f78a5f37299a050eafb_63eb260335382b394cb74f89_blog-images-within-the-blog-post-15.png" 
+            alt="Oracle's diverse partnership ecosystem spanning F1 racing, sailing, and technology sectors"
+            className="w-full h-64 object-cover rounded-lg"
           />
         </div>
         <div className="space-y-6">
