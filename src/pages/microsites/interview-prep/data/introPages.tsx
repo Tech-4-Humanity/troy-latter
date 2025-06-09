@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { PresentationPage } from '../types';
 
@@ -124,37 +125,5 @@ export const introPages: PresentationPage[] = [
       </div>
     ),
     speakerNotes: "Shield AI's legacy of firsts—AI-piloted drones in combat, tail-sitting V-BAT, and autonomous F-16 flights (Page 125)—inspires my contribution to their ADF dominance, proving their readiness for real-world impact in contested zones. My HoloOrg expertise in multi-agent orchestration, honed with David Baxter, ensures Hivemind's swarm logic thrives in GPS-denied environments, outpacing Anduril's Ghost with Ukraine-proven resilience under intense jamming. AWS Top Secret deployments, where I've secured ISR systems, align Hivemind's edge computing with LAND 156's counter-UAS and ISR needs, leveraging Snowcone for tactical edge operations, a capability I've tested in high-risk theaters. My procurement pathways—navigating AUSTENDER, Standing Offer SON4095403, and IRAP readiness—address the current gap (Page 136) with a 6-9 month ACSC assessment, ensuring compliance by Q3 2025 to meet CASG's 60% decision weight (Page 127). Operator trust, central to my human-centric design, empowers ADF warfighters by enhancing decision-making, contrasting with DroneShield's $10M LAND 19/7 sensor focus, which lacks swarm autonomy. Real-world fit is validated: V-BAT's Ukraine ISR and my AWS edge deployments demonstrate readiness. To match ADF's Indo-Pacific tempo, I'll ensure 3-6 month integration with operator training, using Mission Syracuse (Page 134) as a proof point for rapid deployment. Risks like IRAP delays are mitigated with AWS compliance, and if competitors lobby, I'll leverage Appen and Fivecast partnerships for 30% AIC to reinforce our bid. Non-defense markets—ABF's $1M pilot mirroring DJI trials and DCCEEW's $2M environmental UAS contracts—bridge ADF's 12-36 month cycles, accessed via my procurement expertise. AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, utilizing Sentient's ViDAR (Page 135), target $15M, aligning with trilateral goals. This depth, rooted in my prime relationships, delivers a $20M+ pipeline, positioning me to win for Shield AI by showcasing operational and strategic mastery."
-  },
-  {
-    id: 8,
-    title: "Let's Connect",
-    subtitle: "Driving Shield AI's Future",
-    content: (
-      <div className="space-y-6">
-        <div className="rounded-lg overflow-hidden shadow-lg">
-          <img 
-            src="/lovable-uploads/83bdd2b0-6ff7-412c-983a-f1baf27538c4.png" 
-            alt="Troy Latter professional headshot"
-            className="w-full h-64 object-cover rounded-lg"
-          />
-        </div>
-        <div className="text-center space-y-6">
-          <div className="bg-gradient-to-r from-orange-50 to-blue-50 p-8 rounded-xl border border-orange-200">
-            <p className="text-xl text-gray-800 font-medium leading-relaxed">
-              I'm ready to make Hivemind the ADF's autonomy standard, winning tenders, building ecosystems, and securing the Indo-Pacific.
-            </p>
-            <p className="text-lg text-gray-700 mt-4">
-              Let's discuss how to drive Shield AI's mission forward together.
-            </p>
-          </div>
-          <div className="inline-block">
-            <div className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 rounded-lg cursor-pointer transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold text-lg">
-              Connect With Me
-            </div>
-          </div>
-        </div>
-      </div>
-    ),
-    speakerNotes: "My passion for trusted autonomy stems from years leading ADF transformations, from LAND 156 to AUKUS Pillar II. This BD strategy—securing tenders with CASG's 60% influence, building a global-local ecosystem with primes and SMEs, and bridging cycles with ABF/DCCEEW deals—aligns with Shield AI's fast-paced, mission-critical goals. I'm prepared to win $10M-$50M contracts, leveraging my AWS, HoloOrg, and prime experience, outpacing DroneShield's edge. The IRAP gap drives a 6-9 month assessment, ensuring Q3 2025 compliance, while AUKUS trials by 2027 with DARPA target $15M. Whether hired or not, this plan offers Shield AI a $20M+ roadmap, showcasing my high-value leadership."
   }
 ];
