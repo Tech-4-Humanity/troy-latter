@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, Linkedin } from 'lucide-react';
@@ -16,7 +15,6 @@ export const Footer = () => {
   
   // Resource links
   const resourceLinks = [
-    { path: '/resources/90-day-plan', label: '90-Day Plan' },
     { path: '/resources/whitepapers', label: 'Whitepapers' },
     { path: '/resources/lean-canvas', label: 'Lean Canvas' },
   ];
