@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Clock, Target, Users, FileCheck, TrendingUp } from 'lucide-react';
@@ -261,15 +260,6 @@ export const executionPlans: PresentationPage[] = [
     subtitle: "Learn, Engage, Deliver Framework",
     content: (
       <div className="space-y-8">
-        {/* Reference Image */}
-        <div className="rounded-lg overflow-hidden">
-          <img 
-            src="/lovable-uploads/0802b80f-8d0e-4e6c-b22c-90790f6ab929.png" 
-            alt="30-60-90 Day Strategic Framework"
-            className="w-full h-auto object-contain rounded-lg bg-white p-4"
-          />
-        </div>
-
         {/* Strategic Framework */}
         <div className="space-y-8">
           <div className="text-center mb-8">
