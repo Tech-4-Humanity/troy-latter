@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, Linkedin } from 'lucide-react';
@@ -23,7 +24,7 @@ export const Footer = () => {
   const contactInfo = [
     { icon: Mail, label: 'troy.latter@gmail.com', href: 'mailto:troy.latter@gmail.com' },
     { icon: Phone, label: '+61 424 882 136', href: 'tel:+61424882136' },
-    { icon: Linkedin, label: 'LinkedIn Profile', href: 'https://linkedin.com/in/theinnovater' },
+    { icon: Linkedin, label: 'LinkedIn Profile', href: 'https://www.linkedin.com/in/theinnovater/' },
   ];
   
   return (
@@ -104,7 +105,7 @@ export const Footer = () => {
             <div className="space-y-2 text-sm text-gray-300">
               <div>AGSVA NV2 Clearance</div>
               <div>AWS Solutions Architect</div>
-              <div>Azure AI Engineer</div>
+              <div>Azure AI Certified</div>
               <div>GCP Certified</div>
               <div>Standards Australia BCI</div>
               <div>QLD Gov AI Hub Board</div>
