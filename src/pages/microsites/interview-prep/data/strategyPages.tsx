@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { PresentationPage } from '../types';
 
@@ -61,10 +62,10 @@ export const strategyPages: PresentationPage[] = [
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Strategic Consortium Building</h3>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                Shield AI's $5.3B valuation, backed by $240M funding, enables substantial $10M-$50M V-BAT fleet deployments, as demonstrated in Japan's JMSDF contract. I'll build a powerful consortium combining AWS for cloud infrastructure, Lockheed Martin for systems integration, Appen for Hivemind training capabilities, and Fivecast for ISR analytics.
+                Shield AI's $5.3B valuation, backed by $240M funding, enables substantial $10M-$50M V-BAT fleet deployments, as demonstrated in Japan's JMSDF contract. I'll build a powerful consortium combining AWS for cloud infrastructure, Lockheed Martin for systems integration, Appen for Hivemind training capabilities ($500K investment), and Fivecast for ISR analytics ($1M investment).
               </p>
               <p>
-                This ecosystem approach ensures 30% Australian Industry Capability through partnerships with TAS's Brisbane R&D facilities and QUT's innovation networks, while AIDN connections provide access to specialized SMEs for LAND 156 and SEA 129 requirements.
+                This ecosystem approach ensures 30% Australian Industry Capability through partnerships with TAS's Brisbane R&D facilities and QUT's innovation networks, while AIDN connections provide access to specialized SMEs for LAND 156 and SEA 129 requirements. The consortium targets a $20M+ pipeline by day 90, leveraging established prime relationships.
               </p>
             </div>
           </div>
@@ -72,16 +73,16 @@ export const strategyPages: PresentationPage[] = [
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Accelerated Market Entry</h3>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                My established relationships with defense primes accelerate adoption pathways, aligning with CASG's 60% decision-making influence while the current IRAP gap drives a strategic 6-9 month ACSC assessment timeline for compliance.
+                AUKUS Pillar II integration by 2027 with DARPA and RAF 617 Squadron, utilizing Sentient's ViDAR technology, targets $15M in trilateral ISR trials. My established relationships with defense primes accelerate adoption pathways, aligning with CASG's 60% decision-making influence while the current IRAP gap drives a strategic 6-9 month ACSC assessment timeline for Q3 2025 compliance.
               </p>
               <p>
-                This partnership-driven approach outpaces DroneShield's local advantages by combining global scale with sovereign capability requirements, ensuring rapid market penetration while maintaining regulatory compliance and operator trust.
+                Non-defense markets provide crucial revenue bridges during ADF's 12-36 month cycles, with ABF's $1M-$5M pilots and DCCEEW's $2M environmental contracts accessed via Standing Offer SON4095403. This partnership-driven approach outpaces DroneShield's local advantages by combining global scale with sovereign capability requirements, ensuring 3-6 month integration timelines to match ADF's Indo-Pacific tempo.
               </p>
             </div>
           </div>
         </div>
       </div>
     ),
-    speakerNotes: "Shield AI's $5.3B valuation, backed by $240M funding, enables $10M-$50M V-BAT fleet deals, as seen in Japan's JMSDF contract. I'd build a consortium with AWS for cloud infrastructure, Lockheed Martin for integration, Appen for Hivemind training ($500K), and Fivecast for ISR analytics ($1M), ensuring 30% AIC via TAS's Brisbane R&D and QUT's innovation. AIDN's network connects SMEs for LAND 156 and SEA 129, outpacing DroneShield's local edge. My prime relationships accelerate adoption, aligning with CASG's 60% weight, while the IRAP gap drives a 6-9 month ACSC assessment. Non-defense markets—ABF's pilot and DCCEEW's contracts—bridge ADF cycles."
+    speakerNotes: "Shield AI's $5.3B valuation, backed by $240M funding, enables $10M-$50M V-BAT fleet deployments, as demonstrated by Japan's JMSDF contract (Page 26). I'll build a powerful consortium with AWS for cloud infrastructure, Lockheed Martin for systems integration, Appen for Hivemind training ($500K), and Fivecast for ISR analytics ($1M), ensuring 30% Australian Industry Capability via TAS's Brisbane R&D and QUT's innovation networks. AIDN connections provide access to specialized SMEs for LAND 156 and SEA 129 requirements, outpacing DroneShield's local $10M LAND 19/7 advantage with global scale and sovereign capability. My established prime relationships accelerate adoption pathways, aligning with CASG's 60% decision-making influence (Page 127), while the IRAP gap (Page 136) drives a 6-9 month ACSC assessment timeline, ensuring compliance by Q3 2025 with AWS compliance mitigating delays if needed—a risk managed from my ISR projects. This partnership-driven approach integrates AUKUS Pillar II ISR trials by 2027 with DARPA and RAF 617 Squadron, utilizing Sentient's ViDAR (Page 135) to target $15M, aligning with trilateral goals. Non-defense markets—ABF's $1M-$5M pilot mirroring 2024 DJI trials [insert strategy, e.g., 'via maritime expos with DAFF'] and DCCEEW's $2M environmental UAS contracts—bridge ADF's 12-36 month cycles, accessed via Standing Offer SON4095403. To match ADF's Indo-Pacific tempo, I'll ensure 3-6 month integration with operator training. If competitors lobby, Appen and Fivecast partnerships for 30% AIC reinforce our bid, ensuring a $20M+ pipeline by day 90, rooted in my procurement and prime expertise."
   }
 ];
