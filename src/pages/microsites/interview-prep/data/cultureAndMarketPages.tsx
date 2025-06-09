@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PresentationPage } from '../types';
 
@@ -29,7 +28,7 @@ export const cultureAndMarketPages: PresentationPage[] = [
               <tr>
                 <td className="border border-gray-300 p-3 font-medium">Mission-Critical Focus</td>
                 <td className="border border-gray-300 p-3">Fast-paced, outcome-driven delivery</td>
-                <td className="border border-gray-300 p-3">Led AWS Top Secret ISR deployments, delivering projects 20% faster</td>
+                <td className="border border-gray-300 p-3">At AWS, triangulated policy, sales and tech teams to lead COVID response in ASEAN, activating 10-country IRT flood program</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3 font-medium">Honor & Integrity</td>
@@ -39,24 +38,24 @@ export const cultureAndMarketPages: PresentationPage[] = [
               <tr>
                 <td className="border border-gray-300 p-3 font-medium">Servant Leadership</td>
                 <td className="border border-gray-300 p-3">Empowering operators and teams</td>
-                <td className="border border-gray-300 p-3">Designed HoloOrg multi-agent systems to empower ADF operators</td>
+                <td className="border border-gray-300 p-3">As Advisory Board Member of Queensland Government AI Hub, advised state agencies on ethical AI adoption strategies and governance frameworks</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3 font-medium">Pursuit of Excellence</td>
                 <td className="border border-gray-300 p-3">Relentless high performance</td>
-                <td className="border border-gray-300 p-3">Drove F-16 autonomous flight and V-BAT deployments</td>
+                <td className="border border-gray-300 p-3">At ABF, led technology changes to map and share data across countries, including Pacific region partnerships</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3 font-medium">Human Empowerment</td>
                 <td className="border border-gray-300 p-3">AI amplifying human capability</td>
-                <td className="border border-gray-300 p-3">Focused on operator-centric AI with 3-6 month integration</td>
+                <td className="border border-gray-300 p-3">Employed the successor who would take over the area; for customers, unlocked banking, gave health solutions, and built tunnels using digital twins</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     ),
-    speakerNotes: "This table isn't just a checklist - it's proof of my lived alignment with Shield AI's culture. My AWS Top Secret projects delivered under pressure, embodying mission-critical focus with ISR solutions 20% faster, mirroring V-BAT's Ukraine success. Honor and integrity shine through my transparent navigation of AUSTENDER and Standing Offers, ensuring ethical procurement for LAND 156. Servant leadership drives my operator-centric HoloOrg designs, empowering ADF warfighters unlike DroneShield's sensor approach. Pursuit of excellence is evident in my F-16 autonomous flight contributions and V-BAT deployments, setting industry benchmarks. Human empowerment, central to Hivemind's 3-6 month integration, enhances decision-making in GPS-denied zones, aligning with ADF's Indo-Pacific tempo."
+    speakerNotes: "This table isn't just a checklist - it's proof of my lived alignment with Shield AI's culture. My AWS COVID response work triangulated policy, sales and tech teams across ASEAN, embodying mission-critical focus with rapid cross-functional coordination. Honor and integrity shine through my transparent navigation of AUSTENDER and Standing Offers, ensuring ethical procurement for LAND 156. Servant leadership drives my Queensland Government AI Hub advisory role, empowering state agencies with ethical AI governance frameworks. Pursuit of excellence is evident in my ABF technology transformation, mapping and sharing data across Pacific countries, setting regional collaboration benchmarks. Human empowerment, central to my leadership philosophy, includes developing successor talent and delivering customer solutions that unlock banking, provide health outcomes, and enable infrastructure through digital twins."
   },
   {
     id: 5,
