@@ -20,8 +20,8 @@ export const presentationPages: PresentationPage[] = [
       <div className="space-y-6">
         <div className="rounded-lg overflow-hidden">
           <img 
-            src="https://shield.ai/wp-content/uploads/2023/08/V-BAT-Indo-Pacific.jpg" 
-            alt="V-BAT drone over Indo-Pacific theater"
+            src="https://www.nationaldefensemagazine.org/-/media/sites/magazine/2023/11/v-bat-teams-pr.jpg" 
+            alt="V-BAT drone team in Indo-Pacific theater"
             className="w-full h-64 object-cover rounded-lg"
           />
         </div>
@@ -42,9 +42,9 @@ export const presentationPages: PresentationPage[] = [
       <div className="space-y-6">
         <div className="rounded-lg overflow-hidden">
           <img 
-            src="https://aws.amazon.com/snowcone/images/snowcone-device.png" 
+            src="https://techcrunch.com/wp-content/uploads/2022/06/AWS_snowcone_.jpg" 
             alt="AWS Snowcone edge computing device"
-            className="w-full h-64 object-cover rounded-lg bg-white p-4"
+            className="w-full h-64 object-cover rounded-lg"
           />
         </div>
         <ul className="space-y-3 text-gray-700">
@@ -63,7 +63,7 @@ export const presentationPages: PresentationPage[] = [
       <div className="space-y-6">
         <div className="rounded-lg overflow-hidden">
           <img 
-            src="https://shield.ai/wp-content/uploads/2023/10/V-BAT-Swarm.jpg" 
+            src="https://cdn.defenseone.com/media/img/cd/2025/02/09/L3_Harris_AMORPHOUS_graphic_2220x1234_1/860x394.jpg?1739148458" 
             alt="V-BAT drone swarm formation"
             className="w-full h-64 object-cover rounded-lg"
           />
@@ -135,7 +135,7 @@ export const presentationPages: PresentationPage[] = [
       <div className="space-y-6">
         <div className="rounded-lg overflow-hidden">
           <img 
-            src="https://www.defence.gov.au/sites/default/files/2020-09/ADF-Crest.png" 
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOm_VEtgYafnwcFKhiIui215tqcdjbgNgQiA&s" 
             alt="Australian Defence Force crest"
             className="w-full h-64 object-contain rounded-lg bg-white p-8"
           />
@@ -159,7 +159,7 @@ export const presentationPages: PresentationPage[] = [
       <div className="space-y-6">
         <div className="rounded-lg overflow-hidden">
           <img 
-            src="https://shield.ai/wp-content/uploads/2024/01/V-BAT-Maritime.jpg" 
+            src="https://www.dcms.uscg.mil/Portals/10/082820_RDTE_Master_MainPage.png" 
             alt="V-BAT drone patrolling coastline"
             className="w-full h-64 object-cover rounded-lg"
           />
@@ -179,8 +179,12 @@ export const presentationPages: PresentationPage[] = [
     subtitle: "Global-Local Powerhouse",
     content: (
       <div className="space-y-6">
-        <div className="bg-gray-100 rounded-lg p-4 text-center">
-          <p className="text-sm text-gray-600 italic">Image: V-BAT with AWS/TAS/Appen logos</p>
+        <div className="rounded-lg overflow-hidden">
+          <img 
+            src="/lovable-uploads/24ae2c57-fff3-40ab-88f1-3ad34c248fc1.png" 
+            alt="V-BAT with AWS/TAS/Appen logos ecosystem"
+            className="w-full h-64 object-contain rounded-lg bg-white p-4"
+          />
         </div>
         <ul className="space-y-3 text-gray-700">
           <li>• Defense Use Case: Consortium with AWS, Lockheed, Appen, Fivecast for tenders ($240M funding)</li>
@@ -197,8 +201,12 @@ export const presentationPages: PresentationPage[] = [
     subtitle: "Driving Shield AI's Future",
     content: (
       <div className="space-y-6">
-        <div className="bg-gray-100 rounded-lg p-4 text-center">
-          <p className="text-sm text-gray-600 italic">Image: Troy's headshot</p>
+        <div className="rounded-lg overflow-hidden">
+          <img 
+            src="/lovable-uploads/83bdd2b0-6ff7-412c-983a-f1baf27538c4.png" 
+            alt="Troy Latter professional headshot"
+            className="w-full h-64 object-cover rounded-lg"
+          />
         </div>
         <div className="text-center space-y-4">
           <p className="text-lg text-gray-700">
@@ -220,8 +228,8 @@ export const presentationPages: PresentationPage[] = [
       <div className="space-y-6">
         <div className="rounded-lg overflow-hidden">
           <img 
-            src="https://shield.ai/wp-content/uploads/2023/08/V-BAT-Indo-Pacific.jpg" 
-            alt="V-BAT drone"
+            src="https://www.nationaldefensemagazine.org/-/media/sites/magazine/2023/11/v-bat-teams-pr.jpg" 
+            alt="V-BAT drone operational deployment"
             className="w-full h-64 object-cover rounded-lg"
           />
         </div>
@@ -246,8 +254,12 @@ export const presentationPages: PresentationPage[] = [
     subtitle: "Building Momentum for Shield AI",
     content: (
       <div className="space-y-6">
-        <div className="bg-gray-100 rounded-lg p-4 text-center">
-          <p className="text-sm text-gray-600 italic">Image: V-BAT with partnerships composite</p>
+        <div className="rounded-lg overflow-hidden">
+          <img 
+            src="/lovable-uploads/24ae2c57-fff3-40ab-88f1-3ad34c248fc1.png" 
+            alt="V-BAT with partnerships composite"
+            className="w-full h-64 object-contain rounded-lg bg-white p-4"
+          />
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           <Card>
