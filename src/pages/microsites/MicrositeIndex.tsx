@@ -8,8 +8,8 @@ const MicrositeIndex = () => {
   const microsites = [
     {
       id: 'interview-prep',
-      title: 'Interview Preparation',
-      description: 'Comprehensive preparation materials for executive technology leadership interviews',
+      title: 'Shield AI',
+      description: 'Comprehensive Shield AI interview preparation materials for executive technology leadership roles',
       icon: BriefcaseIcon,
       path: '/microsites/interview-prep',
       status: 'Available',
