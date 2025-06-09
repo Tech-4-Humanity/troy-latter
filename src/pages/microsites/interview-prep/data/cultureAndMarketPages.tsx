@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { PresentationPage } from '../types';
 
@@ -75,7 +76,7 @@ export const cultureAndMarketPages: PresentationPage[] = [
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Market Opportunities</h3>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                The Australian Defence Force presents significant opportunities across multiple programs including LAND 129 for ISR capabilities—enhancing Insitu's Integrator with Hivemind's multi-agent orchestration—and LAND 156 for Counter-UAS systems, where autonomous swarm capabilities outshine traditional sensor approaches. Mission Syracuse offers rapid deployment pathways with 3-6 month integration timelines.
+                The Australian Defence Force presents significant opportunities across multiple programs including LAND 129 for ISR capabilities, enhancing Insitu's Integrator with Hivemind's multi-agent orchestration, and LAND 156 for Counter-UAS systems, where autonomous swarm capabilities outshine traditional sensor approaches. Mission Syracuse offers rapid deployment pathways with 3-6 month integration timelines.
               </p>
               <p>
                 Standing Offers like SON4095403 for Pacific UAVs provide direct sales channels, while the recent Sentient acquisition demonstrates ADF's commitment to sovereign capability development and 30% Australian Industry Capability priorities, creating strategic pathways for Hivemind integration through established procurement frameworks.
