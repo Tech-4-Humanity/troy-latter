@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -43,7 +44,7 @@ export const ShieldAIPresentation = () => {
       const shouldBreakParagraph = 
         sentence.includes('(Page ') || // Break after page references
         sentence.length > 200 || // Break after long sentences
-        (index > 0 && sentences[index - 1] && sentences[index - 1].includes('—')) || // Break after em dashes
+        (index > 0 && sentences[index - 1] && sentences[index - 1].includes('-')) || // Break after em dashes
         sentence.includes('. ') && currentParagraph.length > 150; // Break after periods in long paragraphs
       
       if (shouldBreakParagraph || index === sentences.length - 1) {
