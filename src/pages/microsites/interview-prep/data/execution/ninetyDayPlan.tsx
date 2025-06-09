@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PresentationPage } from '../../types';
 
 export const ninetyDayPlan: PresentationPage = {
-  id: 10,
+  id: 8,
   title: "30/60/90 Day Plan",
   subtitle: "Learn, Engage, Deliver Framework",
   content: (

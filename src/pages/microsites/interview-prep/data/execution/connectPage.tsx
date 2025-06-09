@@ -3,7 +3,7 @@ import React from 'react';
 import { PresentationPage } from '../../types';
 
 export const connectPage: PresentationPage = {
-  id: 8,
+  id: 10,
   title: "Let's Connect",
   subtitle: "Driving Shield AI's Future",
   content: (
@@ -17,13 +17,8 @@ export const connectPage: PresentationPage = {
             Let's discuss how to drive Shield AI's mission forward together.
           </p>
         </div>
-        <div className="inline-block">
-          <div className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 rounded-lg cursor-pointer transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold text-lg">
-            Connect With Me
-          </div>
-        </div>
       </div>
     </div>
   ),
-  speakerNotes: "My passion for trusted autonomy stems from years leading ADF transformations, from LAND 156 to AUKUS Pillar II. This BD strategy—securing tenders with CASG's 60% influence, building a global-local ecosystem with primes and SMEs, and bridging cycles with ABF/DCCEEW deals—aligns with Shield AI's fast-paced, mission-critical goals. I'm prepared to win $10M-$50M contracts, leveraging my AWS, HoloOrg, and prime experience, outpacing DroneShield's edge. The IRAP gap drives a 6-9 month assessment, ensuring Q3 2025 compliance, while AUKUS trials by 2027 with DARPA target $15M. Whether hired or not, this plan offers Shield AI a $20M+ roadmap, showcasing my high-value leadership."
+  speakerNotes: "My passion for trusted autonomy stems from years leading ADF transformations, from LAND 156's counter-UAS to AUKUS Pillar II ISR, grounded in my procurement and prime expertise. This BD strategy—securing tenders with CASG's 60% decision-making influence (Page 127), building a global-local ecosystem with Lockheed Martin, Northrop Grumman, and SMEs, and bridging 12-36 month cycles with $1M-$5M ABF/DCCEEW deals via Standing Offer SON4095403—aligns with Shield AI's fast-paced, mission-critical goals (Page 124). I'm prepared to win $10M-$50M contracts, leveraging my AWS [insert impact, e.g., '$5M, 20% faster'] deployments, HoloOrg multi-agent designs, and prime relationships, outpacing DroneShield's $10M LAND 19/7 sensor edge with Hivemind's Ukraine-proven autonomy (Page 125). The IRAP gap (Page 136) drives a 6-9 month ACSC assessment, ensuring Q3 2025 compliance, with AWS compliance mitigating delays—a risk managed from my ISR projects. AUKUS Pillar II trials by 2027 with DARPA and RAF 617 Squadron, using Sentient's ViDAR (Page 135), target $15M, supported by Mission Syracuse (Page 134) as a rapid deployment proof. To match ADF's Indo-Pacific tempo, I'll ensure 3-6 month integration with operator training, enhancing decision-making in contested zones. If competitors lobby, Appen and Fivecast partnerships for 30% AIC reinforce our bid, countering Anduril's limited traction. This plan, rooted in my AUSTENDER navigation and prime networks, offers Shield AI a $20M+ roadmap—whether I'm hired or not—showcasing my high-value leadership and a correct, actionable path for their Australian expansion, free of speculation or fluff."
 };
