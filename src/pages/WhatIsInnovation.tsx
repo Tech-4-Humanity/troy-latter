@@ -19,9 +19,9 @@ const WhatIsInnovation = () => {
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085"
     },
     {
-      title: "Customer Success Stories",
-      path: "/customer-success-stories",
-      description: "Notable innovation outcomes from customer engagements",
+      title: "Industry Expertise",
+      path: "/industry-expertise",
+      description: "Deep sector knowledge and thought leadership across defense, enterprise, and innovation markets",
       image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9"
     },
     {

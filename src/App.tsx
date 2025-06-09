@@ -10,7 +10,6 @@ import Index from "./pages/Index";
 import ExecutiveProfile from "./pages/ExecutiveProfile";
 import CoreCompetencies from "./pages/CoreCompetencies";
 import IndustryExpertise from "./pages/IndustryExpertise";
-import CustomerSuccessStories from "./pages/CustomerSuccessStories";
 import Contact from "./pages/Contact";
 import FAQs from "./pages/FAQs";
 import NotFound from "./pages/NotFound";
@@ -53,7 +52,6 @@ const App = () => (
           <Route path="/executive-profile" element={<Layout><ExecutiveProfile /></Layout>} />
           <Route path="/core-competencies" element={<Layout><CoreCompetencies /></Layout>} />
           <Route path="/industry-expertise" element={<Layout><IndustryExpertise /></Layout>} />
-          <Route path="/customer-success-stories" element={<Layout><CustomerSuccessStories /></Layout>} />
           <Route path="/contact" element={<Layout><Contact /></Layout>} />
           <Route path="/faqs" element={<Layout><FAQs /></Layout>} />
           
@@ -67,7 +65,7 @@ const App = () => (
           <Route path="/microsites/interview-prep" element={<MicrositeLayout><InterviewPrepIndex /></MicrositeLayout>} />
           
           {/* Navigation redirects - consolidate similar content */}
-          <Route path="/thought-leadership" element={<Navigate to="/customer-success-stories" replace />} />
+          <Route path="/thought-leadership" element={<Navigate to="/industry-expertise" replace />} />
           <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />
           
           {/* Legacy content that still exists */}

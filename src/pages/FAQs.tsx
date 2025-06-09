@@ -115,8 +115,8 @@ const FAQs = () => {
           </li>
           <li className="flex items-start">
             <span className="text-blue-600 font-bold mr-2">•</span>
-            <Link to="/customer-success-stories" className="hover:text-blue-600 transition-colors">
-              <span><strong>Success Stories:</strong> Case studies demonstrating Troy's impact across defense, enterprise, and innovation sectors.</span>
+            <Link to="/industry-expertise" className="hover:text-blue-600 transition-colors">
+              <span><strong>Industry Expertise:</strong> Deep sector knowledge and thought leadership across defense, enterprise, and innovation markets.</span>
             </Link>
           </li>
         </ul>
