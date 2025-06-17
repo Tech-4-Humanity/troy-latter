@@ -77,20 +77,71 @@ export const TechnicalStrengthsSection = () => {
 
 export const MarketInsightSection = () => {
   const insights = [
-    { title: 'Copilot Everywhere', description: 'M365, Dynamics, GitHub — clients need enablement.' },
-    { title: 'Fabric Convergence', description: 'Analytics meets automation — consulting opportunity.' },
-    { title: 'Zero Trust by Default', description: 'Security-as-strategy now wins deals.' }
+    {
+      title: 'Copilot Everywhere',
+      trend: 'Copilot integration is expanding across M365, Dynamics, and GitHub, driving productivity but requiring client enablement.',
+      opportunity: 'Position LAB3 as a trusted partner to guide clients through Copilot adoption, leveraging Azure AI and data services to customize workflows.',
+      contribution: 'Leverage experience with Azure AI pilots (e.g., 95% accuracy in 72-hour utility PoC) to lead enablement workshops, aligning Copilot with client KPIs and securing pre-sales wins.'
+    },
+    {
+      title: 'M365, Dynamics, GitHub – Clients Need Enablement',
+      trend: 'Adoption of M365, Dynamics, and GitHub is accelerating, but clients lack expertise to maximize value.',
+      opportunity: 'Offer tailored Azure-based enablement services, integrating DevOps pipelines and secure collaboration models.',
+      contribution: 'Apply cross-agency collaboration experience (e.g., Defence, Home Affairs) to design reusable Azure blueprints for M365/Dynamics integration, enhancing pre-sales demos with proven patterns.'
+    },
+    {
+      title: 'Fabric Convergence',
+      trend: 'Microsoft Fabric unifies analytics, AI, and data management, creating a consulting opportunity for seamless implementation.',
+      opportunity: 'Develop Fabric-focused consulting packages, combining Azure Data Services with LAB3\'s accelerators for rapid deployment.',
+      contribution: 'Use IoT pipeline expertise (e.g., 12,000 events/sec on Azure Kinesis) to architect Fabric solutions, delivering client roadmaps that drive $1M+ contracts, as seen in prior engagements.'
+    },
+    {
+      title: 'Analytics Meets Automation – Consulting Opportunity',
+      trend: 'AI-driven analytics and automation are converging, demanding end-to-end Azure solutions for real-time insights.',
+      opportunity: 'Capitalize on this by offering Azure Cognitive Services and automation frameworks, targeting critical infrastructure clients.',
+      contribution: 'Draw on strategic roadmap delivery (e.g., $5M Home Affairs AI funding) to lead technical consultations, embedding automation in client architectures for measurable ROI.'
+    },
+    {
+      title: 'Zero Trust by Default',
+      trend: 'Security-as-strategy is now a deal-winner, with zero trust becoming a baseline requirement in Azure deployments.',
+      opportunity: 'Position LAB3 as a zero trust leader, using Azure Security Services and CSPM to win government and enterprise deals.',
+      contribution: 'Apply zero trust governance experience (e.g., 6-week ASD certification) to embed secure-by-design practices, enhancing pre-sales credibility and client trust.'
+    },
+    {
+      title: 'Security-as-Strategy Now Wins Deals',
+      trend: 'Clients prioritize security posture over cost, favoring vendors with robust Azure security frameworks.',
+      opportunity: 'Develop security-as-strategy offerings, integrating Azure baselines and compliance tools for competitive edge.',
+      contribution: 'Leverage escalation and governance skills (e.g., incident resolution, 85% automated compliance checks) to lead governance forums, driving $3M+ service contracts.'
+    }
   ];
 
   return (
     <div className="space-y-6">
       <h2 className="text-3xl font-bold text-white mb-6">Market Insight – Microsoft Ecosystem Trends</h2>
-      <div className="space-y-4 text-gray-300">
+      <div className="space-y-6">
         {insights.map((insight, index) => (
-          <div key={index}>
-            <h3 className="text-xl font-semibold text-blue-400 mb-2">{insight.title}</h3>
-            <p>{insight.description}</p>
-          </div>
+          <Card key={index} className="bg-gray-800 border-gray-700">
+            <CardContent className="p-6">
+              <h3 className="text-xl font-semibold text-blue-400 mb-4">{insight.title}</h3>
+              
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-sm font-semibold text-green-400 mb-2">Trend:</h4>
+                  <p className="text-gray-300 leading-relaxed">{insight.trend}</p>
+                </div>
+                
+                <div>
+                  <h4 className="text-sm font-semibold text-yellow-400 mb-2">Opportunity for LAB3:</h4>
+                  <p className="text-gray-300 leading-relaxed">{insight.opportunity}</p>
+                </div>
+                
+                <div>
+                  <h4 className="text-sm font-semibold text-purple-400 mb-2">Your Contribution:</h4>
+                  <p className="text-gray-300 leading-relaxed">{insight.contribution}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>
