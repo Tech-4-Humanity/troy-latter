@@ -17,11 +17,7 @@ export const Footer = () => {
   const resourceLinks = [
     { path: '/resources/whitepapers', label: 'Whitepapers' },
     { path: '/resources/lean-canvas', label: 'Lean Canvas' },
-  ];
-
-  // Microsite links
-  const micrositeLinks = [
-    { path: '/microsites/lab3', label: 'Lab3 Principal Technologist' },
+    { path: '/microsites/lab3', label: 'Lab3' },
   ];
 
   // Contact information
@@ -34,7 +30,7 @@ export const Footer = () => {
   return (
     <footer className="bg-brand-primary text-white py-12 border-t border-brand-primary/50 mt-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo and contact */}
           <div className="md:col-span-1">
             <Link to="/" className="inline-block mb-4">
@@ -100,22 +96,6 @@ export const Footer = () => {
               >
                 FAQs
               </Link>
-            </div>
-          </div>
-
-          {/* Microsites */}
-          <div>
-            <h3 className="text-brand-accent font-medium mb-4">Microsites</h3>
-            <div className="space-y-2">
-              {micrositeLinks.map((route) => (
-                <Link 
-                  key={route.path}
-                  to={route.path} 
-                  className="block text-gray-300 hover:text-brand-accent text-sm transition-colors duration-200"
-                >
-                  {route.label}
-                </Link>
-              ))}
             </div>
           </div>
         </div>
