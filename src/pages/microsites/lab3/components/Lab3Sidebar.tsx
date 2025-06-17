@@ -28,7 +28,6 @@ export const Lab3Sidebar = ({ sections, activeSection, onSectionChange }: Lab3Si
         </div>
         
         <h1 className="text-2xl font-bold text-white mb-2">Lab3 Principal Technologist</h1>
-        <p className="text-gray-400 text-sm mb-6">Public showcase of readiness for Lab3 Principal Technologist</p>
         
         <div className="space-y-8">
           <div className="space-y-2">
