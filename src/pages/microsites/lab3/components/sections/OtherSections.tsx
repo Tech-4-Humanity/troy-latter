@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -34,10 +35,13 @@ export const TechnicalStrengthsSection = () => {
   ];
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-3xl font-bold text-white mb-6">🔧 Technical Strengths & Delivery Patterns</h2>
+    <div className="space-y-8">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">🔧 Technical Strengths & Delivery Patterns</h2>
+        <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
+      </div>
       
-      <div className="text-gray-300 space-y-4 mb-8">
+      <div className="text-gray-700 space-y-6 mb-12 text-lg leading-relaxed">
         <p>
           My technical leadership spans far beyond tools and platforms — it's about architecting change in complex, high-stakes environments. Across federal government, critical infrastructure, and large-scale enterprise, I've consistently delivered outcomes where the challenge isn't just technical — it's organisational, political, and cultural.
         </p>
@@ -49,21 +53,21 @@ export const TechnicalStrengthsSection = () => {
         </p>
       </div>
 
-      <Card className="bg-gray-800 border-gray-700">
-        <CardContent className="p-6">
+      <Card className="bg-white border border-gray-200 shadow-lg">
+        <CardContent className="p-8">
           <div className="overflow-x-auto">
-            <table className="w-full text-gray-300">
+            <table className="w-full">
               <thead>
-                <tr className="border-b border-gray-600">
-                  <th className="text-left p-3 text-blue-400 font-semibold">Capability Area</th>
-                  <th className="text-left p-3 text-blue-400 font-semibold">Pattern of Practice</th>
+                <tr className="border-b-2 border-gray-100">
+                  <th className="text-left p-4 text-blue-600 font-bold text-lg">Capability Area</th>
+                  <th className="text-left p-4 text-blue-600 font-bold text-lg">Pattern of Practice</th>
                 </tr>
               </thead>
               <tbody>
                 {capabilities.map((item, index) => (
-                  <tr key={index} className="border-b border-gray-700">
-                    <td className="p-3 font-medium text-green-400 align-top">{item.capability}</td>
-                    <td className="p-3 leading-relaxed">{item.evidence}</td>
+                  <tr key={index} className="border-b border-gray-100 hover:bg-blue-50 transition-colors">
+                    <td className="p-4 font-semibold text-gray-900 align-top w-1/3">{item.capability}</td>
+                    <td className="p-4 leading-relaxed text-gray-700">{item.evidence}</td>
                   </tr>
                 ))}
               </tbody>
@@ -116,28 +120,32 @@ export const MarketInsightSection = () => {
   ];
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-3xl font-bold text-white mb-6">Market Insight – Microsoft Ecosystem Trends</h2>
-      <div className="space-y-6">
+    <div className="space-y-8">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">Market Insight – Microsoft Ecosystem Trends</h2>
+        <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
+      </div>
+      
+      <div className="grid gap-8">
         {insights.map((insight, index) => (
-          <Card key={index} className="bg-gray-800 border-gray-700">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold text-blue-400 mb-4">{insight.title}</h3>
+          <Card key={index} className="bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-bold text-blue-600 mb-6">{insight.title}</h3>
               
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-sm font-semibold text-green-400 mb-2">Trend:</h4>
-                  <p className="text-gray-300 leading-relaxed">{insight.trend}</p>
+              <div className="space-y-6">
+                <div className="bg-blue-50 p-6 rounded-lg">
+                  <h4 className="text-sm font-bold text-blue-700 mb-3 uppercase tracking-wide">Trend:</h4>
+                  <p className="text-gray-800 leading-relaxed text-lg">{insight.trend}</p>
                 </div>
                 
-                <div>
-                  <h4 className="text-sm font-semibold text-yellow-400 mb-2">Opportunity for LAB3:</h4>
-                  <p className="text-gray-300 leading-relaxed">{insight.opportunity}</p>
+                <div className="bg-green-50 p-6 rounded-lg">
+                  <h4 className="text-sm font-bold text-green-700 mb-3 uppercase tracking-wide">Opportunity for LAB3:</h4>
+                  <p className="text-gray-800 leading-relaxed text-lg">{insight.opportunity}</p>
                 </div>
                 
-                <div>
-                  <h4 className="text-sm font-semibold text-purple-400 mb-2">Your Contribution:</h4>
-                  <p className="text-gray-300 leading-relaxed">{insight.contribution}</p>
+                <div className="bg-purple-50 p-6 rounded-lg">
+                  <h4 className="text-sm font-bold text-purple-700 mb-3 uppercase tracking-wide">Your Contribution:</h4>
+                  <p className="text-gray-800 leading-relaxed text-lg">{insight.contribution}</p>
                 </div>
               </div>
             </CardContent>
@@ -150,25 +158,33 @@ export const MarketInsightSection = () => {
 
 export const CultureFitSection = () => {
   return (
-    <div className="space-y-6">
-      <h2 className="text-3xl font-bold text-white mb-6">Culture Fit Snapshot</h2>
-      <div className="text-gray-300 space-y-6 leading-relaxed">
-        <p>
-          LAB3 thrives on engineering excellence, IP-led delivery, and the confidence to challenge outdated models — that's the culture I've always worked to build and protect.
-        </p>
-        
-        <p>
-          I work best in environments where velocity is backed by clarity, and innovation is grounded in trust. I've led cross-functional teams through major shifts — from secure cloud transformations to agency-wide Microsoft 365 rollouts — where success wasn't just about the tech stack, but about bringing people along with it.
-        </p>
-        
-        <p>
-          My leadership style is hands-on, pattern-driven, and collaborative. I mentor engineers, partner with sales without overpromising, and build relationships from the dev team to the C-suite. Whether codifying zero trust blueprints across portfolios, or helping government clients navigate compliance and complexity with confidence, I've learned that culture is what turns good delivery into something that lasts.
-        </p>
-        
-        <p>
-          LAB3's culture isn't just a fit — it's familiar. And it's exactly where I do my best work.
-        </p>
+    <div className="space-y-8">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">Culture Fit Snapshot</h2>
+        <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
       </div>
+      
+      <Card className="bg-gradient-to-br from-blue-50 to-white border border-gray-200 shadow-lg">
+        <CardContent className="p-12">
+          <div className="text-gray-800 space-y-8 leading-relaxed text-lg">
+            <p className="text-xl leading-relaxed">
+              LAB3 thrives on engineering excellence, IP-led delivery, and the confidence to challenge outdated models — that's the culture I've always worked to build and protect.
+            </p>
+            
+            <p>
+              I work best in environments where velocity is backed by clarity, and innovation is grounded in trust. I've led cross-functional teams through major shifts — from secure cloud transformations to agency-wide Microsoft 365 rollouts — where success wasn't just about the tech stack, but about bringing people along with it.
+            </p>
+            
+            <p>
+              My leadership style is hands-on, pattern-driven, and collaborative. I mentor engineers, partner with sales without overpromising, and build relationships from the dev team to the C-suite. Whether codifying zero trust blueprints across portfolios, or helping government clients navigate compliance and complexity with confidence, I've learned that culture is what turns good delivery into something that lasts.
+            </p>
+            
+            <p className="text-xl font-semibold text-blue-700">
+              LAB3's culture isn't just a fit — it's familiar. And it's exactly where I do my best work.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };
@@ -185,13 +201,24 @@ export const QuestionsSection = () => {
   ];
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-3xl font-bold text-white mb-6">Questions I'd Ask You</h2>
-      <div className="space-y-4">
+    <div className="space-y-8">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">Questions I'd Ask You</h2>
+        <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
+      </div>
+      
+      <div className="grid gap-6">
         {questions.map((question, index) => (
-          <Card key={index} className="bg-gray-800 border-gray-700">
-            <CardContent className="p-4">
-              <p className="text-gray-300">{question}</p>
+          <Card key={index} className="bg-white border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
+            <CardContent className="p-8">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0">
+                  <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                    {index + 1}
+                  </div>
+                </div>
+                <p className="text-gray-800 leading-relaxed text-lg">{question}</p>
+              </div>
             </CardContent>
           </Card>
         ))}

@@ -8,11 +8,11 @@ interface Lab3LayoutProps {
 
 export const Lab3Layout = ({ sidebar, children }: Lab3LayoutProps) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800">
+    <div className="min-h-screen bg-white">
       <div className="flex">
         {sidebar}
-        <div className="flex-1 p-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="flex-1">
+          <div className="max-w-5xl mx-auto px-8 py-12">
             {children}
           </div>
         </div>

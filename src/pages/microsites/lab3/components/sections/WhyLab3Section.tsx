@@ -27,10 +27,13 @@ export const WhyLab3Section = () => {
   ];
 
   return (
-    <div className="space-y-8">
-      <h2 className="text-3xl font-bold text-white mb-6">Why Lab3 & Why Me</h2>
+    <div className="space-y-12">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Lab3 & Why Me</h2>
+        <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
+      </div>
       
-      <div className="text-gray-300 space-y-4 mb-8">
+      <div className="text-gray-700 space-y-6 mb-12 text-lg leading-relaxed">
         <p>
           Lab3 is unapologetically modern — outcome-led, automation-driven, and built around reusable patterns that move fast and scale well. That matches how I've always delivered.
         </p>
@@ -40,23 +43,27 @@ export const WhyLab3Section = () => {
         <p>
           What Lab3 calls "fusing innovation and pragmatism," I've lived. I bring experience codifying success into delivery frameworks, mentoring technical teams across security, cloud, AI, and workplace platforms, and shaping pre-sales narratives that win executive trust.
         </p>
-        <p>
+        <p className="text-xl font-semibold text-blue-700">
           I'm not looking to be the smartest in the room — I'm here to help make everyone better, faster, and more confident in how we deliver together.
         </p>
       </div>
 
-      <div className="space-y-6">
-        <h3 className="text-2xl font-bold text-blue-400 mb-4">🎯 What I Bring to Lab3</h3>
+      <div className="space-y-8">
+        <h3 className="text-3xl font-bold text-blue-600 mb-8 text-center">🎯 What I Bring to Lab3</h3>
         
-        <div className="space-y-4">
+        <div className="grid gap-6">
           {valuePropositions.map((prop, index) => (
-            <Card key={index} className="bg-gray-800 border-gray-700">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="text-green-400 text-lg font-bold mt-1">✅</div>
+            <Card key={index} className="bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+              <CardContent className="p-8">
+                <div className="flex items-start space-x-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xl font-bold">✓</span>
+                    </div>
+                  </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-green-400 mb-2">{prop.title}</h4>
-                    <p className="text-gray-300 leading-relaxed">{prop.description}</p>
+                    <h4 className="text-xl font-bold text-gray-900 mb-4">{prop.title}</h4>
+                    <p className="text-gray-700 leading-relaxed text-lg">{prop.description}</p>
                   </div>
                 </div>
               </CardContent>
