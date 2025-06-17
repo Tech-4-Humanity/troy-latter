@@ -91,35 +91,100 @@ const Lab3Index = () => {
       case 'strategic-plan':
         return (
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-white mb-6">Strategic 30/60/90 Plan</h2>
-            <div className="grid gap-6">
+            <h2 className="text-3xl font-bold text-white mb-6">Enhanced 30/60/90 Day Plan – LAB3 Principal Technologist (Sydney)</h2>
+            <p className="text-gray-300 mb-8">This streamlined plan ensures rapid alignment with LAB3's client-first, Microsoft Azure-focused model, emphasizing pre-sales, technical leadership, and scalable delivery.</p>
+            
+            <div className="grid gap-8">
               <Card className="bg-gray-800 border-gray-700">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-blue-400 mb-3">30 Days</h3>
-                  <ul className="text-gray-300 space-y-2">
-                    <li>• Align with delivery and pre-sales</li>
-                    <li>• Review accelerators and build value-mapping plan</li>
-                  </ul>
+                  <h3 className="text-2xl font-semibold text-blue-400 mb-4">First 30 Days: Build Trust & Technical Foundation</h3>
+                  
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold text-white mb-3">🎯 Objective</h4>
+                    <p className="text-gray-300">Establish credibility, understand LAB3's Azure ecosystem, and map client needs.</p>
+                  </div>
+
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold text-white mb-3">⚡ Key Activities</h4>
+                    <ul className="text-gray-300 space-y-2">
+                      <li>• Meet Heads of Cloud, Data, DevOps, Security to grasp LAB3's Azure offerings and differentiators</li>
+                      <li>• Shadow pre-sales and client engagements to learn solution design processes</li>
+                      <li>• Review LAB3's Terraform modules, Azure DevOps pipelines, and Well-Architected Framework (WAF) alignment</li>
+                      <li>• Map stakeholders for top 3 client accounts</li>
+                      <li>• Analyze LAB3's solution coverage against Microsoft Cloud Adoption Framework (CAF)</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-3">🎁 Deliverables</h4>
+                    <ul className="text-gray-300 space-y-2">
+                      <li>• Technical brief on LAB3's Azure solution gaps vs. CAF/WAF</li>
+                      <li>• Matrix linking client needs to LAB3 services</li>
+                      <li>• Prioritized list of accounts for immediate technical impact</li>
+                    </ul>
+                  </div>
                 </CardContent>
               </Card>
 
               <Card className="bg-gray-800 border-gray-700">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-blue-400 mb-3">60 Days</h3>
-                  <ul className="text-gray-300 space-y-2">
-                    <li>• Run workshops (Copilot readiness, Zero Trust)</li>
-                    <li>• Launch blueprint delivery on 1–2 key accounts</li>
-                  </ul>
+                  <h3 className="text-2xl font-semibold text-blue-400 mb-4">Days 31–60: Drive Client Value & Solution Ownership</h3>
+                  
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold text-white mb-3">🎯 Objective</h4>
+                    <p className="text-gray-300">Lead technical discovery, shape Azure architectures, and mentor teams.</p>
+                  </div>
+
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold text-white mb-3">⚡ Key Activities</h4>
+                    <ul className="text-gray-300 space-y-2">
+                      <li>• Lead technical consultations for 1–2 strategic clients, aligning with CAF/WAF</li>
+                      <li>• Co-create C-suite-ready solution presentations for enterprise accounts</li>
+                      <li>• Refine client roadmaps to integrate LAB3's Azure accelerators and secure-by-design principles</li>
+                      <li>• Pilot 'Kill-or-Scale' framework to prioritize PoCs and minimize technical debt</li>
+                      <li>• Embed Cloud Security Posture Management (CSPM) and DevSecOps in designs</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-3">🎁 Deliverables</h4>
+                    <ul className="text-gray-300 space-y-2">
+                      <li>• Reusable Azure cloud-native blueprint aligned with WAF</li>
+                      <li>• Client roadmap and architecture pack for one strategic account</li>
+                      <li>• Pre-sales readiness checklist for proposal feasibility</li>
+                    </ul>
+                  </div>
                 </CardContent>
               </Card>
 
               <Card className="bg-gray-800 border-gray-700">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-blue-400 mb-3">90 Days</h3>
-                  <ul className="text-gray-300 space-y-2">
-                    <li>• Propose go-to-market uplift</li>
-                    <li>• Launch Tiger Team for reusable AI agent automation</li>
-                  </ul>
+                  <h3 className="text-2xl font-semibold text-blue-400 mb-4">Days 61–90: Scale Impact & Governance</h3>
+                  
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold text-white mb-3">🎯 Objective</h4>
+                    <p className="text-gray-300">Standardize patterns, lead governance, and boost innovation.</p>
+                  </div>
+
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold text-white mb-3">⚡ Key Activities</h4>
+                    <ul className="text-gray-300 space-y-2">
+                      <li>• Facilitate 2 architecture workshops for high-value clients</li>
+                      <li>• Deliver internal tech talk on Azure specialty (e.g., Zero Trust, Azure Arc)</li>
+                      <li>• Lead retrospective on a pre-sales win or incident to refine processes</li>
+                      <li>• Align with Microsoft Partner team on co-sell strategies for Fabric/Copilot</li>
+                      <li>• Mentor LAB3 architects on stakeholder engagement and technical storytelling</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-3">🎁 Deliverables</h4>
+                    <ul className="text-gray-300 space-y-2">
+                      <li>• Playbook for client roadmaps using LAB3 tools and CAF/WAF</li>
+                      <li>• Internal architecture review and incident escalation guide</li>
+                      <li>• Opportunity assessment framework to streamline strategic pursuits</li>
+                    </ul>
+                  </div>
                 </CardContent>
               </Card>
             </div>
