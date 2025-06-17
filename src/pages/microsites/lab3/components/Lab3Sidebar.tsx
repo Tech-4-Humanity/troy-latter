@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Download, Linkedin } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 
 interface Section {
   id: string;
@@ -32,12 +32,6 @@ export const Lab3Sidebar = ({ sections, activeSection, onSectionChange }: Lab3Si
         
         <div className="space-y-8">
           <div className="space-y-2">
-            <Button variant="outline" size="sm" className="w-full" asChild>
-              <a href="mailto:troy.latter@gmail.com">
-                <Download className="h-4 w-4 mr-2" />
-                Download Resume
-              </a>
-            </Button>
             <Button variant="outline" size="sm" className="w-full" asChild>
               <a href="https://www.linkedin.com/in/theinnovater/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-4 w-4 mr-2" />

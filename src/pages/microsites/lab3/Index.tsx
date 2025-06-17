@@ -14,9 +14,7 @@ const Lab3Index = () => {
     { id: 'technical-strengths', label: 'Technical Strengths & Patterns' },
     { id: 'market-insight', label: 'Market Insight – Microsoft Ecosystem Trends' },
     { id: 'culture-fit', label: 'Culture Fit Snapshot' },
-    { id: 'questions', label: 'Questions I\'d Ask You' },
-    { id: 'connect', label: 'Let\'s Connect' },
-    { id: 'related', label: 'Related Microsites' }
+    { id: 'questions', label: 'Questions I\'d Ask You' }
   ];
 
   return (

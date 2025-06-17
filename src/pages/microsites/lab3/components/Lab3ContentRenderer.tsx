@@ -7,9 +7,7 @@ import {
   TechnicalStrengthsSection, 
   MarketInsightSection, 
   CultureFitSection, 
-  QuestionsSection, 
-  ConnectSection, 
-  RelatedSection 
+  QuestionsSection
 } from './sections/OtherSections';
 
 interface Lab3ContentRendererProps {
@@ -32,10 +30,6 @@ export const Lab3ContentRenderer = ({ activeSection }: Lab3ContentRendererProps)
       return <CultureFitSection />;
     case 'questions':
       return <QuestionsSection />;
-    case 'connect':
-      return <ConnectSection />;
-    case 'related':
-      return <RelatedSection />;
     default:
       return null;
   }

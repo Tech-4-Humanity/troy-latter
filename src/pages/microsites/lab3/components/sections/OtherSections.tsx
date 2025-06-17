@@ -1,8 +1,6 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ExternalLink, Mail, Linkedin } from 'lucide-react';
 
 export const TechnicalStrengthsSection = () => {
   const capabilities = [
@@ -92,57 +90,6 @@ export const QuestionsSection = () => {
           <Card key={index} className="bg-gray-800 border-gray-700">
             <CardContent className="p-4">
               <p className="text-gray-300">{question}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export const ConnectSection = () => {
-  return (
-    <div className="space-y-6">
-      <h2 className="text-3xl font-bold text-white mb-6">Let's Connect</h2>
-      <div className="space-y-4">
-        <Button variant="outline" className="w-full justify-start" asChild>
-          <a href="mailto:troy.latter@gmail.com">
-            <Mail className="h-4 w-4 mr-2" />
-            Email me
-          </a>
-        </Button>
-        <Button variant="outline" className="w-full justify-start" asChild>
-          <a href="https://www.linkedin.com/in/theinnovater/" target="_blank" rel="noopener noreferrer">
-            <Linkedin className="h-4 w-4 mr-2" />
-            LinkedIn – theinnovater
-          </a>
-        </Button>
-        <Button variant="outline" className="w-full justify-start" asChild>
-          <a href="https://tech4humanity.com.au/" target="_blank" rel="noopener noreferrer">
-            <ExternalLink className="h-4 w-4 mr-2" />
-            Tech 4 Humanity
-          </a>
-        </Button>
-      </div>
-    </div>
-  );
-};
-
-export const RelatedSection = () => {
-  const relatedSites = [
-    'CTO Strategy – Coming Soon',
-    'GovAI Wins – Coming Soon',
-    'Secure Agentic Frameworks – Coming Soon'
-  ];
-
-  return (
-    <div className="space-y-6">
-      <h2 className="text-3xl font-bold text-white mb-6">Related Microsites</h2>
-      <div className="space-y-4">
-        {relatedSites.map((site, index) => (
-          <Card key={index} className="bg-gray-800 border-gray-700">
-            <CardContent className="p-4">
-              <p className="text-gray-400">{site}</p>
             </CardContent>
           </Card>
         ))}
