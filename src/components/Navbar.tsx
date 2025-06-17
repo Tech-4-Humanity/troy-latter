@@ -21,6 +21,7 @@ import {
 const navigationCategories = [
   {
     title: 'About Troy',
+    mainPath: '/executive-profile',
     items: [
       { path: '/executive-profile', label: 'Executive Profile' },
       { path: '/leadership-style', label: 'Leadership Style' },
@@ -29,6 +30,7 @@ const navigationCategories = [
   },
   {
     title: 'Experience & Impact',
+    mainPath: '/strategic-projects',
     items: [
       { path: '/strategic-projects', label: 'Strategic Projects' },
       { path: '/responsibilities', label: 'Responsibilities' },
@@ -37,6 +39,7 @@ const navigationCategories = [
   },
   {
     title: 'Team & Capabilities',
+    mainPath: '/core-competencies',
     items: [
       { path: '/core-competencies', label: 'Core Competencies' },
       { path: '/industry-expertise', label: 'Industry Expertise' },
@@ -79,33 +82,45 @@ export const Navbar = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-1">
             {navigationCategories.map((category) => (
-              <DropdownMenu key={category.title}>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className={`text-white hover:text-[#56A4E3] hover:bg-[#0A101E]/80 text-sm font-medium px-3 py-2 ${
-                      isActiveCategory(category) ? 'text-[#56A4E3]' : ''
-                    }`}
-                  >
-                    {category.title}
-                    <ChevronDown className="ml-1 h-3 w-3" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-[#0A101E] border-gray-700 shadow-xl min-w-[200px]">
-                  {category.items.map((item) => (
-                    <DropdownMenuItem key={item.path} className="focus:bg-[#1a2332] p-0">
-                      <Link
-                        to={item.path}
-                        className={`w-full px-3 py-2 text-sm text-gray-200 hover:text-[#56A4E3] transition-colors ${
-                          isActivePath(item.path) ? 'text-[#56A4E3] bg-[#1a2332]' : ''
+              <div key={category.title} className="relative">
+                <DropdownMenu>
+                  <div className="flex items-center">
+                    <Link
+                      to={category.mainPath}
+                      className={`text-white hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-2 ${
+                        isActivePath(category.mainPath) ? 'text-[#56A4E3]' : ''
+                      }`}
+                    >
+                      {category.title}
+                    </Link>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className={`text-white hover:text-[#56A4E3] hover:bg-[#0A101E]/80 p-1 ml-1 ${
+                          isActiveCategory(category) ? 'text-[#56A4E3]' : ''
                         }`}
                       >
-                        {item.label}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+                        <ChevronDown className="h-3 w-3" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                  </div>
+                  <DropdownMenuContent className="bg-[#0A101E] border-gray-700 shadow-xl min-w-[200px]">
+                    {category.items.map((item) => (
+                      <DropdownMenuItem key={item.path} className="focus:bg-[#1a2332] p-0">
+                        <Link
+                          to={item.path}
+                          className={`w-full px-3 py-2 text-sm text-gray-200 hover:text-[#56A4E3] transition-colors ${
+                            isActivePath(item.path) ? 'text-[#56A4E3] bg-[#1a2332]' : ''
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             ))}
             
             <Link
@@ -140,9 +155,15 @@ export const Navbar = () => {
             <nav className="flex flex-col space-y-1 pb-4">
               {navigationCategories.map((category) => (
                 <div key={category.title} className="border-b border-gray-700 pb-2 mb-2">
-                  <div className="text-gray-400 text-xs font-medium uppercase tracking-wider px-2 py-1 mb-1">
+                  <Link
+                    to={category.mainPath}
+                    className={`text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-2 block mb-1 ${
+                      isActivePath(category.mainPath) ? 'text-[#56A4E3]' : ''
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     {category.title}
-                  </div>
+                  </Link>
                   {category.items.map((item) => (
                     <Link
                       key={item.path}
