@@ -163,10 +163,13 @@ export const CultureFitSection = () => {
 
 export const QuestionsSection = () => {
   const questions = [
-    "What's Lab3's next reusable asset milestone?",
-    "How can I unblock the handoff between sales and engineering?",
-    "Who's leading your future-of-work/Copilot vision?",
-    "What's Lab3's internal Tiger Team model?"
+    "Given my work on Azure AI pilots delivering 95% accuracy in 72 hours, I'm curious how LAB3 prioritizes integrating emerging Azure trends like Fabric into client roadmaps under your practice-building vision?",
+    "With my experience leading zero trust architectures for ASD certification in 6 weeks, how does LAB3 plan to expand these security models for government clients as you shape this new practice?",
+    "Having fostered cross-functional tiger teams for rapid delivery, like a $2.5M utility PoC, how does LAB3 encourage collaboration between pre-sales and engineering to accelerate client outcomes in this emerging practice?",
+    "Based on my success codifying reusable Azure blueprints for government portfolios, what role does LAB3 envision for IP in scaling solutions across clients as you establish this practice?",
+    "With my background in technical governance during compliance reviews, how does LAB3 balance innovation and compliance in Azure deployments as you build out this practice?",
+    "Given my work translating complex requirements into $5M roadmaps for Home Affairs, how does LAB3 approach aligning client technical strategies with business goals in this new practice phase?",
+    "Having led pre-sales engagements securing $7M pipelines with C-suite demos, how does LAB3 plan to leverage partnerships, like with Microsoft, to drive practice growth under your leadership?"
   ];
 
   return (
