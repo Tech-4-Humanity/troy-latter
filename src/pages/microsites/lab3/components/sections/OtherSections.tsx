@@ -153,7 +153,9 @@ export const CultureFitSection = () => {
     <div className="space-y-6">
       <h2 className="text-3xl font-bold text-white mb-6">Culture Fit Snapshot</h2>
       <div className="text-gray-300 space-y-4">
-        <p>Lab3 builds with speed, shares IP, and respects engineering talent. That's the same way I lead. I mentor, codify success, and turn ideas into patterns that scale.</p>
+        <p>
+          LAB3's culture—cloud-native, agile, and focused on disrupting legacy thinking—resonates deeply with me. I thrive in environments where delivery is driven by a strong culture, reusable IP, and technical authenticity, values I've lived through my career. For example, I've led fast-moving tiger teams across government and enterprise projects, like a 72-hour Azure AI pilot that delivered 95% accuracy and a $2.5M contract, fostering transparency and scalability without ego. I've also codified Azure blueprints, such as zero trust frameworks used across portfolios, aligning with LAB3's IP focus. Mentoring engineers and engaging stakeholders with trust-first approaches, as seen in my Home Affairs $5M roadmap win, mirrors LAB3's collaborative spirit. This blend of agility and technical rigor makes me a natural fit to contribute to LAB3's innovative delivery model.
+        </p>
       </div>
     </div>
   );
