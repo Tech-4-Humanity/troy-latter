@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -288,6 +287,15 @@ const Lab3Index = () => {
         {/* Sidebar */}
         <div className="w-80 bg-gray-900 border-r border-gray-700 min-h-screen">
           <div className="p-6">
+            {/* Lab3 Logo */}
+            <div className="mb-6 flex justify-center">
+              <img 
+                src="https://www.lab3.com.au/wp-content/uploads/2021/06/logo.svg" 
+                alt="Lab3 Logo" 
+                className="h-12 w-auto"
+              />
+            </div>
+            
             <h1 className="text-2xl font-bold text-white mb-2">Lab3 Principal Technologist</h1>
             <p className="text-gray-400 text-sm mb-6">Public showcase of readiness for Lab3 Principal Technologist</p>
             

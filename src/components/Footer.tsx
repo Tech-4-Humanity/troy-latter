@@ -19,6 +19,11 @@ export const Footer = () => {
     { path: '/resources/lean-canvas', label: 'Lean Canvas' },
   ];
 
+  // Microsite links
+  const micrositeLinks = [
+    { path: '/microsites/lab3', label: 'Lab3 Principal Technologist' },
+  ];
+
   // Contact information
   const contactInfo = [
     { icon: Mail, label: 'troy.latter@gmail.com', href: 'mailto:troy.latter@gmail.com' },
@@ -98,16 +103,19 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Credentials */}
+          {/* Microsites */}
           <div>
-            <h3 className="text-brand-accent font-medium mb-4">Credentials</h3>
-            <div className="space-y-2 text-sm text-gray-300">
-              <div>AGSVA NV2 Clearance</div>
-              <div>AWS Solutions Architect</div>
-              <div>Azure AI Certified</div>
-              <div>GCP Certified</div>
-              <div>Standards Australia BCI</div>
-              <div>QLD Gov AI Hub Board</div>
+            <h3 className="text-brand-accent font-medium mb-4">Microsites</h3>
+            <div className="space-y-2">
+              {micrositeLinks.map((route) => (
+                <Link 
+                  key={route.path}
+                  to={route.path} 
+                  className="block text-gray-300 hover:text-brand-accent text-sm transition-colors duration-200"
+                >
+                  {route.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
