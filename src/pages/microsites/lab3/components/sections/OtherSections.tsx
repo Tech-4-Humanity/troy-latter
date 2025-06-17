@@ -152,9 +152,21 @@ export const CultureFitSection = () => {
   return (
     <div className="space-y-6">
       <h2 className="text-3xl font-bold text-white mb-6">Culture Fit Snapshot</h2>
-      <div className="text-gray-300 space-y-4">
+      <div className="text-gray-300 space-y-6 leading-relaxed">
         <p>
-          LAB3's culture—cloud-native, agile, and focused on disrupting legacy thinking—resonates deeply with me. I thrive in environments where delivery is driven by a strong culture, reusable IP, and technical authenticity, values I've lived through my career. For example, I've led fast-moving tiger teams across government and enterprise projects, like a 72-hour Azure AI pilot that delivered 95% accuracy and a $2.5M contract, fostering transparency and scalability without ego. I've also codified Azure blueprints, such as zero trust frameworks used across portfolios, aligning with LAB3's IP focus. Mentoring engineers and engaging stakeholders with trust-first approaches, as seen in my Home Affairs $5M roadmap win, mirrors LAB3's collaborative spirit. This blend of agility and technical rigor makes me a natural fit to contribute to LAB3's innovative delivery model.
+          LAB3 thrives on engineering excellence, IP-led delivery, and the confidence to challenge outdated models — that's the culture I've always worked to build and protect.
+        </p>
+        
+        <p>
+          I work best in environments where velocity is backed by clarity, and innovation is grounded in trust. I've led cross-functional teams through major shifts — from secure cloud transformations to agency-wide Microsoft 365 rollouts — where success wasn't just about the tech stack, but about bringing people along with it.
+        </p>
+        
+        <p>
+          My leadership style is hands-on, pattern-driven, and collaborative. I mentor engineers, partner with sales without overpromising, and build relationships from the dev team to the C-suite. Whether codifying zero trust blueprints across portfolios, or helping government clients navigate compliance and complexity with confidence, I've learned that culture is what turns good delivery into something that lasts.
+        </p>
+        
+        <p>
+          LAB3's culture isn't just a fit — it's familiar. And it's exactly where I do my best work.
         </p>
       </div>
     </div>
