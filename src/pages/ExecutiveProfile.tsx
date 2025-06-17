@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -59,28 +58,28 @@ const ExecutiveProfile = () => {
     {
       icon: Building,
       title: "Founder & CEO",
-      organization: "Tech 4 Humanity",
+      organisation: "Tech 4 Humanity",
       period: "2023 - Present",
       description: "Leading humanitarian technology initiatives"
     },
     {
       icon: Users,
       title: "Board Member",
-      organization: "Queensland Government AI Hub",
+      organisation: "Queensland Government AI Hub",
       period: "2022 - Present",
       description: "Strategic advisor on AI policy, ethics, and adoption across public sector"
     },
     {
       icon: Award,
       title: "Australian Committee Member",
-      organization: "Standards Australia (BCI)",
+      organisation: "Standards Australia (BCI)",
       period: "2023 - Present",
       description: "Contributing to national Brain Computer Interface standards and assistive technology frameworks"
     },
     {
       icon: Target,
       title: "Advisory Board Convenor",
-      organization: "Robotics Australia Group",
+      organisation: "Robotics Australia Group",
       period: "2023",
       description: "Leading national robotics strategy and industry development initiatives"
     }
@@ -99,11 +98,11 @@ const ExecutiveProfile = () => {
           <div className="grid md:grid-cols-3 gap-12 items-center">
             <div className="md:col-span-2">
               <div className="inline-block bg-gradient-to-r from-blue-500 to-teal-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
-                Former APAC CTO & CIO Adviser
+                Rising APAC CTO & CIO Adviser
               </div>
               
               <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Troy Latter</h1>
-              <h2 className="text-2xl md:text-3xl text-blue-200 mb-6">Vice President | CIO & CTO Leader | Strategic Technology Advisor</h2>
+              <h2 className="text-2xl md:text-3xl text-blue-200 mb-6">CIO & CTO Leader | Strategic Technology Advisor</h2>
               
               <p className="text-lg text-gray-300 mb-6">
                 Sydney, Australia | AGSVA NV2 Security Clearance
@@ -154,7 +153,7 @@ const ExecutiveProfile = () => {
             <div className="grid lg:grid-cols-2 gap-10">
               <div>
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  Former APAC CTO and CIO Adviser. A strategic technology leader with 15+ years driving $3B+ in enterprise transformation across government, financial services, and telecommunications sectors. Proven track record building CIO/CTO networks and translating complex technical solutions into business value for C-suite executives.
+                  Rising APAC CTO and CIO Adviser. A strategic technology leader with 15+ years driving $3B+ in enterprise transformation across government, financial services, and telecommunications sectors. Proven track record building CIO/CTO networks and translating complex technical solutions into business value for C-suite executives.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
                   Deep multi-cloud expertise (AWS, Azure, GCP) with hands-on experience in AI-enabled enterprise solutions, data architecture, and digital transformation at scale.
@@ -236,7 +235,7 @@ const ExecutiveProfile = () => {
                     </div>
                     <div className="flex-1">
                       <h4 className="text-lg font-bold text-brand-primary">{role.title}</h4>
-                      <p className="text-blue-600 font-semibold">{role.organization}</p>
+                      <p className="text-blue-600 font-semibold">{role.organisation}</p>
                       <p className="text-sm text-gray-600 mb-2">{role.period}</p>
                       <p className="text-gray-700 text-sm">{role.description}</p>
                     </div>

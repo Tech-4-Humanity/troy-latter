@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
@@ -15,7 +14,7 @@ export const HeroSection = () => {
       
       <div className="relative max-w-4xl mx-auto">
         <div className="inline-block bg-gradient-to-r from-blue-500 to-teal-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in">
-          Former APAC CTO & CIO Adviser
+          Rising APAC CTO & CIO Adviser
         </div>
         
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">

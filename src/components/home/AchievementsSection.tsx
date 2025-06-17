@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Award, Zap, Target } from 'lucide-react';
 
@@ -6,7 +5,7 @@ export const AchievementsSection = () => {
   const achievements = [
     {
       icon: Award,
-      title: "Former APAC CTO",
+      title: "Rising APAC CTO",
       description: "Led technology strategy across Asia-Pacific region",
       color: "bg-blue-500",
       image: "/lovable-uploads/5082db7f-2070-4c23-baa2-647e9d5b8818.png"
