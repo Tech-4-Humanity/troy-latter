@@ -18,18 +18,18 @@ export const Navbar = () => {
   return (
     <header className="bg-[#0A101E] text-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
+        <div className="flex justify-between items-centre py-4">
+          <div className="flex items-centre">
             <Link 
               to="/"
-              className="flex items-center hover:opacity-90 transition-opacity"
+              className="flex items-centre hover:opacity-90 transition-opacity"
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center mr-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-centre justify-centre mr-3">
                 <span className="text-lg font-bold">TL</span>
               </div>
               <div>
                 <span className="text-xl font-semibold">Troy Latter</span>
-                <div className="text-xs text-gray-300">VP | CTO & CIO Leader</div>
+                <div className="text-xs text-gray-300">CTO & CIO Leader</div>
               </div>
             </Link>
           </div>

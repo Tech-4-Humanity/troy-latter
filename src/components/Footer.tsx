@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, Linkedin } from 'lucide-react';
@@ -35,12 +34,12 @@ export const Footer = () => {
           <div className="md:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <div className="flex items-center">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center mr-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-centre justify-centre mr-3">
                   <span className="text-lg font-bold">TL</span>
                 </div>
                 <div>
                   <div className="text-lg font-semibold">Troy Latter</div>
-                  <div className="text-xs text-gray-300">VP | CTO & CIO Leader</div>
+                  <div className="text-xs text-gray-300">CTO & CIO Leader</div>
                 </div>
               </div>
             </Link>
@@ -100,7 +99,7 @@ export const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+        <div className="border-t border-gray-700 mt-8 pt-8 text-centre">
           <p className="text-gray-400 text-sm">
             © {currentYear} Troy Latter. Strategic Technology Leadership & Innovation Advisory.
           </p>

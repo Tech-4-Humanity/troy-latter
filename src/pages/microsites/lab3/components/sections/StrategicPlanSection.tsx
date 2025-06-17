@@ -12,12 +12,12 @@ export const StrategicPlanSection = () => {
         'Shadow pre-sales and client engagements to learn solution design processes',
         'Review LAB3\'s Terraform modules, Azure DevOps pipelines, and Well-Architected Framework (WAF) alignment',
         'Map stakeholders for top 3 client accounts',
-        'Analyze LAB3\'s solution coverage against Microsoft Cloud Adoption Framework (CAF)'
+        'Analyse LAB3\'s solution coverage against Microsoft Cloud Adoption Framework (CAF)'
       ],
       deliverables: [
         'Technical brief on LAB3\'s Azure solution gaps vs. CAF/WAF',
         'Matrix linking client needs to LAB3 services',
-        'Prioritized list of accounts for immediate technical impact'
+        'Prioritised list of accounts for immediate technical impact'
       ],
       color: 'blue'
     },
@@ -28,7 +28,7 @@ export const StrategicPlanSection = () => {
         'Lead technical consultations for 1–2 strategic clients, aligning with CAF/WAF',
         'Co-create C-suite-ready solution presentations for enterprise accounts',
         'Refine client roadmaps to integrate LAB3\'s Azure accelerators and secure-by-design principles',
-        'Pilot \'Kill-or-Scale\' framework to prioritize PoCs and minimize technical debt',
+        'Pilot \'Kill-or-Scale\' framework to prioritise PoCs and minimise technical debt',
         'Embed Cloud Security Posture Management (CSPM) and DevSecOps in designs'
       ],
       deliverables: [
@@ -40,10 +40,10 @@ export const StrategicPlanSection = () => {
     },
     {
       title: 'Days 61–90: Scale Impact & Governance',
-      objective: 'Standardize patterns, lead governance, and boost innovation.',
+      objective: 'Standardise patterns, lead governance, and boost innovation.',
       activities: [
         'Facilitate 2 architecture workshops for high-value clients',
-        'Deliver internal tech talk on Azure specialty (e.g., Zero Trust, Azure Arc)',
+        'Deliver internal tech talk on Azure speciality (e.g., Zero Trust, Azure Arc)',
         'Lead retrospective on a pre-sales win or incident to refine processes',
         'Align with Microsoft Partner team on co-sell strategies for Fabric/Copilot',
         'Mentor LAB3 architects on stakeholder engagement and technical storytelling'
@@ -92,32 +92,32 @@ export const StrategicPlanSection = () => {
 
   return (
     <div className="space-y-8">
-      <div className="text-center mb-12">
+      <div className="text-centre mb-12">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Enhanced 30/60/90 Day Plan</h2>
         <div className="w-24 h-1 bg-blue-500 mx-auto mb-4"></div>
-        <p className="text-lg text-gray-700 max-w-4xl mx-auto">LAB3 Principal Technologist (Sydney) — This streamlined plan ensures rapid alignment with LAB3's client-first, Microsoft Azure-focused model, emphasizing pre-sales, technical leadership, and scalable delivery.</p>
+        <p className="text-lg text-gray-700 max-w-4xl mx-auto">LAB3 Principal Technologist (Sydney) - This streamlined plan ensures rapid alignment with LAB3's client-first, Microsoft Azure-focused model, emphasising pre-sales, technical leadership, and scalable delivery.</p>
       </div>
       
       <div className="grid gap-12">
         {phases.map((phase, index) => {
-          const colors = getColorClasses(phase.color);
+          const colours = getColorClasses(phase.color);
           return (
-            <Card key={index} className={`${colors.bg} ${colors.border} border-2 shadow-lg`}>
+            <Card key={index} className={`${colours.bg} ${colours.border} border-2 shadow-lg`}>
               <CardContent className="p-10">
-                <div className="flex items-center mb-6">
-                  <div className={`w-3 h-12 ${colors.accent} rounded-full mr-6`}></div>
-                  <h3 className={`text-2xl font-bold ${colors.title}`}>{phase.title}</h3>
+                <div className="flex items-centre mb-6">
+                  <div className={`w-3 h-12 ${colours.accent} rounded-full mr-6`}></div>
+                  <h3 className={`text-2xl font-bold ${colours.title}`}>{phase.title}</h3>
                 </div>
                 
                 <div className="mb-8">
-                  <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                  <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-centre">
                     🎯 <span className="ml-2">Objective</span>
                   </h4>
                   <p className="text-gray-800 text-lg leading-relaxed">{phase.objective}</p>
                 </div>
 
                 <div className="mb-8">
-                  <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                  <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-centre">
                     ⚡ <span className="ml-2">Key Activities</span>
                   </h4>
                   <ul className="text-gray-800 space-y-3">
@@ -131,7 +131,7 @@ export const StrategicPlanSection = () => {
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                  <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-centre">
                     🎁 <span className="ml-2">Deliverables</span>
                   </h4>
                   <ul className="text-gray-800 space-y-3">
