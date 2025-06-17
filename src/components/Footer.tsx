@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, Linkedin } from 'lucide-react';
@@ -16,7 +17,6 @@ export const Footer = () => {
   const resourceLinks = [
     { path: '/resources/whitepapers', label: 'Whitepapers' },
     { path: '/resources/lean-canvas', label: 'Lean Canvas' },
-    { path: '/microsites/interview-prep', label: 'Shield AI' },
   ];
 
   // Contact information

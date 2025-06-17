@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { BriefcaseIcon, ArrowRight, Target } from 'lucide-react';
+import { BriefcaseIcon, ArrowRight, Target, Building } from 'lucide-react';
 
 const MicrositeIndex = () => {
   const microsites = [
@@ -14,6 +14,15 @@ const MicrositeIndex = () => {
       path: '/microsites/interview-prep',
       status: 'Available',
       features: ['Executive frameworks', 'Case studies', 'Strategic thinking tools']
+    },
+    {
+      id: 'lab3',
+      title: 'Lab3',
+      description: 'Principal Technologist showcase demonstrating engineering-first culture alignment and Microsoft ecosystem expertise',
+      icon: Building,
+      path: '/microsites/lab3',
+      status: 'Available',
+      features: ['30/60/90 strategic plan', 'Case study highlights', 'Technical strengths mapping']
     }
   ];
 

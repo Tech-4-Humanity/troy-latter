@@ -21,6 +21,7 @@ import LeanCanvas from "./pages/LeanCanvas";
 // Microsite pages
 import MicrositeIndex from "./pages/microsites/MicrositeIndex";
 import InterviewPrepIndex from "./pages/microsites/interview-prep/Index";
+import Lab3Index from "./pages/microsites/lab3/Index";
 
 // Legacy pages that are still accessible but redirected
 import InnovationDefinition from "./pages/InnovationDefinition";
@@ -64,6 +65,7 @@ const App = () => (
           {/* Microsite routes with separate layout */}
           <Route path="/microsites" element={<MicrositeLayout><MicrositeIndex /></MicrositeLayout>} />
           <Route path="/microsites/interview-prep" element={<MicrositeLayout><InterviewPrepIndex /></MicrositeLayout>} />
+          <Route path="/microsites/lab3" element={<MicrositeLayout><Lab3Index /></MicrositeLayout>} />
           
           {/* Navigation redirects - consolidate similar content */}
           <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />
