@@ -69,7 +69,7 @@ const YourProfileStars = () => {
       
       <div className="mb-6">
         <p className="text-lg text-vault-secondary">
-          Review practical examples of how your skills and experience align with Vault's requirements.
+          A 1, 2, 3 Snapshot. Practical examples of how my skills and experience align with your requirements.
         </p>
       </div>
       
