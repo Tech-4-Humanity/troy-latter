@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -26,24 +25,24 @@ export const Footer = () => {
   const resourceLinks = [
     { path: '/resources/whitepapers', label: 'Whitepapers' },
     { path: '/resources/lean-canvas', label: 'Lean Canvas' },
-    { path: '/microsites/lab3', label: 'Lab3' },
     { path: '/what-is-innovation', label: 'What is Innovation' },
     { path: '/faqs', label: 'FAQs' },
+    { path: '/microsites/lab3', label: 'Lab3' },
   ];
   
   return (
-    <footer className="bg-brand-primary text-white py-8 border-t border-brand-primary/50 mt-16">
+    <footer className="bg-brand-primary text-white py-6 border-t border-brand-primary/50 mt-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {/* Branding - Compact */}
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="inline-block mb-3">
+            <Link to="/" className="inline-block mb-2">
               <div className="flex items-center">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center mr-2">
-                  <span className="text-sm font-bold">TL</span>
+                <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center mr-2">
+                  <span className="text-xs font-bold">TL</span>
                 </div>
                 <div>
-                  <div className="text-base font-semibold">Troy Latter</div>
+                  <div className="text-sm font-semibold">Troy Latter</div>
                   <div className="text-xs text-gray-300">CTO & CIO Leader</div>
                 </div>
               </div>
@@ -52,7 +51,7 @@ export const Footer = () => {
           
           {/* About */}
           <div>
-            <h3 className="text-brand-accent font-medium mb-3 text-sm">About</h3>
+            <h3 className="text-brand-accent font-medium mb-2 text-xs uppercase tracking-wide">About</h3>
             <div className="space-y-1">
               {aboutLinks.map((route) => (
                 <Link 
@@ -68,7 +67,7 @@ export const Footer = () => {
           
           {/* Experience */}
           <div>
-            <h3 className="text-brand-accent font-medium mb-3 text-sm">Experience</h3>
+            <h3 className="text-brand-accent font-medium mb-2 text-xs uppercase tracking-wide">Experience</h3>
             <div className="space-y-1">
               {experienceLinks.map((route) => (
                 <Link 
@@ -84,7 +83,7 @@ export const Footer = () => {
           
           {/* Expertise */}
           <div>
-            <h3 className="text-brand-accent font-medium mb-3 text-sm">Expertise</h3>
+            <h3 className="text-brand-accent font-medium mb-2 text-xs uppercase tracking-wide">Expertise</h3>
             <div className="space-y-1">
               {expertiseLinks.map((route) => (
                 <Link 
@@ -100,7 +99,7 @@ export const Footer = () => {
           
           {/* Resources */}
           <div>
-            <h3 className="text-brand-accent font-medium mb-3 text-sm">Resources</h3>
+            <h3 className="text-brand-accent font-medium mb-2 text-xs uppercase tracking-wide">Resources</h3>
             <div className="space-y-1">
               {resourceLinks.map((route) => (
                 <Link 
@@ -116,7 +115,7 @@ export const Footer = () => {
         </div>
         
         {/* Copyright - Single line at bottom */}
-        <div className="border-t border-gray-700 mt-6 pt-4 text-center">
+        <div className="border-t border-gray-700 mt-4 pt-3 text-center">
           <p className="text-gray-400 text-xs">
             © {currentYear} Troy Latter. Strategic Technology Leadership & Innovation Advisory.
           </p>
