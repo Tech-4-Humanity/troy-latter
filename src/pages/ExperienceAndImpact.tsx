@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PageTitle } from '@/components/PageTitle';
@@ -16,7 +17,7 @@ const ExperienceAndImpact = () => {
       image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069&auto=format&fit=crop'
     },
     {
-      title: 'Initiatives',
+      title: 'Customer Initiatives',
       description: 'Building cultures of rapid experimentation while driving ecosystem alliances and thought leadership.',
       icon: Users,
       path: '/responsibilities',
@@ -24,7 +25,7 @@ const ExperienceAndImpact = () => {
       image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop'
     },
     {
-      title: 'Innovation Leadership Approach',
+      title: 'Innovation Approach',
       description: 'Systematic approaches to customer-driven innovation with practical frameworks and real-world applications.',
       icon: Lightbulb,
       path: '/customer-asks-stars',

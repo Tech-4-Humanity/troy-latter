@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -37,7 +36,7 @@ const CustomerAsksStars = () => {
   
   return (
     <div className="animate-fade-in max-w-7xl mx-auto">
-      <PageTitle title="Innovation Leadership Approach" />
+      <PageTitle title="Innovation Approach" />
       
       {/* Hero section with video */}
       <div className="mb-10 bg-brand-light rounded-lg overflow-hidden shadow-xl">

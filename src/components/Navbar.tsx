@@ -24,7 +24,7 @@ const navigationCategories = [
     items: [
       { path: '/executive-profile', label: 'Executive Profile' },
       { path: '/leadership-style', label: 'Leadership Style' },
-      { path: '/your-profile-stars', label: 'Practical Examples' },
+      { path: '/your-profile-stars', label: 'Customer Activations' },
     ]
   },
   {
@@ -32,8 +32,8 @@ const navigationCategories = [
     mainPath: '/experience-and-impact',
     items: [
       { path: '/strategic-projects', label: 'Strategic Projects' },
-      { path: '/responsibilities', label: 'Initiatives' },
-      { path: '/customer-asks-stars', label: 'Innovation Leadership Approach' },
+      { path: '/responsibilities', label: 'Customer Initiatives' },
+      { path: '/customer-asks-stars', label: 'Innovation Approach' },
     ]
   },
   {

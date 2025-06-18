@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Separator } from '@/components/ui/separator';
@@ -8,7 +9,7 @@ import { KeyResponsibilities } from '@/components/responsibilities/KeyResponsibi
 const Responsibilities = () => {
   return (
     <div className="max-w-7xl mx-auto">
-      <PageTitle title="Initiatives" />
+      <PageTitle title="Customer Initiatives" />
       
       <div className="text-lg mb-8">
         <p className="mb-6">

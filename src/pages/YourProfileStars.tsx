@@ -64,7 +64,7 @@ const YourProfileStars = () => {
 
   return (
     <div>
-      <PageTitle title="Practical Examples" />
+      <PageTitle title="Customer Activations" />
       
       <div className="mb-6">
         <p className="text-lg text-vault-secondary">

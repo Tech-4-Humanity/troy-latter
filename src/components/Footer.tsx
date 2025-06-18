@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -10,10 +9,10 @@ export const Footer = () => {
     { path: '/executive-profile', label: 'Executive Profile' },
     { path: '/core-competencies', label: 'Core Competencies' },
     { path: '/strategic-projects', label: 'Strategic Projects' },
-    { path: '/responsibilities', label: 'Initiatives' },
+    { path: '/responsibilities', label: 'Customer Initiatives' },
     { path: '/industry-expertise', label: 'Industry Expertise' },
     { path: '/leadership-style', label: 'Leadership Style' },
-    { path: '/your-profile-stars', label: 'Practical Examples' },
+    { path: '/your-profile-stars', label: 'Customer Activations' },
   ];
   
   // Resource links
