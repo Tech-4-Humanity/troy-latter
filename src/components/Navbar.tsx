@@ -34,7 +34,7 @@ const navigationCategories = [
     items: [
       { path: '/strategic-projects', label: 'Strategic Projects' },
       { path: '/responsibilities', label: 'Initiatives' },
-      { path: '/customer-asks-stars', label: 'Customer Asks Stars' },
+      { path: '/customer-asks-stars', label: 'Innovation Leadership Approach' },
     ]
   },
   {
