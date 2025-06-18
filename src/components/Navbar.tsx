@@ -33,7 +33,7 @@ const navigationCategories = [
     mainPath: '/strategic-projects',
     items: [
       { path: '/strategic-projects', label: 'Strategic Projects' },
-      { path: '/responsibilities', label: 'Responsibilities' },
+      { path: '/responsibilities', label: 'Initiatives' },
       { path: '/customer-asks-stars', label: 'Customer Asks Stars' },
     ]
   },
