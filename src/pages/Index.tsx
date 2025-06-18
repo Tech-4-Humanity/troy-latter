@@ -1,6 +1,7 @@
 
 import { HeroSection } from '@/components/home/HeroSection';
 import { MetricsSection } from '@/components/home/MetricsSection';
+import { AIStrategySection } from '@/components/home/AIStrategySection';
 import { AchievementsSection } from '@/components/home/AchievementsSection';
 import { ExecutiveSummarySection } from '@/components/home/ExecutiveSummarySection';
 import { CTASection } from '@/components/home/CTASection';
@@ -13,6 +14,9 @@ const Index = () => {
       
       {/* Key Metrics with Supporting Image */}
       <MetricsSection />
+      
+      {/* AI Strategy & Transformation */}
+      <AIStrategySection />
       
       {/* Key Achievements with Industry Images */}
       <AchievementsSection />
