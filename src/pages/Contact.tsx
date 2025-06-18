@@ -64,6 +64,18 @@ const Contact = () => {
     }
   ];
 
+  const handleScheduleClick = () => {
+    // For now, redirect to email - can be updated with actual Calendly link
+    window.open('mailto:troy.latter@gmail.com?subject=Schedule a Consultation', '_blank');
+  };
+
+  const handleDownloadCV = () => {
+    // Placeholder for CV download - would typically link to actual PDF
+    console.log('CV download requested - implement with actual file');
+    // For now, show a message or redirect to contact
+    alert('CV available upon request. Please contact directly via email.');
+  };
+
   return (
     <div className="animate-fade-in">
       <PageTitle title="Contact & Engagement" />
@@ -80,7 +92,9 @@ const Contact = () => {
                   {contact.href !== "#" ? (
                     <a 
                       href={contact.href}
-                      className="text-brand-accent hover:text-brand-accent/80 font-medium mb-2 block"
+                      className="text-brand-accent hover:text-brand-accent/80 font-medium mb-2 block transition-colors"
+                      target={contact.href.startsWith('http') ? '_blank' : '_self'}
+                      rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     >
                       {contact.value}
                     </a>
@@ -100,7 +114,7 @@ const Contact = () => {
         <h2 className="text-2xl font-bold text-brand-primary mb-6">Engagement Opportunities</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {engagementTypes.map((engagement, index) => (
-            <Card key={index}>
+            <Card key={index} className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold text-brand-primary mb-3">{engagement.title}</h3>
                 <p className="text-gray-700 mb-4">{engagement.description}</p>
@@ -116,38 +130,51 @@ const Contact = () => {
 
       {/* Quick Actions */}
       <div className="grid md:grid-cols-3 gap-6 mb-12">
-        <Card className="text-center">
+        <Card className="text-center hover:shadow-lg transition-shadow">
           <CardContent className="p-6">
             <Calendar className="h-8 w-8 text-brand-accent mx-auto mb-4" />
             <h3 className="font-semibold mb-2">Schedule a Call</h3>
             <p className="text-sm text-gray-600 mb-4">Book a consultation to discuss your technology strategy</p>
-            <Button size="sm" className="w-full">Schedule Now</Button>
+            <Button 
+              size="sm" 
+              className="w-full hover:scale-105 transition-transform" 
+              onClick={handleScheduleClick}
+            >
+              Schedule Now
+            </Button>
           </CardContent>
         </Card>
 
-        <Card className="text-center">
+        <Card className="text-center hover:shadow-lg transition-shadow">
           <CardContent className="p-6">
             <Download className="h-8 w-8 text-brand-accent mx-auto mb-4" />
             <h3 className="font-semibold mb-2">Download CV</h3>
             <p className="text-sm text-gray-600 mb-4">Get the complete professional profile and credentials</p>
-            <Button size="sm" variant="outline" className="w-full">Download PDF</Button>
+            <Button 
+              size="sm" 
+              variant="outline" 
+              className="w-full hover:scale-105 transition-transform" 
+              onClick={handleDownloadCV}
+            >
+              Download PDF
+            </Button>
           </CardContent>
         </Card>
 
-        <Card className="text-center">
+        <Card className="text-center hover:shadow-lg transition-shadow">
           <CardContent className="p-6">
             <Mail className="h-8 w-8 text-brand-accent mx-auto mb-4" />
             <h3 className="font-semibold mb-2">Send Message</h3>
             <p className="text-sm text-gray-600 mb-4">Reach out directly for specific inquiries</p>
-            <Button size="sm" variant="outline" className="w-full">
-              <a href="mailto:troy.latter@gmail.com">Send Email</a>
+            <Button size="sm" variant="outline" className="w-full hover:scale-105 transition-transform" asChild>
+              <a href="mailto:troy.latter@gmail.com?subject=Business Inquiry">Send Email</a>
             </Button>
           </CardContent>
         </Card>
       </div>
 
       {/* Availability Note */}
-      <Card className="bg-brand-light">
+      <Card className="bg-brand-light hover:shadow-lg transition-shadow">
         <CardContent className="p-6">
           <h3 className="font-semibold text-brand-primary mb-3">Current Availability</h3>
           <ul className="space-y-2 text-gray-700">

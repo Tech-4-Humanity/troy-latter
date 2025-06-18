@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
@@ -59,6 +58,8 @@ export const Navbar = () => {
   };
 
   const isActivePath = (path: string) => location.pathname === path;
+
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
   
   return (
     <header className="bg-[#0A101E]/95 backdrop-blur-sm text-white shadow-lg sticky top-0 z-50 border-b border-white/10">
@@ -68,6 +69,7 @@ export const Navbar = () => {
             <Link 
               to="/"
               className="flex items-center hover:opacity-90 transition-opacity"
+              onClick={closeMobileMenu}
             >
               <div className="w-10 h-10 bg-gradient-to-br from-purple-500 via-blue-500 to-teal-500 rounded-full flex items-center justify-center mr-3 shadow-lg">
                 <span className="text-lg font-bold">TL</span>
@@ -100,12 +102,13 @@ export const Navbar = () => {
                         className={`text-white hover:text-[#56A4E3] hover:bg-white/10 p-1 ml-1 ${
                           isActiveCategory(category) ? 'text-[#56A4E3]' : ''
                         }`}
+                        aria-label={`Open ${category.title} submenu`}
                       >
                         <ChevronDown className="h-3 w-3" />
                       </Button>
                     </DropdownMenuTrigger>
                   </div>
-                  <DropdownMenuContent className="bg-[#0A101E]/95 backdrop-blur-sm border-gray-700 shadow-xl min-w-[200px]">
+                  <DropdownMenuContent className="bg-[#0A101E]/95 backdrop-blur-sm border-gray-700 shadow-xl min-w-[200px] z-50">
                     {category.items.map((item) => (
                       <DropdownMenuItem key={item.path} className="focus:bg-white/10 p-0">
                         <Link
@@ -139,8 +142,9 @@ export const Navbar = () => {
             size="icon"
             className="lg:hidden text-white hover:bg-white/10 backdrop-blur-sm"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
           >
-            <span className="sr-only">Toggle menu</span>
             {isMobileMenuOpen ? (
               <X className="h-5 w-5" />
             ) : (
@@ -157,10 +161,10 @@ export const Navbar = () => {
                 <div key={category.title} className="border-b border-gray-700 pb-2 mb-2">
                   <Link
                     to={category.mainPath}
-                    className={`text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-3 block mb-1 rounded-lg hover:bg-white/10 ${
+                    className={`text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-3 block mb-1 rounded-lg hover:bg-white/10 active:bg-white/20 ${
                       isActivePath(category.mainPath) ? 'text-[#56A4E3] bg-white/10' : ''
                     }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={closeMobileMenu}
                   >
                     {category.title}
                   </Link>
@@ -168,10 +172,10 @@ export const Navbar = () => {
                     <Link
                       key={item.path}
                       to={item.path}
-                      className={`text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-4 py-2 block rounded-lg hover:bg-white/5 ${
+                      className={`text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-4 py-2 block rounded-lg hover:bg-white/5 active:bg-white/10 ${
                         isActivePath(item.path) ? 'bg-white/10 text-[#56A4E3]' : ''
                       }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={closeMobileMenu}
                     >
                       {item.label}
                     </Link>
@@ -181,10 +185,10 @@ export const Navbar = () => {
               
               <Link
                 to={standaloneRoute.path}
-                className={`text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-3 rounded-lg hover:bg-white/10 ${
+                className={`text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-3 rounded-lg hover:bg-white/10 active:bg-white/20 ${
                   isActivePath(standaloneRoute.path) ? 'bg-white/10 text-[#56A4E3]' : ''
                 }`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={closeMobileMenu}
               >
                 {standaloneRoute.label}
               </Link>
