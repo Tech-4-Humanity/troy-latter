@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
@@ -101,7 +102,7 @@ const CoreCompetencies = () => {
               <div className="bg-white/10 p-6 rounded-xl">
                 <h3 className="font-semibold mb-3">Competency Highlights</h3>
                 <ul className="text-sm space-y-2">
-                  <li>• 15+ AWS, Azure, GCP certifications</li>
+                  <li>• 20+ AWS, Azure, GCP, Oracle certifications and/or micro certifications</li>
                   <li>• $350M+ in enterprise sales generated</li>
                   <li>• 200+ C-level relationships across APAC</li>
                   <li>• 50+ digital transformation projects</li>
