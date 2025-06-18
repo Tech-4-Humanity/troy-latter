@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
@@ -47,7 +48,7 @@ const navigationCategories = [
   }
 ];
 
-const standaloneRoute = { path: '/current-roles', label: 'Current Roles' };
+const standaloneRoute = { path: '/contact', label: 'Contact' };
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
