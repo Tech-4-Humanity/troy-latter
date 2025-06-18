@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PageTitle } from '@/components/PageTitle';
@@ -65,36 +64,36 @@ const ExperienceAndImpact = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         {sections.map((section, index) => (
-          <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-            <div className="h-48 overflow-hidden">
-              <img 
-                src={section.image} 
-                alt={section.title}
-                className="w-full h-full object-cover transition-transform hover:scale-105"
-              />
-            </div>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <section.icon className="h-5 w-5 text-vault-primary" />
-                <h3 className="text-xl font-semibold text-vault-primary">{section.title}</h3>
+          <Link key={index} to={section.path} className="block">
+            <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 focus:ring-2 focus:ring-vault-primary focus:outline-none h-full">
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src={section.image} 
+                  alt={section.title}
+                  className="w-full h-full object-cover transition-transform hover:scale-105"
+                />
               </div>
-              
-              <p className="text-vault-secondary text-sm mb-4">
-                {section.description}
-              </p>
-              
-              <div className="bg-vault-accent/10 p-3 rounded-lg mb-4">
-                <p className="text-vault-primary font-medium text-sm">{section.highlight}</p>
-              </div>
-              
-              <Link to={section.path}>
-                <Button className="w-full bg-vault-primary hover:bg-vault-primary/90 text-white">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="flex items-center gap-2 mb-3">
+                  <section.icon className="h-5 w-5 text-vault-primary" />
+                  <h3 className="text-xl font-semibold text-vault-primary">{section.title}</h3>
+                </div>
+                
+                <p className="text-vault-secondary text-sm mb-4 flex-grow">
+                  {section.description}
+                </p>
+                
+                <div className="bg-vault-accent/10 p-3 rounded-lg mb-4">
+                  <p className="text-vault-primary font-medium text-sm">{section.highlight}</p>
+                </div>
+                
+                <div className="w-full bg-vault-primary hover:bg-vault-primary/90 text-white rounded-md px-4 py-2 flex items-center justify-center transition-colors">
                   Explore Details
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
 
