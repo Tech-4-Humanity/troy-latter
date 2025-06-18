@@ -3,7 +3,7 @@ import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Mail, Phone, Linkedin, MapPin, Calendar, Download } from 'lucide-react';
+import { Mail, Phone, Linkedin, MapPin, Calendar } from 'lucide-react';
 
 const Contact = () => {
   const contactMethods = [
@@ -65,15 +65,8 @@ const Contact = () => {
   ];
 
   const handleScheduleClick = () => {
-    // For now, redirect to email - can be updated with actual Calendly link
-    window.open('mailto:troy.latter@gmail.com?subject=Schedule a Consultation', '_blank');
-  };
-
-  const handleDownloadCV = () => {
-    // Placeholder for CV download - would typically link to actual PDF
-    console.log('CV download requested - implement with actual file');
-    // For now, show a message or redirect to contact
-    alert('CV available upon request. Please contact directly via email.');
+    // Direct to email with subject for scheduling - can be updated with Calendly integration
+    window.open('mailto:troy.latter@gmail.com?subject=Schedule a Consultation&body=Hi Troy,%0D%0A%0D%0AI would like to schedule a consultation to discuss...', '_blank');
   };
 
   return (
@@ -128,8 +121,8 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Quick Actions */}
-      <div className="grid md:grid-cols-3 gap-6 mb-12">
+      {/* Quick Actions - Updated to 2 columns */}
+      <div className="grid md:grid-cols-2 gap-6 mb-12">
         <Card className="text-center hover:shadow-lg transition-shadow">
           <CardContent className="p-6">
             <Calendar className="h-8 w-8 text-brand-accent mx-auto mb-4" />
@@ -140,23 +133,7 @@ const Contact = () => {
               className="w-full hover:scale-105 transition-transform" 
               onClick={handleScheduleClick}
             >
-              Schedule Now
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card className="text-center hover:shadow-lg transition-shadow">
-          <CardContent className="p-6">
-            <Download className="h-8 w-8 text-brand-accent mx-auto mb-4" />
-            <h3 className="font-semibold mb-2">Download CV</h3>
-            <p className="text-sm text-gray-600 mb-4">Get the complete professional profile and credentials</p>
-            <Button 
-              size="sm" 
-              variant="outline" 
-              className="w-full hover:scale-105 transition-transform" 
-              onClick={handleDownloadCV}
-            >
-              Download PDF
+              Contact to Schedule
             </Button>
           </CardContent>
         </Card>

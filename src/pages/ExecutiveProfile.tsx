@@ -1,8 +1,7 @@
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Download, Mail, Phone, Linkedin, Award, Users, Building, Zap, Globe, Target } from 'lucide-react';
+import { Mail, Phone, Linkedin, Award, Users, Building, Zap, Globe, Target } from 'lucide-react';
 
 const ExecutiveProfile = () => {
   const contactInfo = [
@@ -87,7 +86,7 @@ const ExecutiveProfile = () => {
 
   return (
     <div className="animate-fade-in space-y-12">
-      {/* Hero Section */}
+      {/* Hero Section - Updated without CV download button */}
       <section className="relative bg-gradient-to-br from-gray-900 via-[#1a2332] to-gray-900 text-white py-20 rounded-2xl overflow-hidden shadow-2xl">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full animate-pulse"></div>
@@ -108,7 +107,7 @@ const ExecutiveProfile = () => {
                 Sydney, Australia | AGSVA NV2 Security Clearance
               </p>
               
-              <div className="flex flex-wrap gap-6 mb-8">
+              <div className="flex flex-wrap gap-6">
                 {contactInfo.map((contact, index) => (
                   <a
                     key={index}
@@ -121,13 +120,6 @@ const ExecutiveProfile = () => {
                     <span className="text-sm">{contact.label}</span>
                   </a>
                 ))}
-              </div>
-              
-              <div className="flex gap-4">
-                <Button size="lg" className="bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white">
-                  <Download className="mr-2 h-5 w-5" />
-                  Download Full CV
-                </Button>
               </div>
             </div>
             
