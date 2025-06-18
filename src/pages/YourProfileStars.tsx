@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { FeatureCard } from '@/components/FeatureCard';
@@ -65,7 +64,7 @@ const YourProfileStars = () => {
 
   return (
     <div>
-      <PageTitle title="Your Profile Stars" />
+      <PageTitle title="Practical Examples" />
       
       <div className="mb-6">
         <p className="text-lg text-vault-secondary">

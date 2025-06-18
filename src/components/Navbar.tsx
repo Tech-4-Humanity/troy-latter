@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
@@ -25,7 +24,7 @@ const navigationCategories = [
     items: [
       { path: '/executive-profile', label: 'Executive Profile' },
       { path: '/leadership-style', label: 'Leadership Style' },
-      { path: '/your-profile-stars', label: 'Your Profile Stars' },
+      { path: '/your-profile-stars', label: 'Practical Examples' },
     ]
   },
   {
