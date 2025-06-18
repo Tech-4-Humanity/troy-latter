@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,6 +16,7 @@ import NotFound from "./pages/NotFound";
 import NinetyDayPlan from "./pages/NinetyDayPlan";
 import Whitepapers from "./pages/Whitepapers";
 import LeanCanvas from "./pages/LeanCanvas";
+import ExperienceAndImpact from "./pages/ExperienceAndImpact";
 
 // Microsite pages
 import MicrositeIndex from "./pages/microsites/MicrositeIndex";
@@ -52,6 +52,7 @@ const App = () => (
           {/* Main site routes with main layout */}
           <Route path="/" element={<Layout><Index /></Layout>} />
           <Route path="/executive-profile" element={<Layout><ExecutiveProfile /></Layout>} />
+          <Route path="/experience-and-impact" element={<Layout><ExperienceAndImpact /></Layout>} />
           <Route path="/core-competencies" element={<Layout><CoreCompetencies /></Layout>} />
           <Route path="/industry-expertise" element={<Layout><IndustryExpertise /></Layout>} />
           <Route path="/contact" element={<Layout><Contact /></Layout>} />

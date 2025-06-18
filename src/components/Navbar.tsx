@@ -29,7 +29,7 @@ const navigationCategories = [
   },
   {
     title: 'Experience & Impact',
-    mainPath: '/strategic-projects',
+    mainPath: '/experience-and-impact',
     items: [
       { path: '/strategic-projects', label: 'Strategic Projects' },
       { path: '/responsibilities', label: 'Initiatives' },
