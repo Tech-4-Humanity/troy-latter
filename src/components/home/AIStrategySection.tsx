@@ -30,13 +30,6 @@ export const AIStrategySection = () => {
     }
   ];
 
-  const techStack = [
-    { name: "AWS Bedrock", category: "Foundation Models" },
-    { name: "Azure OpenAI", category: "Generative AI" },
-    { name: "Vertex AI", category: "ML Platform" },
-    { name: "SageMaker", category: "ML Operations" }
-  ];
-
   return (
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-12">
@@ -48,7 +41,7 @@ export const AIStrategySection = () => {
       </div>
       
       {/* AI Metrics */}
-      <div className="grid md:grid-cols-4 gap-6 mb-12">
+      <div className="grid md:grid-cols-4 gap-6">
         {aiMetrics.map((metric, index) => (
           <Card key={index} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg backdrop-blur-sm bg-white/90">
             <CardContent className="p-6 text-center">
@@ -62,21 +55,6 @@ export const AIStrategySection = () => {
           </Card>
         ))}
       </div>
-
-      {/* Technology Stack */}
-      <Card className="backdrop-blur-sm bg-white/90 border-0 shadow-lg">
-        <CardContent className="p-8">
-          <h3 className="text-2xl font-bold text-brand-primary mb-6 text-center">AI Technology Stack</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {techStack.map((tech, index) => (
-              <div key={index} className="group p-4 rounded-lg bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:shadow-md transition-all duration-300 hover:scale-105">
-                <div className="font-semibold text-brand-primary mb-1">{tech.name}</div>
-                <div className="text-sm text-gray-600">{tech.category}</div>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 };

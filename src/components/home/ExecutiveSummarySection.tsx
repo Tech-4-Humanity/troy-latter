@@ -26,19 +26,27 @@ export const ExecutiveSummarySection = () => {
                 <ul className="text-sm text-gray-600 space-y-1">
                   <li>• Board Member - Queensland Government AI Hub</li>
                   <li>• Australian Committee Member - Standards Australia (BCI)</li>
-                  <li>• Advisory Board Convenor - Robotics Australia Group</li>
+                  <li>• Advisory Board Convenor - Global Council on BCI & Assistive Technology</li>
                   <li>• Founder & CEO - Tech 4 Humanity</li>
                 </ul>
               </div>
               
               <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
                 <h4 className="font-semibold text-brand-primary mb-2">Key Certifications</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• AWS Professional Solutions Architect</li>
-                  <li>• Azure AI Certified</li>
-                  <li>• GCP Certified</li>
-                  <li>• TOGAF & IT4IT Foundations</li>
-                </ul>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-gray-600">
+                  <div className="space-y-1">
+                    <div>• AWS Professional Solutions Architect</div>
+                    <div>• Azure AI Certified</div>
+                    <div>• GCP Certified</div>
+                    <div>• TOGAF & IT4IT Foundations</div>
+                  </div>
+                  <div className="space-y-1">
+                    <div>• Prosci Change Management</div>
+                    <div>• ITIL Foundation</div>
+                    <div>• Prince 2 Certified</div>
+                    <div>• Lean Management</div>
+                  </div>
+                </div>
               </div>
 
               <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
@@ -47,7 +55,6 @@ export const ExecutiveSummarySection = () => {
                   <li>• Keynote Speaker - AWS Public Sector Summit</li>
                   <li>• Defense+Industry Conference Speaker</li>
                   <li>• Published ML/Security Research Papers</li>
-                  <li>• 40+ Qualified Leads Generated Per Quarter</li>
                 </ul>
               </div>
             </div>
