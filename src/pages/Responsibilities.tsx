@@ -12,7 +12,7 @@ const Responsibilities = () => {
       
       <div className="text-lg mb-8">
         <p className="mb-6">
-          As Head of Innovation, I'll drive breakthrough initiatives while building a culture of rapid experimentation and measurable outcomes.
+          I drive breakthrough initiatives while building a culture of rapid experimentation and measurable outcomes.
         </p>
       </div>
       
