@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, Linkedin } from 'lucide-react';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,7 +9,11 @@ export const Footer = () => {
   const mainLinks = [
     { path: '/executive-profile', label: 'Executive Profile' },
     { path: '/core-competencies', label: 'Core Competencies' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/strategic-projects', label: 'Strategic Projects' },
+    { path: '/responsibilities', label: 'Initiatives' },
+    { path: '/industry-expertise', label: 'Industry Expertise' },
+    { path: '/leadership-style', label: 'Leadership Style' },
+    { path: '/your-profile-stars', label: 'Practical Examples' },
   ];
   
   // Resource links
@@ -20,19 +23,12 @@ export const Footer = () => {
     { path: '/microsites/lab3', label: 'Lab3' },
     { path: '/what-is-innovation', label: 'What is Innovation' },
   ];
-
-  // Contact information
-  const contactInfo = [
-    { icon: Mail, label: 'troy.latter@gmail.com', href: 'mailto:troy.latter@gmail.com' },
-    { icon: Phone, label: '+61 424 882 136', href: 'tel:+61424882136' },
-    { icon: Linkedin, label: 'LinkedIn Profile', href: 'https://www.linkedin.com/in/theinnovater/' },
-  ];
   
   return (
     <footer className="bg-brand-primary text-white py-12 border-t border-brand-primary/50 mt-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Logo and contact */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Logo and branding */}
           <div className="md:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <div className="flex items-center">
@@ -48,34 +44,6 @@ export const Footer = () => {
             <p className="text-gray-300 text-sm mb-4">
               Strategic Technology Leader
             </p>
-            <div className="space-y-2">
-              {contactInfo.map((contact, index) => (
-                <a
-                  key={index}
-                  href={contact.href}
-                  className="flex items-center text-gray-300 hover:text-brand-accent text-sm transition-colors"
-                >
-                  <contact.icon className="h-4 w-4 mr-2" />
-                  {contact.label}
-                </a>
-              ))}
-            </div>
-          </div>
-          
-          {/* Navigation */}
-          <div>
-            <h3 className="text-brand-accent font-medium mb-4">Navigation</h3>
-            <div className="space-y-2">
-              {mainLinks.map((route) => (
-                <Link 
-                  key={route.path}
-                  to={route.path} 
-                  className="block text-gray-300 hover:text-brand-accent text-sm transition-colors duration-200"
-                >
-                  {route.label}
-                </Link>
-              ))}
-            </div>
           </div>
           
           {/* Resources */}
@@ -98,6 +66,22 @@ export const Footer = () => {
                 FAQs
               </Link>
             </div>
+          </div>
+        </div>
+        
+        {/* Navigation - Full width section */}
+        <div className="mt-8 pt-8 border-t border-gray-700">
+          <h3 className="text-brand-accent font-medium mb-4">Navigation</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+            {mainLinks.map((route) => (
+              <Link 
+                key={route.path}
+                to={route.path} 
+                className="block text-gray-300 hover:text-brand-accent text-sm transition-colors duration-200"
+              >
+                {route.label}
+              </Link>
+            ))}
           </div>
         </div>
         
