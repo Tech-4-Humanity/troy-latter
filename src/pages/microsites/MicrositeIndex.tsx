@@ -16,13 +16,13 @@ const MicrositeIndex = () => {
       features: ['Executive frameworks', 'Case studies', 'Strategic thinking tools']
     },
     {
-      id: 'lab3',
-      title: 'Lab3',
-      description: 'Principal Technologist showcase demonstrating engineering-first culture alignment and Microsoft ecosystem expertise',
+      id: 'agentforce',
+      title: 'Agentforce',
+      description: 'Senior Principal Engineer showcase demonstrating AI agent expertise and Salesforce ecosystem mastery',
       icon: Building,
-      path: '/microsites/lab3',
+      path: '/microsites/agentforce',
       status: 'Available',
-      features: ['30/60/90 strategic plan', 'Case study highlights', 'Technical strengths mapping']
+      features: ['30/60/90 strategic plan', 'AI agent case studies', 'Salesforce platform expertise']
     }
   ];
 
