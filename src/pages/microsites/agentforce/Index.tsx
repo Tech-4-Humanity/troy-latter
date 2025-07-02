@@ -7,9 +7,9 @@ import { Button } from '@/components/ui/button';
 const AgentforceIndex = () => {
   return (
     <div className="animate-fade-in">
-      <Link to="/microsites" className="inline-flex items-center text-brand-primary hover:text-brand-accent mb-6 transition-colors">
+      <Link to="/" className="inline-flex items-center text-brand-primary hover:text-brand-accent mb-6 transition-colors">
         <ArrowLeft className="h-4 w-4 mr-2" />
-        Back to Micro-Sites
+        Back to Home
       </Link>
       
       <PageTitle title="Agentforce Strategic Portfolio" />
