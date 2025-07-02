@@ -25,13 +25,11 @@ const AgentforceIndex = () => {
         </p>
         
         <div className="bg-white p-4 rounded-md border border-gray-200 mb-6 inline-block">
-          <p className="text-sm font-medium">Please request access from troy.latter@gmail.com</p>
+          <p className="text-sm font-medium">Please contact us for access credentials</p>
         </div>
         
         <Button asChild className="mt-2">
-          <a href="mailto:troy.latter@gmail.com?subject=Agentforce%20Microsite%20Access%20Request&body=Hi%20Troy%2C%0A%0AI%20would%20like%20to%20request%20access%20to%20the%20Agentforce%20strategic%20portfolio%20microsite.%0A%0AThank%20you%2C%0A[Your%20Name]">
-            Request Access
-          </a>
+          <Link to="/contact">Request Access</Link>
         </Button>
       </div>
     </div>
