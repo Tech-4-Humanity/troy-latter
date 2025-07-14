@@ -16,13 +16,13 @@ const MicrositeIndex = () => {
       features: ['Executive frameworks', 'Case studies', 'Strategic thinking tools']
     },
     {
-      id: 'agentforce',
-      title: 'Agentforce',
-      description: 'Senior Principal Engineer showcase demonstrating AI agent expertise and Salesforce ecosystem mastery',
+      id: 'pega',
+      title: 'PEGA',
+      description: 'Enterprise BPM and case management expertise showcase for PEGA platform leadership roles',
       icon: Building,
-      path: '/microsites/agentforce',
+      path: '/microsites/pega',
       status: 'Available',
-      features: ['30/60/90 strategic plan', 'AI agent case studies', 'Salesforce platform expertise']
+      features: ['BPM frameworks', 'Case management solutions', 'Enterprise transformation strategies']
     }
   ];
 
