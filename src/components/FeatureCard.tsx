@@ -30,23 +30,23 @@ export const FeatureCard = ({
           alt={title}
           className="w-full h-full object-cover transition-transform hover:scale-105"
         />
-        <div className="absolute bottom-2 right-2 bg-vault-primary text-white px-3 py-1 rounded text-sm">
+        <div className="absolute bottom-2 right-2 bg-brand-primary text-white px-3 py-1 rounded text-sm">
           {showDetails ? "Hide details" : "Click for more information"}
         </div>
       </div>
       <CardContent className="p-6">
         <div className="flex flex-col items-start gap-4 w-full">
           <div className="flex items-center gap-2">
-            {Icon && <Icon className="text-vault-primary h-5 w-5" />}
-            <h3 className="text-xl font-semibold text-vault-primary">{title}</h3>
+            {Icon && <Icon className="text-brand-primary h-5 w-5" />}
+            <h3 className="text-xl font-semibold text-brand-primary">{title}</h3>
           </div>
           
           {description && !showDetails && (
-            <p className="text-vault-secondary text-sm">{description}</p>
+            <p className="text-brand-secondary text-sm">{description}</p>
           )}
           
           {showDetails && (
-            <div className="bg-vault-light/70 p-4 rounded-lg w-full animate-fade-in">
+            <div className="bg-brand-light/70 p-4 rounded-lg w-full animate-fade-in">
               {children}
             </div>
           )}

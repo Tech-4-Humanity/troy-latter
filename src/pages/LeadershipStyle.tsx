@@ -58,7 +58,7 @@ const LeadershipStyle = () => {
         </p>
       </div>
       
-      <div className="flex flex-col md:flex-row bg-vault-light rounded-lg overflow-hidden mb-12">
+      <div className="flex flex-col md:flex-row bg-brand-light rounded-lg overflow-hidden mb-12">
         <div className="md:w-1/3 p-6 flex justify-center items-center">
           <img 
             src="/lovable-uploads/7e6000f2-9818-40fc-9191-2549b09f49da.png" 
@@ -67,29 +67,29 @@ const LeadershipStyle = () => {
           />
         </div>
         <div className="md:w-2/3 p-6">
-          <h2 className="text-2xl font-semibold text-vault-primary mb-6">Leadership Principles</h2>
+          <h2 className="text-2xl font-semibold text-brand-primary mb-6">Leadership Principles</h2>
           <ul className="space-y-6">
             {leadershipStyles.map((style, index) => (
               <li key={index}>
-                <h3 className="font-medium text-lg text-vault-primary mb-2">{style.title}</h3>
-                <p className="text-vault-secondary">{style.description}</p>
+                <h3 className="font-medium text-lg text-brand-primary mb-2">{style.title}</h3>
+                <p className="text-brand-secondary">{style.description}</p>
               </li>
             ))}
           </ul>
         </div>
       </div>
       
-      <Separator className="my-10 bg-vault-accent/30" />
+      <Separator className="my-10 bg-brand-accent/30" />
       
       {/* Leadership Qualities */}
       <div className="space-y-8 mb-10">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Leadership Qualities</h2>
+        <h2 className="text-2xl font-semibold text-brand-primary mb-6">Leadership Qualities</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {leadershipQualities.map((quality, index) => (
-            <div key={index} className="bg-vault-light p-6 rounded-lg">
-              <h3 className="font-medium text-lg text-vault-primary mb-4">{quality.title}</h3>
-              <p className="text-vault-secondary whitespace-pre-line">{quality.description}</p>
+            <div key={index} className="bg-brand-light p-6 rounded-lg">
+              <h3 className="font-medium text-lg text-brand-primary mb-4">{quality.title}</h3>
+              <p className="text-brand-secondary whitespace-pre-line">{quality.description}</p>
             </div>
           ))}
         </div>

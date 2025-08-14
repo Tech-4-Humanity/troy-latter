@@ -15,18 +15,18 @@ export const LeadershipCard = ({ title, imageSrc, situation, task, action, outco
   return (
     <FeatureCard title={title} imageSrc={imageSrc}>
       <div className="space-y-4">
-        <div className="bg-vault-light p-6 rounded-lg">
+        <div className="bg-brand-light p-6 rounded-lg">
           <div className="space-y-4">
-            <p className="text-vault-secondary">
+            <p className="text-brand-secondary">
               <span className="font-medium">Situation:</span> {situation}
             </p>
-            <p className="text-vault-secondary">
+            <p className="text-brand-secondary">
               <span className="font-medium">Task:</span> {task}
             </p>
-            <p className="text-vault-secondary">
+            <p className="text-brand-secondary">
               <span className="font-medium">Action:</span> {action}
             </p>
-            <p className="text-vault-secondary">
+            <p className="text-brand-secondary">
               <span className="font-medium">Outcome:</span> {outcome}
             </p>
           </div>

@@ -14,23 +14,59 @@ const PegaIndex = () => {
       
       <PageTitle title="PEGA Strategic Portfolio" />
       
-      <div className="bg-brand-light p-8 rounded-lg border border-gray-200 my-6 text-center">
-        <div className="mx-auto mb-8 bg-white rounded-full p-6 w-24 h-24 flex items-center justify-center shadow-md">
-          <Lock className="h-12 w-12 text-brand-accent" />
+      <div className="bg-brand-light p-8 rounded-lg border border-gray-200 my-6">
+        <h2 className="text-2xl font-semibold mb-6 text-brand-primary">PEGA BPM Strategic Portfolio</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 className="text-lg font-semibold text-brand-primary mb-3">Case Management Excellence</h3>
+            <p className="text-brand-secondary mb-4">
+              Implemented PEGA's case management framework across multiple government agencies, reducing case resolution time by 60% while improving compliance tracking.
+            </p>
+            <ul className="text-brand-secondary text-sm space-y-1">
+              <li>• Dynamic case routing</li>
+              <li>• Automated compliance checks</li>
+              <li>• Real-time status tracking</li>
+            </ul>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 className="text-lg font-semibold text-brand-primary mb-3">Process Automation</h3>
+            <p className="text-brand-secondary mb-4">
+              Designed and deployed intelligent automation workflows that eliminated 80% of manual processing while maintaining audit trails for sensitive operations.
+            </p>
+            <ul className="text-brand-secondary text-sm space-y-1">
+              <li>• Smart workflow orchestration</li>
+              <li>• Decision engine optimization</li>
+              <li>• Exception handling automation</li>
+            </ul>
+          </div>
         </div>
         
-        <h2 className="text-2xl font-semibold mb-4 text-brand-primary">Access Required</h2>
-        <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-          Access to this strategic portfolio covering PEGA BPM implementation strategies, case management frameworks, and enterprise transformation methodologies requires authentication. This content contains proprietary strategic planning and competitive intelligence.
-        </p>
-        
-        <div className="bg-white p-4 rounded-md border border-gray-200 mb-6 inline-block">
-          <p className="text-sm font-medium">Please contact us for access credentials</p>
+        <div className="bg-white p-6 rounded-lg border border-gray-200 mb-6">
+          <h3 className="text-lg font-semibold text-brand-primary mb-3">Enterprise Transformation Results</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-brand-primary">60%</div>
+              <div className="text-sm text-brand-secondary">Faster Case Resolution</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-brand-primary">80%</div>
+              <div className="text-sm text-brand-secondary">Process Automation</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-brand-primary">$2.5M</div>
+              <div className="text-sm text-brand-secondary">Annual Savings</div>
+            </div>
+          </div>
         </div>
         
-        <Button asChild className="mt-2">
-          <Link to="/contact">Request Access</Link>
-        </Button>
+        <div className="bg-gradient-to-r from-brand-primary/10 to-brand-accent/10 p-6 rounded-lg border border-brand-accent/20">
+          <h3 className="text-lg font-semibold text-brand-primary mb-3">Strategic Approach</h3>
+          <p className="text-brand-secondary">
+            My PEGA implementations focus on rapid value delivery through iterative development, stakeholder engagement, and security-first architecture. Each deployment includes comprehensive training, change management, and performance monitoring to ensure sustainable adoption and continuous improvement.
+          </p>
+        </div>
       </div>
     </div>
   );

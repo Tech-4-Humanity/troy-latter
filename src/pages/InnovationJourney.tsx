@@ -36,21 +36,21 @@ const InnovationJourney = () => {
       <section className="mb-8">
         <ContentCard>
           <div className="prose max-w-none">
-            <h3 className="text-xl font-bold text-vault-primary mb-4">Chief Innovation Adviser, Oracle (2016–2019)</h3>
+            <h3 className="text-xl font-bold text-brand-primary mb-4">Chief Innovation Adviser, Oracle (2016–2019)</h3>
             <ul className="list-disc pl-5 mb-6 space-y-2">
               <li>Built humanitarian relief platforms for ASEAN governments - integrating real-time Twitter, Facebook and agency feeds.</li>
               <li>Led expansion of Oracle Cloud regions and first sovereign-cloud deployments with data-residency controls.</li>
               <li>Piloted Halal-blockchain proofs-of-origin for regulated-supply transparency.</li>
             </ul>
             
-            <h3 className="text-xl font-bold text-vault-primary mb-4">Principal Solutions Architect, AWS (2019–2023)</h3>
+            <h3 className="text-xl font-bold text-brand-primary mb-4">Principal Solutions Architect, AWS (2019–2023)</h3>
             <ul className="list-disc pl-5 mb-6 space-y-2">
               <li>Designed digital-twin frameworks for smart-city simulations - meshed networks mapping utilities, transport and services.</li>
               <li>Deployed edge-powered meshed networks for low-latency IoT in urban and remote zones.</li>
               <li>Advised on AI policy & responsible-AI legislation balancing innovation with public trust.</li>
             </ul>
             
-            <h3 className="text-xl font-bold text-vault-primary mb-4">APAC CTO & Head of Strategic Foresight, Unisys (2024–Mar '25)</h3>
+            <h3 className="text-xl font-bold text-brand-primary mb-4">APAC CTO & Head of Strategic Foresight, Unisys (2024–Mar '25)</h3>
             <ul className="list-disc pl-5 mb-6 space-y-2">
               <li><span className="font-medium">Internal Innovation:</span> Rolled out Microsoft Semantic Kernel, Google AI and IBM Watson to automate ticket triage, procurement and reporting.</li>
               <li><span className="font-medium">Agent-Powered Augmentation:</span> Developed AI agents for service-desk, finance and HR - boosting productivity 30 % in six months.</li>
@@ -61,7 +61,7 @@ const InnovationJourney = () => {
       </section>
       
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Scaling Innovation</h2>
+        <h2 className="text-2xl font-semibold text-brand-primary mb-6">Scaling Innovation</h2>
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-2/3">
             <ContentCard>
@@ -86,7 +86,7 @@ const InnovationJourney = () => {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">Case Studies</h2>
+        <h2 className="text-2xl font-semibold text-brand-primary mb-6">Case Studies</h2>
         <div className="grid grid-cols-1 gap-8">
           <LeadershipCard
             title="Security Framework Excellence"

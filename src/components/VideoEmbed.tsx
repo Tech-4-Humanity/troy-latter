@@ -20,7 +20,7 @@ const VideoEmbed = ({ src, caption, className = '' }: VideoEmbedProps) => {
         ></iframe>
       </div>
       {caption && (
-        <p className="mt-2 text-sm text-vault-secondary text-center italic">
+        <p className="mt-2 text-sm text-brand-secondary text-center italic">
           {caption}
         </p>
       )}

@@ -26,8 +26,8 @@ const OpportunityStars = () => {
       <PageTitle title="The Opportunity Stars" />
       
       <div className="mb-6">
-        <p className="text-lg text-vault-secondary">
-          This is your chance to shape Vault's sovereign cloud future - driving first - of - a - kind AI, security, and defense innovations under a high - autonomy mandate.
+        <p className="text-lg text-brand-secondary">
+          This is your chance to shape the future of sovereign cloud innovation - driving first-of-a-kind AI, security, and defense innovations under a high-autonomy mandate.
         </p>
       </div>
       
@@ -38,7 +38,7 @@ const OpportunityStars = () => {
             title={example.title}
             imageSrc={example.imageSrc}
           >
-            <div className="text-vault-secondary space-y-4">
+            <div className="text-brand-secondary space-y-4">
               {example.content.split('\n\n').map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}

@@ -28,8 +28,8 @@ const InnovationDefinition = () => {
       <PageTitle title="Innovation Definition" />
       
       <ContentCard>
-        <h2 className="text-2xl font-semibold text-vault-primary mb-6">What Innovation Means to Me</h2>
-        <div className="space-y-4 text-vault-secondary">
+        <h2 className="text-2xl font-semibold text-brand-primary mb-6">What Innovation Means to Me</h2>
+        <div className="space-y-4 text-brand-secondary">
           <p>
             Innovation isn't just about having big ideas. It's about creating meaningful change that delivers real value to customers and organisations. True innovation combines creative thinking with disciplined execution, turning concepts into scalable solutions that make a lasting impact.
           </p>
@@ -40,7 +40,7 @@ const InnovationDefinition = () => {
       </ContentCard>
 
       <div className="mb-12">
-        <h2 className="text-2xl font-semibold text-vault-primary mb-8">Core Innovation Principles</h2>
+        <h2 className="text-2xl font-semibold text-brand-primary mb-8">Core Innovation Principles</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {principleCards.map((card, index) => (
             <FeatureCard
@@ -48,15 +48,15 @@ const InnovationDefinition = () => {
               title={card.title}
               imageSrc={card.imageSrc}
             >
-              <p className="text-vault-secondary">{card.description}</p>
+              <p className="text-brand-secondary">{card.description}</p>
             </FeatureCard>
           ))}
         </div>
       </div>
 
       <ContentCard>
-        <h3 className="text-xl font-bold text-vault-primary mb-4">Innovation in Practice</h3>
-        <div className="space-y-4 text-vault-secondary">
+        <h3 className="text-xl font-bold text-brand-primary mb-4">Innovation in Practice</h3>
+        <div className="space-y-4 text-brand-secondary">
           <p>
             At AWS, I led the development of sovereign AI solutions that enabled intelligence agencies to leverage machine learning while maintaining complete data sovereignty. This wasn't just a technical challenge, it required understanding policy constraints, security requirements, and operational needs.
           </p>

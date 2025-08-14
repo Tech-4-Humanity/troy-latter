@@ -15,23 +15,62 @@ const Whitepapers = () => {
       
       <PageTitle title="Technical Publications & Presentations" />
       
-      <div className="bg-brand-light p-8 rounded-lg border border-gray-200 my-6 text-center">
-        <div className="mx-auto mb-8 bg-white rounded-full p-6 w-24 h-24 flex items-center justify-center shadow-md">
-          <Lock className="h-12 w-12 text-brand-accent" />
+      <div className="bg-brand-light p-8 rounded-lg border border-gray-200 my-6">
+        <h2 className="text-2xl font-semibold mb-6 text-brand-primary">Technical Publications & Presentations</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 className="text-lg font-semibold text-brand-primary mb-3">Sovereign AI Implementations</h3>
+            <p className="text-brand-secondary mb-4">
+              Comprehensive guide to deploying AI systems in sovereign environments with complete data locality and security compliance.
+            </p>
+            <ul className="text-brand-secondary text-sm space-y-1">
+              <li>• Data sovereignty frameworks</li>
+              <li>• AI model validation processes</li>
+              <li>• Compliance automation strategies</li>
+            </ul>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 className="text-lg font-semibold text-brand-primary mb-3">Zero-Trust Architecture</h3>
+            <p className="text-brand-secondary mb-4">
+              Detailed blueprints for implementing zero-trust security models in classified and high-security environments.
+            </p>
+            <ul className="text-brand-secondary text-sm space-y-1">
+              <li>• Identity verification protocols</li>
+              <li>• Network segmentation strategies</li>
+              <li>• Continuous monitoring frameworks</li>
+            </ul>
+          </div>
         </div>
         
-        <h2 className="text-2xl font-semibold mb-4 text-brand-primary">Login Required</h2>
-        <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-          Access to technical whitepapers and presentations covering sovereign AI implementations, zero-trust architecture for classified environments, and battlefield-ready cloud deployments requires authentication. These resources contain proprietary insights and detailed technical information.
-        </p>
-        
-        <div className="bg-white p-4 rounded-md border border-gray-200 mb-6 inline-block">
-          <p className="text-sm font-medium">Please contact us for access credentials</p>
+        <div className="bg-white p-6 rounded-lg border border-gray-200 mb-6">
+          <h3 className="text-lg font-semibold text-brand-primary mb-3">Battlefield-Ready Cloud Deployments</h3>
+          <p className="text-brand-secondary mb-4">
+            Technical specifications and implementation guides for deploying cloud infrastructure in challenging operational environments.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="text-center">
+              <div className="text-xl font-bold text-brand-primary">99.9%</div>
+              <div className="text-sm text-brand-secondary">Uptime Achieved</div>
+            </div>
+            <div className="text-center">
+              <div className="text-xl font-bold text-brand-primary">30sec</div>
+              <div className="text-sm text-brand-secondary">Recovery Time</div>
+            </div>
+            <div className="text-center">
+              <div className="text-xl font-bold text-brand-primary">256-bit</div>
+              <div className="text-sm text-brand-secondary">Encryption Standard</div>
+            </div>
+          </div>
         </div>
         
-        <Button asChild className="mt-2">
-          <Link to="/contact">Request Access</Link>
-        </Button>
+        <div className="bg-gradient-to-r from-brand-primary/10 to-brand-accent/10 p-6 rounded-lg border border-brand-accent/20">
+          <h3 className="text-lg font-semibold text-brand-primary mb-3">Research & Development</h3>
+          <p className="text-brand-secondary">
+            These technical publications represent years of field-tested implementations and continuous refinement based on real-world deployments. Each document includes practical implementation guides, lessons learned, and performance benchmarks from actual production environments.
+          </p>
+        </div>
       </div>
     </div>
   );

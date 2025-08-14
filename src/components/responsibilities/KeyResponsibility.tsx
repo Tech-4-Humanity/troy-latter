@@ -8,11 +8,11 @@ type KeyResponsibilityProps = {
 
 export const KeyResponsibility = ({ title, description }: KeyResponsibilityProps) => {
   return (
-    <li className="text-vault-secondary">
-      <span className="font-medium text-vault-primary">{title}:</span>
-      <div className="bg-vault-light p-6 mt-3 rounded-lg">
+    <li className="text-brand-secondary">
+      <span className="font-medium text-brand-primary">{title}:</span>
+      <div className="bg-brand-light p-6 mt-3 rounded-lg">
         <div className="space-y-4">
-          <p className="text-vault-secondary">
+          <p className="text-brand-secondary">
             {description}
           </p>
         </div>

@@ -28,12 +28,12 @@ export const RequiredSkills = () => {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-xl font-semibold text-vault-primary">Required Skills</h3>
+      <h3 className="text-xl font-semibold text-brand-primary">Required Skills</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {skills.map((skill, index) => (
-          <Card key={index} className="p-4 border-l-4 border-l-vault-accent">
-            <h4 className="font-medium text-vault-primary">{skill.title}</h4>
-            <p className="text-vault-secondary text-sm mt-2">{skill.description}</p>
+          <Card key={index} className="p-4 border-l-4 border-l-brand-accent">
+            <h4 className="font-medium text-brand-primary">{skill.title}</h4>
+            <p className="text-brand-secondary text-sm mt-2">{skill.description}</p>
           </Card>
         ))}
       </div>

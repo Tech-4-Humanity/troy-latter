@@ -20,9 +20,9 @@ export const KeyResponsibilities = () => {
         />
       </ul>
       
-      <div className="bg-vault-accent/10 p-6 rounded-lg mt-8">
-        <p className="text-vault-primary font-medium text-lg mb-4">Each of these stories demonstrates exactly how I:</p>
-        <ul className="list-disc list-inside space-y-2 text-vault-secondary">
+      <div className="bg-brand-accent/10 p-6 rounded-lg mt-8">
+        <p className="text-brand-primary font-medium text-lg mb-4">Each of these stories demonstrates exactly how I:</p>
+        <ul className="list-disc list-inside space-y-2 text-brand-secondary">
           <li>Take a vision and craft its execution roadmap</li>
           <li>Lead small, high-performing squads with domain experts</li>
           <li>Drive a fast-paced, fail-fast culture that prioritises real impact</li>

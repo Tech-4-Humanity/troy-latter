@@ -8,30 +8,60 @@ import { Button } from '@/components/ui/button';
 const LeanCanvas = () => {
   return (
     <div className="animate-fade-in">
-      <Link to="/faqs" className="inline-flex items-center text-vault-primary hover:text-vault-accent mb-6 transition-colors">
+      <Link to="/faqs" className="inline-flex items-center text-brand-primary hover:text-brand-accent mb-6 transition-colors">
         <ArrowLeft className="h-4 w-4 mr-2" />
         Back to FAQs & Resources
       </Link>
       
       <PageTitle title="Lean Business Canvas" />
       
-      <div className="bg-vault-light p-8 rounded-lg border border-gray-200 my-6 text-center">
-        <div className="mx-auto mb-8 bg-white rounded-full p-6 w-24 h-24 flex items-center justify-center shadow-md">
-          <Lock className="h-12 w-12 text-vault-accent" />
+      <div className="bg-brand-light p-8 rounded-lg border border-gray-200 my-6">
+        <h2 className="text-2xl font-semibold mb-6 text-brand-primary">Defence-Grade Innovation Canvas</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 className="text-lg font-semibold text-brand-primary mb-3">Problem</h3>
+            <p className="text-brand-secondary text-sm">
+              Complex security requirements, compliance overhead, and fragmented innovation processes slow time-to-value for defence organizations.
+            </p>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 className="text-lg font-semibold text-brand-primary mb-3">Solution</h3>
+            <p className="text-brand-secondary text-sm">
+              Rapid prototyping framework with built-in security controls, compliance automation, and sovereign technology stack validation.
+            </p>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 className="text-lg font-semibold text-brand-primary mb-3">Value Proposition</h3>
+            <p className="text-brand-secondary text-sm">
+              Deploy mission-critical innovations 70% faster while maintaining rigorous security standards and regulatory compliance.
+            </p>
+          </div>
         </div>
         
-        <h2 className="text-2xl font-semibold mb-4 text-vault-primary">Access Required</h2>
-        <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-          Access to our specialized Lean Business Canvas framework tailored for defence-grade innovation projects requires authentication. This framework contains proprietary methodologies for rapidly validating business models with specific considerations for security compliance, sovereign requirements, and mission-critical stakeholder needs.
-        </p>
-        
-        <div className="bg-white p-4 rounded-md border border-gray-200 mb-6 inline-block">
-          <p className="text-sm font-medium">Please contact us for access credentials</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 className="text-lg font-semibold text-brand-primary mb-3">Key Metrics</h3>
+            <ul className="text-brand-secondary text-sm space-y-2">
+              <li>• Time-to-prototype: 2-4 weeks</li>
+              <li>• Security compliance: 100% automated</li>
+              <li>• Cost reduction: 40-60%</li>
+              <li>• Stakeholder satisfaction: 95%+</li>
+            </ul>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 className="text-lg font-semibold text-brand-primary mb-3">Customer Segments</h3>
+            <ul className="text-brand-secondary text-sm space-y-2">
+              <li>• Defence agencies</li>
+              <li>• Government contractors</li>
+              <li>• Critical infrastructure providers</li>
+              <li>• Classified environment operators</li>
+            </ul>
+          </div>
         </div>
-        
-        <Button asChild className="mt-2">
-          <Link to="/contact">Request Access</Link>
-        </Button>
       </div>
     </div>
   );

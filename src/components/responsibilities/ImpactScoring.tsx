@@ -28,15 +28,15 @@ export const ImpactScoring = () => {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-xl font-semibold text-vault-primary">Impact Scoring</h3>
-      <p className="text-vault-secondary mb-6">
+      <h3 className="text-xl font-semibold text-brand-primary">Impact Scoring</h3>
+      <p className="text-brand-secondary mb-6">
         A structured framework for prioritizing innovation initiatives based on potential business impact and implementation feasibility.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {scoringCriteria.map((criteria, index) => (
-          <Card key={index} className="p-4 border-l-4 border-l-vault-accent">
-            <h4 className="font-medium text-vault-primary">{criteria.title}</h4>
-            <p className="text-vault-secondary text-sm mt-2">{criteria.description}</p>
+          <Card key={index} className="p-4 border-l-4 border-l-brand-accent">
+            <h4 className="font-medium text-brand-primary">{criteria.title}</h4>
+            <p className="text-brand-secondary text-sm mt-2">{criteria.description}</p>
           </Card>
         ))}
       </div>
