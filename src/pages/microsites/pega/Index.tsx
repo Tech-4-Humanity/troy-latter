@@ -30,19 +30,24 @@ const PegaIndex = () => {
         </div>
       </div>
 
-      {/* Strategic Vision */}
+      {/* APAC FSI Focus & Agentic AI Vision */}
       <Card className="mb-8">
         <CardContent className="p-8">
           <h2 className="text-2xl font-semibold mb-4 text-brand-primary flex items-center">
-            <Brain className="h-6 w-6 mr-3" />
-            Strategic Vision
+            <Globe className="h-6 w-6 mr-3" />
+            APAC Financial Services & Agentic AI Leadership
           </h2>
           <p className="text-brand-secondary leading-relaxed">
-            Over the last 15+ years, I've led complex transformations in banking, insurance, superannuation, and payments — balancing compliance, complexity, and cost. My focus is on turning ambition into architecture, integrating platforms like Pega into real-world ecosystems with measurable results.
+            Over 15+ years delivering FSI transformations across APAC markets — from Australian superannuation to regional banking compliance frameworks. I specialize in bridging the gap between AI promise and practical delivery in highly regulated environments.
           </p>
           <p className="text-brand-secondary leading-relaxed mt-4">
-            The future for FSIs is not just digitisation — it's decision augmentation: intelligent workflows that embed AI and compliance logic from the start, orchestrating human and autonomous agents for faster, safer outcomes.
+            <strong>The challenge:</strong> Banks aren't prepared for autonomous AI. <strong>My solution:</strong> Building the governance, orchestration, and decisioning layers that make agentic AI safe and scalable — turning Pega's intelligent automation into measurable business outcomes across complex regulatory landscapes.
           </p>
+          <div className="bg-brand-accent/10 p-4 rounded-lg mt-4 border-l-4 border-brand-accent">
+            <p className="text-brand-secondary text-sm italic">
+              "I help FSI leaders move beyond the AI hype to deliver the orchestrated, compliant, and measurable transformation that regulators and boards demand."
+            </p>
+          </div>
         </CardContent>
       </Card>
 
@@ -85,13 +90,14 @@ const PegaIndex = () => {
               </ul>
             </div>
             
-            <div className="bg-brand-light/30 p-6 rounded-lg border border-brand-primary/20">
+            <div className="bg-brand-accent/10 p-6 rounded-lg border border-brand-accent/30">
               <h3 className="text-lg font-semibold text-brand-primary mb-3">Multi-Country AML/KYC Hub</h3>
-              <p className="text-sm text-brand-secondary mb-2 italic">Regional Bank</p>
+              <p className="text-sm text-brand-secondary mb-2 italic">Regional Bank (APAC)</p>
               <ul className="text-brand-secondary text-sm space-y-2 mb-4">
-                <li>• Centralised compliance workflows with jurisdictional localisation</li>
-                <li>• Integrated core banking, SWIFT, and APRA reporting</li>
-                <li>• <strong>30% fewer false positives, 50% faster SAR turnaround</strong></li>
+                <li>• Centralised compliance workflows with APRA, MAS, and HKMA localisation</li>
+                <li>• Agentic decisioning for cross-border transaction monitoring</li>
+                <li>• Integrated core banking, SWIFT, and multi-jurisdiction reporting</li>
+                <li>• <strong>30% fewer false positives, 50% faster SAR turnaround across 6 countries</strong></li>
               </ul>
             </div>
           </div>
@@ -122,31 +128,60 @@ const PegaIndex = () => {
         </CardContent>
       </Card>
 
-      {/* Innovation in High-Trust Environments */}
+      {/* Addressing the AI Delivery Gap */}
       <Card className="mb-8">
         <CardContent className="p-8">
           <h2 className="text-2xl font-semibold mb-4 text-brand-primary flex items-center">
             <Shield className="h-6 w-6 mr-3" />
-            Innovation in High-Trust Environments
+            Bridging AI Promise & Regulated Reality
           </h2>
-          <div className="space-y-3">
-            <p className="text-brand-secondary">• Designed agentic decisioning overlays for banking compliance platforms</p>
-            <p className="text-brand-secondary">• Built orchestration models for mining, insurance, and government clients</p>
-            <p className="text-brand-secondary">• Delivered predictive pipelines and real-time dashboards in audit-heavy sectors</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="font-semibold text-brand-primary mb-2">The Challenge You're Facing</h3>
+              <ul className="text-brand-secondary text-sm space-y-2">
+                <li>• Banks making AI bets without governance foundations</li>
+                <li>• Autonomous agents in compliance-heavy environments</li>
+                <li>• Board pressure for measurable AI ROI</li>
+                <li>• Multi-jurisdiction regulatory complexity</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-brand-primary mb-2">How I Deliver Solutions</h3>
+              <ul className="text-brand-secondary text-sm space-y-2">
+                <li>• Agentic decisioning with built-in audit trails</li>
+                <li>• Orchestration layers that embed compliance logic</li>
+                <li>• Human-AI handoff frameworks for risk management</li>
+                <li>• APAC-specific regulatory integration patterns</li>
+              </ul>
+            </div>
           </div>
         </CardContent>
       </Card>
 
-      {/* Why Me for Pega */}
+      {/* Perfect Fit for APAC FSI Field Role */}
       <Card className="bg-gradient-to-r from-brand-primary/10 to-brand-accent/10 border-brand-accent/20">
         <CardContent className="p-8">
           <h2 className="text-2xl font-semibold mb-4 text-brand-primary flex items-center">
-            <TrendingUp className="h-6 w-6 mr-3" />
-            Why Me for Pega
+            <Users className="h-6 w-6 mr-3" />
+            Your Perfect APAC FSI Implementation Partner
           </h2>
-          <p className="text-brand-secondary leading-relaxed">
-            I've delivered measurable FSI impact with the exact mix Pega brings to market: intelligent automation, low-code orchestration, and AI-powered decisioning. My track record spans CxO engagement, multi-region scaling, and partner-led go-to-market execution — all while delivering change in high-trust, compliance-driven industries.
+          <p className="text-brand-secondary leading-relaxed mb-4">
+            I'm the practitioner who turns your Pega vision into client reality. While others promise AI transformation, I deliver it — with the governance, integration complexity, and regulatory expertise that APAC financial services demand.
           </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+            <div className="bg-white/50 p-4 rounded-lg">
+              <h4 className="font-semibold text-brand-primary mb-2">Field Alignment</h4>
+              <p className="text-brand-secondary">Partner-led delivery, CxO engagement, multi-region scaling experience</p>
+            </div>
+            <div className="bg-white/50 p-4 rounded-lg">
+              <h4 className="font-semibold text-brand-primary mb-2">APAC Expertise</h4>
+              <p className="text-brand-secondary">15+ years in Australian, Singaporean, and regional FSI markets</p>
+            </div>
+            <div className="bg-white/50 p-4 rounded-lg">
+              <h4 className="font-semibold text-brand-primary mb-2">Proven Results</h4>
+              <p className="text-brand-secondary">Measurable AI outcomes in the exact regulatory environments you serve</p>
+            </div>
+          </div>
         </CardContent>
       </Card>
     </div>
