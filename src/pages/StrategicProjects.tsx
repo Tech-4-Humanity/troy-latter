@@ -119,7 +119,7 @@ const StrategicProjects = () => {
           alt="Strategic Projects" 
           className="w-full h-64 object-cover rounded-lg shadow-md mb-6" 
         />
-        <p className="text-lg text-vault-secondary mb-4">
+        <p className="text-lg text-brand-secondary mb-4">
           Breakthrough initiatives delivering measurable outcomes across sovereign AI, battlefield infrastructure, and security frameworks.
         </p>
       </div>
@@ -130,9 +130,9 @@ const StrategicProjects = () => {
             <CardHeader className="pb-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <project.icon className="h-8 w-8 text-vault-primary" />
+                  <project.icon className="h-8 w-8 text-brand-primary" />
                   <div>
-                    <CardTitle className="text-2xl text-vault-primary mb-2">{project.title}</CardTitle>
+                    <CardTitle className="text-2xl text-brand-primary mb-2">{project.title}</CardTitle>
                     <div className="flex flex-wrap gap-2">
                       <Badge className={getCategoryColor(project.category)}>
                         {project.category}
@@ -166,9 +166,9 @@ const StrategicProjects = () => {
               {/* Key Metrics */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {project.keyMetrics.map((metric, i) => (
-                  <div key={i} className="text-center p-4 bg-vault-accent/10 rounded-lg border border-vault-accent/20">
-                    <div className="text-2xl font-bold text-vault-primary">{metric.value}</div>
-                    <div className="text-sm text-vault-secondary">{metric.label}</div>
+                  <div key={i} className="text-center p-4 bg-brand-accent/10 rounded-lg border border-brand-accent/20">
+                    <div className="text-2xl font-bold text-brand-primary">{metric.value}</div>
+                    <div className="text-sm text-brand-secondary">{metric.label}</div>
                   </div>
                 ))}
               </div>
@@ -177,7 +177,7 @@ const StrategicProjects = () => {
 
               {/* Challenge */}
               <div>
-                <h4 className="text-lg font-semibold text-vault-primary mb-3 flex items-center gap-2">
+                <h4 className="text-lg font-semibold text-brand-primary mb-3 flex items-center gap-2">
                   <Target className="h-5 w-5" />
                   Challenge
                 </h4>
@@ -188,14 +188,14 @@ const StrategicProjects = () => {
 
               {/* Solution */}
               <div>
-                <h4 className="text-lg font-semibold text-vault-primary mb-3 flex items-center gap-2">
+                <h4 className="text-lg font-semibold text-brand-primary mb-3 flex items-center gap-2">
                   <Zap className="h-5 w-5" />
                   Solution & Approach
                 </h4>
                 <ul className="space-y-2">
                   {project.solution.map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-vault-accent rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-brand-accent rounded-full mt-2 flex-shrink-0"></div>
                       <span className="text-gray-700">{item}</span>
                     </li>
                   ))}
@@ -206,7 +206,7 @@ const StrategicProjects = () => {
 
               {/* Results */}
               <div>
-                <h4 className="text-lg font-semibold text-vault-primary mb-3 flex items-center gap-2">
+                <h4 className="text-lg font-semibold text-brand-primary mb-3 flex items-center gap-2">
                   <TrendingUp className="h-5 w-5" />
                   Results & Impact
                 </h4>
@@ -236,9 +236,9 @@ const StrategicProjects = () => {
         ))}
       </div>
       
-      <div className="bg-gradient-to-r from-vault-primary/5 to-vault-accent/5 p-8 rounded-lg border border-vault-accent/10">
-        <h2 className="text-xl font-semibold text-vault-primary mb-4">Strategic Impact Philosophy</h2>
-        <p className="text-vault-secondary leading-relaxed">
+      <div className="bg-gradient-to-r from-brand-primary/5 to-brand-accent/5 p-8 rounded-lg border border-brand-accent/10">
+        <h2 className="text-xl font-semibold text-brand-primary mb-4">Strategic Impact Philosophy</h2>
+        <p className="text-brand-secondary leading-relaxed">
           These strategic projects showcase innovative solutions to complex security and sovereignty
           challenges, delivered with rapid turnaround times and tangible business outcomes. Each initiative
           demonstrates the ability to navigate complex stakeholder environments while delivering

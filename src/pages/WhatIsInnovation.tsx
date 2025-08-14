@@ -91,12 +91,12 @@ const WhatIsInnovation = () => {
                   alt={page.title} 
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
                 />
-                <div className="absolute inset-0 bg-vault-primary/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="absolute inset-0 bg-brand-primary/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span className="text-white font-medium">Explore</span>
                 </div>
               </div>
               <CardContent className="p-5">
-                <h3 className="text-lg font-semibold text-vault-primary mb-2">{page.title}</h3>
+                <h3 className="text-lg font-semibold text-brand-primary mb-2">{page.title}</h3>
                 <p className="text-sm text-gray-600">{page.description}</p>
               </CardContent>
             </Card>
