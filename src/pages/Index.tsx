@@ -5,6 +5,7 @@ import { AIStrategySection } from '@/components/home/AIStrategySection';
 import { AchievementsSection } from '@/components/home/AchievementsSection';
 import { ExecutiveSummarySection } from '@/components/home/ExecutiveSummarySection';
 import { CTASection } from '@/components/home/CTASection';
+import { Chatbot } from '@/components/Chatbot';
 
 const Index = () => {
   return (
@@ -26,6 +27,24 @@ const Index = () => {
       
       {/* Enhanced CTA Section */}
       <CTASection />
+      
+      {/* AI Chatbot */}
+      <section className="relative">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              Ask Troy's AI Assistant
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Get instant answers about Troy's experience, expertise, and insights. 
+              Voice and text enabled for your convenience.
+            </p>
+          </div>
+          <div className="max-w-2xl mx-auto">
+            <Chatbot />
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
