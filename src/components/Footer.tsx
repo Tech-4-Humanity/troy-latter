@@ -27,7 +27,6 @@ export const Footer = () => {
     { path: '/resources/lean-canvas', label: 'Lean Canvas' },
     { path: '/what-is-innovation', label: 'What is Innovation' },
     { path: '/faqs', label: 'FAQs' },
-    { path: '/microsites/pega', label: 'PEGA' },
   ];
   
   return (
