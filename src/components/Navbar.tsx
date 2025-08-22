@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, MessageCircle } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -79,6 +79,23 @@ export const Navbar = () => {
                 <div className="text-xs text-gray-300">AI & Technology Leader</div>
               </div>
             </Link>
+          </div>
+
+          {/* Talk to Troy CTA */}
+          <div className="hidden lg:flex items-center">
+            <Button
+              onClick={() => {
+                const widget = document.querySelector('[data-floating-chat]');
+                if (widget) {
+                  const button = widget.querySelector('button');
+                  button?.click();
+                }
+              }}
+              className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 hover:from-purple-600 hover:via-blue-600 hover:to-teal-600 text-white text-sm px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mr-4"
+            >
+              <MessageCircle className="h-4 w-4 mr-2" />
+              Talk to Troy
+            </Button>
           </div>
 
           {/* Desktop Navigation */}
@@ -192,6 +209,22 @@ export const Navbar = () => {
               >
                 {standaloneRoute.label}
               </Link>
+              
+              {/* Mobile Talk to Troy CTA */}
+              <Button
+                onClick={() => {
+                  const widget = document.querySelector('[data-floating-chat]');
+                  if (widget) {
+                    const button = widget.querySelector('button');
+                    button?.click();
+                  }
+                  closeMobileMenu();
+                }}
+                className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 hover:from-purple-600 hover:via-blue-600 hover:to-teal-600 text-white text-sm px-4 py-3 rounded-lg shadow-lg mx-2 mt-4 flex items-center justify-center"
+              >
+                <MessageCircle className="h-4 w-4 mr-2" />
+                Talk to Troy
+              </Button>
             </nav>
           </div>
         )}

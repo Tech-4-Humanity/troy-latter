@@ -145,8 +145,10 @@ export const HeyGenAvatar: React.FC<HeyGenAvatarProps> = ({
       <Card className={`p-6 ${className}`}>
         <div className="flex items-center justify-center h-64">
           <div className="text-center">
-            <p className="text-muted-foreground mb-4">Avatar temporarily unavailable</p>
-            <p className="text-sm text-muted-foreground">Please use text chat instead</p>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+              <p className="text-blue-700 font-medium">🚧 Avatar Coming Soon</p>
+              <p className="text-blue-600 text-sm mt-2">Troy's interactive avatar is being configured. For now, enjoy the text chat!</p>
+            </div>
           </div>
         </div>
       </Card>

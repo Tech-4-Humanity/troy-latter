@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, MessageCircle } from 'lucide-react';
 
 export const HeroSection = () => {
   return (
@@ -41,7 +41,21 @@ export const HeroSection = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center">
-          <Button size="lg" className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 hover:from-purple-600 hover:via-blue-600 hover:to-teal-600 text-white text-lg px-8 py-6 h-auto rounded-lg shadow-lg transform hover:scale-105 transition-all backdrop-blur-sm" asChild>
+          <Button 
+            size="lg" 
+            onClick={() => {
+              const widget = document.querySelector('[data-floating-chat]');
+              if (widget) {
+                const button = widget.querySelector('button');
+                button?.click();
+              }
+            }}
+            className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 hover:from-purple-600 hover:via-blue-600 hover:to-teal-600 text-white text-lg px-8 py-6 h-auto rounded-lg shadow-lg transform hover:scale-105 transition-all backdrop-blur-sm"
+          >
+            <MessageCircle className="mr-2 h-5 w-5" />
+            Talk to Troy's AI Assistant
+          </Button>
+          <Button size="lg" className="border-white/30 text-white bg-white/10 hover:bg-white hover:text-[#0A101E] text-lg px-8 py-6 h-auto rounded-lg transition-all backdrop-blur-sm" asChild>
             <Link to="/executive-profile">
               View Executive Profile
               <ArrowRight className="ml-2 h-5 w-5" />
