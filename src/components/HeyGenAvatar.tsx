@@ -3,6 +3,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Loader2, Mic, MicOff } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 interface HeyGenAvatarProps {
   onMessageReceived?: (message: string) => void;
@@ -96,9 +97,25 @@ export const HeyGenAvatar: React.FC<HeyGenAvatarProps> = ({
   };
 
   const getSessionToken = async (): Promise<string> => {
-    // This would call a Supabase Edge Function to get a HeyGen session token
-    // For now, return a placeholder - this needs to be implemented with actual HeyGen API integration
-    throw new Error('HeyGen session token not configured');
+    try {
+      const { data, error } = await supabase.functions.invoke('heygen-session', {
+        body: {}
+      });
+
+      if (error) {
+        console.error('Error getting HeyGen session token:', error);
+        throw new Error('Failed to get session token');
+      }
+
+      if (!data.token) {
+        throw new Error('No token received from session service');
+      }
+
+      return data.token;
+    } catch (error) {
+      console.error('Session token request failed:', error);
+      throw new Error('HeyGen session service unavailable');
+    }
   };
 
   const speakText = async (text: string) => {
