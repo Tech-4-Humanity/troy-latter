@@ -15,6 +15,7 @@ import FAQs from "./pages/FAQs";
 import NotFound from "./pages/NotFound";
 import NinetyDayPlan from "./pages/NinetyDayPlan";
 import Whitepapers from "./pages/Whitepapers";
+import Projects from "./pages/Projects";
 import LeanCanvas from "./pages/LeanCanvas";
 import ExperienceAndImpact from "./pages/ExperienceAndImpact";
 
@@ -62,6 +63,7 @@ const App = () => (
           {/* Resources */}
           <Route path="/resources/90-day-plan" element={<Layout><NinetyDayPlan /></Layout>} />
           <Route path="/resources/whitepapers" element={<Layout><Whitepapers /></Layout>} />
+          <Route path="/resources/projects" element={<Layout><Projects /></Layout>} />
           <Route path="/resources/lean-canvas" element={<Layout><LeanCanvas /></Layout>} />
           
           {/* Microsite routes with separate layout */}
