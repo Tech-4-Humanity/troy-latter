@@ -156,6 +156,48 @@ const Projects = () => {
       url: "https://myneuralsignal.gcbat.org/",
       icon: Brain,
       category: "Neurotechnology"
+    },
+    {
+      title: "Enter Australia",
+      description: "Immigration and relocation services platform for Australia. Comprehensive guidance and resources for individuals and families moving to Australia.",
+      url: "https://enteraustralia.tech",
+      icon: Globe,
+      category: "Immigration Services"
+    },
+    {
+      title: "Extreme Spotto",
+      description: "Interactive location-based gaming and social discovery app. Gamifying exploration and social connections through location-aware challenges.",
+      url: "https://extremespotto.com",
+      icon: Activity,
+      category: "Gaming & Social"
+    },
+    {
+      title: "Apex Predator Insurance",
+      description: "Specialized insurance solutions for high-risk and unique coverage needs. Innovative insurance products for extreme sports and unconventional risks.",
+      url: "https://apexpredatorinsurance.com",
+      icon: Shield,
+      category: "Insurance Innovation"
+    },
+    {
+      title: "RatPak",
+      description: "Community organization and resource management platform. Building stronger communities through collaborative resource sharing and organization.",
+      url: "https://ratpak.org",
+      icon: Users,
+      category: "Community Platform"
+    },
+    {
+      title: "NeuroPak",
+      description: "Neuroscience research and cognitive enhancement tools. Advanced platforms for brain research, training, and cognitive optimization.",
+      url: "https://neuropak.org",
+      icon: Brain,
+      category: "Neuroscience Research"
+    },
+    {
+      title: "Own Your AI",
+      description: "AI education and ownership platform empowering individuals to understand and control their AI interactions. Democratizing AI literacy and autonomy.",
+      url: "https://OwnYourAI.com",
+      icon: Bot,
+      category: "AI Education"
     }
   ];
 
