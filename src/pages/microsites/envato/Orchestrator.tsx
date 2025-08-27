@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
+import { Link } from 'react-router-dom';
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 
 interface Note {
   id: string;
@@ -151,6 +153,24 @@ const Orchestrator = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Breadcrumbs */}
+        <Breadcrumb className="mb-6">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/microsites">Microsites</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/microsites/envato">Envato</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbPage>Orchestrator</BreadcrumbPage>
+          </BreadcrumbList>
+        </Breadcrumb>
         {/* Hero Section */}
         <header className="mb-12">
           <div className="text-sm font-semibold text-muted-foreground mb-2 tracking-wide uppercase">
@@ -171,11 +191,11 @@ const Orchestrator = () => {
               </p>
               
               {/* Orchestrator Graphic */}
-              <div className="relative aspect-video bg-background border border-dashed border-border rounded-lg mb-6 overflow-hidden">
+              <div className="relative w-full max-w-md mx-auto bg-background border border-dashed border-border rounded-lg mb-6 overflow-hidden">
                 <img 
-                  src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/ChatGPT%20Image%20Aug%2027,%202025,%2002_37_22%20PM.png" 
-                  alt="AI Product Manager Orchestrator Diagram"
-                  className="w-full h-full object-cover rounded-lg"
+                  src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/Complete%20Product%20Management%20MBA%20(1).png" 
+                  alt="Complete Product Management MBA"
+                  className="w-full h-auto object-contain rounded-lg"
                 />
               </div>
               
@@ -438,12 +458,20 @@ const Orchestrator = () => {
             <p className="text-muted-foreground mb-6">
               Let us align people and outcomes. Then talk tech as deep as you want. That is how we keep speed and trust.
             </p>
-            <button 
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-            >
-              Back to top
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link 
+                to="/microsites/envato#quick"
+                className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors inline-block"
+              >
+                Browse Envato overview
+              </Link>
+              <button 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="bg-secondary text-secondary-foreground px-4 py-2 rounded-lg font-semibold hover:bg-secondary/90 transition-colors"
+              >
+                Back to top
+              </button>
+            </div>
           </div>
         </footer>
       </div>

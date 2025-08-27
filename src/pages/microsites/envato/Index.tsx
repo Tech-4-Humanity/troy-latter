@@ -719,13 +719,24 @@ const EnvatoIndex = () => {
         </header>
 
         <main className="wrap">
-          <section>
+          <section id="quick">
             <div className="card">
               <h2 className="section-title">Quick view cards</h2>
               <p className="text-sm text-muted mb-4">
                 These cards represent five strategic growth paths for Envato. Each path includes the growth thesis, product AI strategy, and key actions. 
                 Flip a card to see the step-by-step execution plan for that path, or open the full view for context across all dimensions.
               </p>
+              <div className="mb-4">
+                <a 
+                  href="/microsites/envato/orchestrator" 
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                >
+                  🎯 View The Orchestrator Profile
+                </a>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Deep dive into the modern AI product manager skillset and approach
+                </p>
+              </div>
               <div className="cards">
                 <div className={`flip-card ${flipped['path1'] ? 'is-flipped' : ''}`}>
                   <div className="flip-inner">
