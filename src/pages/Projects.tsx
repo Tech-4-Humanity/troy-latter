@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { GlassmorphismCard, GlassmorphismCardContent } from '@/components/ui/glassmorphism-card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Globe, Users, Zap, Shield, Building, Bot, Star, Wrench, Heart, Brain, ChartBar, Activity, Filter } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { ExternalLink, Globe, Users, Zap, Shield, Building, Bot, Star, Wrench, Heart, Brain, ChartBar, Activity, Filter, Search, X } from 'lucide-react';
 
 interface ProjectProps {
   title: string;
@@ -90,6 +91,7 @@ const ProjectCard = ({ title, description, url, icon: Icon, category }: ProjectP
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
   
   const projects: ProjectProps[] = [
     {
@@ -235,9 +237,47 @@ const Projects = () => {
   ];
 
   const categories = [...new Set(projects.map(p => p.category))];
+  
+  // Search with relevance scoring
+  const searchResults = useMemo(() => {
+    if (!searchQuery.trim()) return projects;
+    
+    const query = searchQuery.toLowerCase().trim();
+    return projects
+      .map(project => {
+        let score = 0;
+        const title = project.title.toLowerCase();
+        const description = project.description.toLowerCase();
+        const category = project.category.toLowerCase();
+        
+        // Get domain from URL for domain matching
+        let domain = '';
+        try {
+          domain = new URL(project.url).hostname.toLowerCase();
+        } catch {}
+        
+        // Scoring system
+        if (title === query) score += 100;
+        else if (title.includes(query)) score += 50;
+        if (domain.includes(query)) score += 20;
+        if (category.includes(query)) score += 30;
+        if (description.includes(query)) score += 10;
+        
+        return { ...project, score };
+      })
+      .filter(project => project.score > 0)
+      .sort((a, b) => b.score - a.score);
+  }, [searchQuery, projects]);
+
   const filteredProjects = selectedCategory 
-    ? projects.filter(p => p.category === selectedCategory)
-    : projects;
+    ? searchResults.filter(p => p.category === selectedCategory)
+    : searchResults;
+    
+  const hasActiveFilters = selectedCategory || searchQuery.trim();
+  const clearFilters = () => {
+    setSelectedCategory(null);
+    setSearchQuery('');
+  };
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -256,18 +296,63 @@ const Projects = () => {
         </p>
       </div>
       
-      {/* Category Filter */}
+      {/* Search Bar */}
       <div className="mb-8">
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-4 max-w-lg">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="text"
+              placeholder="Search projects..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 rounded-full border-border/50 focus:border-primary/50 bg-background/50 backdrop-blur-sm"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
+          </div>
+          <div className="text-sm text-muted-foreground whitespace-nowrap">
+            Showing {filteredProjects.length} of {projects.length}
+          </div>
+        </div>
+      </div>
+
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {filteredProjects.map((project, index) => (
+          <ProjectCard key={`${project.title}-${index}`} {...project} />
+        ))}
+      </div>
+
+      {/* Category Filter - Moved Below Cards */}
+      <div className="border-t border-border/50 pt-8">
+        <div className="flex items-center justify-center gap-2 mb-6">
           <Filter className="h-4 w-4 text-primary" />
           <span className="text-sm font-medium text-foreground">Filter by Category</span>
+          {hasActiveFilters && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={clearFilters}
+              className="text-xs text-muted-foreground hover:text-foreground ml-2"
+            >
+              <X className="h-3 w-3 mr-1" />
+              Clear filters
+            </Button>
+          )}
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap justify-center gap-2">
           <Button
             variant={selectedCategory === null ? "default" : "outline"}
             size="sm"
             onClick={() => setSelectedCategory(null)}
-            className="rounded-full hover:scale-105 transition-transform duration-200"
+            className="rounded-full px-4 py-1.5 text-xs hover:scale-105 transition-transform duration-200"
           >
             All Projects ({projects.length})
           </Button>
@@ -279,20 +364,13 @@ const Projects = () => {
                 variant={selectedCategory === category ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedCategory(category)}
-                className="rounded-full hover:scale-105 transition-transform duration-200"
+                className="rounded-full px-4 py-1.5 text-xs hover:scale-105 transition-transform duration-200"
               >
                 {category} ({count})
               </Button>
             );
           })}
         </div>
-      </div>
-
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {filteredProjects.map((project, index) => (
-          <ProjectCard key={`${project.title}-${index}`} {...project} />
-        ))}
       </div>
 
     </div>
