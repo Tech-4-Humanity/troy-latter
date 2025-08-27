@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
@@ -86,12 +87,15 @@ const EnvatoIndex = () => {
     if (!isAuthenticated) return;
 
     try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
       const { error } = await supabase
         .from('envato_strategy_notes')
         .upsert({
           note_key: noteKey,
           content: content,
-          user_id: (await supabase.auth.getUser()).data.user?.id
+          user_id: user.id
         });
 
       if (error) throw error;
@@ -143,6 +147,9 @@ const EnvatoIndex = () => {
 
     // Save all notes to database for authenticated users
     try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
       const promises: Promise<any>[] = [];
       document.querySelectorAll('.note').forEach((area: any) => {
         const key = area.dataset.key;
@@ -153,7 +160,7 @@ const EnvatoIndex = () => {
           supabase.from('envato_strategy_notes').upsert({
             note_key: key,
             content: content,
-            user_id: (await supabase.auth.getUser()).data.user?.id
+            user_id: user.id
           })
         );
       });
@@ -186,10 +193,13 @@ const EnvatoIndex = () => {
     // Clear database if authenticated
     if (isAuthenticated) {
       try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
         const { error } = await supabase
           .from('envato_strategy_notes')
           .delete()
-          .eq('user_id', (await supabase.auth.getUser()).data.user?.id);
+          .eq('user_id', user.id);
 
         if (error) throw error;
       } catch (error) {
