@@ -582,40 +582,7 @@ const EnvatoIndex = () => {
         </header>
 
         <main className="wrap">
-          <section className="grid-2">
-            <div className="card map">
-              <h2 className="section-title" id="portfolio">Portfolio map</h2>
-              <svg viewBox="0 0 680 480" role="img" aria-label="Strategy portfolio map">
-                <rect x="0" y="0" width="680" height="480" fill="white" rx="10" />
-                <line x1="80" y1="30" x2="80" y2="430" stroke="#e2e8f0" strokeWidth="2"/>
-                <line x1="80" y1="430" x2="640" y2="430" stroke="#e2e8f0" strokeWidth="2"/>
-                <text x="18" y="32" transform="rotate(-90,18,32)" fill="#64748b" fontSize="12">Potential value</text>
-                <text x="560" y="460" fill="#64748b" fontSize="12">Risk</text>
-                <text x="82" y="60" fill="#94a3b8" fontSize="12">High</text>
-                <text x="610" y="428" fill="#94a3b8" fontSize="12">High</text>
-                <text x="82" y="424" fill="#94a3b8" fontSize="12">Low</text>
-                <text x="600" y="458" fill="#94a3b8" fontSize="12">Low</text>
-                <rect x="80" y="60" width="560" height="140" fill="#f8fafc" />
-                <rect x="80" y="200" width="560" height="230" fill="#ffffff" />
-                <circle cx="180" cy="120" r="10" fill="#00a862" />
-                <text x="200" y="124" fontSize="13" fill="#0f172a">Path 1 Creative Infrastructure • Core</text>
-                <circle cx="330" cy="135" r="10" fill="#2463eb" />
-                <text x="350" y="139" fontSize="13" fill="#0f172a">Path 5 Platform Enabler • Secondary</text>
-                <circle cx="520" cy="110" r="10" fill="#eab308" />
-                <text x="540" y="114" fontSize="13" fill="#0f172a">Path 2 Creative Network • Satellite</text>
-                <circle cx="540" cy="160" r="10" fill="#eab308" />
-                <text x="560" y="164" fontSize="13" fill="#0f172a">Path 4 Vertical Expansion • Satellite</text>
-                <circle cx="610" cy="80" r="10" fill="#ef4444" />
-                <text x="630" y="84" fontSize="13" fill="#0f172a">Path 6 Radical • Moonshot</text>
-              </svg>
-              <div className="legend">
-                <span className="chip core"><span className="dot core"></span> Core play</span>
-                <span className="chip secondary"><span className="dot secondary"></span> Secondary play</span>
-                <span className="chip satellite"><span className="dot satellite"></span> Satellite bet</span>
-                <span className="chip moonshot"><span className="dot moonshot"></span> Moonshot</span>
-              </div>
-            </div>
-
+          <section>
             <div className="card">
               <h2 className="section-title">Quick view cards</h2>
               <div className="cards">
