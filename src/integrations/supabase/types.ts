@@ -3010,6 +3010,57 @@ export type Database = {
         }
         Relationships: []
       }
+      allocations: {
+        Row: {
+          created_at: string | null
+          id: string
+          lock_amount: number | null
+          locked: boolean | null
+          participant_id: string
+          picks: Json | null
+          room_id: string
+          updated_at: string | null
+          weight: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          lock_amount?: number | null
+          locked?: boolean | null
+          participant_id: string
+          picks?: Json | null
+          room_id: string
+          updated_at?: string | null
+          weight?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          lock_amount?: number | null
+          locked?: boolean | null
+          participant_id?: string
+          picks?: Json | null
+          room_id?: string
+          updated_at?: string | null
+          weight?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "allocations_participant_id_fkey"
+            columns: ["participant_id"]
+            isOneToOne: false
+            referencedRelation: "participants"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "allocations_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       allowed_domains: {
         Row: {
           created_at: string | null
@@ -3149,6 +3200,36 @@ export type Database = {
             referencedColumns: ["component_id"]
           },
         ]
+      }
+      app_events: {
+        Row: {
+          created_at: string
+          event_type: string
+          id: string
+          metadata: Json | null
+          room_id: string | null
+          session_id: string | null
+          user_role: string | null
+        }
+        Insert: {
+          created_at?: string
+          event_type: string
+          id?: string
+          metadata?: Json | null
+          room_id?: string | null
+          session_id?: string | null
+          user_role?: string | null
+        }
+        Update: {
+          created_at?: string
+          event_type?: string
+          id?: string
+          metadata?: Json | null
+          room_id?: string | null
+          session_id?: string | null
+          user_role?: string | null
+        }
+        Relationships: []
       }
       application_logs: {
         Row: {
@@ -9205,6 +9286,42 @@ export type Database = {
         }
         Relationships: []
       }
+      download_passes: {
+        Row: {
+          created_at: string
+          expires_at: string | null
+          id: string
+          passes_purchased: number
+          passes_remaining: number
+          session_id: string
+          stripe_session_id: string | null
+          updated_at: string
+          user_email: string | null
+        }
+        Insert: {
+          created_at?: string
+          expires_at?: string | null
+          id?: string
+          passes_purchased?: number
+          passes_remaining?: number
+          session_id: string
+          stripe_session_id?: string | null
+          updated_at?: string
+          user_email?: string | null
+        }
+        Update: {
+          created_at?: string
+          expires_at?: string | null
+          id?: string
+          passes_purchased?: number
+          passes_remaining?: number
+          session_id?: string
+          stripe_session_id?: string | null
+          updated_at?: string
+          user_email?: string | null
+        }
+        Relationships: []
+      }
       ecosystem_items: {
         Row: {
           business: string
@@ -9523,6 +9640,51 @@ export type Database = {
           "Visual Tag"?: string | null
           "Who It's For"?: string | null
           Workstream?: string | null
+        }
+        Relationships: []
+      }
+      engagement_analytics: {
+        Row: {
+          action_type: string
+          created_at: string
+          engagement_score: number | null
+          id: string
+          metadata: Json | null
+          resource_id: string
+          resource_title: string | null
+          resource_type: string
+          role_name: string | null
+          session_id: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          action_type: string
+          created_at?: string
+          engagement_score?: number | null
+          id?: string
+          metadata?: Json | null
+          resource_id: string
+          resource_title?: string | null
+          resource_type: string
+          role_name?: string | null
+          session_id?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          action_type?: string
+          created_at?: string
+          engagement_score?: number | null
+          id?: string
+          metadata?: Json | null
+          resource_id?: string
+          resource_title?: string | null
+          resource_type?: string
+          role_name?: string | null
+          session_id?: string | null
+          updated_at?: string
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -10072,6 +10234,33 @@ export type Database = {
             referencedColumns: ["tag_id"]
           },
         ]
+      }
+      envato_strategy_notes: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          note_key: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          content?: string
+          created_at?: string
+          id?: string
+          note_key: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          note_key?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       "EOFY Bundles": {
         Row: {
@@ -15125,6 +15314,109 @@ export type Database = {
         }
         Relationships: []
       }
+      neural_ennead_families: {
+        Row: {
+          canonical_keywords: string[] | null
+          created_at: string
+          description: string | null
+          exemplar_roles: string[] | null
+          family_code: string
+          family_name: string
+          id: string
+          source_urls: string[] | null
+          updated_at: string
+          version: number
+        }
+        Insert: {
+          canonical_keywords?: string[] | null
+          created_at?: string
+          description?: string | null
+          exemplar_roles?: string[] | null
+          family_code: string
+          family_name: string
+          id?: string
+          source_urls?: string[] | null
+          updated_at?: string
+          version?: number
+        }
+        Update: {
+          canonical_keywords?: string[] | null
+          created_at?: string
+          description?: string | null
+          exemplar_roles?: string[] | null
+          family_code?: string
+          family_name?: string
+          id?: string
+          source_urls?: string[] | null
+          updated_at?: string
+          version?: number
+        }
+        Relationships: []
+      }
+      neural_ennead_members: {
+        Row: {
+          canonical_keywords: string[]
+          created_at: string
+          description: string | null
+          display_name: string
+          exemplar_roles: string[]
+          member_code: string
+          primary_family_code: string
+          secondary_family_code: string
+          short_label: string | null
+          tertiary_family_code: string
+          updated_at: string
+        }
+        Insert: {
+          canonical_keywords?: string[]
+          created_at?: string
+          description?: string | null
+          display_name: string
+          exemplar_roles?: string[]
+          member_code: string
+          primary_family_code: string
+          secondary_family_code: string
+          short_label?: string | null
+          tertiary_family_code: string
+          updated_at?: string
+        }
+        Update: {
+          canonical_keywords?: string[]
+          created_at?: string
+          description?: string | null
+          display_name?: string
+          exemplar_roles?: string[]
+          member_code?: string
+          primary_family_code?: string
+          secondary_family_code?: string
+          short_label?: string | null
+          tertiary_family_code?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "neural_ennead_members_primary_family_code_fkey"
+            columns: ["primary_family_code"]
+            isOneToOne: false
+            referencedRelation: "neural_ennead_families"
+            referencedColumns: ["family_code"]
+          },
+          {
+            foreignKeyName: "neural_ennead_members_secondary_family_code_fkey"
+            columns: ["secondary_family_code"]
+            isOneToOne: false
+            referencedRelation: "neural_ennead_families"
+            referencedColumns: ["family_code"]
+          },
+          {
+            foreignKeyName: "neural_ennead_members_tertiary_family_code_fkey"
+            columns: ["tertiary_family_code"]
+            isOneToOne: false
+            referencedRelation: "neural_ennead_families"
+            referencedColumns: ["family_code"]
+          },
+        ]
+      }
       neural_specs: {
         Row: {
           created_at: string
@@ -16305,6 +16597,44 @@ export type Database = {
           "Work Package Name"?: string | null
         }
         Relationships: []
+      }
+      participants: {
+        Row: {
+          created_at: string | null
+          display_name: string
+          id: string
+          role: string
+          room_id: string
+          sector: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          display_name: string
+          id?: string
+          role?: string
+          room_id: string
+          sector: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          display_name?: string
+          id?: string
+          role?: string
+          room_id?: string
+          sector?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "participants_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       "partner qualtrics defence": {
         Row: {
@@ -18709,6 +19039,54 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      reel_assets: {
+        Row: {
+          asset_key: string
+          cost_per_unit: number | null
+          created_at: string
+          description: string | null
+          display_name: string
+          icon_svg: string | null
+          id: string
+          image_url: string | null
+          is_active: boolean | null
+          reel_type: string
+          sort_order: number | null
+          unit: string | null
+          updated_at: string
+        }
+        Insert: {
+          asset_key: string
+          cost_per_unit?: number | null
+          created_at?: string
+          description?: string | null
+          display_name: string
+          icon_svg?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean | null
+          reel_type: string
+          sort_order?: number | null
+          unit?: string | null
+          updated_at?: string
+        }
+        Update: {
+          asset_key?: string
+          cost_per_unit?: number | null
+          created_at?: string
+          description?: string | null
+          display_name?: string
+          icon_svg?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean | null
+          reel_type?: string
+          sort_order?: number | null
+          unit?: string | null
+          updated_at?: string
+        }
+        Relationships: []
       }
       regionalpricingoverrides: {
         Row: {
@@ -21645,6 +22023,33 @@ export type Database = {
         }
         Relationships: []
       }
+      rooms: {
+        Row: {
+          created_at: string | null
+          id: string
+          name: string
+          state: Json | null
+          total_budget: number
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          name: string
+          state?: Json | null
+          total_budget: number
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          name?: string
+          state?: Json | null
+          total_budget?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       salary_estimates: {
         Row: {
           annual_salary: number | null
@@ -21913,6 +22318,27 @@ export type Database = {
           task_output_format?: string | null
           task_usage_minutes?: number | null
           team_type?: string | null
+        }
+        Relationships: []
+      }
+      scenarios: {
+        Row: {
+          created_at: string | null
+          id: string
+          name: string
+          payload: Json
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          name: string
+          payload: Json
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          name?: string
+          payload?: Json
         }
         Relationships: []
       }
@@ -24849,6 +25275,278 @@ export type Database = {
           original_outcome?: string
           re_recommended?: boolean | null
           tender_id?: string
+        }
+        Relationships: []
+      }
+      thinker_alignment_team_members: {
+        Row: {
+          contribution_focus: string | null
+          created_at: string
+          member_code: string
+          metadata: Json | null
+          order_index: number
+          rationale: string | null
+          role_on_team: string | null
+          team_id: string
+          updated_at: string
+        }
+        Insert: {
+          contribution_focus?: string | null
+          created_at?: string
+          member_code: string
+          metadata?: Json | null
+          order_index?: number
+          rationale?: string | null
+          role_on_team?: string | null
+          team_id: string
+          updated_at?: string
+        }
+        Update: {
+          contribution_focus?: string | null
+          created_at?: string
+          member_code?: string
+          metadata?: Json | null
+          order_index?: number
+          rationale?: string | null
+          role_on_team?: string | null
+          team_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_team_member_to_neural_member"
+            columns: ["member_code"]
+            isOneToOne: false
+            referencedRelation: "neural_ennead_members"
+            referencedColumns: ["member_code"]
+          },
+          {
+            foreignKeyName: "thinker_alignment_team_members_member_code_fkey"
+            columns: ["member_code"]
+            isOneToOne: false
+            referencedRelation: "neural_ennead_members"
+            referencedColumns: ["member_code"]
+          },
+          {
+            foreignKeyName: "thinker_alignment_team_members_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "thinker_alignment_teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      thinker_alignment_teams: {
+        Row: {
+          constraints: Json | null
+          created_at: string
+          domain: string
+          id: string
+          industries: string[]
+          model_used: string | null
+          overlap_cap: number
+          selection_strategy: string | null
+          team_size: number
+          thinker_name: string
+          updated_at: string
+        }
+        Insert: {
+          constraints?: Json | null
+          created_at?: string
+          domain: string
+          id?: string
+          industries?: string[]
+          model_used?: string | null
+          overlap_cap?: number
+          selection_strategy?: string | null
+          team_size?: number
+          thinker_name: string
+          updated_at?: string
+        }
+        Update: {
+          constraints?: Json | null
+          created_at?: string
+          domain?: string
+          id?: string
+          industries?: string[]
+          model_used?: string | null
+          overlap_cap?: number
+          selection_strategy?: string | null
+          team_size?: number
+          thinker_name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      thinker_family_alignment: {
+        Row: {
+          confidence: number
+          created_at: string
+          domain: string
+          family_code: string
+          id: string
+          metadata: Json | null
+          model_used: string | null
+          rank: number
+          rationale: string | null
+          thinker_name: string
+          updated_at: string
+        }
+        Insert: {
+          confidence?: number
+          created_at?: string
+          domain: string
+          family_code: string
+          id?: string
+          metadata?: Json | null
+          model_used?: string | null
+          rank?: number
+          rationale?: string | null
+          thinker_name: string
+          updated_at?: string
+        }
+        Update: {
+          confidence?: number
+          created_at?: string
+          domain?: string
+          family_code?: string
+          id?: string
+          metadata?: Json | null
+          model_used?: string | null
+          rank?: number
+          rationale?: string | null
+          thinker_name?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "thinker_family_alignment_family_code_fkey"
+            columns: ["family_code"]
+            isOneToOne: false
+            referencedRelation: "neural_ennead_families"
+            referencedColumns: ["family_code"]
+          },
+        ]
+      }
+      thinker_member_alignment: {
+        Row: {
+          confidence: number | null
+          created_at: string
+          domain: string
+          id: string
+          member_code: string
+          metadata: Json | null
+          model_used: string | null
+          rank: number
+          rationale: string | null
+          thinker_name: string
+          transitions: Json | null
+          updated_at: string
+        }
+        Insert: {
+          confidence?: number | null
+          created_at?: string
+          domain: string
+          id?: string
+          member_code: string
+          metadata?: Json | null
+          model_used?: string | null
+          rank?: number
+          rationale?: string | null
+          thinker_name: string
+          transitions?: Json | null
+          updated_at?: string
+        }
+        Update: {
+          confidence?: number | null
+          created_at?: string
+          domain?: string
+          id?: string
+          member_code?: string
+          metadata?: Json | null
+          model_used?: string | null
+          rank?: number
+          rationale?: string | null
+          thinker_name?: string
+          transitions?: Json | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "thinker_member_alignment_member_code_fkey"
+            columns: ["member_code"]
+            isOneToOne: false
+            referencedRelation: "neural_ennead_members"
+            referencedColumns: ["member_code"]
+          },
+        ]
+      }
+      thinker_pet_topics: {
+        Row: {
+          created_at: string
+          pet_topic: string
+          thinker_name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          pet_topic: string
+          thinker_name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          pet_topic?: string
+          thinker_name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      thinker_profiles: {
+        Row: {
+          ai_shift: string | null
+          area: string | null
+          core_idea: string | null
+          created_at: string
+          cross_era_relevance: Json
+          id: string
+          lobe: string | null
+          metadata: Json | null
+          practical_applications: Json
+          related_thinkers: string[]
+          thinker_name: string
+          updated_at: string
+          usage_prompts: Json
+        }
+        Insert: {
+          ai_shift?: string | null
+          area?: string | null
+          core_idea?: string | null
+          created_at?: string
+          cross_era_relevance?: Json
+          id?: string
+          lobe?: string | null
+          metadata?: Json | null
+          practical_applications?: Json
+          related_thinkers?: string[]
+          thinker_name: string
+          updated_at?: string
+          usage_prompts?: Json
+        }
+        Update: {
+          ai_shift?: string | null
+          area?: string | null
+          core_idea?: string | null
+          created_at?: string
+          cross_era_relevance?: Json
+          id?: string
+          lobe?: string | null
+          metadata?: Json | null
+          practical_applications?: Json
+          related_thinkers?: string[]
+          thinker_name?: string
+          updated_at?: string
+          usage_prompts?: Json
         }
         Relationships: []
       }
@@ -29421,6 +30119,14 @@ export type Database = {
           agent_display_name?: string | null
           summary?: string | null
           title?: string | null
+        }
+        Relationships: []
+      }
+      app_event_daily_counts: {
+        Row: {
+          count: number | null
+          day: string | null
+          event_type: string | null
         }
         Relationships: []
       }
