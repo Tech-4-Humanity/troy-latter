@@ -1,9 +1,9 @@
-import React from 'react';
-import { Layout } from '@/components/Layout';
+import React, { useState } from 'react';
 import { PageTitle } from '@/components/PageTitle';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { GlassmorphismCard, GlassmorphismCardContent } from '@/components/ui/glassmorphism-card';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Globe, Users, Zap, Shield, Building, Bot, Star, Wrench, Heart, Brain, ChartBar, Activity } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { ExternalLink, Globe, Users, Zap, Shield, Building, Bot, Star, Wrench, Heart, Brain, ChartBar, Activity, Filter } from 'lucide-react';
 
 interface ProjectProps {
   title: string;
@@ -14,50 +14,53 @@ interface ProjectProps {
 }
 
 const ProjectCard = ({ title, description, url, icon: Icon, category }: ProjectProps) => (
-  <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-brand-primary">
-    <CardHeader>
-      <div className="flex items-start justify-between">
+  <GlassmorphismCard className="group hover:scale-[1.02] transition-all duration-300 h-full flex flex-col">
+    <GlassmorphismCardContent className="flex flex-col h-full">
+      <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-brand-primary/10">
-            <Icon className="h-5 w-5 text-brand-primary" />
+          <div className="p-3 rounded-xl bg-gradient-to-r from-primary/20 to-primary/10 backdrop-blur-sm">
+            <Icon className="h-5 w-5 text-primary" />
           </div>
-          <div>
-            <CardTitle className="text-lg group-hover:text-brand-primary transition-colors">
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-1">
               {title}
-            </CardTitle>
-            <div className="text-sm text-muted-foreground mt-1 font-medium">
-              {category}
-            </div>
+            </h3>
           </div>
         </div>
         <Button 
           variant="ghost" 
           size="sm"
           onClick={() => window.open(url, '_blank', 'noopener,noreferrer')}
-          className="opacity-0 group-hover:opacity-100 transition-opacity"
+          className="opacity-70 hover:opacity-100 transition-opacity shrink-0"
         >
           <ExternalLink className="h-4 w-4" />
         </Button>
       </div>
-    </CardHeader>
-    <CardContent>
-      <CardDescription className="text-sm leading-relaxed mb-4">
+      
+      <Badge variant="secondary" className="self-start mb-3 text-xs">
+        {category}
+      </Badge>
+      
+      <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-grow">
         {description}
-      </CardDescription>
+      </p>
+      
       <Button 
         variant="outline" 
         size="sm" 
         onClick={() => window.open(url, '_blank', 'noopener,noreferrer')}
-        className="w-full group-hover:bg-brand-primary group-hover:text-white transition-colors"
+        className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 hover:shadow-lg"
       >
-        Visit Site
+        Visit Project
         <ExternalLink className="ml-2 h-3 w-3" />
       </Button>
-    </CardContent>
-  </Card>
+    </GlassmorphismCardContent>
+  </GlassmorphismCard>
 );
 
 const Projects = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  
   const projects: ProjectProps[] = [
     {
       title: "Tech4Humanity",
@@ -202,43 +205,76 @@ const Projects = () => {
   ];
 
   const categories = [...new Set(projects.map(p => p.category))];
+  const filteredProjects = selectedCategory 
+    ? projects.filter(p => p.category === selectedCategory)
+    : projects;
 
   return (
-    <Layout>
-      <div className="max-w-6xl mx-auto">
+    <div className="max-w-7xl mx-auto">
+      <div className="text-center mb-12">
         <PageTitle title="Projects & Ventures" />
-        <p className="text-brand-secondary text-lg leading-relaxed mt-4 mb-8">
-          A portfolio of innovative platforms and businesses driving technology-forward solutions across multiple industries
+        <p className="text-muted-foreground text-lg leading-relaxed mt-6 max-w-3xl mx-auto">
+          A portfolio of innovative platforms and businesses driving technology-forward solutions across multiple industries.
+          Each project represents a commitment to leveraging technology for positive impact and human advancement.
         </p>
-        
-        <div className="mt-8 space-y-8">
-          {categories.map(category => (
-            <div key={category}>
-              <h2 className="text-xl font-semibold text-brand-primary mb-4 border-b border-brand-primary/20 pb-2">
-                {category}
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects
-                  .filter(project => project.category === category)
-                  .map((project, index) => (
-                    <ProjectCard key={index} {...project} />
-                  ))}
-              </div>
-            </div>
-          ))}
+      </div>
+      
+      {/* Category Filter */}
+      <div className="mb-8">
+        <div className="flex items-center gap-2 mb-4">
+          <Filter className="h-4 w-4 text-muted-foreground" />
+          <span className="text-sm font-medium text-muted-foreground">Filter by Category</span>
         </div>
-
-        <div className="mt-12 p-6 bg-brand-light/30 rounded-lg">
-          <h3 className="text-lg font-semibold text-brand-primary mb-3">About These Projects</h3>
-          <p className="text-brand-secondary leading-relaxed">
-            This portfolio represents a diverse ecosystem of technology ventures spanning AI, privacy, 
-            organizational innovation, and human potential optimization. Each project reflects a commitment 
-            to leveraging technology for positive impact, whether through social good, business innovation, 
-            or advancing the frontiers of human-computer interaction.
-          </p>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            variant={selectedCategory === null ? "default" : "outline"}
+            size="sm"
+            onClick={() => setSelectedCategory(null)}
+            className="rounded-full"
+          >
+            All Projects ({projects.length})
+          </Button>
+          {categories.sort().map(category => {
+            const count = projects.filter(p => p.category === category).length;
+            return (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSelectedCategory(category)}
+                className="rounded-full"
+              >
+                {category} ({count})
+              </Button>
+            );
+          })}
         </div>
       </div>
-    </Layout>
+
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {filteredProjects.map((project, index) => (
+          <ProjectCard key={`${project.title}-${index}`} {...project} />
+        ))}
+      </div>
+
+      {/* About Section */}
+      <GlassmorphismCard className="mb-8">
+        <GlassmorphismCardContent>
+          <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+            <Star className="h-5 w-5 text-primary" />
+            About This Portfolio
+          </h3>
+          <p className="text-muted-foreground leading-relaxed">
+            This collection represents a diverse ecosystem of technology ventures spanning artificial intelligence, 
+            privacy technology, organizational innovation, and human potential optimization. Each project reflects 
+            a deep commitment to leveraging cutting-edge technology for positive impact—whether through advancing 
+            social good, driving business innovation, or pushing the frontiers of human-computer interaction and 
+            cognitive enhancement.
+          </p>
+        </GlassmorphismCardContent>
+      </GlassmorphismCard>
+    </div>
   );
 };
 
