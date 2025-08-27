@@ -22,37 +22,143 @@ const EnvatoIndex = () => {
   // Debounce timer for DB sync
   const [debounceTimers, setDebounceTimers] = useState<Record<string, NodeJS.Timeout>>({});
 
+  // State for flip cards
+  const [flipped, setFlipped] = useState<Record<string, boolean>>({});
+  
+  const flip = (key: string) => setFlipped(p => ({ ...p, [key]: true }));
+  const unflip = (key: string) => setFlipped(p => ({ ...p, [key]: false }));
+
   // Path data for detailed views
   const pathData = {
     "Core - Creator Tools": {
       category: "Core",
       growthThesis: "Envato's creator tools are the foundation of its ecosystem. By enhancing these with AI capabilities, we can dramatically improve creator productivity while maintaining quality standards.",
       productAIStrategy: "Integrate AI-powered templates, automated design suggestions, smart asset recommendations, and intelligent quality checking to streamline the creative process.",
-      actions: "• Implement AI template generation • Add smart asset tagging • Deploy automated quality checks • Create intelligent search • Develop personalized recommendations"
+      actions: "• Implement AI template generation • Add smart asset tagging • Deploy automated quality checks • Create intelligent search • Develop personalized recommendations",
+      steps: [
+        { phase: '0–30 days', items: [
+          'Define enterprise design/brand compliance rules',
+          'Ship AI-assisted template suggestions (beta) in the editor',
+          'Pilot intelligent asset tagging on a subset of the library',
+          'Instrument metrics: time-to-complete, rejection rate, NPS'
+        ]},
+        { phase: '31–60 days', items: [
+          'Roll out automated quality checks (moderation + brand rules)',
+          'Add semantic search with usage context',
+          'Launch personalized creator recommendations',
+          'Begin enterprise early-adopter program (5–10 customers)'
+        ]},
+        { phase: '61–90 days', items: [
+          'Scale to additional enterprise tenants with SSO + audit',
+          'Expand template generation coverage and languages',
+          'Ship workflow analytics dashboard',
+          'Publish case studies and quantified ROI'
+        ]}
+      ]
     },
     "Core - Enterprise": {
       category: "Core", 
       growthThesis: "Enterprise clients need scalable, compliant, and integrated creative solutions. AI can automate workflow management and ensure brand consistency across large organizations.",
       productAIStrategy: "Build enterprise-grade AI tools for brand management, automated compliance checking, workflow optimization, and creative asset governance.",
-      actions: "• Develop brand consistency AI • Create compliance automation • Build workflow optimization • Implement asset governance • Add enterprise analytics"
+      actions: "• Develop brand consistency AI • Create compliance automation • Build workflow optimization • Implement asset governance • Add enterprise analytics",
+      steps: [
+        { phase: '0–30 days', items: [
+          'Community matching algorithm (creator skills + project needs)',
+          'Ship social feeds with curated content discovery',
+          'Implement creator verification and moderation system',
+          'Launch creator subscription beta with select influencers'
+        ]},
+        { phase: '31–60 days', items: [
+          'Scale creator subscription platform',
+          'Add creator analytics dashboard and revenue insights',
+          'Deploy AI-powered community recommendations',
+          'Begin advertiser pilot program with sponsored content'
+        ]},
+        { phase: '61–90 days', items: [
+          'Launch full advertising platform with targeting',
+          'Expand creator monetization tools (tips, premium content)',
+          'Ship community challenges and collaborative projects',
+          'Publish creator economy impact metrics'
+        ]}
+      ]
     },
     "Secondary - Learning": {
       category: "Secondary",
       growthThesis: "Education drives platform adoption and creator success. AI-powered personalized learning can significantly improve skill development and creator retention.",
       productAIStrategy: "Create adaptive learning paths, AI tutors, skill assessment tools, and personalized content recommendations to enhance educational outcomes.",
-      actions: "• Build adaptive learning system • Create AI tutoring • Develop skill assessments • Add learning analytics • Implement progress tracking"
+      actions: "• Build adaptive learning system • Create AI tutoring • Develop skill assessments • Add learning analytics • Implement progress tracking",
+      steps: [
+        { phase: '0–30 days', items: [
+          'Select target verticals (Education, Gaming, Retail)',
+          'Validate ICP through customer interviews',
+          'Build MVP for Education vertical with templates',
+          'Create vertical-specific asset libraries'
+        ]},
+        { phase: '31–60 days', items: [
+          'Launch Education vertical with 5 pilot customers',
+          'Develop Gaming vertical MVP (character assets, UI kits)',
+          'Add vertical-specific integrations (LMS, game engines)',
+          'Build vertical sales playbooks and go-to-market'
+        ]},
+        { phase: '61–90 days', items: [
+          'Scale Education and Gaming verticals',
+          'Begin Retail vertical development (product photography)',
+          'Launch vertical partner program',
+          'Measure vertical-specific retention and expansion metrics'
+        ]}
+      ]
     },
     "Secondary - Community": {
       category: "Secondary",
       growthThesis: "Strong communities drive engagement and platform stickiness. AI can enhance community interactions through better matching, content discovery, and collaboration tools.",
       productAIStrategy: "Implement AI-driven community matching, intelligent content curation, automated moderation, and collaboration recommendations.",
-      actions: "• Create smart community matching • Build content curation AI • Implement auto-moderation • Add collaboration tools • Develop engagement analytics"
+      actions: "• Create smart community matching • Build content curation AI • Implement auto-moderation • Add collaboration tools • Develop engagement analytics",
+      steps: [
+        { phase: '0–30 days', items: [
+          'Design API-first architecture and developer portal',
+          'Ship core creative APIs (templates, assets, generation)',
+          'Launch usage-based pricing model',
+          'Build developer documentation and SDKs'
+        ]},
+        { phase: '31–60 days', items: [
+          'Add advanced AI APIs (style transfer, smart cropping)',
+          'Create reference applications and code samples',
+          'Launch partner integration program',
+          'Implement API analytics and usage dashboards'
+        ]},
+        { phase: '61–90 days', items: [
+          'Scale API adoption with enterprise customers',
+          'Add white-label solutions for SaaS providers',
+          'Launch API marketplace for third-party tools',
+          'Publish platform adoption and revenue metrics'
+        ]}
+      ]
     },
     "Satellite - New Verticals": {
       category: "Satellite",
       growthThesis: "Expanding into adjacent creative verticals can capture new market segments. AI can accelerate this expansion by automating content creation in new domains.",
       productAIStrategy: "Leverage AI to quickly establish presence in new creative verticals through automated content generation, market analysis, and rapid prototyping.",
-      actions: "• Research new verticals • Build content generation AI • Create market analysis tools • Develop rapid prototyping • Test market validation"
+      actions: "• Research new verticals • Build content generation AI • Create market analysis tools • Develop rapid prototyping • Test market validation",
+      steps: [
+        { phase: '0–30 days', items: [
+          'Prototype immersive content creation pipeline',
+          'Build agentic AI substrate for autonomous creation',
+          'Partner with VR/AR studios for validation',
+          'Create experimental immersive asset library'
+        ]},
+        { phase: '31–60 days', items: [
+          'Launch immersive content beta with select creators',
+          'Add AI agent marketplace for creative tasks',
+          'Implement spatial computing integrations',
+          'Begin enterprise pilots for immersive experiences'
+        ]},
+        { phase: '61–90 days', items: [
+          'Scale immersive platform with consumer launch',
+          'Deploy autonomous creative agents at scale',
+          'Create immersive creator economy',
+          'Establish market leadership in spatial content'
+        ]}
+      ]
     }
   };
 
@@ -315,11 +421,17 @@ const EnvatoIndex = () => {
         }
         .envato-page .hero-image {
           width: 100%;
-          aspect-ratio: 16/9;
+          max-width: 960px;
+          margin: 0 auto 16px;
+          aspect-ratio: 21/9;
           border-radius: 14px;
           border: 1px solid var(--line);
           overflow: hidden;
-          margin-bottom: 16px;
+        }
+        @media (max-width: 768px) {
+          .envato-page .hero-image { 
+            aspect-ratio: 16/9; 
+          }
         }
         .envato-page .hero-image img {
           width: 100%;
@@ -563,6 +675,31 @@ const EnvatoIndex = () => {
         .envato-page .muted {
           color: var(--muted);
         }
+        .envato-page .flip-card {
+          perspective: 1000px;
+        }
+        .envato-page .flip-inner {
+          position: relative;
+          transform-style: preserve-3d;
+          transition: transform 0.6s;
+          min-height: 200px;
+        }
+        .envato-page .flip-card.is-flipped .flip-inner {
+          transform: rotateY(180deg);
+        }
+        .envato-page .flip-face {
+          position: absolute;
+          inset: 0;
+          backface-visibility: hidden;
+          padding: 16px;
+          background: var(--card);
+          border: 1px solid var(--line);
+          border-radius: 14px;
+        }
+        .envato-page .flip-back {
+          transform: rotateY(180deg);
+          overflow: auto;
+        }
       `}</style>
 
       <div className="envato-page min-h-screen">
@@ -585,206 +722,495 @@ const EnvatoIndex = () => {
           <section>
             <div className="card">
               <h2 className="section-title">Quick view cards</h2>
+              <p className="text-sm text-muted mb-4">
+                These cards represent five strategic growth paths for Envato. Each path includes the growth thesis, product AI strategy, and key actions. 
+                Flip a card to see the step-by-step execution plan for that path, or open the full view for context across all dimensions.
+              </p>
               <div className="cards">
-                <div className="card">
-                  <h3>Path 1 Creative Infrastructure</h3>
-                  <div className="meta">Enterprise workflows and compliance</div>
-                  <p className="meta">Indicative 100–200M ARR in 3 to 5 years</p>
-                  <span className="tag core">Low risk</span>
-                  <span className="tag">ARR focus</span>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button className="btn" style={{background: 'var(--envato)', color: '#fff', padding: '10px 12px', borderRadius: '10px', fontWeight: '600'}}>
-                        Read more
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                      <DialogHeader>
-                        <DialogTitle>Core - Creator Tools: Detailed Strategy</DialogTitle>
-                      </DialogHeader>
-                      <div className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                            <p className="text-sm">{pathData["Core - Creator Tools"].growthThesis}</p>
-                          </div>
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                            <p className="text-sm">{pathData["Core - Creator Tools"].productAIStrategy}</p>
-                          </div>
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                            <p className="text-sm whitespace-pre-line">{pathData["Core - Creator Tools"].actions}</p>
-                          </div>
-                        </div>
-                        <div className="text-center">
-                          <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
-                            View Full Comparison Table
-                          </Button>
-                        </div>
+                <div className={`flip-card ${flipped['path1'] ? 'is-flipped' : ''}`}>
+                  <div className="flip-inner">
+                    <div className="flip-face flip-front">
+                      <h3>Path 1 Creative Infrastructure</h3>
+                      <div className="meta">Enterprise workflows and compliance</div>
+                      <p className="meta">Indicative 100–200M ARR in 3 to 5 years</p>
+                      <span className="tag core">Low risk</span>
+                      <span className="tag">ARR focus</span>
+                      <div className="mt-4 flex gap-2">
+                        <Button onClick={() => flip('path1')} variant="outline" size="sm">
+                          Flip for steps
+                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
+                              Full view
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Core - Creator Tools: Detailed Strategy</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-6">
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                                  <p className="text-sm">{pathData["Core - Creator Tools"].growthThesis}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                                  <p className="text-sm">{pathData["Core - Creator Tools"].productAIStrategy}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                                  <p className="text-sm whitespace-pre-line">{pathData["Core - Creator Tools"].actions}</p>
+                                </div>
+                              </div>
+                              <div className="text-center">
+                                <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
+                                  View Full Comparison Table
+                                </Button>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
                       </div>
-                    </DialogContent>
-                  </Dialog>
+                    </div>
+                    <div className="flip-face flip-back">
+                      <h4 className="font-semibold mb-3">Step-by-step execution plan</h4>
+                      <div className="grid md:grid-cols-3 gap-3 mb-4">
+                        {pathData["Core - Creator Tools"].steps.map((step, idx) => (
+                          <div key={idx}>
+                            <div className="font-semibold text-sm mb-2">{step.phase}</div>
+                            <ul className="list-disc pl-4 text-xs space-y-1">
+                              {step.items.map((item, itemIdx) => (
+                                <li key={itemIdx}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex gap-2">
+                        <Button variant="outline" size="sm" onClick={() => unflip('path1')}>
+                          Back
+                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
+                              Full view
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Core - Creator Tools: Detailed Strategy</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-6">
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                                  <p className="text-sm">{pathData["Core - Creator Tools"].growthThesis}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                                  <p className="text-sm">{pathData["Core - Creator Tools"].productAIStrategy}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                                  <p className="text-sm whitespace-pre-line">{pathData["Core - Creator Tools"].actions}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="card">
-                  <h3>Path 2 Creative Network</h3>
-                  <div className="meta">Community, feeds, creator subs</div>
-                  <p className="meta">Indicative 500M plus GMV potential</p>
-                  <span className="tag satellite">Higher risk</span>
-                  <span className="tag">Ads and subs</span>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button className="btn" style={{background: 'var(--envato)', color: '#fff', padding: '10px 12px', borderRadius: '10px', fontWeight: '600'}}>
-                        Read more
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                      <DialogHeader>
-                        <DialogTitle>Satellite - New Verticals: Detailed Strategy</DialogTitle>
-                      </DialogHeader>
-                      <div className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                            <p className="text-sm">{pathData["Satellite - New Verticals"].growthThesis}</p>
-                          </div>
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                            <p className="text-sm">{pathData["Satellite - New Verticals"].productAIStrategy}</p>
-                          </div>
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                            <p className="text-sm whitespace-pre-line">{pathData["Satellite - New Verticals"].actions}</p>
-                          </div>
-                        </div>
-                        <div className="text-center">
-                          <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
-                            View Full Comparison Table
-                          </Button>
-                        </div>
+                <div className={`flip-card ${flipped['path2'] ? 'is-flipped' : ''}`}>
+                  <div className="flip-inner">
+                    <div className="flip-face flip-front">
+                      <h3>Path 2 Creative Network</h3>
+                      <div className="meta">Community, feeds, creator subs</div>
+                      <p className="meta">Indicative 500M plus GMV potential</p>
+                      <span className="tag satellite">Higher risk</span>
+                      <span className="tag">Ads and subs</span>
+                      <div className="mt-4 flex gap-2">
+                        <Button onClick={() => flip('path2')} variant="outline" size="sm">
+                          Flip for steps
+                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
+                              Full view
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Core - Enterprise: Detailed Strategy</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-6">
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                                  <p className="text-sm">{pathData["Core - Enterprise"].growthThesis}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                                  <p className="text-sm">{pathData["Core - Enterprise"].productAIStrategy}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                                  <p className="text-sm whitespace-pre-line">{pathData["Core - Enterprise"].actions}</p>
+                                </div>
+                              </div>
+                              <div className="text-center">
+                                <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
+                                  View Full Comparison Table
+                                </Button>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
                       </div>
-                    </DialogContent>
-                  </Dialog>
+                    </div>
+                    <div className="flip-face flip-back">
+                      <h4 className="font-semibold mb-3">Step-by-step execution plan</h4>
+                      <div className="grid md:grid-cols-3 gap-3 mb-4">
+                        {pathData["Core - Enterprise"].steps.map((step, idx) => (
+                          <div key={idx}>
+                            <div className="font-semibold text-sm mb-2">{step.phase}</div>
+                            <ul className="list-disc pl-4 text-xs space-y-1">
+                              {step.items.map((item, itemIdx) => (
+                                <li key={itemIdx}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex gap-2">
+                        <Button variant="outline" size="sm" onClick={() => unflip('path2')}>
+                          Back
+                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
+                              Full view
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Core - Enterprise: Detailed Strategy</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-6">
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                                  <p className="text-sm">{pathData["Core - Enterprise"].growthThesis}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                                  <p className="text-sm">{pathData["Core - Enterprise"].productAIStrategy}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                                  <p className="text-sm whitespace-pre-line">{pathData["Core - Enterprise"].actions}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="card">
-                  <h3>Path 4 Vertical Expansion</h3>
-                  <div className="meta">Industry solutions like Edu and Gaming</div>
-                  <p className="meta">Indicative 50–100M ARR per vertical</p>
-                  <span className="tag satellite">Higher risk</span>
-                  <span className="tag">Sector SaaS</span>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button className="btn" style={{background: 'var(--envato)', color: '#fff', padding: '10px 12px', borderRadius: '10px', fontWeight: '600'}}>
-                        Read more
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                      <DialogHeader>
-                        <DialogTitle>Satellite - New Verticals: Detailed Strategy</DialogTitle>
-                      </DialogHeader>
-                      <div className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                            <p className="text-sm">{pathData["Satellite - New Verticals"].growthThesis}</p>
-                          </div>
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                            <p className="text-sm">{pathData["Satellite - New Verticals"].productAIStrategy}</p>
-                          </div>
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                            <p className="text-sm whitespace-pre-line">{pathData["Satellite - New Verticals"].actions}</p>
-                          </div>
-                        </div>
-                        <div className="text-center">
-                          <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
-                            View Full Comparison Table
-                          </Button>
-                        </div>
+                <div className={`flip-card ${flipped['path4'] ? 'is-flipped' : ''}`}>
+                  <div className="flip-inner">
+                    <div className="flip-face flip-front">
+                      <h3>Path 4 Vertical Expansion</h3>
+                      <div className="meta">Industry solutions like Edu and Gaming</div>
+                      <p className="meta">Indicative 50–100M ARR per vertical</p>
+                      <span className="tag satellite">Higher risk</span>
+                      <span className="tag">Sector SaaS</span>
+                      <div className="mt-4 flex gap-2">
+                        <Button onClick={() => flip('path4')} variant="outline" size="sm">
+                          Flip for steps
+                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
+                              Full view
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Secondary - Learning: Detailed Strategy</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-6">
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                                  <p className="text-sm">{pathData["Secondary - Learning"].growthThesis}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                                  <p className="text-sm">{pathData["Secondary - Learning"].productAIStrategy}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                                  <p className="text-sm whitespace-pre-line">{pathData["Secondary - Learning"].actions}</p>
+                                </div>
+                              </div>
+                              <div className="text-center">
+                                <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
+                                  View Full Comparison Table
+                                </Button>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
                       </div>
-                    </DialogContent>
-                  </Dialog>
+                    </div>
+                    <div className="flip-face flip-back">
+                      <h4 className="font-semibold mb-3">Step-by-step execution plan</h4>
+                      <div className="grid md:grid-cols-3 gap-3 mb-4">
+                        {pathData["Secondary - Learning"].steps.map((step, idx) => (
+                          <div key={idx}>
+                            <div className="font-semibold text-sm mb-2">{step.phase}</div>
+                            <ul className="list-disc pl-4 text-xs space-y-1">
+                              {step.items.map((item, itemIdx) => (
+                                <li key={itemIdx}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex gap-2">
+                        <Button variant="outline" size="sm" onClick={() => unflip('path4')}>
+                          Back
+                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
+                              Full view
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Secondary - Learning: Detailed Strategy</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-6">
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                                  <p className="text-sm">{pathData["Secondary - Learning"].growthThesis}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                                  <p className="text-sm">{pathData["Secondary - Learning"].productAIStrategy}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                                  <p className="text-sm whitespace-pre-line">{pathData["Secondary - Learning"].actions}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="card">
-                  <h3>Path 5 Platform Enabler</h3>
-                  <div className="meta">API first creative backend</div>
-                  <p className="meta">Indicative 100M ARR in 3 to 4 years</p>
-                  <span className="tag secondary">Medium risk</span>
-                  <span className="tag">Usage fees</span>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button className="btn" style={{background: 'var(--envato)', color: '#fff', padding: '10px 12px', borderRadius: '10px', fontWeight: '600'}}>
-                        Read more
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                      <DialogHeader>
-                        <DialogTitle>Secondary - Learning: Detailed Strategy</DialogTitle>
-                      </DialogHeader>
-                      <div className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                            <p className="text-sm">{pathData["Secondary - Learning"].growthThesis}</p>
-                          </div>
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                            <p className="text-sm">{pathData["Secondary - Learning"].productAIStrategy}</p>
-                          </div>
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                            <p className="text-sm whitespace-pre-line">{pathData["Secondary - Learning"].actions}</p>
-                          </div>
-                        </div>
-                        <div className="text-center">
-                          <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
-                            View Full Comparison Table
-                          </Button>
-                        </div>
+                <div className={`flip-card ${flipped['path5'] ? 'is-flipped' : ''}`}>
+                  <div className="flip-inner">
+                    <div className="flip-face flip-front">
+                      <h3>Path 5 Platform Enabler</h3>
+                      <div className="meta">API first creative backend</div>
+                      <p className="meta">Indicative 100M ARR in 3 to 4 years</p>
+                      <span className="tag secondary">Medium risk</span>
+                      <span className="tag">Usage fees</span>
+                      <div className="mt-4 flex gap-2">
+                        <Button onClick={() => flip('path5')} variant="outline" size="sm">
+                          Flip for steps
+                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
+                              Full view
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Secondary - Community: Detailed Strategy</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-6">
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                                  <p className="text-sm">{pathData["Secondary - Community"].growthThesis}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                                  <p className="text-sm">{pathData["Secondary - Community"].productAIStrategy}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                                  <p className="text-sm whitespace-pre-line">{pathData["Secondary - Community"].actions}</p>
+                                </div>
+                              </div>
+                              <div className="text-center">
+                                <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
+                                  View Full Comparison Table
+                                </Button>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
                       </div>
-                    </DialogContent>
-                  </Dialog>
+                    </div>
+                    <div className="flip-face flip-back">
+                      <h4 className="font-semibold mb-3">Step-by-step execution plan</h4>
+                      <div className="grid md:grid-cols-3 gap-3 mb-4">
+                        {pathData["Secondary - Community"].steps.map((step, idx) => (
+                          <div key={idx}>
+                            <div className="font-semibold text-sm mb-2">{step.phase}</div>
+                            <ul className="list-disc pl-4 text-xs space-y-1">
+                              {step.items.map((item, itemIdx) => (
+                                <li key={itemIdx}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex gap-2">
+                        <Button variant="outline" size="sm" onClick={() => unflip('path5')}>
+                          Back
+                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
+                              Full view
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Secondary - Community: Detailed Strategy</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-6">
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                                  <p className="text-sm">{pathData["Secondary - Community"].growthThesis}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                                  <p className="text-sm">{pathData["Secondary - Community"].productAIStrategy}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                                  <p className="text-sm whitespace-pre-line">{pathData["Secondary - Community"].actions}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="card">
-                  <h3>Path 6 Radical Play</h3>
-                  <div className="meta">Immersive and agentic AI substrate</div>
-                  <p className="meta">Indicative 1B plus TAM moonshot</p>
-                  <span className="tag moonshot">Extreme risk</span>
-                  <span className="tag">Long horizon</span>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button className="btn" style={{background: 'var(--envato)', color: '#fff', padding: '10px 12px', borderRadius: '10px', fontWeight: '600'}}>
-                        Read more
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                      <DialogHeader>
-                        <DialogTitle>Secondary - Community: Detailed Strategy</DialogTitle>
-                      </DialogHeader>
-                      <div className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                            <p className="text-sm">{pathData["Secondary - Community"].growthThesis}</p>
-                          </div>
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                            <p className="text-sm">{pathData["Secondary - Community"].productAIStrategy}</p>
-                          </div>
-                          <div className="p-4 border rounded-lg">
-                            <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                            <p className="text-sm whitespace-pre-line">{pathData["Secondary - Community"].actions}</p>
-                          </div>
-                        </div>
-                        <div className="text-center">
-                          <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
-                            View Full Comparison Table
-                          </Button>
-                        </div>
+                <div className={`flip-card ${flipped['path6'] ? 'is-flipped' : ''}`}>
+                  <div className="flip-inner">
+                    <div className="flip-face flip-front">
+                      <h3>Path 6 Radical Play</h3>
+                      <div className="meta">Immersive and agentic AI substrate</div>
+                      <p className="meta">Indicative 1B plus TAM moonshot</p>
+                      <span className="tag moonshot">Extreme risk</span>
+                      <span className="tag">Long horizon</span>
+                      <div className="mt-4 flex gap-2">
+                        <Button onClick={() => flip('path6')} variant="outline" size="sm">
+                          Flip for steps
+                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
+                              Full view
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Satellite - New Verticals: Detailed Strategy</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-6">
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                                  <p className="text-sm">{pathData["Satellite - New Verticals"].growthThesis}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                                  <p className="text-sm">{pathData["Satellite - New Verticals"].productAIStrategy}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                                  <p className="text-sm whitespace-pre-line">{pathData["Satellite - New Verticals"].actions}</p>
+                                </div>
+                              </div>
+                              <div className="text-center">
+                                <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
+                                  View Full Comparison Table
+                                </Button>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
                       </div>
-                    </DialogContent>
-                  </Dialog>
+                    </div>
+                    <div className="flip-face flip-back">
+                      <h4 className="font-semibold mb-3">Step-by-step execution plan</h4>
+                      <div className="grid md:grid-cols-3 gap-3 mb-4">
+                        {pathData["Satellite - New Verticals"].steps.map((step, idx) => (
+                          <div key={idx}>
+                            <div className="font-semibold text-sm mb-2">{step.phase}</div>
+                            <ul className="list-disc pl-4 text-xs space-y-1">
+                              {step.items.map((item, itemIdx) => (
+                                <li key={itemIdx}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex gap-2">
+                        <Button variant="outline" size="sm" onClick={() => unflip('path6')}>
+                          Back
+                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
+                              Full view
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Satellite - New Verticals: Detailed Strategy</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-6">
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                                  <p className="text-sm">{pathData["Satellite - New Verticals"].growthThesis}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                                  <p className="text-sm">{pathData["Satellite - New Verticals"].productAIStrategy}</p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                                  <p className="text-sm whitespace-pre-line">{pathData["Satellite - New Verticals"].actions}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
