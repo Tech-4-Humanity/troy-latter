@@ -24,6 +24,7 @@ import MicrositeIndex from "./pages/microsites/MicrositeIndex";
 import InterviewPrepIndex from "./pages/microsites/interview-prep/Index";
 import AgentforceIndex from "./pages/microsites/agentforce/Index";
 import PegaIndex from "./pages/microsites/pega/Index";
+import EnvatoIndex from "./pages/microsites/envato/Index";
 
 // Legacy pages that are still accessible but redirected
 import InnovationDefinition from "./pages/InnovationDefinition";
@@ -71,6 +72,7 @@ const App = () => (
           <Route path="/microsites/interview-prep" element={<MicrositeLayout><InterviewPrepIndex /></MicrositeLayout>} />
           <Route path="/microsites/agentforce" element={<MicrositeLayout><AgentforceIndex /></MicrositeLayout>} />
           <Route path="/microsites/pega" element={<MicrositeLayout><PegaIndex /></MicrositeLayout>} />
+          <Route path="/microsites/envato" element={<EnvatoIndex />} />
           
           {/* Navigation redirects - consolidate similar content */}
           <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />
