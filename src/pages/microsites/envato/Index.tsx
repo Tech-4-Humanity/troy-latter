@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 
 interface Note {
   id: string;
@@ -14,10 +16,45 @@ const EnvatoIndex = () => {
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedPath, setSelectedPath] = useState<string | null>(null);
   const { toast } = useToast();
 
   // Debounce timer for DB sync
   const [debounceTimers, setDebounceTimers] = useState<Record<string, NodeJS.Timeout>>({});
+
+  // Path data for detailed views
+  const pathData = {
+    "Core - Creator Tools": {
+      category: "Core",
+      growthThesis: "Envato's creator tools are the foundation of its ecosystem. By enhancing these with AI capabilities, we can dramatically improve creator productivity while maintaining quality standards.",
+      productAIStrategy: "Integrate AI-powered templates, automated design suggestions, smart asset recommendations, and intelligent quality checking to streamline the creative process.",
+      actions: "• Implement AI template generation • Add smart asset tagging • Deploy automated quality checks • Create intelligent search • Develop personalized recommendations"
+    },
+    "Core - Enterprise": {
+      category: "Core", 
+      growthThesis: "Enterprise clients need scalable, compliant, and integrated creative solutions. AI can automate workflow management and ensure brand consistency across large organizations.",
+      productAIStrategy: "Build enterprise-grade AI tools for brand management, automated compliance checking, workflow optimization, and creative asset governance.",
+      actions: "• Develop brand consistency AI • Create compliance automation • Build workflow optimization • Implement asset governance • Add enterprise analytics"
+    },
+    "Secondary - Learning": {
+      category: "Secondary",
+      growthThesis: "Education drives platform adoption and creator success. AI-powered personalized learning can significantly improve skill development and creator retention.",
+      productAIStrategy: "Create adaptive learning paths, AI tutors, skill assessment tools, and personalized content recommendations to enhance educational outcomes.",
+      actions: "• Build adaptive learning system • Create AI tutoring • Develop skill assessments • Add learning analytics • Implement progress tracking"
+    },
+    "Secondary - Community": {
+      category: "Secondary",
+      growthThesis: "Strong communities drive engagement and platform stickiness. AI can enhance community interactions through better matching, content discovery, and collaboration tools.",
+      productAIStrategy: "Implement AI-driven community matching, intelligent content curation, automated moderation, and collaboration recommendations.",
+      actions: "• Create smart community matching • Build content curation AI • Implement auto-moderation • Add collaboration tools • Develop engagement analytics"
+    },
+    "Satellite - New Verticals": {
+      category: "Satellite",
+      growthThesis: "Expanding into adjacent creative verticals can capture new market segments. AI can accelerate this expansion by automating content creation in new domains.",
+      productAIStrategy: "Leverage AI to quickly establish presence in new creative verticals through automated content generation, market analysis, and rapid prototyping.",
+      actions: "• Research new verticals • Build content generation AI • Create market analysis tools • Develop rapid prototyping • Test market validation"
+    }
+  };
 
   useEffect(() => {
     const initializeNotes = async () => {
@@ -156,13 +193,12 @@ const EnvatoIndex = () => {
         const content = area.value;
         localStorage.setItem(`envato_strategy_note_${key}`, content);
         
-        promises.push(
-          supabase.from('envato_strategy_notes').upsert({
-            note_key: key,
-            content: content,
-            user_id: user.id
-          })
-        );
+        const upsertPromise = supabase.from('envato_strategy_notes').upsert({
+          note_key: key,
+          content: content,
+          user_id: user.id
+        });
+        promises.push(Promise.resolve(upsertPromise));
       });
 
       await Promise.all(promises);
@@ -589,7 +625,39 @@ const EnvatoIndex = () => {
                   <p className="meta">Indicative 100–200M ARR in 3 to 5 years</p>
                   <span className="tag core">Low risk</span>
                   <span className="tag">ARR focus</span>
-                  <p><a className="btn" href="#table">Read more</a></p>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="btn" style={{background: 'var(--envato)', color: '#fff', padding: '10px 12px', borderRadius: '10px', fontWeight: '600'}}>
+                        Read more
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle>Core - Creator Tools: Detailed Strategy</DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                            <p className="text-sm">{pathData["Core - Creator Tools"].growthThesis}</p>
+                          </div>
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                            <p className="text-sm">{pathData["Core - Creator Tools"].productAIStrategy}</p>
+                          </div>
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                            <p className="text-sm whitespace-pre-line">{pathData["Core - Creator Tools"].actions}</p>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
+                            View Full Comparison Table
+                          </Button>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
                 <div className="card">
                   <h3>Path 2 Creative Network</h3>
@@ -597,7 +665,39 @@ const EnvatoIndex = () => {
                   <p className="meta">Indicative 500M plus GMV potential</p>
                   <span className="tag satellite">Higher risk</span>
                   <span className="tag">Ads and subs</span>
-                  <p><a className="btn" href="#table">Read more</a></p>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="btn" style={{background: 'var(--envato)', color: '#fff', padding: '10px 12px', borderRadius: '10px', fontWeight: '600'}}>
+                        Read more
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle>Satellite - New Verticals: Detailed Strategy</DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                            <p className="text-sm">{pathData["Satellite - New Verticals"].growthThesis}</p>
+                          </div>
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                            <p className="text-sm">{pathData["Satellite - New Verticals"].productAIStrategy}</p>
+                          </div>
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                            <p className="text-sm whitespace-pre-line">{pathData["Satellite - New Verticals"].actions}</p>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
+                            View Full Comparison Table
+                          </Button>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
                 <div className="card">
                   <h3>Path 4 Vertical Expansion</h3>
@@ -605,7 +705,39 @@ const EnvatoIndex = () => {
                   <p className="meta">Indicative 50–100M ARR per vertical</p>
                   <span className="tag satellite">Higher risk</span>
                   <span className="tag">Sector SaaS</span>
-                  <p><a className="btn" href="#table">Read more</a></p>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="btn" style={{background: 'var(--envato)', color: '#fff', padding: '10px 12px', borderRadius: '10px', fontWeight: '600'}}>
+                        Read more
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle>Satellite - New Verticals: Detailed Strategy</DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                            <p className="text-sm">{pathData["Satellite - New Verticals"].growthThesis}</p>
+                          </div>
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                            <p className="text-sm">{pathData["Satellite - New Verticals"].productAIStrategy}</p>
+                          </div>
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                            <p className="text-sm whitespace-pre-line">{pathData["Satellite - New Verticals"].actions}</p>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
+                            View Full Comparison Table
+                          </Button>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
                 <div className="card">
                   <h3>Path 5 Platform Enabler</h3>
@@ -613,7 +745,39 @@ const EnvatoIndex = () => {
                   <p className="meta">Indicative 100M ARR in 3 to 4 years</p>
                   <span className="tag secondary">Medium risk</span>
                   <span className="tag">Usage fees</span>
-                  <p><a className="btn" href="#table">Read more</a></p>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="btn" style={{background: 'var(--envato)', color: '#fff', padding: '10px 12px', borderRadius: '10px', fontWeight: '600'}}>
+                        Read more
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle>Secondary - Learning: Detailed Strategy</DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                            <p className="text-sm">{pathData["Secondary - Learning"].growthThesis}</p>
+                          </div>
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                            <p className="text-sm">{pathData["Secondary - Learning"].productAIStrategy}</p>
+                          </div>
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                            <p className="text-sm whitespace-pre-line">{pathData["Secondary - Learning"].actions}</p>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
+                            View Full Comparison Table
+                          </Button>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
                 <div className="card">
                   <h3>Path 6 Radical Play</h3>
@@ -621,7 +785,39 @@ const EnvatoIndex = () => {
                   <p className="meta">Indicative 1B plus TAM moonshot</p>
                   <span className="tag moonshot">Extreme risk</span>
                   <span className="tag">Long horizon</span>
-                  <p><a className="btn" href="#table">Read more</a></p>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="btn" style={{background: 'var(--envato)', color: '#fff', padding: '10px 12px', borderRadius: '10px', fontWeight: '600'}}>
+                        Read more
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle>Secondary - Community: Detailed Strategy</DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
+                            <p className="text-sm">{pathData["Secondary - Community"].growthThesis}</p>
+                          </div>
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
+                            <p className="text-sm">{pathData["Secondary - Community"].productAIStrategy}</p>
+                          </div>
+                          <div className="p-4 border rounded-lg">
+                            <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
+                            <p className="text-sm whitespace-pre-line">{pathData["Secondary - Community"].actions}</p>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
+                            View Full Comparison Table
+                          </Button>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </div>
             </div>
