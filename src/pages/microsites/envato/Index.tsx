@@ -1,44 +1,233 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
+
+interface Note {
+  id: string;
+  note_key: string;
+  content: string;
+  updated_at: string;
+}
 
 const EnvatoIndex = () => {
+  const [notes, setNotes] = useState<Record<string, string>>({});
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const { toast } = useToast();
+
+  // Debounce timer for DB sync
+  const [debounceTimers, setDebounceTimers] = useState<Record<string, NodeJS.Timeout>>({});
+
   useEffect(() => {
-    // Persist Envato Input notes per dimension in localStorage
-    const KEY_PREFIX = "envato_strategy_note_";
+    const initializeNotes = async () => {
+      try {
+        // Check authentication
+        const { data: { session } } = await supabase.auth.getSession();
+        const authenticated = !!session?.user;
+        setIsAuthenticated(authenticated);
+
+        if (authenticated) {
+          // Load from database
+          await loadNotesFromDB();
+        } else {
+          // Load from localStorage as fallback
+          loadNotesFromLocalStorage();
+        }
+      } catch (error) {
+        console.error('Error initializing notes:', error);
+        loadNotesFromLocalStorage();
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    initializeNotes();
+  }, []);
+
+  const loadNotesFromDB = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('envato_strategy_notes')
+        .select('*');
+
+      if (error) throw error;
+
+      const notesMap: Record<string, string> = {};
+      data?.forEach((note: Note) => {
+        notesMap[note.note_key] = note.content;
+      });
+      setNotes(notesMap);
+      
+      // Sync DB notes to localStorage for offline access
+      Object.entries(notesMap).forEach(([key, value]) => {
+        localStorage.setItem(`envato_strategy_note_${key}`, value);
+      });
+    } catch (error) {
+      console.error('Error loading notes from DB:', error);
+      loadNotesFromLocalStorage();
+    }
+  };
+
+  const loadNotesFromLocalStorage = () => {
+    const localNotes: Record<string, string> = {};
+    const PREFIX = "envato_strategy_note_";
     
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key?.startsWith(PREFIX)) {
+        const noteKey = key.replace(PREFIX, '');
+        localNotes[noteKey] = localStorage.getItem(key) || '';
+      }
+    }
+    setNotes(localNotes);
+  };
+
+  const saveNoteToDB = async (noteKey: string, content: string) => {
+    if (!isAuthenticated) return;
+
+    try {
+      const { error } = await supabase
+        .from('envato_strategy_notes')
+        .upsert({
+          note_key: noteKey,
+          content: content,
+          user_id: (await supabase.auth.getUser()).data.user?.id
+        });
+
+      if (error) throw error;
+      
+      // Show subtle success indicator
+      toast({
+        title: "Saved",
+        description: "Notes synced to cloud",
+        duration: 2000,
+      });
+    } catch (error) {
+      console.error('Error saving note to DB:', error);
+    }
+  };
+
+  const handleNoteChange = (noteKey: string, content: string) => {
+    // Always save to localStorage immediately (offline-first)
+    localStorage.setItem(`envato_strategy_note_${noteKey}`, content);
+    setNotes(prev => ({ ...prev, [noteKey]: content }));
+
+    // Clear existing debounce timer for this note
+    if (debounceTimers[noteKey]) {
+      clearTimeout(debounceTimers[noteKey]);
+    }
+
+    // Debounce DB save
+    if (isAuthenticated) {
+      const timer = setTimeout(() => {
+        saveNoteToDB(noteKey, content);
+      }, 1000); // 1 second debounce
+
+      setDebounceTimers(prev => ({ ...prev, [noteKey]: timer }));
+    }
+  };
+
+  const saveAll = async () => {
+    if (!isAuthenticated) {
+      // Just save to localStorage for non-authenticated users
+      document.querySelectorAll('.note').forEach((area: any) => {
+        const key = area.dataset.key;
+        localStorage.setItem(`envato_strategy_note_${key}`, area.value);
+      });
+      toast({
+        title: "Saved locally",
+        description: "Notes saved on this device",
+      });
+      return;
+    }
+
+    // Save all notes to database for authenticated users
+    try {
+      const promises: Promise<any>[] = [];
+      document.querySelectorAll('.note').forEach((area: any) => {
+        const key = area.dataset.key;
+        const content = area.value;
+        localStorage.setItem(`envato_strategy_note_${key}`, content);
+        
+        promises.push(
+          supabase.from('envato_strategy_notes').upsert({
+            note_key: key,
+            content: content,
+            user_id: (await supabase.auth.getUser()).data.user?.id
+          })
+        );
+      });
+
+      await Promise.all(promises);
+      toast({
+        title: "All notes saved",
+        description: "Successfully synced to cloud",
+      });
+    } catch (error) {
+      console.error('Error saving all notes:', error);
+      toast({
+        title: "Error saving",
+        description: "Could not sync to cloud, but saved locally",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const clearAll = async () => {
+    if (!confirm("Clear all notes on this device and cloud?")) return;
+
+    // Clear localStorage
+    document.querySelectorAll('.note').forEach((area: any) => {
+      const key = area.dataset.key;
+      localStorage.removeItem(`envato_strategy_note_${key}`);
+      area.value = '';
+    });
+
+    // Clear database if authenticated
+    if (isAuthenticated) {
+      try {
+        const { error } = await supabase
+          .from('envato_strategy_notes')
+          .delete()
+          .eq('user_id', (await supabase.auth.getUser()).data.user?.id);
+
+        if (error) throw error;
+      } catch (error) {
+        console.error('Error clearing notes from DB:', error);
+      }
+    }
+
+    setNotes({});
+    toast({
+      title: "Notes cleared",
+      description: "All notes have been removed",
+    });
+  };
+
+  useEffect(() => {
     const loadNotes = () => {
-      document.querySelectorAll(".note").forEach((area: any) => {
-        const k = KEY_PREFIX + area.dataset.key;
-        const v = localStorage.getItem(k) || "";
-        area.value = v;
-        area.addEventListener("input", () => localStorage.setItem(k, area.value));
+      document.querySelectorAll('.note').forEach((area: any) => {
+        const key = area.dataset.key;
+        const value = notes[key] || localStorage.getItem(`envato_strategy_note_${key}`) || '';
+        area.value = value;
+        area.addEventListener('input', () => handleNoteChange(key, area.value));
       });
     };
 
-    const saveAll = () => {
-      document.querySelectorAll(".note").forEach((a: any) => {
-        const k = KEY_PREFIX + a.dataset.key;
-        localStorage.setItem(k, a.value);
-      });
-    };
-
-    const clearAll = () => {
-      if (!confirm("Clear all notes on this device")) return;
-      document.querySelectorAll(".note").forEach((a: any) => {
-        const k = KEY_PREFIX + a.dataset.key;
-        localStorage.removeItem(k);
-        a.value = "";
-      });
-    };
-
-    document.getElementById("saveAll")?.addEventListener("click", saveAll);
-    document.getElementById("clearAll")?.addEventListener("click", clearAll);
-    loadNotes();
+    document.getElementById('saveAll')?.addEventListener('click', saveAll);
+    document.getElementById('clearAll')?.addEventListener('click', clearAll);
+    
+    if (!isLoading) {
+      loadNotes();
+    }
 
     return () => {
-      document.getElementById("saveAll")?.removeEventListener("click", saveAll);
-      document.getElementById("clearAll")?.removeEventListener("click", clearAll);
+      document.getElementById('saveAll')?.removeEventListener('click', saveAll);
+      document.getElementById('clearAll')?.removeEventListener('click', clearAll);
+      // Clear debounce timers
+      Object.values(debounceTimers).forEach(timer => clearTimeout(timer));
     };
-  }, []);
+  }, [notes, isLoading, isAuthenticated]);
 
   return (
     <>
@@ -77,6 +266,20 @@ const EnvatoIndex = () => {
           display: grid;
           gap: 12px;
           margin-bottom: 20px;
+        }
+        .envato-page .hero-image {
+          width: 100%;
+          aspect-ratio: 16/9;
+          border-radius: 14px;
+          border: 1px solid var(--line);
+          overflow: hidden;
+          margin-bottom: 16px;
+        }
+        .envato-page .hero-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
         }
         .envato-page .kicker {
           color: var(--muted);
@@ -321,6 +524,15 @@ const EnvatoIndex = () => {
           <div className="kicker">Envato strategy options</div>
           <h1>Core, satellite, moonshot</h1>
           <p className="sub">Five paths. Clear benefits. Click to go deeper. Add your notes.</p>
+          
+          {/* Hero Image */}
+          <div className="hero-image">
+            <img 
+              src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/ChatGPT%20Image%20Aug%2027,%202025,%2002_37_22%20PM.png"
+              alt="AI Product Manager Strategy Visualization"
+              loading="lazy"
+            />
+          </div>
         </header>
 
         <main className="wrap">
@@ -714,7 +926,9 @@ const EnvatoIndex = () => {
           </section>
 
           <section className="foot-cta">
-            <p className="muted">Add notes in the right column. Content saves in your browser.</p>
+            <p className="muted">
+              Add notes in the right column. Content saves {isAuthenticated ? 'to cloud and' : 'in'} your browser{!isAuthenticated ? ' (sign in to sync across devices)' : ''}.
+            </p>
             <div>
               <button className="btn" id="saveAll">Save now</button>
               <button className="btn" id="clearAll" style={{background: '#0f172a'}}>Clear notes</button>
