@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { PageTitle } from '@/components/PageTitle';
 import { GlassmorphismCard, GlassmorphismCardContent } from '@/components/ui/glassmorphism-card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -13,50 +12,81 @@ interface ProjectProps {
   category: string;
 }
 
-const ProjectCard = ({ title, description, url, icon: Icon, category }: ProjectProps) => (
-  <GlassmorphismCard className="group hover:scale-[1.02] transition-all duration-300 h-full flex flex-col">
-    <GlassmorphismCardContent className="flex flex-col h-full">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <div className="p-3 rounded-xl bg-gradient-to-r from-primary/20 to-primary/10 backdrop-blur-sm">
-            <Icon className="h-5 w-5 text-primary" />
+const ProjectCard = ({ title, description, url, icon: Icon, category }: ProjectProps) => {
+  // Create favicon URL for the project
+  const getFaviconUrl = (url: string) => {
+    try {
+      const domain = new URL(url).hostname;
+      return `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
+    } catch {
+      return null;
+    }
+  };
+
+  const faviconUrl = getFaviconUrl(url);
+
+  return (
+    <GlassmorphismCard className="group hover:scale-[1.02] hover:shadow-xl transition-all duration-500 h-full flex flex-col border border-white/10 hover:border-primary/30 bg-gradient-to-br from-background/50 to-background/30 backdrop-blur-md">
+      <GlassmorphismCardContent className="flex flex-col h-full p-6">
+        {/* Header with favicon and icon */}
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <div className="relative p-3 rounded-xl bg-gradient-to-br from-primary/20 via-primary/10 to-transparent backdrop-blur-sm border border-primary/20 group-hover:border-primary/40 transition-all duration-300">
+              <Icon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform duration-300" />
+              {faviconUrl && (
+                <img 
+                  src={faviconUrl} 
+                  alt={`${title} favicon`}
+                  className="absolute -top-1 -right-1 w-4 h-4 rounded-sm bg-background/80 p-0.5"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              )}
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                {title}
+              </h3>
+            </div>
           </div>
-          <div className="flex-1">
-            <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-1">
-              {title}
-            </h3>
-          </div>
+          <Button 
+            variant="ghost" 
+            size="sm"
+            onClick={() => window.open(url, '_blank', 'noopener,noreferrer')}
+            className="opacity-60 hover:opacity-100 transition-all duration-300 shrink-0 hover:bg-primary/10"
+          >
+            <ExternalLink className="h-4 w-4" />
+          </Button>
         </div>
-        <Button 
-          variant="ghost" 
-          size="sm"
-          onClick={() => window.open(url, '_blank', 'noopener,noreferrer')}
-          className="opacity-70 hover:opacity-100 transition-opacity shrink-0"
+        
+        {/* Category badge with gradient */}
+        <Badge 
+          variant="secondary" 
+          className="self-start mb-4 text-xs bg-gradient-to-r from-muted to-muted/50 border border-border/50 group-hover:border-primary/30 transition-all duration-300"
         >
-          <ExternalLink className="h-4 w-4" />
+          {category}
+        </Badge>
+        
+        {/* Description */}
+        <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
+          {description}
+        </p>
+        
+        {/* CTA Button */}
+        <Button 
+          variant="outline" 
+          size="sm" 
+          onClick={() => window.open(url, '_blank', 'noopener,noreferrer')}
+          className="w-full group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-primary/80 group-hover:text-primary-foreground group-hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/20"
+        >
+          Visit Project
+          <ExternalLink className="ml-2 h-3 w-3 group-hover:translate-x-0.5 transition-transform duration-300" />
         </Button>
-      </div>
-      
-      <Badge variant="secondary" className="self-start mb-3 text-xs">
-        {category}
-      </Badge>
-      
-      <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-grow">
-        {description}
-      </p>
-      
-      <Button 
-        variant="outline" 
-        size="sm" 
-        onClick={() => window.open(url, '_blank', 'noopener,noreferrer')}
-        className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 hover:shadow-lg"
-      >
-        Visit Project
-        <ExternalLink className="ml-2 h-3 w-3" />
-      </Button>
-    </GlassmorphismCardContent>
-  </GlassmorphismCard>
-);
+      </GlassmorphismCardContent>
+    </GlassmorphismCard>
+  );
+};
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -211,9 +241,16 @@ const Projects = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
+      {/* Modern Header */}
       <div className="text-center mb-12">
-        <PageTitle title="Projects & Ventures" />
-        <p className="text-muted-foreground text-lg leading-relaxed mt-6 max-w-3xl mx-auto">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 mb-6">
+          <Star className="h-4 w-4 text-primary" />
+          <span className="text-sm font-medium text-primary">Portfolio Showcase</span>
+        </div>
+        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-6">
+          Projects & Ventures
+        </h1>
+        <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto">
           A portfolio of innovative platforms and businesses driving technology-forward solutions across multiple industries.
           Each project represents a commitment to leveraging technology for positive impact and human advancement.
         </p>
@@ -222,15 +259,15 @@ const Projects = () => {
       {/* Category Filter */}
       <div className="mb-8">
         <div className="flex items-center gap-2 mb-4">
-          <Filter className="h-4 w-4 text-muted-foreground" />
-          <span className="text-sm font-medium text-muted-foreground">Filter by Category</span>
+          <Filter className="h-4 w-4 text-primary" />
+          <span className="text-sm font-medium text-foreground">Filter by Category</span>
         </div>
         <div className="flex flex-wrap gap-2">
           <Button
             variant={selectedCategory === null ? "default" : "outline"}
             size="sm"
             onClick={() => setSelectedCategory(null)}
-            className="rounded-full"
+            className="rounded-full hover:scale-105 transition-transform duration-200"
           >
             All Projects ({projects.length})
           </Button>
@@ -242,7 +279,7 @@ const Projects = () => {
                 variant={selectedCategory === category ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedCategory(category)}
-                className="rounded-full"
+                className="rounded-full hover:scale-105 transition-transform duration-200"
               >
                 {category} ({count})
               </Button>
@@ -258,22 +295,6 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* About Section */}
-      <GlassmorphismCard className="mb-8">
-        <GlassmorphismCardContent>
-          <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-            <Star className="h-5 w-5 text-primary" />
-            About This Portfolio
-          </h3>
-          <p className="text-muted-foreground leading-relaxed">
-            This collection represents a diverse ecosystem of technology ventures spanning artificial intelligence, 
-            privacy technology, organizational innovation, and human potential optimization. Each project reflects 
-            a deep commitment to leveraging cutting-edge technology for positive impact—whether through advancing 
-            social good, driving business innovation, or pushing the frontiers of human-computer interaction and 
-            cognitive enhancement.
-          </p>
-        </GlassmorphismCardContent>
-      </GlassmorphismCard>
     </div>
   );
 };
