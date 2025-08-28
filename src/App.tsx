@@ -27,6 +27,7 @@ import PegaIndex from "./pages/microsites/pega/Index";
 import EnvatoIndex from "./pages/microsites/envato/Index";
 import OrchestratePage from "./pages/microsites/envato/Orchestrator";
 import EnvatoSummary from "./pages/microsites/envato/Summary";
+import EnvatoAssets from "./pages/microsites/envato/Assets";
 
 // Legacy pages that are still accessible but redirected
 import InnovationDefinition from "./pages/InnovationDefinition";
@@ -77,6 +78,7 @@ const App = () => (
           <Route path="/microsites/envato" element={<EnvatoIndex />} />
           <Route path="/microsites/envato/orchestrator" element={<OrchestratePage />} />
           <Route path="/microsites/envato/summary" element={<EnvatoSummary />} />
+          <Route path="/microsites/envato/assets" element={<EnvatoAssets />} />
           
           {/* Navigation redirects - consolidate similar content */}
           <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />

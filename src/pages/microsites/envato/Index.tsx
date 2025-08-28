@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -687,9 +688,6 @@ const EnvatoIndex = () => {
         <div className="wrap">
           {/* Hero Section */}
           <section id="quick" className="hero">
-            <div className="hero-image" style={{backgroundImage: 'url(/src/assets/envato-hero.png)'}}>
-              <div className="hero-text">Envato Strategic Overview</div>
-            </div>
             <h1 className="hero-title">Envato: 5 Strategic Growth Paths</h1>
             <p className="hero-subtitle">
               Exploring strategic directions for Envato's future growth within the Shutterstock ecosystem. 
@@ -697,7 +695,7 @@ const EnvatoIndex = () => {
             </p>
             <div className="hero-links">
               <a href="/microsites/envato/summary" className="hero-link">📋 Envato Context & Summary</a>
-              <a href="/microsites/envato/summary#asset-redefinition" className="hero-link">🔄 Asset Redefinition Guide</a>
+              <a href="/microsites/envato/assets" className="hero-link">🔄 Asset Redefinition Guide</a>
               <a href="#comparison-table" className="hero-link">📊 Compare all paths</a>
               <a href="#framework" className="hero-link">🎯 Decision framework</a>
             </div>
@@ -771,7 +769,7 @@ const EnvatoIndex = () => {
 
           {/* Path Details: Future Case Studies */}
           <section className="section">
-            <h2 className="section-title">Path Details: Future Case Studies</h2>
+            <h2 className="section-title">future case studies - all paths</h2>
             <p className="section-subtitle">Explore future scenarios and outcomes for each strategic pathway</p>
             
             <div className="space-y-6" style={{marginBottom: '32px'}}>

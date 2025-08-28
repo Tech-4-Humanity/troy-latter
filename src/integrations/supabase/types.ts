@@ -9493,6 +9493,39 @@ export type Database = {
           },
         ]
       }
+      email_logs: {
+        Row: {
+          delivery_id: string | null
+          email_type: string
+          error_message: string | null
+          id: string
+          recipient_email: string
+          sent_at: string | null
+          status: string
+          subject: string | null
+        }
+        Insert: {
+          delivery_id?: string | null
+          email_type: string
+          error_message?: string | null
+          id?: string
+          recipient_email: string
+          sent_at?: string | null
+          status?: string
+          subject?: string | null
+        }
+        Update: {
+          delivery_id?: string | null
+          email_type?: string
+          error_message?: string | null
+          id?: string
+          recipient_email?: string
+          sent_at?: string | null
+          status?: string
+          subject?: string | null
+        }
+        Relationships: []
+      }
       email_subscribers: {
         Row: {
           created_at: string
@@ -10234,6 +10267,30 @@ export type Database = {
             referencedColumns: ["tag_id"]
           },
         ]
+      }
+      envato_notes: {
+        Row: {
+          created_at: string
+          id: string
+          notes: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
       }
       envato_strategy_notes: {
         Row: {
