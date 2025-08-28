@@ -42,20 +42,20 @@ const EnvatoIndex = () => {
 
   // 14-point execution framework
   const fourteenPointFramework = [
-    "Executive summary",
-    "Current position", 
-    "Market view",
-    "Asset model",
-    "Strategy by horizon",
+    "Executive Summary",
+    "Current Position", 
+    "Market View",
+    "Asset Model",
+    "Strategy by Horizon",
     "Monetisation",
-    "Contributor economics",
-    "Data and trust",
-    "Go to market",
+    "Contributor Economics",
+    "Data & Trust",
+    "Go-to-Market",
     "Flywheel",
-    "Technical priorities",
-    "Risks and mitigations",
-    "AI product manager role",
-    "Next steps"
+    "Technical Priorities",
+    "Risks & Mitigations",
+    "AI Product Manager Role",
+    "Next Steps"
   ];
 
   // Path data with 14-point execution plans
@@ -103,20 +103,20 @@ const EnvatoIndex = () => {
         }
       ],
       plan14: [
-        { title: "Executive summary", text: "Trusted AI workflows and compliance. Enterprise ARR engine." },
-        { title: "Current position", text: "Assets strong. AI labs siloed. Enterprise reach under used." },
-        { title: "Market view", text: "Competes with Canva and Adobe and Getty. Win with trust and speed." },
-        { title: "Asset model", text: "Kits and briefs and compliance packs with manifest and lineage." },
-        { title: "Strategy by horizon", text: "H1 index and connectors. H2 packs and dashboards. H3 creative OS." },
-        { title: "Monetisation", text: "Enterprise seats 100 to 5000 per month. Usage fees. Integration licences." },
-        { title: "Contributor economics", text: "Premium rates for compliant assets. Bonus for enterprise adoption." },
-        { title: "Data and trust", text: "C2PA signing. Audit trails. Enterprise SSO and controls." },
-        { title: "Go to market", text: "Partner with consultants. Industry events. Case studies." },
-        { title: "Flywheel", text: "Trust drives adoption. Adoption drives contributor quality." },
-        { title: "Technical priorities", text: "Manifest schema. Lineage APIs. Enterprise integrations." },
-        { title: "Risks and mitigations", text: "Adobe competition. Partner with system integrators." },
-        { title: "AI product manager role", text: "Align legal and product and sales. Ship compliance features." },
-        { title: "Next steps", text: "Pick 3 enterprise pilots. Build manifest schema. Ship compliance dashboard." }
+        { title: "Executive Summary", text: "Trusted AI workflows and compliance. Enterprise ARR engine." },
+        { title: "Current Position", text: "Strong asset base. AI Labs live but siloed. Enterprise integrations underused." },
+        { title: "Market View", text: "Competes with Canva, Adobe, Getty. Win with trust, compliance, speed." },
+        { title: "Asset Model", text: "Kits, briefs, compliance packs, manifests, lineage." },
+        { title: "Strategy by Horizon", text: "H1 unified index + connectors. H2 enterprise packs + dashboards. H3 creative OS." },
+        { title: "Monetisation", text: "Enterprise seats ($100–$5,000/mo). Usage fees. Integration licences." },
+        { title: "Contributor Economics", text: "Premium rates for compliant assets. Bonus on enterprise adoption." },
+        { title: "Data & Trust", text: "C2PA signing, audit trails, enterprise SSO + governance." },
+        { title: "Go-to-Market", text: "Consultants, enterprise events, case studies." },
+        { title: "Flywheel", text: "Trust → adoption → better assets → more enterprise wins." },
+        { title: "Technical Priorities", text: "Manifest schema, lineage APIs, enterprise DAM integrations." },
+        { title: "Risks & Mitigations", text: "Adobe/Canva threat → mitigate via compliance/enterprise." },
+        { title: "AI Product Manager Role", text: "Align legal/product/sales. Ship compliance." },
+        { title: "Next Steps", text: "Pick 3 enterprise pilots. Build manifest schema. Ship compliance dashboard." }
       ]
     },
     "Path 2 Creative Network": {
@@ -141,20 +141,20 @@ const EnvatoIndex = () => {
         }
       ],
       plan14: [
-        { title: "Executive summary", text: "Creator network with feeds and subs. Multi stream income." },
-        { title: "Current position", text: "Many contributors. Community features weak. No feed mechanics." },
-        { title: "Market view", text: "Competes with TikTok and Patreon and YouTube. Win with licensed creator economy." },
-        { title: "Asset model", text: "Storefront bundles and services and subs tied to creator identity." },
-        { title: "Strategy by horizon", text: "H1 storefronts and feeds. H2 subs and workshops. H3 ads and sponsors." },
-        { title: "Monetisation", text: "Creator subs 5 to 50 per month. Ads and sponsors. Workshop fees." },
-        { title: "Contributor economics", text: "Revenue share on subs. Ad revenue split. Workshop income." },
-        { title: "Data and trust", text: "Creator verification. Content moderation. DMCA protection." },
-        { title: "Go to market", text: "Recruit top creators. Social campaigns. Influencer partnerships." },
-        { title: "Flywheel", text: "Creators bring audiences. Audiences fund creators." },
-        { title: "Technical priorities", text: "Feed algorithms. Payment systems. Moderation AI." },
-        { title: "Risks and mitigations", text: "Platform dependency. Build direct creator relationships." },
-        { title: "AI product manager role", text: "Balance creator and audience needs. Ship engagement features." },
-        { title: "Next steps", text: "Launch creator beta. Build feed MVP. Test subscription model." }
+        { title: "Executive Summary", text: "Creator network with feeds, storefronts, subs, workshops. Multi-stream creator economy." },
+        { title: "Current Position", text: "Millions of contributors. Community features weak. No feed/follow mechanics." },
+        { title: "Market View", text: "Competes with TikTok, Patreon, YouTube. Win with licensed, monetised creator economy." },
+        { title: "Asset Model", text: "Creator storefront bundles, services, subscriptions, audience engagement." },
+        { title: "Strategy by Horizon", text: "H1 storefronts + feeds. H2 subscriptions + workshops. H3 ads/sponsors." },
+        { title: "Monetisation", text: "Creator subs ($5–$50/mo). Ads, sponsors, workshops." },
+        { title: "Contributor Economics", text: "Revenue share on subs, ads, sponsorships, workshops." },
+        { title: "Data & Trust", text: "Creator verification, moderation AI, DMCA compliance." },
+        { title: "Go-to-Market", text: "Recruit top creators, social campaigns, influencer loops." },
+        { title: "Flywheel", text: "Creators → bring audiences → fund creators → loyalty loop." },
+        { title: "Technical Priorities", text: "Feed algorithms, payment infra, moderation AI." },
+        { title: "Risks & Mitigations", text: "Dependency + moderation risk → mitigate with direct creator revenue streams." },
+        { title: "AI Product Manager Role", text: "Balance creator + audience. Ship engagement tools." },
+        { title: "Next Steps", text: "Launch creator beta. Build feed MVP. Test subscription." }
       ]
     },
     "Path 3 Vertical Expansion": {
@@ -179,20 +179,20 @@ const EnvatoIndex = () => {
         }
       ],
       plan14: [
-        { title: "Executive summary", text: "Sector specific platforms like Edu and Gaming and Retail." },
-        { title: "Current position", text: "Broad reach. No deep vertical integrations yet." },
-        { title: "Market view", text: "Edu 300B plus. Gaming 200B plus. Retail ad spend huge." },
-        { title: "Asset model", text: "Industry kits like courseware and Unreal packs and retail ad sets." },
-        { title: "Strategy by horizon", text: "H1 Edu and Gaming pilots. H2 Retail and L and D. H3 multi vertical." },
-        { title: "Monetisation", text: "Vertical seats 50 to 500 per month. Asset licences. Integration fees." },
-        { title: "Contributor economics", text: "Higher rates for industry assets. Vertical specific bonuses." },
-        { title: "Data and trust", text: "Industry compliance. Educational standards. Age appropriate content." },
-        { title: "Go to market", text: "Industry conferences. Vertical partnerships. Case studies." },
-        { title: "Flywheel", text: "Industry adoption drives asset demand. Assets improve outcomes." },
-        { title: "Technical priorities", text: "Vertical APIs. Industry integrations. Compliance tools." },
-        { title: "Risks and mitigations", text: "Industry incumbents. Partner with leaders." },
-        { title: "AI product manager role", text: "Understand vertical needs. Ship industry features." },
-        { title: "Next steps", text: "Pick Education vertical. Build pilot. Recruit vertical creators." }
+        { title: "Executive Summary", text: "Sector-specific platforms (Edu, Gaming, Retail, L&D)." },
+        { title: "Current Position", text: "Broad reach across industries. No deep vertical platforms yet." },
+        { title: "Market View", text: "Edu $300B+, Gaming $200B+, Retail spend huge. TAM is vast." },
+        { title: "Asset Model", text: "Industry kits (courseware, Unreal packs, retail ad sets, training material)." },
+        { title: "Strategy by Horizon", text: "H1 Edu/gaming pilots. H2 retail/L&D expansion. H3 multi-vertical platforms." },
+        { title: "Monetisation", text: "Vertical licences ($50–$500/mo). Industry bundles." },
+        { title: "Contributor Economics", text: "Higher rates for industry assets. Vertical-specific bonuses." },
+        { title: "Data & Trust", text: "Industry compliance: education standards, age-appropriate content." },
+        { title: "Go-to-Market", text: "Industry conferences, sector pilots, proof partnerships." },
+        { title: "Flywheel", text: "Industry adoption → demand for kits → improved outcomes." },
+        { title: "Technical Priorities", text: "Vertical APIs, compliance kits, domain-specific integrations." },
+        { title: "Risks & Mitigations", text: "Incumbents → mitigate with vertical partnerships/pilots." },
+        { title: "AI Product Manager Role", text: "Define vertical ontologies. Build industry APIs." },
+        { title: "Next Steps", text: "Pick Education pilot. Build MVP. Recruit vertical creators." }
       ]
     },
     "Path 4 Platform Enabler": {
@@ -210,20 +210,20 @@ const EnvatoIndex = () => {
         }
       ],
       plan14: [
-        { title: "Executive summary", text: "API first creative backend for SaaS and AI tools." },
-        { title: "Current position", text: "Some APIs. No developer platform. Limited enterprise tools." },
-        { title: "Market view", text: "Developer platforms huge. API economy growing. SaaS needs creative." },
-        { title: "Asset model", text: "API access and generation credits and enterprise integrations." },
-        { title: "Strategy by horizon", text: "H1 core APIs. H2 developer platform. H3 white label solutions." },
-        { title: "Monetisation", text: "API calls and developer seats and enterprise contracts." },
-        { title: "Contributor economics", text: "API usage royalties. Developer marketplace fees." },
-        { title: "Data and trust", text: "API authentication. Usage analytics. SLA guarantees." },
-        { title: "Go to market", text: "Developer events. API documentation. Integration partnerships." },
-        { title: "Flywheel", text: "More developers drive platform value. Value attracts contributors." },
-        { title: "Technical priorities", text: "API infrastructure. Developer tools. Documentation platform." },
-        { title: "Risks and mitigations", text: "Platform dependency risk. Multi cloud strategy." },
-        { title: "AI product manager role", text: "Balance developer and contributor needs. Ship API features." },
-        { title: "Next steps", text: "Launch API beta. Build documentation. Recruit key developers." }
+        { title: "Executive Summary", text: "API-first creative backend for SaaS and AI ecosystems." },
+        { title: "Current Position", text: "Plugins/APIs exist, but not unified developer platform. Limited enterprise SDKs." },
+        { title: "Market View", text: "Developer platform TAM massive. API economy booming. SaaS needs creative APIs." },
+        { title: "Asset Model", text: "API access, usage credits, workflow connectors, enterprise SDKs." },
+        { title: "Strategy by Horizon", text: "H1 core APIs. H2 developer ecosystem. H3 white-label creative infrastructure." },
+        { title: "Monetisation", text: "API call revenue. Developer seats. Enterprise SaaS contracts." },
+        { title: "Contributor Economics", text: "API usage royalties. Developer marketplace rev share." },
+        { title: "Data & Trust", text: "API authentication, SLA-backed metrics, usage analytics." },
+        { title: "Go-to-Market", text: "Dev events, API docs, SaaS partnerships." },
+        { title: "Flywheel", text: "More devs → more integrations → more contributors." },
+        { title: "Technical Priorities", text: "API infra, dev tools, doc platform." },
+        { title: "Risks & Mitigations", text: "Partner dependency → mitigate with multi-cloud + open APIs." },
+        { title: "AI Product Manager Role", text: "Architect Creative API Suite. Balance dev + contributors." },
+        { title: "Next Steps", text: "Launch API beta. Publish docs. Recruit lighthouse devs." }
       ]
     },
     "Path 5 Radical Play": {
@@ -241,20 +241,20 @@ const EnvatoIndex = () => {
         }
       ],
       plan14: [
-        { title: "Executive summary", text: "Immersive and agentic AI content substrate." },
-        { title: "Current position", text: "Traditional assets. Limited AI capabilities. No agentic features." },
-        { title: "Market view", text: "AI content market exploding. First mover advantage possible." },
-        { title: "Asset model", text: "AI generated content and agentic workflows and creative copilots." },
-        { title: "Strategy by horizon", text: "H1 AI generation. H2 agentic workflows. H3 creative OS platform." },
-        { title: "Monetisation", text: "AI credits and premium features and enterprise licenses." },
-        { title: "Contributor economics", text: "AI training data licensing. Quality curation bonuses." },
-        { title: "Data and trust", text: "AI transparency. Content attribution. Quality guarantees." },
-        { title: "Go to market", text: "Creator beta program. AI conferences. Technology partnerships." },
-        { title: "Flywheel", text: "Better AI attracts creators. Creator usage improves AI." },
-        { title: "Technical priorities", text: "AI infrastructure. Model training. Real time processing." },
-        { title: "Risks and mitigations", text: "Technology risk. Partner with AI leaders." },
-        { title: "AI product manager role", text: "Balance innovation and practicality. Ship AI features." },
-        { title: "Next steps", text: "AI research team. Technology partnerships. Beta program." }
+        { title: "Executive Summary", text: "Immersive and agentic AI substrate (3D/VR/AR content economy)." },
+        { title: "Current Position", text: "AI Gen tools exist, but no immersive/agentic layer." },
+        { title: "Market View", text: "AI/immersive content exploding. First-mover optionality, volatile." },
+        { title: "Asset Model", text: "Agentic workflows, AI-generated worlds, creative copilots." },
+        { title: "Strategy by Horizon", text: "H1 AI Gen pilots. H2 agentic workflows. H3 immersive creative OS." },
+        { title: "Monetisation", text: "AI credits, premium tiers, immersive licensing." },
+        { title: "Contributor Economics", text: "AI training data licensing. Curation bonuses. Immersive royalties." },
+        { title: "Data & Trust", text: "AI transparency, attribution, provenance on synthetic content." },
+        { title: "Go-to-Market", text: "AI creator betas, AI/tech conferences, vendor partners." },
+        { title: "Flywheel", text: "Better AI → attracts creators → improves AI → cycle." },
+        { title: "Technical Priorities", text: "AI infra, model routing, real-time agent frameworks." },
+        { title: "Risks & Mitigations", text: "Adoption uncertainty → mitigate with small R&D pilots." },
+        { title: "AI Product Manager Role", text: "Prototype agentic pipelines. Balance innovation vs risk." },
+        { title: "Next Steps", text: "Stand up AI research team. Partner with vendors. Launch beta." }
       ]
     }
   };
@@ -873,7 +873,7 @@ const EnvatoIndex = () => {
                             <th>Path 3</th>
                             <th>Path 4</th>
                             <th>Path 5</th>
-                            <th>Envato input</th>
+                            <th>Envato Input</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -909,7 +909,7 @@ const EnvatoIndex = () => {
                                     className="note" 
                                     value={notes["where-wins"] || ''}
                                     onChange={(e) => handleNoteChange("where-wins", e.target.value)}
-                                    placeholder="Your notes on winning strategies..."
+                                    placeholder="Your notes on winning strategies…"
                                     style={{minHeight: '80px'}}
                                   />
                                 </td>
