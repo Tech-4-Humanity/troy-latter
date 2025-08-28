@@ -1,8 +1,7 @@
-
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { competencyBadges } from './curriculum';
@@ -29,144 +28,145 @@ const EnvatoIndex = () => {
   // State for flip cards
   const [flipped, setFlipped] = useState<Record<string, boolean>>({});
   
-  const flip = (key: string) => setFlipped(p => ({ ...p, [key]: true }));
+  const flip = (key: string) => setFlipped(p => ({ ...p, [key]: !p[key] }));
   const unflip = (key: string) => setFlipped(p => ({ ...p, [key]: false }));
 
-  // Path data for detailed views
+  // 14-point execution framework
+  const fourteenPointFramework = [
+    "Executive summary",
+    "Current position", 
+    "Market view",
+    "Asset model",
+    "Strategy by horizon",
+    "Monetisation",
+    "Contributor economics",
+    "Data and trust",
+    "Go to market",
+    "Flywheel",
+    "Technical priorities",
+    "Risks and mitigations",
+    "AI product manager role",
+    "Next steps"
+  ];
+
+  // Path data with 14-point execution plans
   const pathData = {
-    "Core - Creator Tools": {
+    "Path 1 Creative Infrastructure": {
       category: "Core",
       growthThesis: "Envato's creator tools are the foundation of its ecosystem. By enhancing these with AI capabilities, we can dramatically improve creator productivity while maintaining quality standards.",
       productAIStrategy: "Integrate AI-powered templates, automated design suggestions, smart asset recommendations, and intelligent quality checking to streamline the creative process.",
       actions: "• Implement AI template generation • Add smart asset tagging • Deploy automated quality checks • Create intelligent search • Develop personalized recommendations",
-      steps: [
-        { phase: '0–30 days', items: [
-          'Define enterprise design/brand compliance rules',
-          'Ship AI-assisted template suggestions (beta) in the editor',
-          'Pilot intelligent asset tagging on a subset of the library',
-          'Instrument metrics: time-to-complete, rejection rate, NPS'
-        ]},
-        { phase: '31–60 days', items: [
-          'Roll out automated quality checks (moderation + brand rules)',
-          'Add semantic search with usage context',
-          'Launch personalized creator recommendations',
-          'Begin enterprise early-adopter program (5–10 customers)'
-        ]},
-        { phase: '61–90 days', items: [
-          'Scale to additional enterprise tenants with SSO + audit',
-          'Expand template generation coverage and languages',
-          'Ship workflow analytics dashboard',
-          'Publish case studies and quantified ROI'
-        ]}
+      plan14: [
+        { title: "Executive summary", text: "Trusted AI workflows and compliance. Enterprise ARR engine." },
+        { title: "Current position", text: "Assets strong. AI labs siloed. Enterprise reach under used." },
+        { title: "Market view", text: "Competes with Canva and Adobe and Getty. Win with trust and speed." },
+        { title: "Asset model", text: "Kits and briefs and compliance packs with manifest and lineage." },
+        { title: "Strategy by horizon", text: "H1 index and connectors. H2 packs and dashboards. H3 creative OS." },
+        { title: "Monetisation", text: "Enterprise seats 100 to 5000 per month. Usage fees. Integration licences." },
+        { title: "Contributor economics", text: "Premium rates for compliant assets. Bonus for enterprise adoption." },
+        { title: "Data and trust", text: "C2PA signing. Audit trails. Enterprise SSO and controls." },
+        { title: "Go to market", text: "Partner with consultants. Industry events. Case studies." },
+        { title: "Flywheel", text: "Trust drives adoption. Adoption drives contributor quality." },
+        { title: "Technical priorities", text: "Manifest schema. Lineage APIs. Enterprise integrations." },
+        { title: "Risks and mitigations", text: "Adobe competition. Partner with system integrators." },
+        { title: "AI product manager role", text: "Align legal and product and sales. Ship compliance features." },
+        { title: "Next steps", text: "Pick 3 enterprise pilots. Build manifest schema. Ship compliance dashboard." }
       ]
     },
-    "Core - Enterprise": {
-      category: "Core", 
-      growthThesis: "Enterprise clients need scalable, compliant, and integrated creative solutions. AI can automate workflow management and ensure brand consistency across large organizations.",
-      productAIStrategy: "Build enterprise-grade AI tools for brand management, automated compliance checking, workflow optimization, and creative asset governance.",
-      actions: "• Develop brand consistency AI • Create compliance automation • Build workflow optimization • Implement asset governance • Add enterprise analytics",
-      steps: [
-        { phase: '0–30 days', items: [
-          'Community matching algorithm (creator skills + project needs)',
-          'Ship social feeds with curated content discovery',
-          'Implement creator verification and moderation system',
-          'Launch creator subscription beta with select influencers'
-        ]},
-        { phase: '31–60 days', items: [
-          'Scale creator subscription platform',
-          'Add creator analytics dashboard and revenue insights',
-          'Deploy AI-powered community recommendations',
-          'Begin advertiser pilot program with sponsored content'
-        ]},
-        { phase: '61–90 days', items: [
-          'Launch full advertising platform with targeting',
-          'Expand creator monetization tools (tips, premium content)',
-          'Ship community challenges and collaborative projects',
-          'Publish creator economy impact metrics'
-        ]}
-      ]
-    },
-    "Secondary - Learning": {
-      category: "Secondary",
-      growthThesis: "Education drives platform adoption and creator success. AI-powered personalized learning can significantly improve skill development and creator retention.",
-      productAIStrategy: "Create adaptive learning paths, AI tutors, skill assessment tools, and personalized content recommendations to enhance educational outcomes.",
-      actions: "• Build adaptive learning system • Create AI tutoring • Develop skill assessments • Add learning analytics • Implement progress tracking",
-      steps: [
-        { phase: '0–30 days', items: [
-          'Select target verticals (Education, Gaming, Retail)',
-          'Validate ICP through customer interviews',
-          'Build MVP for Education vertical with templates',
-          'Create vertical-specific asset libraries'
-        ]},
-        { phase: '31–60 days', items: [
-          'Launch Education vertical with 5 pilot customers',
-          'Develop Gaming vertical MVP (character assets, UI kits)',
-          'Add vertical-specific integrations (LMS, game engines)',
-          'Build vertical sales playbooks and go-to-market'
-        ]},
-        { phase: '61–90 days', items: [
-          'Scale Education and Gaming verticals',
-          'Begin Retail vertical development (product photography)',
-          'Launch vertical partner program',
-          'Measure vertical-specific retention and expansion metrics'
-        ]}
-      ]
-    },
-    "Secondary - Community": {
+    "Path 2 Creative Network": {
       category: "Secondary",
       growthThesis: "Strong communities drive engagement and platform stickiness. AI can enhance community interactions through better matching, content discovery, and collaboration tools.",
       productAIStrategy: "Implement AI-driven community matching, intelligent content curation, automated moderation, and collaboration recommendations.",
       actions: "• Create smart community matching • Build content curation AI • Implement auto-moderation • Add collaboration tools • Develop engagement analytics",
-      steps: [
-        { phase: '0–30 days', items: [
-          'Design API-first architecture and developer portal',
-          'Ship core creative APIs (templates, assets, generation)',
-          'Launch usage-based pricing model',
-          'Build developer documentation and SDKs'
-        ]},
-        { phase: '31–60 days', items: [
-          'Add advanced AI APIs (style transfer, smart cropping)',
-          'Create reference applications and code samples',
-          'Launch partner integration program',
-          'Implement API analytics and usage dashboards'
-        ]},
-        { phase: '61–90 days', items: [
-          'Scale API adoption with enterprise customers',
-          'Add white-label solutions for SaaS providers',
-          'Launch API marketplace for third-party tools',
-          'Publish platform adoption and revenue metrics'
-        ]}
+      plan14: [
+        { title: "Executive summary", text: "Creator network with feeds and subs. Multi stream income." },
+        { title: "Current position", text: "Many contributors. Community features weak. No feed mechanics." },
+        { title: "Market view", text: "Competes with TikTok and Patreon and YouTube. Win with licensed creator economy." },
+        { title: "Asset model", text: "Storefront bundles and services and subs tied to creator identity." },
+        { title: "Strategy by horizon", text: "H1 storefronts and feeds. H2 subs and workshops. H3 ads and sponsors." },
+        { title: "Monetisation", text: "Creator subs 5 to 50 per month. Ads and sponsors. Workshop fees." },
+        { title: "Contributor economics", text: "Revenue share on subs. Ad revenue split. Workshop income." },
+        { title: "Data and trust", text: "Creator verification. Content moderation. DMCA protection." },
+        { title: "Go to market", text: "Recruit top creators. Social campaigns. Influencer partnerships." },
+        { title: "Flywheel", text: "Creators bring audiences. Audiences fund creators." },
+        { title: "Technical priorities", text: "Feed algorithms. Payment systems. Moderation AI." },
+        { title: "Risks and mitigations", text: "Platform dependency. Build direct creator relationships." },
+        { title: "AI product manager role", text: "Balance creator and audience needs. Ship engagement features." },
+        { title: "Next steps", text: "Launch creator beta. Build feed MVP. Test subscription model." }
       ]
     },
-    "Satellite - New Verticals": {
+    "Path 3 Vertical Expansion": {
+      category: "Satellite",
+      growthThesis: "Education drives platform adoption and creator success. AI-powered personalized learning can significantly improve skill development and creator retention.",
+      productAIStrategy: "Create adaptive learning paths, AI tutors, skill assessment tools, and personalized content recommendations to enhance educational outcomes.",
+      actions: "• Build adaptive learning system • Create AI tutoring • Develop skill assessments • Add learning analytics • Implement progress tracking",
+      plan14: [
+        { title: "Executive summary", text: "Sector specific platforms like Edu and Gaming and Retail." },
+        { title: "Current position", text: "Broad reach. No deep vertical integrations yet." },
+        { title: "Market view", text: "Edu 300B plus. Gaming 200B plus. Retail ad spend huge." },
+        { title: "Asset model", text: "Industry kits like courseware and Unreal packs and retail ad sets." },
+        { title: "Strategy by horizon", text: "H1 Edu and Gaming pilots. H2 Retail and L and D. H3 multi vertical." },
+        { title: "Monetisation", text: "Vertical seats 50 to 500 per month. Asset licences. Integration fees." },
+        { title: "Contributor economics", text: "Higher rates for industry assets. Vertical specific bonuses." },
+        { title: "Data and trust", text: "Industry compliance. Educational standards. Age appropriate content." },
+        { title: "Go to market", text: "Industry conferences. Vertical partnerships. Case studies." },
+        { title: "Flywheel", text: "Industry adoption drives asset demand. Assets improve outcomes." },
+        { title: "Technical priorities", text: "Vertical APIs. Industry integrations. Compliance tools." },
+        { title: "Risks and mitigations", text: "Industry incumbents. Partner with leaders." },
+        { title: "AI product manager role", text: "Understand vertical needs. Ship industry features." },
+        { title: "Next steps", text: "Pick Education vertical. Build pilot. Recruit vertical creators." }
+      ]
+    },
+    "Path 4 Platform Enabler": {
+      category: "Satellite",
+      growthThesis: "API-first approach enables platform ecosystem growth. AI can automate content creation in new domains through intelligent APIs and developer tools.",
+      productAIStrategy: "Build enterprise-grade AI APIs for content generation, smart asset management, automated workflows, and creative intelligence services.",
+      actions: "• Develop core creative APIs • Build AI generation services • Create developer platform • Add usage analytics • Implement enterprise features",
+      plan14: [
+        { title: "Executive summary", text: "API first creative backend for SaaS and AI tools." },
+        { title: "Current position", text: "Few integrations. No API first posture." },
+        { title: "Market view", text: "SaaS and AI need content APIs. Usage revenue at scale." },
+        { title: "Asset model", text: "APIs for search and recommend and license verify and provenance." },
+        { title: "Strategy by horizon", text: "H1 core APIs. H2 workflow APIs. H3 default creative backend." },
+        { title: "Monetisation", text: "Usage based pricing. Enterprise contracts. Developer fees." },
+        { title: "Contributor economics", text: "Revenue share on API usage. Premium for API ready assets." },
+        { title: "Data and trust", text: "API rate limits. Usage analytics. Enterprise SLAs." },
+        { title: "Go to market", text: "Developer conferences. API partnerships. Technical content." },
+        { title: "Flywheel", text: "Developers build demand. Usage drives revenue." },
+        { title: "Technical priorities", text: "API infrastructure. Rate limiting. Usage tracking." },
+        { title: "Risks and mitigations", text: "Platform competition. Focus on creative specialization." },
+        { title: "AI product manager role", text: "Balance developer and business needs. Ship platform features." },
+        { title: "Next steps", text: "Launch API beta. Build developer portal. Create usage pricing." }
+      ]
+    },
+    "Path 5 Radical Play": {
       category: "Satellite",
       growthThesis: "Expanding into adjacent creative verticals can capture new market segments. AI can accelerate this expansion by automating content creation in new domains.",
       productAIStrategy: "Leverage AI to quickly establish presence in new creative verticals through automated content generation, market analysis, and rapid prototyping.",
       actions: "• Research new verticals • Build content generation AI • Create market analysis tools • Develop rapid prototyping • Test market validation",
-      steps: [
-        { phase: '0–30 days', items: [
-          'Prototype immersive content creation pipeline',
-          'Build agentic AI substrate for autonomous creation',
-          'Partner with VR/AR studios for validation',
-          'Create experimental immersive asset library'
-        ]},
-        { phase: '31–60 days', items: [
-          'Launch immersive content beta with select creators',
-          'Add AI agent marketplace for creative tasks',
-          'Implement spatial computing integrations',
-          'Begin enterprise pilots for immersive experiences'
-        ]},
-        { phase: '61–90 days', items: [
-          'Scale immersive platform with consumer launch',
-          'Deploy autonomous creative agents at scale',
-          'Create immersive creator economy',
-          'Establish market leadership in spatial content'
-        ]}
+      plan14: [
+        { title: "Executive summary", text: "Immersive and agentic AI content substrate." },
+        { title: "Current position", text: "2D focus. No VR or immersive pipeline." },
+        { title: "Market view", text: "Immersive economies 500B plus by 2030." },
+        { title: "Asset model", text: "3D kits and world packs and avatar and agent bundles." },
+        { title: "Strategy by horizon", text: "H1 3D kits. H2 world builder and agent packs. H3 synthetic substrate." },
+        { title: "Monetisation", text: "Premium immersive assets. World licences. Agent subscriptions." },
+        { title: "Contributor economics", text: "High rates for 3D content. World building bonuses." },
+        { title: "Data and trust", text: "3D asset verification. World ownership. Agent behavior controls." },
+        { title: "Go to market", text: "VR conferences. Gaming partnerships. Metaverse marketing." },
+        { title: "Flywheel", text: "Immersive demand drives content. Content enables experiences." },
+        { title: "Technical priorities", text: "3D pipelines. World engines. Agent frameworks." },
+        { title: "Risks and mitigations", text: "Technology maturity. Start with simple 3D assets." },
+        { title: "AI product manager role", text: "Understand immersive needs. Ship experimental features." },
+        { title: "Next steps", text: "Build 3D prototype. Partner with VR studio. Test market demand." }
       ]
     }
   };
 
   useEffect(() => {
+    // Scroll to top on mount
+    window.scrollTo({ top: 0 });
+    
     const initializeNotes = async () => {
       try {
         // Check authentication
@@ -427,20 +427,15 @@ const EnvatoIndex = () => {
           width: 100%;
           max-width: 960px;
           margin: 0 auto 16px;
-          aspect-ratio: 21/9;
           border-radius: 14px;
           border: 1px solid var(--line);
           overflow: hidden;
         }
-        @media (max-width: 768px) {
-          .envato-page .hero-image { 
-            aspect-ratio: 16/9; 
-          }
-        }
         .envato-page .hero-image img {
           width: 100%;
-          height: 100%;
-          object-fit: cover;
+          height: auto;
+          max-height: 520px;
+          object-fit: contain;
           object-position: center;
         }
         .envato-page .kicker {
@@ -472,132 +467,51 @@ const EnvatoIndex = () => {
           border-radius: 14px;
           padding: 16px;
         }
-        .envato-page .chip {
-          display: inline-flex;
-          gap: 8px;
-          align-items: center;
-          border-radius: 9999px;
-          padding: 6px 10px;
-          font-size: 12px;
+        .envato-page .section {
+          margin-bottom: 32px;
+        }
+        .envato-page .section-title {
+          font-size: 22px;
           font-weight: 600;
-          border: 1px solid var(--line);
-          background: #fff;
-        }
-        .envato-page .chip.core {
-          border-color: var(--envato);
-          color: var(--envato-dark);
-        }
-        .envato-page .chip.secondary {
-          border-color: var(--blue);
-          color: var(--blue);
-        }
-        .envato-page .chip.satellite {
-          border-color: var(--yellow);
-          color: #8a6b00;
-        }
-        .envato-page .chip.moonshot {
-          border-color: var(--red);
-          color: var(--red);
+          margin-bottom: 16px;
         }
         .envato-page .cards {
           display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          gap: 14px;
-          margin: 14px 0 8px;
-        }
-        @media (max-width: 1200px) {
-          .envato-page .cards {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-        @media (max-width: 580px) {
-          .envato-page .cards {
-            grid-template-columns: 1fr;
-          }
-        }
-        .envato-page .card h3 {
-          margin: 2px 0 6px;
-          font-size: 16px;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 16px;
+          margin-top: 16px;
         }
         .envato-page .meta {
           color: var(--muted);
-          font-size: 13px;
-        }
-        .envato-page .btn {
-          display: inline-block;
-          padding: 10px 12px;
-          border-radius: 10px;
-          background: var(--envato);
-          color: #fff;
-          font-weight: 600;
-        }
-        .envato-page .btn:hover {
-          background: var(--envato-dark);
-        }
-        .envato-page .section-title {
-          margin: 26px 0 10px;
-          font-size: 20px;
-        }
-        .envato-page details {
-          border: 1px solid var(--line);
-          border-radius: 14px;
-          margin: 10px 0;
-          background: #fff;
-          overflow: hidden;
-        }
-        .envato-page summary {
-          cursor: pointer;
-          list-style: none;
-          padding: 14px 16px;
-          font-weight: 600;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        .envato-page summary::-webkit-details-marker {
-          display: none;
-        }
-        .envato-page details[open] summary {
-          border-bottom: 1px solid var(--line);
-          background: linear-gradient(#fff, #fdfefe);
-        }
-        .envato-page .acc-body {
-          padding: 10px 14px 16px;
-        }
-        .envato-page .dim-help {
-          color: var(--muted);
-          font-size: 13px;
-          margin: 0 0 8px;
+          font-size: 14px;
+          margin: 8px 0;
         }
         .envato-page .table-wrap {
           overflow: auto;
           border: 1px solid var(--line);
-          border-radius: 12px;
+          border-radius: 8px;
+          margin: 16px 0;
         }
         .envato-page table {
           width: 100%;
-          border-collapse: separate;
-          border-spacing: 0;
-          min-width: 980px;
+          border-collapse: collapse;
+          font-size: 14px;
+          min-width: 800px;
         }
-        .envato-page thead th {
-          position: sticky;
-          top: 0;
-          background: #fbfbfd;
+        .envato-page th {
+          background: var(--card);
           border-bottom: 1px solid var(--line);
-          font-size: 12px;
-          text-transform: uppercase;
-          letter-spacing: .04em;
-          color: var(--muted);
           padding: 12px;
+          text-align: left;
+          font-weight: 600;
         }
-        .envato-page tbody td {
+        .envato-page td {
+          border-bottom: 1px solid var(--line);
           padding: 12px;
           vertical-align: top;
-          border-top: 1px solid var(--line);
         }
-        .envato-page tbody tr:first-child td {
-          border-top: none;
+        .envato-page tr:last-child td {
+          border-bottom: none;
         }
         .envato-page .col-path {
           width: 18%;
@@ -640,45 +554,6 @@ const EnvatoIndex = () => {
           border-color: var(--red);
           color: var(--red);
         }
-        .envato-page .map {
-          background: #fff;
-          border: 1px solid var(--line);
-          border-radius: 14px;
-          padding: 10px;
-        }
-        .envato-page .legend {
-          display: flex;
-          gap: 10px;
-          flex-wrap: wrap;
-          margin-top: 8px;
-        }
-        .envato-page .dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-        }
-        .envato-page .dot.core {
-          background: var(--envato);
-        }
-        .envato-page .dot.secondary {
-          background: var(--blue);
-        }
-        .envato-page .dot.satellite {
-          background: var(--yellow);
-        }
-        .envato-page .dot.moonshot {
-          background: var(--red);
-        }
-        .envato-page .foot-cta {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 10px;
-          margin: 24px 0 8px;
-        }
-        .envato-page .muted {
-          color: var(--muted);
-        }
         .envato-page .flip-card {
           perspective: 1000px;
         }
@@ -703,6 +578,23 @@ const EnvatoIndex = () => {
         .envato-page .flip-back {
           transform: rotateY(180deg);
           overflow: auto;
+          pointer-events: none;
+        }
+        .envato-page .flip-card.is-flipped .flip-back {
+          pointer-events: auto;
+        }
+        .envato-page .flip-card.is-flipped .flip-front {
+          pointer-events: none;
+        }
+        .envato-page .foot-cta {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
+          margin: 24px 0 8px;
+        }
+        .envato-page .muted {
+          color: var(--muted);
         }
       `}</style>
 
@@ -720,6 +612,19 @@ const EnvatoIndex = () => {
               loading="lazy"
             />
           </div>
+
+          {/* Move CTA above quick cards */}
+          <div className="mb-4">
+            <a 
+              href="/microsites/envato/orchestrator" 
+              className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+            >
+              🎯 View The Orchestrator Profile
+            </a>
+            <p className="text-xs text-muted-foreground mt-1">
+              Deep dive into the modern AI product manager skillset and approach
+            </p>
+          </div>
         </header>
 
         <main className="wrap">
@@ -728,20 +633,11 @@ const EnvatoIndex = () => {
               <h2 className="section-title">Quick view cards</h2>
               <p className="text-sm text-muted mb-4">
                 These cards represent five strategic growth paths for Envato. Each path includes the growth thesis, product AI strategy, and key actions. 
-                Flip a card to see the step-by-step execution plan for that path, or open the full view for context across all dimensions.
+                Flip a card to see the 14-point execution plan for that path, or open the full view for comprehensive context.
               </p>
-              <div className="mb-4">
-                <a 
-                  href="/microsites/envato/orchestrator" 
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-                >
-                  🎯 View The Orchestrator Profile
-                </a>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Deep dive into the modern AI product manager skillset and approach
-                </p>
-              </div>
+              
               <div className="cards">
+                {/* Path 1 Creative Infrastructure */}
                 <div className={`flip-card ${flipped['path1'] ? 'is-flipped' : ''}`}>
                   <div className="flip-inner">
                     <div className="flip-face flip-front">
@@ -761,95 +657,47 @@ const EnvatoIndex = () => {
                         <Button onClick={() => flip('path1')} variant="outline" size="sm">
                           Flip for steps
                         </Button>
-                        <Dialog>
-                          <Button 
-                            size="sm" 
-                            style={{background: 'var(--envato)', color: '#fff'}}
-                            onClick={() => setFullViewPath("Core - Creator Tools")}
-                          >
-                            Full view
-                          </Button>
-                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                            <DialogHeader>
-                              <DialogTitle>Core - Creator Tools: Detailed Strategy</DialogTitle>
-                            </DialogHeader>
-                            <div className="space-y-6">
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                                  <p className="text-sm">{pathData["Core - Creator Tools"].growthThesis}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                                  <p className="text-sm">{pathData["Core - Creator Tools"].productAIStrategy}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                                  <p className="text-sm whitespace-pre-line">{pathData["Core - Creator Tools"].actions}</p>
-                                </div>
-                              </div>
-                              <div className="text-center">
-                                <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
-                                  View Full Comparison Table
-                                </Button>
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
+                        <Button 
+                          size="sm" 
+                          style={{background: 'var(--envato)', color: '#fff'}}
+                          onClick={() => setFullViewPath("Path 1 Creative Infrastructure")}
+                        >
+                          Full view
+                        </Button>
                       </div>
                     </div>
                     <div className="flip-face flip-back">
-                      <h4 className="font-semibold mb-3">Step-by-step execution plan</h4>
-                      <div className="grid md:grid-cols-3 gap-3 mb-4">
-                        {pathData["Core - Creator Tools"].steps.map((step, idx) => (
-                          <div key={idx}>
-                            <div className="font-semibold text-sm mb-2">{step.phase}</div>
-                            <ul className="list-disc pl-4 text-xs space-y-1">
-                              {step.items.map((item, itemIdx) => (
-                                <li key={itemIdx}>{item}</li>
-                              ))}
-                            </ul>
+                      <h4 className="font-semibold mb-3">14-Point Execution Plan</h4>
+                      <div className="space-y-2">
+                        {pathData["Path 1 Creative Infrastructure"].plan14.map((item, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium flex-shrink-0">
+                              {idx + 1}
+                            </span>
+                            <div>
+                              <div className="font-semibold text-sm">{item.title}</div>
+                              <div className="text-xs text-muted-foreground">{item.text}</div>
+                            </div>
                           </div>
                         ))}
                       </div>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" onClick={() => unflip('path1')}>
-                          Back
+                      <div className="flex gap-2 mt-4">
+                        <Button variant="outline" size="sm" onClick={() => flip('path1')}>
+                          Back to front
                         </Button>
-                        <Dialog>
-                          <Button 
-                            size="sm" 
-                            style={{background: 'var(--envato)', color: '#fff'}}
-                            onClick={() => setFullViewPath("Core - Enterprise")}
-                          >
-                            Full view
-                          </Button>
-                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                            <DialogHeader>
-                              <DialogTitle>Core - Creator Tools: Detailed Strategy</DialogTitle>
-                            </DialogHeader>
-                            <div className="space-y-6">
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                                  <p className="text-sm">{pathData["Core - Creator Tools"].growthThesis}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                                  <p className="text-sm">{pathData["Core - Creator Tools"].productAIStrategy}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                                  <p className="text-sm whitespace-pre-line">{pathData["Core - Creator Tools"].actions}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
+                        <Button 
+                          size="sm" 
+                          style={{background: 'var(--envato)', color: '#fff'}}
+                          onClick={() => setFullViewPath("Path 1 Creative Infrastructure")}
+                        >
+                          Full view
+                        </Button>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                {/* Path 2 Creative Network */}
                 <div className={`flip-card ${flipped['path2'] ? 'is-flipped' : ''}`}>
                   <div className="flip-inner">
                     <div className="flip-face flip-front">
@@ -869,99 +717,51 @@ const EnvatoIndex = () => {
                         <Button onClick={() => flip('path2')} variant="outline" size="sm">
                           Flip for steps
                         </Button>
-                        <Dialog>
-                          <Button 
-                            size="sm" 
-                            style={{background: 'var(--envato)', color: '#fff'}}
-                            onClick={() => setFullViewPath("Secondary - Learning")}
-                          >
-                            Full view
-                          </Button>
-                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                            <DialogHeader>
-                              <DialogTitle>Core - Enterprise: Detailed Strategy</DialogTitle>
-                            </DialogHeader>
-                            <div className="space-y-6">
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                                  <p className="text-sm">{pathData["Core - Enterprise"].growthThesis}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                                  <p className="text-sm">{pathData["Core - Enterprise"].productAIStrategy}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                                  <p className="text-sm whitespace-pre-line">{pathData["Core - Enterprise"].actions}</p>
-                                </div>
-                              </div>
-                              <div className="text-center">
-                                <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
-                                  View Full Comparison Table
-                                </Button>
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
+                        <Button 
+                          size="sm" 
+                          style={{background: 'var(--envato)', color: '#fff'}}
+                          onClick={() => setFullViewPath("Path 2 Creative Network")}
+                        >
+                          Full view
+                        </Button>
                       </div>
                     </div>
                     <div className="flip-face flip-back">
-                      <h4 className="font-semibold mb-3">Step-by-step execution plan</h4>
-                      <div className="grid md:grid-cols-3 gap-3 mb-4">
-                        {pathData["Core - Enterprise"].steps.map((step, idx) => (
-                          <div key={idx}>
-                            <div className="font-semibold text-sm mb-2">{step.phase}</div>
-                            <ul className="list-disc pl-4 text-xs space-y-1">
-                              {step.items.map((item, itemIdx) => (
-                                <li key={itemIdx}>{item}</li>
-                              ))}
-                            </ul>
+                      <h4 className="font-semibold mb-3">14-Point Execution Plan</h4>
+                      <div className="space-y-2">
+                        {pathData["Path 2 Creative Network"].plan14.map((item, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium flex-shrink-0">
+                              {idx + 1}
+                            </span>
+                            <div>
+                              <div className="font-semibold text-sm">{item.title}</div>
+                              <div className="text-xs text-muted-foreground">{item.text}</div>
+                            </div>
                           </div>
                         ))}
                       </div>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" onClick={() => unflip('path2')}>
-                          Back
+                      <div className="flex gap-2 mt-4">
+                        <Button variant="outline" size="sm" onClick={() => flip('path2')}>
+                          Back to front
                         </Button>
-                        <Dialog>
-                          <Button 
-                            size="sm" 
-                            style={{background: 'var(--envato)', color: '#fff'}}
-                            onClick={() => setFullViewPath("Secondary - Community")}
-                          >
-                            Full view
-                          </Button>
-                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                            <DialogHeader>
-                              <DialogTitle>Core - Enterprise: Detailed Strategy</DialogTitle>
-                            </DialogHeader>
-                            <div className="space-y-6">
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                                  <p className="text-sm">{pathData["Core - Enterprise"].growthThesis}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                                  <p className="text-sm">{pathData["Core - Enterprise"].productAIStrategy}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                                  <p className="text-sm whitespace-pre-line">{pathData["Core - Enterprise"].actions}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
+                        <Button 
+                          size="sm" 
+                          style={{background: 'var(--envato)', color: '#fff'}}
+                          onClick={() => setFullViewPath("Path 2 Creative Network")}
+                        >
+                          Full view
+                        </Button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className={`flip-card ${flipped['path4'] ? 'is-flipped' : ''}`}>
+
+                {/* Path 3 Vertical Expansion */}
+                <div className={`flip-card ${flipped['path3'] ? 'is-flipped' : ''}`}>
                   <div className="flip-inner">
                     <div className="flip-face flip-front">
-                      <h3>Path 4 Vertical Expansion</h3>
+                      <h3>Path 3 Vertical Expansion</h3>
                       <div className="meta">Industry solutions like Edu and Gaming</div>
                       <p className="meta">Indicative 50–100M ARR per vertical</p>
                        <span className="tag satellite">Higher risk</span>
@@ -974,106 +774,120 @@ const EnvatoIndex = () => {
                          ))}
                        </div>
                        <div className="mt-4 flex gap-2">
-                        <Button onClick={() => flip('path4')} variant="outline" size="sm">
+                        <Button onClick={() => flip('path3')} variant="outline" size="sm">
                           Flip for steps
                         </Button>
-                        <Dialog>
-                          <Button 
-                            size="sm" 
-                            style={{background: 'var(--envato)', color: '#fff'}}
-                            onClick={() => setFullViewPath("Satellite - New Verticals")}
-                          >
-                            Full view
-                          </Button>
-                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                            <DialogHeader>
-                              <DialogTitle>Secondary - Learning: Detailed Strategy</DialogTitle>
-                            </DialogHeader>
-                            <div className="space-y-6">
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                                  <p className="text-sm">{pathData["Secondary - Learning"].growthThesis}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                                  <p className="text-sm">{pathData["Secondary - Learning"].productAIStrategy}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                                  <p className="text-sm whitespace-pre-line">{pathData["Secondary - Learning"].actions}</p>
-                                </div>
-                              </div>
-                              <div className="text-center">
-                                <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
-                                  View Full Comparison Table
-                                </Button>
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
+                        <Button 
+                          size="sm" 
+                          style={{background: 'var(--envato)', color: '#fff'}}
+                          onClick={() => setFullViewPath("Path 3 Vertical Expansion")}
+                        >
+                          Full view
+                        </Button>
                       </div>
                     </div>
                     <div className="flip-face flip-back">
-                      <h4 className="font-semibold mb-3">Step-by-step execution plan</h4>
-                      <div className="grid md:grid-cols-3 gap-3 mb-4">
-                        {pathData["Secondary - Learning"].steps.map((step, idx) => (
-                          <div key={idx}>
-                            <div className="font-semibold text-sm mb-2">{step.phase}</div>
-                            <ul className="list-disc pl-4 text-xs space-y-1">
-                              {step.items.map((item, itemIdx) => (
-                                <li key={itemIdx}>{item}</li>
-                              ))}
-                            </ul>
+                      <h4 className="font-semibold mb-3">14-Point Execution Plan</h4>
+                      <div className="space-y-2">
+                        {pathData["Path 3 Vertical Expansion"].plan14.map((item, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium flex-shrink-0">
+                              {idx + 1}
+                            </span>
+                            <div>
+                              <div className="font-semibold text-sm">{item.title}</div>
+                              <div className="text-xs text-muted-foreground">{item.text}</div>
+                            </div>
                           </div>
                         ))}
                       </div>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" onClick={() => unflip('path4')}>
-                          Back
+                      <div className="flex gap-2 mt-4">
+                        <Button variant="outline" size="sm" onClick={() => flip('path3')}>
+                          Back to front
                         </Button>
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
-                              Full view
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                            <DialogHeader>
-                              <DialogTitle>Secondary - Learning: Detailed Strategy</DialogTitle>
-                            </DialogHeader>
-                            <div className="space-y-6">
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                                  <p className="text-sm">{pathData["Secondary - Learning"].growthThesis}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                                  <p className="text-sm">{pathData["Secondary - Learning"].productAIStrategy}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                                  <p className="text-sm whitespace-pre-line">{pathData["Secondary - Learning"].actions}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
+                        <Button 
+                          size="sm" 
+                          style={{background: 'var(--envato)', color: '#fff'}}
+                          onClick={() => setFullViewPath("Path 3 Vertical Expansion")}
+                        >
+                          Full view
+                        </Button>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                {/* Path 4 Platform Enabler */}
+                <div className={`flip-card ${flipped['path4'] ? 'is-flipped' : ''}`}>
+                  <div className="flip-inner">
+                    <div className="flip-face flip-front">
+                      <h3>Path 4 Platform Enabler</h3>
+                      <div className="meta">API backend for SaaS and AI tools</div>
+                      <p className="meta">Indicative 200–500M ARR opportunity</p>
+                       <span className="tag satellite">Higher risk</span>
+                       <span className="tag">API revenue</span>
+                       <div className="mt-2 flex flex-wrap gap-1">
+                         {competencyBadges["Secondary - Community"]?.map((badge) => (
+                           <Badge key={badge} variant="secondary" className="text-xs">
+                             {badge}
+                           </Badge>
+                         ))}
+                       </div>
+                       <div className="mt-4 flex gap-2">
+                        <Button onClick={() => flip('path4')} variant="outline" size="sm">
+                          Flip for steps
+                        </Button>
+                        <Button 
+                          size="sm" 
+                          style={{background: 'var(--envato)', color: '#fff'}}
+                          onClick={() => setFullViewPath("Path 4 Platform Enabler")}
+                        >
+                          Full view
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="flip-face flip-back">
+                      <h4 className="font-semibold mb-3">14-Point Execution Plan</h4>
+                      <div className="space-y-2">
+                        {pathData["Path 4 Platform Enabler"].plan14.map((item, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium flex-shrink-0">
+                              {idx + 1}
+                            </span>
+                            <div>
+                              <div className="font-semibold text-sm">{item.title}</div>
+                              <div className="text-xs text-muted-foreground">{item.text}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex gap-2 mt-4">
+                        <Button variant="outline" size="sm" onClick={() => flip('path4')}>
+                          Back to front
+                        </Button>
+                        <Button 
+                          size="sm" 
+                          style={{background: 'var(--envato)', color: '#fff'}}
+                          onClick={() => setFullViewPath("Path 4 Platform Enabler")}
+                        >
+                          Full view
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Path 5 Radical Play */}
                 <div className={`flip-card ${flipped['path5'] ? 'is-flipped' : ''}`}>
                   <div className="flip-inner">
                     <div className="flip-face flip-front">
-                      <h3>Path 5 Platform Enabler</h3>
-                      <div className="meta">API first creative backend</div>
-                      <p className="meta">Indicative 100M ARR in 3 to 4 years</p>
-                       <span className="tag secondary">Medium risk</span>
-                       <span className="tag">Usage fees</span>
+                      <h3>Path 5 Radical Play</h3>
+                      <div className="meta">Immersive and synthetic content</div>
+                      <p className="meta">Moonshot with massive upside potential</p>
+                       <span className="tag moonshot">Highest risk</span>
+                       <span className="tag">Future bet</span>
                        <div className="mt-2 flex flex-wrap gap-1">
-                         {competencyBadges["Satellite - Developer APIs"]?.map((badge) => (
+                         {competencyBadges["Satellite - New Verticals"]?.map((badge) => (
                            <Badge key={badge} variant="secondary" className="text-xs">
                              {badge}
                            </Badge>
@@ -1083,191 +897,41 @@ const EnvatoIndex = () => {
                         <Button onClick={() => flip('path5')} variant="outline" size="sm">
                           Flip for steps
                         </Button>
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
-                              Full view
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                            <DialogHeader>
-                              <DialogTitle>Secondary - Community: Detailed Strategy</DialogTitle>
-                            </DialogHeader>
-                            <div className="space-y-6">
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                                  <p className="text-sm">{pathData["Secondary - Community"].growthThesis}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                                  <p className="text-sm">{pathData["Secondary - Community"].productAIStrategy}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                                  <p className="text-sm whitespace-pre-line">{pathData["Secondary - Community"].actions}</p>
-                                </div>
-                              </div>
-                              <div className="text-center">
-                                <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
-                                  View Full Comparison Table
-                                </Button>
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
+                        <Button 
+                          size="sm" 
+                          style={{background: 'var(--envato)', color: '#fff'}}
+                          onClick={() => setFullViewPath("Path 5 Radical Play")}
+                        >
+                          Full view
+                        </Button>
                       </div>
                     </div>
                     <div className="flip-face flip-back">
-                      <h4 className="font-semibold mb-3">Step-by-step execution plan</h4>
-                      <div className="grid md:grid-cols-3 gap-3 mb-4">
-                        {pathData["Secondary - Community"].steps.map((step, idx) => (
-                          <div key={idx}>
-                            <div className="font-semibold text-sm mb-2">{step.phase}</div>
-                            <ul className="list-disc pl-4 text-xs space-y-1">
-                              {step.items.map((item, itemIdx) => (
-                                <li key={itemIdx}>{item}</li>
-                              ))}
-                            </ul>
+                      <h4 className="font-semibold mb-3">14-Point Execution Plan</h4>
+                      <div className="space-y-2">
+                        {pathData["Path 5 Radical Play"].plan14.map((item, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium flex-shrink-0">
+                              {idx + 1}
+                            </span>
+                            <div>
+                              <div className="font-semibold text-sm">{item.title}</div>
+                              <div className="text-xs text-muted-foreground">{item.text}</div>
+                            </div>
                           </div>
                         ))}
                       </div>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" onClick={() => unflip('path5')}>
-                          Back
+                      <div className="flex gap-2 mt-4">
+                        <Button variant="outline" size="sm" onClick={() => flip('path5')}>
+                          Back to front
                         </Button>
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
-                              Full view
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                            <DialogHeader>
-                              <DialogTitle>Secondary - Community: Detailed Strategy</DialogTitle>
-                            </DialogHeader>
-                            <div className="space-y-6">
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                                  <p className="text-sm">{pathData["Secondary - Community"].growthThesis}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                                  <p className="text-sm">{pathData["Secondary - Community"].productAIStrategy}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                                  <p className="text-sm whitespace-pre-line">{pathData["Secondary - Community"].actions}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={`flip-card ${flipped['path6'] ? 'is-flipped' : ''}`}>
-                  <div className="flip-inner">
-                    <div className="flip-face flip-front">
-                      <h3>Path 6 Radical Play</h3>
-                      <div className="meta">Immersive and agentic AI substrate</div>
-                      <p className="meta">Indicative 1B plus TAM moonshot</p>
-                       <span className="tag moonshot">Extreme risk</span>
-                       <span className="tag">Long horizon</span>
-                       <div className="mt-2 flex flex-wrap gap-1">
-                         {competencyBadges["Satellite - New Verticals"]?.map((badge) => (
-                           <Badge key={badge} variant="secondary" className="text-xs">
-                             {badge}
-                           </Badge>
-                         ))}
-                       </div>
-                       <div className="mt-4 flex gap-2">
-                        <Button onClick={() => flip('path6')} variant="outline" size="sm">
-                          Flip for steps
+                        <Button 
+                          size="sm" 
+                          style={{background: 'var(--envato)', color: '#fff'}}
+                          onClick={() => setFullViewPath("Path 5 Radical Play")}
+                        >
+                          Full view
                         </Button>
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
-                              Full view
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                            <DialogHeader>
-                              <DialogTitle>Satellite - New Verticals: Detailed Strategy</DialogTitle>
-                            </DialogHeader>
-                            <div className="space-y-6">
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                                  <p className="text-sm">{pathData["Satellite - New Verticals"].growthThesis}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                                  <p className="text-sm">{pathData["Satellite - New Verticals"].productAIStrategy}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                                  <p className="text-sm whitespace-pre-line">{pathData["Satellite - New Verticals"].actions}</p>
-                                </div>
-                              </div>
-                              <div className="text-center">
-                                <Button onClick={() => document.getElementById('table')?.scrollIntoView({behavior: 'smooth'})} variant="outline">
-                                  View Full Comparison Table
-                                </Button>
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
-                      </div>
-                    </div>
-                    <div className="flip-face flip-back">
-                      <h4 className="font-semibold mb-3">Step-by-step execution plan</h4>
-                      <div className="grid md:grid-cols-3 gap-3 mb-4">
-                        {pathData["Satellite - New Verticals"].steps.map((step, idx) => (
-                          <div key={idx}>
-                            <div className="font-semibold text-sm mb-2">{step.phase}</div>
-                            <ul className="list-disc pl-4 text-xs space-y-1">
-                              {step.items.map((item, itemIdx) => (
-                                <li key={itemIdx}>{item}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" onClick={() => unflip('path6')}>
-                          Back
-                        </Button>
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
-                              Full view
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                            <DialogHeader>
-                              <DialogTitle>Satellite - New Verticals: Detailed Strategy</DialogTitle>
-                            </DialogHeader>
-                            <div className="space-y-6">
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-green-700 mb-2">Growth Thesis</h4>
-                                  <p className="text-sm">{pathData["Satellite - New Verticals"].growthThesis}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-blue-700 mb-2">Product AI Strategy</h4>
-                                  <p className="text-sm">{pathData["Satellite - New Verticals"].productAIStrategy}</p>
-                                </div>
-                                <div className="p-4 border rounded-lg">
-                                  <h4 className="font-semibold text-purple-700 mb-2">Key Actions</h4>
-                                  <p className="text-sm whitespace-pre-line">{pathData["Satellite - New Verticals"].actions}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
                       </div>
                     </div>
                   </div>
@@ -1289,9 +953,9 @@ const EnvatoIndex = () => {
                       <tr>
                         <th className="col-path">Path 1</th>
                         <th className="col-path">Path 2</th>
+                        <th className="col-path">Path 3</th>
                         <th className="col-path">Path 4</th>
                         <th className="col-path">Path 5</th>
-                        <th className="col-path">Path 6</th>
                         <th className="col-notes">Envato input</th>
                       </tr>
                     </thead>
@@ -1310,299 +974,65 @@ const EnvatoIndex = () => {
               </div>
             </details>
 
-            <details>
-              <summary>2 Current position</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>Assets strong. AI labs siloed. Enterprise reach under used.</td>
-                      <td>Many contributors. Community features weak. No feed mechanics.</td>
-                      <td>Broad reach. No deep vertical integrations yet.</td>
-                      <td>Few integrations. No API first posture.</td>
-                      <td>2D focus. No VR or immersive pipeline.</td>
-                      <td><textarea className="note" data-key="d2"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details>
-              <summary>3 Market view</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>Competes with Canva and Adobe and Getty. Win with trust and speed.</td>
-                      <td>Competes with TikTok and Patreon and YouTube. Win with licensed creator economy.</td>
-                      <td>Edu 300B plus. Gaming 200B plus. Retail ad spend huge.</td>
-                      <td>SaaS and AI need content APIs. Usage revenue at scale.</td>
-                      <td>Immersive economies 500B plus by 2030.</td>
-                      <td><textarea className="note" data-key="d3"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details>
-              <summary>4 Asset model</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>Kits and briefs and compliance packs with manifest and lineage.</td>
-                      <td>Storefront bundles and services and subs tied to creator identity.</td>
-                      <td>Industry kits like courseware and Unreal packs and retail ad sets.</td>
-                      <td>APIs for search and recommend and license verify and provenance.</td>
-                      <td>3D kits and world packs and avatar and agent bundles.</td>
-                      <td><textarea className="note" data-key="d4"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details>
-              <summary>5 Strategy by horizon</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>H1 index and connectors. H2 packs and dashboards. H3 creative OS.</td>
-                      <td>H1 storefronts and feeds. H2 subs and workshops. H3 ads and sponsors.</td>
-                      <td>H1 Edu and Gaming pilots. H2 Retail and L and D. H3 multi vertical.</td>
-                      <td>H1 core APIs. H2 workflow APIs. H3 default creative backend.</td>
-                      <td>H1 3D kits. H2 world builder and agent packs. H3 synthetic substrate.</td>
-                      <td><textarea className="note" data-key="d5"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details>
-              <summary>6 Monetisation</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>Subs and enterprise contracts and usage fees. 100–200M ARR in 3 to 5 years.</td>
-                      <td>Ads and subs and workshops. 500M plus GMV. 50–100M net in 3 years.</td>
-                      <td>Vertical SaaS. 50–100M ARR per vertical.</td>
-                      <td>API usage and royalties. 100M ARR in 3 to 4 years if embedded broadly.</td>
-                      <td>Immersive assets and agents and XR contracts. 1B plus TAM moonshot.</td>
-                      <td><textarea className="note" data-key="d6"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details>
-              <summary>7 Contributor economics</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>Sell kits. Higher margins. Guidance tools.</td>
-                      <td>Audience and subs and sponsors. Long tail and star earners.</td>
-                      <td>Specialise by sector. Premium pricing.</td>
-                      <td>Royalties from API usage across SaaS partners.</td>
-                      <td>Earnings from immersive packs and agent deployments.</td>
-                      <td><textarea className="note" data-key="d7"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details>
-              <summary>8 Data and trust</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>Provenance and C2PA and audits and region pinning.</td>
-                      <td>Moderation AI and verified creators and copyright checks.</td>
-                      <td>FERPA and GDPR and ad safety per sector.</td>
-                      <td>Provenance APIs and usage logs and SLAs.</td>
-                      <td>IP rights for avatars and agents and immersive outputs.</td>
-                      <td><textarea className="note" data-key="d8"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details>
-              <summary>9 Go to market</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>Agencies and corporates and studios and universities.</td>
-                      <td>SMBs and indie creators and influencers.</td>
-                      <td>Education and gaming and retail and gov.</td>
-                      <td>SaaS vendors and hyperscalers.</td>
-                      <td>Gaming studios and XR agencies and brand labs.</td>
-                      <td><textarea className="note" data-key="d9"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details>
-              <summary>10 Flywheel</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>Faster workflows then renewals then ARPU up.</td>
-                      <td>Creators upload then followers grow then engagement then revenue.</td>
-                      <td>Industry packs then contracts then more experts.</td>
-                      <td>More partners then more calls then more royalties then more assets.</td>
-                      <td>More immersive content then more brand spend then more creators.</td>
-                      <td><textarea className="note" data-key="d10"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details>
-              <summary>11 Technical priorities</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>Unified index and manifest and compliance AI and connectors.</td>
-                      <td>Feeds and recsys and moderation AI and storefronts.</td>
-                      <td>Ontologies and Unity and LMS and Shopify integrations.</td>
-                      <td>API gateway and SDKs and usage attribution.</td>
-                      <td>Text to world and engine SDKs and immersive provenance.</td>
-                      <td><textarea className="note" data-key="d11"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details>
-              <summary>12 Risks and mitigations</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>Slow adoption and infra cost and author pushback. Answer with revenue share and trust moat.</td>
-                      <td>Compete with big social and heavy moderation and ad swings. Answer with licensing and pro tools.</td>
-                      <td>Spread thin and niche risk. Answer with two pilot sectors and big TAM focus.</td>
-                      <td>Invisible backend and partner risk. Answer with powered by and wide partner base.</td>
-                      <td>Hype risk and IP disputes and cost. Answer with gaming first and strong rights layer.</td>
-                      <td><textarea className="note" data-key="d12"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details>
-              <summary>13 AI product manager role</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>Asset manifest and index and compliance features. KPIs time to output and ARPU.</td>
-                      <td>Feeds and recsys and storefront AI and moderation. KPIs DAU and creator ARPU.</td>
-                      <td>Vertical ontologies and transform tools and sector integrations. KPIs sector ARR.</td>
-                      <td>API suite and pricing and royalties and docs. KPIs API calls and partner count.</td>
-                      <td>Immersive asset classes and pipelines and rights rules. KPIs XR sales and agent use.</td>
-                      <td><textarea className="note" data-key="d13"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details>
-              <summary>14 Next steps</summary>
-              <div className="acc-body">
-                <div className="table-wrap">
-                  <table>
-                    <thead><tr>
-                      <th>Path 1</th><th>Path 2</th><th>Path 4</th><th>Path 5</th><th>Path 6</th><th>Envato input</th>
-                    </tr></thead>
-                    <tbody><tr>
-                      <td>Ship index and first connector and trust report. Land two enterprise lifts.</td>
-                      <td>Launch feeds and storefronts and subs. Publish moderation framework.</td>
-                      <td>Pick two pilots. Build MVP kits. Sign early contracts.</td>
-                      <td>Build MVP API. Sign one lighthouse partner. Open dev program.</td>
-                      <td>Extend manifest to 3D. Launch XR kits. Partner with Unity or Unreal.</td>
-                      <td><textarea className="note" data-key="d14"></textarea></td>
-                    </tr></tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
+            {/* Continue with other 13 sections */}
+            {Array.from({ length: 13 }, (_, i) => {
+              const sectionNumber = i + 2;
+              const sectionTitle = fourteenPointFramework[sectionNumber - 1];
+              return (
+                <details key={sectionNumber}>
+                  <summary>{sectionNumber} {sectionTitle}</summary>
+                  <div className="acc-body">
+                    <div className="table-wrap">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Path 1</th><th>Path 2</th><th>Path 3</th><th>Path 4</th><th>Path 5</th><th>Envato input</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>{pathData["Path 1 Creative Infrastructure"].plan14[sectionNumber - 1]?.text}</td>
+                            <td>{pathData["Path 2 Creative Network"].plan14[sectionNumber - 1]?.text}</td>
+                            <td>{pathData["Path 3 Vertical Expansion"].plan14[sectionNumber - 1]?.text}</td>
+                            <td>{pathData["Path 4 Platform Enabler"].plan14[sectionNumber - 1]?.text}</td>
+                            <td>{pathData["Path 5 Radical Play"].plan14[sectionNumber - 1]?.text}</td>
+                            <td><textarea className="note" data-key={`d${sectionNumber}`}></textarea></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </details>
+              );
+            })}
           </section>
 
-          <section className="foot-cta">
-            <p className="muted">
-              Add notes in the right column. Content saves {isAuthenticated ? 'to cloud and' : 'in'} your browser{!isAuthenticated ? ' (sign in to sync across devices)' : ''}.
-            </p>
+          <div className="foot-cta">
             <div>
-              <button className="btn" id="saveAll">Save now</button>
-              <button className="btn" id="clearAll" style={{background: '#0f172a'}}>Clear notes</button>
+              <button id="saveAll" className="px-4 py-2 bg-green-600 text-white rounded">Save All</button>
+              <button id="clearAll" className="px-4 py-2 bg-red-600 text-white rounded ml-2">Clear All</button>
             </div>
-          </section>
+            <div className="text-sm muted">
+              {isAuthenticated ? 'Notes sync to cloud' : 'Login to sync notes to cloud'}
+            </div>
+          </div>
         </main>
       </div>
-      
+
       {/* Full Path Modal */}
       {fullViewPath && (
         <FullPathModal
           isOpen={!!fullViewPath}
           onClose={() => setFullViewPath(null)}
           pathName={fullViewPath}
-          pathData={pathData[fullViewPath as keyof typeof pathData]}
+          pathData={{
+            category: pathData[fullViewPath as keyof typeof pathData]?.category || "",
+            growthThesis: pathData[fullViewPath as keyof typeof pathData]?.growthThesis || "",
+            productAIStrategy: pathData[fullViewPath as keyof typeof pathData]?.productAIStrategy || "",
+            actions: pathData[fullViewPath as keyof typeof pathData]?.actions || "",
+            steps: [],
+            plan14: pathData[fullViewPath as keyof typeof pathData]?.plan14 || []
+          }}
         />
       )}
     </>

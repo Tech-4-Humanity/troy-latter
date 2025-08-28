@@ -252,7 +252,7 @@ const Orchestrator = () => {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Skill Wheel */}
             <div className="bg-card border border-border rounded-xl p-6">
-              <h2 className="text-2xl font-semibold mb-4">2025 skill set</h2>
+            <h2 className="text-2xl font-semibold mb-4">2025 skill set</h2>
               <p className="text-muted-foreground mb-6">Click a skill to see how I use it in this role.</p>
               
               <div className="grid grid-cols-2 gap-3">

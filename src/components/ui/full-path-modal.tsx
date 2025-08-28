@@ -14,6 +14,7 @@ interface PathData {
   productAIStrategy: string;
   actions: string;
   steps: PathStep[];
+  plan14?: { title: string; text: string }[];
 }
 
 interface FullPathModalProps {
@@ -53,25 +54,42 @@ const FullPathModal: React.FC<FullPathModalProps> = ({ isOpen, onClose, pathName
           
           <Separator />
           
-          {/* 14-Step Plan */}
+          {/* 14-Point Execution Plan */}
           <div>
             <h3 className="text-xl font-bold mb-4">14-Point Execution Plan</h3>
-            <div className="space-y-6">
-              {pathData.steps.map((step, stepIndex) => (
-                <div key={stepIndex} className="bg-muted/50 rounded-lg p-4">
-                  <h4 className="font-semibold text-primary mb-3">{step.phase}</h4>
-                  <div className="grid gap-2">
-                    {step.items.map((item, itemIndex) => (
-                      <div key={itemIndex} className="flex items-start gap-2">
-                        <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium mt-0.5 flex-shrink-0">
-                          {stepIndex * step.items.length + itemIndex + 1}
-                        </span>
-                        <p className="text-sm text-muted-foreground">{item}</p>
-                      </div>
-                    ))}
+            <div className="space-y-3">
+              {pathData.plan14 ? (
+                pathData.plan14.map((item, index) => (
+                  <div key={index} className="flex items-start gap-3 bg-muted/30 rounded-lg p-3">
+                    <span className="bg-primary text-primary-foreground rounded-full w-7 h-7 flex items-center justify-center text-sm font-medium flex-shrink-0">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <h4 className="font-semibold text-sm mb-1">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.text}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))
+              ) : (
+                pathData.steps.map((step, stepIndex) => (
+                  <div key={stepIndex} className="bg-muted/50 rounded-lg p-4">
+                    <h4 className="font-semibold text-primary mb-3">{step.phase}</h4>
+                    <div className="grid gap-2">
+                      {step.items.map((item, itemIndex) => {
+                        const itemNumber = stepIndex * 4 + itemIndex + 1; // Assuming 4 items per step for numbering
+                        return (
+                          <div key={itemIndex} className="flex items-start gap-2">
+                            <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium mt-0.5 flex-shrink-0">
+                              {itemNumber}
+                            </span>
+                            <p className="text-sm text-muted-foreground">{item}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>

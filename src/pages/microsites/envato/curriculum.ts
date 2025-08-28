@@ -46,7 +46,7 @@ export const curriculumData: CurriculumTrack[] = [
           { title: "Quick view paths", path: "/microsites/envato", anchor: "quick" },
           { title: "Strategic planning", path: "/microsites/envato/orchestrator", anchor: "strategy" }
         ],
-        badges: ["PRDs", "MVP", "Scaling"],
+        badges: ["AI Fluency", "Ethical Judgment", "Data Storytelling", "Systems Thinking"],
         copyableOutline: "PM 101 Applied: 1) Modern PRD frameworks for AI features 2) Product review processes for creative tools 3) Launch guides adapted for creator ecosystems 4) MVP validation in creative markets"
       },
       {
@@ -70,7 +70,7 @@ export const curriculumData: CurriculumTrack[] = [
           { title: "AI Strategy", path: "/microsites/envato/orchestrator", anchor: "skills" },
           { title: "Technical depth", path: "/microsites/envato/orchestrator", anchor: "proof" }
         ],
-        badges: ["AI Strategy", "Model Selection", "Ethics"],
+        badges: ["AI Fluency", "Ethical Judgment", "Community Leadership", "Influence"],
         copyableOutline: "AI PM 101 Applied: 1) Model architecture decisions for creative workflows 2) Ethical AI in creator economy 3) Performance measurement beyond accuracy 4) Avoiding common AI product traps"
       }
     ]
