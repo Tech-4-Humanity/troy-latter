@@ -37,10 +37,11 @@ const Orchestrator = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
+    organization: '',
     role: '',
     intendedUse: '',
-    consent: false
+    consent: false,
+    specificText: ''
   });
   
   const { toast } = useToast();
@@ -171,6 +172,8 @@ const Orchestrator = () => {
       return;
     }
 
+    // Store the specific text to copy
+    setFormData(prev => ({ ...prev, specificText: text }));
     setIsDialogOpen(true);
   };
 
@@ -191,11 +194,11 @@ const Orchestrator = () => {
         .insert({
           name: formData.name,
           email: formData.email,
-          company: formData.company,
+          organization: formData.organization,
           role: formData.role,
           intended_use: formData.intendedUse,
-          consent_marketing: formData.consent,
-          resource_type: 'envato_metrics'
+          marketing_consent: formData.consent,
+          resource_group: 'envato_metrics'
         });
 
       if (error) throw error;
@@ -203,18 +206,18 @@ const Orchestrator = () => {
       // Set access timestamp
       localStorage.setItem('envato_metrics_access', Date.now().toString());
       
-      // Copy the metrics
-      const metrics = Object.values(techNotes).join('\n\n');
-      copyToClipboard(metrics);
+      // Copy the specific text requested
+      copyToClipboard(formData.specificText || Object.values(techNotes).join('\n\n'));
       
       setIsDialogOpen(false);
       setFormData({
         name: '',
         email: '',
-        company: '',
+        organization: '',
         role: '',
         intendedUse: '',
-        consent: false
+        consent: false,
+        specificText: ''
       });
 
       toast({
@@ -304,8 +307,13 @@ const Orchestrator = () => {
                         element.scrollIntoView({ behavior: 'smooth' });
                         // Auto-expand the accordion item
                         setTimeout(() => {
-                          const trigger = element.querySelector('[data-state="closed"]') as HTMLElement;
-                          if (trigger) trigger.click();
+                          // Direct approach for details elements
+                          const details = element.closest('details') || element.querySelector('details');
+                          if (details && !details.open) {
+                            details.open = true;
+                            const summary = details.querySelector('summary');
+                            if (summary) summary.focus();
+                          }
                         }, 500);
                       }
                     }}
@@ -618,11 +626,11 @@ const Orchestrator = () => {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="company">Company</Label>
+                          <Label htmlFor="organization">Organization</Label>
                           <Input
-                            id="company"
-                            value={formData.company}
-                            onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
+                            id="organization"
+                            value={formData.organization}
+                            onChange={(e) => setFormData(prev => ({ ...prev, organization: e.target.value }))}
                             placeholder="Your organization"
                           />
                         </div>

@@ -1,73 +1,220 @@
-# Welcome to your Lovable project
+# Troy Latter Executive Portfolio
 
-## Project info
+A comprehensive digital portfolio showcasing executive leadership, innovation strategies, and AI product management expertise.
 
-**URL**: https://lovable.dev/projects/06ec1c64-940d-4491-b20f-647629742141
+## Project Overview
 
-## How can I edit this code?
+This portfolio demonstrates deep experience in:
+- AI Product Management & Strategy
+- Executive Leadership & Transformation
+- Innovation Frameworks & Implementation
+- Enterprise Architecture & Cloud Platforms
+- Defense & Security Solutions
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+### Core Portfolio Sections
+- **Executive Profile**: Leadership background and core competencies
+- **Innovation Journey**: Framework-driven approach to organizational transformation
+- **Strategic Projects**: Case studies and implementation examples
+- **Technical Whitepapers**: Deep-dive research and analysis
+- **Industry Expertise**: Sector-specific knowledge and applications
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/06ec1c64-940d-4491-b20f-647629742141) and start prompting.
+### Interactive Microsites
+- **Envato AI Product Strategy**: Comprehensive strategy for creative marketplace AI integration
+- **Interview Preparation**: Structured presentations for specific opportunities
+- **Lab3 & Agentforce**: Targeted solutions for specialized platforms
 
-Changes made via Lovable will be committed automatically to this repo.
+### AI-Powered Features
+- **Intelligent Chatbot**: Voice and text-enabled assistant for portfolio exploration
+- **Dynamic Content**: Context-aware information delivery
+- **Real-time Analytics**: Usage tracking and performance metrics
 
-**Use your preferred IDE**
+## Technology Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Frontend
+- **React 18**: Modern component architecture
+- **TypeScript**: Type-safe development
+- **Vite**: Fast build tool and development server
+- **Tailwind CSS**: Utility-first styling framework
+- **shadcn/ui**: Component library with design system
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Backend & Infrastructure
+- **Supabase**: Backend as a service
+  - Authentication & user management
+  - PostgreSQL database
+  - Real-time subscriptions
+  - Edge functions for AI/API integrations
+- **Vercel**: Deployment and hosting
 
-Follow these steps:
+### AI & Integrations
+- **OpenAI**: Natural language processing
+- **HeyGen**: AI avatar generation
+- **Speech Recognition**: Voice interaction capabilities
+- **Embedding Search**: RAG (Retrieval Augmented Generation)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Project Structure
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```
+src/
+├── components/           # Reusable UI components
+│   ├── ui/              # shadcn/ui components
+│   ├── home/            # Homepage sections
+│   └── responsibilities/ # Role-specific components
+├── pages/               # Route components
+│   ├── microsites/      # Specialized mini-sites
+│   │   ├── envato/      # Envato strategy microsite
+│   │   ├── interview-prep/ # Interview presentations
+│   │   └── lab3/        # Lab3 solution architecture
+│   └── [various pages] # Portfolio sections
+├── hooks/               # Custom React hooks
+├── lib/                 # Utility functions
+└── integrations/        # External service integrations
+    └── supabase/        # Database and auth
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Key Routing Structure
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+#### Main Portfolio
+- `/` - Homepage with overview
+- `/about-troy` - Executive biography
+- `/core-competencies` - Skills and expertise
+- `/innovation-journey` - Transformation methodology
+- `/strategic-projects` - Implementation case studies
+- `/whitepapers` - Technical documentation
+- `/faqs` - Frequently asked questions
+
+#### Microsites
+- `/microsites/envato` - AI Product Strategy for Creative Marketplace
+- `/microsites/envato/orchestrator` - Detailed orchestration framework
+- `/microsites/envato/summary` - Context and positioning
+- `/microsites/interview-prep` - Structured interview presentations
+- `/microsites/lab3` - Specialized platform strategy
+- `/microsites/agentforce` - Salesforce ecosystem solutions
+
+## Database Schema
+
+### Core Tables
+- `envato_strategy_notes` - User notes and annotations
+- `resource_access_requests` - Gated content access tracking
+- Various data tables for portfolio content and analytics
+
+### Row Level Security (RLS)
+- User-specific data isolation
+- Public read access for portfolio content
+- Secure handling of contact information
+
+## Development
+
+### Prerequisites
+- Node.js 18+ with npm/yarn
+- Git for version control
+
+### Local Setup
+```bash
+# Clone the repository
+git clone [repository-url]
+cd troy-latter-portfolio
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Environment Setup
+The project uses Supabase for backend services. Configuration is handled through:
+- `src/integrations/supabase/client.ts` - Database connection
+- Environment variables for sensitive keys (managed via deployment platform)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build and Deploy
+```bash
+# Build for production
+npm run build
 
-**Use GitHub Codespaces**
+# Preview production build
+npm run preview
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Content Management
 
-## What technologies are used for this project?
+### Portfolio Content
+Content is structured through:
+- Static data files (`src/pages/microsites/*/curriculum.ts`)
+- Database-stored user interactions
+- Dynamic content generation for AI features
 
-This project is built with:
+### Microsite Architecture
+Each microsite follows a consistent pattern:
+- `Index.tsx` - Main landing page
+- `components/` - Microsite-specific components
+- Data files for structured content
+- Deep-linking support with anchor navigation
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## AI Features
 
-## How can I deploy this project?
+### Chatbot Integration
+- RAG-powered responses using embedded portfolio content
+- Voice recognition and synthesis
+- Context-aware conversations
+- Integration with Supabase for conversation history
 
-Simply open [Lovable](https://lovable.dev/projects/06ec1c64-940d-4491-b20f-647629742141) and click on Share -> Publish.
+### Content Intelligence
+- Semantic search across all portfolio content
+- Dynamic content recommendations
+- Usage analytics and optimization
 
-## Can I connect a custom domain to my Lovable project?
+## Performance & Analytics
 
-Yes, you can!
+### Optimization
+- Lazy loading for images and components
+- Code splitting by route
+- Optimized bundle sizes
+- CDN delivery for static assets
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Monitoring
+- Real-time analytics via Supabase
+- Performance tracking
+- User engagement metrics
+- Error monitoring and reporting
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Security & Compliance
+
+### Data Protection
+- GDPR-compliant data handling
+- Secure authentication flows
+- Encrypted data storage
+- Privacy-focused analytics
+
+### Access Control
+- Role-based permissions
+- Gated content protection
+- Secure API endpoints
+- Content provenance tracking
+
+## Deployment
+
+The application is deployed on Vercel with:
+- Automatic deployments from main branch
+- Preview deployments for pull requests
+- Environment variable management
+- Custom domain configuration
+
+### Production URL
+[Production deployment URL]
+
+## License
+
+This portfolio is proprietary and confidential. All rights reserved.
+
+## Contact
+
+For technical inquiries or collaboration opportunities:
+- Email: [contact information]
+- LinkedIn: [profile link]
+- Portfolio: [production URL]
+
+---
+
+*Built with modern web technologies to showcase executive leadership in the AI and innovation space.*

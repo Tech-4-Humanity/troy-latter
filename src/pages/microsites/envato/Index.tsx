@@ -704,7 +704,7 @@ const EnvatoIndex = () => {
           </section>
 
           {/* Quick view cards */}
-          <section className="section">
+          <section id="quick" className="section">
             <h2 className="section-title">Quick path overview</h2>
             <div className="grid">
               {Object.entries(pathData).map(([pathName, data], index) => (
@@ -719,13 +719,16 @@ const EnvatoIndex = () => {
                         <div className="card-subtitle">{data.category}</div>
                         <h3 className="card-title">{pathName}</h3>
                         <p className="card-text">{data.growthThesis}</p>
-                        <div className="flex flex-wrap gap-1 mb-4">
-                          {competencyBadges[pathName]?.map(badge => (
-                            <Badge key={badge} variant="secondary" className="text-xs">
-                              {badge}
-                            </Badge>
-                          ))}
-                        </div>
+                         <div className="flex flex-wrap gap-1 mb-4">
+                           {(() => {
+                             const pathBadges = competencyBadges[pathName as keyof typeof competencyBadges];
+                             return pathBadges?.map(badge => (
+                               <Badge key={badge} variant="secondary" className="text-xs">
+                                 {badge}
+                               </Badge>
+                             ));
+                           })()}
+                         </div>
                       </div>
                       <div className="mt-4 flex gap-2">
                         <Button onClick={() => flip(`path${index + 1}`)} variant="outline" size="sm">

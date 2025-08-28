@@ -286,6 +286,7 @@ const Summary = () => {
 
         {/* Asset Redefinition */}
         <div id="asset-redefinition" className="mt-12">
+          <div id="teams" className="mb-8"></div>
           <h2 className="text-3xl font-bold text-foreground mb-6">Asset Redefinition: Beyond Media Libraries</h2>
           <p className="text-lg text-muted-foreground mb-8">
             How Envato can evolve from "media library" to "asset kit factory" – expanding into knowledge, data, automation, and vertical-specific solutions that make every business dependent on the platform.
