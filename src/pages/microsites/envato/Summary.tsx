@@ -38,7 +38,7 @@ const Summary = () => {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Envato Overview
           </Link>
-          <h1 className="text-4xl font-bold text-foreground mb-4">context, messaging</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">Context, Messaging and Experience</h1>
           <p className="text-lg text-muted-foreground">
             Understanding Envato's current position and strategic opportunities in the evolving creative economy.
           </p>
