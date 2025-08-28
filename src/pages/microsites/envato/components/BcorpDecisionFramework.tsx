@@ -131,20 +131,20 @@ const BcorpDecisionFramework = () => {
       </div>
 
       {/* Scoring Formula */}
-      <Card className="bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
+      <Card className="envato-gradient-subtle border-envato-green-200">
         <CardHeader>
-          <CardTitle className="text-center">Integrated Scoring Formula</CardTitle>
+          <CardTitle className="text-center text-envato-gray-900">Integrated Scoring Formula</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-center bg-card/80 backdrop-blur-sm rounded-lg p-6 border">
-            <p className="text-lg font-mono">
+          <div className="text-center bg-white/80 backdrop-blur-sm rounded-lg p-6 border border-envato-green-100">
+            <p className="text-lg font-mono text-envato-gray-900">
               <strong>Final Score = </strong>
               <span className="text-blue-600">(Business Viability × 25%)</span> + 
-              <span className="text-emerald-600 font-bold"> (Community Impact × 30%)</span> + 
+              <span className="text-envato-green-600 font-bold"> (Community Impact × 30%)</span> + 
               <span className="text-purple-600">(B Corp Balance × 25%)</span> + 
               <span className="text-amber-600">(Public Co Viability × 20%)</span>
             </p>
-            <p className="text-sm text-muted-foreground mt-2">
+            <p className="text-sm text-envato-gray-600 mt-2">
               Community health is existential • B Corp obligations are legal requirements • Public company metrics drive investor confidence
             </p>
           </div>
@@ -154,17 +154,17 @@ const BcorpDecisionFramework = () => {
       {/* Scoring Criteria */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {scoringCriteria.map((criteria, index) => (
-          <Card key={index} className={criteria.highlight ? "ring-2 ring-emerald-500/50 bg-emerald-50/50" : ""}>
+          <Card key={index} className={criteria.highlight ? "ring-2 ring-envato-green-500/50 bg-envato-green-50/50" : "bg-white border-envato-green-100"}>
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
-                <CardTitle className="text-sm">{criteria.name}</CardTitle>
-                <Badge variant={criteria.highlight ? "default" : "secondary"}>
+                <CardTitle className="text-sm text-envato-gray-900">{criteria.name}</CardTitle>
+                <div className={criteria.highlight ? "envato-pill" : "envato-chip bg-envato-gray-100 text-envato-gray-700"}>
                   {criteria.weight}
-                </Badge>
+                </div>
               </div>
             </CardHeader>
             <CardContent className="pt-0">
-              <p className="text-xs text-muted-foreground">{criteria.description}</p>
+              <p className="text-xs text-envato-gray-600">{criteria.description}</p>
             </CardContent>
           </Card>
         ))}

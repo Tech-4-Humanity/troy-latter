@@ -32,19 +32,19 @@ const Assets = () => {
 
         {/* Header */}
         <div className="mb-8">
-          <Link to="/microsites/envato" className="inline-flex items-center text-primary hover:text-primary/80 mb-4">
+          <Link to="/microsites/envato" className="inline-flex items-center text-envato-green-600 hover:text-envato-green-700 mb-4 transition-colors">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Envato Overview
           </Link>
-          <h1 className="text-4xl font-bold text-foreground mb-4">Increased Assets and Increased Markets</h1>
-          <p className="text-lg text-muted-foreground">
+          <h1 className="text-4xl font-bold text-envato-gray-900 mb-4">Increased Assets and Increased Markets</h1>
+          <p className="text-lg text-envato-gray-600">
             Expanding the asset universe and the markets Envato serves—growing from media library to workflow infrastructure.
           </p>
         </div>
 
         {/* Market Opportunity */}
-        <div className="mt-12 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 border border-primary/20 rounded-2xl overflow-hidden">
-          <div className="bg-gradient-to-r from-primary to-secondary text-white p-6">
+        <div className="mt-12 envato-gradient-subtle border border-envato-green-200 rounded-2xl overflow-hidden">
+          <div className="envato-gradient text-white p-6">
             <h2 className="text-3xl font-bold mb-2">Market Opportunity</h2>
             <p className="text-white/90">The $45B difference between traditional library and workflow factory</p>
           </div>

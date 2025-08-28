@@ -115,3 +115,22 @@
 .animate-fade-in {
   animation: fade-in 0.3s ease-out;
 }
+
+/* Envato-specific utilities */
+.envato-gradient {
+  background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+}
+
+.envato-gradient-subtle {
+  background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+}
+
+.envato-pill {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  @apply bg-envato-green-100 text-envato-green-800 border border-envato-green-200;
+}
+
+.envato-chip {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold;
+  @apply bg-envato-green-50 text-envato-green-700 ring-1 ring-envato-green-600/20;
+}

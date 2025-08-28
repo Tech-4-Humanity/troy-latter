@@ -34,14 +34,14 @@ const Summary = () => {
 
         {/* Header */}
         <div className="mb-8">
-          <Link to="/microsites/envato" className="inline-flex items-center text-primary hover:text-primary/80 mb-4">
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Envato Overview
-          </Link>
-          <h1 className="text-4xl font-bold text-foreground mb-4">Context, Messaging and Experience</h1>
-          <p className="text-lg text-muted-foreground">
-            Understanding Envato's current position and strategic opportunities in the evolving creative economy.
-          </p>
+            <Link to="/microsites/envato" className="inline-flex items-center text-envato-green-600 hover:text-envato-green-700 mb-4 transition-colors">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Envato Overview
+            </Link>
+            <h1 className="text-4xl font-bold text-envato-gray-900 mb-4">Context, Messaging and Experience</h1>
+            <p className="text-lg text-envato-gray-600">
+              Understanding Envato's current position and strategic opportunities in the evolving creative economy.
+            </p>
         </div>
 
         {/* Context Items */}
@@ -68,10 +68,10 @@ const Summary = () => {
               story: "The fact you're hiring a Principal AI Product Manager signals maturity: you're not just experimenting, you're productising. I've been in that exact seat—building AI strategies where the mandate was both to deliver value now and create defensible moats for later."
             }
           ].map((item, index) => (
-            <div key={index} className="bg-card border border-border rounded-xl p-6">
-              <h2 className="text-xl font-semibold text-foreground mb-4">{item.title}</h2>
-              <div className="bg-muted/50 border-l-4 border-primary p-4 rounded">
-                <p className="text-muted-foreground italic">"{item.story}"</p>
+            <div key={index} className="bg-white border border-envato-green-100 rounded-xl p-6 shadow-sm">
+              <h2 className="text-xl font-semibold text-envato-gray-900 mb-4">{item.title}</h2>
+              <div className="envato-gradient-subtle border-l-4 border-envato-green-500 p-4 rounded-lg">
+                <p className="text-envato-gray-700 italic">"{item.story}"</p>
               </div>
             </div>
           ))}

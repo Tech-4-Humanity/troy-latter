@@ -267,11 +267,11 @@ const Orchestrator = () => {
         </Breadcrumb>
         {/* Hero Section */}
         <header id="overview" className="mb-12">
-          <div className="text-sm font-semibold text-muted-foreground mb-2 tracking-wide uppercase">
+          <div className="text-sm font-semibold text-envato-gray-500 mb-2 tracking-wide uppercase">
             The modern AI product manager
           </div>
-          <h1 className="text-4xl font-bold text-foreground mb-4">The orchestrators</h1>
-          <p className="text-lg text-muted-foreground mb-8">
+          <h1 className="text-4xl font-bold text-envato-gray-900 mb-4">The orchestrators</h1>
+          <p className="text-lg text-envato-gray-600 mb-8">
             You want more than features. You want alignment. Customers. Contributors. Enterprise. Agents. One cadence.
           </p>
 
@@ -321,7 +321,7 @@ const Orchestrator = () => {
                         }, 500);
                       }
                     }}
-                    className="px-3 py-1 bg-background border border-border rounded-full text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors cursor-pointer"
+                    className="envato-chip hover:bg-envato-green-100 hover:text-envato-green-800 transition-colors cursor-pointer"
                   >
                     {label}
                   </button>
