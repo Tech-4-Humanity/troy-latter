@@ -142,6 +142,27 @@ const EnvatoIndex = () => {
           problem: "Scattered across Discord servers and Reddit threads, collaboration was difficult and asset sharing had licensing uncertainties.",
           resolution: "Envato's Community Hub allows them to create a dedicated gaming asset group. Members share work-in-progress assets, get AI-powered feedback suggestions, and collaborate on themed asset packs. Smart matching connects developers with complementary skills.",
           outcome: "The community produces collaborative asset packs that become bestsellers. Members find project partners and build lasting professional relationships within Envato's ecosystem."
+        },
+        {
+          title: "Future Case Study 3 — The Music Producer: Electronic Music Creator in Berlin",
+          situation: "Lars produces electronic music and has built a following through Spotify and SoundCloud, but struggled to monetize his music production skills.",
+          problem: "Traditional music licensing was complex and often resulted in his tracks being buried in massive libraries. He wanted to build direct relationships with creators who used his music.",
+          resolution: "Through Envato's Creator Network, Lars creates a subscription tier offering exclusive stems, loops, and full tracks. He hosts live production sessions where subscribers can influence his creative process and get first access to new releases.",
+          outcome: "Lars builds a dedicated community of 500+ subscribers paying $20/month. He collaborates with video creators and gets attribution for his work, leading to commissioned projects worth $50K annually."
+        },
+        {
+          title: "Future Case Study 4 — The Photography Collective: Street Photography Group in Tokyo",
+          situation: "A group of 12 street photographers wanted to showcase their work collectively and build an audience for urban photography in Asia.",
+          problem: "Individual photographers struggled for visibility in oversaturated stock photo markets. Their unique perspective on Asian urban life was undervalued.",
+          resolution: "Using Envato's Community Features, they form the 'Tokyo Streets Collective' - sharing photography techniques, organizing photo walks, and curating themed collections. AI helps match their urban photography with creators looking for authentic Asian city visuals.",
+          outcome: "The collective becomes a recognized brand within Envato, with their urban photography commanding premium prices. They launch photography workshops and sell 'Tokyo Streets' branded presets, expanding beyond individual sales."
+        },
+        {
+          title: "Future Case Study 5 — The Code Community: WordPress Theme Developers",
+          situation: "A network of WordPress developers wanted to collaborate on complex themes while maintaining individual creative control and recognition.",
+          problem: "Complex themes required diverse skills (frontend, backend, design, UX) that individual developers struggled to master alone.",
+          resolution: "Envato's Developer Community enables them to form project teams, share revenue based on contribution, and maintain attribution. AI suggests optimal team compositions based on skills and past collaboration success.",
+          outcome: "Their collaborative themes achieve higher quality and broader market appeal. Individual developers specialize in their strengths while participating in bigger projects, increasing everyone's earnings by 200%."
         }
       ],
       plan14: [
@@ -182,6 +203,27 @@ const EnvatoIndex = () => {
           problem: "Traditional fashion photography was too expensive for a startup, and generic templates didn't capture her brand aesthetic.",
           resolution: "Envato's Retail Vertical Hub provides fashion-specific templates, AI-generated model poses, seasonal color palettes, and brand-consistent social media templates. Everything integrates with her Shopify store.",
           outcome: "Maya launches 4 seasonal collections with professional-quality assets at 90% lower cost. Her brand establishes a consistent visual identity across all channels."
+        },
+        {
+          title: "Future Case Study 3 — The Gaming Company: Mobile Game Developer in Seoul",
+          situation: "Jin's mobile gaming startup needed consistent art styles, UI elements, and promotional materials for their RPG game targeting global markets.",
+          problem: "Hiring dedicated artists for every game asset was financially prohibitive, but inconsistent art styles from different freelancers hurt their brand.",
+          resolution: "Using Envato's Gaming Vertical Platform, Jin accesses a curated library of RPG-specific assets with consistent art styles, plus AI tools that adapt colors and themes to match his game's aesthetic. The platform provides game-ready sprites, UI kits, and marketing materials.",
+          outcome: "Jin's game launches with AAA-quality visuals at indie budgets. The consistent art style helps build brand recognition, leading to 300% higher user retention and successful series expansion."
+        },
+        {
+          title: "Future Case Study 4 — The Education Platform: Online Learning Startup",
+          situation: "Dr. Amanda runs an online platform teaching programming to children. She needed engaging, age-appropriate visuals and interactive elements to make coding concepts accessible.",
+          problem: "Educational content that was both technically accurate and engaging for kids required specialized knowledge that was expensive to source.",
+          resolution: "Envato's Education Vertical provides programming-specific illustration kits, animated explanation templates, and interactive coding game assets. AI suggests age-appropriate visual metaphors for complex concepts.",
+          outcome: "Student engagement increases 250%, course completion rates rise to 85%, and parents report children are excited about programming. The platform expands to serve 50,000 students globally."
+        },
+        {
+          title: "Future Case Study 5 — The Manufacturing Company: Industrial Training Division",
+          situation: "Sarah leads safety training for a global manufacturing company. She needed to create consistent training materials across 15 countries with different languages and safety regulations.",
+          problem: "Creating localized safety training content that met regional compliance standards while maintaining visual consistency was complex and expensive.",
+          resolution: "Envato's Industrial Training Vertical provides safety-specific illustration libraries, compliance-ready templates, and AI-powered localization that adapts content for regional safety standards while maintaining visual consistency.",
+          outcome: "Training standardization across all facilities is achieved. Workplace incidents drop 40%, compliance audit scores improve, and training content creation costs decrease by 60%."
         }
       ],
       plan14: [
@@ -215,6 +257,34 @@ const EnvatoIndex = () => {
           problem: "Users constantly requested branded templates, but building an internal creative team was cost-prohibitive and outside their core competency.",
           resolution: "Integrating Envato's Creative API, Alex's platform now auto-generates branded templates using users' company colors and logos. The API provides template suggestions based on industry and use case.",
           outcome: "User engagement increased 40%, premium subscriptions grew 25%, and Alex's team could focus on their core product while offering creative capabilities."
+        },
+        {
+          title: "Future Case Study 2 — The E-commerce Platform: Shopify Plugin Developer",
+          situation: "Maria's team built Shopify plugins for small businesses, but users constantly requested help with product photography and marketing visuals.",
+          problem: "Their technical expertise was in e-commerce functionality, not creative design, but visual content was essential for user success.",
+          resolution: "Integrating Envato's API, Maria's plugins now auto-generate product photography templates, email headers, and social media assets directly within Shopify. The API provides industry-specific suggestions and brand consistency.",
+          outcome: "Plugin adoption increases 300%, user satisfaction scores double, and Maria's team becomes the go-to solution for e-commerce businesses needing both functionality and design."
+        },
+        {
+          title: "Future Case Study 3 — The AI Company: Document Generation Platform",
+          situation: "Tom's startup automates legal document creation, but clients wanted professional-looking templates and branding options.",
+          problem: "Legal accuracy was their strength, but document design and visual appeal were limiting client adoption.",
+          resolution: "Using Envato's API, their platform automatically applies professional legal document templates, letterheads, and formatting while maintaining legal compliance. The API suggests templates based on document type and jurisdiction.",
+          outcome: "Client onboarding accelerates 500%, document approval rates by end clients increase 80%, and the platform expands from legal firms to corporate legal departments."
+        },
+        {
+          title: "Future Case Study 4 — The Marketing Agency: Automation Platform",
+          situation: "Lisa's marketing agency served 200+ small businesses but couldn't scale creative asset production to match demand.",
+          problem: "Each client needed custom branded materials, but hiring enough designers would eliminate profit margins.",
+          resolution: "Envato's API integration enables automated brand asset generation for each client. The system ingests brand guidelines and automatically produces social media templates, email headers, and presentation formats.",
+          outcome: "The agency serves 3x more clients with the same team, profit margins increase 150%, and client satisfaction improves due to faster turnaround times."
+        },
+        {
+          title: "Future Case Study 5 — The Enterprise Software: CRM Platform",
+          situation: "David's enterprise CRM needed to help sales teams create professional proposals and presentations quickly.",
+          problem: "Sales teams spent too much time on formatting and design instead of selling, leading to lost opportunities and poor-looking proposals.",
+          resolution: "Integrating Envato's API, the CRM auto-generates professional proposal templates, case study layouts, and presentation designs based on industry and deal size. Everything maintains brand consistency.",
+          outcome: "Sales cycle time decreases 30%, proposal win rates increase 45%, and sales teams can focus on relationship building rather than document formatting."
         }
       ],
       plan14: [
@@ -248,6 +318,34 @@ const EnvatoIndex = () => {
           problem: "Video editing, thumbnail creation, and content optimization took 12+ hours daily, leaving little time for the actual creative work he loved.",
           resolution: "Using Envato's AI Creative Copilot, Marcus describes his video concept and the AI generates thumbnail options, edits raw footage into polished videos, and suggests optimal content flow based on audience engagement patterns.",
           outcome: "Marcus reduced production time by 80% while improving video quality and viewer retention. He could focus on creativity while AI handled the technical execution."
+        },
+        {
+          title: "Future Case Study 2 — The VR Developer: Immersive Experience Creator",
+          situation: "Elena develops VR training experiences for companies but struggled to create realistic 3D environments quickly enough to meet client demands.",
+          problem: "3D asset creation and environment building required weeks of work for each project, limiting her ability to take on multiple clients.",
+          resolution: "Using Envato's AI 3D World Generator, Elena describes the training scenario ('factory floor with safety hazards') and the AI creates photorealistic 3D environments with interactive elements. She can modify and customize these environments in real-time.",
+          outcome: "Elena's project delivery time reduces from weeks to days. She can serve 5x more clients and her VR training experiences achieve 90% knowledge retention rates due to higher realism."
+        },
+        {
+          title: "Future Case Study 3 — The Film Director: Independent Filmmaker",
+          situation: "Carlos makes independent films but needed high-quality visual effects and post-production work that exceeded his budget.",
+          problem: "Professional VFX and post-production costs were $50,000+ per project, making independent filmmaking financially impossible.",
+          resolution: "Envato's AI Film Assistant analyzes his raw footage and automatically applies appropriate visual effects, color grading, and post-production enhancements. The AI learns from his creative preferences and suggests improvements.",
+          outcome: "Carlos produces festival-quality films for under $5,000. His latest film wins three independent film awards and gets distributed globally, launching his professional career."
+        },
+        {
+          title: "Future Case Study 4 — The Brand Designer: AI-Augmented Creative Agency",
+          situation: "Sophie runs a boutique branding agency but clients increasingly expected AI-enhanced creativity and faster concept iterations.",
+          problem: "Traditional design processes couldn't compete with AI-augmented agencies in speed or creative breadth, risking client losses.",
+          resolution: "Integrating Envato's Creative AI Suite, Sophie's agency offers 'AI-Augmented Branding' - where AI generates hundreds of concept variations while she provides creative direction and refinement. The AI learns her aesthetic preferences and brand strategy insights.",
+          outcome: "Sophie's agency becomes known for impossible creative breadth and speed. Client budgets increase 200% as they value the AI-human creative partnership, and Sophie wins pitches against much larger agencies."
+        },
+        {
+          title: "Future Case Study 5 — The Music Producer: AI Collaborative Artist",
+          situation: "Jake produces electronic music but wanted to explore musical styles outside his expertise while maintaining his unique creative voice.",
+          problem: "Learning new instruments and music theory would take years, limiting his ability to experiment with different genres.",
+          resolution: "Using Envato's AI Music Collaborator, Jake describes musical concepts and emotions, and the AI generates musical arrangements in various styles. Jake then guides, refines, and adds his creative elements to create unique hybrid compositions.",
+          outcome: "Jake releases genre-crossing albums that establish him as an innovative artist. His AI-collaborated track reaches #1 on electronic charts and leads to commissioned work scoring films and games."
         }
       ],
       plan14: [
@@ -696,14 +794,7 @@ const EnvatoIndex = () => {
 
       <div className="envato-page">
         <div className="wrap">
-          {/* Strategic Path Diagrams - Moved to Top */}
-          <section className="section" style={{ marginBottom: '48px' }}>
-            <div className="card">
-              <PathDiagrams />
-            </div>
-          </section>
-
-          {/* Hero Section */}
+          {/* Hero Section - Moved to Top */}
           <section id="quick" className="hero">
             <h1 className="hero-title">Envato: 5 Strategic Growth Paths</h1>
             <p className="hero-subtitle">
@@ -715,6 +806,13 @@ const EnvatoIndex = () => {
               <a href="/microsites/envato/assets" className="hero-link">🔄 Asset Redefinition Guide</a>
               <a href="#comparison-table" className="hero-link">📊 Compare all paths</a>
               <a href="#framework" className="hero-link">🎯 Decision framework</a>
+            </div>
+          </section>
+
+          {/* Strategic Path Diagrams */}
+          <section className="section" style={{ marginBottom: '48px' }}>
+            <div className="card">
+              <PathDiagrams />
             </div>
           </section>
 
