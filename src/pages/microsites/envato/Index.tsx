@@ -56,6 +56,43 @@ const EnvatoIndex = () => {
       growthThesis: "Envato's creator tools are the foundation of its ecosystem. By enhancing these with AI capabilities, we can dramatically improve creator productivity while maintaining quality standards.",
       productAIStrategy: "Integrate AI-powered templates, automated design suggestions, smart asset recommendations, and intelligent quality checking to streamline the creative process.",
       actions: "• Implement AI template generation • Add smart asset tagging • Deploy automated quality checks • Create intelligent search • Develop personalized recommendations",
+      stories: [
+        {
+          title: "Future Case Study 1 — The Customer: Marketing Director at a Global Retail Brand",
+          situation: "Priya leads marketing for a global retail chain. She manages seasonal campaigns across 12 markets, each requiring localised creative: video, social, email, print, and in-store screens.",
+          problem: "Before Envato's new workflow packs, her team juggled multiple tools and agencies. Content approval cycles dragged on, and ensuring every market stayed brand-compliant was nearly impossible.",
+          resolution: "Now Priya uses Envato's Campaign-in-a-Box platform. She enters a brief, uploads her brand assets, and the system auto-generates a curated campaign pack: localised video variants, approved typography, licensed music, and compliance sign-offs embedded in metadata. AI-driven translation ensures each market gets culturally relevant variants, and asset provenance (via C2PA tags) gives legal teams confidence.",
+          outcome: "Her campaigns launch 4x faster, costs drop 30%, and compliance risks are near zero. Envato isn't just an asset library—it's the engine that operationalises global campaigns at scale."
+        },
+        {
+          title: "Future Case Study 2 — The Contributor: Motion Designer in São Paulo",
+          situation: "Ana is a freelance motion designer. She once sold After Effects templates, but competition was fierce and revenue inconsistent.",
+          problem: "She wanted to monetise her expertise—not just raw files—but had no way to package workflows or automations into her offerings.",
+          resolution: "With Envato's Creator Kits Marketplace, Ana now sells full production kits: a video opener template, accompanying sound design, brand guideline overlays, and an automation script that exports versions for TikTok, YouTube, and Instagram. AI analytics forecast demand for her kits, while Envato's contributor dashboard suggests niches (e.g., sports highlights, podcast intros) where she can thrive.",
+          outcome: "Ana's earnings triple. She shifts from a one-off file seller to a workflow entrepreneur. She's building a recognised brand inside Envato, where kits—not files—are the new currency."
+        },
+        {
+          title: "Future Case Study 3 — The Organisation: CFO of Envato + Shutterstock",
+          situation: "Post-acquisition, Envato had to prove its worth not only as a subscription business but as a growth lever for Shutterstock's enterprise division.",
+          problem: "Flat subscriptions capped revenue, AI commoditisation loomed, and Wall Street wanted to see innovation beyond 'cheap stock.'",
+          resolution: "The CFO backed Envato's pivot into Enterprise Workflow Services. Instead of selling file access, they sold outcomes: compliance-ready content kits, campaign analytics dashboards, and vertical bundles for education, gaming, and corporate L&D. The shift was powered by Envato's Unified Asset Graph—a vector index connecting media, data, workflows, and provenance into one searchable layer.",
+          outcome: "Enterprise contracts doubled in three years. Average revenue per enterprise client rose 40%. Investors now see Envato not as a stock provider but as the trusted AI-first substrate for creative operations."
+        },
+        {
+          title: "Future Case Study 4 — The Education Vertical: University Instructional Designer",
+          situation: "Mark is an instructional designer at a large Australian university. He supports faculty who need digital course materials but have limited design skills.",
+          problem: "Previously, building a course meant patching together PowerPoints, unlicensed YouTube clips, and ad-hoc graphics. Quality varied wildly, compliance checks were slow, and students complained of inconsistency across courses.",
+          resolution: "Now Mark uses Envato's Courseware Kit Builder. He enters the course outline, and Envato generates a full package: lecture slides, explainer video templates, animated diagrams, and AI-voiced narrations in multiple languages. All assets come with license provenance, and accessibility standards (captions, alt text) are auto-checked. Integration with the university's LMS pushes content directly into courses.",
+          outcome: "Course development time is cut in half. Faculty deliver consistent, branded materials across the university. Students benefit from multimedia learning experiences that are compliant, inclusive, and engaging. Envato has become the creative infrastructure for education delivery."
+        },
+        {
+          title: "Future Case Study 5 — The Gaming Vertical: Indie Game Studio in Berlin",
+          situation: "Lena runs a 12-person indie studio building a sci-fi exploration game. Her team needs 3D assets, sound effects, motion graphics, and UI elements, but their budget can't stretch to custom production for everything.",
+          problem: "Before, they scraped together assets from multiple sources, often with unclear licenses. Adapting assets for game engines like Unity or Unreal meant manual, time-consuming work.",
+          resolution: "With Envato's Game Dev Asset Hub, Lena searches by gameplay intent ('alien desert biome') and gets a ready-to-use kit: 3D models, textures, ambient soundscapes, and UI overlays—already optimised for Unreal. AI automatically generates procedural variants, and provenance data ensures every asset is license-safe. Envato even suggests trending themes and helps forecast monetisation potential for in-game assets.",
+          outcome: "The studio saves six months of development time, reallocating resources to storytelling and mechanics. They release faster, with higher-quality visuals and sound. Envato evolves from a stock provider into a production accelerator for gaming."
+        }
+      ],
       plan14: [
         { title: "Executive summary", text: "Trusted AI workflows and compliance. Enterprise ARR engine." },
         { title: "Current position", text: "Assets strong. AI labs siloed. Enterprise reach under used." },
@@ -78,6 +115,22 @@ const EnvatoIndex = () => {
       growthThesis: "Strong communities drive engagement and platform stickiness. AI can enhance community interactions through better matching, content discovery, and collaboration tools.",
       productAIStrategy: "Implement AI-driven community matching, intelligent content curation, automated moderation, and collaboration recommendations.",
       actions: "• Create smart community matching • Build content curation AI • Implement auto-moderation • Add collaboration tools • Develop engagement analytics",
+      stories: [
+        {
+          title: "Future Case Study 1 — The Creator: Digital Illustrator in Mexico City",
+          situation: "Sofia creates digital illustrations for small businesses. She struggled to build a following and monetize her work consistently on traditional platforms.",
+          problem: "Her work got lost in social media noise, and she had no direct way to build subscriber relationships or charge for tutorials and live sessions.",
+          resolution: "Through Envato's Creator Network, Sofia builds a dedicated following. She offers illustration tutorials via subscription, hosts live Q&As, and sells commission slots. AI suggests trending illustration styles and optimal posting times for her audience.",
+          outcome: "Sofia's monthly income increases 5x through subscriptions and workshops. She builds a personal brand and direct creator-fan relationships that aren't dependent on algorithm changes."
+        },
+        {
+          title: "Future Case Study 2 — The Community: Gaming Asset Enthusiasts",
+          situation: "A community of indie game developers needed a space to share assets, get feedback, and collaborate on projects.",
+          problem: "Scattered across Discord servers and Reddit threads, collaboration was difficult and asset sharing had licensing uncertainties.",
+          resolution: "Envato's Community Hub allows them to create a dedicated gaming asset group. Members share work-in-progress assets, get AI-powered feedback suggestions, and collaborate on themed asset packs. Smart matching connects developers with complementary skills.",
+          outcome: "The community produces collaborative asset packs that become bestsellers. Members find project partners and build lasting professional relationships within Envato's ecosystem."
+        }
+      ],
       plan14: [
         { title: "Executive summary", text: "Creator network with feeds and subs. Multi stream income." },
         { title: "Current position", text: "Many contributors. Community features weak. No feed mechanics." },
@@ -100,6 +153,22 @@ const EnvatoIndex = () => {
       growthThesis: "Education drives platform adoption and creator success. AI-powered personalized learning can significantly improve skill development and creator retention.",
       productAIStrategy: "Create adaptive learning paths, AI tutors, skill assessment tools, and personalized content recommendations to enhance educational outcomes.",
       actions: "• Build adaptive learning system • Create AI tutoring • Develop skill assessments • Add learning analytics • Implement progress tracking",
+      stories: [
+        {
+          title: "Future Case Study 1 — The Healthcare Organization: Medical Training Institute",
+          situation: "Dr. Chen runs a medical simulation training center that needs realistic patient scenarios, medical imagery, and interactive training modules.",
+          problem: "Creating medically-accurate training content required expensive specialized agencies and long development cycles.",
+          resolution: "Using Envato's Healthcare Vertical Kit, Dr. Chen accesses AI-generated patient scenarios, anatomical diagrams, and interactive medical simulations. All content meets HIPAA compliance and medical education standards.",
+          outcome: "Training content creation time reduced by 70%. Medical students receive more diverse, realistic scenarios. The institute saves $200K annually on content development."
+        },
+        {
+          title: "Future Case Study 2 — The Retail Brand: Fashion E-commerce Platform",
+          situation: "Maya's fashion startup needed seasonal lookbooks, product photography templates, and social media assets for rapid market entry.",
+          problem: "Traditional fashion photography was too expensive for a startup, and generic templates didn't capture her brand aesthetic.",
+          resolution: "Envato's Retail Vertical Hub provides fashion-specific templates, AI-generated model poses, seasonal color palettes, and brand-consistent social media templates. Everything integrates with her Shopify store.",
+          outcome: "Maya launches 4 seasonal collections with professional-quality assets at 90% lower cost. Her brand establishes a consistent visual identity across all channels."
+        }
+      ],
       plan14: [
         { title: "Executive summary", text: "Sector specific platforms like Edu and Gaming and Retail." },
         { title: "Current position", text: "Broad reach. No deep vertical integrations yet." },
@@ -122,6 +191,22 @@ const EnvatoIndex = () => {
       growthThesis: "API-first approach enables platform ecosystem growth. AI can automate content creation in new domains through intelligent APIs and developer tools.",
       productAIStrategy: "Build enterprise-grade AI APIs for content generation, smart asset management, automated workflows, and creative intelligence services.",
       actions: "• Develop core creative APIs • Build AI generation services • Create developer platform • Add usage analytics • Implement enterprise features",
+      stories: [
+        {
+          title: "Future Case Study 1 — The SaaS Platform: Project Management Tool",
+          situation: "Alex's project management SaaS wanted to offer custom branded templates and visual assets to their 50,000+ business users.",
+          problem: "Users constantly requested branded templates, but building an internal creative team was cost-prohibitive and outside their core competency.",
+          resolution: "Integrating Envato's Creative API, Alex's platform now auto-generates branded templates using users' company colors and logos. The API provides template suggestions based on industry and use case.",
+          outcome: "User engagement increased 40%, premium subscription upgrades rose 25%, and Alex's team avoided hiring a 6-person creative team while offering enterprise-level customization."
+        },
+        {
+          title: "Future Case Study 2 — The AI Startup: Content Generation Platform",
+          situation: "Priya's AI writing tool needed visual assets to accompany generated content—social media images, presentation slides, and blog graphics.",
+          problem: "Their AI could write compelling content but users needed matching visuals, requiring them to switch between multiple platforms.",
+          resolution: "Through Envato's Platform API, Priya's tool automatically suggests and generates contextually relevant visuals. AI analyzes the written content and provides matching stock photos, design templates, and graphics.",
+          outcome: "User workflow completion rates improved 60%. Priya's platform became a one-stop solution for content+visual creation, leading to a successful Series A funding round."
+        }
+      ],
       plan14: [
         { title: "Executive summary", text: "API first creative backend for SaaS and AI tools." },
         { title: "Current position", text: "Few integrations. No API first posture." },
@@ -144,6 +229,22 @@ const EnvatoIndex = () => {
       growthThesis: "Expanding into adjacent creative verticals can capture new market segments. AI can accelerate this expansion by automating content creation in new domains.",
       productAIStrategy: "Leverage AI to quickly establish presence in new creative verticals through automated content generation, market analysis, and rapid prototyping.",
       actions: "• Research new verticals • Build content generation AI • Create market analysis tools • Develop rapid prototyping • Test market validation",
+      stories: [
+        {
+          title: "Future Case Study 1 — The VR Experience Studio: Immersive Content Creator",
+          situation: "João's VR studio in São Paulo creates virtual museum experiences but struggled with the time and cost of producing 3D environments and interactive elements.",
+          problem: "Each VR experience required months of 3D modeling, texture work, and interaction design, making projects expensive and limiting client acquisition.",
+          resolution: "Using Envato's Immersive Content Hub, João accesses AI-generated 3D environments, interactive element libraries, and spatial audio assets. The platform provides VR-optimized assets with automatic LOD (level of detail) optimization.",
+          outcome: "VR experience development time reduced from 6 months to 6 weeks. João's studio scales from 2 to 15 client projects annually, becoming the leading VR cultural experience provider in Brazil."
+        },
+        {
+          title: "Future Case Study 2 — The AI Agent Developer: Conversational Interface Creator",
+          situation: "Lisa develops AI customer service agents for e-commerce but needed diverse avatar personalities, voice options, and visual branding for each client.",
+          problem: "Creating unique agent personalities for each client required custom character design, voice acting, and UI development—costs that priced out smaller businesses.",
+          resolution: "Envato's Agent Experience Library provides pre-designed agent personalities, voice samples, conversation flow templates, and branded UI components. AI suggests optimal agent characteristics based on client industry and tone.",
+          outcome: "Lisa's AI agent deployment time drops from 3 months to 3 weeks. She expands from enterprise clients to mid-market businesses, growing her agency from 5 to 50 employees."
+        }
+      ],
       plan14: [
         { title: "Executive summary", text: "Immersive and agentic AI content substrate." },
         { title: "Current position", text: "2D focus. No VR or immersive pipeline." },
@@ -689,18 +790,24 @@ const EnvatoIndex = () => {
                           </div>
                         ))}
                       </div>
-                      <div className="flex gap-2 mt-4">
-                        <Button variant="outline" size="sm" onClick={() => flip('path1')}>
-                          Back to front
-                        </Button>
-                        <Button 
-                          size="sm" 
-                          style={{background: 'var(--envato)', color: '#fff'}}
-                          onClick={() => setFullViewPath("Path 1 Creative Infrastructure")}
-                        >
-                          Full view
-                        </Button>
-                      </div>
+                       <div className="mt-3 p-2 bg-muted/30 rounded">
+                         <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
+                         <div className="text-xs text-muted-foreground">
+                           {pathData["Path 1 Creative Infrastructure"].stories?.length || 0} case studies: Enterprise workflows, Creator kits, Gaming verticals
+                         </div>
+                       </div>
+                       <div className="flex gap-2 mt-4">
+                         <Button variant="outline" size="sm" onClick={() => flip('path1')}>
+                           Back to front
+                         </Button>
+                         <Button 
+                           size="sm" 
+                           style={{background: 'var(--envato)', color: '#fff'}}
+                           onClick={() => setFullViewPath("Path 1 Creative Infrastructure")}
+                         >
+                           Stories + Full view
+                         </Button>
+                       </div>
                     </div>
                   </div>
                 </div>
@@ -750,18 +857,24 @@ const EnvatoIndex = () => {
                           </div>
                         ))}
                       </div>
-                      <div className="flex gap-2 mt-4">
-                        <Button variant="outline" size="sm" onClick={() => flip('path2')}>
-                          Back to front
-                        </Button>
-                        <Button 
-                          size="sm" 
-                          style={{background: 'var(--envato)', color: '#fff'}}
-                          onClick={() => setFullViewPath("Path 2 Creative Network")}
-                        >
-                          Full view
-                        </Button>
-                      </div>
+                       <div className="mt-3 p-2 bg-muted/30 rounded">
+                         <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
+                         <div className="text-xs text-muted-foreground">
+                           {pathData["Path 2 Creative Network"].stories?.length || 0} case studies: Creator communities, Gaming collaborations
+                         </div>
+                       </div>
+                       <div className="flex gap-2 mt-4">
+                         <Button variant="outline" size="sm" onClick={() => flip('path2')}>
+                           Back to front
+                         </Button>
+                         <Button 
+                           size="sm" 
+                           style={{background: 'var(--envato)', color: '#fff'}}
+                           onClick={() => setFullViewPath("Path 2 Creative Network")}
+                         >
+                           Stories + Full view
+                         </Button>
+                       </div>
                     </div>
                   </div>
                 </div>
@@ -810,17 +923,23 @@ const EnvatoIndex = () => {
                           </div>
                         ))}
                       </div>
-                      <div className="flex gap-2 mt-4">
-                        <Button variant="outline" size="sm" onClick={() => flip('path3')}>
-                          Back to front
-                        </Button>
-                        <Button 
-                          size="sm" 
-                          style={{background: 'var(--envato)', color: '#fff'}}
-                          onClick={() => setFullViewPath("Path 3 Vertical Expansion")}
-                        >
-                          Full view
-                        </Button>
+                       <div className="mt-3 p-2 bg-muted/30 rounded">
+                         <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
+                         <div className="text-xs text-muted-foreground">
+                           {pathData["Path 3 Vertical Expansion"].stories?.length || 0} case studies: Healthcare training, Fashion e-commerce
+                         </div>
+                       </div>
+                       <div className="flex gap-2 mt-4">
+                         <Button variant="outline" size="sm" onClick={() => flip('path3')}>
+                           Back to front
+                         </Button>
+                         <Button 
+                           size="sm" 
+                           style={{background: 'var(--envato)', color: '#fff'}}
+                           onClick={() => setFullViewPath("Path 3 Vertical Expansion")}
+                         >
+                           Stories + Full view
+                         </Button>
                       </div>
                     </div>
                   </div>
@@ -870,17 +989,23 @@ const EnvatoIndex = () => {
                           </div>
                         ))}
                       </div>
-                      <div className="flex gap-2 mt-4">
-                        <Button variant="outline" size="sm" onClick={() => flip('path4')}>
-                          Back to front
-                        </Button>
-                        <Button 
-                          size="sm" 
-                          style={{background: 'var(--envato)', color: '#fff'}}
-                          onClick={() => setFullViewPath("Path 4 Platform Enabler")}
-                        >
-                          Full view
-                        </Button>
+                       <div className="mt-3 p-2 bg-muted/30 rounded">
+                         <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
+                         <div className="text-xs text-muted-foreground">
+                           {pathData["Path 4 Platform Enabler"].stories?.length || 0} case studies: SaaS integrations, AI platform APIs
+                         </div>
+                       </div>
+                       <div className="flex gap-2 mt-4">
+                         <Button variant="outline" size="sm" onClick={() => flip('path4')}>
+                           Back to front
+                         </Button>
+                         <Button 
+                           size="sm" 
+                           style={{background: 'var(--envato)', color: '#fff'}}
+                           onClick={() => setFullViewPath("Path 4 Platform Enabler")}
+                         >
+                           Stories + Full view
+                         </Button>
                       </div>
                     </div>
                   </div>
@@ -930,17 +1055,23 @@ const EnvatoIndex = () => {
                           </div>
                         ))}
                       </div>
-                      <div className="flex gap-2 mt-4">
-                        <Button variant="outline" size="sm" onClick={() => flip('path5')}>
-                          Back to front
-                        </Button>
-                        <Button 
-                          size="sm" 
-                          style={{background: 'var(--envato)', color: '#fff'}}
-                          onClick={() => setFullViewPath("Path 5 Radical Play")}
-                        >
-                          Full view
-                        </Button>
+                       <div className="mt-3 p-2 bg-muted/30 rounded">
+                         <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
+                         <div className="text-xs text-muted-foreground">
+                           {pathData["Path 5 Radical Play"].stories?.length || 0} case studies: VR experiences, AI agent development
+                         </div>
+                       </div>
+                       <div className="flex gap-2 mt-4">
+                         <Button variant="outline" size="sm" onClick={() => flip('path5')}>
+                           Back to front
+                         </Button>
+                         <Button 
+                           size="sm" 
+                           style={{background: 'var(--envato)', color: '#fff'}}
+                           onClick={() => setFullViewPath("Path 5 Radical Play")}
+                         >
+                           Stories + Full view
+                         </Button>
                       </div>
                     </div>
                   </div>
@@ -1049,7 +1180,8 @@ const EnvatoIndex = () => {
             productAIStrategy: pathData[fullViewPath as keyof typeof pathData]?.productAIStrategy || "",
             actions: pathData[fullViewPath as keyof typeof pathData]?.actions || "",
             steps: [],
-            plan14: pathData[fullViewPath as keyof typeof pathData]?.plan14 || []
+            plan14: pathData[fullViewPath as keyof typeof pathData]?.plan14 || [],
+            stories: pathData[fullViewPath as keyof typeof pathData]?.stories || []
           }}
         />
       )}

@@ -2,10 +2,21 @@ import * as React from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Button } from "@/components/ui/button"
+import { toast } from "@/hooks/use-toast"
 
 interface PathStep {
   phase: string;
   items: string[];
+}
+
+interface Story {
+  title: string;
+  situation: string;
+  problem: string;
+  resolution: string;
+  outcome: string;
 }
 
 interface PathData {
@@ -15,6 +26,7 @@ interface PathData {
   actions: string;
   steps: PathStep[];
   plan14?: { title: string; text: string }[];
+  stories?: Story[];
 }
 
 interface FullPathModalProps {
@@ -25,6 +37,16 @@ interface FullPathModalProps {
 }
 
 const FullPathModal: React.FC<FullPathModalProps> = ({ isOpen, onClose, pathName, pathData }) => {
+  const copyToClipboard = (text: string, type: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      toast({
+        title: "Copied!",
+        description: `${type} copied to clipboard`,
+        duration: 2000,
+      });
+    });
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
@@ -92,6 +114,58 @@ const FullPathModal: React.FC<FullPathModalProps> = ({ isOpen, onClose, pathName
               )}
             </div>
           </div>
+
+          {/* Sample Stories Section */}
+          {pathData.stories && pathData.stories.length > 0 && (
+            <>
+              <Separator />
+              <div>
+                <h3 className="text-xl font-bold mb-4">Sample Stories</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Future case studies showing how this path could impact different stakeholders
+                </p>
+                <Accordion type="single" collapsible className="w-full">
+                  {pathData.stories.map((story, index) => (
+                    <AccordionItem key={index} value={`story-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        {story.title}
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="space-y-4">
+                          <div>
+                            <h5 className="font-semibold text-sm mb-1">Situation</h5>
+                            <p className="text-sm text-muted-foreground">{story.situation}</p>
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-sm mb-1">Problem</h5>
+                            <p className="text-sm text-muted-foreground">{story.problem}</p>
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-sm mb-1">Resolution</h5>
+                            <p className="text-sm text-muted-foreground">{story.resolution}</p>
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-sm mb-1">Outcome</h5>
+                            <p className="text-sm text-muted-foreground">{story.outcome}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => copyToClipboard(
+                              `${story.title}\n\nSituation: ${story.situation}\n\nProblem: ${story.problem}\n\nResolution: ${story.resolution}\n\nOutcome: ${story.outcome}`,
+                              "Story"
+                            )}
+                          >
+                            Copy story
+                          </Button>
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </>
+          )}
         </div>
       </DialogContent>
     </Dialog>
