@@ -705,7 +705,9 @@ const EnvatoIndex = () => {
           <section id="quick" className="section">
             <h2 className="section-title">Quick path overview</h2>
             <div className="grid">
-              {Object.entries(pathData).map(([pathName, data], index) => (
+              {Object.entries(pathData).map(([pathName, data], index) => {
+                if (!data) return null;
+                return (
                 <div 
                   key={pathName} 
                   className={`flip-card ${flipped[`path${index + 1}`] ? 'flipped' : ''}`}
@@ -760,7 +762,8 @@ const EnvatoIndex = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+                )
+              }).filter(Boolean)}
             </div>
           </section>
 
@@ -771,7 +774,9 @@ const EnvatoIndex = () => {
             
             <div className="space-y-6" style={{marginBottom: '32px'}}>
               <Accordion type="single" collapsible className="w-full">
-                {Object.entries(pathData).map(([pathName, data], pathIndex) => (
+                {Object.entries(pathData).map(([pathName, data], pathIndex) => {
+                  if (!data) return null;
+                  return (
                   <AccordionItem key={pathIndex} value={`path-${pathIndex}`} style={{border: '1px solid var(--line)', borderRadius: '8px', marginBottom: '16px', background: 'var(--card)'}}>
                     <AccordionTrigger style={{textAlign: 'left', padding: '24px', fontSize: '18px', fontWeight: '600'}}>
                       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
@@ -831,7 +836,8 @@ const EnvatoIndex = () => {
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-                ))}
+                  )
+                }).filter(Boolean)}
               </Accordion>
             </div>
           </section>
