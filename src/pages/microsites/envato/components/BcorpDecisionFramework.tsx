@@ -123,11 +123,11 @@ const BcorpDecisionFramework = () => {
         <h2 className="text-3xl font-bold text-foreground mb-4">
           B Corp + Community-First Decision Framework
         </h2>
-        <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
-          A systematic approach to evaluating strategic direction using our 14-point analysis, 
-          specifically calibrated for Envato's B Corp obligations, public company constraints, 
-          and community-first DNA.
-        </p>
+          <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
+            A systematic approach to evaluating strategic direction using our 14-point analysis, 
+            specifically calibrated for Envato's B Corp obligations, public company constraints, 
+            and community-first DNA.
+          </p>
       </div>
 
       {/* Scoring Formula */}
@@ -173,7 +173,7 @@ const BcorpDecisionFramework = () => {
       {/* Path Scores Table */}
       <Card>
         <CardHeader>
-          <CardTitle>Strategic Path Comparison – 2025 (Corrected)</CardTitle>
+          <CardTitle>Strategic Path Comparison - 2025 (Corrected)</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
@@ -266,7 +266,7 @@ const BcorpDecisionFramework = () => {
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground mb-4">
-            This isn't just about doing good—it's structural differentiation. Envato becomes the only creative platform where:
+            This isn't just about doing good - it's structural differentiation. Envato becomes the only creative platform where:
           </p>
           <ul className="space-y-2 text-sm">
             <li className="flex items-start gap-2">

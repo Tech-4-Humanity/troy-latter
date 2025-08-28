@@ -53,6 +53,39 @@ This portfolio demonstrates deep experience in:
 - **Speech Recognition**: Voice interaction capabilities
 - **Embedding Search**: RAG (Retrieval Augmented Generation)
 
+## Envato Microsite Style & Conventions
+
+The Envato microsite follows specific design and content conventions:
+
+### Typography
+- **No em dashes**: Use spaced hyphens " - " instead of em dashes (—)
+- **En dashes for ranges**: Keep en dashes (–) for numeric ranges only (e.g., $100–200M)
+- **Consistent spacing**: Ensure natural reading flow without double spaces
+
+### Design Tokens
+- **Envato Green Palette**: Primary brand colors defined in tailwind.config.ts
+- **Gradient System**: Envato-specific gradients for visual hierarchy
+- **Component Theming**: All UI components use Envato semantic tokens
+
+### Content Structure
+Current Envato microsite routes:
+- `/microsites/envato` - Main overview and strategic paths
+- `/microsites/envato/summary` - Context, messaging, and strategic analysis
+- `/microsites/envato/assets` - Asset strategy and market expansion
+- `/microsites/envato/orchestrator` - AI Product Management framework
+
+### Content Management
+Content lives in dedicated data files and components within `src/pages/microsites/envato/`
+Edit content directly in React components or import from curriculum data files.
+
+## Sitemap Management
+
+When adding new pages to the project, update `public/sitemap.xml`:
+- Include full canonical URLs
+- Set appropriate changefreq (weekly/monthly) based on content type
+- Assign priority scores (0.7-1.0) based on page importance
+- No URL fragments or anchors in sitemap entries
+
 ## Project Structure
 
 ```

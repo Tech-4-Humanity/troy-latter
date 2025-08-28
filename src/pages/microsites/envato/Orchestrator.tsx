@@ -58,9 +58,9 @@ const Orchestrator = () => {
 
   // Technical proof points for copy functionality - tested implementations
   const techNotes = {
-    qa1: "Search & Recsys TESTED: Two-stage retrieval (vector embeddings + BM25 lexical) achieving 23% CTR lift. Learning-to-rank with creator preferences. Session-based next-best-asset model. Multi-armed bandits for explore/exploit. KPIs: CTR 0.34 → 0.42, time-to-first-useful-asset 43s → 28s, conversion rate 12.3% → 16.1%.",
+    qa1: "Search & Recsys TESTED: Two-stage retrieval (vector embeddings + BM25 lexical) achieving 23% CTR lift. Learning-to-rank with creator preferences. Session-based next-best-asset model. Multi-armed bandits for explore/exploit. KPIs: CTR 0.34 - 0.42, time-to-first-useful-asset 43s - 28s, conversion rate 12.3% - 16.1%.",
     qa2: "Trust & Provenance TESTED: C2PA signing on all AI outputs with verified creator attribution. Input/model/prompt lineage stored with SHA-256 hashing. License attachment at generation time with smart contract enforcement. Public verification API with 99.7% uptime. Enterprise audit exports with GDPR compliance. Region-specific content pinning for regulatory adherence.",
-    qa3: "Agentic Flows TESTED: Brief → Brand → Safety → Export pipeline processing 2.3M assets/month. Project-specific memory using vector embeddings. Integrated tools: semantic search (0.89 relevance), generative AI (GPT-4V + Dall-E), provenance tracking, CMS publish. Pre-publish guardrails catching 97.2% policy violations. Average agent completion time: 4.2 minutes vs 23 minutes manual."
+    qa3: "Agentic Flows TESTED: Brief - Brand - Safety - Export pipeline processing 2.3M assets/month. Project-specific memory using vector embeddings. Integrated tools: semantic search (0.89 relevance), generative AI (GPT-4V + Dall-E), provenance tracking, CMS publish. Pre-publish guardrails catching 97.2% policy violations. Average agent completion time: 4.2 minutes vs 23 minutes manual."
   };
 
   // Load notes on component mount
@@ -396,7 +396,7 @@ const Orchestrator = () => {
                   <div className="p-3 border-t border-border text-sm text-muted-foreground space-y-2">
                     <p>Time to first useful asset. Time from brief to publish. That is how we win.</p>
                     <ul className="text-xs space-y-1 ml-4">
-                      <li>• 43s → 28s time-to-first-useful-asset via intelligent search</li>
+                      <li>• 43s - 28s time-to-first-useful-asset via intelligent search</li>
                       <li>• 4.2min vs 23min manual completion through agentic workflows</li>
                       <li>• 23% CTR lift through learning-to-rank optimization</li>
                     </ul>
@@ -841,7 +841,7 @@ const Orchestrator = () => {
                 },
                 {
                   question: 'What\'s the monetisation model?',
-                  answer: 'Infrastructure: $100–200M ARR potential.\n\nNetwork: $500M+ GMV, $50–100M revenue.\n\nVertical Expansion: $50–100M ARR per sector.\n\nPlatform APIs: $100M ARR within 3–4 years if embedded broadly.\n\nRadical Play: $1B+ TAM moonshot.\nEach is backed by realistic revenue levers—subs, usage fees, royalties, ads.',
+                  answer: 'Infrastructure: $100-200M ARR potential.\n\nNetwork: $500M+ GMV, $50-100M revenue.\n\nVertical Expansion: $50-100M ARR per sector.\n\nPlatform APIs: $100M ARR within 3-4 years if embedded broadly.\n\nRadical Play: $1B+ TAM moonshot.\nEach is backed by realistic revenue levers - subs, usage fees, royalties, ads.',
                   noteKey: 'monetisation',
                   id: 'qa-monetisation'
                 },
@@ -853,7 +853,7 @@ const Orchestrator = () => {
                 },
                 {
                   question: 'How do you integrate with partners and external tools?',
-                  answer: 'I\'d standardise around a single asset manifest and unified index. That becomes the contract. Then SDKs and APIs for Figma, Premiere, Shopify, Unity plug into the same backend services. Every integration reuses one spec—not ten.',
+                  answer: 'I\'d standardise around a single asset manifest and unified index. That becomes the contract. Then SDKs and APIs for Figma, Premiere, Shopify, Unity plug into the same backend services. Every integration reuses one spec - not ten.',
                   noteKey: 'integrations'
                 },
                 {
@@ -868,7 +868,7 @@ const Orchestrator = () => {
                 },
                 {
                   question: 'Can you build a team without a product?',
-                  answer: 'Yes—if the charter is clear. The mission is to get assets from contributor → safe and useful for customer → contributor gets paid. Teams form around flows, not features:\n\nContributor success (tools, analytics, payouts).\n\nCustomer experience (search, gen, packs).\n\nTrust and provenance (C2PA, compliance, moderation).\n\nPlatform (APIs, SDKs, partner integrations).',
+                  answer: 'Yes - if the charter is clear. The mission is to get assets from contributor - safe and useful for customer - contributor gets paid. Teams form around flows, not features:\n\nContributor success (tools, analytics, payouts).\n\nCustomer experience (search, gen, packs).\n\nTrust and provenance (C2PA, compliance, moderation).\n\nPlatform (APIs, SDKs, partner integrations).',
                   noteKey: 'team_building'
                 },
                 {

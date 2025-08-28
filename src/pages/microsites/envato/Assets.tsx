@@ -80,9 +80,9 @@ const Assets = () => {
                 <div className="flex items-center justify-center w-12 h-12 bg-purple-500/10 rounded-full mx-auto mb-3">
                   <Target className="h-6 w-6 text-purple-600" />
                 </div>
-                <div className="text-3xl font-bold text-purple-600">∞</div>
-                <div className="text-sm text-muted-foreground">Stickiness</div>
-                <div className="text-xs text-muted-foreground">Nice-to-have → Mission-critical</div>
+                 <div className="text-3xl font-bold text-purple-600">∞</div>
+                 <div className="text-sm text-muted-foreground">Stickiness</div>
+                 <div className="text-xs text-muted-foreground">Nice-to-have - Mission-critical</div>
               </div>
             </div>
           </div>
@@ -219,7 +219,7 @@ const Assets = () => {
         <div id="asset-redefinition" className="mt-12">
           <h2 className="text-3xl font-bold text-foreground mb-6">Asset Strategy & Market Expansion</h2>
           <p className="text-lg text-muted-foreground mb-8">
-            How Envato can evolve from "media library" to "agentic workflow factory" – expanding into AI-powered automation, intelligent data assets, and augmented creative processes that make every business operationally dependent on the platform.
+            How Envato can evolve from "media library" to "agentic workflow factory" - expanding into AI-powered automation, intelligent data assets, and augmented creative processes that make every business operationally dependent on the platform.
           </p>
 
           {/* Current vs Expanded Definition */}
@@ -291,7 +291,7 @@ const Assets = () => {
         <div className="mt-12">
           <h2 className="text-3xl font-bold text-foreground mb-6">Why Every Business Will Need Envato</h2>
           <p className="text-lg text-muted-foreground mb-8">
-            As businesses become increasingly digital, agentic AI systems are automating creative workflows at unprecedented scale. Every marketing campaign, product launch, and customer touchpoint requires intelligent, automated creative production. Many of these functions are ripe for automation—Envato must be the integral infrastructure powering this transformation.
+            As businesses become increasingly digital, agentic AI systems are automating creative workflows at unprecedented scale. Every marketing campaign, product launch, and customer touchpoint requires intelligent, automated creative production. Many of these functions are ripe for automation - Envato must be the integral infrastructure powering this transformation.
           </p>
 
           <div className="grid gap-6">

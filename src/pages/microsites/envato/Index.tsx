@@ -69,38 +69,38 @@ const EnvatoIndex = () => {
       actions: "• Implement AI template generation • Add smart asset tagging • Deploy automated quality checks • Create intelligent search • Develop personalized recommendations",
       stories: [
         {
-          title: "Future Case Study 1 — The Customer: Marketing Director at a Global Retail Brand",
+          title: "Future Case Study 1 - The Customer: Marketing Director at a Global Retail Brand",
           situation: "Priya leads marketing for a global retail chain. She manages seasonal campaigns across 12 markets, each requiring localised creative: video, social, email, print, and in-store screens.",
           problem: "Before Envato's new workflow packs, her team juggled multiple tools and agencies. Content approval cycles dragged on, and ensuring every market stayed brand-compliant was nearly impossible.",
           resolution: "Now Priya uses Envato's Campaign-in-a-Box platform. She enters a brief, uploads her brand assets, and the system auto-generates a curated campaign pack: localised video variants, approved typography, licensed music, and compliance sign-offs embedded in metadata. AI-driven translation ensures each market gets culturally relevant variants, and asset provenance (via C2PA tags) gives legal teams confidence.",
-          outcome: "Her campaigns launch 4x faster, costs drop 30%, and compliance risks are near zero. Envato isn't just an asset library—it's the engine that operationalises global campaigns at scale."
+          outcome: "Her campaigns launch 4x faster, costs drop 30%, and compliance risks are near zero. Envato isn't just an asset library - it's the engine that operationalises global campaigns at scale."
         },
         {
-          title: "Future Case Study 2 — The Contributor: Motion Designer in São Paulo",
+          title: "Future Case Study 2 - The Contributor: Motion Designer in São Paulo",
           situation: "Ana is a freelance motion designer. She once sold After Effects templates, but competition was fierce and revenue inconsistent.",
-          problem: "She wanted to monetise her expertise—not just raw files—but had no way to package workflows or automations into her offerings.",
+          problem: "She wanted to monetise her expertise - not just raw files - but had no way to package workflows or automations into her offerings.",
           resolution: "With Envato's Creator Kits Marketplace, Ana now sells full production kits: a video opener template, accompanying sound design, brand guideline overlays, and an automation script that exports versions for TikTok, YouTube, and Instagram. AI analytics forecast demand for her kits, while Envato's contributor dashboard suggests niches (e.g., sports highlights, podcast intros) where she can thrive.",
-          outcome: "Ana's earnings triple. She shifts from a one-off file seller to a workflow entrepreneur. She's building a recognised brand inside Envato, where kits—not files—are the new currency."
+          outcome: "Ana's earnings triple. She shifts from a one-off file seller to a workflow entrepreneur. She's building a recognised brand inside Envato, where kits - not files - are the new currency."
         },
         {
-          title: "Future Case Study 3 — The Organisation: CFO of Envato + Shutterstock",
+          title: "Future Case Study 3 - The Organisation: CFO of Envato + Shutterstock",
           situation: "Post-acquisition, Envato had to prove its worth not only as a subscription business but as a growth lever for Shutterstock's enterprise division.",
           problem: "Flat subscriptions capped revenue, AI commoditisation loomed, and Wall Street wanted to see innovation beyond 'cheap stock.'",
-          resolution: "The CFO backed Envato's pivot into Enterprise Workflow Services. Instead of selling file access, they sold outcomes: compliance-ready content kits, campaign analytics dashboards, and vertical bundles for education, gaming, and corporate L&D. The shift was powered by Envato's Unified Asset Graph—a vector index connecting media, data, workflows, and provenance into one searchable layer.",
+          resolution: "The CFO backed Envato's pivot into Enterprise Workflow Services. Instead of selling file access, they sold outcomes: compliance-ready content kits, campaign analytics dashboards, and vertical bundles for education, gaming, and corporate L&D. The shift was powered by Envato's Unified Asset Graph - a vector index connecting media, data, workflows, and provenance into one searchable layer.",
           outcome: "Enterprise contracts doubled in three years. Average revenue per enterprise client rose 40%. Investors now see Envato not as a stock provider but as the trusted AI-first substrate for creative operations."
         },
         {
-          title: "Future Case Study 4 — The Education Vertical: University Instructional Designer",
+          title: "Future Case Study 4 - The Education Vertical: University Instructional Designer",
           situation: "Mark is an instructional designer at a large Australian university. He supports faculty who need digital course materials but have limited design skills.",
           problem: "Previously, building a course meant patching together PowerPoints, unlicensed YouTube clips, and ad-hoc graphics. Quality varied wildly, compliance checks were slow, and students complained of inconsistency across courses.",
           resolution: "Now Mark uses Envato's Courseware Kit Builder. He enters the course outline, and Envato generates a full package: lecture slides, explainer video templates, animated diagrams, and AI-voiced narrations in multiple languages. All assets come with license provenance, and accessibility standards (captions, alt text) are auto-checked. Integration with the university's LMS pushes content directly into courses.",
           outcome: "Course development time is cut in half. Faculty deliver consistent, branded materials across the university. Students benefit from multimedia learning experiences that are compliant, inclusive, and engaging. Envato has become the creative infrastructure for education delivery."
         },
         {
-          title: "Future Case Study 5 — The Gaming Vertical: Indie Game Studio in Berlin",
+          title: "Future Case Study 5 - The Gaming Vertical: Indie Game Studio in Berlin",
           situation: "Lena runs a 12-person indie studio building a sci-fi exploration game. Her team needs 3D assets, sound effects, motion graphics, and UI elements, but their budget can't stretch to custom production for everything.",
           problem: "Before, they scraped together assets from multiple sources, often with unclear licenses. Adapting assets for game engines like Unity or Unreal meant manual, time-consuming work.",
-          resolution: "With Envato's Game Dev Asset Hub, Lena searches by gameplay intent ('alien desert biome') and gets a ready-to-use kit: 3D models, textures, ambient soundscapes, and UI overlays—already optimised for Unreal. AI automatically generates procedural variants, and provenance data ensures every asset is license-safe. Envato even suggests trending themes and helps forecast monetisation potential for in-game assets.",
+          resolution: "With Envato's Game Dev Asset Hub, Lena searches by gameplay intent ('alien desert biome') and gets a ready-to-use kit: 3D models, textures, ambient soundscapes, and UI overlays - already optimised for Unreal. AI automatically generates procedural variants, and provenance data ensures every asset is license-safe. Envato even suggests trending themes and helps forecast monetisation potential for in-game assets.",
           outcome: "The studio saves six months of development time, reallocating resources to storytelling and mechanics. They release faster, with higher-quality visuals and sound. Envato evolves from a stock provider into a production accelerator for gaming."
         }
       ],
@@ -110,13 +110,13 @@ const EnvatoIndex = () => {
         { title: "Market View", text: "Competes with Canva, Adobe, Getty. Win with trust, compliance, speed." },
         { title: "Asset Model", text: "Kits, briefs, compliance packs, manifests, lineage." },
         { title: "Strategy by Horizon", text: "H1 unified index + connectors. H2 enterprise packs + dashboards. H3 creative OS." },
-        { title: "Monetisation", text: "Enterprise seats ($100–$5,000/mo). Usage fees. Integration licences." },
+        { title: "Monetisation", text: "Enterprise seats ($100-$5,000/mo). Usage fees. Integration licences." },
         { title: "Contributor Economics", text: "Premium rates for compliant assets. Bonus on enterprise adoption." },
         { title: "Data & Trust", text: "C2PA signing, audit trails, enterprise SSO + governance." },
         { title: "Go-to-Market", text: "Consultants, enterprise events, case studies." },
         { title: "Flywheel", text: "Trust → adoption → better assets → more enterprise wins." },
         { title: "Technical Priorities", text: "Manifest schema, lineage APIs, enterprise DAM integrations." },
-        { title: "Risks & Mitigations", text: "Adobe/Canva threat → mitigate via compliance/enterprise." },
+        { title: "Risks & Mitigations", text: "Adobe/Canva threat - mitigate via compliance/enterprise." },
         { title: "AI Product Manager Role", text: "Align legal/product/sales. Ship compliance." },
         { title: "Next Steps", text: "Pick 3 enterprise pilots. Build manifest schema. Ship compliance dashboard." }
       ]
@@ -150,13 +150,13 @@ const EnvatoIndex = () => {
         { title: "Market View", text: "Competes with TikTok, Patreon, YouTube. Win with licensed, monetised creator economy." },
         { title: "Asset Model", text: "Creator storefront bundles, services, subscriptions, audience engagement." },
         { title: "Strategy by Horizon", text: "H1 storefronts + feeds. H2 subscriptions + workshops. H3 ads/sponsors." },
-        { title: "Monetisation", text: "Creator subs ($5–$50/mo). Ads, sponsors, workshops." },
+        { title: "Monetisation", text: "Creator subs ($5-$50/mo). Ads, sponsors, workshops." },
         { title: "Contributor Economics", text: "Revenue share on subs, ads, sponsorships, workshops." },
         { title: "Data & Trust", text: "Creator verification, moderation AI, DMCA compliance." },
         { title: "Go-to-Market", text: "Recruit top creators, social campaigns, influencer loops." },
         { title: "Flywheel", text: "Creators → bring audiences → fund creators → loyalty loop." },
         { title: "Technical Priorities", text: "Feed algorithms, payment infra, moderation AI." },
-        { title: "Risks & Mitigations", text: "Dependency + moderation risk → mitigate with direct creator revenue streams." },
+        { title: "Risks & Mitigations", text: "Dependency + moderation risk - mitigate with direct creator revenue streams." },
         { title: "AI Product Manager Role", text: "Balance creator + audience. Ship engagement tools." },
         { title: "Next Steps", text: "Launch creator beta. Build feed MVP. Test subscription." }
       ]
@@ -190,13 +190,13 @@ const EnvatoIndex = () => {
         { title: "Market View", text: "Edu $300B+, Gaming $200B+, Retail spend huge. TAM is vast." },
         { title: "Asset Model", text: "Industry kits (courseware, Unreal packs, retail ad sets, training material)." },
         { title: "Strategy by Horizon", text: "H1 Edu/gaming pilots. H2 retail/L&D expansion. H3 multi-vertical platforms." },
-        { title: "Monetisation", text: "Vertical licences ($50–$500/mo). Industry bundles." },
+        { title: "Monetisation", text: "Vertical licences ($50-$500/mo). Industry bundles." },
         { title: "Contributor Economics", text: "Higher rates for industry assets. Vertical-specific bonuses." },
         { title: "Data & Trust", text: "Industry compliance: education standards, age-appropriate content." },
         { title: "Go-to-Market", text: "Industry conferences, sector pilots, proof partnerships." },
         { title: "Flywheel", text: "Industry adoption → demand for kits → improved outcomes." },
         { title: "Technical Priorities", text: "Vertical APIs, compliance kits, domain-specific integrations." },
-        { title: "Risks & Mitigations", text: "Incumbents → mitigate with vertical partnerships/pilots." },
+        { title: "Risks & Mitigations", text: "Incumbents - mitigate with vertical partnerships/pilots." },
         { title: "AI Product Manager Role", text: "Define vertical ontologies. Build industry APIs." },
         { title: "Next Steps", text: "Pick Education pilot. Build MVP. Recruit vertical creators." }
       ]
