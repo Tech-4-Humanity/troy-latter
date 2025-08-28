@@ -4,6 +4,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { competencyBadges } from './curriculum';
 import FullPathModal from '@/components/ui/full-path-modal';
 
@@ -696,6 +697,7 @@ const EnvatoIndex = () => {
             </p>
             <div className="hero-links">
               <a href="/microsites/envato/summary" className="hero-link">📋 Envato Context & Summary</a>
+              <a href="/microsites/envato/summary#asset-redefinition" className="hero-link">🔄 Asset Redefinition Guide</a>
               <a href="#comparison-table" className="hero-link">📊 Compare all paths</a>
               <a href="#framework" className="hero-link">🎯 Decision framework</a>
             </div>
@@ -758,6 +760,78 @@ const EnvatoIndex = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* Path Details: 14-step deep dives */}
+          <section className="section">
+            <h2 className="section-title">Path Details: 14-step Deep Dives</h2>
+            <p className="section-subtitle">Comprehensive strategic analysis for each pathway</p>
+            
+            <div className="space-y-6" style={{marginBottom: '32px'}}>
+              <Accordion type="single" collapsible className="w-full">
+                {Object.entries(pathData).map(([pathName, data], pathIndex) => (
+                  <AccordionItem key={pathIndex} value={`path-${pathIndex}`} style={{border: '1px solid var(--line)', borderRadius: '8px', marginBottom: '16px', background: 'var(--card)'}}>
+                    <AccordionTrigger style={{textAlign: 'left', padding: '24px', fontSize: '18px', fontWeight: '600'}}>
+                      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+                        <h3 style={{fontSize: '20px', fontWeight: '600', color: 'var(--ink)', margin: 0}}>{pathName}</h3>
+                        <p style={{fontSize: '14px', color: 'var(--muted)', marginTop: '4px', margin: 0}}>{data.category} - {data.growthThesis.substring(0, 80)}...</p>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent style={{padding: '0 24px 24px'}}>
+                      <div style={{display: 'grid', gap: '32px'}}>
+                        {/* Executive Summary */}
+                        <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '24px'}}>
+                          <h4 style={{fontSize: '18px', fontWeight: '600', color: '#1e40af', marginBottom: '12px'}}>Executive Summary</h4>
+                          <p style={{color: '#1e40af', marginBottom: '16px'}}>{data.growthThesis}</p>
+                          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px'}}>
+                            <div style={{background: 'white', borderRadius: '8px', padding: '12px', border: '1px solid #bfdbfe'}}>
+                              <div style={{fontSize: '14px', color: '#3b82f6', fontWeight: '500'}}>Category</div>
+                              <div style={{fontSize: '18px', fontWeight: '600', color: '#1e40af'}}>{data.category}</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* 14-Step Framework */}
+                        <div style={{display: 'grid', gap: '24px'}}>
+                          <h4 style={{fontSize: '18px', fontWeight: '600', color: 'var(--ink)', borderBottom: '1px solid var(--line)', paddingBottom: '8px'}}>14-Point Strategic Analysis</h4>
+                          {data.plan14.map((step, stepIndex) => (
+                            <div key={stepIndex} style={{background: '#f8fafc', border: '1px solid var(--line)', borderRadius: '8px', padding: '24px'}}>
+                              <div style={{display: 'flex', alignItems: 'flex-start', gap: '16px'}}>
+                                <div style={{flexShrink: 0, width: '32px', height: '32px', background: 'var(--envato)', color: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: '600'}}>
+                                  {stepIndex + 1}
+                                </div>
+                                <div style={{flexGrow: 1}}>
+                                  <h5 style={{fontSize: '18px', fontWeight: '600', color: 'var(--ink)', marginBottom: '8px'}}>{step.title}</h5>
+                                  <p style={{color: 'var(--muted)', marginBottom: '16px'}}>{step.text}</p>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Stories Section */}
+                        {data.stories && data.stories.length > 0 && (
+                          <div style={{background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '24px'}}>
+                            <h4 style={{fontSize: '18px', fontWeight: '600', color: '#15803d', marginBottom: '16px'}}>Future Case Studies</h4>
+                            <div style={{display: 'grid', gap: '16px'}}>
+                              {data.stories.slice(0, 2).map((story, storyIndex) => (
+                                <div key={storyIndex} style={{background: 'white', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '16px'}}>
+                                  <h6 style={{fontSize: '16px', fontWeight: '600', color: '#15803d', marginBottom: '8px'}}>{story.title}</h6>
+                                  <p style={{fontSize: '14px', color: '#166534', marginBottom: '8px'}}><strong>Situation:</strong> {story.situation}</p>
+                                  <p style={{fontSize: '14px', color: '#166534', marginBottom: '8px'}}><strong>Problem:</strong> {story.problem}</p>
+                                  <p style={{fontSize: '14px', color: '#166534', marginBottom: '8px'}}><strong>Resolution:</strong> {story.resolution}</p>
+                                  <p style={{fontSize: '14px', color: '#166534'}}><strong>Outcome:</strong> {story.outcome}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           </section>
 
