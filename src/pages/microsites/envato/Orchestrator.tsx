@@ -192,7 +192,7 @@ const Orchestrator = () => {
             <div className="bg-muted/50 border border-border rounded-xl p-6">
               <h2 className="text-2xl font-semibold mb-4">Lens</h2>
               <p className="text-muted-foreground mb-6">
-                Products do not fail because models are weak. They fail when people are not on the bus. 
+            Products do not fail because models are weak. They fail when people are not aligned. 
                 My job is to align people and outcomes so AI becomes a growth engine.
               </p>
               
@@ -206,17 +206,36 @@ const Orchestrator = () => {
               </div>
               
               <div className="flex flex-wrap gap-2">
-                {['Strategy', 'Community', 'Trust', 'Monetisation'].map(tag => (
-                  <span key={tag} className="px-3 py-1 bg-background border border-border rounded-full text-sm text-muted-foreground">
-                    {tag}
-                  </span>
+                {[
+                  { label: 'Strategy', target: 'strategy' },
+                  { label: 'Community', target: 'community' }, 
+                  { label: 'Trust', target: 'trust' },
+                  { label: 'Monetisation', target: 'monetisation' }
+                ].map(({ label, target }) => (
+                  <button 
+                    key={label} 
+                    onClick={() => {
+                      const element = document.getElementById(`qa-${target}`);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                        // Auto-expand the accordion item
+                        setTimeout(() => {
+                          const trigger = element.querySelector('[data-state="closed"]') as HTMLElement;
+                          if (trigger) trigger.click();
+                        }, 500);
+                      }
+                    }}
+                    className="px-3 py-1 bg-background border border-border rounded-full text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors cursor-pointer"
+                  >
+                    {label}
+                  </button>
                 ))}
               </div>
             </div>
 
-            {/* Right: How I apply it */}
+            {/* Right: Skills & Application */}
             <div className="bg-card border border-border rounded-xl p-6">
-              <h2 className="text-2xl font-semibold mb-4">How I apply it</h2>
+              <h2 className="text-2xl font-semibold mb-4">Skills in action</h2>
               <div className="space-y-6">
                 <div>
                   <h3 className="font-semibold mb-2">Define the asset</h3>
@@ -237,61 +256,94 @@ const Orchestrator = () => {
                   </p>
                 </div>
               </div>
-              <button 
-                onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
-                className="mt-6 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-              >
-                View 2025 skill set
-              </button>
+              <div className="mt-6 grid grid-cols-2 gap-2">
+                {Object.keys(skillContent).slice(0, 4).map((skill) => (
+                  <span key={skill} className="px-2 py-1 bg-muted border border-border rounded text-xs text-center">
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </header>
 
-        {/* Skills Section */}
+        {/* Combined Skills & Application Section */}
         <section id="skills" className="mb-12">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Skill Wheel */}
-            <div className="bg-card border border-border rounded-xl p-6">
-            <h2 className="text-2xl font-semibold mb-4">2025 skill set</h2>
-              <p className="text-muted-foreground mb-6">Click a skill to see how I use it in this role.</p>
-              
-              <div className="grid grid-cols-2 gap-3">
-                {Object.keys(skillContent).map((skill) => (
-                  <button
-                    key={skill}
-                    onClick={() => handleSkillClick(skill)}
-                    className={`p-3 rounded-lg border transition-colors text-sm font-medium ${
-                      selectedSkill === skill 
-                        ? 'bg-primary text-primary-foreground border-primary' 
-                        : 'bg-background border-border hover:bg-muted'
-                    }`}
-                  >
-                    {skill}
-                  </button>
-                ))}
+          <div className="bg-card border border-border rounded-xl p-6">
+            <h2 className="text-2xl font-semibold mb-4">2025 Skills & Real Application</h2>
+            <p className="text-muted-foreground mb-6">Click a skill to see specific examples of how I apply it in the Envato AI PM role.</p>
+            
+            <div className="grid lg:grid-cols-3 gap-6">
+              {/* Skill Selection */}
+              <div>
+                <h3 className="font-semibold mb-3 text-muted-foreground">Select skill</h3>
+                <div className="space-y-2">
+                  {Object.keys(skillContent).map((skill) => (
+                    <button
+                      key={skill}
+                      onClick={() => handleSkillClick(skill)}
+                      className={`w-full p-3 rounded-lg border transition-colors text-sm font-medium text-left ${
+                        selectedSkill === skill 
+                          ? 'bg-primary text-primary-foreground border-primary' 
+                          : 'bg-background border-border hover:bg-muted'
+                      }`}
+                    >
+                      {skill}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Skill Detail */}
-            <div className="bg-muted/50 border border-border rounded-xl p-6">
-              <h2 className="text-2xl font-semibold mb-4">How it shows up</h2>
-              <div className="min-h-[120px] mb-6">
-                {selectedSkill ? (
-                  <>
-                    <h3 className="font-semibold mb-2">{selectedSkill}</h3>
-                    <p className="text-muted-foreground">{skillDetail}</p>
-                  </>
-                ) : (
-                  <p className="text-muted-foreground">{skillDetail}</p>
-                )}
-              </div>
-              
-              <div className="flex flex-wrap gap-2">
-                {['Index and manifest', 'Provenance', 'Recsys', 'APIs', 'Agentic flows'].map(tag => (
-                  <span key={tag} className="px-3 py-1 bg-background border border-border rounded-full text-sm text-muted-foreground">
-                    {tag}
-                  </span>
-                ))}
+              {/* Skill Application */}
+              <div className="lg:col-span-2">
+                <h3 className="font-semibold mb-3 text-muted-foreground">How it shows up at Envato</h3>
+                <div className="bg-muted/50 border border-border rounded-lg p-4 min-h-[200px]">
+                  {selectedSkill ? (
+                    <>
+                      <h4 className="font-semibold mb-3 text-lg">{selectedSkill}</h4>
+                      <p className="text-muted-foreground mb-4">{skillDetail}</p>
+                      <div className="bg-background border border-border rounded p-3">
+                        <p className="text-sm font-medium text-muted-foreground mb-2">Implementation examples:</p>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedSkill === 'AI fluency' && ['Vector embeddings', 'Model routing', 'Cost optimization', 'Quality metrics'].map(tag => (
+                            <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
+                              {tag}
+                            </span>
+                          ))}
+                          {selectedSkill === 'Ethical judgment' && ['C2PA compliance', 'Usage policies', 'Safety guardrails', 'Audit trails'].map(tag => (
+                            <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
+                              {tag}
+                            </span>
+                          ))}
+                          {selectedSkill === 'Data storytelling' && ['CTR metrics', 'Creator earnings', 'Time-to-value', 'Conversion rates'].map(tag => (
+                            <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
+                              {tag}
+                            </span>
+                          ))}
+                          {selectedSkill === 'Systems thinking' && ['Asset manifest', 'Service SLAs', 'Parallel deployment', 'Index architecture'].map(tag => (
+                            <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
+                              {tag}
+                            </span>
+                          ))}
+                          {selectedSkill === 'Community leadership' && ['Creator tools', 'Demand forecasting', 'Fair payouts', 'Content insights'].map(tag => (
+                            <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
+                              {tag}
+                            </span>
+                          ))}
+                          {selectedSkill === 'Influence' && ['Cross-team alignment', 'Technical decisions', 'Process improvement', 'Quality standards'].map(tag => (
+                            <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex items-center justify-center h-full">
+                      <p className="text-muted-foreground text-center">{skillDetail}</p>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -547,7 +599,8 @@ const Orchestrator = () => {
                 {
                   question: 'How would you align Envato\'s AI strategy with its business model?',
                   answer: 'I\'ve mapped five strategic paths: Infrastructure, Network, Vertical Expansion, Platform Enabler, and Radical Play. Each is viable, but Infrastructure is the core play for defensible ARR. Platform Enabler keeps us in SaaS ecosystems. The others are bets. My role is to help balance the portfolio so Envato has a floor, an upside, and a moonshot.',
-                  noteKey: 'strategy_alignment'
+                  noteKey: 'strategy_alignment',
+                  id: 'qa-strategy'
                 },
                 {
                   question: 'How do customers benefit from AI here?',
@@ -557,17 +610,20 @@ const Orchestrator = () => {
                 {
                   question: 'How do contributors benefit?',
                   answer: 'Contributors are the moat. AI isn\'t there to replace them but to multiply their earnings:\n\nPath 1: earn through enterprise kits.\n\nPath 2: earn via storefront subs and sponsorships.\n\nPath 5: earn royalties through API usage across SaaS platforms.\nAnd they get analytics, tagging, and forecast tools so they know what to create next.',
-                  noteKey: 'contributor_benefits'
+                  noteKey: 'contributor_benefits',
+                  id: 'qa-community'
                 },
                 {
                   question: 'What\'s the monetisation model?',
                   answer: 'Infrastructure: $100–200M ARR potential.\n\nNetwork: $500M+ GMV, $50–100M revenue.\n\nVertical Expansion: $50–100M ARR per sector.\n\nPlatform APIs: $100M ARR within 3–4 years if embedded broadly.\n\nRadical Play: $1B+ TAM moonshot.\nEach is backed by realistic revenue levers—subs, usage fees, royalties, ads.',
-                  noteKey: 'monetisation'
+                  noteKey: 'monetisation',
+                  id: 'qa-monetisation'
                 },
                 {
                   question: 'How do you handle provenance, safety, and trust?',
                   answer: 'Trust has to be part of the product, not bolted on:\n\nC2PA signing on all AI outputs.\n\nProvenance APIs for license verification.\n\nRegion pinning and audit exports for enterprise.\n\nModeration AI and human review queues for community.\nThat turns AI Labs from "fun" into production-grade tools.',
-                  noteKey: 'trust_safety'
+                  noteKey: 'trust_safety',
+                  id: 'qa-trust'
                 },
                 {
                   question: 'How do you integrate with partners and external tools?',
@@ -604,8 +660,8 @@ const Orchestrator = () => {
                   answer: 'Because I don\'t treat AI as a feature. I treat it as alignment of people, trust, and monetisation. Products don\'t fail because the models aren\'t good enough. They fail when contributors don\'t lean in, customers don\'t see value, or enterprises don\'t trust compliance. My role is to make sure they all get on the bus and stay there.',
                   noteKey: 'trust_leadership'
                 }
-              ].map(({ question, answer, noteKey }) => (
-                <details key={noteKey} className="bg-background border border-border rounded-lg">
+              ].map(({ question, answer, noteKey, id }) => (
+                <details key={noteKey} id={id} className="bg-background border border-border rounded-lg">
                   <summary className="p-4 font-semibold cursor-pointer">{question}</summary>
                   <div className="p-4 border-t border-border">
                     <div className="text-muted-foreground mb-4 whitespace-pre-line">{answer}</div>
