@@ -7,6 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { competencyBadges } from './curriculum';
 import FullPathModal from '@/components/ui/full-path-modal';
+import BcorpDecisionFramework from './components/BcorpDecisionFramework';
+import PathDiagrams from './components/PathDiagrams';
 
 interface Note {
   id: string;
@@ -943,190 +945,17 @@ const EnvatoIndex = () => {
             })}
           </section>
 
-          {/* Envato Strategic Path Decision Framework */}
+          {/* B Corp Decision Framework */}
           <section id="framework" className="section">
             <div className="card">
-              <h2 className="section-title">Envato Strategic Path Decision Framework</h2>
-              
-              <div className="text-center mb-6">
-                <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-6">
-                  A systematic approach to evaluating and selecting the optimal strategic direction using our 14-point analysis and 5 strategic paths.
-                </p>
-                <div className="bg-blue-50 p-6 rounded-lg text-left max-w-4xl mx-auto">
-                  <h3 className="font-semibold text-gray-900 mb-3">How This Framework Works:</h3>
-                  <p className="text-gray-700 mb-4">
-                    The 14-point comparison table provides detailed analysis across all strategic dimensions. These insights feed into the scoring framework below, where each path is evaluated on key success criteria. <strong>No single path will be the complete answer</strong> - the optimal strategy will be a blend of elements from multiple paths, adapted to market conditions and organizational capabilities.
-                  </p>
-                  <p className="text-gray-600 text-sm">
-                    <strong>Scoring Formula:</strong> Weighted average of Strategic Fit (30%), Market Opportunity (25%), Technical Feasibility (20%), Resource Requirements (15%), and Risk Level (10%).
-                  </p>
-                </div>
-              </div>
-              
-              {/* Step 1: Scoring Axes */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3">Step 1: Scoring Axes (weighted for Envato)</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><strong>Community & Strategic Fit (30%)</strong> – aligns with Envato's contributor-first DNA and Shutterstock's enterprise expansion.</li>
-                  <li><strong>Market Value / TAM (25%)</strong> – size of the opportunity.</li>
-                  <li><strong>Probability of Success (20%)</strong> – likelihood of execution.</li>
-                  <li><strong>Time to Revenue (15%)</strong> – speed to monetisation.</li>
-                  <li><strong>Differentiation (10%)</strong> – uniqueness vs competition.</li>
-                </ul>
-              </div>
+              <BcorpDecisionFramework />
+            </div>
+          </section>
 
-              {/* Step 2: Scores Table */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3">Step 2: Scores (indicative, directional, 1–5 scale)</h3>
-                <div className="table-wrap">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'left'}}>Path</th>
-                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>Market Value</th>
-                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>Probability</th>
-                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>Time to Revenue</th>
-                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>Strategic Fit</th>
-                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>Differentiation</th>
-                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>Weighted Score</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr style={{background: '#f0f9ff', borderLeft: '3px solid #0ea5e9'}}>
-                        <td style={{padding: '12px', fontSize: '14px', fontWeight: '600'}}>
-                          1. Infrastructure 
-                          <span style={{background: '#0ea5e9', color: 'white', padding: '2px 6px', borderRadius: '8px', fontSize: '10px', marginLeft: '8px'}}>Core play</span>
-                        </td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4 (TAM $200–400M ARR)</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3 (2–3 yrs)</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600', color: '#0ea5e9'}}>4.1</td>
-                      </tr>
-                      <tr style={{background: '#ecfdf5', borderLeft: '3px solid #10b981'}}>
-                        <td style={{padding: '12px', fontSize: '14px', fontWeight: '600'}}>
-                          2. Network 
-                          <span style={{background: '#10b981', color: 'white', padding: '2px 6px', borderRadius: '8px', fontSize: '10px', marginLeft: '8px'}}>Chosen now</span>
-                        </td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5 (TAM $500M+ GMV)</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>2</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3 (2–3 yrs)</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>3.3</td>
-                      </tr>
-                      <tr style={{background: '#fef3c7'}}>
-                        <td style={{padding: '12px', fontSize: '14px', fontWeight: '600'}}>3. Vertical Expansion</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3 (TAM $100–200M ARR)</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4 (1–2 yrs)</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>3.6</td>
-                      </tr>
-                      <tr style={{background: '#f3f4f6'}}>
-                        <td style={{padding: '12px', fontSize: '14px', fontWeight: '600'}}>4. Platform Enabler</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4 (TAM $300–500M ARR)</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>2 (3–5 yrs)</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>2</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>3.0</td>
-                      </tr>
-                      <tr style={{background: '#fef2f2'}}>
-                        <td style={{padding: '12px', fontSize: '14px', fontWeight: '600'}}>5. Radical Play</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5 (TAM $1B+ potential)</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>1</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>1 (5+ yrs)</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>2</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>2.5</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* Step 3: Interpretation */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3">Step 3: Interpretation</h3>
-                <p className="text-gray-700 mb-6">
-                  Based on the scores above, here's how to interpret the strategic paths:
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-900 mb-2">High Priority Paths (4.0+)</h4>
-                    <ul className="text-green-800 space-y-1">
-                      <li>• Path 1: Creative Infrastructure (4.1)</li>
-                    </ul>
-                  </div>
-                  <div className="bg-yellow-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-yellow-900 mb-2">Medium Priority Paths (3.0-3.9)</h4>
-                    <ul className="text-yellow-800 space-y-1">
-                      <li>• Path 3: Vertical Expansion (3.6)</li>
-                      <li>• Path 2: Creative Network (3.3)</li>
-                      <li>• Path 4: Platform Enabler (3.0)</li>
-                    </ul>
-                  </div>
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-900 mb-2">Experimental Paths (2.0-2.9)</h4>
-                    <ul className="text-blue-800 space-y-1">
-                      <li>• Path 5: Radical Play (2.5)</li>
-                    </ul>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-2">Strategic Considerations</h4>
-                    <ul className="text-gray-700 space-y-1 text-sm">
-                      <li>• Path 1 offers the best balance of strategic fit and feasibility</li>
-                      <li>• Path 3 provides steady, sustainable growth opportunities</li>
-                      <li>• Path 2 has community alignment but execution challenges</li>
-                      <li>• Path 5 has high potential but significant technical risks</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Step 4: Translate to Action */}
-              <div>
-                <h3 className="text-lg font-semibold mb-3">Step 4: Translate to Action (Portfolio Approach)</h3>
-                <p className="text-gray-700 mb-4">
-                  Rather than choosing a single path, Envato should pursue a balanced portfolio approach:
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-green-100 p-6 rounded-lg">
-                    <h4 className="font-bold text-green-900 mb-3">High Confidence Portfolio (70% allocation)</h4>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-green-800">Path 1: Creative Infrastructure</span>
-                        <span className="font-semibold text-green-900">50%</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-green-800">Path 3: Vertical Expansion</span>
-                        <span className="font-semibold text-green-900">20%</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-yellow-100 p-6 rounded-lg">
-                    <h4 className="font-bold text-yellow-900 mb-3">Experimental Portfolio (30% allocation)</h4>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-yellow-800">Path 2: Creative Network</span>
-                        <span className="font-semibold text-yellow-900">15%</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-yellow-800">Path 4: Platform Enabler</span>
-                        <span className="font-semibold text-yellow-900">10%</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-yellow-800">Path 5: Radical Play</span>
-                        <span className="font-semibold text-yellow-900">5%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          {/* Visual Path Diagrams */}
+          <section className="section">
+            <div className="card">
+              <PathDiagrams />
             </div>
           </section>
 
