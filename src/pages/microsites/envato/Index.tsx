@@ -259,36 +259,10 @@ const EnvatoIndex = () => {
       const { data: { user } } = await supabase.auth.getUser();
       setIsAuthenticated(!!user);
 
-      if (user) {
-        // Load from Supabase if authenticated
-        const { data, error } = await supabase
-          .from('notes')
-          .select('*')
-          .eq('user_id', user.id);
-
-        if (error) {
-          console.error('Error loading notes:', error);
-          toast({
-            title: "Error loading notes",
-            description: "Failed to load notes from cloud storage. Using local backup.",
-            variant: "destructive",
-          });
-        } else {
-          const notesMap = data.reduce((acc, note) => {
-            acc[note.note_key] = note.content;
-            return acc;
-          }, {} as Record<string, string>);
-          setNotes(notesMap);
-          
-          // Also save to localStorage as backup
-          localStorage.setItem('envato-notes', JSON.stringify(notesMap));
-        }
-      } else {
-        // Load from localStorage if not authenticated
-        const localNotes = localStorage.getItem('envato-notes');
-        if (localNotes) {
-          setNotes(JSON.parse(localNotes));
-        }
+      // Load from localStorage only (no database dependency)
+      const localNotes = localStorage.getItem('envato-notes');
+      if (localNotes) {
+        setNotes(JSON.parse(localNotes));
       }
     } catch (error) {
       console.error('Error in loadNotes:', error);
@@ -315,71 +289,17 @@ const EnvatoIndex = () => {
       clearTimeout(debounceTimers[key]);
     }
 
-    // Only save to DB if authenticated
-    if (isAuthenticated) {
-      const timer = setTimeout(async () => {
-        try {
-          const { data: { user } } = await supabase.auth.getUser();
-          if (user) {
-            const { error } = await supabase
-              .from('notes')
-              .upsert({
-                user_id: user.id,
-                note_key: key,
-                content: value
-              });
-
-            if (error) {
-              console.error('Error saving note:', error);
-            }
-          }
-        } catch (error) {
-          console.error('Error in handleNoteChange:', error);
-        }
-      }, 1000); // 1 second debounce
-
-      setDebounceTimers(prev => ({ ...prev, [key]: timer }));
-    }
+    // No database operations needed - only localStorage
   };
 
-  // Save all notes immediately
+  // Save all notes to localStorage
   const saveAll = async () => {
-    if (!isAuthenticated) {
-      toast({
-        title: "Not authenticated",
-        description: "Please sign in to save notes to the cloud.",
-        variant: "destructive",
-      });
-      return;
-    }
-
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-
-      const noteEntries = Object.entries(notes).map(([key, content]) => ({
-        user_id: user.id,
-        note_key: key,
-        content
-      }));
-
-      const { error } = await supabase
-        .from('notes')
-        .upsert(noteEntries);
-
-      if (error) {
-        console.error('Error saving all notes:', error);
-        toast({
-          title: "Error saving notes",
-          description: "Failed to save notes to cloud storage.",
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Notes saved",
-          description: "All notes have been saved to cloud storage.",
-        });
-      }
+      localStorage.setItem('envato-notes', JSON.stringify(notes));
+      toast({
+        title: "Notes saved",
+        description: "All notes have been saved locally.",
+      });
     } catch (error) {
       console.error('Error in saveAll:', error);
       toast({
@@ -395,20 +315,6 @@ const EnvatoIndex = () => {
     try {
       setNotes({});
       localStorage.removeItem('envato-notes');
-
-      if (isAuthenticated) {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user) {
-          const { error } = await supabase
-            .from('notes')
-            .delete()
-            .eq('user_id', user.id);
-
-          if (error) {
-            console.error('Error clearing notes:', error);
-          }
-        }
-      }
 
       toast({
         title: "Notes cleared",
