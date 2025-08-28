@@ -696,6 +696,13 @@ const EnvatoIndex = () => {
 
       <div className="envato-page">
         <div className="wrap">
+          {/* Strategic Path Diagrams - Moved to Top */}
+          <section className="section" style={{ marginBottom: '48px' }}>
+            <div className="card">
+              <PathDiagrams />
+            </div>
+          </section>
+
           {/* Hero Section */}
           <section id="quick" className="hero">
             <h1 className="hero-title">Envato: 5 Strategic Growth Paths</h1>
@@ -1106,12 +1113,6 @@ const EnvatoIndex = () => {
             </div>
           </section>
 
-          {/* Visual Path Diagrams */}
-          <section className="section">
-            <div className="card">
-              <PathDiagrams />
-            </div>
-          </section>
 
           {/* Footer CTAs */}
           <div className="footer-ctas">

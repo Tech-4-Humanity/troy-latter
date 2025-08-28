@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { MapPin, Target, TrendingUp, Users, Brain, Lightbulb } from 'lucide-react';
 
 const PathDiagrams = () => {
   const [activeTab, setActiveTab] = useState('path2');
@@ -175,50 +176,123 @@ const PathDiagrams = () => {
   const currentPath = pathData[activeTab as keyof typeof pathData];
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="text-center">
-        <h2 className="text-3xl font-bold text-foreground mb-4">
-          Envato Strategic Path Diagrams
+    <div className="space-y-8">
+      {/* Enhanced Header with Gradient */}
+      <div className="relative text-center py-12 bg-gradient-to-r from-envato-green-50 via-white to-envato-green-50 rounded-3xl border border-envato-green-200">
+        <div className="absolute top-4 left-6">
+          <MapPin className="h-6 w-6 text-envato-green-600" />
+        </div>
+        <div className="absolute top-4 right-6">
+          <Target className="h-6 w-6 text-envato-green-600" />
+        </div>
+        
+        <h2 className="text-4xl font-bold bg-gradient-to-r from-envato-green-700 to-envato-green-500 bg-clip-text text-transparent mb-4">
+          View Envato Strategic Paths
         </h2>
-        <p className="text-lg text-muted-foreground">
-          B Corp + Community-First Implementation Plans
+        <p className="text-xl text-envato-gray-700 mb-6 max-w-3xl mx-auto">
+          Interactive analysis of strategic pathways combining B Corp values, community impact, and sustainable growth
         </p>
-      </div>
-
-      {/* Tabs */}
-      <div className="flex flex-wrap justify-center gap-3 mb-8">
-        {tabs.map((tab) => (
-          <Button
-            key={tab.id}
-            variant={activeTab === tab.id ? "default" : "outline"}
-            onClick={() => setActiveTab(tab.id)}
-            className="text-sm font-medium"
-          >
-            {tab.label}
-          </Button>
-        ))}
-      </div>
-
-      {/* Path Content */}
-      <Card className="animate-fade-in">
-        <CardContent className="p-8">
-          {/* Path Header */}
-          <div className="text-center mb-8 border-b pb-6">
-            <h3 className="text-2xl font-bold mb-2">{currentPath.title}</h3>
-            <p className="text-muted-foreground mb-4">{currentPath.subtitle}</p>
-            <Badge className={`${currentPath.scoreClass} text-white font-bold text-lg px-4 py-2`}>
-              Final Score: {currentPath.score}
-            </Badge>
+        
+        {/* Instructions */}
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mx-auto max-w-4xl border border-envato-green-100 shadow-sm">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Lightbulb className="h-5 w-5 text-envato-green-600" />
+            <span className="font-semibold text-envato-gray-800">How to Navigate</span>
           </div>
+          <div className="grid md:grid-cols-3 gap-4 text-sm text-envato-gray-600">
+            <div className="flex items-start gap-2">
+              <div className="w-6 h-6 bg-envato-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-xs font-bold text-envato-green-700">1</span>
+              </div>
+              <span>Select any strategic path below using the colored tabs</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <div className="w-6 h-6 bg-envato-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-xs font-bold text-envato-green-700">2</span>
+              </div>
+              <span>Review implementation flow, revenue streams, and stakeholder impact</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <div className="w-6 h-6 bg-envato-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-xs font-bold text-envato-green-700">3</span>
+              </div>
+              <span>Compare B Corp alignment scores and resource allocation recommendations</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-          {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-8 mb-8">
-            {/* Implementation Flow */}
-            <div className="bg-muted/50 rounded-xl p-6 border-l-4 border-blue-500">
-              <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
-                🚀 Implementation Flow
-              </h4>
+      {/* Enhanced Tabs with Icons and Scores */}
+      <div className="bg-white rounded-2xl p-6 border border-envato-green-100 shadow-sm">
+        <div className="flex items-center justify-center gap-2 mb-6">
+          <TrendingUp className="h-5 w-5 text-envato-green-600" />
+          <span className="font-semibold text-envato-gray-800">Strategic Path Options (Ranked by Score)</span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
+          {tabs.map((tab, index) => {
+            const isActive = activeTab === tab.id;
+            const pathScore = pathData[tab.id as keyof typeof pathData];
+            const iconMap = {
+              path1: Brain,
+              path2: Users,
+              path3: Target,
+              path4: Lightbulb,
+              path5: MapPin
+            };
+            const IconComponent = iconMap[tab.id as keyof typeof iconMap];
+            
+            return (
+              <Button
+                key={tab.id}
+                variant={isActive ? "default" : "outline"}
+                onClick={() => setActiveTab(tab.id)}
+                className={`relative p-4 h-auto flex-col gap-2 transition-all duration-300 ${
+                  isActive 
+                    ? 'bg-envato-green-600 text-white border-envato-green-600 shadow-lg scale-105' 
+                    : 'hover:bg-envato-green-50 hover:border-envato-green-300 text-envato-gray-700'
+                }`}
+              >
+                <IconComponent className={`h-5 w-5 ${isActive ? 'text-white' : 'text-envato-green-600'}`} />
+                <div className="text-center">
+                  <div className="text-sm font-bold">Path {tab.id.slice(-1)}</div>
+                  <div className={`text-xs ${isActive ? 'text-white/90' : 'text-envato-gray-500'}`}>
+                    Score: {pathScore.score}
+                  </div>
+                </div>
+                {index === 0 && (
+                  <div className="absolute -top-2 -right-2 bg-emerald-500 text-white text-xs px-2 py-1 rounded-full font-bold">
+                    TOP
+                  </div>
+                )}
+              </Button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Enhanced Path Content */}
+      <Card className="animate-fade-in border-envato-green-200 shadow-lg">
+        <CardContent className="p-0">
+          {/* Enhanced Path Header */}
+          <div className="bg-gradient-to-r from-envato-green-600 to-envato-green-500 text-white p-8 rounded-t-lg">
+            <div className="text-center">
+              <h3 className="text-3xl font-bold mb-3">{currentPath.title}</h3>
+              <p className="text-envato-green-100 mb-4 text-lg">{currentPath.subtitle}</p>
+              <Badge className={`${currentPath.scoreClass} bg-white/20 backdrop-blur-sm text-white font-bold text-xl px-6 py-3 border border-white/30`}>
+                Final Score: {currentPath.score}
+              </Badge>
+            </div>
+          </div>
+          
+          <div className="p-8">
+
+            {/* Main Content Grid */}
+            <div className="grid lg:grid-cols-2 gap-8 mb-8">
+              {/* Implementation Flow */}
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200 shadow-sm">
+                <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-blue-800">
+                  🚀 Implementation Flow
+                </h4>
               <div className="space-y-4">
                 {currentPath.implementation.map((step, index) => (
                   <div key={index} className="bg-card rounded-lg p-4 border-l-3 border-blue-500 relative">
@@ -234,11 +308,11 @@ const PathDiagrams = () => {
               </div>
             </div>
 
-            {/* Revenue Streams / Target Markets */}
-            <div className="bg-muted/50 rounded-xl p-6 border-l-4 border-emerald-500">
-              <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
-                💰 {activeTab === 'path3' ? 'Target Markets' : 'Revenue Streams'}
-              </h4>
+              {/* Revenue Streams / Target Markets */}
+              <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl p-6 border border-emerald-200 shadow-sm">
+                <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-emerald-800">
+                  💰 {activeTab === 'path3' ? 'Target Markets' : 'Revenue Streams'}
+                </h4>
               <div className="space-y-4">
                 {currentPath.revenue.map((item, index) => (
                   <div key={index} className="bg-card rounded-lg p-4 border-l-3 border-emerald-500 relative">
@@ -276,12 +350,13 @@ const PathDiagrams = () => {
             ))}
           </div>
 
-          {/* Risk Mitigation */}
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-            <h4 className="font-bold text-red-800 mb-2 flex items-center gap-2">
-              🛡️ Risk Mitigation
-            </h4>
-            <p className="text-sm text-red-700">{currentPath.risk}</p>
+            {/* Risk Mitigation */}
+            <div className="bg-gradient-to-br from-red-50 to-rose-50 border border-red-200 rounded-xl p-6 shadow-sm">
+              <h4 className="font-bold text-red-800 mb-3 flex items-center gap-2">
+                🛡️ Risk Mitigation & Strategy
+              </h4>
+              <p className="text-red-700 leading-relaxed">{currentPath.risk}</p>
+            </div>
           </div>
         </CardContent>
       </Card>
