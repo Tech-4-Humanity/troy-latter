@@ -4,6 +4,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { competencyBadges } from './curriculum';
 
 interface Note {
   id: string;
@@ -744,9 +746,16 @@ const EnvatoIndex = () => {
                       <h3>Path 1 Creative Infrastructure</h3>
                       <div className="meta">Enterprise workflows and compliance</div>
                       <p className="meta">Indicative 100–200M ARR in 3 to 5 years</p>
-                      <span className="tag core">Low risk</span>
-                      <span className="tag">ARR focus</span>
-                      <div className="mt-4 flex gap-2">
+                       <span className="tag core">Low risk</span>
+                       <span className="tag">ARR focus</span>
+                       <div className="mt-2 flex flex-wrap gap-1">
+                         {competencyBadges["Core - Creator Tools"]?.map((badge) => (
+                           <Badge key={badge} variant="secondary" className="text-xs">
+                             {badge}
+                           </Badge>
+                         ))}
+                       </div>
+                       <div className="mt-4 flex gap-2">
                         <Button onClick={() => flip('path1')} variant="outline" size="sm">
                           Flip for steps
                         </Button>
@@ -841,9 +850,16 @@ const EnvatoIndex = () => {
                       <h3>Path 2 Creative Network</h3>
                       <div className="meta">Community, feeds, creator subs</div>
                       <p className="meta">Indicative 500M plus GMV potential</p>
-                      <span className="tag satellite">Higher risk</span>
-                      <span className="tag">Ads and subs</span>
-                      <div className="mt-4 flex gap-2">
+                       <span className="tag satellite">Higher risk</span>
+                       <span className="tag">Ads and subs</span>
+                       <div className="mt-2 flex flex-wrap gap-1">
+                         {competencyBadges["Secondary - Community"]?.map((badge) => (
+                           <Badge key={badge} variant="secondary" className="text-xs">
+                             {badge}
+                           </Badge>
+                         ))}
+                       </div>
+                       <div className="mt-4 flex gap-2">
                         <Button onClick={() => flip('path2')} variant="outline" size="sm">
                           Flip for steps
                         </Button>
@@ -938,9 +954,16 @@ const EnvatoIndex = () => {
                       <h3>Path 4 Vertical Expansion</h3>
                       <div className="meta">Industry solutions like Edu and Gaming</div>
                       <p className="meta">Indicative 50–100M ARR per vertical</p>
-                      <span className="tag satellite">Higher risk</span>
-                      <span className="tag">Sector SaaS</span>
-                      <div className="mt-4 flex gap-2">
+                       <span className="tag satellite">Higher risk</span>
+                       <span className="tag">Sector SaaS</span>
+                       <div className="mt-2 flex flex-wrap gap-1">
+                         {competencyBadges["Satellite - New Verticals"]?.map((badge) => (
+                           <Badge key={badge} variant="secondary" className="text-xs">
+                             {badge}
+                           </Badge>
+                         ))}
+                       </div>
+                       <div className="mt-4 flex gap-2">
                         <Button onClick={() => flip('path4')} variant="outline" size="sm">
                           Flip for steps
                         </Button>
@@ -1035,9 +1058,16 @@ const EnvatoIndex = () => {
                       <h3>Path 5 Platform Enabler</h3>
                       <div className="meta">API first creative backend</div>
                       <p className="meta">Indicative 100M ARR in 3 to 4 years</p>
-                      <span className="tag secondary">Medium risk</span>
-                      <span className="tag">Usage fees</span>
-                      <div className="mt-4 flex gap-2">
+                       <span className="tag secondary">Medium risk</span>
+                       <span className="tag">Usage fees</span>
+                       <div className="mt-2 flex flex-wrap gap-1">
+                         {competencyBadges["Satellite - Developer APIs"]?.map((badge) => (
+                           <Badge key={badge} variant="secondary" className="text-xs">
+                             {badge}
+                           </Badge>
+                         ))}
+                       </div>
+                       <div className="mt-4 flex gap-2">
                         <Button onClick={() => flip('path5')} variant="outline" size="sm">
                           Flip for steps
                         </Button>
@@ -1132,9 +1162,16 @@ const EnvatoIndex = () => {
                       <h3>Path 6 Radical Play</h3>
                       <div className="meta">Immersive and agentic AI substrate</div>
                       <p className="meta">Indicative 1B plus TAM moonshot</p>
-                      <span className="tag moonshot">Extreme risk</span>
-                      <span className="tag">Long horizon</span>
-                      <div className="mt-4 flex gap-2">
+                       <span className="tag moonshot">Extreme risk</span>
+                       <span className="tag">Long horizon</span>
+                       <div className="mt-2 flex flex-wrap gap-1">
+                         {competencyBadges["Satellite - New Verticals"]?.map((badge) => (
+                           <Badge key={badge} variant="secondary" className="text-xs">
+                             {badge}
+                           </Badge>
+                         ))}
+                       </div>
+                       <div className="mt-4 flex gap-2">
                         <Button onClick={() => flip('path6')} variant="outline" size="sm">
                           Flip for steps
                         </Button>

@@ -4,6 +4,11 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Copy, ExternalLink } from 'lucide-react';
+import { curriculumData, type CurriculumTrack } from './curriculum';
 
 interface Note {
   id: string;
@@ -153,6 +158,7 @@ const Orchestrator = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-6xl mx-auto px-4 py-8">
+        <div id="top"></div>
         {/* Breadcrumbs */}
         <Breadcrumb className="mb-6">
           <BreadcrumbList>
@@ -394,8 +400,158 @@ const Orchestrator = () => {
           </div>
         </section>
 
+        {/* Local Navigation */}
+        <nav className="sticky top-4 z-10 bg-background/95 backdrop-blur border border-border rounded-xl p-2 mb-8">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {[
+              { label: 'Overview', anchor: 'top' },
+              { label: 'Skills', anchor: 'skills' },
+              { label: 'Curriculum', anchor: 'curriculum' },
+              { label: 'Proof Points', anchor: 'proof' },
+              { label: 'Q&A', anchor: 'qa' }
+            ].map(({ label, anchor }) => (
+              <button
+                key={anchor}
+                onClick={() => document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-3 py-1 text-sm font-medium rounded-lg hover:bg-muted transition-colors"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </nav>
+
+        {/* Curriculum Section */}
+        <section id="curriculum" className="mb-12">
+          <div className="bg-card border border-border rounded-xl p-6">
+            <div className="mb-6">
+              <h2 className="text-2xl font-semibold mb-2">Complete AI + PM MBA Curriculum Applied</h2>
+              <p className="text-muted-foreground">
+                How I've applied each course from the complete curriculum to real-world creative AI product management.
+              </p>
+            </div>
+
+            <Accordion type="multiple" className="space-y-4">
+              {curriculumData.map((track: CurriculumTrack) => (
+                <AccordionItem key={track.id} value={track.id} className="bg-background border border-border rounded-lg">
+                  <AccordionTrigger className="px-4 py-3 hover:no-underline">
+                    <div className="flex items-center gap-3">
+                      <span className="font-semibold">{track.track}</span>
+                      <Badge variant="outline">{track.courses.length} courses</Badge>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pb-4">
+                    <div className="grid gap-4">
+                      {track.courses.map((course) => (
+                        <div key={course.id} className="bg-muted/50 border border-border rounded-lg p-4">
+                          <div className="mb-3">
+                            <h4 className="font-semibold mb-2">{course.course}</h4>
+                            <div className="flex flex-wrap gap-1 mb-2">
+                              {course.badges.map((badge) => (
+                                <Badge key={badge} variant="secondary" className="text-xs">
+                                  {badge}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="space-y-3">
+                            <div>
+                              <h5 className="text-sm font-medium text-muted-foreground mb-1">Applied at Envato:</h5>
+                              <ul className="text-sm space-y-1">
+                                {course.appliedAtEnvato.map((item, idx) => (
+                                  <li key={idx} className="flex items-start gap-2">
+                                    <span className="text-primary text-xs mt-1">•</span>
+                                    <span>{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="flex flex-wrap gap-2 pt-2 border-t border-border">
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                onClick={() => copyToClipboard(course.copyableOutline)}
+                                className="text-xs"
+                              >
+                                <Copy className="w-3 h-3 mr-1" />
+                                Copy outline
+                              </Button>
+                              
+                              {course.showcaseLinks.map((link, idx) => (
+                                <Button
+                                  key={idx}
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() => {
+                                    if (link.path === window.location.pathname && link.anchor) {
+                                      document.getElementById(link.anchor)?.scrollIntoView({ behavior: 'smooth' });
+                                    } else {
+                                      window.open(link.path + (link.anchor ? `#${link.anchor}` : ''), '_blank');
+                                    }
+                                  }}
+                                  className="text-xs"
+                                >
+                                  <ExternalLink className="w-3 h-3 mr-1" />
+                                  {link.title}
+                                </Button>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+
+            <div className="mt-6 p-4 bg-muted/50 border border-border rounded-lg">
+              <p className="text-sm text-muted-foreground mb-2">
+                <strong>Graduation Requirements:</strong> Core curriculum + 400-level courses + Build portfolio + Apply at work + Choose specializations + Continuous improvement
+              </p>
+              <Button
+                onClick={() => document.getElementById('quick')?.scrollIntoView({ behavior: 'smooth' })}
+                variant="outline"
+                size="sm"
+              >
+                View portfolio artifacts →
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Proof Points */}
+        <section id="proof" className="mb-12">
+          <div className="bg-muted/50 border border-border rounded-xl p-6">
+            <h2 className="text-2xl font-semibold mb-4">Proof points I can show</h2>
+            <p className="text-muted-foreground mb-6">
+              Pick any area and I can go deep. If we run short on time, here is a quick index.
+            </p>
+            <div className="grid md:grid-cols-3 gap-4">
+              {[
+                { id: 'qa1', title: 'Search and recsys', desc: 'Two stage retrieval. Session model. Bandits for exploration. Clear KPIs and lifts.' },
+                { id: 'qa2', title: 'Trust and provenance', desc: 'C2PA on outputs. License attach. Public verify. Audit exports. Region pinning.' },
+                { id: 'qa3', title: 'Agentic flows', desc: 'Brief and brand and safety and export agents. Guardrails before publish.' }
+              ].map(({ id, title, desc }) => (
+                <div key={id} className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold mb-2">{title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">{desc}</p>
+                  <button
+                    onClick={() => copyToClipboard(techNotes[id as keyof typeof techNotes])}
+                    className="bg-primary text-primary-foreground px-3 py-1 rounded text-sm font-medium hover:bg-primary/90 transition-colors"
+                  >
+                    Copy notes
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Pre-empted Q&A */}
-        <section className="mb-12">
+        <section id="qa" className="mb-12">
           <div className="bg-card border border-border rounded-xl p-6">
             <h2 className="text-2xl font-semibold mb-6">Pre empted Q and A</h2>
             <div className="space-y-4">
