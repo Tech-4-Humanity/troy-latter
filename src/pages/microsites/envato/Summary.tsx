@@ -30,6 +30,16 @@ const Summary = () => {
           </BreadcrumbList>
         </Breadcrumb>
 
+        {/* One Line Summary */}
+        <Card id="one-line-summary" className="mb-8 bg-gradient-to-r from-envato-green-50 to-envato-green-100 border border-envato-green-200">
+          <CardContent className="p-6">
+            <h2 className="text-2xl font-bold text-envato-gray-900 mb-3">One line summary</h2>
+            <p className="text-lg text-envato-gray-700 italic">
+              "I believe in the opportunity to turn Envato from a content library into the global creative operations layer—where AI doesn't replace human creativity but amplifies it through intelligent orchestration, fair attribution, and workflow integration."
+            </p>
+          </CardContent>
+        </Card>
+
         {/* Header */}
         <div className="mb-8">
             <Link to="/microsites/envato" className="inline-flex items-center text-envato-green-600 hover:text-envato-green-700 mb-4 transition-colors">
