@@ -61,7 +61,9 @@ const EnvatoIndex = () => {
   // Path data with 14-point execution plans
   const pathData = {
     "Path 1 Creative Infrastructure": {
-      category: "Core",
+      category: "Strategic Support",
+      allocationPercent: "15%",
+      chosen: false,
       growthThesis: "Envato's creator tools are the foundation of its ecosystem. By enhancing these with AI capabilities, we can dramatically improve creator productivity while maintaining quality standards.",
       productAIStrategy: "Integrate AI-powered templates, automated design suggestions, smart asset recommendations, and intelligent quality checking to streamline the creative process.",
       actions: "• Implement AI template generation • Add smart asset tagging • Deploy automated quality checks • Create intelligent search • Develop personalized recommendations",
@@ -120,7 +122,9 @@ const EnvatoIndex = () => {
       ]
     },
     "Path 2 Creative Network": {
-      category: "Secondary",
+      category: "Primary Focus",
+      allocationPercent: "50%",
+      chosen: true,
       growthThesis: "Strong communities drive engagement and platform stickiness. AI can enhance community interactions through better matching, content discovery, and collaboration tools.",
       productAIStrategy: "Implement AI-driven community matching, intelligent content curation, automated moderation, and collaboration recommendations.",
       actions: "• Create smart community matching • Build content curation AI • Implement auto-moderation • Add collaboration tools • Develop engagement analytics",
@@ -158,7 +162,9 @@ const EnvatoIndex = () => {
       ]
     },
     "Path 3 Vertical Expansion": {
-      category: "Satellite",
+      category: "Primary Focus",
+      allocationPercent: "20%",
+      chosen: false,
       growthThesis: "Education drives platform adoption and creator success. AI-powered personalized learning can significantly improve skill development and creator retention.",
       productAIStrategy: "Create adaptive learning paths, AI tutors, skill assessment tools, and personalized content recommendations to enhance educational outcomes.",
       actions: "• Build adaptive learning system • Create AI tutoring • Develop skill assessments • Add learning analytics • Implement progress tracking",
@@ -196,7 +202,9 @@ const EnvatoIndex = () => {
       ]
     },
     "Path 4 Platform Enabler": {
-      category: "Satellite",
+      category: "Strategic Support",
+      allocationPercent: "5%",
+      chosen: false,
       growthThesis: "API-first approach enables platform ecosystem growth. AI can automate content creation in new domains through intelligent APIs and developer tools.",
       productAIStrategy: "Build enterprise-grade AI APIs for content generation, smart asset management, automated workflows, and creative intelligence services.",
       actions: "• Develop core creative APIs • Build AI generation services • Create developer platform • Add usage analytics • Implement enterprise features",
@@ -227,7 +235,9 @@ const EnvatoIndex = () => {
       ]
     },
     "Path 5 Radical Play": {
-      category: "Experimental",
+      category: "Future Optionality",
+      allocationPercent: "10%",
+      chosen: false,
       growthThesis: "AI transforms creative workflows fundamentally. First-mover advantage in AI-native creative tools could capture the next generation of creators.",
       productAIStrategy: "Build cutting-edge AI tools for content generation, style transfer, automated editing, and creative assistance that redefine creative workflows.",
       actions: "• Develop AI generation tools • Create style transfer systems • Build automated editing • Add creative AI assistants • Implement learning algorithms",
@@ -708,16 +718,19 @@ const EnvatoIndex = () => {
               {Object.entries(pathData).map(([pathName, data], index) => {
                 if (!data) return null;
                 return (
-                <div 
+                 <div 
                   key={pathName} 
-                  className={`flip-card ${flipped[`path${index + 1}`] ? 'flipped' : ''}`}
+                  className={`flip-card ${flipped[`path${index + 1}`] ? 'flipped' : ''} ${data.chosen ? 'ring-2 ring-primary/20' : ''}`}
                   onMouseLeave={() => unflip(`path${index + 1}`)}
                 >
                   <div className="flip-card-inner">
                     <div className="flip-face flip-front">
                       <div>
-                        <div className="card-subtitle">{data.category}</div>
-                        <h3 className="card-title">{pathName}</h3>
+                        <div className="card-subtitle">
+                          {data.category} · {data.allocationPercent}
+                          {data.chosen && <Badge variant="secondary" className="ml-2 text-xs bg-primary/10 text-primary">Chosen</Badge>}
+                        </div>
+                        <h3 className={`card-title ${data.chosen ? 'text-primary' : ''}`}>{pathName}</h3>
                         <p className="card-text">{data.growthThesis}</p>
                          <div className="flex flex-wrap gap-1 mb-4">
                            {(() => {

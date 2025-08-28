@@ -21,6 +21,8 @@ interface Story {
 
 interface PathData {
   category: string;
+  allocationPercent?: string;
+  chosen?: boolean;
   growthThesis: string;
   productAIStrategy: string;
   actions: string;
@@ -57,7 +59,15 @@ const FullPathModal: React.FC<FullPathModalProps> = ({ isOpen, onClose, pathName
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">{pathName}</DialogTitle>
-          <Badge variant="secondary" className="w-fit mt-2">{pathData.category}</Badge>
+          <div className="flex gap-2 mt-2">
+            <Badge variant="secondary" className="w-fit">{pathData.category}</Badge>
+            {pathData.allocationPercent && (
+              <Badge variant="outline" className="w-fit">{pathData.allocationPercent}</Badge>
+            )}
+            {pathData.chosen && (
+              <Badge variant="default" className="w-fit bg-primary">Chosen</Badge>
+            )}
+          </div>
         </DialogHeader>
         
         <div className="space-y-6 mt-6">
