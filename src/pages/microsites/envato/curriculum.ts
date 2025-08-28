@@ -27,20 +27,20 @@ export const curriculumData: CurriculumTrack[] = [
         id: "pm-101",
         course: "PM 101: Product Management Foundations",
         topics: [
-          "PRDs modern guide",
-          "Product Review Bible", 
-          "First Launch Guide",
-          "MVP Guide",
-          "Scaling teams 0→100",
-          "Daily PM habits",
-          "PM portfolio building",
-          "Becoming a PM with no prior experience"
+          "2025 AI fluency essentials",
+          "Ethical judgment frameworks", 
+          "Data storytelling mastery",
+          "Systems thinking approach",
+          "Community leadership skills",
+          "Influence and persuasion",
+          "Modern PRD development",
+          "Cross-functional orchestration"
         ],
         appliedAtEnvato: [
-          "PRD templates for creator tools and enterprise features",
-          "Launch playbooks for AI-powered asset recommendations",
-          "MVP strategy for agentic creative workflows",
-          "Team scaling from core platform to vertical expansion"
+          "AI model selection for creative workflows with cost/quality optimization",
+          "Ethical AI framework ensuring creator attribution and content provenance", 
+          "Data storytelling showing creator earnings lift and time-to-value metrics",
+          "Systems architecture enabling parallel team shipping and unified manifest"
         ],
         showcaseLinks: [
           { title: "Quick view paths", path: "/microsites/envato", anchor: "quick" },
@@ -53,16 +53,18 @@ export const curriculumData: CurriculumTrack[] = [
         id: "ai-pm-101",
         course: "AI PM 101: AI PM Foundations", 
         topics: [
-          "AI overview for PMs/builders",
-          "Becoming an AI PM (2025)",
-          "Path with no experience",
-          "Fixing common AI product mistakes"
+          "2025 AI PM transformation",
+          "Agentic workflow design",
+          "AI-first product strategy",
+          "Ethical AI implementation",
+          "Creative AI evaluation",
+          "Model context engineering"
         ],
         appliedAtEnvato: [
-          "AI model selection for content generation vs. search vs. recommendations",
-          "Ethical AI framework for creator content and attribution",
-          "AI performance metrics aligned with creative quality standards",
-          "Common AI pitfalls avoided: hallucination in asset tagging, bias in recommendations"
+          "Agentic creative workflows: brief → brand compliance → safety → export",
+          "AI-first product strategy for creator tools and enterprise solutions",
+          "Ethical AI with C2PA signing, license attachment, and audit trails",
+          "Creative AI evaluation focusing on quality, brand consistency, and user satisfaction"
         ],
         showcaseLinks: [
           { title: "AI Strategy", path: "/microsites/envato/orchestrator", anchor: "skills" },

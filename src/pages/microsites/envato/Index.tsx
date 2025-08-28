@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { competencyBadges } from './curriculum';
+import FullPathModal from '@/components/ui/full-path-modal';
 
 interface Note {
   id: string;
@@ -19,6 +20,7 @@ const EnvatoIndex = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
+  const [fullViewPath, setFullViewPath] = useState<string | null>(null);
   const { toast } = useToast();
 
   // Debounce timer for DB sync
@@ -760,11 +762,13 @@ const EnvatoIndex = () => {
                           Flip for steps
                         </Button>
                         <Dialog>
-                          <DialogTrigger asChild>
-                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
-                              Full view
-                            </Button>
-                          </DialogTrigger>
+                          <Button 
+                            size="sm" 
+                            style={{background: 'var(--envato)', color: '#fff'}}
+                            onClick={() => setFullViewPath("Core - Creator Tools")}
+                          >
+                            Full view
+                          </Button>
                           <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                             <DialogHeader>
                               <DialogTitle>Core - Creator Tools: Detailed Strategy</DialogTitle>
@@ -813,11 +817,13 @@ const EnvatoIndex = () => {
                           Back
                         </Button>
                         <Dialog>
-                          <DialogTrigger asChild>
-                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
-                              Full view
-                            </Button>
-                          </DialogTrigger>
+                          <Button 
+                            size="sm" 
+                            style={{background: 'var(--envato)', color: '#fff'}}
+                            onClick={() => setFullViewPath("Core - Enterprise")}
+                          >
+                            Full view
+                          </Button>
                           <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                             <DialogHeader>
                               <DialogTitle>Core - Creator Tools: Detailed Strategy</DialogTitle>
@@ -864,11 +870,13 @@ const EnvatoIndex = () => {
                           Flip for steps
                         </Button>
                         <Dialog>
-                          <DialogTrigger asChild>
-                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
-                              Full view
-                            </Button>
-                          </DialogTrigger>
+                          <Button 
+                            size="sm" 
+                            style={{background: 'var(--envato)', color: '#fff'}}
+                            onClick={() => setFullViewPath("Secondary - Learning")}
+                          >
+                            Full view
+                          </Button>
                           <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                             <DialogHeader>
                               <DialogTitle>Core - Enterprise: Detailed Strategy</DialogTitle>
@@ -917,11 +925,13 @@ const EnvatoIndex = () => {
                           Back
                         </Button>
                         <Dialog>
-                          <DialogTrigger asChild>
-                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
-                              Full view
-                            </Button>
-                          </DialogTrigger>
+                          <Button 
+                            size="sm" 
+                            style={{background: 'var(--envato)', color: '#fff'}}
+                            onClick={() => setFullViewPath("Secondary - Community")}
+                          >
+                            Full view
+                          </Button>
                           <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                             <DialogHeader>
                               <DialogTitle>Core - Enterprise: Detailed Strategy</DialogTitle>
@@ -968,11 +978,13 @@ const EnvatoIndex = () => {
                           Flip for steps
                         </Button>
                         <Dialog>
-                          <DialogTrigger asChild>
-                            <Button size="sm" style={{background: 'var(--envato)', color: '#fff'}}>
-                              Full view
-                            </Button>
-                          </DialogTrigger>
+                          <Button 
+                            size="sm" 
+                            style={{background: 'var(--envato)', color: '#fff'}}
+                            onClick={() => setFullViewPath("Satellite - New Verticals")}
+                          >
+                            Full view
+                          </Button>
                           <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                             <DialogHeader>
                               <DialogTitle>Secondary - Learning: Detailed Strategy</DialogTitle>
@@ -1583,6 +1595,16 @@ const EnvatoIndex = () => {
           </section>
         </main>
       </div>
+      
+      {/* Full Path Modal */}
+      {fullViewPath && (
+        <FullPathModal
+          isOpen={!!fullViewPath}
+          onClose={() => setFullViewPath(null)}
+          pathName={fullViewPath}
+          pathData={pathData[fullViewPath as keyof typeof pathData]}
+        />
+      )}
     </>
   );
 };
