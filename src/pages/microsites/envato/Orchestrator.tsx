@@ -7,6 +7,11 @@ import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbP
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Copy, ExternalLink } from 'lucide-react';
 import { curriculumData, type CurriculumTrack } from './curriculum';
 
@@ -26,6 +31,17 @@ const Orchestrator = () => {
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
+  
+  // State for email gate dialog
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    role: '',
+    intendedUse: '',
+    consent: false
+  });
   
   const { toast } = useToast();
 
@@ -147,6 +163,75 @@ const Orchestrator = () => {
     });
   };
 
+  const handleGatedCopy = async (text: string) => {
+    // Check if user has accessed in last 7 days
+    const lastAccess = localStorage.getItem('envato_metrics_access');
+    if (lastAccess && Date.now() - parseInt(lastAccess) < 7 * 24 * 60 * 60 * 1000) {
+      copyToClipboard(text);
+      return;
+    }
+
+    setIsDialogOpen(true);
+  };
+
+  const handleFormSubmit = async () => {
+    if (!formData.name || !formData.email || !formData.consent) {
+      toast({
+        title: "Missing information",
+        description: "Please fill in all required fields and accept the consent.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    try {
+      // Save to database
+      const { error } = await supabase
+        .from('resource_access_requests')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          role: formData.role,
+          intended_use: formData.intendedUse,
+          consent_marketing: formData.consent,
+          resource_type: 'envato_metrics'
+        });
+
+      if (error) throw error;
+
+      // Set access timestamp
+      localStorage.setItem('envato_metrics_access', Date.now().toString());
+      
+      // Copy the metrics
+      const metrics = Object.values(techNotes).join('\n\n');
+      copyToClipboard(metrics);
+      
+      setIsDialogOpen(false);
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        role: '',
+        intendedUse: '',
+        consent: false
+      });
+
+      toast({
+        title: "Access granted",
+        description: "Metrics copied to clipboard. You'll have access for 7 days.",
+      });
+
+    } catch (error) {
+      console.error('Error saving access request:', error);
+      toast({
+        title: "Error",
+        description: "Could not process request. Please try again.",
+        variant: "destructive"
+      });
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -192,8 +277,7 @@ const Orchestrator = () => {
             <div className="bg-muted/50 border border-border rounded-xl p-6">
               <h2 className="text-2xl font-semibold mb-4">Lens</h2>
               <p className="text-muted-foreground mb-6">
-            Products do not fail because models are weak. They fail when people are not aligned. 
-                My job is to align people and outcomes so AI becomes a growth engine.
+                The era of building AI features in isolation is over. Products succeed when AI creates meaningful outcomes for every stakeholder in the ecosystem. The orchestrator's job is to align people, technology, and business models so AI becomes a sustainable growth engine rather than a one-time experiment.
               </p>
               
               {/* Orchestrator Graphic */}
@@ -355,15 +439,36 @@ const Orchestrator = () => {
             <h2 className="text-2xl font-semibold mb-6">How leading teams view PM now</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
-                { company: 'Microsoft', quote: 'PMs guide agents with memory and feedback. Treat AI like a co worker. Ship loops not demos.' },
-                { company: 'Apple', quote: 'Ship simple and private by default. Quality and safety as features. Craft wins adoption.' },
-                { company: 'Meta', quote: 'Scale matters. Measure learning loops. Balance growth with integrity and trust.' },
-                { company: 'OpenAI', quote: 'Make AI useful and reliable. Align models to user intent. Be clear about limits.' }
-              ].map(({ company, quote }) => (
+                { 
+                  company: 'Microsoft', 
+                  quote: 'PMs guide agents with memory and feedback. Treat AI like a co worker. Ship loops not demos.',
+                  bullets: ['• Agent personas with persistent context', '• Human-in-the-loop feedback systems', '• Iterative improvement cycles over one-off features']
+                },
+                { 
+                  company: 'Apple', 
+                  quote: 'Ship simple and private by default. Quality and safety as features. Craft wins adoption.',
+                  bullets: ['• Privacy-preserving AI architectures', '• Quality metrics as product features', '• Design simplicity in complex systems']
+                },
+                { 
+                  company: 'Meta', 
+                  quote: 'Scale matters. Measure learning loops. Balance growth with integrity and trust.',
+                  bullets: ['• Real-time model performance tracking', '• Community-driven safety mechanisms', '• Growth metrics tied to trust scores']
+                },
+                { 
+                  company: 'OpenAI', 
+                  quote: 'Make AI useful and reliable. Align models to user intent. Be clear about limits.',
+                  bullets: ['• Intent detection and routing systems', '• Transparent capability boundaries', '• User education as core product feature']
+                }
+              ].map(({ company, quote, bullets }) => (
                 <div key={company} className="bg-background border border-border rounded-lg p-4">
                   <h3 className="font-semibold mb-2">{company}</h3>
-                  <div className="bg-muted/50 border-l-4 border-primary p-3 rounded text-sm">
+                  <div className="bg-muted/50 border-l-4 border-primary p-3 rounded text-sm mb-3">
                     {quote}
+                  </div>
+                  <div className="space-y-1">
+                    {bullets.map((bullet, idx) => (
+                      <p key={idx} className="text-xs text-muted-foreground">{bullet}</p>
+                    ))}
                   </div>
                 </div>
               ))}
@@ -379,20 +484,35 @@ const Orchestrator = () => {
               <div className="space-y-4">
                 <details className="bg-background border border-border rounded-lg">
                   <summary className="p-3 font-semibold cursor-pointer">People first</summary>
-                  <div className="p-3 border-t border-border text-sm text-muted-foreground">
-                    Adoption beats novelty. I design for trust and rewards so people lean in.
+                  <div className="p-3 border-t border-border text-sm text-muted-foreground space-y-2">
+                    <p>Adoption beats novelty. I design for trust and rewards so people lean in.</p>
+                    <ul className="text-xs space-y-1 ml-4">
+                      <li>• Contributor earnings transparency and predictable payouts</li>
+                      <li>• Customer safety guarantees with provenance verification</li>
+                      <li>• Enterprise compliance built into the core product</li>
+                    </ul>
                   </div>
                 </details>
                 <details className="bg-background border border-border rounded-lg">
                   <summary className="p-3 font-semibold cursor-pointer">Outcomes over features</summary>
-                  <div className="p-3 border-t border-border text-sm text-muted-foreground">
-                    Time to first useful asset. Time from brief to publish. That is how we win.
+                  <div className="p-3 border-t border-border text-sm text-muted-foreground space-y-2">
+                    <p>Time to first useful asset. Time from brief to publish. That is how we win.</p>
+                    <ul className="text-xs space-y-1 ml-4">
+                      <li>• 43s → 28s time-to-first-useful-asset via intelligent search</li>
+                      <li>• 4.2min vs 23min manual completion through agentic workflows</li>
+                      <li>• 23% CTR lift through learning-to-rank optimization</li>
+                    </ul>
                   </div>
                 </details>
                 <details className="bg-background border border-border rounded-lg">
                   <summary className="p-3 font-semibold cursor-pointer">Orchestrate teams</summary>
-                  <div className="p-3 border-t border-border text-sm text-muted-foreground">
-                    Platform SLAs. Independent squads. Shared manifest. Ship in parallel.
+                  <div className="p-3 border-t border-border text-sm text-muted-foreground space-y-2">
+                    <p>Platform SLAs. Independent squads. Shared manifest. Ship in parallel.</p>
+                    <ul className="text-xs space-y-1 ml-4">
+                      <li>• Search API sub-200ms response time SLA</li>
+                      <li>• 99.7% uptime provenance verification service</li>
+                      <li>• Single asset manifest across all surfaces and integrations</li>
+                    </ul>
                   </div>
                 </details>
               </div>
@@ -403,20 +523,35 @@ const Orchestrator = () => {
               <div className="space-y-4">
                 <details className="bg-background border border-border rounded-lg">
                   <summary className="p-3 font-semibold cursor-pointer">Feature factory</summary>
-                  <div className="p-3 border-t border-border text-sm text-muted-foreground">
-                    Busy roadmaps with low adoption. No thanks.
+                  <div className="p-3 border-t border-border text-sm text-muted-foreground space-y-2">
+                    <p>Busy roadmaps with low adoption. No thanks.</p>
+                    <ul className="text-xs space-y-1 ml-4">
+                      <li>• Shipping 50 AI features but customers use 3</li>
+                      <li>• Complex UIs that intimidate rather than enable</li>
+                      <li>• No clear value proposition or success metrics</li>
+                    </ul>
                   </div>
                 </details>
                 <details className="bg-background border border-border rounded-lg">
                   <summary className="p-3 font-semibold cursor-pointer">Tech first</summary>
-                  <div className="p-3 border-t border-border text-sm text-muted-foreground">
-                    Great models. No community. Product stalls.
+                  <div className="p-3 border-t border-border text-sm text-muted-foreground space-y-2">
+                    <p>Great models. No community. Product stalls.</p>
+                    <ul className="text-xs space-y-1 ml-4">
+                      <li>• Amazing AI capabilities but contributors won't adopt</li>
+                      <li>• No incentive alignment or trust mechanisms</li>
+                      <li>• Technical excellence without business model clarity</li>
+                    </ul>
                   </div>
                 </details>
                 <details className="bg-background border border-border rounded-lg">
                   <summary className="p-3 font-semibold cursor-pointer">One off integrations</summary>
-                  <div className="p-3 border-t border-border text-sm text-muted-foreground">
-                    Custom glue each time. Slow and brittle.
+                  <div className="p-3 border-t border-border text-sm text-muted-foreground space-y-2">
+                    <p>Custom glue each time. Slow and brittle.</p>
+                    <ul className="text-xs space-y-1 ml-4">
+                      <li>• Every partner requires custom integration work</li>
+                      <li>• No standard APIs or reusable components</li>
+                      <li>• Breaking changes cascade across all connections</li>
+                    </ul>
                   </div>
                 </details>
               </div>
@@ -446,12 +581,91 @@ const Orchestrator = () => {
                       {techNotes[id as keyof typeof techNotes]}
                     </div>
                   </details>
-                  <button
-                    onClick={() => copyToClipboard(techNotes[id as keyof typeof techNotes])}
-                    className="bg-primary text-primary-foreground px-3 py-1 rounded text-sm font-medium hover:bg-primary/90 transition-colors"
-                  >
-                    Copy detailed metrics
-                  </button>
+                  <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                    <DialogTrigger asChild>
+                      <button
+                        onClick={() => handleGatedCopy(techNotes[id as keyof typeof techNotes])}
+                        className="bg-primary text-primary-foreground px-3 py-1 rounded text-sm font-medium hover:bg-primary/90 transition-colors"
+                      >
+                        Copy detailed metrics
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-md">
+                      <DialogHeader>
+                        <DialogTitle>Access Detailed Metrics</DialogTitle>
+                        <DialogDescription>
+                          Please provide your information to access the complete technical implementation details with specific KPIs and metrics.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="space-y-4">
+                        <div>
+                          <Label htmlFor="name">Name *</Label>
+                          <Input
+                            id="name"
+                            value={formData.name}
+                            onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                            placeholder="Your full name"
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="email">Email *</Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                            placeholder="your.email@company.com"
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="company">Company</Label>
+                          <Input
+                            id="company"
+                            value={formData.company}
+                            onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
+                            placeholder="Your organization"
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="role">Role</Label>
+                          <Input
+                            id="role"
+                            value={formData.role}
+                            onChange={(e) => setFormData(prev => ({ ...prev, role: e.target.value }))}
+                            placeholder="Your job title"
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="intendedUse">Intended use</Label>
+                          <Textarea
+                            id="intendedUse"
+                            value={formData.intendedUse}
+                            onChange={(e) => setFormData(prev => ({ ...prev, intendedUse: e.target.value }))}
+                            placeholder="How will you use these metrics?"
+                            rows={3}
+                          />
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Checkbox
+                            id="consent"
+                            checked={formData.consent}
+                            onCheckedChange={(checked) => setFormData(prev => ({ ...prev, consent: !!checked }))}
+                          />
+                          <Label htmlFor="consent" className="text-sm">
+                            I consent to receiving occasional updates about Troy's work and insights. *
+                          </Label>
+                        </div>
+                      </div>
+                      <DialogFooter>
+                        <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
+                          Cancel
+                        </Button>
+                        <Button onClick={handleFormSubmit}>
+                          Get Access
+                        </Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
                   <p className="text-xs text-muted-foreground mt-2">
                     "Copy detailed metrics" copies the complete technical implementation details with specific KPIs, architecture decisions, and performance metrics to your clipboard for use in documentation or presentations.
                   </p>
