@@ -14,6 +14,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Copy, ExternalLink } from 'lucide-react';
 import { curriculumData, type CurriculumTrack } from './curriculum';
+import { envatoFAQs } from './data/envatoFAQs';
 
 interface Note {
   id: string;
@@ -808,6 +809,68 @@ const Orchestrator = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Envato FAQs Quick Access */}
+        <section id="envato-faqs" className="mb-12">
+          <div className="bg-card border border-border rounded-xl p-6">
+            <h2 className="text-2xl font-semibold mb-4">Envato FAQs (Quick Access)</h2>
+            <p className="text-muted-foreground mb-6">
+              Key questions about Envato AI strategy. Each item provides a summary with options to jump to the full answer below or copy the response.
+            </p>
+            
+            <Accordion type="single" collapsible className="w-full">
+              {envatoFAQs.map((faq) => (
+                <AccordionItem key={faq.id} value={faq.id}>
+                  <AccordionTrigger className="text-left">
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className="text-xs">
+                        {faq.category}
+                      </Badge>
+                      {faq.question}
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className="space-y-3">
+                      <p className="text-sm text-muted-foreground line-clamp-3">
+                        {faq.answer.substring(0, 150)}...
+                      </p>
+                      <div className="flex gap-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            const targetElement = document.getElementById(`qa-${faq.category}`);
+                            if (targetElement) {
+                              targetElement.scrollIntoView({ behavior: 'smooth' });
+                              // Auto-expand the accordion item
+                              setTimeout(() => {
+                                const details = targetElement.closest('details');
+                                if (details && !details.open) {
+                                  details.open = true;
+                                }
+                              }, 500);
+                            }
+                          }}
+                        >
+                          <ExternalLink className="h-3 w-3 mr-1" />
+                          Jump to full answer
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => copyToClipboard(faq.answer)}
+                        >
+                          <Copy className="h-3 w-3 mr-1" />
+                          Copy answer
+                        </Button>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
 
