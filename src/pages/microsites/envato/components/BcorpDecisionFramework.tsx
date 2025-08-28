@@ -37,7 +37,8 @@ const BcorpDecisionFramework = () => {
       publicCo: 3.25,
       final: 3.98,
       rank: 1,
-      color: "bg-emerald-500"
+      color: "bg-emerald-500",
+      notes: "Highest overall. Strongest community alignment. Multi-stream creator income. Risk: moderation + volatility."
     },
     {
       path: "Vertical Expansion",
@@ -48,7 +49,8 @@ const BcorpDecisionFramework = () => {
       publicCo: 3.0,
       final: 3.43,
       rank: 2,
-      color: "bg-blue-500"
+      color: "bg-blue-500",
+      notes: "Balanced growth. Durable TAM in education/gaming/retail. Slower enterprise cycles."
     },
     {
       path: "Infrastructure",
@@ -59,7 +61,8 @@ const BcorpDecisionFramework = () => {
       publicCo: 3.75,
       final: 3.40,
       rank: 3,
-      color: "bg-amber-500"
+      color: "bg-amber-500",
+      notes: "ARR stabiliser. Strong enterprise trust. Weakest on community upside."
     },
     {
       path: "Platform Enabler",
@@ -70,7 +73,8 @@ const BcorpDecisionFramework = () => {
       publicCo: 4.0,
       final: 3.15,
       rank: 4,
-      color: "bg-slate-500"
+      color: "bg-slate-500",
+      notes: "Fast monetisation via APIs. High differentiation. Lower community + B Corp fit."
     },
     {
       path: "Radical Play",
@@ -81,7 +85,8 @@ const BcorpDecisionFramework = () => {
       publicCo: 2.75,
       final: 2.95,
       rank: 5,
-      color: "bg-rose-500"
+      color: "bg-rose-500",
+      notes: "Optionality. Future immersive/agentic AI upside. Very low near-term viability."
     }
   ];
 
@@ -98,7 +103,8 @@ const BcorpDecisionFramework = () => {
       category: "Strategic Support", 
       allocation: "20%",
       paths: [
-        { name: "Enterprise Compliance", percent: "15%", description: "Revenue stability during community platform scaling" }
+        { name: "Enterprise Compliance (Infrastructure)", percent: "15%", description: "Revenue stability during community platform scaling" },
+        { name: "Platform API", percent: "5%", description: "SaaS ecosystem embedding" }
       ]
     },
     {
@@ -167,7 +173,7 @@ const BcorpDecisionFramework = () => {
       {/* Path Scores Table */}
       <Card>
         <CardHeader>
-          <CardTitle>Strategic Path Scoring Results</CardTitle>
+          <CardTitle>Strategic Path Comparison – 2025 (Corrected)</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
@@ -181,6 +187,7 @@ const BcorpDecisionFramework = () => {
                   <th className="text-center py-3 px-2">B Corp<br/><span className="text-xs text-muted-foreground">(25%)</span></th>
                   <th className="text-center py-3 px-2">Public Co<br/><span className="text-xs text-muted-foreground">(20%)</span></th>
                   <th className="text-center py-3 px-2 font-bold">Final Score</th>
+                  <th className="text-left py-3 px-2">Notes</th>
                 </tr>
               </thead>
               <tbody>
@@ -205,6 +212,9 @@ const BcorpDecisionFramework = () => {
                       <Badge className={`${path.color} text-white font-bold`}>
                         {path.final}/5
                       </Badge>
+                    </td>
+                    <td className="py-3 px-2 text-sm text-muted-foreground max-w-xs">
+                      {path.notes}
                     </td>
                   </tr>
                 ))}
