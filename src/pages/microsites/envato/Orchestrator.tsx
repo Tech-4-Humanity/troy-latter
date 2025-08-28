@@ -275,7 +275,7 @@ const Orchestrator = () => {
             You want more than features. You want alignment. Customers. Contributors. Enterprise. Agents. One cadence.
           </p>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-1 gap-8">
             {/* Left: Lens */}
             <div className="bg-muted/50 border border-border rounded-xl p-6">
               <h2 className="text-2xl font-semibold mb-4">Lens</h2>
@@ -290,6 +290,38 @@ const Orchestrator = () => {
                   alt="Complete Product Management MBA"
                   className="w-full h-auto object-contain rounded-lg"
                 />
+              </div>
+              
+              {/* Skills in action - moved from right card */}
+              <div className="bg-card border border-border rounded-xl p-6 mb-6">
+                <h2 className="text-2xl font-semibold mb-4">Skills in action</h2>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="font-semibold mb-2">Define the asset</h3>
+                    <p className="text-muted-foreground text-sm">
+                      From files to kits and storefronts and APIs. Clear manifest. Clear lineage.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Align incentives</h3>
+                    <p className="text-muted-foreground text-sm">
+                      Contributors earn fairly. Customers get speed and safety. Enterprise gets control.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Ship outcomes</h3>
+                    <p className="text-muted-foreground text-sm">
+                      Win with time saved and risk reduced. Measure and publish the lift.
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-6 grid grid-cols-2 gap-2">
+                  {Object.keys(skillContent).slice(0, 4).map((skill) => (
+                    <span key={skill} className="px-2 py-1 bg-muted border border-border rounded text-xs text-center">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
               
               <div className="flex flex-wrap gap-2">
@@ -324,38 +356,6 @@ const Orchestrator = () => {
                   >
                     {label}
                   </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Skills & Application */}
-            <div className="bg-card border border-border rounded-xl p-6">
-              <h2 className="text-2xl font-semibold mb-4">Skills in action</h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-semibold mb-2">Define the asset</h3>
-                  <p className="text-muted-foreground text-sm">
-                    From files to kits and storefronts and APIs. Clear manifest. Clear lineage.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-2">Align incentives</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Contributors earn fairly. Customers get speed and safety. Enterprise gets control.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-2">Ship outcomes</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Win with time saved and risk reduced. Measure and publish the lift.
-                  </p>
-                </div>
-              </div>
-              <div className="mt-6 grid grid-cols-2 gap-2">
-                {Object.keys(skillContent).slice(0, 4).map((skill) => (
-                  <span key={skill} className="px-2 py-1 bg-muted border border-border rounded text-xs text-center">
-                    {skill}
-                  </span>
                 ))}
               </div>
             </div>
