@@ -27,7 +27,7 @@ const EnvatoIndex = () => {
 
   // State for flip cards
   const [flipped, setFlipped] = useState<Record<string, boolean>>({});
-  
+
   const flip = (key: string) => setFlipped(p => ({ ...p, [key]: !p[key] }));
   const unflip = (key: string) => setFlipped(p => ({ ...p, [key]: false }));
 
@@ -197,286 +197,239 @@ const EnvatoIndex = () => {
           situation: "Alex's project management SaaS wanted to offer custom branded templates and visual assets to their 50,000+ business users.",
           problem: "Users constantly requested branded templates, but building an internal creative team was cost-prohibitive and outside their core competency.",
           resolution: "Integrating Envato's Creative API, Alex's platform now auto-generates branded templates using users' company colors and logos. The API provides template suggestions based on industry and use case.",
-          outcome: "User engagement increased 40%, premium subscription upgrades rose 25%, and Alex's team avoided hiring a 6-person creative team while offering enterprise-level customization."
-        },
-        {
-          title: "Future Case Study 2 — The AI Startup: Content Generation Platform",
-          situation: "Priya's AI writing tool needed visual assets to accompany generated content—social media images, presentation slides, and blog graphics.",
-          problem: "Their AI could write compelling content but users needed matching visuals, requiring them to switch between multiple platforms.",
-          resolution: "Through Envato's Platform API, Priya's tool automatically suggests and generates contextually relevant visuals. AI analyzes the written content and provides matching stock photos, design templates, and graphics.",
-          outcome: "User workflow completion rates improved 60%. Priya's platform became a one-stop solution for content+visual creation, leading to a successful Series A funding round."
+          outcome: "User engagement increased 40%, premium subscriptions grew 25%, and Alex's team could focus on their core product while offering creative capabilities."
         }
       ],
       plan14: [
         { title: "Executive summary", text: "API first creative backend for SaaS and AI tools." },
-        { title: "Current position", text: "Few integrations. No API first posture." },
-        { title: "Market view", text: "SaaS and AI need content APIs. Usage revenue at scale." },
-        { title: "Asset model", text: "APIs for search and recommend and license verify and provenance." },
-        { title: "Strategy by horizon", text: "H1 core APIs. H2 workflow APIs. H3 default creative backend." },
-        { title: "Monetisation", text: "Usage based pricing. Enterprise contracts. Developer fees." },
-        { title: "Contributor economics", text: "Revenue share on API usage. Premium for API ready assets." },
-        { title: "Data and trust", text: "API rate limits. Usage analytics. Enterprise SLAs." },
-        { title: "Go to market", text: "Developer conferences. API partnerships. Technical content." },
-        { title: "Flywheel", text: "Developers build demand. Usage drives revenue." },
-        { title: "Technical priorities", text: "API infrastructure. Rate limiting. Usage tracking." },
-        { title: "Risks and mitigations", text: "Platform competition. Focus on creative specialization." },
-        { title: "AI product manager role", text: "Balance developer and business needs. Ship platform features." },
-        { title: "Next steps", text: "Launch API beta. Build developer portal. Create usage pricing." }
+        { title: "Current position", text: "Some APIs. No developer platform. Limited enterprise tools." },
+        { title: "Market view", text: "Developer platforms huge. API economy growing. SaaS needs creative." },
+        { title: "Asset model", text: "API access and generation credits and enterprise integrations." },
+        { title: "Strategy by horizon", text: "H1 core APIs. H2 developer platform. H3 white label solutions." },
+        { title: "Monetisation", text: "API calls and developer seats and enterprise contracts." },
+        { title: "Contributor economics", text: "API usage royalties. Developer marketplace fees." },
+        { title: "Data and trust", text: "API authentication. Usage analytics. SLA guarantees." },
+        { title: "Go to market", text: "Developer events. API documentation. Integration partnerships." },
+        { title: "Flywheel", text: "More developers drive platform value. Value attracts contributors." },
+        { title: "Technical priorities", text: "API infrastructure. Developer tools. Documentation platform." },
+        { title: "Risks and mitigations", text: "Platform dependency risk. Multi cloud strategy." },
+        { title: "AI product manager role", text: "Balance developer and contributor needs. Ship API features." },
+        { title: "Next steps", text: "Launch API beta. Build documentation. Recruit key developers." }
       ]
     },
     "Path 5 Radical Play": {
-      category: "Satellite",
-      growthThesis: "Expanding into adjacent creative verticals can capture new market segments. AI can accelerate this expansion by automating content creation in new domains.",
-      productAIStrategy: "Leverage AI to quickly establish presence in new creative verticals through automated content generation, market analysis, and rapid prototyping.",
-      actions: "• Research new verticals • Build content generation AI • Create market analysis tools • Develop rapid prototyping • Test market validation",
+      category: "Experimental",
+      growthThesis: "AI transforms creative workflows fundamentally. First-mover advantage in AI-native creative tools could capture the next generation of creators.",
+      productAIStrategy: "Build cutting-edge AI tools for content generation, style transfer, automated editing, and creative assistance that redefine creative workflows.",
+      actions: "• Develop AI generation tools • Create style transfer systems • Build automated editing • Add creative AI assistants • Implement learning algorithms",
       stories: [
         {
-          title: "Future Case Study 1 — The VR Experience Studio: Immersive Content Creator",
-          situation: "João's VR studio in São Paulo creates virtual museum experiences but struggled with the time and cost of producing 3D environments and interactive elements.",
-          problem: "Each VR experience required months of 3D modeling, texture work, and interaction design, making projects expensive and limiting client acquisition.",
-          resolution: "Using Envato's Immersive Content Hub, João accesses AI-generated 3D environments, interactive element libraries, and spatial audio assets. The platform provides VR-optimized assets with automatic LOD (level of detail) optimization.",
-          outcome: "VR experience development time reduced from 6 months to 6 weeks. João's studio scales from 2 to 15 client projects annually, becoming the leading VR cultural experience provider in Brazil."
-        },
-        {
-          title: "Future Case Study 2 — The AI Agent Developer: Conversational Interface Creator",
-          situation: "Lisa develops AI customer service agents for e-commerce but needed diverse avatar personalities, voice options, and visual branding for each client.",
-          problem: "Creating unique agent personalities for each client required custom character design, voice acting, and UI development—costs that priced out smaller businesses.",
-          resolution: "Envato's Agent Experience Library provides pre-designed agent personalities, voice samples, conversation flow templates, and branded UI components. AI suggests optimal agent characteristics based on client industry and tone.",
-          outcome: "Lisa's AI agent deployment time drops from 3 months to 3 weeks. She expands from enterprise clients to mid-market businesses, growing her agency from 5 to 50 employees."
+          title: "Future Case Study 1 — The Content Creator: YouTube Channel Owner",
+          situation: "Marcus runs a tech review channel with 2M subscribers. Content creation was becoming overwhelming with daily uploads.",
+          problem: "Video editing, thumbnail creation, and content optimization took 12+ hours daily, leaving little time for the actual creative work he loved.",
+          resolution: "Using Envato's AI Creative Copilot, Marcus describes his video concept and the AI generates thumbnail options, edits raw footage into polished videos, and suggests optimal content flow based on audience engagement patterns.",
+          outcome: "Marcus reduced production time by 80% while improving video quality and viewer retention. He could focus on creativity while AI handled the technical execution."
         }
       ],
       plan14: [
         { title: "Executive summary", text: "Immersive and agentic AI content substrate." },
-        { title: "Current position", text: "2D focus. No VR or immersive pipeline." },
-        { title: "Market view", text: "Immersive economies 500B plus by 2030." },
-        { title: "Asset model", text: "3D kits and world packs and avatar and agent bundles." },
-        { title: "Strategy by horizon", text: "H1 3D kits. H2 world builder and agent packs. H3 synthetic substrate." },
-        { title: "Monetisation", text: "Premium immersive assets. World licences. Agent subscriptions." },
-        { title: "Contributor economics", text: "High rates for 3D content. World building bonuses." },
-        { title: "Data and trust", text: "3D asset verification. World ownership. Agent behavior controls." },
-        { title: "Go to market", text: "VR conferences. Gaming partnerships. Metaverse marketing." },
-        { title: "Flywheel", text: "Immersive demand drives content. Content enables experiences." },
-        { title: "Technical priorities", text: "3D pipelines. World engines. Agent frameworks." },
-        { title: "Risks and mitigations", text: "Technology maturity. Start with simple 3D assets." },
-        { title: "AI product manager role", text: "Understand immersive needs. Ship experimental features." },
-        { title: "Next steps", text: "Build 3D prototype. Partner with VR studio. Test market demand." }
+        { title: "Current position", text: "Traditional assets. Limited AI capabilities. No agentic features." },
+        { title: "Market view", text: "AI content market exploding. First mover advantage possible." },
+        { title: "Asset model", text: "AI generated content and agentic workflows and creative copilots." },
+        { title: "Strategy by horizon", text: "H1 AI generation. H2 agentic workflows. H3 creative OS platform." },
+        { title: "Monetisation", text: "AI credits and premium features and enterprise licenses." },
+        { title: "Contributor economics", text: "AI training data licensing. Quality curation bonuses." },
+        { title: "Data and trust", text: "AI transparency. Content attribution. Quality guarantees." },
+        { title: "Go to market", text: "Creator beta program. AI conferences. Technology partnerships." },
+        { title: "Flywheel", text: "Better AI attracts creators. Creator usage improves AI." },
+        { title: "Technical priorities", text: "AI infrastructure. Model training. Real time processing." },
+        { title: "Risks and mitigations", text: "Technology risk. Partner with AI leaders." },
+        { title: "AI product manager role", text: "Balance innovation and practicality. Ship AI features." },
+        { title: "Next steps", text: "AI research team. Technology partnerships. Beta program." }
       ]
     }
   };
 
-  useEffect(() => {
-    // Scroll to top on mount
-    window.scrollTo({ top: 0 });
+  // Load notes from both Supabase (if authenticated) and localStorage (as backup)
+  const loadNotes = async () => {
+    setIsLoading(true);
     
-    const initializeNotes = async () => {
-      try {
-        // Check authentication
-        const { data: { session } } = await supabase.auth.getSession();
-        const authenticated = !!session?.user;
-        setIsAuthenticated(authenticated);
-
-        if (authenticated) {
-          // Load from database
-          await loadNotesFromDB();
-        } else {
-          // Load from localStorage as fallback
-          loadNotesFromLocalStorage();
-        }
-      } catch (error) {
-        console.error('Error initializing notes:', error);
-        loadNotesFromLocalStorage();
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    initializeNotes();
-  }, []);
-
-  const loadNotesFromDB = async () => {
     try {
-      const { data, error } = await supabase
-        .from('envato_strategy_notes')
-        .select('*');
-
-      if (error) throw error;
-
-      const notesMap: Record<string, string> = {};
-      data?.forEach((note: Note) => {
-        notesMap[note.note_key] = note.content;
-      });
-      setNotes(notesMap);
-      
-      // Sync DB notes to localStorage for offline access
-      Object.entries(notesMap).forEach(([key, value]) => {
-        localStorage.setItem(`envato_strategy_note_${key}`, value);
-      });
-    } catch (error) {
-      console.error('Error loading notes from DB:', error);
-      loadNotesFromLocalStorage();
-    }
-  };
-
-  const loadNotesFromLocalStorage = () => {
-    const localNotes: Record<string, string> = {};
-    const PREFIX = "envato_strategy_note_";
-    
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key?.startsWith(PREFIX)) {
-        const noteKey = key.replace(PREFIX, '');
-        localNotes[noteKey] = localStorage.getItem(key) || '';
-      }
-    }
-    setNotes(localNotes);
-  };
-
-  const saveNoteToDB = async (noteKey: string, content: string) => {
-    if (!isAuthenticated) return;
-
-    try {
+      // Check authentication
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      setIsAuthenticated(!!user);
 
-      const { error } = await supabase
-        .from('envato_strategy_notes')
-        .upsert({
-          note_key: noteKey,
-          content: content,
-          user_id: user.id
-        });
+      if (user) {
+        // Load from Supabase if authenticated
+        const { data, error } = await supabase
+          .from('notes')
+          .select('*')
+          .eq('user_id', user.id);
 
-      if (error) throw error;
-      
-      // Show subtle success indicator
-      toast({
-        title: "Saved",
-        description: "Notes synced to cloud",
-        duration: 2000,
-      });
+        if (error) {
+          console.error('Error loading notes:', error);
+          toast({
+            title: "Error loading notes",
+            description: "Failed to load notes from cloud storage. Using local backup.",
+            variant: "destructive",
+          });
+        } else {
+          const notesMap = data.reduce((acc, note) => {
+            acc[note.note_key] = note.content;
+            return acc;
+          }, {} as Record<string, string>);
+          setNotes(notesMap);
+          
+          // Also save to localStorage as backup
+          localStorage.setItem('envato-notes', JSON.stringify(notesMap));
+        }
+      } else {
+        // Load from localStorage if not authenticated
+        const localNotes = localStorage.getItem('envato-notes');
+        if (localNotes) {
+          setNotes(JSON.parse(localNotes));
+        }
+      }
     } catch (error) {
-      console.error('Error saving note to DB:', error);
+      console.error('Error in loadNotes:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load notes. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleNoteChange = (noteKey: string, content: string) => {
-    // Always save to localStorage immediately (offline-first)
-    localStorage.setItem(`envato_strategy_note_${noteKey}`, content);
-    setNotes(prev => ({ ...prev, [noteKey]: content }));
+  // Handle note changes with debounced save
+  const handleNoteChange = (key: string, value: string) => {
+    setNotes(prev => ({ ...prev, [key]: value }));
+    
+    // Save to localStorage immediately
+    const newNotes = { ...notes, [key]: value };
+    localStorage.setItem('envato-notes', JSON.stringify(newNotes));
 
-    // Clear existing debounce timer for this note
-    if (debounceTimers[noteKey]) {
-      clearTimeout(debounceTimers[noteKey]);
+    // Clear existing timer for this key
+    if (debounceTimers[key]) {
+      clearTimeout(debounceTimers[key]);
     }
 
-    // Debounce DB save
+    // Only save to DB if authenticated
     if (isAuthenticated) {
-      const timer = setTimeout(() => {
-        saveNoteToDB(noteKey, content);
+      const timer = setTimeout(async () => {
+        try {
+          const { data: { user } } = await supabase.auth.getUser();
+          if (user) {
+            const { error } = await supabase
+              .from('notes')
+              .upsert({
+                user_id: user.id,
+                note_key: key,
+                content: value
+              });
+
+            if (error) {
+              console.error('Error saving note:', error);
+            }
+          }
+        } catch (error) {
+          console.error('Error in handleNoteChange:', error);
+        }
       }, 1000); // 1 second debounce
 
-      setDebounceTimers(prev => ({ ...prev, [noteKey]: timer }));
+      setDebounceTimers(prev => ({ ...prev, [key]: timer }));
     }
   };
 
+  // Save all notes immediately
   const saveAll = async () => {
     if (!isAuthenticated) {
-      // Just save to localStorage for non-authenticated users
-      document.querySelectorAll('.note').forEach((area: any) => {
-        const key = area.dataset.key;
-        localStorage.setItem(`envato_strategy_note_${key}`, area.value);
-      });
       toast({
-        title: "Saved locally",
-        description: "Notes saved on this device",
+        title: "Not authenticated",
+        description: "Please sign in to save notes to the cloud.",
+        variant: "destructive",
       });
       return;
     }
 
-    // Save all notes to database for authenticated users
     try {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
 
-      const promises: Promise<any>[] = [];
-      document.querySelectorAll('.note').forEach((area: any) => {
-        const key = area.dataset.key;
-        const content = area.value;
-        localStorage.setItem(`envato_strategy_note_${key}`, content);
-        
-        const upsertPromise = supabase.from('envato_strategy_notes').upsert({
-          note_key: key,
-          content: content,
-          user_id: user.id
-        });
-        promises.push(Promise.resolve(upsertPromise));
-      });
+      const noteEntries = Object.entries(notes).map(([key, content]) => ({
+        user_id: user.id,
+        note_key: key,
+        content
+      }));
 
-      await Promise.all(promises);
-      toast({
-        title: "All notes saved",
-        description: "Successfully synced to cloud",
-      });
+      const { error } = await supabase
+        .from('notes')
+        .upsert(noteEntries);
+
+      if (error) {
+        console.error('Error saving all notes:', error);
+        toast({
+          title: "Error saving notes",
+          description: "Failed to save notes to cloud storage.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Notes saved",
+          description: "All notes have been saved to cloud storage.",
+        });
+      }
     } catch (error) {
-      console.error('Error saving all notes:', error);
+      console.error('Error in saveAll:', error);
       toast({
-        title: "Error saving",
-        description: "Could not sync to cloud, but saved locally",
+        title: "Error",
+        description: "An unexpected error occurred while saving notes.",
         variant: "destructive",
       });
     }
   };
 
+  // Clear all notes
   const clearAll = async () => {
-    if (!confirm("Clear all notes on this device and cloud?")) return;
+    try {
+      setNotes({});
+      localStorage.removeItem('envato-notes');
 
-    // Clear localStorage
-    document.querySelectorAll('.note').forEach((area: any) => {
-      const key = area.dataset.key;
-      localStorage.removeItem(`envato_strategy_note_${key}`);
-      area.value = '';
-    });
-
-    // Clear database if authenticated
-    if (isAuthenticated) {
-      try {
+      if (isAuthenticated) {
         const { data: { user } } = await supabase.auth.getUser();
-        if (!user) return;
+        if (user) {
+          const { error } = await supabase
+            .from('notes')
+            .delete()
+            .eq('user_id', user.id);
 
-        const { error } = await supabase
-          .from('envato_strategy_notes')
-          .delete()
-          .eq('user_id', user.id);
-
-        if (error) throw error;
-      } catch (error) {
-        console.error('Error clearing notes from DB:', error);
+          if (error) {
+            console.error('Error clearing notes:', error);
+          }
+        }
       }
-    }
 
-    setNotes({});
-    toast({
-      title: "Notes cleared",
-      description: "All notes have been removed",
-    });
+      toast({
+        title: "Notes cleared",
+        description: "All notes have been removed.",
+      });
+    } catch (error) {
+      console.error('Error in clearAll:', error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred while clearing notes.",
+        variant: "destructive",
+      });
+    }
   };
 
   useEffect(() => {
-    const loadNotes = () => {
-      document.querySelectorAll('.note').forEach((area: any) => {
-        const key = area.dataset.key;
-        const value = notes[key] || localStorage.getItem(`envato_strategy_note_${key}`) || '';
-        area.value = value;
-        area.addEventListener('input', () => handleNoteChange(key, area.value));
-      });
-    };
+    loadNotes();
 
+    // Add event listeners for save/clear buttons
     document.getElementById('saveAll')?.addEventListener('click', saveAll);
     document.getElementById('clearAll')?.addEventListener('click', clearAll);
-    
-    if (!isLoading) {
-      loadNotes();
-    }
 
     return () => {
       document.getElementById('saveAll')?.removeEventListener('click', saveAll);
@@ -528,609 +481,405 @@ const EnvatoIndex = () => {
           width: 100%;
           max-width: 960px;
           margin: 0 auto 16px;
-          border-radius: 14px;
+          background: var(--card);
+          border-radius: 12px;
+          height: 240px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           border: 1px solid var(--line);
-          overflow: hidden;
         }
-        .envato-page .hero-image img {
-          width: 100%;
-          height: auto;
-          max-height: 520px;
-          object-fit: contain;
-          object-position: center;
-        }
-        .envato-page .kicker {
+        .envato-page .hero-text {
           color: var(--muted);
-          font-weight: 600;
-          letter-spacing: .02em;
+          font-size: 16px;
+          font-style: italic;
         }
-        .envato-page h1 {
-          margin: 0;
-          font-size: 32px;
+        .envato-page .hero-title {
+          margin: 0 0 8px 0;
+          font-size: 36px;
+          font-weight: 600;
+          color: var(--ink);
           line-height: 1.1;
         }
-        .envato-page .sub {
+        .envato-page .hero-subtitle {
+          margin: 0 0 16px 0;
+          font-size: 18px;
           color: var(--muted);
+          font-weight: 400;
+          line-height: 1.4;
         }
-        .envato-page .grid-2 {
+        .envato-page .hero-links {
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+        .envato-page .hero-link {
+          padding: 8px 16px;
+          background: var(--envato);
+          color: white;
+          border-radius: 6px;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 500;
+        }
+        .envato-page .hero-link:hover {
+          background: var(--envato-dark);
+        }
+        .envato-page .section {
+          margin: 32px 0;
+          padding: 32px 0;
+          border-top: 1px solid var(--line);
+        }
+        .envato-page .section:first-child {
+          border-top: none;
+        }
+        .envato-page .section-title {
+          margin: 0 0 24px 0;
+          font-size: 28px;
+          font-weight: 600;
+          color: var(--ink);
+        }
+        .envato-page .grid {
           display: grid;
-          grid-template-columns: 1.2fr .8fr;
-          gap: 20px;
-        }
-        @media (max-width: 980px) {
-          .envato-page .grid-2 {
-            grid-template-columns: 1fr;
-          }
+          gap: 24px;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         }
         .envato-page .card {
           background: var(--card);
           border: 1px solid var(--line);
-          border-radius: 14px;
-          padding: 16px;
+          border-radius: 12px;
+          padding: 24px;
+          position: relative;
+          height: fit-content;
         }
-        .envato-page .section {
-          margin-bottom: 32px;
+        .envato-page .flip-card {
+          perspective: 1000px;
+          height: 400px;
         }
-        .envato-page .section-title {
-          font-size: 22px;
+        .envato-page .flip-card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          transition: transform 0.6s;
+          transform-style: preserve-3d;
+        }
+        .envato-page .flip-card.flipped .flip-card-inner {
+          transform: rotateY(180deg);
+        }
+        .envato-page .flip-face {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          background: var(--card);
+          border: 1px solid var(--line);
+          border-radius: 12px;
+          padding: 24px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .envato-page .flip-back {
+          transform: rotateY(180deg);
+        }
+        .envato-page .card-title {
+          margin: 0 0 12px 0;
+          font-size: 20px;
           font-weight: 600;
-          margin-bottom: 16px;
+          color: var(--ink);
         }
-        .envato-page .cards {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 16px;
-          margin-top: 16px;
-        }
-        .envato-page .meta {
-          color: var(--muted);
+        .envato-page .card-subtitle {
+          margin: 0 0 16px 0;
           font-size: 14px;
-          margin: 8px 0;
+          color: var(--muted);
+          text-transform: uppercase;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+        }
+        .envato-page .card-text {
+          margin: 0 0 16px 0;
+          font-size: 15px;
+          color: var(--ink);
+          line-height: 1.5;
         }
         .envato-page .table-wrap {
-          overflow: auto;
+          overflow-x: auto;
+          margin: 16px 0;
           border: 1px solid var(--line);
           border-radius: 8px;
-          margin: 16px 0;
         }
         .envato-page table {
           width: 100%;
           border-collapse: collapse;
           font-size: 14px;
-          min-width: 800px;
+          table-layout: fixed;
+        }
+        .envato-page th,
+        .envato-page td {
+          padding: 12px;
+          text-align: left;
+          border-bottom: 1px solid var(--line);
+          vertical-align: top;
         }
         .envato-page th {
           background: var(--card);
-          border-bottom: 1px solid var(--line);
-          padding: 12px;
-          text-align: left;
           font-weight: 600;
+          color: var(--ink);
         }
-        .envato-page td {
-          border-bottom: 1px solid var(--line);
-          padding: 12px;
-          vertical-align: top;
+        /* Equal width columns for comparison table */
+        .envato-page .comparison-table th:first-child,
+        .envato-page .comparison-table td:first-child {
+          width: 25%;
         }
+        .envato-page .comparison-table th:nth-child(2),
+        .envato-page .comparison-table td:nth-child(2),
+        .envato-page .comparison-table th:nth-child(3),
+        .envato-page .comparison-table td:nth-child(3),
+        .envato-page .comparison-table th:nth-child(4),
+        .envato-page .comparison-table td:nth-child(4),
+        .envato-page .comparison-table th:nth-child(5),
+        .envato-page .comparison-table td:nth-child(5),
+        .envato-page .comparison-table th:nth-child(6),
+        .envato-page .comparison-table td:nth-child(6) {
+          width: 15%;
+        }
+        .envato-page tr:last-child th,
         .envato-page tr:last-child td {
           border-bottom: none;
+        }
+        .envato-page .note {
+          width: 100%;
+          border: 1px solid var(--line);
+          border-radius: 6px;
+          padding: 8px;
+          font-size: 14px;
+          color: var(--ink);
+          resize: vertical;
+          min-height: 60px;
+          font-family: inherit;
+          background: white;
+        }
+        .envato-page .note:focus {
+          outline: none;
+          border-color: var(--envato);
+        }
+        .envato-page .dim-help {
+          color: var(--muted);
+          font-size: 14px;
+          font-style: italic;
+          margin-bottom: 16px;
+        }
+        .envato-page details {
+          border: 1px solid var(--line);
+          border-radius: 8px;
+          margin-bottom: 16px;
+          background: var(--card);
+        }
+        .envato-page summary {
+          padding: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          border-bottom: 1px solid var(--line);
+          background: var(--card);
+          border-radius: 8px 8px 0 0;
+        }
+        .envato-page details[open] summary {
+          border-radius: 8px 8px 0 0;
+        }
+        .envato-page .acc-body {
+          padding: 16px;
+        }
+        .envato-page .badge {
+          display: inline-block;
+          padding: 4px 8px;
+          background: var(--envato);
+          color: white;
+          border-radius: 4px;
+          font-size: 12px;
+          font-weight: 500;
+          margin-right: 8px;
+          margin-bottom: 4px;
+        }
+        .envato-page .footer-ctas {
+          display: flex;
+          gap: 12px;
+          margin-top: 32px;
+          padding-top: 32px;
+          border-top: 1px solid var(--line);
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        .envato-page .cta-button {
+          padding: 12px 24px;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          border: 2px solid;
+          background: transparent;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: all 0.2s;
+        }
+        .envato-page .cta-save {
+          color: var(--envato);
+          border-color: var(--envato);
+        }
+        .envato-page .cta-save:hover {
+          background: var(--envato);
+          color: white;
+        }
+        .envato-page .cta-clear {
+          color: var(--red);
+          border-color: var(--red);
+        }
+        .envato-page .cta-clear:hover {
+          background: var(--red);
+          color: white;
+        }
+        .envato-page .status-indicator {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          display: inline-block;
+        }
+        .envato-page .status-synced {
+          background: #10b981;
+        }
+        .envato-page .status-local {
+          background: var(--yellow);
         }
         .envato-page .col-path {
           width: 18%;
         }
         .envato-page .col-notes {
-          width: 28%;
+          width: 22%;
         }
-        .envato-page .note {
-          width: 100%;
-          min-height: 70px;
-          border: 1px solid var(--line);
-          border-radius: 10px;
-          padding: 10px;
-          font-size: 14px;
-          resize: vertical;
-          background: #fff;
-        }
-        .envato-page .tag {
-          display: inline-block;
-          padding: 4px 8px;
-          border: 1px solid var(--line);
-          border-radius: 999px;
-          font-size: 11px;
-          margin-right: 6px;
-          margin-bottom: 6px;
-        }
-        .envato-page .tag.core {
-          border-color: var(--envato);
-          color: var(--envato-dark);
-        }
-        .envato-page .tag.secondary {
-          border-color: var(--blue);
-          color: var(--blue);
-        }
-        .envato-page .tag.satellite {
-          border-color: var(--yellow);
-          color: #8a6b00;
-        }
-        .envato-page .tag.moonshot {
-          border-color: var(--red);
-          color: var(--red);
-        }
-        .envato-page .flip-card {
-          perspective: 1000px;
-        }
-        .envato-page .flip-inner {
-          position: relative;
-          transform-style: preserve-3d;
-          transition: transform 0.6s;
-          min-height: 200px;
-        }
-        .envato-page .flip-card.is-flipped .flip-inner {
-          transform: rotateY(180deg);
-        }
-        .envato-page .flip-face {
-          position: absolute;
-          inset: 0;
-          backface-visibility: hidden;
-          padding: 16px;
-          background: var(--card);
-          border: 1px solid var(--line);
-          border-radius: 14px;
-        }
-        .envato-page .flip-back {
-          transform: rotateY(180deg);
-          overflow: auto;
-          pointer-events: none;
-        }
-        .envato-page .flip-card.is-flipped .flip-back {
-          pointer-events: auto;
-        }
-        .envato-page .flip-card.is-flipped .flip-front {
-          pointer-events: none;
-        }
-        .envato-page .foot-cta {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 10px;
-          margin: 24px 0 8px;
-        }
-        .envato-page .muted {
-          color: var(--muted);
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+          .envato-page .wrap {
+            padding: 16px;
+          }
+          .envato-page .hero-title {
+            font-size: 28px;
+          }
+          .envato-page .section-title {
+            font-size: 24px;
+          }
+          .envato-page .grid {
+            grid-template-columns: 1fr;
+          }
+          .envato-page .footer-ctas {
+            flex-direction: column;
+            align-items: center;
+          }
         }
       `}</style>
 
-      <div className="envato-page min-h-screen">
-        <header className="wrap hero">
-          <div className="kicker">Envato strategy options</div>
-          <h1>Core, satellite, moonshot</h1>
-          <p className="sub">Five paths. Clear benefits. Click to go deeper. Add your notes.</p>
-          <div className="mb-4">
-            <a 
-              href="/microsites/envato/summary" 
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 text-sm font-medium"
-            >
-              📋 Context overview: Where Envato is now →
-            </a>
-          </div>
-          
-          {/* Hero Image */}
-          <div className="hero-image">
-            <img 
-              src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/exec-leadership-team-images-except-trojan-oz/Screenshot%202025-08-28%20at%203.38.52%20pm.png"
-              alt="AI Product Manager Strategy Visualization"
-              loading="lazy"
-            />
-          </div>
-
-          {/* Move CTA above quick cards */}
-          <div className="mb-4">
-            <a 
-              href="/microsites/envato/orchestrator" 
-              className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-            >
-              🎯 View The Orchestrators Profile
-            </a>
-            <p className="text-xs text-muted-foreground mt-1">
-              Deep dive into the modern AI product manager skillset and approach
+      <div className="envato-page">
+        <div className="wrap">
+          {/* Hero Section */}
+          <section className="hero">
+            <div className="hero-image">
+              <div className="hero-text">Envato Strategic Overview</div>
+            </div>
+            <h1 className="hero-title">Envato: 5 Strategic Growth Paths</h1>
+            <p className="hero-subtitle">
+              Exploring strategic directions for Envato's future growth within the Shutterstock ecosystem. 
+              Each path represents a different approach to leveraging AI, community, and creative tools.
             </p>
-          </div>
-        </header>
-
-        <main className="wrap">
-          <section id="quick">
-            <div className="card">
-              <h2 className="section-title">Quick view cards</h2>
-              <p className="text-sm text-muted mb-4">
-                These cards represent five strategic growth paths for Envato. Each path includes the growth thesis, product AI strategy, and key actions. 
-                Flip a card to see the interactive comparison snapshot for that path, or open the full view for comprehensive context.
-              </p>
-              
-              <div className="cards">
-                {/* Path 1 Creative Infrastructure */}
-                <div className={`flip-card ${flipped['path1'] ? 'is-flipped' : ''}`}>
-                  <div className="flip-inner">
-                    <div className="flip-face flip-front">
-                      <h3>Path 1 Creative Infrastructure</h3>
-                      <div className="meta">Enterprise workflows and compliance</div>
-                      <p className="meta">Indicative 100–200M ARR in 3 to 5 years</p>
-                       <span className="tag core">Low risk</span>
-                       <span className="tag">ARR focus</span>
-                       <div className="mt-2 flex flex-wrap gap-1">
-                         {competencyBadges["Core - Creator Tools"]?.map((badge) => (
-                           <Badge key={badge} variant="secondary" className="text-xs">
-                             {badge}
-                           </Badge>
-                         ))}
-                       </div>
-                       <div className="mt-4 flex gap-2">
-                         <Button onClick={() => flip('path1')} variant="outline" size="sm">
-                           Flip for comparison
-                         </Button>
-                        <Button 
-                          size="sm" 
-                          style={{background: 'var(--envato)', color: '#fff'}}
-                          onClick={() => setFullViewPath("Path 1 Creative Infrastructure")}
-                        >
-                          Full view
-                        </Button>
-                      </div>
-                    </div>
-                    <div className="flip-face flip-back">
-                       <h4 className="font-semibold mb-3">Interactive comparison snapshot</h4>
-                       <div className="space-y-2 text-sm">
-                         <div><strong>Market Value:</strong> 4/5 - TAM $200-400M ARR</div>
-                         <div><strong>Strategic Fit:</strong> 5/5 - Perfect community alignment</div>
-                         <div><strong>Time to Revenue:</strong> 3/5 - 2-3 years</div>
-                         <div><strong>Probability:</strong> 4/5 - High execution confidence</div>
-                       </div>
-                       <Button 
-                         onClick={() => document.getElementById('comparison-table')?.scrollIntoView({ behavior: 'smooth' })}
-                         variant="outline" 
-                         size="sm" 
-                         className="mt-3 w-full"
-                       >
-                         Open full interactive table
-                       </Button>
-                       <div className="mt-3 p-2 bg-muted/30 rounded">
-                         <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
-                         <div className="text-xs text-muted-foreground">
-                           {pathData["Path 1 Creative Infrastructure"].stories?.length || 0} case studies: Enterprise workflows, Creator kits, Gaming verticals
-                         </div>
-                       </div>
-                       <div className="flex gap-2 mt-4">
-                         <Button variant="outline" size="sm" onClick={() => flip('path1')}>
-                           Back to front
-                         </Button>
-                         <Button 
-                           size="sm" 
-                           style={{background: 'var(--envato)', color: '#fff'}}
-                           onClick={() => setFullViewPath("Path 1 Creative Infrastructure")}
-                         >
-                           Stories + Full view
-                         </Button>
-                       </div>
-                    </div>
-                  </div>
-                </div>
-
-                 {/* Path 2 Creative Network */}
-                <div className={`flip-card ${flipped['path2'] ? 'is-flipped' : ''}`} style={{background: 'linear-gradient(135deg, #ecfdf5, #f0fdf4)', border: '2px solid #10b981', position: 'relative'}}>
-                  <div className="flip-inner">
-                    <div className="flip-face flip-front">
-                      <div style={{position: 'absolute', top: '8px', right: '8px', background: '#10b981', color: 'white', padding: '2px 8px', borderRadius: '12px', fontSize: '10px', fontWeight: 'bold'}}>Chosen now</div>
-                      <h3>Path 2 Creative Network</h3>
-                      <div className="meta">Community, feeds, creator subs</div>
-                      <p className="meta">Indicative 500M plus GMV potential</p>
-                       <span className="tag satellite">Higher risk</span>
-                       <span className="tag">Ads and subs</span>
-                       <div className="mt-2 flex flex-wrap gap-1">
-                         {competencyBadges["Secondary - Community"]?.map((badge) => (
-                           <Badge key={badge} variant="secondary" className="text-xs">
-                             {badge}
-                           </Badge>
-                         ))}
-                       </div>
-                       <div className="mt-4 flex gap-2">
-                         <Button onClick={() => flip('path2')} variant="outline" size="sm">
-                           Flip for comparison
-                         </Button>
-                        <Button 
-                          size="sm" 
-                          style={{background: 'var(--envato)', color: '#fff'}}
-                          onClick={() => setFullViewPath("Path 2 Creative Network")}
-                        >
-                          Full view
-                        </Button>
-                      </div>
-                    </div>
-                    <div className="flip-face flip-back">
-                       <h4 className="font-semibold mb-3">Interactive comparison snapshot</h4>
-                       <div className="space-y-2 text-sm">
-                         <div><strong>Market Value:</strong> 5/5 - TAM $500M+ GMV</div>
-                         <div><strong>Strategic Fit:</strong> 3/5 - Some community alignment</div>
-                         <div><strong>Time to Revenue:</strong> 3/5 - 2-3 years</div>
-                         <div><strong>Probability:</strong> 2/5 - High execution risk</div>
-                       </div>
-                       <Button 
-                         onClick={() => document.getElementById('comparison-table')?.scrollIntoView({ behavior: 'smooth' })}
-                         variant="outline" 
-                         size="sm" 
-                         className="mt-3 w-full"
-                       >
-                         Open full interactive table
-                       </Button>
-                       <div className="mt-3 p-2 bg-muted/30 rounded">
-                         <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
-                         <div className="text-xs text-muted-foreground">
-                           {pathData["Path 2 Creative Network"].stories?.length || 0} case studies: Creator communities, Gaming collaborations
-                         </div>
-                       </div>
-                       <div className="flex gap-2 mt-4">
-                         <Button variant="outline" size="sm" onClick={() => flip('path2')}>
-                           Back to front
-                         </Button>
-                         <Button 
-                           size="sm" 
-                           style={{background: 'var(--envato)', color: '#fff'}}
-                           onClick={() => setFullViewPath("Path 2 Creative Network")}
-                         >
-                           Stories + Full view
-                         </Button>
-                       </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Path 3 Vertical Expansion */}
-                <div className={`flip-card ${flipped['path3'] ? 'is-flipped' : ''}`}>
-                  <div className="flip-inner">
-                    <div className="flip-face flip-front">
-                      <h3>Path 3 Vertical Expansion</h3>
-                      <div className="meta">Industry solutions like Edu and Gaming</div>
-                      <p className="meta">Indicative 50–100M ARR per vertical</p>
-                       <span className="tag satellite">Higher risk</span>
-                       <span className="tag">Sector SaaS</span>
-                       <div className="mt-2 flex flex-wrap gap-1">
-                         {competencyBadges["Satellite - New Verticals"]?.map((badge) => (
-                           <Badge key={badge} variant="secondary" className="text-xs">
-                             {badge}
-                           </Badge>
-                         ))}
-                       </div>
-                       <div className="mt-4 flex gap-2">
-                         <Button onClick={() => flip('path3')} variant="outline" size="sm">
-                           Flip for comparison
-                         </Button>
-                        <Button 
-                          size="sm" 
-                          style={{background: 'var(--envato)', color: '#fff'}}
-                          onClick={() => setFullViewPath("Path 3 Vertical Expansion")}
-                        >
-                          Full view
-                        </Button>
-                      </div>
-                    </div>
-                    <div className="flip-face flip-back">
-                       <h4 className="font-semibold mb-3">Interactive comparison snapshot</h4>
-                       <div className="space-y-2 text-sm">
-                         <div><strong>Market Value:</strong> 4/5 - TAM $300B edu + gaming slices</div>
-                         <div><strong>Strategic Fit:</strong> 4/5 - Good community alignment</div>
-                         <div><strong>Time to Revenue:</strong> 2/5 - Slower cycles</div>
-                         <div><strong>Probability:</strong> 3/5 - Medium execution confidence</div>
-                       </div>
-                       <Button 
-                         onClick={() => document.getElementById('comparison-table')?.scrollIntoView({ behavior: 'smooth' })}
-                         variant="outline" 
-                         size="sm" 
-                         className="mt-3 w-full"
-                       >
-                         Open full interactive table
-                       </Button>
-                       <div className="mt-3 p-2 bg-muted/30 rounded">
-                         <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
-                         <div className="text-xs text-muted-foreground">
-                           {pathData["Path 3 Vertical Expansion"].stories?.length || 0} case studies: Healthcare training, Fashion e-commerce
-                         </div>
-                       </div>
-                       <div className="flex gap-2 mt-4">
-                         <Button variant="outline" size="sm" onClick={() => flip('path3')}>
-                           Back to front
-                         </Button>
-                         <Button 
-                           size="sm" 
-                           style={{background: 'var(--envato)', color: '#fff'}}
-                           onClick={() => setFullViewPath("Path 3 Vertical Expansion")}
-                         >
-                           Stories + Full view
-                         </Button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Path 4 Platform Enabler */}
-                <div className={`flip-card ${flipped['path4'] ? 'is-flipped' : ''}`}>
-                  <div className="flip-inner">
-                    <div className="flip-face flip-front">
-                      <h3>Path 4 Platform Enabler</h3>
-                      <div className="meta">API backend for SaaS and AI tools</div>
-                      <p className="meta">Indicative 200–500M ARR opportunity</p>
-                       <span className="tag satellite">Higher risk</span>
-                       <span className="tag">API revenue</span>
-                       <div className="mt-2 flex flex-wrap gap-1">
-                         {competencyBadges["Secondary - Community"]?.map((badge) => (
-                           <Badge key={badge} variant="secondary" className="text-xs">
-                             {badge}
-                           </Badge>
-                         ))}
-                       </div>
-                       <div className="mt-4 flex gap-2">
-                         <Button onClick={() => flip('path4')} variant="outline" size="sm">
-                           Flip for comparison
-                         </Button>
-                        <Button 
-                          size="sm" 
-                          style={{background: 'var(--envato)', color: '#fff'}}
-                          onClick={() => setFullViewPath("Path 4 Platform Enabler")}
-                        >
-                          Full view
-                        </Button>
-                      </div>
-                    </div>
-                    <div className="flip-face flip-back">
-                       <h4 className="font-semibold mb-3">Interactive comparison snapshot</h4>
-                       <div className="space-y-2 text-sm">
-                         <div><strong>Market Value:</strong> 4/5 - TAM $100M+ ARR API</div>
-                         <div><strong>Strategic Fit:</strong> 3/5 - Some community alignment</div>
-                         <div><strong>Time to Revenue:</strong> 4/5 - Faster via SaaS partners</div>
-                         <div><strong>Probability:</strong> 3/5 - Medium execution confidence</div>
-                       </div>
-                       <Button 
-                         onClick={() => document.getElementById('comparison-table')?.scrollIntoView({ behavior: 'smooth' })}
-                         variant="outline" 
-                         size="sm" 
-                         className="mt-3 w-full"
-                       >
-                         Open full interactive table
-                       </Button>
-                       <div className="mt-3 p-2 bg-muted/30 rounded">
-                         <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
-                         <div className="text-xs text-muted-foreground">
-                           {pathData["Path 4 Platform Enabler"].stories?.length || 0} case studies: SaaS integrations, AI platform APIs
-                         </div>
-                       </div>
-                       <div className="flex gap-2 mt-4">
-                         <Button variant="outline" size="sm" onClick={() => flip('path4')}>
-                           Back to front
-                         </Button>
-                         <Button 
-                           size="sm" 
-                           style={{background: 'var(--envato)', color: '#fff'}}
-                           onClick={() => setFullViewPath("Path 4 Platform Enabler")}
-                         >
-                           Stories + Full view
-                         </Button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Path 5 Radical Play */}
-                <div className={`flip-card ${flipped['path5'] ? 'is-flipped' : ''}`}>
-                  <div className="flip-inner">
-                    <div className="flip-face flip-front">
-                      <h3>Path 5 Radical Play</h3>
-                      <div className="meta">Immersive and synthetic content</div>
-                      <p className="meta">Moonshot with massive upside potential</p>
-                       <span className="tag moonshot">Highest risk</span>
-                       <span className="tag">Future bet</span>
-                       <div className="mt-2 flex flex-wrap gap-1">
-                         {competencyBadges["Satellite - New Verticals"]?.map((badge) => (
-                           <Badge key={badge} variant="secondary" className="text-xs">
-                             {badge}
-                           </Badge>
-                         ))}
-                       </div>
-                       <div className="mt-4 flex gap-2">
-                         <Button onClick={() => flip('path5')} variant="outline" size="sm">
-                           Flip for comparison
-                         </Button>
-                        <Button 
-                          size="sm" 
-                          style={{background: 'var(--envato)', color: '#fff'}}
-                          onClick={() => setFullViewPath("Path 5 Radical Play")}
-                        >
-                          Full view
-                        </Button>
-                      </div>
-                    </div>
-                    <div className="flip-face flip-back">
-                       <h4 className="font-semibold mb-3">Interactive comparison snapshot</h4>
-                       <div className="space-y-2 text-sm">
-                         <div><strong>Market Value:</strong> 5/5 - TAM $500B+ if immersive AI wins</div>
-                         <div><strong>Strategic Fit:</strong> 2/5 - Lower community alignment</div>
-                         <div><strong>Time to Revenue:</strong> 1/5 - 5+ years</div>
-                         <div><strong>Probability:</strong> 1/5 - Very high execution risk</div>
-                       </div>
-                       <Button 
-                         onClick={() => document.getElementById('comparison-table')?.scrollIntoView({ behavior: 'smooth' })}
-                         variant="outline" 
-                         size="sm" 
-                         className="mt-3 w-full"
-                       >
-                         Open full interactive table
-                       </Button>
-                       <div className="mt-3 p-2 bg-muted/30 rounded">
-                         <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
-                         <div className="text-xs text-muted-foreground">
-                           {pathData["Path 5 Radical Play"].stories?.length || 0} case studies: VR experiences, AI agent development
-                         </div>
-                       </div>
-                       <div className="flex gap-2 mt-4">
-                         <Button variant="outline" size="sm" onClick={() => flip('path5')}>
-                           Back to front
-                         </Button>
-                         <Button 
-                           size="sm" 
-                           style={{background: 'var(--envato)', color: '#fff'}}
-                           onClick={() => setFullViewPath("Path 5 Radical Play")}
-                         >
-                           Stories + Full view
-                         </Button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="hero-links">
+              <a href="/microsites/envato/summary" className="hero-link">📋 Envato Context & Summary</a>
+              <a href="#comparison-table" className="hero-link">📊 Compare all paths</a>
+              <a href="#framework" className="hero-link">🎯 Decision framework</a>
             </div>
           </section>
 
+          {/* Quick view cards */}
+          <section className="section">
+            <h2 className="section-title">Quick path overview</h2>
+            <div className="grid">
+              {Object.entries(pathData).map(([pathName, data], index) => (
+                <div 
+                  key={pathName} 
+                  className={`flip-card ${flipped[`path${index + 1}`] ? 'flipped' : ''}`}
+                  onMouseLeave={() => unflip(`path${index + 1}`)}
+                >
+                  <div className="flip-card-inner">
+                    <div className="flip-face flip-front">
+                      <div>
+                        <div className="card-subtitle">{data.category}</div>
+                        <h3 className="card-title">{pathName}</h3>
+                        <p className="card-text">{data.growthThesis}</p>
+                        <div className="flex flex-wrap gap-1 mb-4">
+                          {competencyBadges[pathName]?.map(badge => (
+                            <Badge key={badge} variant="secondary" className="text-xs">
+                              {badge}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="mt-4 flex gap-2">
+                        <Button onClick={() => flip(`path${index + 1}`)} variant="outline" size="sm">
+                          Flip for comparison
+                        </Button>
+                       <Button 
+                         size="sm" 
+                         style={{background: 'var(--envato)', color: '#fff'}}
+                         onClick={() => setFullViewPath(pathName)}
+                       >
+                         Full view
+                       </Button>
+                     </div>
+                   </div>
+                   <div className="flip-face flip-back">
+                      <h4 className="font-semibold mb-3">Interactive comparison snapshot</h4>
+                      <div className="space-y-2 text-sm">
+                        <div><strong>Market Value:</strong> 4/5 - TAM $200-400M ARR</div>
+                        <div><strong>Strategic Fit:</strong> 5/5 - Perfect community alignment</div>
+                        <div><strong>Time to Revenue:</strong> 3/5 - 2-3 years</div>
+                        <div><strong>Probability:</strong> 4/5 - High execution confidence</div>
+                      </div>
+                      <Button 
+                        onClick={() => document.getElementById('comparison-table')?.scrollIntoView({ behavior: 'smooth' })}
+                        variant="outline" 
+                        size="sm" 
+                        className="mt-3 w-full"
+                      >
+                        View detailed comparison →
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Interactive comparison table */}
           <section id="comparison-table" className="section">
             <h2 className="section-title">Interactive comparison table</h2>
 
-            <details open>
-              <summary>1 Executive summary</summary>
-              <div className="acc-body">
-                <p className="dim-help">High level purpose of each path. Add your notes on the right.</p>
-                <div className="table-wrap">
-                  <table>
-                        <thead>
-                          <tr>
-                            <th className="col-path" style={{padding: '12px', fontSize: '14px'}}>Path 1</th>
-                            <th className="col-path" style={{padding: '12px', fontSize: '14px', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981'}}>
-                              Path 2 <span style={{background: '#10b981', color: 'white', padding: '2px 6px', borderRadius: '8px', fontSize: '10px', marginLeft: '4px'}}>Chosen</span>
-                            </th>
-                            <th className="col-path" style={{padding: '12px', fontSize: '14px'}}>Path 3</th>
-                            <th className="col-path" style={{padding: '12px', fontSize: '14px'}}>Path 4</th>
-                            <th className="col-path" style={{padding: '12px', fontSize: '14px'}}>Path 5</th>
-                            <th className="col-notes" style={{padding: '12px', fontSize: '14px'}}>Envato input</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>Trusted AI workflows and compliance. Enterprise ARR engine.</td>
-                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>Creator network with feeds and subs. Multi stream income.</td>
-                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>Sector specific platforms like Edu and Gaming and Retail.</td>
-                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>API first creative backend for SaaS and AI tools.</td>
-                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>Immersive and agentic AI content substrate.</td>
-                            <td style={{padding: '16px'}}><textarea className="note" data-key="d1" style={{minHeight: '80px', padding: '12px', fontSize: '14px', lineHeight: '1.6'}}></textarea></td>
-                          </tr>
-                        </tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            {/* Continue with other 13 sections */}
-            {Array.from({ length: 13 }, (_, i) => {
-              const sectionNumber = i + 2;
-              const sectionTitle = fourteenPointFramework[sectionNumber - 1];
+            {fourteenPointFramework.map((framework, index) => {
+              const sectionNumber = index + 1;
               return (
-                <details key={sectionNumber}>
-                  <summary>{sectionNumber} {sectionTitle}</summary>
+                <details key={framework} open={sectionNumber === 1}>
+                  <summary>{sectionNumber} {framework}</summary>
                   <div className="acc-body">
+                    <p className="dim-help">
+                      {sectionNumber === 1 ? "High level purpose of each path. Add your notes on the right."
+                       :
+                       sectionNumber === 2 ? "Where is Envato now on this dimension. Add your notes on the right."
+                       :
+                       sectionNumber === 15 ? "Where this path wins compared to others. Add your notes on the right."
+                       :
+                       "Strategic considerations for this dimension. Add your notes on the right."}
+                    </p>
                     <div className="table-wrap">
-                      <table>
+                      <table className="comparison-table">
                         <thead>
                           <tr>
                             <th style={{padding: '12px', fontSize: '14px'}}>Path 1</th>
@@ -1144,14 +893,51 @@ const EnvatoIndex = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr style={{background: sectionNumber % 2 === 0 ? '#f8fafc' : 'transparent'}}>
-                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 1 Creative Infrastructure"].plan14[sectionNumber - 1]?.text}</td>
-                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>{pathData["Path 2 Creative Network"].plan14[sectionNumber - 1]?.text}</td>
-                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 3 Vertical Expansion"].plan14[sectionNumber - 1]?.text}</td>
-                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 4 Platform Enabler"].plan14[sectionNumber - 1]?.text}</td>
-                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 5 Radical Play"].plan14[sectionNumber - 1]?.text}</td>
-                            <td style={{padding: '16px'}}><textarea className="note" data-key={`d${sectionNumber}`} style={{minHeight: '80px', padding: '12px', fontSize: '14px', lineHeight: '1.6'}}></textarea></td>
-                          </tr>
+                          {sectionNumber === 1 ? (
+                            <>
+                              <tr>
+                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>Trusted AI workflows and compliance. Enterprise ARR engine.</td>
+                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>Creator network with feeds and subs. Multi stream income.</td>
+                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>Sector specific platforms like Edu and Gaming and Retail.</td>
+                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>API first creative backend for SaaS and AI tools.</td>
+                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>Immersive and agentic AI content substrate.</td>
+                                <td style={{padding: '16px'}}><textarea className="note" data-key="d1" style={{minHeight: '80px', padding: '12px', fontSize: '14px', lineHeight: '1.6'}}></textarea></td>
+                              </tr>
+                              <tr>
+                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', fontWeight: '500'}}>Enterprise compliance and workflow automation at scale</td>
+                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>Direct creator-fan relationships and subscription revenue</td>
+                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', fontWeight: '500'}}>Deep industry expertise and specialized asset collections</td>
+                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', fontWeight: '500'}}>Platform integrations and developer ecosystem growth</td>
+                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', fontWeight: '500'}}>AI-first content creation with professional tool integration</td>
+                                <td style={{padding: '16px'}}><textarea className="note" data-key="where-wins" style={{minHeight: '80px', padding: '12px', fontSize: '14px', lineHeight: '1.6'}} placeholder="Your notes on winning strategies..."></textarea></td>
+                              </tr>
+                            </>
+                          ) : (
+                            <tr style={{background: sectionNumber % 2 === 0 ? '#f8fafc' : 'transparent'}}>
+                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 1 Creative Infrastructure"].plan14[sectionNumber - 1]?.text}</td>
+                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>{pathData["Path 2 Creative Network"].plan14[sectionNumber - 1]?.text}</td>
+                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 3 Vertical Expansion"].plan14[sectionNumber - 1]?.text}</td>
+                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 4 Platform Enabler"].plan14[sectionNumber - 1]?.text}</td>
+                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 5 Radical Play"].plan14[sectionNumber - 1]?.text}</td>
+                              <td style={{padding: '16px'}}><textarea className="note" data-key={`d${sectionNumber}`} style={{minHeight: '80px', padding: '12px', fontSize: '14px', lineHeight: '1.6'}}></textarea></td>
+                            </tr>
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </details>
+                            </>
+                          ) : (
+                            <tr style={{background: sectionNumber % 2 === 0 ? '#f8fafc' : 'transparent'}}>
+                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 1 Creative Infrastructure"].plan14[sectionNumber - 1]?.text}</td>
+                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>{pathData["Path 2 Creative Network"].plan14[sectionNumber - 1]?.text}</td>
+                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 3 Vertical Expansion"].plan14[sectionNumber - 1]?.text}</td>
+                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 4 Platform Enabler"].plan14[sectionNumber - 1]?.text}</td>
+                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 5 Radical Play"].plan14[sectionNumber - 1]?.text}</td>
+                              <td style={{padding: '16px'}}><textarea className="note" data-key={`d${sectionNumber}`} style={{minHeight: '80px', padding: '12px', fontSize: '14px', lineHeight: '1.6'}}></textarea></td>
+                            </tr>
+                          )}
                         </tbody>
                       </table>
                     </div>
@@ -1165,6 +951,21 @@ const EnvatoIndex = () => {
           <section id="framework" className="section">
             <div className="card">
               <h2 className="section-title">Envato Strategic Path Decision Framework</h2>
+              
+              <div className="text-center mb-6">
+                <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-6">
+                  A systematic approach to evaluating and selecting the optimal strategic direction using our 14-point analysis and 5 strategic paths.
+                </p>
+                <div className="bg-blue-50 p-6 rounded-lg text-left max-w-4xl mx-auto">
+                  <h3 className="font-semibold text-gray-900 mb-3">How This Framework Works:</h3>
+                  <p className="text-gray-700 mb-4">
+                    The 14-point comparison table provides detailed analysis across all strategic dimensions. These insights feed into the scoring framework below, where each path is evaluated on key success criteria. <strong>No single path will be the complete answer</strong> - the optimal strategy will be a blend of elements from multiple paths, adapted to market conditions and organizational capabilities.
+                  </p>
+                  <p className="text-gray-600 text-sm">
+                    <strong>Scoring Formula:</strong> Weighted average of Strategic Fit (30%), Market Opportunity (25%), Technical Feasibility (20%), Resource Requirements (15%), and Risk Level (10%).
+                  </p>
+                </div>
+              </div>
               
               {/* Step 1: Scoring Axes */}
               <div className="mb-6">
@@ -1219,32 +1020,32 @@ const EnvatoIndex = () => {
                         <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
                         <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>3.3</td>
                       </tr>
-                      <tr>
-                        <td style={{padding: '12px', fontSize: '14px'}}>4. Vertical Expansion</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4 (TAM $300B edu + $200B gaming slices)</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>2 (slower cycles)</td>
+                      <tr style={{background: '#fef3c7'}}>
+                        <td style={{padding: '12px', fontSize: '14px', fontWeight: '600'}}>3. Vertical Expansion</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3 (TAM $100–200M ARR)</td>
                         <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4 (1–2 yrs)</td>
                         <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>3.5</td>
-                      </tr>
-                      <tr>
-                        <td style={{padding: '12px', fontSize: '14px'}}>5. Platform Enabler</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4 (TAM $100M+ ARR API)</td>
                         <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4 (faster, via SaaS partners)</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>3.9</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>3.6</td>
                       </tr>
-                      <tr>
-                        <td style={{padding: '12px', fontSize: '14px'}}>6. Radical Play</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5 (TAM $500B+ if immersive AI wins)</td>
+                      <tr style={{background: '#f3f4f6'}}>
+                        <td style={{padding: '12px', fontSize: '14px', fontWeight: '600'}}>4. Platform Enabler</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4 (TAM $300–500M ARR)</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>2 (3–5 yrs)</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>2</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>3.0</td>
+                      </tr>
+                      <tr style={{background: '#fef2f2'}}>
+                        <td style={{padding: '12px', fontSize: '14px', fontWeight: '600'}}>5. Radical Play</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5 (TAM $1B+ potential)</td>
                         <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>1</td>
                         <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>1 (5+ yrs)</td>
                         <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>2</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>2.8</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center')}}">5</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>2.5</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1254,99 +1055,105 @@ const EnvatoIndex = () => {
               {/* Step 3: Interpretation */}
               <div className="mb-6">
                 <h3 className="text-lg font-semibold mb-3">Step 3: Interpretation</h3>
-                <div className="space-y-3 text-sm">
-                  <div>
-                    <strong>Best balance (Core Play): Path 1 – Infrastructure.</strong><br />
-                    Delivers ARR, enterprise credibility, and aligns with Shutterstock's push. Highest strategic fit, strongest community protection, predictable growth.
+                <p className="text-gray-700 mb-6">
+                  Based on the scores above, here's how to interpret the strategic paths:
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-green-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-green-900 mb-2">High Priority Paths (4.0+)</h4>
+                    <ul className="text-green-800 space-y-1">
+                      <li>• Path 1: Creative Infrastructure (4.1)</li>
+                    </ul>
                   </div>
-                  <div>
-                    <strong>Next tier (Secondary Play): Path 5 – Platform Enabler.</strong><br />
-                    API-first strategy hits faster monetisation if partners onboard. Differentiates Envato inside SaaS ecosystems. Keeps relevance even if Canva/Adobe dominate front-end.
+                  <div className="bg-yellow-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-yellow-900 mb-2">Medium Priority Paths (3.0-3.9)</h4>
+                    <ul className="text-yellow-800 space-y-1">
+                      <li>• Path 3: Vertical Expansion (3.6)</li>
+                      <li>• Path 2: Creative Network (3.3)</li>
+                      <li>• Path 4: Platform Enabler (3.0)</li>
+                    </ul>
                   </div>
-                  <div>
-                    <strong>Exploratory (Satellite Bets): Path 2 – Network and Path 4 – Vertical Expansion.</strong><br />
-                    Big TAMs, but riskier. Network bet (community feeds, creator subs) is volatile. Vertical bet (edu, gaming, retail) requires deep sector focus and longer cycles. Both worth piloting, not core bets.
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-blue-900 mb-2">Experimental Paths (2.0-2.9)</h4>
+                    <ul className="text-blue-800 space-y-1">
+                      <li>• Path 5: Radical Play (2.5)</li>
+                    </ul>
                   </div>
-                  <div>
-                    <strong>Moonshot (BIG IF): Path 6 – Radical Play.</strong><br />
-                    Metaverse/agentic AI substrate is a long-term optionality play. Keep as R&D to protect upside, but don't over-invest now.
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-gray-900 mb-2">Strategic Considerations</h4>
+                    <ul className="text-gray-700 space-y-1 text-sm">
+                      <li>• Path 1 offers the best balance of strategic fit and feasibility</li>
+                      <li>• Path 3 provides steady, sustainable growth opportunities</li>
+                      <li>• Path 2 has community alignment but execution challenges</li>
+                      <li>• Path 5 has high potential but significant technical risks</li>
+                    </ul>
                   </div>
                 </div>
               </div>
 
               {/* Step 4: Translate to Action */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3">Step 4: Translate to Action</h3>
-                <div className="bg-muted/30 p-4 rounded-lg space-y-3 text-sm">
-                  <p>
-                    "If I had to pick the single most investable path today, it's <strong>Infrastructure</strong>. It delivers ARR growth, strong fit with Shutterstock's enterprise push, and defensibility.
-                  </p>
-                  <p>
-                    I'd pair it with <strong>APIs (Platform Enabler)</strong> as the secondary play. This keeps Envato embedded across SaaS ecosystems, raising differentiation and near-term monetisation.
-                  </p>
-                  <p>
-                    I'd hold <strong>Network and Vertical Expansion</strong> as satellite bets—piloted, monitored, and scaled only when community traction or sector demand proves out.
-                  </p>
-                  <p>
-                    Finally, I'd keep <strong>Radical Play</strong> as an R&D option. A small bet, but one that could future-proof Envato if immersive/agentic AI explodes."
-                  </p>
-                </div>
-              </div>
-
-              {/* Portfolio Approach */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3">⚡ That's a portfolio approach:</h3>
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div className="p-3 border rounded-lg">
-                    <div className="font-semibold text-blue-600">Floor → Infrastructure (Path 1)</div>
-                    <div className="text-muted-foreground">Steady ARR foundation</div>
+              <div>
+                <h3 className="text-lg font-semibold mb-3">Step 4: Translate to Action (Portfolio Approach)</h3>
+                <p className="text-gray-700 mb-4">
+                  Rather than choosing a single path, Envato should pursue a balanced portfolio approach:
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-green-100 p-6 rounded-lg">
+                    <h4 className="font-bold text-green-900 mb-3">High Confidence Portfolio (70% allocation)</h4>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-green-800">Path 1: Creative Infrastructure</span>
+                        <span className="font-semibold text-green-900">50%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-green-800">Path 3: Vertical Expansion</span>
+                        <span className="font-semibold text-green-900">20%</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="p-3 border rounded-lg">
-                    <div className="font-semibold text-green-600">Upside → Platform Enabler (Path 5)</div>
-                    <div className="text-muted-foreground">API differentiation play</div>
-                  </div>
-                  <div className="p-3 border rounded-lg">
-                    <div className="font-semibold text-yellow-600">Satellite bets → Network (Path 2) and Vertical (Path 4)</div>
-                    <div className="text-muted-foreground">Pilot and scale based on traction</div>
-                  </div>
-                  <div className="p-3 border rounded-lg">
-                    <div className="font-semibold text-purple-600">Big If → Radical Play (Path 6)</div>
-                    <div className="text-muted-foreground">R&D future-proofing</div>
+                  
+                  <div className="bg-yellow-100 p-6 rounded-lg">
+                    <h4 className="font-bold text-yellow-900 mb-3">Experimental Portfolio (30% allocation)</h4>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-yellow-800">Path 2: Creative Network</span>
+                        <span className="font-semibold text-yellow-900">15%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-yellow-800">Path 4: Platform Enabler</span>
+                        <span className="font-semibold text-yellow-900">10%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-yellow-800">Path 5: Radical Play</span>
+                        <span className="font-semibold text-yellow-900">5%</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          <div className="foot-cta">
-            <div>
-              <button id="saveAll" className="px-4 py-2 bg-green-600 text-white rounded">Save All</button>
-              <button id="clearAll" className="px-4 py-2 bg-red-600 text-white rounded ml-2">Clear All</button>
-            </div>
-            <div className="text-sm muted">
-              {isAuthenticated ? 'Notes sync to cloud' : 'Login to sync notes to cloud'}
-            </div>
+          {/* Footer CTAs */}
+          <div className="footer-ctas">
+            <button id="saveAll" className="cta-button cta-save">
+              <span className={`status-indicator ${isAuthenticated ? 'status-synced' : 'status-local'}`}></span>
+              Save all notes {isAuthenticated ? 'to cloud' : 'locally'}
+            </button>
+            <button id="clearAll" className="cta-button cta-clear">
+              Clear all notes
+            </button>
           </div>
-        </main>
+        </div>
       </div>
 
       {/* Full Path Modal */}
-      {fullViewPath && (
-        <FullPathModal
-          isOpen={!!fullViewPath}
-          onClose={() => setFullViewPath(null)}
-          pathName={fullViewPath}
-          pathData={{
-            category: pathData[fullViewPath as keyof typeof pathData]?.category || "",
-            growthThesis: pathData[fullViewPath as keyof typeof pathData]?.growthThesis || "",
-            productAIStrategy: pathData[fullViewPath as keyof typeof pathData]?.productAIStrategy || "",
-            actions: pathData[fullViewPath as keyof typeof pathData]?.actions || "",
-            steps: [],
-            plan14: pathData[fullViewPath as keyof typeof pathData]?.plan14 || [],
-            stories: pathData[fullViewPath as keyof typeof pathData]?.stories || []
-          }}
-        />
-      )}
+      <FullPathModal 
+        isOpen={!!fullViewPath}
+        onClose={() => setFullViewPath(null)}
+        pathName={fullViewPath}
+        pathData={fullViewPath ? pathData[fullViewPath] : null}
+      />
     </>
   );
 };
