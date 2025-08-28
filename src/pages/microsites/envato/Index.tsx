@@ -909,24 +909,167 @@ const EnvatoIndex = () => {
                                   />
                                 </td>
                               </tr>
-                              <tr>
-                                <td style={{fontWeight: '500'}}>Enterprise compliance and workflow automation at scale</td>
-                                <td style={{background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>
-                                  Direct creator-fan relationships and subscription revenue
-                                </td>
-                                <td style={{fontWeight: '500'}}>Deep industry expertise and specialized asset collections</td>
-                                <td style={{fontWeight: '500'}}>Platform integrations and developer ecosystem growth</td>
-                                <td style={{fontWeight: '500'}}>AI-first content creation with professional tool integration</td>
-                                <td>
-                                  <textarea 
-                                    className="note" 
-                                    value={notes["where-wins"] || ''}
-                                    onChange={(e) => handleNoteChange("where-wins", e.target.value)}
-                                    placeholder="Your notes on winning strategies…"
-                                    style={{minHeight: '80px'}}
-                                  />
-                                </td>
-                              </tr>
+                               <tr>
+                                 <td style={{fontWeight: '500'}}>Enterprise compliance and workflow automation at scale</td>
+                                 <td style={{background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>
+                                   Direct creator-fan relationships and subscription revenue
+                                 </td>
+                                 <td style={{fontWeight: '500'}}>Deep industry expertise and specialized asset collections</td>
+                                 <td style={{fontWeight: '500'}}>Platform integrations and developer ecosystem growth</td>
+                                 <td style={{fontWeight: '500'}}>AI-first content creation with professional tool integration</td>
+                                 <td>
+                                   <textarea 
+                                     className="note" 
+                                     value={notes["where-wins"] || ''}
+                                     onChange={(e) => handleNoteChange("where-wins", e.target.value)}
+                                     placeholder="Your notes on winning strategies…"
+                                     style={{minHeight: '80px'}}
+                                   />
+                                 </td>
+                               </tr>
+                               <tr style={{background: '#f8fafc', fontSize: '12px'}}>
+                                 <td colSpan={6} style={{padding: '8px 16px'}}>
+                                   <details>
+                                     <summary style={{cursor: 'pointer', fontWeight: '600', color: '#3b82f6'}}>Show Details: Agentic AI & Automation Breakdown</summary>
+                                     <div style={{marginTop: '12px', display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px', fontSize: '12px'}}>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#1e40af', marginBottom: '4px'}}>Agentic AI Leverage</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>Compliance automation agents</li>
+                                           <li>Asset quality verification</li>
+                                           <li>Enterprise workflow optimization</li>
+                                           <li>Legal metadata generation</li>
+                                         </ul>
+                                       </div>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#1e40af', marginBottom: '4px'}}>Agentic AI Leverage</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>Creator-audience matching</li>
+                                           <li>Content curation agents</li>
+                                           <li>Engagement optimization</li>
+                                           <li>Revenue optimization AI</li>
+                                         </ul>
+                                       </div>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#1e40af', marginBottom: '4px'}}>Agentic AI Leverage</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>Industry-specific AI agents</li>
+                                           <li>Vertical workflow automation</li>
+                                           <li>Domain expertise bots</li>
+                                           <li>Compliance verification</li>
+                                         </ul>
+                                       </div>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#1e40af', marginBottom: '4px'}}>Agentic AI Leverage</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>API orchestration agents</li>
+                                           <li>Integration automation</li>
+                                           <li>Developer workflow bots</li>
+                                           <li>Platform sync agents</li>
+                                         </ul>
+                                       </div>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#1e40af', marginBottom: '4px'}}>Agentic AI Leverage</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>AI-first content generation</li>
+                                           <li>Professional tool agents</li>
+                                           <li>Creative process automation</li>
+                                           <li>Quality assurance bots</li>
+                                         </ul>
+                                       </div>
+                                     </div>
+                                     <div style={{marginTop: '12px', display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px', fontSize: '12px'}}>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#dc2626', marginBottom: '4px'}}>Automation Candidates</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>Legal approval workflows</li>
+                                           <li>Asset tagging & metadata</li>
+                                           <li>Quality control checks</li>
+                                           <li>Enterprise onboarding</li>
+                                         </ul>
+                                       </div>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#dc2626', marginBottom: '4px'}}>Automation Candidates</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>Creator payment processing</li>
+                                           <li>Community moderation</li>
+                                           <li>Subscriber management</li>
+                                           <li>Content recommendation</li>
+                                         </ul>
+                                       </div>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#dc2626', marginBottom: '4px'}}>Automation Candidates</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>Industry compliance checks</li>
+                                           <li>Vertical asset curation</li>
+                                           <li>Educational content paths</li>
+                                           <li>Professional certification</li>
+                                         </ul>
+                                       </div>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#dc2626', marginBottom: '4px'}}>Automation Candidates</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>API documentation</li>
+                                           <li>Integration testing</li>
+                                           <li>Developer onboarding</li>
+                                           <li>Platform monitoring</li>
+                                         </ul>
+                                       </div>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#dc2626', marginBottom: '4px'}}>Automation Candidates</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>Creative brief generation</li>
+                                           <li>Asset rendering pipelines</li>
+                                           <li>Professional tool sync</li>
+                                           <li>Client approval workflows</li>
+                                         </ul>
+                                       </div>
+                                     </div>
+                                     <div style={{marginTop: '12px', display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px', fontSize: '12px'}}>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#16a34a', marginBottom: '4px'}}>Augmented Workflows</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>AI-enhanced compliance dashboards</li>
+                                           <li>Predictive workflow optimization</li>
+                                           <li>Smart asset lifecycle management</li>
+                                         </ul>
+                                       </div>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#16a34a', marginBottom: '4px'}}>Augmented Workflows</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>AI-powered creator insights</li>
+                                           <li>Intelligent audience growth</li>
+                                           <li>Revenue optimization recommendations</li>
+                                         </ul>
+                                       </div>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#16a34a', marginBottom: '4px'}}>Augmented Workflows</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>Industry-aware asset suggestions</li>
+                                           <li>Vertical performance analytics</li>
+                                           <li>Smart educational pathways</li>
+                                         </ul>
+                                       </div>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#16a34a', marginBottom: '4px'}}>Augmented Workflows</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>Intelligent API orchestration</li>
+                                           <li>Smart developer tooling</li>
+                                           <li>Automated integration testing</li>
+                                         </ul>
+                                       </div>
+                                       <div>
+                                         <div style={{fontWeight: '600', color: '#16a34a', marginBottom: '4px'}}>Augmented Workflows</div>
+                                         <ul style={{margin: 0, paddingLeft: '12px', lineHeight: '1.4'}}>
+                                           <li>AI-driven creative direction</li>
+                                           <li>Professional tool integration</li>
+                                           <li>Smart creative feedback loops</li>
+                                         </ul>
+                                       </div>
+                                     </div>
+                                   </details>
+                                 </td>
+                               </tr>
                             </>
                           ) : (
                             <tr style={{background: sectionNumber % 2 === 0 ? '#f8fafc' : 'transparent'}}>

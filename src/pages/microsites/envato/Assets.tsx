@@ -45,8 +45,8 @@ const Assets = () => {
         {/* Market Opportunity */}
         <div className="mt-12 envato-gradient-subtle border border-envato-green-200 rounded-2xl overflow-hidden">
           <div className="envato-gradient text-white p-6">
-            <h2 className="text-3xl font-bold mb-2">Market Opportunity</h2>
-            <p className="text-white/90">The $45B difference between traditional library and workflow factory</p>
+            <h2 className="text-3xl font-bold mb-2">Agentic AI Market Opportunity</h2>
+            <p className="text-white/90">As businesses become increasingly digital, agentic AI and automation transform creative workflows from manual tasks to intelligent, autonomous operations. Many creative functions are ripe for automation—we need to be integral to this transformation, not just a content library.</p>
           </div>
 
           {/* Key Metrics at a Glance */}
@@ -219,7 +219,7 @@ const Assets = () => {
         <div id="asset-redefinition" className="mt-12">
           <h2 className="text-3xl font-bold text-foreground mb-6">Asset Strategy & Market Expansion</h2>
           <p className="text-lg text-muted-foreground mb-8">
-            How Envato can evolve from "media library" to "asset kit factory" – expanding into knowledge, data, automation, and vertical-specific solutions that make every business dependent on the platform.
+            How Envato can evolve from "media library" to "agentic workflow factory" – expanding into AI-powered automation, intelligent data assets, and augmented creative processes that make every business operationally dependent on the platform.
           </p>
 
           {/* Current vs Expanded Definition */}
@@ -291,7 +291,7 @@ const Assets = () => {
         <div className="mt-12">
           <h2 className="text-3xl font-bold text-foreground mb-6">Why Every Business Will Need Envato</h2>
           <p className="text-lg text-muted-foreground mb-8">
-            As businesses become increasingly digital, the need for consistent, efficient, and compliant creative workflows becomes universal. Envato's expanded asset ecosystem addresses these universal business needs.
+            As businesses become increasingly digital, agentic AI systems are automating creative workflows at unprecedented scale. Every marketing campaign, product launch, and customer touchpoint requires intelligent, automated creative production. Many of these functions are ripe for automation—Envato must be the integral infrastructure powering this transformation.
           </p>
 
           <div className="grid gap-6">
@@ -385,7 +385,12 @@ const Assets = () => {
 
           {/* NEW Asset Category Deep Dives */}
           <div className="mt-12 space-y-8">
-            <h2 className="text-3xl font-bold text-foreground">NEW Asset Category Deep Dives</h2>
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold text-foreground mb-4">NEW Asset Category Deep Dives</h2>
+              <p className="text-lg text-muted-foreground max-w-4xl">
+                Beyond traditional media assets, these new categories represent the future of creative workflow automation. Each category transforms manual creative processes into intelligent, scalable systems that businesses can't operate without.
+              </p>
+            </div>
             
             {[
               {
