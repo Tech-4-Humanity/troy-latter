@@ -179,10 +179,10 @@ const Summary = () => {
               <Card className="cursor-pointer hover:shadow-md transition-shadow">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-xl">Extra Interview Soundbites</CardTitle>
+                    <CardTitle className="text-xl">Sound bites</CardTitle>
                     <ChevronDown className={`h-5 w-5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                   </div>
-                  <p className="text-muted-foreground text-left">Click to expand additional strategic talking points and interview soundbites</p>
+                  <p className="text-muted-foreground text-left">Click to expand additional strategic talking points and sound bites</p>
                 </CardHeader>
               </Card>
             </CollapsibleTrigger>
