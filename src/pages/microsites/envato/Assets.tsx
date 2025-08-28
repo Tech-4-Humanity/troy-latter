@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, TrendingUp, Users, DollarSign, Target } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useState } from 'react';
 
 const Assets = () => {
+  const [activeTab, setActiveTab] = useState<'library' | 'factory'>('library');
+
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto px-4 py-8">
@@ -39,62 +43,173 @@ const Assets = () => {
         </div>
 
         {/* Market Opportunity */}
-        <div className="mt-12 bg-gradient-to-r from-primary/10 to-secondary/10 border border-border rounded-xl p-8">
-          <h2 className="text-3xl font-bold text-foreground mb-6">Market Opportunity: Asset Library vs Asset Kit Factory</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">Traditional Asset Library</h3>
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Creative professionals</span>
-                  <span className="font-semibold">~5M users</span>
+        <div className="mt-12 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 border border-primary/20 rounded-2xl overflow-hidden">
+          <div className="bg-gradient-to-r from-primary to-secondary text-white p-6">
+            <h2 className="text-3xl font-bold mb-2">Market Opportunity</h2>
+            <p className="text-white/90">The $45B difference between traditional library and workflow factory</p>
+          </div>
+
+          {/* Key Metrics at a Glance */}
+          <div className="p-6 bg-white/50">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mx-auto mb-3">
+                  <Users className="h-6 w-6 text-primary" />
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">ARPU (per month)</span>
-                  <span className="font-semibold">$16-30</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Total addressable market</span>
-                  <span className="font-semibold">~$5B</span>
-                </div>
+                <div className="text-3xl font-bold text-primary">100x</div>
+                <div className="text-sm text-muted-foreground">Market Expansion</div>
+                <div className="text-xs text-muted-foreground">5M → 500M+ users</div>
               </div>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-primary">Asset Kit Factory</h3>
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Every business with digital presence</span>
-                  <span className="font-semibold text-primary">~500M+ businesses</span>
+              <div className="text-center">
+                <div className="flex items-center justify-center w-12 h-12 bg-green-500/10 rounded-full mx-auto mb-3">
+                  <DollarSign className="h-6 w-6 text-green-600" />
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">ARPU (enterprise workflow tools)</span>
-                  <span className="font-semibold text-primary">$50-200</span>
+                <div className="text-3xl font-bold text-green-600">3-6x</div>
+                <div className="text-sm text-muted-foreground">Revenue Per User</div>
+                <div className="text-xs text-muted-foreground">$16-30 → $50-200</div>
+              </div>
+              <div className="text-center">
+                <div className="flex items-center justify-center w-12 h-12 bg-blue-500/10 rounded-full mx-auto mb-3">
+                  <TrendingUp className="h-6 w-6 text-blue-600" />
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Total addressable market</span>
-                  <span className="font-semibold text-primary">~$50B+</span>
+                <div className="text-3xl font-bold text-blue-600">10x</div>
+                <div className="text-sm text-muted-foreground">Market Size</div>
+                <div className="text-xs text-muted-foreground">$5B → $50B+</div>
+              </div>
+              <div className="text-center">
+                <div className="flex items-center justify-center w-12 h-12 bg-purple-500/10 rounded-full mx-auto mb-3">
+                  <Target className="h-6 w-6 text-purple-600" />
                 </div>
+                <div className="text-3xl font-bold text-purple-600">∞</div>
+                <div className="text-sm text-muted-foreground">Stickiness</div>
+                <div className="text-xs text-muted-foreground">Nice-to-have → Mission-critical</div>
               </div>
             </div>
           </div>
-          
-          <div className="mt-8 bg-white/50 rounded-xl p-6">
-            <h3 className="text-xl font-semibold text-foreground mb-4">The Strategic Shift</h3>
-            <div className="grid md:grid-cols-3 gap-6">
+
+          {/* Interactive Comparison */}
+          <div className="p-6">
+            <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'library' | 'factory')}>
+              <TabsList className="grid w-full grid-cols-2 mb-6">
+                <TabsTrigger value="library" className="data-[state=active]:bg-muted">Asset Library (Current)</TabsTrigger>
+                <TabsTrigger value="factory" className="data-[state=active]:bg-primary data-[state=active]:text-white">Asset Kit Factory (Vision)</TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="library" className="space-y-6">
+                <div className="grid md:grid-cols-3 gap-6">
+                  <Card className="border-muted">
+                    <CardContent className="pt-6">
+                      <div className="text-center">
+                        <div className="text-4xl font-bold text-muted-foreground mb-2">5M</div>
+                        <div className="text-sm font-medium">Creative Professionals</div>
+                        <div className="text-xs text-muted-foreground mt-1">Designers, Video Editors, Developers</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card className="border-muted">
+                    <CardContent className="pt-6">
+                      <div className="text-center">
+                        <div className="text-4xl font-bold text-muted-foreground mb-2">$16-30</div>
+                        <div className="text-sm font-medium">ARPU/Month</div>
+                        <div className="text-xs text-muted-foreground mt-1">Subscription-based access</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card className="border-muted">
+                    <CardContent className="pt-6">
+                      <div className="text-center">
+                        <div className="text-4xl font-bold text-muted-foreground mb-2">~$5B</div>
+                        <div className="text-sm font-medium">Total Market</div>
+                        <div className="text-xs text-muted-foreground mt-1">Creative asset industry</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                <div className="bg-muted/50 rounded-lg p-4">
+                  <h4 className="font-semibold text-muted-foreground mb-2">Current Limitations</h4>
+                  <ul className="text-sm text-muted-foreground space-y-1">
+                    <li>• Limited to creative professionals</li>
+                    <li>• One-time download model</li>
+                    <li>• Low switching costs</li>
+                    <li>• Commoditized market</li>
+                  </ul>
+                </div>
+              </TabsContent>
+              
+              <TabsContent value="factory" className="space-y-6">
+                <div className="grid md:grid-cols-3 gap-6">
+                  <Card className="border-primary bg-primary/5">
+                    <CardContent className="pt-6">
+                      <div className="text-center">
+                        <div className="text-4xl font-bold text-primary mb-2">500M+</div>
+                        <div className="text-sm font-medium text-primary">All Businesses</div>
+                        <div className="text-xs text-muted-foreground mt-1">Every company with digital presence</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card className="border-primary bg-primary/5">
+                    <CardContent className="pt-6">
+                      <div className="text-center">
+                        <div className="text-4xl font-bold text-primary mb-2">$50-200</div>
+                        <div className="text-sm font-medium text-primary">ARPU/Month</div>
+                        <div className="text-xs text-muted-foreground mt-1">Enterprise workflow pricing</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card className="border-primary bg-primary/5">
+                    <CardContent className="pt-6">
+                      <div className="text-center">
+                        <div className="text-4xl font-bold text-primary mb-2">~$50B+</div>
+                        <div className="text-sm font-medium text-primary">Total Market</div>
+                        <div className="text-xs text-muted-foreground mt-1">Workflow automation + enterprise tools</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                <div className="bg-primary/10 rounded-lg p-4 border border-primary/20">
+                  <h4 className="font-semibold text-primary mb-2">Strategic Advantages</h4>
+                  <ul className="text-sm text-foreground space-y-1">
+                    <li>• Mission-critical business infrastructure</li>
+                    <li>• Recurring workflow dependencies</li>
+                    <li>• High switching costs</li>
+                    <li>• Network effects at scale</li>
+                  </ul>
+                </div>
+              </TabsContent>
+            </Tabs>
+          </div>
+
+          {/* Transformation Journey */}
+          <div className="p-6 bg-gradient-to-r from-muted/50 to-primary/10">
+            <h3 className="text-xl font-semibold text-foreground mb-6 text-center">The Strategic Transformation</h3>
+            <div className="flex items-center justify-between max-w-4xl mx-auto">
               <div className="text-center">
-                <div className="text-2xl font-bold text-muted-foreground mb-2">5M</div>
-                <div className="text-sm text-muted-foreground">Creative professionals</div>
-                <div className="text-xs text-muted-foreground mt-1">Current market</div>
+                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-3 mx-auto">
+                  <span className="text-2xl font-bold text-muted-foreground">5M</span>
+                </div>
+                <div className="text-sm font-medium text-muted-foreground">Creative Professionals</div>
+                <div className="text-xs text-muted-foreground">Current Market</div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary mb-2">→</div>
-                <div className="text-sm text-primary font-semibold">Transformation</div>
-                <div className="text-xs text-muted-foreground mt-1">Through AI & workflows</div>
+              
+              <div className="flex-1 mx-8">
+                <div className="relative">
+                  <div className="h-1 bg-gradient-to-r from-muted via-primary/50 to-primary rounded-full"></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-primary rounded-full p-2">
+                    <TrendingUp className="h-4 w-4 text-primary" />
+                  </div>
+                </div>
+                <div className="text-center mt-2">
+                  <div className="text-xs font-medium text-primary">AI + Workflows</div>
+                  <div className="text-xs text-muted-foreground">Transformation Engine</div>
+                </div>
               </div>
+              
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary mb-2">500M+</div>
-                <div className="text-sm text-primary font-semibold">All businesses</div>
-                <div className="text-xs text-muted-foreground mt-1">Expanded market</div>
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-3 mx-auto">
+                  <span className="text-xl font-bold text-white">500M+</span>
+                </div>
+                <div className="text-sm font-medium text-primary">All Businesses</div>
+                <div className="text-xs text-muted-foreground">Target Market</div>
               </div>
             </div>
           </div>
