@@ -75,6 +75,74 @@ const Summary = () => {
           ))}
         </div>
 
+        {/* Envato Labs Section */}
+        <div className="mt-16">
+          <h2 className="text-3xl font-bold text-envato-gray-900 mb-8">Envato Labs: What's shipped and what's missing</h2>
+          
+          <div className="grid gap-8">
+            <Card className="bg-envato-green-50 border border-envato-green-200">
+              <CardHeader>
+                <CardTitle className="text-xl text-envato-gray-900">What's Already Live</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 bg-envato-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="text-envato-gray-700">Envato Labs offers ImageGen, ImageEdit, VoiceGen, VideoGen, MusicGen, and InspoGen—all included in Elements subscriptions at no extra cost</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 bg-envato-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="text-envato-gray-700">Those tools are available and improving fast—AI image, video, voice, music, inspiration via moodboards</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 bg-envato-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="text-envato-gray-700">The tools are tightly integrated—no separate logins or billing. You generate, refine, and export in one place</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 bg-envato-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="text-envato-gray-700">Recent updates include enhanced ImageGen, multilingual VoiceGen, video generation with sound, and PremiumBeat catalog integration</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 bg-envato-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="text-envato-gray-700">AI-assisted search and a Premiere Pro plugin are already live, adding search relevance and workflow access</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-orange-50 border border-orange-200">
+              <CardHeader>
+                <CardTitle className="text-xl text-envato-gray-900">Where the gaps lie—things they haven't yet done</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <h4 className="font-semibold text-envato-gray-900 mb-3">Key Missing Pieces</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="text-envato-gray-700">Tools are live, but workflows are disjointed. No campaign brief-to-output flow</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="text-envato-gray-700">Personalization for end-users—recommendations by project intent, speed-to-creative—still weak</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="text-envato-gray-700">Contributor tools (like auto-tagging, pricing insights) are not public</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="text-envato-gray-700">Enterprise-grade offerings: dashboards, campaign packs, brand compliance, analytics—missing</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="text-envato-gray-700">Vertical-specific content (film, streaming, game dev) or integrations into agency pipelines—unfinished</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
         {/* Understanding Envato's Context */}
         <div className="mt-16">
           <h2 className="text-3xl font-bold text-envato-gray-900 mb-8">Understanding Envato's Context</h2>
