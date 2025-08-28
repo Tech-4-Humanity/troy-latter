@@ -607,7 +607,7 @@ const EnvatoIndex = () => {
           {/* Hero Image */}
           <div className="hero-image">
             <img 
-              src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/ChatGPT%20Image%20Aug%2027,%202025,%2002_37_22%20PM.png"
+              src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/exec-leadership-team-images-except-trojan-oz/Screenshot%202025-08-28%20at%203.38.52%20pm.png"
               alt="AI Product Manager Strategy Visualization"
               loading="lazy"
             />
@@ -619,7 +619,7 @@ const EnvatoIndex = () => {
               href="/microsites/envato/orchestrator" 
               className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
             >
-              🎯 View The Orchestrator Profile
+              🎯 View The Orchestrators Profile
             </a>
             <p className="text-xs text-muted-foreground mt-1">
               Deep dive into the modern AI product manager skillset and approach

@@ -174,7 +174,7 @@ const Orchestrator = () => {
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
-            <BreadcrumbPage>Orchestrator</BreadcrumbPage>
+            <BreadcrumbPage>Orchestrators</BreadcrumbPage>
           </BreadcrumbList>
         </Breadcrumb>
         {/* Hero Section */}
@@ -182,7 +182,7 @@ const Orchestrator = () => {
           <div className="text-sm font-semibold text-muted-foreground mb-2 tracking-wide uppercase">
             The modern AI product manager
           </div>
-          <h1 className="text-4xl font-bold text-foreground mb-4">The orchestrator</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">The orchestrators</h1>
           <p className="text-lg text-muted-foreground mb-8">
             You want more than features. You want alignment. Customers. Contributors. Enterprise. Agents. One cadence.
           </p>
@@ -198,8 +198,8 @@ const Orchestrator = () => {
               
               {/* Orchestrator Graphic */}
               <div className="relative w-full max-w-md mx-auto bg-background border border-dashed border-border rounded-lg mb-6 overflow-hidden">
-                <img 
-                  src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/Complete%20Product%20Management%20MBA%20(1).png" 
+                 <img 
+                  src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/exec-leadership-team-images-except-trojan-oz/Screenshot%202025-08-28%20at%203.38.52%20pm.png" 
                   alt="Complete Product Management MBA"
                   className="w-full h-auto object-contain rounded-lg"
                 />
@@ -298,7 +298,7 @@ const Orchestrator = () => {
         </section>
 
         {/* Leading Teams View */}
-        <section className="mb-12">
+        <section id="teams-view" className="mb-12">
           <div className="bg-card border border-border rounded-xl p-6">
             <h2 className="text-2xl font-semibold mb-6">How leading teams view PM now</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -388,26 +388,36 @@ const Orchestrator = () => {
                 <div key={id} className="bg-card border border-border rounded-lg p-4">
                   <h3 className="font-semibold mb-2">{title}</h3>
                   <p className="text-muted-foreground text-sm mb-4">{desc}</p>
+                  <details className="mt-3 bg-background border border-border rounded">
+                    <summary className="p-2 text-xs font-medium cursor-pointer">More details</summary>
+                    <div className="p-2 border-t border-border text-xs text-muted-foreground">
+                      {techNotes[id as keyof typeof techNotes]}
+                    </div>
+                  </details>
                   <button
                     onClick={() => copyToClipboard(techNotes[id as keyof typeof techNotes])}
                     className="bg-primary text-primary-foreground px-3 py-1 rounded text-sm font-medium hover:bg-primary/90 transition-colors"
                   >
-                    Copy notes
+                    Copy detailed metrics
                   </button>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    "Copy detailed metrics" copies the complete technical implementation details with specific KPIs, architecture decisions, and performance metrics to your clipboard for use in documentation or presentations.
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Local Navigation */}
+        {/* Local Navigation - Moved above the sections */}
         <nav className="sticky top-4 z-10 bg-background/95 backdrop-blur border border-border rounded-xl p-2 mb-8">
           <div className="flex flex-wrap gap-2 justify-center">
             {[
               { label: 'Overview', anchor: 'top' },
               { label: 'Skills', anchor: 'skills' },
+              { label: 'How leading teams view PM now', anchor: 'teams-view' },
               { label: 'Curriculum', anchor: 'curriculum' },
-              { label: 'Proof Points', anchor: 'proof' },
+              { label: 'Proof points tested', anchor: 'proof' },
               { label: 'Q&A', anchor: 'qa' }
             ].map(({ label, anchor }) => (
               <button
@@ -512,11 +522,11 @@ const Orchestrator = () => {
                 <strong>Graduation Requirements:</strong> Core curriculum + 400-level courses + Build portfolio + Apply at work + Choose specializations + Continuous improvement
               </p>
               <Button
-                onClick={() => document.getElementById('quick')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => window.open('https://www.augmentedhumanity.coach/roles/project-manager/hub', '_blank')}
                 variant="outline"
                 size="sm"
               >
-                View portfolio artifacts →
+                View portfolio artefacts →
               </Button>
             </div>
           </div>
