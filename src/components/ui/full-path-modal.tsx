@@ -32,8 +32,8 @@ interface PathData {
 interface FullPathModalProps {
   isOpen: boolean;
   onClose: () => void;
-  pathName: string;
-  pathData: PathData;
+  pathName: string | null;
+  pathData: PathData | null;
 }
 
 const FullPathModal: React.FC<FullPathModalProps> = ({ isOpen, onClose, pathName, pathData }) => {
@@ -46,6 +46,11 @@ const FullPathModal: React.FC<FullPathModalProps> = ({ isOpen, onClose, pathName
       });
     });
   };
+
+  // Don't render if pathData is null
+  if (!pathData || !pathName) {
+    return null;
+  }
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
