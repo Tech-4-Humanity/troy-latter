@@ -38,7 +38,7 @@ const Summary = () => {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Envato Overview
           </Link>
-          <h1 className="text-4xl font-bold text-foreground mb-4">Context – Where Envato Is Now</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">context, messaging</h1>
           <p className="text-lg text-muted-foreground">
             Understanding Envato's current position and strategic opportunities in the evolving creative economy.
           </p>
@@ -152,6 +152,67 @@ const Summary = () => {
           </div>
         </div>
 
+
+        {/* Data, Metrics, and Impact */}
+        <div className="mt-12 bg-card border border-border rounded-xl p-6">
+          <h2 className="text-2xl font-semibold text-foreground mb-6">Data, Metrics, and Impact</h2>
+          <div className="space-y-4">
+            {[
+              "I'd define success by adoption, retention, and productivity gains, not just feature launches.",
+              "Metrics that matter include search-to-download time, subscriber engagement per session, and author revenue uplift.",
+              "AI has to show measurable value to both sides—faster work for users, higher royalties for authors.",
+              "Retention will be the key metric. A sticky AI feature keeps users subscribed longer. That drives growth more than one-off sales.",
+              "Envato can also measure community health—are creators uploading more, are they earning more, are they satisfied with attribution?"
+            ].map((quote, index) => (
+              <div key={index} className="flex items-start space-x-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <p className="text-muted-foreground italic">"{quote}"</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Extra Interview Soundbites */}
+        <div className="mt-12">
+          <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+            <CollapsibleTrigger className="w-full">
+              <Card className="cursor-pointer hover:shadow-md transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-xl">Extra Interview Soundbites</CardTitle>
+                    <ChevronDown className={`h-5 w-5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                  </div>
+                  <p className="text-muted-foreground text-left">Click to expand additional strategic talking points and interview soundbites</p>
+                </CardHeader>
+              </Card>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-4">
+              <div className="space-y-4">
+                {[
+                  "Envato is the subscription model; Getty and Shutterstock are the scale models. The merger only works if Envato leads on innovation.",
+                  "Data without trust is a liability. Envato's brand gives permission to innovate with AI responsibly.",
+                  "Community is Envato's moat. AI must be built to strengthen that moat.",
+                  "The marketplace of the future isn't static—it's intelligent, adaptive, and orchestrated. Envato can lead that evolution.",
+                  "Workflow augmentation is a bigger prize than asset generation. That's how you integrate into the daily lives of creators.",
+                  "Envato already has the tools and subscriber base—AI is the accelerator to tie them together at scale.",
+                  "Envato is at the sweet spot: small enough to innovate, big enough to matter.",
+                  "AI should create compounding effects—every search, every download, every upload makes the system smarter.",
+                  "Envato can set the global standard for ethical AI in creative marketplaces, from Australia outward.",
+                  "The merger brings assets, but assets without orchestration are just noise. Envato is the orchestrator.",
+                  "This isn't just about more content—it's about making content usable at scale through orchestration.",
+                  "Envato can be the innovation lab for Shutterstock and Getty, with APAC as the proving ground.",
+                  "The differentiator is trust: protecting and empowering authors while scaling AI workflows.",
+                  "Timing is rare: subscription model proven, assets flowing in, market demanding workflow tools—that's when transformation sticks."
+                ].map((quote, index) => (
+                  <div key={index} className="bg-card border border-border rounded-lg p-4">
+                    <p className="text-muted-foreground italic">"{quote}"</p>
+                  </div>
+                ))}
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
+        </div>
+
         {/* The Timing Advantage */}
         <div className="mt-12">
           <h2 className="text-2xl font-semibold text-foreground mb-6">The Timing Advantage</h2>
@@ -222,66 +283,6 @@ const Summary = () => {
               </Card>
             ))}
           </div>
-        </div>
-
-        {/* Data, Metrics, and Impact */}
-        <div className="mt-12 bg-card border border-border rounded-xl p-6">
-          <h2 className="text-2xl font-semibold text-foreground mb-6">Data, Metrics, and Impact</h2>
-          <div className="space-y-4">
-            {[
-              "I'd define success by adoption, retention, and productivity gains, not just feature launches.",
-              "Metrics that matter include search-to-download time, subscriber engagement per session, and author revenue uplift.",
-              "AI has to show measurable value to both sides—faster work for users, higher royalties for authors.",
-              "Retention will be the key metric. A sticky AI feature keeps users subscribed longer. That drives growth more than one-off sales.",
-              "Envato can also measure community health—are creators uploading more, are they earning more, are they satisfied with attribution?"
-            ].map((quote, index) => (
-              <div key={index} className="flex items-start space-x-3">
-                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
-                <p className="text-muted-foreground italic">"{quote}"</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Soundbites */}
-        <div className="mt-12">
-          <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-            <CollapsibleTrigger className="w-full">
-              <Card className="cursor-pointer hover:shadow-md transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-xl">Soundbites</CardTitle>
-                    <ChevronDown className={`h-5 w-5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                  </div>
-                  <p className="text-muted-foreground text-left">Click to expand additional strategic talking points and interview soundbites</p>
-                </CardHeader>
-              </Card>
-            </CollapsibleTrigger>
-            <CollapsibleContent className="mt-4">
-              <div className="space-y-4">
-                {[
-                  "Envato is the subscription model; Getty and Shutterstock are the scale models. The merger only works if Envato leads on innovation.",
-                  "Data without trust is a liability. Envato's brand gives permission to innovate with AI responsibly.",
-                  "Community is Envato's moat. AI must be built to strengthen that moat.",
-                  "The marketplace of the future isn't static—it's intelligent, adaptive, and orchestrated. Envato can lead that evolution.",
-                  "Workflow augmentation is a bigger prize than asset generation. That's how you integrate into the daily lives of creators.",
-                  "Envato already has the tools and subscriber base—AI is the accelerator to tie them together at scale.",
-                  "Envato is at the sweet spot: small enough to innovate, big enough to matter.",
-                  "AI should create compounding effects—every search, every download, every upload makes the system smarter.",
-                  "Envato can set the global standard for ethical AI in creative marketplaces, from Australia outward.",
-                  "The merger brings assets, but assets without orchestration are just noise. Envato is the orchestrator.",
-                  "This isn't just about more content—it's about making content usable at scale through orchestration.",
-                  "Envato can be the innovation lab for Shutterstock and Getty, with APAC as the proving ground.",
-                  "The differentiator is trust: protecting and empowering authors while scaling AI workflows.",
-                  "Timing is rare: subscription model proven, assets flowing in, market demanding workflow tools—that's when transformation sticks."
-                ].map((quote, index) => (
-                  <div key={index} className="bg-card border border-border rounded-lg p-4">
-                    <p className="text-muted-foreground italic">"{quote}"</p>
-                  </div>
-                ))}
-              </div>
-            </CollapsibleContent>
-          </Collapsible>
         </div>
 
         {/* Call to Action for Asset Strategy */}
