@@ -4,6 +4,7 @@ import { ArrowLeft, TrendingUp, Users, DollarSign, Target } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useState } from 'react';
+import EnvatoEcosystemDiagram from './components/EnvatoEcosystemDiagram';
 
 const Assets = () => {
   const [activeTab, setActiveTab] = useState<'library' | 'factory'>('library');
@@ -360,6 +361,9 @@ const Assets = () => {
             ))}
           </div>
         </div>
+
+        {/* Envato Ecosystem */}
+        <EnvatoEcosystemDiagram />
 
         {/* The Network Effect */}
         <div className="mt-12 bg-primary/10 border border-primary/20 rounded-xl p-6">
