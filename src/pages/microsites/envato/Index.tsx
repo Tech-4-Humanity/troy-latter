@@ -804,6 +804,7 @@ const EnvatoIndex = () => {
             <div className="hero-links">
               <a href="/microsites/envato/summary" className="hero-link">📋 Envato Context & Summary</a>
               <a href="/microsites/envato/assets" className="hero-link">🔄 Asset Redefinition Guide</a>
+              <a href="#case-studies" className="hero-link">📚 Future case studies</a>
               <a href="#comparison-table" className="hero-link">📊 Compare all paths</a>
               <a href="#framework" className="hero-link">🎯 Decision framework</a>
             </div>
@@ -886,12 +887,42 @@ const EnvatoIndex = () => {
           </section>
 
           {/* Path Details: Future Case Studies */}
-          <section className="section">
+          <section id="case-studies" className="section">
             <h2 className="section-title">future case studies - all paths</h2>
             <p className="section-subtitle">Explore future scenarios and outcomes for each strategic pathway</p>
             
+            <div style={{textAlign: 'center', marginBottom: '24px'}}>
+              <Button 
+                onClick={() => {
+                  const allItems = document.querySelectorAll('[data-radix-accordion-item]');
+                  const openItems = document.querySelectorAll('[data-state="open"]');
+                  const shouldOpen = openItems.length === 0;
+                  
+                  allItems.forEach((item) => {
+                    const trigger = item.querySelector('[data-radix-accordion-trigger]');
+                    const isOpen = trigger?.getAttribute('data-state') === 'open';
+                    if (shouldOpen !== isOpen && trigger) {
+                      (trigger as HTMLElement).click();
+                    }
+                  });
+                }}
+                style={{
+                  background: 'var(--envato)',
+                  color: 'white',
+                  border: 'none',
+                  padding: '8px 16px',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '500'
+                }}
+              >
+                Expand/Collapse All
+              </Button>
+            </div>
+            
             <div className="space-y-6" style={{marginBottom: '32px'}}>
-              <Accordion type="single" collapsible className="w-full">
+              <Accordion type="single" collapsible defaultValue="path-1" className="w-full">
                 {Object.entries(pathData).map(([pathName, data], pathIndex) => {
                   if (!data) return null;
                   return (

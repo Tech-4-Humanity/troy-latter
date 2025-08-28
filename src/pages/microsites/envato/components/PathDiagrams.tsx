@@ -316,12 +316,18 @@ const PathDiagrams = () => {
               <div className="space-y-4">
                 {currentPath.revenue.map((item, index) => (
                   <div key={index} className="bg-card rounded-lg p-4 border-l-3 border-emerald-500 relative">
-                    <div className="absolute -left-3 top-4 bg-emerald-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
+              <div className="absolute -left-3 top-4 bg-emerald-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
                       {item.icon}
                     </div>
                     <div className="ml-6">
                       <h5 className="font-semibold text-foreground mb-1">{item.title}</h5>
                       <p className="text-sm text-muted-foreground">{item.desc}</p>
+                      <a 
+                        href={`#${activeTab}-stories`}
+                        className="inline-flex items-center gap-1 text-xs text-emerald-600 hover:text-emerald-800 mt-2 hover:underline"
+                      >
+                        Case studies →
+                      </a>
                     </div>
                   </div>
                 ))}
