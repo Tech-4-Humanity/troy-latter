@@ -603,6 +603,14 @@ const EnvatoIndex = () => {
           <div className="kicker">Envato strategy options</div>
           <h1>Core, satellite, moonshot</h1>
           <p className="sub">Five paths. Clear benefits. Click to go deeper. Add your notes.</p>
+          <div className="mb-4">
+            <a 
+              href="/microsites/envato/summary" 
+              className="inline-flex items-center text-blue-600 hover:text-blue-700 text-sm font-medium"
+            >
+              📋 Context overview: Where Envato is now →
+            </a>
+          </div>
           
           {/* Hero Image */}
           <div className="hero-image">
@@ -697,10 +705,11 @@ const EnvatoIndex = () => {
                   </div>
                 </div>
 
-                {/* Path 2 Creative Network */}
-                <div className={`flip-card ${flipped['path2'] ? 'is-flipped' : ''}`}>
+                 {/* Path 2 Creative Network */}
+                <div className={`flip-card ${flipped['path2'] ? 'is-flipped' : ''}`} style={{background: 'linear-gradient(135deg, #ecfdf5, #f0fdf4)', border: '2px solid #10b981', position: 'relative'}}>
                   <div className="flip-inner">
                     <div className="flip-face flip-front">
+                      <div style={{position: 'absolute', top: '8px', right: '8px', background: '#10b981', color: 'white', padding: '2px 8px', borderRadius: '12px', fontSize: '10px', fontWeight: 'bold'}}>Chosen now</div>
                       <h3>Path 2 Creative Network</h3>
                       <div className="meta">Community, feeds, creator subs</div>
                       <p className="meta">Indicative 500M plus GMV potential</p>
@@ -949,26 +958,28 @@ const EnvatoIndex = () => {
                 <p className="dim-help">High level purpose of each path. Add your notes on the right.</p>
                 <div className="table-wrap">
                   <table>
-                    <thead>
-                      <tr>
-                        <th className="col-path">Path 1</th>
-                        <th className="col-path">Path 2</th>
-                        <th className="col-path">Path 3</th>
-                        <th className="col-path">Path 4</th>
-                        <th className="col-path">Path 5</th>
-                        <th className="col-notes">Envato input</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Trusted AI workflows and compliance. Enterprise ARR engine.</td>
-                        <td>Creator network with feeds and subs. Multi stream income.</td>
-                        <td>Sector specific platforms like Edu and Gaming and Retail.</td>
-                        <td>API first creative backend for SaaS and AI tools.</td>
-                        <td>Immersive and agentic AI content substrate.</td>
-                        <td><textarea className="note" data-key="d1"></textarea></td>
-                      </tr>
-                    </tbody>
+                        <thead>
+                          <tr>
+                            <th className="col-path" style={{padding: '12px', fontSize: '14px'}}>Path 1</th>
+                            <th className="col-path" style={{padding: '12px', fontSize: '14px', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981'}}>
+                              Path 2 <span style={{background: '#10b981', color: 'white', padding: '2px 6px', borderRadius: '8px', fontSize: '10px', marginLeft: '4px'}}>Chosen</span>
+                            </th>
+                            <th className="col-path" style={{padding: '12px', fontSize: '14px'}}>Path 3</th>
+                            <th className="col-path" style={{padding: '12px', fontSize: '14px'}}>Path 4</th>
+                            <th className="col-path" style={{padding: '12px', fontSize: '14px'}}>Path 5</th>
+                            <th className="col-notes" style={{padding: '12px', fontSize: '14px'}}>Envato input</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>Trusted AI workflows and compliance. Enterprise ARR engine.</td>
+                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>Creator network with feeds and subs. Multi stream income.</td>
+                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>Sector specific platforms like Edu and Gaming and Retail.</td>
+                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>API first creative backend for SaaS and AI tools.</td>
+                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>Immersive and agentic AI content substrate.</td>
+                            <td style={{padding: '16px'}}><textarea className="note" data-key="d1" style={{minHeight: '80px', padding: '12px', fontSize: '14px', lineHeight: '1.6'}}></textarea></td>
+                          </tr>
+                        </tbody>
                   </table>
                 </div>
               </div>
@@ -986,17 +997,24 @@ const EnvatoIndex = () => {
                       <table>
                         <thead>
                           <tr>
-                            <th>Path 1</th><th>Path 2</th><th>Path 3</th><th>Path 4</th><th>Path 5</th><th>Envato input</th>
+                            <th style={{padding: '12px', fontSize: '14px'}}>Path 1</th>
+                            <th style={{padding: '12px', fontSize: '14px', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981'}}>
+                              Path 2 <span style={{background: '#10b981', color: 'white', padding: '2px 6px', borderRadius: '8px', fontSize: '10px', marginLeft: '4px'}}>Chosen</span>
+                            </th>
+                            <th style={{padding: '12px', fontSize: '14px'}}>Path 3</th>
+                            <th style={{padding: '12px', fontSize: '14px'}}>Path 4</th>
+                            <th style={{padding: '12px', fontSize: '14px'}}>Path 5</th>
+                            <th style={{padding: '12px', fontSize: '14px'}}>Envato input</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>{pathData["Path 1 Creative Infrastructure"].plan14[sectionNumber - 1]?.text}</td>
-                            <td>{pathData["Path 2 Creative Network"].plan14[sectionNumber - 1]?.text}</td>
-                            <td>{pathData["Path 3 Vertical Expansion"].plan14[sectionNumber - 1]?.text}</td>
-                            <td>{pathData["Path 4 Platform Enabler"].plan14[sectionNumber - 1]?.text}</td>
-                            <td>{pathData["Path 5 Radical Play"].plan14[sectionNumber - 1]?.text}</td>
-                            <td><textarea className="note" data-key={`d${sectionNumber}`}></textarea></td>
+                          <tr style={{background: sectionNumber % 2 === 0 ? '#f8fafc' : 'transparent'}}>
+                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 1 Creative Infrastructure"].plan14[sectionNumber - 1]?.text}</td>
+                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>{pathData["Path 2 Creative Network"].plan14[sectionNumber - 1]?.text}</td>
+                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 3 Vertical Expansion"].plan14[sectionNumber - 1]?.text}</td>
+                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 4 Platform Enabler"].plan14[sectionNumber - 1]?.text}</td>
+                            <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 5 Radical Play"].plan14[sectionNumber - 1]?.text}</td>
+                            <td style={{padding: '16px'}}><textarea className="note" data-key={`d${sectionNumber}`} style={{minHeight: '80px', padding: '12px', fontSize: '14px', lineHeight: '1.6'}}></textarea></td>
                           </tr>
                         </tbody>
                       </table>

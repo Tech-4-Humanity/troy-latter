@@ -536,39 +536,79 @@ const Orchestrator = () => {
         {/* Pre-empted Q&A */}
         <section id="qa" className="mb-12">
           <div className="bg-card border border-border rounded-xl p-6">
-            <h2 className="text-2xl font-semibold mb-6">Pre empted Q and A</h2>
+            <h2 className="text-2xl font-semibold mb-6">Envato – Principal AI Product Manager Pre‑Empted Q&A</h2>
             <div className="space-y-4">
               {[
                 {
-                  question: 'What is AI product management to you',
-                  answer: 'Align people and outcomes. Define the asset. Reward contributors. Make customer outcomes faster and safer. The model is a lever. The community is the moat.',
+                  question: 'What does AI Product Management mean to you?',
+                  answer: 'Most think it\'s about features or prompt-tuning. For me, it\'s about aligning people and outcomes:\n\nDefine the asset model so it scales across contributors and customers.\n\nMake sure contributors get paid fairly and stay loyal.\n\nDeliver customer outcomes that are faster, safer, and easier.\nThe tech is the easy part. The hard part is getting people on the bus.',
                   noteKey: 'pm_definition'
                 },
                 {
-                  question: 'How do you handle integrations',
-                  answer: 'One manifest and one unified index. Public APIs and SDKs reuse the same contract. Every plugin rides that contract.',
+                  question: 'How would you align Envato\'s AI strategy with its business model?',
+                  answer: 'I\'ve mapped five strategic paths: Infrastructure, Network, Vertical Expansion, Platform Enabler, and Radical Play. Each is viable, but Infrastructure is the core play for defensible ARR. Platform Enabler keeps us in SaaS ecosystems. The others are bets. My role is to help balance the portfolio so Envato has a floor, an upside, and a moonshot.',
+                  noteKey: 'strategy_alignment'
+                },
+                {
+                  question: 'How do customers benefit from AI here?',
+                  answer: 'A small business in Jakarta can download a Ramadan campaign kit in minutes. A teacher can build compliant courseware packs. A brand manager gets provenance-stamped assets safe for enterprise use. That\'s customer obsession in action: faster campaigns, safer licensing, easier discovery.',
+                  noteKey: 'customer_benefits'
+                },
+                {
+                  question: 'How do contributors benefit?',
+                  answer: 'Contributors are the moat. AI isn\'t there to replace them but to multiply their earnings:\n\nPath 1: earn through enterprise kits.\n\nPath 2: earn via storefront subs and sponsorships.\n\nPath 5: earn royalties through API usage across SaaS platforms.\nAnd they get analytics, tagging, and forecast tools so they know what to create next.',
+                  noteKey: 'contributor_benefits'
+                },
+                {
+                  question: 'What\'s the monetisation model?',
+                  answer: 'Infrastructure: $100–200M ARR potential.\n\nNetwork: $500M+ GMV, $50–100M revenue.\n\nVertical Expansion: $50–100M ARR per sector.\n\nPlatform APIs: $100M ARR within 3–4 years if embedded broadly.\n\nRadical Play: $1B+ TAM moonshot.\nEach is backed by realistic revenue levers—subs, usage fees, royalties, ads.',
+                  noteKey: 'monetisation'
+                },
+                {
+                  question: 'How do you handle provenance, safety, and trust?',
+                  answer: 'Trust has to be part of the product, not bolted on:\n\nC2PA signing on all AI outputs.\n\nProvenance APIs for license verification.\n\nRegion pinning and audit exports for enterprise.\n\nModeration AI and human review queues for community.\nThat turns AI Labs from "fun" into production-grade tools.',
+                  noteKey: 'trust_safety'
+                },
+                {
+                  question: 'How do you integrate with partners and external tools?',
+                  answer: 'I\'d standardise around a single asset manifest and unified index. That becomes the contract. Then SDKs and APIs for Figma, Premiere, Shopify, Unity plug into the same backend services. Every integration reuses one spec—not ten.',
                   noteKey: 'integrations'
                 },
                 {
-                  question: 'How do you handle M and A',
-                  answer: 'Unify contributors and customers first. One payout ledger. One contract. Then harmonise manifests and provenance.',
+                  question: 'How would you handle mergers and acquisitions?',
+                  answer: 'Unify contributors and customers first, then tech. That means one contributor dashboard, one payout ledger, one customer contract. Behind the scenes, crosswalk IDs, harmonised manifests, and unified provenance rules. Done in 90-day sprints: payouts → provenance → workflows.',
                   noteKey: 'ma_strategy'
                 },
                 {
-                  question: 'How do you keep speed',
-                  answer: 'Infra SLAs. Independent squads. Canary and kill switch. Measure time to value.',
+                  question: 'How do you keep speed?',
+                  answer: 'Speed comes from contracts and SLAs. The infra team owns the index, APIs, lineage. Feature squads build storefronts, kits, or agentic workflows on top. If search is <200ms and provenance API is reliable, teams can ship without bottlenecking each other.',
                   noteKey: 'speed_strategy'
                 },
                 {
-                  question: 'What are your first 90 days',
-                  answer: 'Ship manifest and index. C2PA by default. One enterprise connector. Contributor insights. One agentic workflow pilot.',
+                  question: 'Can you build a team without a product?',
+                  answer: 'Yes—if the charter is clear. The mission is to get assets from contributor → safe and useful for customer → contributor gets paid. Teams form around flows, not features:\n\nContributor success (tools, analytics, payouts).\n\nCustomer experience (search, gen, packs).\n\nTrust and provenance (C2PA, compliance, moderation).\n\nPlatform (APIs, SDKs, partner integrations).',
+                  noteKey: 'team_building'
+                },
+                {
+                  question: 'How would you differentiate Envato from Adobe, Canva, TikTok, or Unity?',
+                  answer: 'Adobe has the tools.\n\nCanva has templates.\n\nTikTok has the eyeballs.\n\nUnity has the engine.\nEnvato has the rare chance to combine enterprise trust with a global contributor community. That\'s a unique slot if we align incentives and execution.',
+                  noteKey: 'differentiation'
+                },
+                {
+                  question: 'What are your first 90 days?',
+                  answer: 'Ship one manifest (asset, license, lineage, region).\n\nStand up a unified index (lexical + vector).\n\nAdd C2PA signing on all AI Labs outputs with a public verify page.\n\nPilot one enterprise connector with audit export.\n\nLaunch contributor insights v1 (auto tags, price hints, forecast report).\n\nRun one agentic workflow pilot (social variants from one brief).',
                   noteKey: 'first_90_days'
+                },
+                {
+                  question: 'Why should we trust you to lead this?',
+                  answer: 'Because I don\'t treat AI as a feature. I treat it as alignment of people, trust, and monetisation. Products don\'t fail because the models aren\'t good enough. They fail when contributors don\'t lean in, customers don\'t see value, or enterprises don\'t trust compliance. My role is to make sure they all get on the bus and stay there.',
+                  noteKey: 'trust_leadership'
                 }
               ].map(({ question, answer, noteKey }) => (
                 <details key={noteKey} className="bg-background border border-border rounded-lg">
                   <summary className="p-4 font-semibold cursor-pointer">{question}</summary>
                   <div className="p-4 border-t border-border">
-                    <div className="text-muted-foreground mb-4">{answer}</div>
+                    <div className="text-muted-foreground mb-4 whitespace-pre-line">{answer}</div>
                     <div className="space-y-2">
                       <label className="block text-sm font-medium">Your notes:</label>
                       <textarea
