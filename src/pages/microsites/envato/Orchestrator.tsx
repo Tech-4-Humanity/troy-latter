@@ -164,16 +164,16 @@ const Orchestrator = () => {
     });
   };
 
-  const handleGatedCopy = async (text: string) => {
+  const handleGatedCopy = async (requestedText: string) => {
     // Check if user has accessed in last 7 days
     const lastAccess = localStorage.getItem('envato_metrics_access');
     if (lastAccess && Date.now() - parseInt(lastAccess) < 7 * 24 * 60 * 60 * 1000) {
-      copyToClipboard(text);
+      copyToClipboard(requestedText);
       return;
     }
 
     // Store the specific text to copy
-    setFormData(prev => ({ ...prev, specificText: text }));
+    setFormData(prev => ({ ...prev, specificText: requestedText }));
     setIsDialogOpen(true);
   };
 
@@ -207,7 +207,7 @@ const Orchestrator = () => {
       localStorage.setItem('envato_metrics_access', Date.now().toString());
       
       // Copy the specific text requested
-      copyToClipboard(formData.specificText || Object.values(techNotes).join('\n\n'));
+      copyToClipboard(formData.specificText);
       
       setIsDialogOpen(false);
       setFormData({
@@ -308,11 +308,14 @@ const Orchestrator = () => {
                         // Auto-expand the accordion item
                         setTimeout(() => {
                           // Direct approach for details elements
-                          const details = element.closest('details') || element.querySelector('details');
-                          if (details && !details.open) {
-                            details.open = true;
-                            const summary = details.querySelector('summary');
-                            if (summary) summary.focus();
+                          // Find the Q&A details element and open it
+                          const qaElement = document.getElementById(`qa-${target}`);
+                          if (qaElement) {
+                            const details = qaElement.closest('details');
+                            if (details && !details.open) {
+                              details.open = true;
+                              details.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }
                           }
                         }, 500);
                       }

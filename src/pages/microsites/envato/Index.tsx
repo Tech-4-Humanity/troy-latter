@@ -23,14 +23,19 @@ const EnvatoIndex = () => {
   const [fullViewPath, setFullViewPath] = useState<string | null>(null);
   const { toast } = useToast();
 
-  // Debounce timer for DB sync
-  const [debounceTimers, setDebounceTimers] = useState<Record<string, NodeJS.Timeout>>({});
-
   // State for flip cards
   const [flipped, setFlipped] = useState<Record<string, boolean>>({});
 
   const flip = (key: string) => setFlipped(p => ({ ...p, [key]: !p[key] }));
   const unflip = (key: string) => setFlipped(p => ({ ...p, [key]: false }));
+
+  // Competency badges for this microsite
+  const pathBadges = [
+    { label: "AI Product Strategy", color: "bg-blue-500/10 border-blue-500/20" },
+    { label: "Enterprise Architecture", color: "bg-green-500/10 border-green-500/20" },
+    { label: "Platform Innovation", color: "bg-purple-500/10 border-purple-500/20" },
+    { label: "Community Building", color: "bg-orange-500/10 border-orange-500/20" }
+  ];
 
   // 14-point execution framework
   const fourteenPointFramework = [
@@ -285,11 +290,6 @@ const EnvatoIndex = () => {
     const newNotes = { ...notes, [key]: value };
     localStorage.setItem('envato-notes', JSON.stringify(newNotes));
 
-    // Clear existing timer for this key
-    if (debounceTimers[key]) {
-      clearTimeout(debounceTimers[key]);
-    }
-
     // No database operations needed - only localStorage
   };
 
@@ -341,8 +341,6 @@ const EnvatoIndex = () => {
     return () => {
       document.getElementById('saveAll')?.removeEventListener('click', saveAll);
       document.getElementById('clearAll')?.removeEventListener('click', clearAll);
-      // Clear debounce timers
-      Object.values(debounceTimers).forEach(timer => clearTimeout(timer));
     };
   }, [notes, isLoading, isAuthenticated]);
 
@@ -686,7 +684,7 @@ const EnvatoIndex = () => {
       <div className="envato-page">
         <div className="wrap">
           {/* Hero Section */}
-          <section className="hero">
+          <section id="quick" className="hero">
             <div className="hero-image">
               <div className="hero-text">Envato Strategic Overview</div>
             </div>
