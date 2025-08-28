@@ -32,9 +32,9 @@ const Assets = () => {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Envato Overview
           </Link>
-          <h1 className="text-4xl font-bold text-foreground mb-4">Asset Strategy & Market Expansion</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">increased assets & increased markets</h1>
           <p className="text-lg text-muted-foreground">
-            Exploring how Envato can evolve beyond traditional media libraries to become essential business infrastructure.
+            Expanding the asset universe and the markets Envato serves—growing from media library to workflow infrastructure.
           </p>
         </div>
 
