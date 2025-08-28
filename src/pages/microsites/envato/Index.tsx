@@ -630,7 +630,7 @@ const EnvatoIndex = () => {
         /* Equal width columns for comparison table */
         .envato-page .comparison-table th:first-child,
         .envato-page .comparison-table td:first-child {
-          width: 25%;
+          width: 15%;
         }
         .envato-page .comparison-table th:nth-child(2),
         .envato-page .comparison-table td:nth-child(2),
@@ -639,10 +639,12 @@ const EnvatoIndex = () => {
         .envato-page .comparison-table th:nth-child(4),
         .envato-page .comparison-table td:nth-child(4),
         .envato-page .comparison-table th:nth-child(5),
-        .envato-page .comparison-table td:nth-child(5),
+        .envato-page .comparison-table td:nth-child(5) {
+          width: 15%;
+        }
         .envato-page .comparison-table th:nth-child(6),
         .envato-page .comparison-table td:nth-child(6) {
-          width: 15%;
+          width: 25%;
         }
         .envato-page tr:last-child th,
         .envato-page tr:last-child td {
@@ -752,12 +754,6 @@ const EnvatoIndex = () => {
         .envato-page .status-local {
           background: var(--yellow);
         }
-        .envato-page .col-path {
-          width: 18%;
-        }
-        .envato-page .col-notes {
-          width: 22%;
-        }
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
@@ -827,16 +823,16 @@ const EnvatoIndex = () => {
                         <Button onClick={() => flip(`path${index + 1}`)} variant="outline" size="sm">
                           Flip for comparison
                         </Button>
-                       <Button 
-                         size="sm" 
-                         style={{background: 'var(--envato)', color: '#fff'}}
-                         onClick={() => setFullViewPath(pathName)}
-                       >
-                         Full view
-                       </Button>
-                     </div>
-                   </div>
-                   <div className="flip-face flip-back">
+                        <Button 
+                          size="sm" 
+                          style={{background: 'var(--envato)', color: '#fff'}}
+                          onClick={() => setFullViewPath(pathName)}
+                        >
+                          Full view
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="flip-face flip-back">
                       <h4 className="font-semibold mb-3">Interactive comparison snapshot</h4>
                       <div className="space-y-2 text-sm">
                         <div><strong>Market Value:</strong> 4/5 - TAM $200-400M ARR</div>
@@ -867,14 +863,12 @@ const EnvatoIndex = () => {
               const sectionNumber = index + 1;
               return (
                 <details key={framework} open={sectionNumber === 1}>
-                  <summary>{sectionNumber} {framework}</summary>
+                  <summary>{sectionNumber}. {framework}</summary>
                   <div className="acc-body">
                     <p className="dim-help">
                       {sectionNumber === 1 ? "High level purpose of each path. Add your notes on the right."
                        :
                        sectionNumber === 2 ? "Where is Envato now on this dimension. Add your notes on the right."
-                       :
-                       sectionNumber === 15 ? "Where this path wins compared to others. Add your notes on the right."
                        :
                        "Strategic considerations for this dimension. Add your notes on the right."}
                     </p>
@@ -882,60 +876,72 @@ const EnvatoIndex = () => {
                       <table className="comparison-table">
                         <thead>
                           <tr>
-                            <th style={{padding: '12px', fontSize: '14px'}}>Path 1</th>
-                            <th style={{padding: '12px', fontSize: '14px', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981'}}>
+                            <th>Path 1</th>
+                            <th style={{background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981'}}>
                               Path 2 <span style={{background: '#10b981', color: 'white', padding: '2px 6px', borderRadius: '8px', fontSize: '10px', marginLeft: '4px'}}>Chosen</span>
                             </th>
-                            <th style={{padding: '12px', fontSize: '14px'}}>Path 3</th>
-                            <th style={{padding: '12px', fontSize: '14px'}}>Path 4</th>
-                            <th style={{padding: '12px', fontSize: '14px'}}>Path 5</th>
-                            <th style={{padding: '12px', fontSize: '14px'}}>Envato input</th>
+                            <th>Path 3</th>
+                            <th>Path 4</th>
+                            <th>Path 5</th>
+                            <th>Envato input</th>
                           </tr>
                         </thead>
                         <tbody>
                           {sectionNumber === 1 ? (
                             <>
                               <tr>
-                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>Trusted AI workflows and compliance. Enterprise ARR engine.</td>
-                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>Creator network with feeds and subs. Multi stream income.</td>
-                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>Sector specific platforms like Edu and Gaming and Retail.</td>
-                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>API first creative backend for SaaS and AI tools.</td>
-                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>Immersive and agentic AI content substrate.</td>
-                                <td style={{padding: '16px'}}><textarea className="note" data-key="d1" style={{minHeight: '80px', padding: '12px', fontSize: '14px', lineHeight: '1.6'}}></textarea></td>
+                                <td>{pathData["Path 1 Creative Infrastructure"].plan14[sectionNumber - 1]?.text}</td>
+                                <td style={{background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>
+                                  {pathData["Path 2 Creative Network"].plan14[sectionNumber - 1]?.text}
+                                </td>
+                                <td>{pathData["Path 3 Vertical Expansion"].plan14[sectionNumber - 1]?.text}</td>
+                                <td>{pathData["Path 4 Platform Enabler"].plan14[sectionNumber - 1]?.text}</td>
+                                <td>{pathData["Path 5 Radical Play"].plan14[sectionNumber - 1]?.text}</td>
+                                <td>
+                                  <textarea 
+                                    className="note" 
+                                    value={notes[`d${sectionNumber}`] || ''}
+                                    onChange={(e) => handleNoteChange(`d${sectionNumber}`, e.target.value)}
+                                    style={{minHeight: '80px'}}
+                                  />
+                                </td>
                               </tr>
                               <tr>
-                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', fontWeight: '500'}}>Enterprise compliance and workflow automation at scale</td>
-                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>Direct creator-fan relationships and subscription revenue</td>
-                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', fontWeight: '500'}}>Deep industry expertise and specialized asset collections</td>
-                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', fontWeight: '500'}}>Platform integrations and developer ecosystem growth</td>
-                                <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', fontWeight: '500'}}>AI-first content creation with professional tool integration</td>
-                                <td style={{padding: '16px'}}><textarea className="note" data-key="where-wins" style={{minHeight: '80px', padding: '12px', fontSize: '14px', lineHeight: '1.6'}} placeholder="Your notes on winning strategies..."></textarea></td>
+                                <td style={{fontWeight: '500'}}>Enterprise compliance and workflow automation at scale</td>
+                                <td style={{background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>
+                                  Direct creator-fan relationships and subscription revenue
+                                </td>
+                                <td style={{fontWeight: '500'}}>Deep industry expertise and specialized asset collections</td>
+                                <td style={{fontWeight: '500'}}>Platform integrations and developer ecosystem growth</td>
+                                <td style={{fontWeight: '500'}}>AI-first content creation with professional tool integration</td>
+                                <td>
+                                  <textarea 
+                                    className="note" 
+                                    value={notes["where-wins"] || ''}
+                                    onChange={(e) => handleNoteChange("where-wins", e.target.value)}
+                                    placeholder="Your notes on winning strategies..."
+                                    style={{minHeight: '80px'}}
+                                  />
+                                </td>
                               </tr>
                             </>
                           ) : (
                             <tr style={{background: sectionNumber % 2 === 0 ? '#f8fafc' : 'transparent'}}>
-                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 1 Creative Infrastructure"].plan14[sectionNumber - 1]?.text}</td>
-                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>{pathData["Path 2 Creative Network"].plan14[sectionNumber - 1]?.text}</td>
-                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 3 Vertical Expansion"].plan14[sectionNumber - 1]?.text}</td>
-                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 4 Platform Enabler"].plan14[sectionNumber - 1]?.text}</td>
-                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 5 Radical Play"].plan14[sectionNumber - 1]?.text}</td>
-                              <td style={{padding: '16px'}}><textarea className="note" data-key={`d${sectionNumber}`} style={{minHeight: '80px', padding: '12px', fontSize: '14px', lineHeight: '1.6'}}></textarea></td>
-                            </tr>
-                          )}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </details>
-                            </>
-                          ) : (
-                            <tr style={{background: sectionNumber % 2 === 0 ? '#f8fafc' : 'transparent'}}>
-                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 1 Creative Infrastructure"].plan14[sectionNumber - 1]?.text}</td>
-                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6', background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>{pathData["Path 2 Creative Network"].plan14[sectionNumber - 1]?.text}</td>
-                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 3 Vertical Expansion"].plan14[sectionNumber - 1]?.text}</td>
-                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 4 Platform Enabler"].plan14[sectionNumber - 1]?.text}</td>
-                              <td style={{padding: '16px', fontSize: '14px', lineHeight: '1.6'}}>{pathData["Path 5 Radical Play"].plan14[sectionNumber - 1]?.text}</td>
-                              <td style={{padding: '16px'}}><textarea className="note" data-key={`d${sectionNumber}`} style={{minHeight: '80px', padding: '12px', fontSize: '14px', lineHeight: '1.6'}}></textarea></td>
+                              <td>{pathData["Path 1 Creative Infrastructure"].plan14[sectionNumber - 1]?.text}</td>
+                              <td style={{background: '#ecfdf5', borderLeft: '2px solid #10b981', borderRight: '2px solid #10b981', fontWeight: '500'}}>
+                                {pathData["Path 2 Creative Network"].plan14[sectionNumber - 1]?.text}
+                              </td>
+                              <td>{pathData["Path 3 Vertical Expansion"].plan14[sectionNumber - 1]?.text}</td>
+                              <td>{pathData["Path 4 Platform Enabler"].plan14[sectionNumber - 1]?.text}</td>
+                              <td>{pathData["Path 5 Radical Play"].plan14[sectionNumber - 1]?.text}</td>
+                              <td>
+                                <textarea 
+                                  className="note" 
+                                  value={notes[`d${sectionNumber}`] || ''}
+                                  onChange={(e) => handleNoteChange(`d${sectionNumber}`, e.target.value)}
+                                  style={{minHeight: '80px'}}
+                                />
+                              </td>
                             </tr>
                           )}
                         </tbody>
@@ -1044,7 +1050,7 @@ const EnvatoIndex = () => {
                         <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>1</td>
                         <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>1 (5+ yrs)</td>
                         <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>2</td>
-                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center')}}">5</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5</td>
                         <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>2.5</td>
                       </tr>
                     </tbody>
