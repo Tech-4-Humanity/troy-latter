@@ -742,7 +742,7 @@ const EnvatoIndex = () => {
               <h2 className="section-title">Quick view cards</h2>
               <p className="text-sm text-muted mb-4">
                 These cards represent five strategic growth paths for Envato. Each path includes the growth thesis, product AI strategy, and key actions. 
-                Flip a card to see the 14-point execution plan for that path, or open the full view for comprehensive context.
+                Flip a card to see the interactive comparison snapshot for that path, or open the full view for comprehensive context.
               </p>
               
               <div className="cards">
@@ -763,9 +763,9 @@ const EnvatoIndex = () => {
                          ))}
                        </div>
                        <div className="mt-4 flex gap-2">
-                        <Button onClick={() => flip('path1')} variant="outline" size="sm">
-                          Flip for steps
-                        </Button>
+                         <Button onClick={() => flip('path1')} variant="outline" size="sm">
+                           Flip for comparison
+                         </Button>
                         <Button 
                           size="sm" 
                           style={{background: 'var(--envato)', color: '#fff'}}
@@ -776,20 +776,21 @@ const EnvatoIndex = () => {
                       </div>
                     </div>
                     <div className="flip-face flip-back">
-                      <h4 className="font-semibold mb-3">14-Point Execution Plan</h4>
-                      <div className="space-y-2">
-                        {pathData["Path 1 Creative Infrastructure"].plan14.map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-2">
-                            <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium flex-shrink-0">
-                              {idx + 1}
-                            </span>
-                            <div>
-                              <div className="font-semibold text-sm">{item.title}</div>
-                              <div className="text-xs text-muted-foreground">{item.text}</div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                       <h4 className="font-semibold mb-3">Interactive comparison snapshot</h4>
+                       <div className="space-y-2 text-sm">
+                         <div><strong>Market Value:</strong> 4/5 - TAM $200-400M ARR</div>
+                         <div><strong>Strategic Fit:</strong> 5/5 - Perfect community alignment</div>
+                         <div><strong>Time to Revenue:</strong> 3/5 - 2-3 years</div>
+                         <div><strong>Probability:</strong> 4/5 - High execution confidence</div>
+                       </div>
+                       <Button 
+                         onClick={() => document.getElementById('comparison-table')?.scrollIntoView({ behavior: 'smooth' })}
+                         variant="outline" 
+                         size="sm" 
+                         className="mt-3 w-full"
+                       >
+                         Open full interactive table
+                       </Button>
                        <div className="mt-3 p-2 bg-muted/30 rounded">
                          <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
                          <div className="text-xs text-muted-foreground">
@@ -830,9 +831,9 @@ const EnvatoIndex = () => {
                          ))}
                        </div>
                        <div className="mt-4 flex gap-2">
-                        <Button onClick={() => flip('path2')} variant="outline" size="sm">
-                          Flip for steps
-                        </Button>
+                         <Button onClick={() => flip('path2')} variant="outline" size="sm">
+                           Flip for comparison
+                         </Button>
                         <Button 
                           size="sm" 
                           style={{background: 'var(--envato)', color: '#fff'}}
@@ -843,20 +844,21 @@ const EnvatoIndex = () => {
                       </div>
                     </div>
                     <div className="flip-face flip-back">
-                      <h4 className="font-semibold mb-3">14-Point Execution Plan</h4>
-                      <div className="space-y-2">
-                        {pathData["Path 2 Creative Network"].plan14.map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-2">
-                            <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium flex-shrink-0">
-                              {idx + 1}
-                            </span>
-                            <div>
-                              <div className="font-semibold text-sm">{item.title}</div>
-                              <div className="text-xs text-muted-foreground">{item.text}</div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                       <h4 className="font-semibold mb-3">Interactive comparison snapshot</h4>
+                       <div className="space-y-2 text-sm">
+                         <div><strong>Market Value:</strong> 5/5 - TAM $500M+ GMV</div>
+                         <div><strong>Strategic Fit:</strong> 3/5 - Some community alignment</div>
+                         <div><strong>Time to Revenue:</strong> 3/5 - 2-3 years</div>
+                         <div><strong>Probability:</strong> 2/5 - High execution risk</div>
+                       </div>
+                       <Button 
+                         onClick={() => document.getElementById('comparison-table')?.scrollIntoView({ behavior: 'smooth' })}
+                         variant="outline" 
+                         size="sm" 
+                         className="mt-3 w-full"
+                       >
+                         Open full interactive table
+                       </Button>
                        <div className="mt-3 p-2 bg-muted/30 rounded">
                          <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
                          <div className="text-xs text-muted-foreground">
@@ -896,9 +898,9 @@ const EnvatoIndex = () => {
                          ))}
                        </div>
                        <div className="mt-4 flex gap-2">
-                        <Button onClick={() => flip('path3')} variant="outline" size="sm">
-                          Flip for steps
-                        </Button>
+                         <Button onClick={() => flip('path3')} variant="outline" size="sm">
+                           Flip for comparison
+                         </Button>
                         <Button 
                           size="sm" 
                           style={{background: 'var(--envato)', color: '#fff'}}
@@ -909,20 +911,21 @@ const EnvatoIndex = () => {
                       </div>
                     </div>
                     <div className="flip-face flip-back">
-                      <h4 className="font-semibold mb-3">14-Point Execution Plan</h4>
-                      <div className="space-y-2">
-                        {pathData["Path 3 Vertical Expansion"].plan14.map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-2">
-                            <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium flex-shrink-0">
-                              {idx + 1}
-                            </span>
-                            <div>
-                              <div className="font-semibold text-sm">{item.title}</div>
-                              <div className="text-xs text-muted-foreground">{item.text}</div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                       <h4 className="font-semibold mb-3">Interactive comparison snapshot</h4>
+                       <div className="space-y-2 text-sm">
+                         <div><strong>Market Value:</strong> 4/5 - TAM $300B edu + gaming slices</div>
+                         <div><strong>Strategic Fit:</strong> 4/5 - Good community alignment</div>
+                         <div><strong>Time to Revenue:</strong> 2/5 - Slower cycles</div>
+                         <div><strong>Probability:</strong> 3/5 - Medium execution confidence</div>
+                       </div>
+                       <Button 
+                         onClick={() => document.getElementById('comparison-table')?.scrollIntoView({ behavior: 'smooth' })}
+                         variant="outline" 
+                         size="sm" 
+                         className="mt-3 w-full"
+                       >
+                         Open full interactive table
+                       </Button>
                        <div className="mt-3 p-2 bg-muted/30 rounded">
                          <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
                          <div className="text-xs text-muted-foreground">
@@ -962,9 +965,9 @@ const EnvatoIndex = () => {
                          ))}
                        </div>
                        <div className="mt-4 flex gap-2">
-                        <Button onClick={() => flip('path4')} variant="outline" size="sm">
-                          Flip for steps
-                        </Button>
+                         <Button onClick={() => flip('path4')} variant="outline" size="sm">
+                           Flip for comparison
+                         </Button>
                         <Button 
                           size="sm" 
                           style={{background: 'var(--envato)', color: '#fff'}}
@@ -975,20 +978,21 @@ const EnvatoIndex = () => {
                       </div>
                     </div>
                     <div className="flip-face flip-back">
-                      <h4 className="font-semibold mb-3">14-Point Execution Plan</h4>
-                      <div className="space-y-2">
-                        {pathData["Path 4 Platform Enabler"].plan14.map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-2">
-                            <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium flex-shrink-0">
-                              {idx + 1}
-                            </span>
-                            <div>
-                              <div className="font-semibold text-sm">{item.title}</div>
-                              <div className="text-xs text-muted-foreground">{item.text}</div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                       <h4 className="font-semibold mb-3">Interactive comparison snapshot</h4>
+                       <div className="space-y-2 text-sm">
+                         <div><strong>Market Value:</strong> 4/5 - TAM $100M+ ARR API</div>
+                         <div><strong>Strategic Fit:</strong> 3/5 - Some community alignment</div>
+                         <div><strong>Time to Revenue:</strong> 4/5 - Faster via SaaS partners</div>
+                         <div><strong>Probability:</strong> 3/5 - Medium execution confidence</div>
+                       </div>
+                       <Button 
+                         onClick={() => document.getElementById('comparison-table')?.scrollIntoView({ behavior: 'smooth' })}
+                         variant="outline" 
+                         size="sm" 
+                         className="mt-3 w-full"
+                       >
+                         Open full interactive table
+                       </Button>
                        <div className="mt-3 p-2 bg-muted/30 rounded">
                          <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
                          <div className="text-xs text-muted-foreground">
@@ -1028,9 +1032,9 @@ const EnvatoIndex = () => {
                          ))}
                        </div>
                        <div className="mt-4 flex gap-2">
-                        <Button onClick={() => flip('path5')} variant="outline" size="sm">
-                          Flip for steps
-                        </Button>
+                         <Button onClick={() => flip('path5')} variant="outline" size="sm">
+                           Flip for comparison
+                         </Button>
                         <Button 
                           size="sm" 
                           style={{background: 'var(--envato)', color: '#fff'}}
@@ -1041,20 +1045,21 @@ const EnvatoIndex = () => {
                       </div>
                     </div>
                     <div className="flip-face flip-back">
-                      <h4 className="font-semibold mb-3">14-Point Execution Plan</h4>
-                      <div className="space-y-2">
-                        {pathData["Path 5 Radical Play"].plan14.map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-2">
-                            <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium flex-shrink-0">
-                              {idx + 1}
-                            </span>
-                            <div>
-                              <div className="font-semibold text-sm">{item.title}</div>
-                              <div className="text-xs text-muted-foreground">{item.text}</div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                       <h4 className="font-semibold mb-3">Interactive comparison snapshot</h4>
+                       <div className="space-y-2 text-sm">
+                         <div><strong>Market Value:</strong> 5/5 - TAM $500B+ if immersive AI wins</div>
+                         <div><strong>Strategic Fit:</strong> 2/5 - Lower community alignment</div>
+                         <div><strong>Time to Revenue:</strong> 1/5 - 5+ years</div>
+                         <div><strong>Probability:</strong> 1/5 - Very high execution risk</div>
+                       </div>
+                       <Button 
+                         onClick={() => document.getElementById('comparison-table')?.scrollIntoView({ behavior: 'smooth' })}
+                         variant="outline" 
+                         size="sm" 
+                         className="mt-3 w-full"
+                       >
+                         Open full interactive table
+                       </Button>
                        <div className="mt-3 p-2 bg-muted/30 rounded">
                          <div className="text-xs font-medium mb-1">📚 Sample Stories Preview</div>
                          <div className="text-xs text-muted-foreground">
@@ -1080,7 +1085,7 @@ const EnvatoIndex = () => {
             </div>
           </section>
 
-          <section id="table" className="section">
+          <section id="comparison-table" className="section">
             <h2 className="section-title">Interactive comparison table</h2>
 
             <details open>
