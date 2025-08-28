@@ -1156,6 +1156,163 @@ const EnvatoIndex = () => {
             })}
           </section>
 
+          {/* Envato Strategic Path Decision Framework */}
+          <section id="framework" className="section">
+            <div className="card">
+              <h2 className="section-title">Envato Strategic Path Decision Framework</h2>
+              
+              {/* Step 1: Scoring Axes */}
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-3">Step 1: Scoring Axes (weighted for Envato)</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><strong>Community & Strategic Fit (30%)</strong> – aligns with Envato's contributor-first DNA and Shutterstock's enterprise expansion.</li>
+                  <li><strong>Market Value / TAM (25%)</strong> – size of the opportunity.</li>
+                  <li><strong>Probability of Success (20%)</strong> – likelihood of execution.</li>
+                  <li><strong>Time to Revenue (15%)</strong> – speed to monetisation.</li>
+                  <li><strong>Differentiation (10%)</strong> – uniqueness vs competition.</li>
+                </ul>
+              </div>
+
+              {/* Step 2: Scores Table */}
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-3">Step 2: Scores (indicative, directional, 1–5 scale)</h3>
+                <div className="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'left'}}>Path</th>
+                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>Market Value</th>
+                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>Probability</th>
+                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>Time to Revenue</th>
+                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>Strategic Fit</th>
+                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>Differentiation</th>
+                        <th style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>Weighted Score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style={{background: '#f0f9ff', borderLeft: '3px solid #0ea5e9'}}>
+                        <td style={{padding: '12px', fontSize: '14px', fontWeight: '600'}}>
+                          1. Infrastructure 
+                          <span style={{background: '#0ea5e9', color: 'white', padding: '2px 6px', borderRadius: '8px', fontSize: '10px', marginLeft: '8px'}}>Core play</span>
+                        </td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4 (TAM $200–400M ARR)</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3 (2–3 yrs)</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600', color: '#0ea5e9'}}>4.1</td>
+                      </tr>
+                      <tr style={{background: '#ecfdf5', borderLeft: '3px solid #10b981'}}>
+                        <td style={{padding: '12px', fontSize: '14px', fontWeight: '600'}}>
+                          2. Network 
+                          <span style={{background: '#10b981', color: 'white', padding: '2px 6px', borderRadius: '8px', fontSize: '10px', marginLeft: '8px'}}>Chosen now</span>
+                        </td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5 (TAM $500M+ GMV)</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>2</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3 (2–3 yrs)</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>3.3</td>
+                      </tr>
+                      <tr>
+                        <td style={{padding: '12px', fontSize: '14px'}}>4. Vertical Expansion</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4 (TAM $300B edu + $200B gaming slices)</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>2 (slower cycles)</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>3.5</td>
+                      </tr>
+                      <tr>
+                        <td style={{padding: '12px', fontSize: '14px'}}>5. Platform Enabler</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4 (TAM $100M+ ARR API)</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>4 (faster, via SaaS partners)</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>3</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>3.9</td>
+                      </tr>
+                      <tr>
+                        <td style={{padding: '12px', fontSize: '14px'}}>6. Radical Play</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5 (TAM $500B+ if immersive AI wins)</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>1</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>1 (5+ yrs)</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>2</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center'}}>5</td>
+                        <td style={{padding: '12px', fontSize: '14px', textAlign: 'center', fontWeight: '600'}}>2.8</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Step 3: Interpretation */}
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-3">Step 3: Interpretation</h3>
+                <div className="space-y-3 text-sm">
+                  <div>
+                    <strong>Best balance (Core Play): Path 1 – Infrastructure.</strong><br />
+                    Delivers ARR, enterprise credibility, and aligns with Shutterstock's push. Highest strategic fit, strongest community protection, predictable growth.
+                  </div>
+                  <div>
+                    <strong>Next tier (Secondary Play): Path 5 – Platform Enabler.</strong><br />
+                    API-first strategy hits faster monetisation if partners onboard. Differentiates Envato inside SaaS ecosystems. Keeps relevance even if Canva/Adobe dominate front-end.
+                  </div>
+                  <div>
+                    <strong>Exploratory (Satellite Bets): Path 2 – Network and Path 4 – Vertical Expansion.</strong><br />
+                    Big TAMs, but riskier. Network bet (community feeds, creator subs) is volatile. Vertical bet (edu, gaming, retail) requires deep sector focus and longer cycles. Both worth piloting, not core bets.
+                  </div>
+                  <div>
+                    <strong>Moonshot (BIG IF): Path 6 – Radical Play.</strong><br />
+                    Metaverse/agentic AI substrate is a long-term optionality play. Keep as R&D to protect upside, but don't over-invest now.
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 4: Translate to Action */}
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-3">Step 4: Translate to Action</h3>
+                <div className="bg-muted/30 p-4 rounded-lg space-y-3 text-sm">
+                  <p>
+                    "If I had to pick the single most investable path today, it's <strong>Infrastructure</strong>. It delivers ARR growth, strong fit with Shutterstock's enterprise push, and defensibility.
+                  </p>
+                  <p>
+                    I'd pair it with <strong>APIs (Platform Enabler)</strong> as the secondary play. This keeps Envato embedded across SaaS ecosystems, raising differentiation and near-term monetisation.
+                  </p>
+                  <p>
+                    I'd hold <strong>Network and Vertical Expansion</strong> as satellite bets—piloted, monitored, and scaled only when community traction or sector demand proves out.
+                  </p>
+                  <p>
+                    Finally, I'd keep <strong>Radical Play</strong> as an R&D option. A small bet, but one that could future-proof Envato if immersive/agentic AI explodes."
+                  </p>
+                </div>
+              </div>
+
+              {/* Portfolio Approach */}
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-3">⚡ That's a portfolio approach:</h3>
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div className="p-3 border rounded-lg">
+                    <div className="font-semibold text-blue-600">Floor → Infrastructure (Path 1)</div>
+                    <div className="text-muted-foreground">Steady ARR foundation</div>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <div className="font-semibold text-green-600">Upside → Platform Enabler (Path 5)</div>
+                    <div className="text-muted-foreground">API differentiation play</div>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <div className="font-semibold text-yellow-600">Satellite bets → Network (Path 2) and Vertical (Path 4)</div>
+                    <div className="text-muted-foreground">Pilot and scale based on traction</div>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <div className="font-semibold text-purple-600">Big If → Radical Play (Path 6)</div>
+                    <div className="text-muted-foreground">R&D future-proofing</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <div className="foot-cta">
             <div>
               <button id="saveAll" className="px-4 py-2 bg-green-600 text-white rounded">Save All</button>
