@@ -292,37 +292,6 @@ const Orchestrator = () => {
                 />
               </div>
               
-              {/* Skills in action - moved from right card */}
-              <div className="bg-card border border-border rounded-xl p-6 mb-6">
-                <h2 className="text-2xl font-semibold mb-4">Skills in action</h2>
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="font-semibold mb-2">Define the asset</h3>
-                    <p className="text-muted-foreground text-sm">
-                      From files to kits and storefronts and APIs. Clear manifest. Clear lineage.
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-2">Align incentives</h3>
-                    <p className="text-muted-foreground text-sm">
-                      Contributors earn fairly. Customers get speed and safety. Enterprise gets control.
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-2">Ship outcomes</h3>
-                    <p className="text-muted-foreground text-sm">
-                      Win with time saved and risk reduced. Measure and publish the lift.
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-6 grid grid-cols-2 gap-2">
-                  {Object.keys(skillContent).slice(0, 4).map((skill) => (
-                    <span key={skill} className="px-2 py-1 bg-muted border border-border rounded text-xs text-center">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
               
               <div className="flex flex-wrap gap-2">
                 {[
@@ -361,88 +330,6 @@ const Orchestrator = () => {
             </div>
           </div>
         </header>
-
-        {/* Combined Skills & Application Section */}
-        <section id="skills" className="mb-12">
-          <div className="bg-card border border-border rounded-xl p-6">
-            <h2 className="text-2xl font-semibold mb-4">2025 Skills & Real Application</h2>
-            <p className="text-muted-foreground mb-6">Click a skill to see specific examples of how I apply it in the Envato AI PM role.</p>
-            
-            <div className="grid lg:grid-cols-3 gap-6">
-              {/* Skill Selection */}
-              <div>
-                <h3 className="font-semibold mb-3 text-muted-foreground">Select skill</h3>
-                <div className="space-y-2">
-                  {Object.keys(skillContent).map((skill) => (
-                    <button
-                      key={skill}
-                      onClick={() => handleSkillClick(skill)}
-                      className={`w-full p-3 rounded-lg border transition-colors text-sm font-medium text-left ${
-                        selectedSkill === skill 
-                          ? 'bg-primary text-primary-foreground border-primary' 
-                          : 'bg-background border-border hover:bg-muted'
-                      }`}
-                    >
-                      {skill}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Skill Application */}
-              <div className="lg:col-span-2">
-                <h3 className="font-semibold mb-3 text-muted-foreground">How it shows up at Envato</h3>
-                <div className="bg-muted/50 border border-border rounded-lg p-4 min-h-[200px]">
-                  {selectedSkill ? (
-                    <>
-                      <h4 className="font-semibold mb-3 text-lg">{selectedSkill}</h4>
-                      <p className="text-muted-foreground mb-4">{skillDetail}</p>
-                      <div className="bg-background border border-border rounded p-3">
-                        <p className="text-sm font-medium text-muted-foreground mb-2">Implementation examples:</p>
-                        <div className="flex flex-wrap gap-2">
-                          {selectedSkill === 'AI fluency' && ['Vector embeddings', 'Model routing', 'Cost optimization', 'Quality metrics'].map(tag => (
-                            <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
-                              {tag}
-                            </span>
-                          ))}
-                          {selectedSkill === 'Ethical judgment' && ['C2PA compliance', 'Usage policies', 'Safety guardrails', 'Audit trails'].map(tag => (
-                            <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
-                              {tag}
-                            </span>
-                          ))}
-                          {selectedSkill === 'Data storytelling' && ['CTR metrics', 'Creator earnings', 'Time-to-value', 'Conversion rates'].map(tag => (
-                            <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
-                              {tag}
-                            </span>
-                          ))}
-                          {selectedSkill === 'Systems thinking' && ['Asset manifest', 'Service SLAs', 'Parallel deployment', 'Index architecture'].map(tag => (
-                            <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
-                              {tag}
-                            </span>
-                          ))}
-                          {selectedSkill === 'Community leadership' && ['Creator tools', 'Demand forecasting', 'Fair payouts', 'Content insights'].map(tag => (
-                            <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
-                              {tag}
-                            </span>
-                          ))}
-                          {selectedSkill === 'Influence' && ['Cross-team alignment', 'Technical decisions', 'Process improvement', 'Quality standards'].map(tag => (
-                            <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <div className="flex items-center justify-center h-full">
-                      <p className="text-muted-foreground text-center">{skillDetail}</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Leading Teams View */}
         <section id="teams-view" className="mb-12">
@@ -809,6 +696,120 @@ const Orchestrator = () => {
           </div>
         </section>
 
+
+        {/* Combined Skills & Application Section */}
+        <section id="skills" className="mb-12">
+          <div className="bg-card border border-border rounded-xl p-6">
+            <h2 className="text-2xl font-semibold mb-4">Skills in action + 2025 Application</h2>
+            
+            {/* Skills in action part */}
+            <div className="mb-8">
+              <h3 className="text-lg font-semibold mb-4">Core approach</h3>
+              <div className="grid md:grid-cols-3 gap-6 mb-6">
+                <div>
+                  <h4 className="font-semibold mb-2">Define the asset</h4>
+                  <p className="text-muted-foreground text-sm">
+                    From files to kits and storefronts and APIs. Clear manifest. Clear lineage.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">Align incentives</h4>
+                  <p className="text-muted-foreground text-sm">
+                    Contributors earn fairly. Customers get speed and safety. Enterprise gets control.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">Ship outcomes</h4>
+                  <p className="text-muted-foreground text-sm">
+                    Win with time saved and risk reduced. Measure and publish the lift.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 2025 Skills part */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4">2025 Skills & Real Application</h3>
+              <p className="text-muted-foreground mb-6">Click a skill to see specific examples of how I apply it in the Envato AI PM role.</p>
+              
+              <div className="grid lg:grid-cols-3 gap-6">
+                {/* Skill Selection */}
+                <div>
+                  <h4 className="font-semibold mb-3 text-muted-foreground">Select skill</h4>
+                  <div className="space-y-2">
+                    {Object.keys(skillContent).map((skill) => (
+                      <button
+                        key={skill}
+                        onClick={() => handleSkillClick(skill)}
+                        className={`w-full p-3 rounded-lg border transition-colors text-sm font-medium text-left ${
+                          selectedSkill === skill 
+                            ? 'bg-primary text-primary-foreground border-primary' 
+                            : 'bg-background border-border hover:bg-muted'
+                        }`}
+                      >
+                        {skill}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Skill Application */}
+                <div className="lg:col-span-2">
+                  <h4 className="font-semibold mb-3 text-muted-foreground">How it shows up at Envato</h4>
+                  <div className="bg-muted/50 border border-border rounded-lg p-4 min-h-[200px]">
+                    {selectedSkill ? (
+                      <>
+                        <h5 className="font-semibold mb-3 text-lg">{selectedSkill}</h5>
+                        <p className="text-muted-foreground mb-4">{skillDetail}</p>
+                        <div className="bg-background border border-border rounded p-3">
+                          <p className="text-sm font-medium text-muted-foreground mb-2">Implementation examples:</p>
+                          <div className="flex flex-wrap gap-2">
+                            {selectedSkill === 'AI fluency' && ['Vector embeddings', 'Model routing', 'Cost optimization', 'Quality metrics'].map(tag => (
+                              <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
+                                {tag}
+                              </span>
+                            ))}
+                            {selectedSkill === 'Ethical judgment' && ['C2PA compliance', 'Usage policies', 'Safety guardrails', 'Audit trails'].map(tag => (
+                              <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
+                                {tag}
+                              </span>
+                            ))}
+                            {selectedSkill === 'Data storytelling' && ['CTR metrics', 'Creator earnings', 'Time-to-value', 'Conversion rates'].map(tag => (
+                              <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
+                                {tag}
+                              </span>
+                            ))}
+                            {selectedSkill === 'Systems thinking' && ['Single manifest', 'Unified index', 'Parallel shipping', 'Clear SLAs'].map(tag => (
+                              <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
+                                {tag}
+                              </span>
+                            ))}
+                            {selectedSkill === 'Community leadership' && ['Creator rewards', 'Demand forecasting', 'Fair payouts', 'Performance insights'].map(tag => (
+                              <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
+                                {tag}
+                              </span>
+                            ))}
+                            {selectedSkill === 'Influence' && ['Clear communication', 'Cross-team alignment', 'Friction removal', 'Quality standards'].map(tag => (
+                              <span key={tag} className="px-2 py-1 bg-muted border border-border rounded-full text-xs">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="flex items-center justify-center h-full">
+                        <p className="text-muted-foreground text-center">
+                          Select a skill to see examples for Envato AI PM.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Pre-empted Q&A */}
         <section id="qa" className="mb-12">
