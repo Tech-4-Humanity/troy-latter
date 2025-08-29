@@ -188,3 +188,4 @@ const FullPathModal: React.FC<FullPathModalProps> = ({ isOpen, onClose, pathName
 };
 
 export default FullPathModal;
+export { FullPathModal };

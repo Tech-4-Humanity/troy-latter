@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import { competencyBadges } from './curriculum';
 import EnvatoSubnav from './components/EnvatoSubnav';
-import FullPathModal from '@/components/ui/full-path-modal';
+import { FullPathModal } from '@/components/ui/full-path-modal';
 import BcorpDecisionFramework from './components/BcorpDecisionFramework';
 import PathDiagrams from './components/PathDiagrams';
 

@@ -23,6 +23,7 @@ import ExperienceAndImpact from "./pages/ExperienceAndImpact";
 import MicrositeIndex from "./pages/microsites/MicrositeIndex";
 import InterviewPrepIndex from "./pages/microsites/interview-prep/Index";
 import AgentforceIndex from "./pages/microsites/agentforce/Index";
+import Lab3Index from "./pages/microsites/lab3/Index";
 import PegaIndex from "./pages/microsites/pega/Index";
 import EnvatoIndex from "./pages/microsites/envato/Index";
 import OrchestratePage from "./pages/microsites/envato/Orchestrator";
@@ -74,6 +75,7 @@ const App = () => (
           <Route path="/microsites" element={<MicrositeLayout><MicrositeIndex /></MicrositeLayout>} />
           <Route path="/microsites/interview-prep" element={<MicrositeLayout><InterviewPrepIndex /></MicrositeLayout>} />
           <Route path="/microsites/agentforce" element={<MicrositeLayout><AgentforceIndex /></MicrositeLayout>} />
+          <Route path="/microsites/lab3" element={<MicrositeLayout><Lab3Index /></MicrositeLayout>} />
           <Route path="/microsites/pega" element={<MicrositeLayout><PegaIndex /></MicrositeLayout>} />
           <Route path="/microsites/envato" element={<EnvatoIndex />} />
           <Route path="/microsites/envato/orchestrator" element={<OrchestratePage />} />
