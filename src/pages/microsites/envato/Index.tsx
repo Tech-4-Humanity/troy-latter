@@ -807,11 +807,11 @@ const EnvatoIndex = () => {
           <Breadcrumb className="mb-6">
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                <BreadcrumbLink asChild><Link to="/">Home</Link></BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink href="/microsites">Microsites</BreadcrumbLink>
+                <BreadcrumbLink asChild><Link to="/microsites">Microsites</Link></BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
@@ -831,8 +831,8 @@ const EnvatoIndex = () => {
               Each path represents a different approach to leveraging AI, community, and creative tools.
             </p>
             <div className="hero-links">
-              <a href="/microsites/envato/summary" className="hero-link">📋 Envato Context & Summary</a>
-              <a href="/microsites/envato/assets" className="hero-link">🔄 Asset Redefinition Guide</a>
+              <Link to="/microsites/envato/summary" className="hero-link">📋 Envato Context & Summary</Link>
+              <Link to="/microsites/envato/assets" className="hero-link">🔄 Asset Redefinition Guide</Link>
               <a href="#case-studies" className="hero-link">📚 25 future case studies to pressure test</a>
               <a href="#comparison-table" className="hero-link">📊 Summary comparison table</a>
               <a href="#framework" className="hero-link">🎯 Decision framework</a>
