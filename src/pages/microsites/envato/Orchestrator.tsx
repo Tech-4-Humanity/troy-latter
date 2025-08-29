@@ -4,6 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import EnvatoSubnav from './components/EnvatoSubnav';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -266,6 +267,10 @@ const Orchestrator = () => {
             <BreadcrumbPage>Orchestrators</BreadcrumbPage>
           </BreadcrumbList>
         </Breadcrumb>
+        
+        {/* Envato Subnav */}
+        <EnvatoSubnav />
+        
         {/* Hero Section */}
         <header id="overview" className="mb-12">
           <div className="text-sm font-semibold text-envato-gray-500 mb-2 tracking-wide uppercase">

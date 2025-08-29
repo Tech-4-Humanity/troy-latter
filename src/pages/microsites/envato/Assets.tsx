@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { ArrowLeft, TrendingUp, Users, DollarSign, Target } from 'lucide-react';
+import EnvatoSubnav from './components/EnvatoSubnav';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useState } from 'react';
@@ -30,6 +31,9 @@ const Assets = () => {
             <BreadcrumbPage>Asset Strategy</BreadcrumbPage>
           </BreadcrumbList>
         </Breadcrumb>
+
+        {/* Envato Subnav */}
+        <EnvatoSubnav />
 
         {/* Header */}
         <div className="mb-8">

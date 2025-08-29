@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { competencyBadges } from './curriculum';
+import EnvatoSubnav from './components/EnvatoSubnav';
 import FullPathModal from '@/components/ui/full-path-modal';
 import BcorpDecisionFramework from './components/BcorpDecisionFramework';
 import PathDiagrams from './components/PathDiagrams';
@@ -794,6 +795,9 @@ const EnvatoIndex = () => {
 
       <div className="envato-page">
         <div className="wrap">
+          {/* Envato Subnav */}
+          <EnvatoSubnav />
+          
           {/* Hero Section - Moved to Top */}
           <section id="quick" className="hero">
             <h1 className="hero-title">Envato: 5 Strategic Growth Paths</h1>
@@ -805,8 +809,9 @@ const EnvatoIndex = () => {
               <a href="/microsites/envato/summary" className="hero-link">📋 Envato Context & Summary</a>
               <a href="/microsites/envato/assets" className="hero-link">🔄 Asset Redefinition Guide</a>
               <a href="#case-studies" className="hero-link">📚 Future case studies</a>
-              <a href="#comparison-table" className="hero-link">📊 Compare all paths</a>
+              <a href="#comparison-table" className="hero-link">📊 Summary comparison table</a>
               <a href="#framework" className="hero-link">🎯 Decision framework</a>
+              <a href="#bcorp-moat" className="hero-link">🛡️ The B Corp Competitive Moat</a>
             </div>
           </section>
 
@@ -888,7 +893,7 @@ const EnvatoIndex = () => {
 
           {/* Path Details: Future Case Studies */}
           <section id="case-studies" className="section">
-            <h2 className="section-title">future case studies - all paths</h2>
+            <h2 className="section-title">25 future case studies to pressure test</h2>
             <p className="section-subtitle">Explore future scenarios and outcomes for each strategic pathway</p>
             
             <div style={{textAlign: 'center', marginBottom: '24px'}}>

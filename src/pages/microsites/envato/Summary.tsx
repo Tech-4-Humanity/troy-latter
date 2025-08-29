@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { ArrowLeft, ChevronDown, ChevronRight } from 'lucide-react';
+import EnvatoSubnav from './components/EnvatoSubnav';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -29,6 +30,9 @@ const Summary = () => {
             <BreadcrumbPage>Summary</BreadcrumbPage>
           </BreadcrumbList>
         </Breadcrumb>
+
+        {/* Envato Subnav */}
+        <EnvatoSubnav />
 
         {/* One Line Summary */}
         <Card id="one-line-summary" className="mb-8 bg-gradient-to-r from-envato-green-50 to-envato-green-100 border border-envato-green-200">

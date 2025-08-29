@@ -257,7 +257,7 @@ const BcorpDecisionFramework = () => {
       </Card>
 
       {/* Key Insights */}
-      <Card className="bg-gradient-to-r from-emerald-50 to-blue-50 border-emerald-200">
+      <Card id="bcorp-moat" className="bg-gradient-to-r from-emerald-50 to-blue-50 border-emerald-200">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <span className="text-emerald-600">🎯</span>
