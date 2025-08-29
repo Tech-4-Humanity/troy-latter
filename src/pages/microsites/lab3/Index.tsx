@@ -1,8 +1,11 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import { Lab3Layout } from './components/Lab3Layout';
 import { Lab3Sidebar } from './components/Lab3Sidebar';
 import { Lab3ContentRenderer } from './components/Lab3ContentRenderer';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 
 const Lab3Index = () => {
   const [activeSection, setActiveSection] = useState('why-lab3');
@@ -18,17 +21,40 @@ const Lab3Index = () => {
   ];
 
   return (
-    <Lab3Layout
-      sidebar={
-        <Lab3Sidebar
-          sections={sections}
-          activeSection={activeSection}
-          onSectionChange={setActiveSection}
-        />
-      }
-    >
-      <Lab3ContentRenderer activeSection={activeSection} />
-    </Lab3Layout>
+    <div>
+      <div className="mb-6">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/">Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/microsites">Microsites</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Lab3 Analysis</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
+      <Lab3Layout
+        sidebar={
+          <Lab3Sidebar
+            sections={sections}
+            activeSection={activeSection}
+            onSectionChange={setActiveSection}
+          />
+        }
+      >
+        <Lab3ContentRenderer activeSection={activeSection} />
+      </Lab3Layout>
+    </div>
   );
 };
 

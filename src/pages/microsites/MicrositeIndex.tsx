@@ -7,6 +7,15 @@ import { BriefcaseIcon, ArrowRight, Target, Building } from 'lucide-react';
 const MicrositeIndex = () => {
   const microsites = [
     {
+      id: 'envato',
+      title: 'Envato Strategic Paths',
+      description: 'Strategic analysis and execution frameworks for Envato\'s AI transformation and market expansion',
+      icon: Target,
+      path: '/microsites/envato',
+      status: 'Available',
+      features: ['Strategic planning', 'AI transformation', 'Market expansion']
+    },
+    {
       id: 'interview-prep',
       title: 'Shield AI',
       description: 'Comprehensive Shield AI interview preparation materials for executive technology leadership roles',
@@ -14,6 +23,24 @@ const MicrositeIndex = () => {
       path: '/microsites/interview-prep',
       status: 'Available',
       features: ['Executive frameworks', 'Case studies', 'Strategic thinking tools']
+    },
+    {
+      id: 'agentforce',
+      title: 'Agentforce Portfolio',
+      description: 'Strategic portfolio covering Agentforce implementation strategies and technical architecture',
+      icon: Building,
+      path: '/microsites/agentforce',
+      status: 'Available',
+      features: ['Implementation strategies', 'Technical architecture', 'Market insights']
+    },
+    {
+      id: 'lab3',
+      title: 'Lab3 Strategic Analysis',
+      description: 'Comprehensive Lab3 analysis with strategic positioning and technical strengths',
+      icon: Target,
+      path: '/microsites/lab3',
+      status: 'Available',
+      features: ['Strategic positioning', 'Technical analysis', 'Market insights']
     },
     {
       id: 'pega',

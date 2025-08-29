@@ -1001,7 +1001,7 @@ const EnvatoIndex = () => {
 
           {/* Interactive comparison table */}
           <section id="comparison-table" className="section">
-            <h2 className="section-title">Interactive comparison table</h2>
+            <h2 className="section-title">Summary comparison table</h2>
 
             {fourteenPointFramework.map((framework, index) => {
               const sectionNumber = index + 1;

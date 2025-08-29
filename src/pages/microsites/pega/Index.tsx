@@ -3,14 +3,32 @@ import { PageTitle } from '@/components/PageTitle';
 import { ArrowLeft, Building, Shield, TrendingUp, Users, Mail, Linkedin, Brain, Cpu, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 
 const PegaIndex = () => {
   return (
     <div className="animate-fade-in">
-      <Link to="/" className="inline-flex items-center text-brand-primary hover:text-brand-accent mb-6 transition-colors">
-        <ArrowLeft className="h-4 w-4 mr-2" />
-        Back to Home
-      </Link>
+      <div className="mb-6">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/">Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/microsites">Microsites</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>PEGA</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       
       {/* Header Section */}
       <div className="mb-8">
