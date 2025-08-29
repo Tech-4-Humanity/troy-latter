@@ -6,6 +6,14 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from '@/components/ui/breadcrumb';
 import { competencyBadges } from './curriculum';
 import EnvatoSubnav from './components/EnvatoSubnav';
 import FullPathModal from '@/components/ui/full-path-modal';
@@ -795,6 +803,23 @@ const EnvatoIndex = () => {
 
       <div className="envato-page">
         <div className="wrap">
+          {/* Breadcrumbs */}
+          <Breadcrumb className="mb-6">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/microsites">Microsites</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Envato: 5 Strategic Growth Paths</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+
           {/* Envato Subnav */}
           <EnvatoSubnav />
           
@@ -808,7 +833,7 @@ const EnvatoIndex = () => {
             <div className="hero-links">
               <a href="/microsites/envato/summary" className="hero-link">📋 Envato Context & Summary</a>
               <a href="/microsites/envato/assets" className="hero-link">🔄 Asset Redefinition Guide</a>
-              <a href="#case-studies" className="hero-link">📚 Future case studies</a>
+              <a href="#case-studies" className="hero-link">📚 25 future case studies to pressure test</a>
               <a href="#comparison-table" className="hero-link">📊 Summary comparison table</a>
               <a href="#framework" className="hero-link">🎯 Decision framework</a>
               <a href="#bcorp-moat" className="hero-link">🛡️ The B Corp Competitive Moat</a>
@@ -931,7 +956,18 @@ const EnvatoIndex = () => {
                 {Object.entries(pathData).map(([pathName, data], pathIndex) => {
                   if (!data) return null;
                   return (
-                  <AccordionItem key={pathIndex} value={`path-${pathIndex}`} style={{border: '1px solid var(--line)', borderRadius: '8px', marginBottom: '16px', background: 'var(--card)'}}>
+                  <AccordionItem 
+                    key={pathIndex} 
+                    value={`path-${pathIndex}`} 
+                    id={`path${pathIndex + 1}-stories`}
+                    style={{
+                      border: '1px solid var(--line)', 
+                      borderRadius: '8px', 
+                      marginBottom: '16px', 
+                      background: 'var(--card)',
+                      scrollMarginTop: '80px'
+                    }}
+                  >
                     <AccordionTrigger style={{textAlign: 'left', padding: '24px', fontSize: '18px', fontWeight: '600'}}>
                       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
                         <h3 style={{fontSize: '20px', fontWeight: '600', color: 'var(--ink)', margin: 0}}>{pathName}</h3>
@@ -1242,6 +1278,7 @@ const EnvatoIndex = () => {
 
           {/* B Corp Decision Framework */}
           <section id="framework" className="section">
+            <div id="bcorp-moat" style={{ scrollMarginTop: '80px' }}></div>
             <div className="card">
               <BcorpDecisionFramework />
             </div>
