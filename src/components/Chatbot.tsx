@@ -64,6 +64,8 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
     setIsLoading(true);
 
     try {
+      console.log('Sending message to chat-with-rag:', { messageText, sessionId });
+      
       const { data, error } = await supabase.functions.invoke('chat-with-rag', {
         body: {
           message: messageText,
@@ -71,7 +73,10 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
         },
       });
 
+      console.log('Chat response:', { data, error });
+
       if (error) {
+        console.error('Chat error:', error);
         throw error;
       }
 
