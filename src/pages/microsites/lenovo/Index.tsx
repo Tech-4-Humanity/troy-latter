@@ -28,6 +28,11 @@ const LenovoMicrosite = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Hero Tagline */}
+      <div className="bg-red-600 text-white text-center py-3">
+        <p className="font-semibold">Transforming Lenovo ANZ into a services-led growth engine</p>
+      </div>
+
       {/* Header */}
       <header className="bg-gradient-to-br from-black to-gray-800 text-white">
         <div className="container mx-auto px-4 py-12 text-center">
@@ -37,6 +42,7 @@ const LenovoMicrosite = () => {
           {/* Navigation */}
           <nav className="flex flex-wrap justify-center gap-4 mt-6">
             {[
+              { id: 'about', label: 'Overview' },
               { id: 'strategy', label: 'Strategy' },
               { id: 'trajectory', label: 'Revenue' },
               { id: 'packs', label: 'Vertical Packs' },
@@ -58,6 +64,55 @@ const LenovoMicrosite = () => {
           </nav>
         </div>
       </header>
+
+      {/* About This Playbook */}
+      <section id="about" className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">About This Playbook</h2>
+          <div className="space-y-6 text-lg">
+            <p>
+              This site is the outcome of my work building an integrated services playbook for Lenovo ANZ. 
+              It combines strategy, architecture, competitive insight, and enablement in one place so teams and partners 
+              can see the full picture — not just devices or deals, but the pathways to long-term growth.
+            </p>
+
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">About Me</h3>
+              <p>
+                I'm a technology strategist and architect with 15+ years across AWS, Oracle, Gartner, and Unisys. 
+                My work has focused on helping enterprises and governments adopt new models — from cloud and AI 
+                through to agentic automation and ESG-linked transformation. At Lenovo, that translates into 
+                making sure our services business grows beyond hardware into true "Workforce Transformation as-a-Service."
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Why I Created This</h3>
+              <p>
+                Too often, sales conversations stop at devices. This playbook exists to show the bigger story: 
+                how DaaS expands into vertical packs, managed services, and long-tail subscriptions. It gives 
+                a common language for account managers, architects, delivery teams, and partners to align around.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">What You'll Find Here</h3>
+              <ul className="space-y-2">
+                <li><b>Strategy:</b> Clear trajectory from $10.5M baseline to $65M+ expanded revenue.</li>
+                <li><b>2×2 Library:</b> Frameworks for customers, technology, partners, competitors, and more.</li>
+                <li><b>Vertical Packs:</b> Education, Healthcare, Government, SMB — each mapped to Lenovo services and partner pathways.</li>
+                <li><b>Enablement:</b> One-pagers, ROI curves, and competitive positioning tools.</li>
+                <li><b>Interview Prep:</b> Alignment with Lenovo's architect JD, plus Q&A for exec-level conversations.</li>
+              </ul>
+            </div>
+
+            <p>
+              This is both a sales tool and an architectural guide. It's designed for Lenovo teams, partners, 
+              and customers who want to see the future of our services business in ANZ and beyond.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Strategy Foundation */}
       <section id="strategy" className="py-16 bg-white">
@@ -778,6 +833,7 @@ const LenovoMicrosite = () => {
             </div>
             <div>
               <h3 className="text-white font-bold mb-3">Resources</h3>
+              <button onClick={() => scrollToSection('about')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Overview</button>
               <button onClick={() => scrollToSection('2x2s')} className="block text-gray-300 hover:text-white mb-1 transition-colors">2×2 Library</button>
               <button onClick={() => scrollToSection('competitive')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Competitive</button>
               <button onClick={() => scrollToSection('enhancements')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Enhancements</button>
