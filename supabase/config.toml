@@ -2,3 +2,12 @@ project_id = "lzfgigiyqpuuxslsygjt"
 
 [functions.heygen-session]
 verify_jwt = false
+
+[functions.chat-with-rag]
+verify_jwt = false
+
+[functions.text-to-speech]
+verify_jwt = false
+
+[functions.voice-to-text]
+verify_jwt = false
