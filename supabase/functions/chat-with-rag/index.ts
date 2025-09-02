@@ -8,7 +8,10 @@ const corsHeaders = {
 };
 
 serve(async (req) => {
+  console.log('Chat-with-rag function started - method:', req.method);
+  
   if (req.method === 'OPTIONS') {
+    console.log('Handling CORS preflight request');
     return new Response('ok', { headers: corsHeaders });
   }
 
