@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
 const LenovoMicrosite = () => {
   useEffect(() => {
@@ -23,12 +26,12 @@ const LenovoMicrosite = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-black text-white">
-        <div className="container mx-auto px-4 py-8 text-center">
-          <h1 className="text-4xl font-bold mb-4">Lenovo ANZ DaaS Strategy Pack</h1>
-          <p className="text-xl mb-6">$10.5M baseline → $65M+ target by Year 5. Workforce Transformation as-a-Service.</p>
+      <header className="bg-gradient-to-br from-black to-gray-800 text-white">
+        <div className="container mx-auto px-4 py-12 text-center">
+          <h1 className="text-5xl font-bold mb-4">Lenovo ANZ DaaS Strategy Pack</h1>
+          <p className="text-xl mb-6 opacity-90">$10.5M baseline → $65M+ target by Year 5. Workforce Transformation as-a-Service.</p>
           
           {/* Navigation */}
           <nav className="flex flex-wrap justify-center gap-4 mt-6">
@@ -44,7 +47,7 @@ const LenovoMicrosite = () => {
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className="px-4 py-2 text-red-500 hover:text-red-400 font-semibold transition-colors"
+                className="px-4 py-2 text-red-500 hover:text-white font-semibold transition-colors"
               >
                 {label}
               </button>
@@ -54,9 +57,9 @@ const LenovoMicrosite = () => {
       </header>
 
       {/* Strategy Foundation */}
-      <section id="strategy" className="py-16 border-b border-gray-200">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-red-600 mb-6">1. Strategy Foundation</h2>
+      <section id="strategy" className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">1. Strategy Foundation</h2>
           <div className="space-y-4 text-lg">
             <p><strong>Baseline:</strong> Device + warranty + lifecycle. &lt;$15M, stable but limited.</p>
             <p><strong>Target:</strong> Verticalised workforce subscriptions with TruScale, AI, ESG, security, and cloud.</p>
@@ -66,9 +69,9 @@ const LenovoMicrosite = () => {
       </section>
 
       {/* Revenue Trajectory */}
-      <section id="trajectory" className="py-16 border-b border-gray-200">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-red-600 mb-6">2. 5-Year Revenue Trajectory</h2>
+      <section id="trajectory" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">2. 5-Year Revenue Trajectory</h2>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse bg-white rounded-lg shadow-sm">
               <thead>
@@ -88,42 +91,75 @@ const LenovoMicrosite = () => {
               </tbody>
             </table>
           </div>
+          
+          {/* Revenue Chart */}
+          <div className="mt-8 bg-white p-6 rounded-lg shadow-sm">
+            <ChartContainer
+              config={{
+                baseline: {
+                  label: "Baseline Year 5",
+                  color: "#777777",
+                },
+                expanded: {
+                  label: "Expanded Year 5", 
+                  color: "#e2231a",
+                },
+              }}
+              className="h-80 w-full"
+            >
+              <BarChart
+                data={[
+                  { sector: "Education", baseline: 2, expanded: 15 },
+                  { sector: "Healthcare", baseline: 3, expanded: 20 },
+                  { sector: "Government", baseline: 5, expanded: 25 },
+                  { sector: "SMB", baseline: 0.5, expanded: 5 },
+                ]}
+              >
+                <XAxis dataKey="sector" />
+                <YAxis label={{ value: 'Revenue ($M)', angle: -90, position: 'insideLeft' }} />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Bar dataKey="baseline" fill="#777777" />
+                <Bar dataKey="expanded" fill="#e2231a" />
+              </BarChart>
+            </ChartContainer>
+          </div>
+          
           <p className="mt-6 text-lg"><strong>Takeaway:</strong> Cross-sell is not optional. Bundled + advisory moves DaaS into $60M+ territory.</p>
         </div>
       </section>
 
       {/* Vertical Packs */}
-      <section id="packs" className="py-16 border-b border-gray-200">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-red-600 mb-6">3. Vertical DaaS Packs</h2>
+      <section id="packs" className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">3. Vertical DaaS Packs</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
-                title: '🎓 Future of Learning (Education)',
+                title: '🎓 Future of Learning',
                 description: 'Devices + LMS integration + TruScale VDI + AI copilots + ESG dashboards.',
                 outcome: 'Smart campus, grant compliance.',
                 value: '$8–15M'
               },
               {
-                title: '🏥 Digital Hospital (Healthcare)',
+                title: '🏥 Digital Hospital',
                 description: 'Rugged devices + TruScale infra + telehealth kits + AI Edge + ESG Navigator.',
                 outcome: 'Secure, sustainable digital hospital.',
                 value: '$12–20M'
               },
               {
-                title: '🏛 Gov Compliance (Government)',
+                title: '🏛 Gov Compliance',
                 description: 'Devices + service desk + ZTNA + TruScale hybrid + ESG dashboards.',
                 outcome: 'Procurement-ready, compliance-ready workplace.',
                 value: '$15–25M'
               },
               {
-                title: '💼 SMB Workforce (Mid-Market)',
+                title: '💼 SMB Workforce',
                 description: 'Devices + MSP service desk + TruScale SMB + AI copilots + simplified ESG.',
                 outcome: 'Workforce transformation without enterprise cost.',
                 value: '$2–5M'
               }
             ].map((pack, index) => (
-              <Card key={index} className="bg-white border border-gray-200">
+              <Card key={index} className="bg-white border border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-3">{pack.title}</h3>
                   <p className="mb-3">{pack.description}</p>
@@ -136,10 +172,10 @@ const LenovoMicrosite = () => {
       </section>
 
       {/* 2x2 Framework Library */}
-      <section id="2x2s" className="py-16 border-b border-gray-200">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-red-600 mb-6">4. 2×2 Framework Library</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <section id="2x2s" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">4. 2×2 Framework Library</h2>
+          <Accordion type="single" collapsible className="space-y-3">
             {[
               { title: 'Customer Relationship', desc: 'Start small → grow to strategic partner.' },
               { title: 'Technology', desc: 'Core devices → TruScale → AI/ESG integration.' },
@@ -154,21 +190,23 @@ const LenovoMicrosite = () => {
               { title: 'Geographic Growth', desc: 'State health, universities, SMB clusters.' },
               { title: 'Customer Journey', desc: 'Support → Managed → Advisory.' }
             ].map((framework, index) => (
-              <Card key={index} className="bg-white border border-gray-200">
-                <CardContent className="p-4">
-                  <h3 className="font-semibold mb-2">{framework.title}</h3>
-                  <p className="text-sm">{framework.desc}</p>
-                </CardContent>
-              </Card>
+              <AccordionItem key={index} value={`item-${index}`} className="bg-white rounded-lg shadow-sm">
+                <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                  {framework.title}
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-3 pt-1">
+                  <p>{framework.desc}</p>
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </div>
       </section>
 
       {/* Enablement Assets */}
-      <section id="enablement" className="py-16 border-b border-gray-200">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-red-600 mb-6">5. Enablement Assets</h2>
+      <section id="enablement" className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">5. Enablement Assets</h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <Card className="bg-white border border-gray-200">
@@ -200,9 +238,9 @@ const LenovoMicrosite = () => {
       </section>
 
       {/* Competitive Comparison */}
-      <section id="competitive" className="py-16 border-b border-gray-200">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-red-600 mb-6">6. Competitive Comparison</h2>
+      <section id="competitive" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">6. Competitive Comparison</h2>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse bg-white rounded-lg shadow-sm">
               <thead>
@@ -216,10 +254,10 @@ const LenovoMicrosite = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr><td className="border border-gray-300 p-3">Education</td><td className="border border-gray-300 p-3">LMS, VDI, ESG</td><td className="border border-gray-300 p-3">Strong in tenders</td><td className="border border-gray-300 p-3">Moderate</td><td className="border border-gray-300 p-3">Weak</td><td className="border border-gray-300 p-3">Brand pull, poor lifecycle</td></tr>
-                <tr><td className="border border-gray-300 p-3">Healthcare</td><td className="border border-gray-300 p-3">Rugged, telehealth, ESG</td><td className="border border-gray-300 p-3">Lifecycle only</td><td className="border border-gray-300 p-3">Infra-focused</td><td className="border border-gray-300 p-3">PointNext infra-led</td><td className="border border-gray-300 p-3">iPads, compliance weak</td></tr>
-                <tr><td className="border border-gray-300 p-3">Government</td><td className="border border-gray-300 p-3">Service desk, ESG</td><td className="border border-gray-300 p-3">Leader</td><td className="border border-gray-300 p-3">Moderate</td><td className="border border-gray-300 p-3">Strong in Canberra</td><td className="border border-gray-300 p-3">Weak</td></tr>
-                <tr><td className="border border-gray-300 p-3">SMB</td><td className="border border-gray-300 p-3">MSP packs, AI, ESG</td><td className="border border-gray-300 p-3">Channel strong</td><td className="border border-gray-300 p-3">Infra APEX</td><td className="border border-gray-300 p-3">Weak</td><td className="border border-gray-300 p-3">Leasing, no MSP depth</td></tr>
+                <tr><td className="border border-gray-300 p-3">Education</td><td className="border border-gray-300 p-3 text-green-600 font-bold">✔ LMS, VDI, ESG</td><td className="border border-gray-300 p-3">Strong tenders</td><td className="border border-gray-300 p-3">Moderate</td><td className="border border-gray-300 p-3 text-red-600 font-bold">✘ Weak</td><td className="border border-gray-300 p-3">Brand pull, poor lifecycle</td></tr>
+                <tr><td className="border border-gray-300 p-3">Healthcare</td><td className="border border-gray-300 p-3 text-green-600 font-bold">✔ Rugged, telehealth, ESG</td><td className="border border-gray-300 p-3">Lifecycle only</td><td className="border border-gray-300 p-3">Infra-strong</td><td className="border border-gray-300 p-3">Infra-led</td><td className="border border-gray-300 p-3 text-red-600 font-bold">✘ iPads, compliance weak</td></tr>
+                <tr><td className="border border-gray-300 p-3">Government</td><td className="border border-gray-300 p-3 text-green-600 font-bold">✔ Service desk, ESG</td><td className="border border-gray-300 p-3">DaaS leader</td><td className="border border-gray-300 p-3">Moderate</td><td className="border border-gray-300 p-3">PointNext strong</td><td className="border border-gray-300 p-3 text-red-600 font-bold">✘ Weak</td></tr>
+                <tr><td className="border border-gray-300 p-3">SMB</td><td className="border border-gray-300 p-3 text-green-600 font-bold">✔ MSP packs, AI, ESG</td><td className="border border-gray-300 p-3">Channel strong</td><td className="border border-gray-300 p-3">APEX infra</td><td className="border border-gray-300 p-3 text-red-600 font-bold">✘ Weak</td><td className="border border-gray-300 p-3">Leasing, no MSP depth</td></tr>
               </tbody>
             </table>
           </div>
@@ -227,17 +265,17 @@ const LenovoMicrosite = () => {
       </section>
 
       {/* Enhancements */}
-      <section id="enhancements" className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-red-600 mb-6">7. Enhancements & Differentiators</h2>
+      <section id="enhancements" className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">7. Enhancements & Differentiators</h2>
           <Card className="bg-white border border-gray-200">
             <CardContent className="p-6">
               <ul className="space-y-3 text-lg">
-                <li>• Unified CIO Dashboard: devices, support, ESG, AI in one view.</li>
-                <li>• TruScale Cloud Credits bundled with every DaaS deal.</li>
-                <li>• Employee Experience Tier with productivity + wellbeing analytics.</li>
-                <li>• Sustainability Guarantee: auto CO₂ offset + ESG Navigator report.</li>
-                <li>• Named Packs: Future of Learning, Digital Hospital, Gov Compliance, SMB Workforce.</li>
+                <li>• Unified CIO Dashboard.</li>
+                <li>• TruScale Cloud Credits with every deal.</li>
+                <li>• Employee Experience Tier.</li>
+                <li>• Sustainability Guarantee.</li>
+                <li>• Named Vertical Packs.</li>
               </ul>
             </CardContent>
           </Card>
@@ -245,25 +283,37 @@ const LenovoMicrosite = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-gray-300 py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="mb-4">&copy; Lenovo ANZ Strategy Project | DaaS Growth Playbook</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              { id: 'strategy', label: 'Strategy' },
-              { id: 'packs', label: 'Packs' },
-              { id: '2x2s', label: '2×2s' },
-              { id: 'enablement', label: 'Enablement' },
-              { id: 'competitive', label: 'Competitive' }
-            ].map(({ id, label }) => (
-              <button
-                key={id}
-                onClick={() => scrollToSection(id)}
-                className="text-red-400 hover:text-red-300 transition-colors"
-              >
-                {label}
-              </button>
-            ))}
+      <footer className="bg-gray-900 text-gray-300 py-12">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <h3 className="text-white font-bold mb-3">Strategy</h3>
+              <button onClick={() => scrollToSection('strategy')} className="block text-red-400 hover:text-white mb-1">Foundation</button>
+              <button onClick={() => scrollToSection('trajectory')} className="block text-red-400 hover:text-white mb-1">Revenue</button>
+            </div>
+            <div>
+              <h3 className="text-white font-bold mb-3">Packs</h3>
+              <button onClick={() => scrollToSection('packs')} className="block text-red-400 hover:text-white mb-1">Education</button>
+              <button onClick={() => scrollToSection('packs')} className="block text-red-400 hover:text-white mb-1">Healthcare</button>
+              <button onClick={() => scrollToSection('packs')} className="block text-red-400 hover:text-white mb-1">Gov</button>
+              <button onClick={() => scrollToSection('packs')} className="block text-red-400 hover:text-white mb-1">SMB</button>
+            </div>
+            <div>
+              <h3 className="text-white font-bold mb-3">Resources</h3>
+              <button onClick={() => scrollToSection('2x2s')} className="block text-red-400 hover:text-white mb-1">2×2 Library</button>
+              <button onClick={() => scrollToSection('competitive')} className="block text-red-400 hover:text-white mb-1">Competitive</button>
+              <button onClick={() => scrollToSection('enhancements')} className="block text-red-400 hover:text-white mb-1">Enhancements</button>
+            </div>
+          </div>
+          
+          <div className="text-center border-t border-gray-700 pt-6">
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="inline-block text-red-400 hover:text-white mb-4 text-sm"
+            >
+              ↑ Back to top
+            </button>
+            <p>&copy; Lenovo ANZ Strategy Project | DaaS Growth Playbook</p>
           </div>
         </div>
       </footer>
