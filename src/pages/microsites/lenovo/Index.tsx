@@ -47,7 +47,7 @@ const LenovoMicrosite = () => {
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className="px-4 py-2 text-red-500 hover:text-white font-semibold transition-colors"
+                className="px-4 py-2 text-white hover:text-red-300 font-semibold transition-colors border border-white/20 rounded-md hover:bg-white/10"
               >
                 {label}
               </button>
@@ -288,32 +288,32 @@ const LenovoMicrosite = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
               <h3 className="text-white font-bold mb-3">Strategy</h3>
-              <button onClick={() => scrollToSection('strategy')} className="block text-red-400 hover:text-white mb-1">Foundation</button>
-              <button onClick={() => scrollToSection('trajectory')} className="block text-red-400 hover:text-white mb-1">Revenue</button>
+              <button onClick={() => scrollToSection('strategy')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Foundation</button>
+              <button onClick={() => scrollToSection('trajectory')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Revenue</button>
             </div>
             <div>
               <h3 className="text-white font-bold mb-3">Packs</h3>
-              <button onClick={() => scrollToSection('packs')} className="block text-red-400 hover:text-white mb-1">Education</button>
-              <button onClick={() => scrollToSection('packs')} className="block text-red-400 hover:text-white mb-1">Healthcare</button>
-              <button onClick={() => scrollToSection('packs')} className="block text-red-400 hover:text-white mb-1">Gov</button>
-              <button onClick={() => scrollToSection('packs')} className="block text-red-400 hover:text-white mb-1">SMB</button>
+              <button onClick={() => scrollToSection('packs')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Education</button>
+              <button onClick={() => scrollToSection('packs')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Healthcare</button>
+              <button onClick={() => scrollToSection('packs')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Gov</button>
+              <button onClick={() => scrollToSection('packs')} className="block text-gray-300 hover:text-white mb-1 transition-colors">SMB</button>
             </div>
             <div>
               <h3 className="text-white font-bold mb-3">Resources</h3>
-              <button onClick={() => scrollToSection('2x2s')} className="block text-red-400 hover:text-white mb-1">2×2 Library</button>
-              <button onClick={() => scrollToSection('competitive')} className="block text-red-400 hover:text-white mb-1">Competitive</button>
-              <button onClick={() => scrollToSection('enhancements')} className="block text-red-400 hover:text-white mb-1">Enhancements</button>
+              <button onClick={() => scrollToSection('2x2s')} className="block text-gray-300 hover:text-white mb-1 transition-colors">2×2 Library</button>
+              <button onClick={() => scrollToSection('competitive')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Competitive</button>
+              <button onClick={() => scrollToSection('enhancements')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Enhancements</button>
             </div>
           </div>
           
           <div className="text-center border-t border-gray-700 pt-6">
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="inline-block text-red-400 hover:text-white mb-4 text-sm"
+              className="inline-block text-white hover:text-red-300 mb-4 text-sm transition-colors"
             >
               ↑ Back to top
             </button>
-            <p>&copy; Lenovo ANZ Strategy Project | DaaS Growth Playbook</p>
+            <p className="text-gray-400">&copy; Lenovo ANZ Strategy Project | DaaS Growth Playbook</p>
           </div>
         </div>
       </footer>
