@@ -1,0 +1,26 @@
+{
+  "buttons": {
+    "submit": "Gửi",
+    "cancel": "Hủy",
+    "close": "Đóng",
+    "save": "Lưu",
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa",
+    "view": "Xem",
+    "back": "Quay lại",
+    "next": "Tiếp theo",
+    "previous": "Trước đó",
+    "loading": "Đang tải..."
+  },
+  "forms": {
+    "required": "Trường này là bắt buộc",
+    "email": "Vui lòng nhập địa chỉ email hợp lệ",
+    "phone": "Vui lòng nhập số điện thoại hợp lệ"
+  },
+  "messages": {
+    "success": "Thành công!",
+    "error": "Đã xảy ra lỗi",
+    "noResults": "Không tìm thấy kết quả",
+    "tryAgain": "Vui lòng thử lại"
+  }
+}

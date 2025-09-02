@@ -1,0 +1,26 @@
+{
+  "title": "Innovation Portfolio",
+  "subtitle": "Explore the projects and platforms driving transformation across industries. Each initiative represents a unique approach to solving complex challenges through technology and human-centred design.",
+  "leadCapture": {
+    "title": "Unlock My Innovation Portfolio",
+    "subtitle": "Get exclusive access to detailed case studies, methodologies, and insights from my most impactful projects.",
+    "form": {
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your professional email",
+      "firstName": "First Name", 
+      "firstNamePlaceholder": "Enter your first name",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Enter your last name",
+      "organisation": "Organisation",
+      "organisationPlaceholder": "Enter your organisation",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "submit": "Access Portfolio",
+      "privacy": "By submitting, you agree to receive updates about innovation methodologies and strategic insights. Unsubscribe anytime."
+    },
+    "success": {
+      "title": "Welcome to the Innovation Portfolio!",
+      "message": "Thank you for your interest. You now have access to explore my complete portfolio of innovation projects and strategic initiatives."
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "hero": {
+    "title": "创新领导者和战略顾问",
+    "subtitle": "通过以人为本的创新和战略领导力转变组织",
+    "cta": "探索我的历程"
+  },
+  "metrics": {
+    "title": "已证实的影响",
+    "subtitle": "创新举措中的可衡量成果"
+  },
+  "strategy": {
+    "title": "AI战略与实施",
+    "subtitle": "引领组织实现智能化转型"
+  },
+  "achievements": {
+    "title": "主要成就",
+    "subtitle": "通过创新提供价值"
+  },
+  "executiveSummary": {
+    "title": "执行摘要",
+    "subtitle": "专注于可持续增长的战略领导力"
+  },
+  "cta": {
+    "title": "准备好一起创新吗？",
+    "subtitle": "让我们讨论如何转变您的组织",
+    "button": "开始对话"
+  }
+}

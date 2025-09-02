@@ -1,0 +1,26 @@
+{
+  "buttons": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "loading": "Loading..."
+  },
+  "forms": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "phone": "Please enter a valid phone number"
+  },
+  "messages": {
+    "success": "Success!",
+    "error": "Something went wrong",
+    "noResults": "No results found",
+    "tryAgain": "Please try again"
+  }
+}

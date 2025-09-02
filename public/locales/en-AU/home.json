@@ -1,0 +1,28 @@
+{
+  "hero": {
+    "title": "Innovation Leader & Strategic Advisor",
+    "subtitle": "Transforming organisations through human-centred innovation and strategic leadership",
+    "cta": "Explore My Journey"
+  },
+  "metrics": {
+    "title": "Proven Impact",
+    "subtitle": "Measurable results across innovation initiatives"
+  },
+  "strategy": {
+    "title": "AI Strategy & Implementation", 
+    "subtitle": "Leading organisations through intelligent transformation"
+  },
+  "achievements": {
+    "title": "Key Achievements",
+    "subtitle": "Delivering value through innovation"
+  },
+  "executiveSummary": {
+    "title": "Executive Summary",
+    "subtitle": "Strategic leadership focused on sustainable growth"
+  },
+  "cta": {
+    "title": "Ready to Innovate Together?",
+    "subtitle": "Let's discuss how we can transform your organisation",
+    "button": "Start the Conversation"
+  }
+}

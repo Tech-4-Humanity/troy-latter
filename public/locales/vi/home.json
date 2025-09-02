@@ -1,0 +1,28 @@
+{
+  "hero": {
+    "title": "Lãnh đạo Đổi mới & Cố vấn Chiến lược",
+    "subtitle": "Chuyển đổi tổ chức thông qua đổi mới lấy con người làm trung tâm và lãnh đạo chiến lược",
+    "cta": "Khám phá Hành trình của tôi"
+  },
+  "metrics": {
+    "title": "Tác động Đã được Chứng minh",
+    "subtitle": "Kết quả có thể đo lường qua các sáng kiến đổi mới"
+  },
+  "strategy": {
+    "title": "Chiến lược & Triển khai AI",
+    "subtitle": "Dẫn dắt các tổ chức qua chuyển đổi thông minh"
+  },
+  "achievements": {
+    "title": "Thành tựu Chính",
+    "subtitle": "Mang lại giá trị thông qua đổi mới"
+  },
+  "executiveSummary": {
+    "title": "Tóm tắt Điều hành",
+    "subtitle": "Lãnh đạo chiến lược tập trung vào tăng trưởng bền vững"
+  },
+  "cta": {
+    "title": "Sẵn sàng Đổi mới Cùng nhau?",
+    "subtitle": "Hãy thảo luận về cách chúng ta có thể chuyển đổi tổ chức của bạn",
+    "button": "Bắt đầu Cuộc trò chuyện"
+  }
+}
