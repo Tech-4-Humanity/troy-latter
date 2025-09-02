@@ -1,3 +1,4 @@
+
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
@@ -16,18 +17,37 @@ serve(async (req) => {
   }
 
   try {
-    const { message, sessionId, sources = [] } = await req.json();
+    const { message, sessionId, sources = [], userEmail } = await req.json();
 
     if (!message) {
       throw new Error('Message is required');
     }
 
-    console.log('Chat request:', { message, sessionId, sourcesCount: sources.length });
+    if (!userEmail) {
+      throw new Error('User email is required for AI assistant access');
+    }
+
+    console.log('Chat request:', { message, sessionId, sourcesCount: sources.length, userEmail });
 
     // Initialize Supabase client
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+    // Verify user has access by checking if email exists in ai_leads
+    const { data: leadExists, error: leadError } = await supabase
+      .from('ai_leads')
+      .select('id')
+      .eq('email', userEmail.toLowerCase())
+      .eq('source', 'ai_assistant')
+      .single();
+
+    if (leadError || !leadExists) {
+      console.error('Unauthorized access attempt:', { userEmail, leadError });
+      throw new Error('Access not granted. Please provide your email first.');
+    }
+
+    console.log('User access verified:', { userEmail, leadId: leadExists.id });
 
     // Create or get chat session
     let chatSessionId = sessionId;
@@ -55,7 +75,7 @@ serve(async (req) => {
         session_id: chatSessionId,
         role: 'user',
         content: message,
-        metadata: { sources }
+        metadata: { sources, userEmail }
       });
 
     if (userMessageError) {
@@ -144,7 +164,7 @@ serve(async (req) => {
         session_id: chatSessionId,
         role: 'assistant',
         content: assistantMessage,
-        metadata: { model: 'gpt-4o-mini', context_used: context.length > 0 }
+        metadata: { model: 'gpt-4o-mini', context_used: context.length > 0, userEmail }
       });
 
     if (assistantMessageError) {

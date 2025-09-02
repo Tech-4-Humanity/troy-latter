@@ -2489,6 +2489,39 @@ export type Database = {
         }
         Relationships: []
       }
+      ai_leads: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string | null
+          source: string
+          updated_at: string
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name?: string | null
+          source?: string
+          updated_at?: string
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string | null
+          source?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       ai_recruiter_profiles: {
         Row: {
           after_ai_video_url: string | null
@@ -23333,6 +23366,42 @@ export type Database = {
           updated_at?: string
           updated_by?: string | null
           weight_overrides?: Json | null
+        }
+        Relationships: []
+      }
+      secrets_configuration: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          is_configured: boolean
+          is_required: boolean
+          last_checked_at: string | null
+          secret_name: string
+          updated_at: string
+          used_by: string[] | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_configured?: boolean
+          is_required?: boolean
+          last_checked_at?: string | null
+          secret_name: string
+          updated_at?: string
+          used_by?: string[] | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_configured?: boolean
+          is_required?: boolean
+          last_checked_at?: string | null
+          secret_name?: string
+          updated_at?: string
+          used_by?: string[] | null
         }
         Relationships: []
       }

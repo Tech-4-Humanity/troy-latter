@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,6 +8,7 @@ import { Mic, MicOff, Send, Volume2, VolumeX, MessageCircle, User } from 'lucide
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { HeyGenAvatar } from './HeyGenAvatar';
+import { useAIAccess } from '@/hooks/useAIAccess';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -28,6 +30,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
   const [activeTab, setActiveTab] = useState('chat');
   
   const { toast } = useToast();
+  const { getUserEmail } = useAIAccess();
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -53,6 +56,16 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
   const sendMessage = async (messageText: string) => {
     if (!messageText.trim()) return;
 
+    const userEmail = getUserEmail();
+    if (!userEmail) {
+      toast({
+        title: "Access Required",
+        description: "Please provide your email to use the AI assistant.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const userMessage: Message = {
       role: 'user',
       content: messageText,
@@ -64,12 +77,13 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
     setIsLoading(true);
 
     try {
-      console.log('Sending message to chat-with-rag:', { messageText, sessionId });
+      console.log('Sending message to chat-with-rag:', { messageText, sessionId, userEmail });
       
       const { data, error } = await supabase.functions.invoke('chat-with-rag', {
         body: {
           message: messageText,
           sessionId: sessionId,
+          userEmail: userEmail,
         },
       });
 
