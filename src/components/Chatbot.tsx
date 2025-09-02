@@ -29,6 +29,8 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
   const [voiceEnabled, setVoiceEnabled] = useState(true);
   const [activeTab, setActiveTab] = useState('chat');
   
+  const isDisabled = import.meta.env.VITE_AI_ASSISTANT_DISABLED === 'true';
+  
   const { toast } = useToast();
   const { getUserEmail } = useAIAccess();
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -257,18 +259,38 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
     sendMessage(input);
   };
 
+  if (isDisabled) {
+    return (
+      <div className={className}>
+        <Card className="flex flex-col h-96">
+          <div className="border-b p-4">
+            <h3 className="font-semibold text-foreground">Troy's AI Assistant</h3>
+          </div>
+          <div className="flex-1 flex items-center justify-center p-4">
+            <div className="text-center text-muted-foreground">
+              <p>Troy's AI Assistant is currently being reconstructed.</p>
+              <p className="text-sm mt-2">We're improving the experience!</p>
+            </div>
+          </div>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className={className}>
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className={`grid w-full ${isDisabled ? 'grid-cols-1' : 'grid-cols-2'}`}>
           <TabsTrigger value="chat" className="flex items-center gap-2">
             <MessageCircle className="h-4 w-4" />
             Text Chat
           </TabsTrigger>
-          <TabsTrigger value="avatar" className="flex items-center gap-2">
-            <User className="h-4 w-4" />
-            Troy's Avatar
-          </TabsTrigger>
+          {!isDisabled && (
+            <TabsTrigger value="avatar" className="flex items-center gap-2">
+              <User className="h-4 w-4" />
+              Troy's Avatar
+            </TabsTrigger>
+          )}
         </TabsList>
         
         <TabsContent value="chat" className="mt-4">
@@ -333,7 +355,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask me anything about Troy..."
-                  disabled={isLoading || isRecording}
+                  disabled={isLoading || isRecording || isDisabled}
                   className="flex-1"
                 />
                 
@@ -342,14 +364,14 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
                   variant={isRecording ? "destructive" : "outline"}
                   size="icon"
                   onClick={isRecording ? stopRecording : startRecording}
-                  disabled={isLoading}
+                  disabled={isLoading || isDisabled}
                 >
                   {isRecording ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
                 </Button>
                 
                 <Button 
                   type="submit" 
-                  disabled={isLoading || !input.trim() || isRecording}
+                  disabled={isLoading || !input.trim() || isRecording || isDisabled}
                   size="icon"
                 >
                   <Send className="h-4 w-4" />
@@ -359,14 +381,16 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
           </Card>
         </TabsContent>
         
-        <TabsContent value="avatar" className="mt-4">
-          <HeyGenAvatar 
-            onMessageReceived={(message) => {
-              // Handle messages from avatar interactions
-              console.log('Avatar message:', message);
-            }}
-          />
-        </TabsContent>
+        {!isDisabled && (
+          <TabsContent value="avatar" className="mt-4">
+            <HeyGenAvatar 
+              onMessageReceived={(message) => {
+                // Handle messages from avatar interactions
+                console.log('Avatar message:', message);
+              }}
+            />
+          </TabsContent>
+        )}
       </Tabs>
     </div>
   );

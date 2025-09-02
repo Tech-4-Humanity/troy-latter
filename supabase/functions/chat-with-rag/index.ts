@@ -16,6 +16,21 @@ serve(async (req) => {
     return new Response('ok', { headers: corsHeaders });
   }
 
+  // Check if assistant is disabled
+  const isDisabled = Deno.env.get('ASSISTANT_DISABLED') === 'true';
+  if (isDisabled) {
+    console.log('Assistant is disabled, returning 503');
+    return new Response(
+      JSON.stringify({ 
+        error: "Troy's AI Assistant is currently being reconstructed. Please leave your email to be notified when it's back." 
+      }),
+      {
+        status: 503,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }
+    );
+  }
+
   try {
     const { message, sessionId, sources = [], userEmail } = await req.json();
 

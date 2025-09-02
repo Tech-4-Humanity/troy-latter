@@ -12,6 +12,7 @@ import { useAIAccess } from '@/hooks/useAIAccess';
 
 export default function Index() {
   const { hasAccess, grantAccess } = useAIAccess();
+  const isDisabled = import.meta.env.VITE_AI_ASSISTANT_DISABLED === 'true';
 
   return (
     <div className="min-h-screen">
@@ -33,7 +34,17 @@ export default function Index() {
             </p>
           </div>
           
-          {hasAccess ? (
+          {isDisabled ? (
+            <div className="flex flex-col items-center space-y-6">
+              <div className="text-center">
+                <p className="text-muted-foreground">Troy's AI Assistant is currently being reconstructed.</p>
+              </div>
+              <AIAccessGate 
+                onAccessGranted={grantAccess}
+                waitlistOnly={true}
+              />
+            </div>
+          ) : hasAccess ? (
             <Chatbot />
           ) : (
             <div className="flex justify-center">

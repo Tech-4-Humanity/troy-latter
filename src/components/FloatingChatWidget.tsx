@@ -9,6 +9,7 @@ import { useAIAccess } from '@/hooks/useAIAccess';
 export const FloatingChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { hasAccess, isChecking, grantAccess } = useAIAccess();
+  const isDisabled = import.meta.env.VITE_AI_ASSISTANT_DISABLED === 'true';
 
   if (isChecking) {
     return null;
@@ -43,7 +44,17 @@ export const FloatingChatWidget = () => {
 
           {/* Content */}
           <div className="flex-1 p-4 overflow-hidden">
-            {hasAccess ? (
+            {isDisabled ? (
+              <div className="flex flex-col items-center justify-center h-full space-y-4">
+                <div className="text-center mb-4">
+                  <p className="text-muted-foreground">Troy's AI Assistant is currently being reconstructed.</p>
+                </div>
+                <AIAccessGate 
+                  onAccessGranted={grantAccess}
+                  waitlistOnly={true}
+                />
+              </div>
+            ) : hasAccess ? (
               <Chatbot className="h-full" />
             ) : (
               <div className="flex items-center justify-center h-full">

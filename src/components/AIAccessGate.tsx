@@ -25,13 +25,25 @@ interface AIAccessGateProps {
   onAccessGranted: () => void;
   title?: string;
   description?: string;
+  waitlistOnly?: boolean;
 }
 
 export const AIAccessGate = ({ 
   onAccessGranted, 
-  title = "Access Troy's AI Assistant",
-  description = "Get personalized insights about Troy's expertise and experience"
+  title,
+  description,
+  waitlistOnly = false
 }: AIAccessGateProps) => {
+  // Set default titles based on mode
+  const defaultTitle = waitlistOnly 
+    ? "Troy's AI Assistant is being reconstructed"
+    : "Access Troy's AI Assistant";
+  const defaultDescription = waitlistOnly
+    ? "We're improving the experience. Leave your email and we'll notify you when it's live."
+    : "Get personalized insights about Troy's expertise and experience";
+  
+  const finalTitle = title || defaultTitle;
+  const finalDescription = description || defaultDescription;
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<FormData>({
@@ -55,7 +67,7 @@ export const AIAccessGate = ({
           name: data.name,
           company: data.company || null,
           message: data.message || null,
-          source: 'ai_assistant'
+          source: waitlistOnly ? 'ai_assistant_waitlist' : 'ai_assistant'
         });
 
       if (error) {
@@ -63,19 +75,26 @@ export const AIAccessGate = ({
         throw new Error('Failed to save your information');
       }
 
-      // Store access in localStorage for this session
-      localStorage.setItem('ai-assistant-access-granted', 'true');
-      localStorage.setItem('ai-assistant-user-email', data.email.toLowerCase());
+      if (waitlistOnly) {
+        toast({
+          title: "Thanks!",
+          description: "We'll let you know as soon as it's available.",
+        });
+      } else {
+        // Store access in localStorage for this session
+        localStorage.setItem('ai-assistant-access-granted', 'true');
+        localStorage.setItem('ai-assistant-user-email', data.email.toLowerCase());
 
-      toast({
-        title: "Access Granted!",
-        description: "You now have access to Troy's AI assistant.",
-      });
+        toast({
+          title: "Access Granted!",
+          description: "You now have access to Troy's AI assistant.",
+        });
 
-      // Small delay for better UX
-      setTimeout(() => {
-        onAccessGranted();
-      }, 500);
+        // Small delay for better UX
+        setTimeout(() => {
+          onAccessGranted();
+        }, 500);
+      }
 
     } catch (error) {
       console.error('Error in AI access gate:', error);
@@ -95,9 +114,9 @@ export const AIAccessGate = ({
         <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4 mx-auto">
           <Bot className="h-6 w-6 text-primary" />
         </div>
-        <CardTitle className="text-xl">{title}</CardTitle>
+        <CardTitle className="text-xl">{finalTitle}</CardTitle>
         <CardDescription className="text-sm">
-          {description}
+          {finalDescription}
         </CardDescription>
       </CardHeader>
       
@@ -191,7 +210,7 @@ export const AIAccessGate = ({
               className="w-full"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Granting Access..." : "Access AI Assistant"}
+              {isSubmitting ? (waitlistOnly ? "Joining waitlist..." : "Granting Access...") : (waitlistOnly ? "Notify me" : "Access AI Assistant")}
             </Button>
           </form>
         </Form>
