@@ -27,7 +27,8 @@ export const MicrositeLayout = ({ children }: MicrositeLayoutProps) => {
               <div className="h-6 w-px bg-gray-300"></div>
               <h1 className="text-xl font-semibold text-gray-900">
                 {location.pathname.includes('interview-prep') ? 'Shield AI' : 
-                 location.pathname.includes('agentforce') ? 'Agentforce' : 'Micro-Sites'}
+                 location.pathname.includes('agentforce') ? 'Agentforce' :
+                 location.pathname.includes('lenovo') ? 'Lenovo ANZ' : 'Micro-Sites'}
               </h1>
             </div>
             <Button variant="outline" size="sm" asChild>
