@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { GlassmorphismCard, GlassmorphismCardContent } from '@/components/ui/glassmorphism-card';
 import { Button } from '@/components/ui/button';
@@ -24,6 +25,8 @@ interface LeadCaptureGateProps {
 }
 
 export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
+  const { t } = useTranslation();
+  
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -43,7 +46,7 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
     }));
 
     toast({
-      title: "Thank you!",
+      title: t('projects.gateSuccess'),
       description: "You now have access to view all projects.",
     });
 
@@ -62,11 +65,10 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
           <span className="text-sm font-medium text-primary">Exclusive Access</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-6">
-          Access Project Portfolio
+          {t('projects.gateTitle')}
         </h1>
         <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
-          Get exclusive access to our complete portfolio of innovative projects and ventures. 
-          Leave your details to explore cutting-edge solutions across multiple industries.
+          {t('projects.gateDescription')}
         </p>
       </div>
 
@@ -78,7 +80,7 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
               <Mail className="h-7 w-7 text-primary" />
             </div>
             <h2 className="text-2xl font-semibold text-foreground mb-2">
-              Request Access
+              {t('projects.gateSubmit')}
             </h2>
             <p className="text-muted-foreground">
               Complete the form below to unlock the full project showcase
@@ -114,18 +116,18 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground font-medium">
-                        <Mail className="inline h-4 w-4 mr-2" />
-                        Email Address *
-                      </FormLabel>
-                      <FormControl>
-                        <Input 
-                          type="email" 
-                          placeholder="your.email@company.com" 
-                          {...field}
-                          className="bg-background/50 border-border/50 focus:border-primary/50"
-                        />
-                      </FormControl>
+                       <FormLabel className="text-foreground font-medium">
+                         <Mail className="inline h-4 w-4 mr-2" />
+                         {t('projects.gateEmailLabel')}
+                       </FormLabel>
+                       <FormControl>
+                         <Input 
+                           type="email" 
+                           placeholder={t('projects.gateEmailPlaceholder')} 
+                           {...field}
+                           className="bg-background/50 border-border/50 focus:border-primary/50"
+                         />
+                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -137,10 +139,10 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
                 name="company"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-foreground font-medium">
-                      <Building className="inline h-4 w-4 mr-2" />
-                      Company / Organization
-                    </FormLabel>
+                     <FormLabel className="text-foreground font-medium">
+                       <Building className="inline h-4 w-4 mr-2" />
+                       Company / {t('common.organisation')}
+                     </FormLabel>
                     <FormControl>
                       <Input 
                         placeholder="Your company or organization (optional)" 
@@ -180,7 +182,7 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
                   className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-medium py-3 text-base transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
                   disabled={form.formState.isSubmitting}
                 >
-                  {form.formState.isSubmitting ? 'Processing...' : 'Get Access to Projects'}
+                  {form.formState.isSubmitting ? t('common.loading') : t('projects.gateSubmit')}
                 </Button>
               </div>
 

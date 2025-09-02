@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { GlassmorphismCard, GlassmorphismCardContent } from '@/components/ui/glassmorphism-card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -94,6 +95,7 @@ const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [hasAccess, setHasAccess] = useState(false);
+  const { t } = useTranslation();
 
   // Check if user has already gained access
   useEffect(() => {
@@ -306,11 +308,10 @@ const Projects = () => {
           <span className="text-sm font-medium text-primary">Portfolio Showcase</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-6">
-          Projects & Ventures
+          {t('projects.title')}
         </h1>
         <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto">
-          A portfolio of innovative platforms and businesses driving technology-forward solutions across multiple industries.
-          Each project represents a commitment to leveraging technology for positive impact and human advancement.
+          {t('projects.subtitle')}
         </p>
       </div>
       

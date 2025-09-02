@@ -1,4 +1,5 @@
 
+import { useTranslation } from 'react-i18next';
 import { HeroSection } from '@/components/home/HeroSection';
 import { MetricsSection } from '@/components/home/MetricsSection';
 import { AIStrategySection } from '@/components/home/AIStrategySection';
@@ -8,6 +9,8 @@ import { CTASection } from '@/components/home/CTASection';
 import { Chatbot } from '@/components/Chatbot';
 
 const Index = () => {
+  const { t } = useTranslation();
+  
   return (
     <div className="space-y-20">
       {/* Hero Section with Professional Background */}
@@ -33,11 +36,10 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Ask Troy's AI Assistant
+              {t('home.chatbotTitle')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Get instant answers about Troy's experience, expertise, and insights. 
-              Voice and text enabled for your convenience.
+              {t('home.chatbotSubtitle')}
             </p>
           </div>
           <div className="max-w-2xl mx-auto">

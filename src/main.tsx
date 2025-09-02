@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
+import './i18n'
 
 // Load external scripts only in development
 if (import.meta.env.DEV) {

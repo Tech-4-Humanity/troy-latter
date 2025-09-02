@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
 import { Menu, X, ChevronDown, MessageCircle } from 'lucide-react';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -17,41 +19,45 @@ import {
 } from './ui/dropdown-menu';
 
 // Organized navigation structure
-const navigationCategories = [
-  {
-    title: 'About Troy',
-    mainPath: '/executive-profile',
-    items: [
-      { path: '/executive-profile', label: 'Executive Profile' },
-      { path: '/leadership-style', label: 'Leadership Style' },
-      { path: '/your-profile-stars', label: 'Customer Activations' },
-    ]
-  },
-  {
-    title: 'Experience & Impact',
-    mainPath: '/experience-and-impact',
-    items: [
-      { path: '/strategic-projects', label: 'Strategic Projects' },
-      { path: '/responsibilities', label: 'Customer Initiatives' },
-      { path: '/customer-asks-stars', label: 'Innovation Approach' },
-    ]
-  },
-  {
-    title: 'Team & Capabilities',
-    mainPath: '/core-competencies',
-    items: [
-      { path: '/core-competencies', label: 'Core Competencies' },
-      { path: '/industry-expertise', label: 'Industry Expertise' },
-      { path: '/people-involved', label: 'People Involved' },
-    ]
-  },
-];
-
-const standaloneRoute = { path: '/contact', label: 'Contact' };
+const useNavigationStructure = () => {
+  const { t } = useTranslation();
+  
+  return [
+    {
+      title: t('nav.aboutTroy'),
+      mainPath: '/executive-profile',
+      items: [
+        { path: '/executive-profile', label: t('nav.executiveProfile') },
+        { path: '/leadership-style', label: t('nav.leadershipStyle') },
+        { path: '/your-profile-stars', label: 'Customer Activations' },
+      ]
+    },
+    {
+      title: t('nav.experienceAndImpact'),
+      mainPath: '/experience-and-impact',
+      items: [
+        { path: '/strategic-projects', label: t('nav.strategicProjects') },
+        { path: '/responsibilities', label: 'Customer Initiatives' },
+        { path: '/customer-asks-stars', label: 'Innovation Approach' },
+      ]
+    },
+    {
+      title: t('nav.coreCompetencies'),
+      mainPath: '/core-competencies',
+      items: [
+        { path: '/core-competencies', label: t('nav.coreCompetencies') },
+        { path: '/industry-expertise', label: t('nav.industryExpertise') },
+        { path: '/people-involved', label: t('nav.peopleInvolved') },
+      ]
+    },
+  ];
+};
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
+  const navigationCategories = useNavigationStructure();
   
   const isActiveCategory = (category: typeof navigationCategories[0]) => {
     return category.items.some(item => location.pathname === item.path);
@@ -81,8 +87,9 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          {/* Talk to Troy CTA */}
-          <div className="hidden lg:flex items-center">
+          {/* Talk to Troy CTA & Language Switcher */}
+          <div className="hidden lg:flex items-center gap-2">
+            <LanguageSwitcher />
             <Button
               onClick={() => {
                 const widget = document.querySelector('[data-floating-chat]');
@@ -91,10 +98,10 @@ export const Navbar = () => {
                   button?.click();
                 }
               }}
-              className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 hover:from-purple-600 hover:via-blue-600 hover:to-teal-600 text-white text-sm px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mr-4"
+              className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 hover:from-purple-600 hover:via-blue-600 hover:to-teal-600 text-white text-sm px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               <MessageCircle className="h-4 w-4 mr-2" />
-              Talk to Troy
+              {t('nav.talkToTroy')}
             </Button>
           </div>
 
@@ -144,12 +151,12 @@ export const Navbar = () => {
             ))}
             
             <Link
-              to={standaloneRoute.path}
+              to="/contact"
               className={`text-white hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-3 py-2 ${
-                isActivePath(standaloneRoute.path) ? 'text-[#56A4E3]' : ''
+                isActivePath('/contact') ? 'text-[#56A4E3]' : ''
               }`}
             >
-              {standaloneRoute.label}
+              {t('nav.contact')}
             </Link>
           </nav>
 
@@ -201,16 +208,21 @@ export const Navbar = () => {
               ))}
               
               <Link
-                to={standaloneRoute.path}
+                to="/contact"
                 className={`text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-3 rounded-lg hover:bg-white/10 active:bg-white/20 ${
-                  isActivePath(standaloneRoute.path) ? 'bg-white/10 text-[#56A4E3]' : ''
+                  isActivePath('/contact') ? 'bg-white/10 text-[#56A4E3]' : ''
                 }`}
                 onClick={closeMobileMenu}
               >
-                {standaloneRoute.label}
+                {t('nav.contact')}
               </Link>
               
               {/* Mobile Talk to Troy CTA */}
+              {/* Mobile Language Switcher */}
+              <div className="px-2 py-2">
+                <LanguageSwitcher />
+              </div>
+              
               <Button
                 onClick={() => {
                   const widget = document.querySelector('[data-floating-chat]');
@@ -223,7 +235,7 @@ export const Navbar = () => {
                 className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 hover:from-purple-600 hover:via-blue-600 hover:to-teal-600 text-white text-sm px-4 py-3 rounded-lg shadow-lg mx-2 mt-4 flex items-center justify-center"
               >
                 <MessageCircle className="h-4 w-4 mr-2" />
-                Talk to Troy
+                {t('nav.talkToTroy')}
               </Button>
             </nav>
           </div>

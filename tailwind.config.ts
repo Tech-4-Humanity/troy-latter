@@ -20,7 +20,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
+				sans: ['Inter', 'Noto Sans', 'sans-serif'],
+				'sans-ar': ['Noto Sans Arabic', 'sans-serif'],
+				'sans-zh': ['Noto Sans SC', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
