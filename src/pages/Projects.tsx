@@ -1,9 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { GlassmorphismCard, GlassmorphismCardContent } from '@/components/ui/glassmorphism-card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { ExternalLink, Globe, Users, Zap, Shield, Building, Bot, Star, Wrench, Heart, Brain, ChartBar, Activity, Filter, Search, X } from 'lucide-react';
+import { LeadCaptureGate } from '@/components/LeadCaptureGate';
 
 interface ProjectProps {
   title: string;
@@ -92,6 +93,23 @@ const ProjectCard = ({ title, description, url, icon: Icon, category }: ProjectP
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [hasAccess, setHasAccess] = useState(false);
+
+  // Check if user has already gained access
+  useEffect(() => {
+    const accessGranted = localStorage.getItem('projects-access-granted');
+    setHasAccess(accessGranted === 'true');
+  }, []);
+
+  // Handle successful form submission
+  const handleAccessGranted = () => {
+    setHasAccess(true);
+  };
+
+  // If no access, show the gate
+  if (!hasAccess) {
+    return <LeadCaptureGate onSuccess={handleAccessGranted} />;
+  }
   
   const projects: ProjectProps[] = [
     {
