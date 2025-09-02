@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const LenovoMicrosite = () => {
   useEffect(() => {
@@ -43,7 +44,8 @@ const LenovoMicrosite = () => {
               { id: 'enablement', label: 'Enablement' },
               { id: 'competitive', label: 'Competitive' },
               { id: 'enhancements', label: 'Enhancements' },
-              { id: 'jd-alignment', label: 'JD Alignment' }
+              { id: 'jd-alignment', label: 'JD Alignment' },
+              { id: 'two-by-two-complete', label: 'Complete 2x2' }
             ].map(({ id, label }) => (
               <button
                 key={id}
@@ -463,6 +465,301 @@ const LenovoMicrosite = () => {
         </div>
       </section>
 
+      {/* Full 2x2 Tables Section */}
+      <section id="two-by-two-complete" className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-8">Complete 2x2 Framework Library</h2>
+          
+          {/* Customer Relationship */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Customer Relationship 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Customer maturity low</TableHead>
+                <TableHead>Customer maturity high</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Relationship transactional</TableHead>
+                <TableCell>Quote cycles for devices and support. Land quick wins with Premier Support plus collaboration kits and ESG dashboards. Prove delivery speed and quality.</TableCell>
+                <TableCell>Risk of being sidelined on price. Move to platform talk with TruScale credits and service desk attach. Set a three step adoption plan.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Relationship strategic</TableHead>
+                <TableCell>Define a roadmap. Phase one DaaS baseline. Phase two security and Autopilot. Phase three VDI or cloud tie in.</TableCell>
+                <TableCell>Multi year program. Digital campus or digital hospital or gov workplace. Joint steering group. Quarterly value reviews.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Technology */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Technology 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Core stack</TableHead>
+                <TableHead>Advanced stack</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>End user layer</TableHead>
+                <TableCell>ThinkPad ThinkBook ThinkCentre. Premier Support. Imaging and asset recovery.</TableCell>
+                <TableCell>DaaS with Autopilot and Intune. Endpoint security and ZTNA. Collaboration kits with ThinkSmart.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Platform layer</TableHead>
+                <TableCell>Service desk integration. Device analytics. VDI starter on TruScale.</TableCell>
+                <TableCell>TruScale hybrid cloud. AI copilots. AI Edge for sites. ESG Navigator dashboards.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Competitor */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Competitor 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Customer priority cost</TableHead>
+                <TableHead>Customer priority outcome</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Competitor strength weak</TableHead>
+                <TableCell>Lead with bundle TCO. Devices plus support plus security. Fast rollout and one invoice.</TableCell>
+                <TableCell>Land the platform story. DaaS plus service desk plus TruScale. Clear success metrics and SLA gains.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Competitor strength strong</TableHead>
+                <TableCell>Reframe to risk and compliance. ESG reporting and lifecycle proof. Reduce hidden costs from breaches and rework.</TableCell>
+                <TableCell>Bring proof with pilots and Innovation Center. Co sell with partners. Show time to value and adoption curve.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Roles and Ownership */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Roles and Ownership 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Pre sale</TableHead>
+                <TableHead>Post sale</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Customer facing</TableHead>
+                <TableCell>Account manager and solution architect. Discovery and value map. Competitive position.</TableCell>
+                <TableCell>Success manager and exec sponsor. Quarterly value review. Expansion plan.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Delivery teams</TableHead>
+                <TableCell>Presales engineer and partner manager. Scope and sizing. Statement of work.</TableCell>
+                <TableCell>Delivery lead and service desk lead and security lead and cloud lead. Run and improve.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Partners */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Partners 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>MSP focus</TableHead>
+                <TableHead>GSI focus</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Co sell motion</TableHead>
+                <TableCell>SMB Workforce packs with MSP service desk. Lenovo brand with partner delivery.</TableCell>
+                <TableCell>State health and state gov programs. Lenovo stack inside GSI program plan.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Resell motion</TableHead>
+                <TableCell>Device and support resale with light managed add ons. Quick throughput.</TableCell>
+                <TableCell>Framework supply where GSI primes the deal. Align rebates and attach targets.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Tactics */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Tactics 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Quick motion</TableHead>
+                <TableHead>Build motion</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Direct led</TableHead>
+                <TableCell>Bundle security and collaboration and ESG with DaaS. Pilot in one site and then expand.</TableCell>
+                <TableCell>Create sector blueprint and reference kit. Publish pricing bands and service catalog.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Partner led</TableHead>
+                <TableCell>MSP sells Workforce pack. Fast device swaps and remote setup.</TableCell>
+                <TableCell>GSI joint solution for gov or health. Shared pipeline and executive cover.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Orchestration */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Orchestration 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Early stage</TableHead>
+                <TableHead>Late stage</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Business track</TableHead>
+                <TableCell>Map outcomes and value metrics. Approve scope and timeline. Secure sponsor.</TableCell>
+                <TableCell>Run value reviews and renewals. Expand to new sites and teams.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Technical track</TableHead>
+                <TableCell>Environment fit and privacy. Integration plan for M365 and identity and network.</TableCell>
+                <TableCell>Cutover and steady state. Telemetry and SLA dashboards and change plan.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Stakeholder */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Stakeholder 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Tactical focus</TableHead>
+                <TableHead>Strategic focus</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Operational roles</TableHead>
+                <TableCell>IT leads want uptime and ticket speed and image control.</TableCell>
+                <TableCell>Ops managers want lifecycle analytics and ESG reporting and budget predictability.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Executive roles</TableHead>
+                <TableCell>Procurement wants clean OPEX and clear terms.</TableCell>
+                <TableCell>CIO and board want compliance and resilience and long term value.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Execution Horizon */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Execution Horizon 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Short term</TableHead>
+                <TableHead>Long term</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Low effort</TableHead>
+                <TableCell>Wrap DaaS with collaboration kits and security and ESG dashboards. Target education and SMB.</TableCell>
+                <TableCell>Basic managed services add. Service desk and patch and device analytics. Keeps footprint sticky.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>High effort</TableHead>
+                <TableCell>Launch sector packs in pilots. Orchestrate MSP delivery and light GSI input.</TableCell>
+                <TableCell>Full platform subscription with TruScale and AI copilots and ESG guarantee. ANZ flagship model.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Risk vs Opportunity */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Risk vs Opportunity 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Low opportunity</TableHead>
+                <TableHead>High opportunity</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Low risk</TableHead>
+                <TableCell>Device only DaaS. Predictable yet flat. Margin pressure.</TableCell>
+                <TableCell>Bundled add ons like security and ESG and collaboration. Clear ROI. Partner friendly.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>High risk</TableHead>
+                <TableCell>Point tools with little reuse. High cost and little payoff.</TableCell>
+                <TableCell>Sector transformation such as Gov Compliance or Digital Hospital. Needs orchestration yet gives four to seven times revenue.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Geographic Growth */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Geographic Growth 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Growth potential low</TableHead>
+                <TableHead>Growth potential high</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Lenovo presence low</TableHead>
+                <TableCell>Small councils and one off buys. Keep light touch and nurture.</TableCell>
+                <TableCell>Regional health in QLD and WA. Regional universities. NZ SMB via MSPs. Prioritise packs.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Lenovo presence strong</TableHead>
+                <TableCell>Federal areas under SI strongholds in Canberra. Maintain device share and wait for entry point.</TableCell>
+                <TableCell>NSW and VIC state agencies. Top universities. Large health networks. Push platform subscription.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Customer Journey */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Customer Journey 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Device scope</TableHead>
+                <TableHead>Platform scope</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Early stage</TableHead>
+                <TableCell>DaaS baseline with Premier Support. Imaging and recycling. One site or one unit.</TableCell>
+                <TableCell>Add service desk and endpoint security and Autopilot. Start with one function such as finance or field.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Advanced stage</TableHead>
+                <TableCell>Fleet wide refresh and standard build. Stable run and simple adds and moves.</TableCell>
+                <TableCell>TruScale hybrid and VDI and AI copilots. ESG Navigator live. Multi year program with value reviews.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-300 py-12">
         <div className="container mx-auto px-4 max-w-5xl">
@@ -485,6 +782,7 @@ const LenovoMicrosite = () => {
               <button onClick={() => scrollToSection('competitive')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Competitive</button>
               <button onClick={() => scrollToSection('enhancements')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Enhancements</button>
               <button onClick={() => scrollToSection('jd-alignment')} className="block text-gray-300 hover:text-white mb-1 transition-colors">JD Alignment</button>
+              <button onClick={() => scrollToSection('two-by-two-complete')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Complete 2x2 Library</button>
             </div>
           </div>
           
