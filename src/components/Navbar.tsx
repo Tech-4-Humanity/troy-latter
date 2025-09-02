@@ -45,17 +45,6 @@ const navigationCategories = [
       { path: '/people-involved', label: 'People Involved' },
     ]
   },
-  {
-    title: 'Microsites',
-    mainPath: '/microsites',
-    items: [
-      { path: '/microsites/envato', label: 'Envato Strategic Paths' },
-      { path: '/microsites/agentforce', label: 'Agentforce Portfolio' },
-      { path: '/microsites/lab3', label: 'Lab3 Analysis' },
-      { path: '/microsites/interview-prep', label: 'Shield AI' },
-      { path: '/microsites/pega', label: 'PEGA' },
-    ]
-  }
 ];
 
 const standaloneRoute = { path: '/contact', label: 'Contact' };
