@@ -61,10 +61,10 @@ const LenovoMicrosite = () => {
           <nav className="flex flex-wrap justify-center gap-4 mt-6">
             {[
               { id: 'strategy', label: 'Strategy' },
-              { id: 'trajectory', label: 'Revenue' },
               { id: 'packs', label: 'Vertical Packs' },
               { id: 'stories', label: 'Stories' },
               { id: 'vignettes', label: 'Customer Engagement Vignettes' },
+              { id: 'trajectory', label: 'Revenue' },
               { id: 'jd-alignment', label: 'JD Alignment' }
             ].map(({ id, label }) => (
               <button
@@ -166,70 +166,11 @@ const LenovoMicrosite = () => {
         </div>
       </section>
 
-      {/* Revenue Trajectory */}
-      <section id="trajectory" className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">3. 5-Year Revenue Trajectory</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse bg-white rounded-lg shadow-sm">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 p-3 text-left font-semibold">Sector</th>
-                  <th className="border border-gray-300 p-3 text-left font-semibold">Baseline Year 5</th>
-                  <th className="border border-gray-300 p-3 text-left font-semibold">Expanded Year 5</th>
-                  <th className="border border-gray-300 p-3 text-left font-semibold">Growth Multiple</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td className="border border-gray-300 p-3">Education</td><td className="border border-gray-300 p-3">$2M</td><td className="border border-gray-300 p-3">$15M</td><td className="border border-gray-300 p-3">4–7x</td></tr>
-                <tr><td className="border border-gray-300 p-3">Healthcare</td><td className="border border-gray-300 p-3">$3M</td><td className="border border-gray-300 p-3">$20M</td><td className="border border-gray-300 p-3">5–6x</td></tr>
-                <tr><td className="border border-gray-300 p-3">Government</td><td className="border border-gray-300 p-3">$5M</td><td className="border border-gray-300 p-3">$25M</td><td className="border border-gray-300 p-3">4–5x</td></tr>
-                <tr><td className="border border-gray-300 p-3">SMB</td><td className="border border-gray-300 p-3">$0.5M</td><td className="border border-gray-300 p-3">$5M</td><td className="border border-gray-300 p-3">5–10x</td></tr>
-                <tr className="bg-gray-50 font-semibold"><td className="border border-gray-300 p-3">Total</td><td className="border border-gray-300 p-3">$10.5M</td><td className="border border-gray-300 p-3">$65M</td><td className="border border-gray-300 p-3">~6x</td></tr>
-              </tbody>
-            </table>
-          </div>
-          
-          {/* Revenue Chart */}
-          <div className="mt-8 bg-white p-6 rounded-lg shadow-sm">
-            <ChartContainer
-              config={{
-                baseline: {
-                  label: "Baseline Year 5",
-                  color: "#777777",
-                },
-                expanded: {
-                  label: "Expanded Year 5", 
-                  color: "#e2231a",
-                },
-              }}
-              className="h-80 w-full"
-            >
-              <BarChart
-                data={[
-                  { sector: "Education", baseline: 2, expanded: 15 },
-                  { sector: "Healthcare", baseline: 3, expanded: 20 },
-                  { sector: "Government", baseline: 5, expanded: 25 },
-                  { sector: "SMB", baseline: 0.5, expanded: 5 },
-                ]}
-              >
-                <XAxis dataKey="sector" />
-                <YAxis label={{ value: 'Revenue ($M)', angle: -90, position: 'insideLeft' }} />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar dataKey="baseline" fill="#777777" />
-                <Bar dataKey="expanded" fill="#e2231a" />
-              </BarChart>
-            </ChartContainer>
-          </div>
-          
-          <p className="mt-6 text-lg"><strong>Takeaway:</strong> Cross-sell is not optional. Bundled + advisory moves DaaS into $60M+ territory.</p>
-        </div>
-      </section>
 
       {/* Vertical Packs */}
       <section id="packs" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">2. Vertical DaaS Packs</h2>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">3. Vertical DaaS Packs</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
@@ -969,21 +910,160 @@ const LenovoMicrosite = () => {
         </div>
       </section>
 
-      {/* Enhancements */}
-      <section id="enhancements" className="py-16 bg-gray-50">
+      {/* Enhancements & Differentiators */}
+      <section id="enhancements-expanded" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">8. Enhancements & Differentiators</h2>
-          <Card className="bg-white border border-gray-200">
-            <CardContent className="p-6">
-              <ul className="space-y-3 text-lg">
-                <li>• Unified CIO Dashboard.</li>
-                <li>• TruScale Cloud Credits with every deal.</li>
-                <li>• Employee Experience Tier.</li>
-                <li>• Sustainability Guarantee.</li>
-                <li>• Named Vertical Packs.</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">9. Enhancements & Differentiators</h2>
+
+          <p className="text-lg mb-8">
+            DaaS is the start. The edge comes from turning every deal into a platform subscription. 
+            Hardware plus cloud plus AI plus ESG plus employee experience. One predictable fee. 
+            This is how Lenovo becomes a strategic partner, not a box supplier.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Unified CIO Dashboard */}
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-red-600 mb-3">Unified CIO Dashboard</h3>
+                <p className="mb-4">
+                  One control plane. CIOs see device health, ticket volume, SLA trends, AI usage, and ESG metrics. 
+                  Reports are ready for exec and board review. Risk is visible and managed. 
+                  Actions tie back to services and renewals, which keeps Lenovo at the table.
+                </p>
+                <p className="text-sm text-gray-600">
+                  Value to customer is faster decisions and cleaner audits. 
+                  Value to Lenovo is stickier services and clear expansion paths.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* TruScale Cloud Credits */}
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-red-600 mb-3">TruScale Cloud Credits</h3>
+                <p className="mb-4">
+                  Every DaaS deal includes cloud credits. Azure or AWS or GCP on Lenovo infrastructure. 
+                  Devices lead to hybrid use cases. VDI. App hosting. Data workloads. 
+                  Credits convert to steady TruScale consumption.
+                </p>
+                <p className="text-sm text-gray-600">
+                  Customers move from refresh cycles to a simple OPEX model. 
+                  Lenovo grows as usage grows. Partners can attach migration and ops services.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Employee Experience Tier */}
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-red-600 mb-3">Employee Experience Tier</h3>
+                <p className="mb-4">
+                  Beyond uptime. Add ThinkSmart rooms, headset and monitor kits, and AI copilots. 
+                  Layer in wellbeing and productivity insights. Tie telemetry to actions like image fixes and device swaps.
+                </p>
+                <p className="text-sm text-gray-600">
+                  HR sees better retention signals. IT sees fewer tickets. 
+                  Finance sees value per headcount. This turns DEX into a renewal driver.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Sustainability Guarantee */}
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-red-600 mb-3">Sustainability Guarantee</h3>
+                <p className="mb-4">
+                  ESG Navigator is included. Carbon per device is tracked. Asset reuse and recycling are logged. 
+                  Optional offsets close the loop. Reports align to state and federal rules in ANZ.
+                </p>
+                <p className="text-sm text-gray-600">
+                  Boards get proof. Procurement gets a safer tender response. 
+                  Lenovo stands out when price is close and risk is the tie breaker.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Named Vertical Packs */}
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-red-600 mb-3">Named Vertical Packs</h3>
+                <p className="mb-4">
+                  Future of Learning. Digital Hospital. Gov Compliance. SMB Workforce. 
+                  Each pack is a ready path from device to platform. Clear steps. Clear pricing bands. Clear ROI ranges.
+                </p>
+                <p className="text-sm text-gray-600">
+                  Sales teams move fast. Partners see where they fit. 
+                  Customers know the next step after the pilot. Deals scale to program size.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <p className="text-lg mt-8 text-center">
+            Strategic outcome is simple. Higher attach. Larger average deal size. 
+            Better renewals. A services led business that compounds over time.
+          </p>
+        </div>
+      </section>
+
+      {/* Revenue Trajectory */}
+      <section id="trajectory" className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">8. 5-Year Revenue Trajectory</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse bg-white rounded-lg shadow-sm">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border border-gray-300 p-3 text-left font-semibold">Sector</th>
+                  <th className="border border-gray-300 p-3 text-left font-semibold">Baseline Year 5</th>
+                  <th className="border border-gray-300 p-3 text-left font-semibold">Expanded Year 5</th>
+                  <th className="border border-gray-300 p-3 text-left font-semibold">Growth Multiple</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td className="border border-gray-300 p-3">Education</td><td className="border border-gray-300 p-3">$2M</td><td className="border border-gray-300 p-3">$15M</td><td className="border border-gray-300 p-3">4–7x</td></tr>
+                <tr><td className="border border-gray-300 p-3">Healthcare</td><td className="border border-gray-300 p-3">$3M</td><td className="border border-gray-300 p-3">$20M</td><td className="border border-gray-300 p-3">5–6x</td></tr>
+                <tr><td className="border border-gray-300 p-3">Government</td><td className="border border-gray-300 p-3">$5M</td><td className="border border-gray-300 p-3">$25M</td><td className="border border-gray-300 p-3">4–5x</td></tr>
+                <tr><td className="border border-gray-300 p-3">SMB</td><td className="border border-gray-300 p-3">$0.5M</td><td className="border border-gray-300 p-3">$5M</td><td className="border border-gray-300 p-3">5–10x</td></tr>
+                <tr className="bg-gray-50 font-semibold"><td className="border border-gray-300 p-3">Total</td><td className="border border-gray-300 p-3">$10.5M</td><td className="border border-gray-300 p-3">$65M</td><td className="border border-gray-300 p-3">~6x</td></tr>
+              </tbody>
+            </table>
+          </div>
+          
+          {/* Revenue Chart */}
+          <div className="mt-8 bg-white p-6 rounded-lg shadow-sm">
+            <ChartContainer
+              config={{
+                baseline: {
+                  label: "Baseline Year 5",
+                  color: "#777777",
+                },
+                expanded: {
+                  label: "Expanded Year 5", 
+                  color: "#e2231a",
+                },
+              }}
+              className="h-80 w-full"
+            >
+              <BarChart
+                data={[
+                  { sector: "Education", baseline: 2, expanded: 15 },
+                  { sector: "Healthcare", baseline: 3, expanded: 20 },
+                  { sector: "Government", baseline: 5, expanded: 25 },
+                  { sector: "SMB", baseline: 0.5, expanded: 5 },
+                ]}
+              >
+                <XAxis dataKey="sector" />
+                <YAxis label={{ value: 'Revenue ($M)', angle: -90, position: 'insideLeft' }} />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Bar dataKey="baseline" fill="#777777" />
+                <Bar dataKey="expanded" fill="#e2231a" />
+              </BarChart>
+            </ChartContainer>
+          </div>
+          
+          <p className="mt-6 text-lg"><strong>Takeaway:</strong> Cross-sell is not optional. Bundled + advisory moves DaaS into $60M+ territory.</p>
         </div>
       </section>
 
@@ -1236,7 +1316,40 @@ const LenovoMicrosite = () => {
         </div>
       </section>
 
-      {/* Full 2x2 Tables Section */}
+      {/* 2×2 Frameworks Summary & Key Findings */}
+      <section id="two-by-two-summary" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">2×2 Frameworks – Summary & Key Findings</h2>
+
+          <p className="text-lg mb-6">
+            The 2×2 library is not theory. It is a working set of tools for sales, presales, and partners. 
+            Each framework maps effort, risk, and opportunity to show where Lenovo should push and where to hold. 
+            They connect directly to the DaaS packs, JD pillars, and account motions in ANZ.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Key Findings</h3>
+          <ul className="space-y-3 text-lg mb-8">
+            <li>• <strong>Customer 2×2:</strong> Most accounts sit in transactional + low maturity. Quick wins exist but must pivot to strategic + high maturity or Lenovo remains stuck in device cycles.</li>
+            <li>• <strong>Technology 2×2:</strong> The uplift is in advanced stack adoption — Autopilot, Intune, TruScale hybrid, AI, ESG. This is where margins and stickiness grow.</li>
+            <li>• <strong>Competitor 2×2:</strong> Competitors win on cost when outcomes aren't framed. When ROI and compliance are shown, Lenovo's platform approach wins against HP, Dell, HPE.</li>
+            <li>• <strong>Roles 2×2:</strong> Expansion depends on orchestration across AMs, presales, delivery, partners, and exec sponsors. Ownership must be clear or deals stall.</li>
+            <li>• <strong>Partners 2×2:</strong> MSPs scale SMB packs fast. GSIs drive health and government. Rebates and shared dashboards make Lenovo a safer attach choice.</li>
+            <li>• <strong>Tactics & Orchestration 2×2:</strong> Quick motions deliver pilots. Build motions deliver multi-year programs. The balance is what creates both speed and scale.</li>
+            <li>• <strong>Stakeholder 2×2:</strong> Procurement focuses on OPEX control. CIOs focus on compliance and risk. Boards focus on trust and ESG. All three must see their win.</li>
+            <li>• <strong>Execution Horizon 2×2:</strong> Short-term low effort is devices + support. Long-term high effort is the platform. The path is to land small, expand big.</li>
+            <li>• <strong>Risk vs Opportunity 2×2:</strong> Device-only is safe but flat. Sector transformation is high risk but delivers 4–7× revenue uplift. Strategy is to sequence moves up the curve.</li>
+            <li>• <strong>Geographic 2×2:</strong> Regional ANZ growth is strong in health and universities outside capital cities. Canberra remains locked but NSW/VIC are prime for platform expansion.</li>
+          </ul>
+
+          <p className="text-lg">
+            <strong>Takeaway:</strong> The 2×2s show Lenovo's ANZ services business is still weighted to the bottom left quadrants. 
+            The opportunity is in moving up and right — higher maturity, advanced stack, strategic relationships, 
+            and multi-year platform deals.
+          </p>
+        </div>
+      </section>
+
+      {/* Complete 2x2 Framework Library */}
       <section id="two-by-two-complete" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
           <h2 className="text-4xl font-bold text-red-600 mb-8">Complete 2x2 Framework Library</h2>
