@@ -20,6 +20,15 @@ const LenovoMicrosite = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Revenue trajectory data
+  const revenueData = [
+    { year: 'Year 1', education: 8, healthcare: 12, government: 15, smb: 5, total: 40 },
+    { year: 'Year 2', education: 12, healthcare: 18, government: 22, smb: 8, total: 60 },
+    { year: 'Year 3', education: 18, healthcare: 25, government: 35, smb: 12, total: 90 },
+    { year: 'Year 4', education: 22, healthcare: 30, government: 42, smb: 16, total: 110 },
+    { year: 'Year 5', education: 25, healthcare: 35, government: 50, smb: 20, total: 130 },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Tagline */}
@@ -36,12 +45,14 @@ const LenovoMicrosite = () => {
           {/* Navigation */}
           <nav className="flex flex-wrap justify-center gap-4 mt-6">
             {[
+              { id: 'about', label: 'About' },
               { id: 'strategy', label: 'Strategy' },
               { id: 'packs', label: 'Vertical Packs' },
               { id: 'stories', label: 'Stakeholder Vignettes' },
               { id: 'vignettes', label: 'Customer Engagement Vignettes' },
               { id: 'frameworks', label: '2×2 Frameworks' },
               { id: 'trajectory', label: 'Revenue' },
+              { id: 'qa', label: 'Q&A' },
               { id: 'jd-alignment', label: 'JD Alignment' }
             ].map(({ id, label }) => (
               <button
@@ -114,9 +125,8 @@ const LenovoMicrosite = () => {
         </div>
       </section>
 
-      {/* All remaining sections converted to flip cards */}
       {/* Strategy Foundation */}
-      <section id="strategy" className="py-16 bg-white">
+      <section id="strategy" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="text-4xl font-bold text-red-600 mb-6">1. Strategy Foundation</h2>
           
@@ -177,75 +187,63 @@ const LenovoMicrosite = () => {
       </section>
 
       {/* Vertical Packs */}
-      <section id="packs" className="py-16 bg-gray-50">
+      <section id="packs" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="text-4xl font-bold text-red-600 mb-6">2. Vertical Packs Portfolio</h2>
           
           <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* Education Pack */}
             <FlipCard
               heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
               hideFlipHint={true}
               front={
                 <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Vertical Revenue Targets</h3>
-                  <p className="mb-4 flex-grow">Four key verticals driving growth from $40M baseline to $130M target revenue.</p>
-                  <div className="grid grid-cols-2 gap-2 text-sm">
-                    <div>🎓 Education: $8M → $25M</div>
-                    <div>🏥 Healthcare: $12M → $35M</div>
-                    <div>🏛️ Government: $15M → $50M</div>
-                    <div>🚀 SMB: $5M → $20M</div>
+                  <h3 className="text-xl font-bold mb-3 text-red-600">🎓 Education Pack</h3>
+                  <p className="mb-4 flex-grow">Comprehensive K-12 and Higher Ed solutions driving digital learning transformation.</p>
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Revenue:</strong> $8M → $25M (3x growth)</p>
+                    <p><strong>Target:</strong> Universities, TAFEs, Schools</p>
+                    <p><strong>Key Services:</strong> Device management, research compute, campus security</p>
                   </div>
                 </div>
               }
               back={
                 <ScrollArea className="h-full">
-                  <div className="space-y-6 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Vertical Portfolio Details</h3>
+                  <div className="space-y-4 pr-2">
+                    <h3 className="text-xl font-bold text-red-600">Education Pack Details</h3>
                     
-                    <div className="space-y-4">
-                      <div className="border-l-4 border-red-600 pl-4">
-                        <h4 className="font-semibold text-lg mb-2">🎓 Education ($8M → $25M)</h4>
-                        <ul className="text-sm space-y-1">
-                          <li>• K-12 Device Management with parent portal integration</li>
-                          <li>• Higher Ed Research Compute clusters and GPU farms</li>
-                          <li>• Campus Security & Analytics with video management</li>
-                          <li>• Student Information System integrations</li>
-                          <li>• Remote learning infrastructure and support</li>
-                        </ul>
-                      </div>
-
-                      <div className="border-l-4 border-red-600 pl-4">
-                        <h4 className="font-semibold text-lg mb-2">🏥 Healthcare ($12M → $35M)</h4>
-                        <ul className="text-sm space-y-1">
-                          <li>• FHIR-Compliant Workstations with patient data protection</li>
-                          <li>• Telemedicine Infrastructure including video conferencing</li>
-                          <li>• Clinical Analytics dashboards and reporting</li>
-                          <li>• Medical device integration and IoT monitoring</li>
-                          <li>• HIPAA compliance automation and auditing</li>
-                        </ul>
-                      </div>
-
-                      <div className="border-l-4 border-red-600 pl-4">
-                        <h4 className="font-semibold text-lg mb-2">🏛️ Government ($15M → $50M)</h4>
-                        <ul className="text-sm space-y-1">
-                          <li>• Protected Utility Models for sensitive data</li>
-                          <li>• Sovereign Cloud Integration with local data residency</li>
-                          <li>• Compliance Automation for regulatory requirements</li>
-                          <li>• Citizen service portal integrations</li>
-                          <li>• Emergency response and disaster recovery</li>
-                        </ul>
-                      </div>
-
-                      <div className="border-l-4 border-red-600 pl-4">
-                        <h4 className="font-semibold text-lg mb-2">🚀 SMB Growth ($5M → $20M)</h4>
-                        <ul className="text-sm space-y-1">
-                          <li>• Managed IT-as-a-Service with 24/7 support</li>
-                          <li>• Business Continuity planning and implementation</li>
-                          <li>• Growth-Stage Scaling with elastic infrastructure</li>
-                          <li>• Small business collaboration tools</li>
-                          <li>• Cyber security essentials packages</li>
-                        </ul>
-                      </div>
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Core Offerings</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• K-12 Device Management with parent portal integration</li>
+                        <li>• Higher Ed Research Compute clusters and GPU farms</li>
+                        <li>• Campus Security & Analytics with video management</li>
+                        <li>• Student Information System integrations</li>
+                        <li>• Remote learning infrastructure and support</li>
+                        <li>• Library and lab management systems</li>
+                        <li>• Student device lending programs</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Value Proposition</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Reduced IT overhead with managed services</li>
+                        <li>• Enhanced student outcomes through technology</li>
+                        <li>• Compliance with educational data protection</li>
+                        <li>• Scalable infrastructure for research projects</li>
+                        <li>• Cost-effective device refresh programs</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Revenue Model</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Subscription-based device management</li>
+                        <li>• Per-student licensing for educational software</li>
+                        <li>• Usage-based research compute billing</li>
+                        <li>• Annual security and compliance packages</li>
+                      </ul>
                     </div>
                   </div>
                 </ScrollArea>
@@ -253,60 +251,175 @@ const LenovoMicrosite = () => {
               className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             />
 
+            {/* Healthcare Pack */}
             <FlipCard
               heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
               hideFlipHint={true}
               front={
                 <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Customer Value Framework</h3>
-                  <p className="mb-4 flex-grow">Three-stage progression from basic support to strategic workforce platform.</p>
+                  <h3 className="text-xl font-bold mb-3 text-red-600">🏥 Healthcare Pack</h3>
+                  <p className="mb-4 flex-grow">FHIR-compliant solutions for hospitals, clinics, and healthcare providers.</p>
                   <div className="space-y-2 text-sm">
-                    <p><strong>Support:</strong> Device + warranty + lifecycle</p>
-                    <p><strong>Managed:</strong> + Service desk + analytics</p>
-                    <p><strong>Advisory:</strong> + TruScale + AI + ESG</p>
+                    <p><strong>Revenue:</strong> $12M → $35M (3x growth)</p>
+                    <p><strong>Target:</strong> Hospitals, Clinics, Aged Care</p>
+                    <p><strong>Key Services:</strong> Compliance workstations, telemedicine, analytics</p>
                   </div>
                 </div>
               }
               back={
                 <ScrollArea className="h-full">
                   <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Customer Value Framework Details</h3>
+                    <h3 className="text-xl font-bold text-red-600">Healthcare Pack Details</h3>
                     
                     <div>
-                      <h4 className="font-semibold text-lg mb-2 text-green-700">Support Stage</h4>
-                      <ul className="space-y-1 text-sm">
-                        <li>• Device refresh + warranty coverage</li>
-                        <li>• Basic lifecycle management and asset tracking</li>
-                        <li>• Premier Support integration with escalation paths</li>
-                        <li>• Standard security baselines and policy enforcement</li>
-                        <li>• Hardware maintenance and replacement scheduling</li>
-                        <li>• Basic user training and documentation</li>
+                      <h4 className="font-semibold text-lg mb-2">Core Offerings</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• FHIR-Compliant Workstations with patient data protection</li>
+                        <li>• Telemedicine Infrastructure including video conferencing</li>
+                        <li>• Clinical Analytics dashboards and reporting</li>
+                        <li>• Medical device integration and IoT monitoring</li>
+                        <li>• HIPAA compliance automation and auditing</li>
+                        <li>• Electronic Health Records (EHR) integration</li>
+                        <li>• Mobile clinical workstations for bedside care</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-lg mb-2 text-blue-700">Managed Stage</h4>
-                      <ul className="space-y-1 text-sm">
-                        <li>• Service desk integration with ticketing systems</li>
-                        <li>• Autopilot/Intune management and automation</li>
-                        <li>• ZTNA implementation with identity verification</li>
-                        <li>• Device analytics dashboards and performance monitoring</li>
-                        <li>• Proactive maintenance and issue resolution</li>
-                        <li>• Advanced security monitoring and threat detection</li>
-                        <li>• Application management and software deployment</li>
+                      <h4 className="font-semibold text-lg mb-2">Value Proposition</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Improved patient outcomes through digital health</li>
+                        <li>• Reduced administrative burden on clinical staff</li>
+                        <li>• Enhanced data security and privacy compliance</li>
+                        <li>• Streamlined clinical workflows and processes</li>
+                        <li>• Better resource utilization and cost management</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-lg mb-2 text-purple-700">Advisory Stage</h4>
-                      <ul className="space-y-1 text-sm">
-                        <li>• TruScale hybrid cloud infrastructure management</li>
-                        <li>• AI copilot integration for productivity enhancement</li>
-                        <li>• ESG Navigator dashboards for sustainability tracking</li>
-                        <li>• Strategic workforce platform with unified control</li>
-                        <li>• Advanced analytics and business intelligence</li>
-                        <li>• Digital transformation consulting and roadmapping</li>
-                        <li>• Custom solution development and integration</li>
+                      <h4 className="font-semibold text-lg mb-2">Revenue Model</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Per-bed licensing for hospital infrastructure</li>
+                        <li>• Subscription-based compliance monitoring</li>
+                        <li>• Usage-based telemedicine platform fees</li>
+                        <li>• Annual security and audit packages</li>
+                      </ul>
+                    </div>
+                  </div>
+                </ScrollArea>
+              }
+              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            />
+
+            {/* Government Pack */}
+            <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
+              front={
+                <div className="h-full flex flex-col">
+                  <h3 className="text-xl font-bold mb-3 text-red-600">🏛️ Government Pack</h3>
+                  <p className="mb-4 flex-grow">Sovereign cloud and compliance solutions for federal, state, and local government.</p>
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Revenue:</strong> $15M → $50M (3.3x growth)</p>
+                    <p><strong>Target:</strong> Federal, State, Local Government</p>
+                    <p><strong>Key Services:</strong> Protected utility, sovereign cloud, compliance</p>
+                  </div>
+                </div>
+              }
+              back={
+                <ScrollArea className="h-full">
+                  <div className="space-y-4 pr-2">
+                    <h3 className="text-xl font-bold text-red-600">Government Pack Details</h3>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Core Offerings</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Protected Utility Models for sensitive data</li>
+                        <li>• Sovereign Cloud Integration with local data residency</li>
+                        <li>• Compliance Automation for regulatory requirements</li>
+                        <li>• Citizen service portal integrations</li>
+                        <li>• Emergency response and disaster recovery</li>
+                        <li>• Secure collaboration platforms for inter-agency work</li>
+                        <li>• Digital identity and access management</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Value Proposition</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Enhanced citizen service delivery and satisfaction</li>
+                        <li>• Improved data security and sovereignty</li>
+                        <li>• Streamlined inter-agency collaboration</li>
+                        <li>• Cost-effective digital transformation</li>
+                        <li>• Future-ready infrastructure and services</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Revenue Model</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Per-agency subscription for cloud services</li>
+                        <li>• Usage-based data processing and storage</li>
+                        <li>• Annual compliance and security packages</li>
+                        <li>• Project-based digital transformation consulting</li>
+                      </ul>
+                    </div>
+                  </div>
+                </ScrollArea>
+              }
+              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            />
+
+            {/* SMB Pack */}
+            <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
+              front={
+                <div className="h-full flex flex-col">
+                  <h3 className="text-xl font-bold mb-3 text-red-600">🚀 SMB Growth Pack</h3>
+                  <p className="mb-4 flex-grow">Scalable IT-as-a-Service solutions for growing small and medium businesses.</p>
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Revenue:</strong> $5M → $20M (4x growth)</p>
+                    <p><strong>Target:</strong> SMBs, Scale-ups, Professional Services</p>
+                    <p><strong>Key Services:</strong> Managed IT, business continuity, scaling support</p>
+                  </div>
+                </div>
+              }
+              back={
+                <ScrollArea className="h-full">
+                  <div className="space-y-4 pr-2">
+                    <h3 className="text-xl font-bold text-red-600">SMB Growth Pack Details</h3>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Core Offerings</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Managed IT-as-a-Service with 24/7 support</li>
+                        <li>• Business Continuity planning and implementation</li>
+                        <li>• Growth-Stage Scaling with elastic infrastructure</li>
+                        <li>• Small business collaboration tools</li>
+                        <li>• Cyber security essentials packages</li>
+                        <li>• Cloud migration and hybrid infrastructure</li>
+                        <li>• Employee onboarding and device management</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Value Proposition</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Enterprise-grade IT without enterprise costs</li>
+                        <li>• Focus on core business while IT is managed</li>
+                        <li>• Scalable solutions that grow with the business</li>
+                        <li>• Proactive security and compliance management</li>
+                        <li>• Expert support and strategic guidance</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Revenue Model</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Per-employee monthly subscription</li>
+                        <li>• Tiered service packages (Starter, Growth, Enterprise)</li>
+                        <li>• Project-based implementation and migration fees</li>
+                        <li>• Add-on services for specialized needs</li>
                       </ul>
                     </div>
                   </div>
@@ -319,50 +432,53 @@ const LenovoMicrosite = () => {
       </section>
 
       {/* Stakeholder Vignettes */}
-      <section id="stories" className="py-16 bg-white">
+      <section id="stories" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="text-4xl font-bold text-red-600 mb-6">3. Stakeholder Vignettes</h2>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* COO Vignette */}
             <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
               front={
                 <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">CIO Vignette</h3>
-                  <p className="mb-4 flex-grow">From device management headaches to strategic workforce platform control.</p>
+                  <h3 className="text-xl font-bold mb-3 text-red-600">COO: Operational Excellence</h3>
+                  <p className="mb-4 flex-grow">From fragmented operations to unified workforce management platform.</p>
                   <div className="space-y-2 text-sm">
-                    <p><strong>Challenge:</strong> Fragmented vendor ecosystem</p>
-                    <p><strong>Solution:</strong> Unified TruScale platform</p>
-                    <p><strong>Outcome:</strong> 40% cost reduction, unified dashboard</p>
+                    <p><strong>Challenge:</strong> Disparate systems, poor visibility</p>
+                    <p><strong>Solution:</strong> Integrated workforce platform</p>
+                    <p><strong>Outcome:</strong> 35% efficiency gain, real-time dashboards</p>
                   </div>
                 </div>
               }
               back={
                 <ScrollArea className="h-full">
                   <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">CIO Success Story</h3>
+                    <h3 className="text-xl font-bold text-red-600">COO Success Story</h3>
                     
                     <div>
                       <h4 className="font-semibold text-lg mb-2">The Challenge</h4>
                       <p className="text-sm mb-3">
-                        Sarah, CIO at a major healthcare network, was drowning in vendor complexity. Device refresh with HP, cloud with AWS, security with Cisco, service desk with ServiceNow. Every incident required 3-4 vendor calls, SLAs were conflicting, and the board was asking why IT spend was 15% above industry benchmarks despite poor user satisfaction scores.
+                        Emma, COO at a major logistics company, struggled with operational visibility. Her workforce was spread across warehouses, offices, and mobile workers, but she had no unified view of productivity, asset utilization, or operational bottlenecks. Different departments used different systems, making cross-functional optimization impossible.
                       </p>
                     </div>
                     
                     <div>
                       <h4 className="font-semibold text-lg mb-2">The Lenovo Solution</h4>
                       <p className="text-sm mb-3">
-                        Lenovo's TruScale Workforce Platform consolidated her infrastructure under one commercial umbrella: devices, cloud, security, and support. Instead of managing 12 vendor relationships, Sarah now has one strategic partner with unified SLAs, single-pane-of-glass dashboards, and predictable per-user monthly costs.
+                        Lenovo's TruScale Workforce Platform provided Emma with unified operational dashboards across all workforce segments. Device analytics, productivity metrics, and resource utilization data flowed into a single operational control center, giving her real-time visibility into workforce efficiency and asset performance.
                       </p>
                     </div>
                     
                     <div>
                       <h4 className="font-semibold text-lg mb-2">The Outcome</h4>
                       <ul className="text-sm space-y-1">
-                        <li>• 40% reduction in total IT costs within 18 months</li>
-                        <li>• User satisfaction scores improved from 6.2 to 8.7</li>
-                        <li>• 90% reduction in vendor escalation calls</li>
-                        <li>• Sarah's team can focus on innovation, not vendor management</li>
-                        <li>• Board sees IT as strategic enabler, not cost centre</li>
+                        <li>• 35% improvement in operational efficiency metrics</li>
+                        <li>• Real-time visibility into workforce productivity</li>
+                        <li>• Proactive maintenance reducing downtime by 45%</li>
+                        <li>• Cross-functional optimization based on unified data</li>
+                        <li>• Strategic workforce planning based on actual usage patterns</li>
                       </ul>
                     </div>
                   </div>
@@ -371,45 +487,148 @@ const LenovoMicrosite = () => {
               className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             />
 
+            {/* CISO Vignette */}
             <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
               front={
                 <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">CFO Vignette</h3>
-                  <p className="mb-4 flex-grow">From unpredictable capex cycles to smooth operational subscriptions.</p>
+                  <h3 className="text-xl font-bold mb-3 text-red-600">CISO: Security Leadership</h3>
+                  <p className="mb-4 flex-grow">From security gaps to comprehensive zero-trust workforce protection.</p>
                   <div className="space-y-2 text-sm">
-                    <p><strong>Challenge:</strong> Lumpy capex and budget planning</p>
-                    <p><strong>Solution:</strong> Subscription-based workforce platform</p>
-                    <p><strong>Outcome:</strong> Predictable costs, improved cash flow</p>
+                    <p><strong>Challenge:</strong> Endpoint security gaps, compliance burden</p>
+                    <p><strong>Solution:</strong> Integrated security platform</p>
+                    <p><strong>Outcome:</strong> 90% reduction in incidents, automated compliance</p>
                   </div>
                 </div>
               }
               back={
                 <ScrollArea className="h-full">
                   <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">CFO Success Story</h3>
+                    <h3 className="text-xl font-bold text-red-600">CISO Success Story</h3>
                     
                     <div>
                       <h4 className="font-semibold text-lg mb-2">The Challenge</h4>
                       <p className="text-sm mb-3">
-                        Marcus, CFO at a growing government agency, faced massive budget volatility. Device refresh years meant $2M+ capex spikes, followed by lean years with high maintenance costs. The board wanted predictable IT costs and better cash flow management, but traditional procurement made this impossible.
+                        James, CISO at a financial services firm, faced constant security incidents from poorly managed endpoints. His team spent 60% of their time on basic hygiene - patch management, compliance reporting, and incident response - leaving little time for strategic security initiatives. The board was questioning security ROI.
                       </p>
                     </div>
                     
                     <div>
                       <h4 className="font-semibold text-lg mb-2">The Lenovo Solution</h4>
                       <p className="text-sm mb-3">
-                        Lenovo's subscription model transformed IT from a capex burden to a predictable opex line item. Fixed monthly costs per user included devices, software, support, and refresh cycles. Marcus could budget with confidence and reinvest saved capital into strategic initiatives.
+                        Lenovo's integrated security platform automated endpoint management, patch deployment, and compliance reporting. Zero-trust network access, device-level encryption, and AI-powered threat detection created a comprehensive security fabric that required minimal manual intervention.
                       </p>
                     </div>
                     
                     <div>
                       <h4 className="font-semibold text-lg mb-2">The Outcome</h4>
                       <ul className="text-sm space-y-1">
-                        <li>• 100% predictable IT costs, no surprise capex spikes</li>
-                        <li>• 25% improvement in cash flow management</li>
-                        <li>• $500K capital redeployed to strategic initiatives</li>
-                        <li>• Board satisfaction with budget predictability</li>
-                        <li>• IT costs linked directly to headcount growth</li>
+                        <li>• 90% reduction in security incidents within 12 months</li>
+                        <li>• Automated compliance reporting saving 20 hours/week</li>
+                        <li>• Security team refocused on strategic initiatives</li>
+                        <li>• Comprehensive threat visibility across all endpoints</li>
+                        <li>• Board confidence in security posture and ROI</li>
+                      </ul>
+                    </div>
+                  </div>
+                </ScrollArea>
+              }
+              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            />
+
+            {/* CHRO Vignette */}
+            <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
+              front={
+                <div className="h-full flex flex-col">
+                  <h3 className="text-xl font-bold mb-3 text-red-600">CHRO: People Experience</h3>
+                  <p className="mb-4 flex-grow">From IT friction to seamless employee experience and productivity insights.</p>
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Challenge:</strong> Poor employee IT experience, no productivity data</p>
+                    <p><strong>Solution:</strong> Employee-centric workforce platform</p>
+                    <p><strong>Outcome:</strong> 85% employee satisfaction, data-driven insights</p>
+                  </div>
+                </div>
+              }
+              back={
+                <ScrollArea className="h-full">
+                  <div className="space-y-4 pr-2">
+                    <h3 className="text-xl font-bold text-red-600">CHRO Success Story</h3>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">The Challenge</h4>
+                      <p className="text-sm mb-3">
+                        Lisa, CHRO at a consulting firm, received constant complaints about IT performance affecting productivity. Employee surveys showed technology frustration as the #2 factor in turnover decisions. She had no visibility into how technology choices impacted employee performance and satisfaction.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">The Lenovo Solution</h4>
+                      <p className="text-sm mb-3">
+                        Lenovo's employee-focused platform provided both seamless IT experiences and productivity analytics. Employees got consumer-grade device experiences with enterprise security, while Lisa gained insights into technology's impact on performance, collaboration patterns, and employee satisfaction.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">The Outcome</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Employee IT satisfaction improved from 45% to 85%</li>
+                        <li>• Technology-related turnover reduced by 60%</li>
+                        <li>• Data-driven insights for workspace optimization</li>
+                        <li>• Improved collaboration patterns and productivity metrics</li>
+                        <li>• Technology becomes competitive advantage for talent retention</li>
+                      </ul>
+                    </div>
+                  </div>
+                </ScrollArea>
+              }
+              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            />
+
+            {/* Head of Procurement Vignette */}
+            <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
+              front={
+                <div className="h-full flex flex-col">
+                  <h3 className="text-xl font-bold mb-3 text-red-600">Head of Procurement</h3>
+                  <p className="mb-4 flex-grow">From complex vendor management to streamlined strategic partnerships.</p>
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Challenge:</strong> Multiple vendors, complex contracts, risk exposure</p>
+                    <p><strong>Solution:</strong> Consolidated vendor platform</p>
+                    <p><strong>Outcome:</strong> 50% vendor reduction, simplified contracts</p>
+                  </div>
+                </div>
+              }
+              back={
+                <ScrollArea className="h-full">
+                  <div className="space-y-4 pr-2">
+                    <h3 className="text-xl font-bold text-red-600">Procurement Success Story</h3>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">The Challenge</h4>
+                      <p className="text-sm mb-3">
+                        Michael, Head of Procurement at a healthcare network, managed 15+ technology vendors with overlapping SLAs, conflicting contract terms, and complex renewal cycles. Risk exposure was high, administrative overhead was crushing his team, and cost optimization was limited by fragmented negotiations.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">The Lenovo Solution</h4>
+                      <p className="text-sm mb-3">
+                        Lenovo's consolidated platform approach allowed Michael to replace multiple vendor relationships with a single strategic partnership. Unified contracts, aligned SLAs, and integrated service delivery simplified procurement while maintaining competitive pricing through Lenovo's partner ecosystem.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">The Outcome</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• 50% reduction in active technology vendors</li>
+                        <li>• Simplified contract structure with unified SLAs</li>
+                        <li>• 30% reduction in procurement administrative overhead</li>
+                        <li>• Improved cost optimization through consolidated negotiations</li>
+                        <li>• Strategic partnership enabling innovation focus</li>
                       </ul>
                     </div>
                   </div>
@@ -422,56 +641,61 @@ const LenovoMicrosite = () => {
       </section>
 
       {/* Customer Engagement Vignettes */}
-      <section id="vignettes" className="py-16 bg-gray-50">
+      <section id="vignettes" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="text-4xl font-bold text-red-600 mb-6">4. Customer Engagement Vignettes</h2>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* Objection Handling */}
             <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
               front={
                 <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Discovery Call Framework</h3>
-                  <p className="mb-4 flex-grow">Strategic questioning to uncover expansion opportunities beyond device refresh.</p>
+                  <h3 className="text-xl font-bold mb-3 text-red-600">Objection Handling</h3>
+                  <p className="mb-4 flex-grow">Turning pricing and vendor concerns into platform value conversations.</p>
                   <div className="space-y-2 text-sm">
-                    <p><strong>Focus:</strong> Pain points and strategic goals</p>
-                    <p><strong>Method:</strong> Value-based questioning</p>
-                    <p><strong>Outcome:</strong> Platform opportunity mapping</p>
+                    <p><strong>Common Objection:</strong> "Lenovo is too expensive"</p>
+                    <p><strong>Strategy:</strong> Total cost of ownership analysis</p>
+                    <p><strong>Outcome:</strong> Value-based purchasing decision</p>
                   </div>
                 </div>
               }
               back={
                 <ScrollArea className="h-full">
                   <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Discovery Call Scripts & Framework</h3>
+                    <h3 className="text-xl font-bold text-red-600">Objection Handling Playbook</h3>
                     
                     <div>
-                      <h4 className="font-semibold text-lg mb-2">Opening Questions</h4>
+                      <h4 className="font-semibold text-lg mb-2">"Lenovo is too expensive"</h4>
+                      <p className="text-sm mb-2"><strong>Response Framework:</strong></p>
                       <ul className="text-sm space-y-1">
-                        <li>• "Walk me through your current device lifecycle. What keeps you up at night?"</li>
-                        <li>• "How many vendors are you managing for your full workforce stack?"</li>
-                        <li>• "What does 'good' look like for your IT strategy in 2-3 years?"</li>
-                        <li>• "If budget wasn't a constraint, what would you fix first?"</li>
+                        <li>• "I understand cost is important. Let's look at total value, not just device price."</li>
+                        <li>• "What's your current annual cost for devices + support + security + management?"</li>
+                        <li>• "Our platform typically reduces total workforce costs by 20-40% while improving outcomes."</li>
+                        <li>• Present ROI calculator showing 3-year savings</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-lg mb-2">Pain Point Identification</h4>
+                      <h4 className="font-semibold text-lg mb-2">"We're happy with our current vendor"</h4>
+                      <p className="text-sm mb-2"><strong>Response Framework:</strong></p>
                       <ul className="text-sm space-y-1">
-                        <li>• Vendor fragmentation and management overhead</li>
-                        <li>• Unpredictable costs and budget volatility</li>
-                        <li>• Security compliance and audit challenges</li>
-                        <li>• User experience and productivity issues</li>
-                        <li>• Lack of strategic IT metrics and dashboards</li>
+                        <li>• "That's great to hear. What's working well in your current setup?"</li>
+                        <li>• "If you could improve one thing about your current arrangement, what would it be?"</li>
+                        <li>• "Have you considered the benefits of vendor consolidation?"</li>
+                        <li>• Focus on gaps and future needs, not replacement</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-lg mb-2">Value Mapping</h4>
+                      <h4 className="font-semibold text-lg mb-2">"We don't need all those services"</h4>
+                      <p className="text-sm mb-2"><strong>Response Framework:</strong></p>
                       <ul className="text-sm space-y-1">
-                        <li>• Quantify current vendor management costs</li>
-                        <li>• Calculate capex-to-opex conversion benefits</li>
-                        <li>• Identify productivity gains from platform integration</li>
-                        <li>• Map compliance automation value</li>
+                        <li>• "You're right - let's start with what you need today."</li>
+                        <li>• "Our platform grows with you. No need to buy everything upfront."</li>
+                        <li>• "Many clients start with devices and expand as they see value."</li>
+                        <li>• Present modular approach with expansion roadmap</li>
                       </ul>
                     </div>
                   </div>
@@ -480,50 +704,219 @@ const LenovoMicrosite = () => {
               className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             />
 
+            {/* Renewal & Expansion Motion */}
             <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
               front={
                 <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Proposal Framework</h3>
-                  <p className="mb-4 flex-grow">Structured approach to presenting workforce platform solutions.</p>
+                  <h3 className="text-xl font-bold mb-3 text-red-600">Renewal & Expansion</h3>
+                  <p className="mb-4 flex-grow">Converting existing device clients to full platform subscribers.</p>
                   <div className="space-y-2 text-sm">
-                    <p><strong>Structure:</strong> Current state → Future state → ROI</p>
-                    <p><strong>Focus:</strong> Business outcomes, not features</p>
-                    <p><strong>Close:</strong> Implementation roadmap</p>
+                    <p><strong>Trigger:</strong> 18 months before renewal</p>
+                    <p><strong>Strategy:</strong> Value demonstration and expansion</p>
+                    <p><strong>Outcome:</strong> Platform upsell and multi-year commitment</p>
                   </div>
                 </div>
               }
               back={
                 <ScrollArea className="h-full">
                   <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Proposal Structure & Templates</h3>
+                    <h3 className="text-xl font-bold text-red-600">Renewal & Expansion Strategy</h3>
                     
                     <div>
-                      <h4 className="font-semibold text-lg mb-2">Executive Summary</h4>
+                      <h4 className="font-semibold text-lg mb-2">Pre-Renewal Activities (18 months out)</h4>
                       <ul className="text-sm space-y-1">
-                        <li>• Current state challenges and costs</li>
-                        <li>• Proposed workforce platform solution</li>
-                        <li>• Quantified benefits and ROI timeline</li>
-                        <li>• Implementation approach and milestones</li>
+                        <li>• Quarterly business reviews showcasing value delivered</li>
+                        <li>• Usage analytics and optimization recommendations</li>
+                        <li>• Identification of new business challenges and opportunities</li>
+                        <li>• Introduction of new platform capabilities</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-lg mb-2">Business Case Framework</h4>
+                      <h4 className="font-semibold text-lg mb-2">Expansion Conversation Framework</h4>
                       <ul className="text-sm space-y-1">
-                        <li>• Vendor consolidation savings (typically 20-40%)</li>
-                        <li>• Operational efficiency gains (30-50% reduction in IT overhead)</li>
-                        <li>• User productivity improvements (5-15% workforce efficiency)</li>
-                        <li>• Risk reduction and compliance automation benefits</li>
+                        <li>• "Based on your usage patterns, I see opportunities to add..."</li>
+                        <li>• "Your team mentioned challenges with [X]. Our platform can help."</li>
+                        <li>• "Companies similar to yours typically expand into these areas..."</li>
+                        <li>• Present pilot program for new services</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-lg mb-2">Implementation Roadmap</h4>
+                      <h4 className="font-semibold text-lg mb-2">Value Reinforcement</h4>
                       <ul className="text-sm space-y-1">
-                        <li>• Phase 1: Device migration and basic services (0-6 months)</li>
-                        <li>• Phase 2: Platform integration and automation (6-12 months)</li>
-                        <li>• Phase 3: Advanced services and optimisation (12-24 months)</li>
-                        <li>• Success metrics and review checkpoints</li>
+                        <li>• Document cost savings achieved (typically 25-40%)</li>
+                        <li>• Showcase productivity improvements and user satisfaction</li>
+                        <li>• Highlight security and compliance benefits</li>
+                        <li>• Present roadmap for future platform enhancements</li>
+                      </ul>
+                    </div>
+                  </div>
+                </ScrollArea>
+              }
+              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            />
+
+            {/* Pilot-to-Scale Path */}
+            <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
+              front={
+                <div className="h-full flex flex-col">
+                  <h3 className="text-xl font-bold mb-3 text-red-600">Pilot-to-Scale Path</h3>
+                  <p className="mb-4 flex-grow">Structured approach to proving platform value through targeted pilots.</p>
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Start:</strong> Department-level pilot (3-6 months)</p>
+                    <p><strong>Prove:</strong> Measurable value and ROI</p>
+                    <p><strong>Scale:</strong> Organization-wide platform adoption</p>
+                  </div>
+                </div>
+              }
+              back={
+                <ScrollArea className="h-full">
+                  <div className="space-y-4 pr-2">
+                    <h3 className="text-xl font-bold text-red-600">Pilot-to-Scale Framework</h3>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Pilot Design (3-6 months)</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Select representative department (50-200 users)</li>
+                        <li>• Define clear success metrics and measurement methods</li>
+                        <li>• Implement core platform services with full support</li>
+                        <li>• Weekly check-ins and monthly progress reviews</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Success Metrics Tracking</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• User satisfaction scores (target: 8.0+)</li>
+                        <li>• IT support ticket reduction (target: 40-60%)</li>
+                        <li>• Device performance and reliability metrics</li>
+                        <li>• Cost per user compared to baseline</li>
+                        <li>• Security incident reduction</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Scale Preparation</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Document pilot results and lessons learned</li>
+                        <li>• Create business case for organization-wide deployment</li>
+                        <li>• Design phased rollout plan for remaining users</li>
+                        <li>• Establish change management and training programs</li>
+                      </ul>
+                    </div>
+                  </div>
+                </ScrollArea>
+              }
+              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            />
+
+            {/* Partner Co-Sell Play */}
+            <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
+              front={
+                <div className="h-full flex flex-col">
+                  <h3 className="text-xl font-bold mb-3 text-red-600">Partner Co-Sell</h3>
+                  <p className="mb-4 flex-grow">Leveraging ecosystem partners to expand platform reach and capabilities.</p>
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Key Partners:</strong> Microsoft, VMware, ServiceNow</p>
+                    <p><strong>Strategy:</strong> Joint value propositions</p>
+                    <p><strong>Outcome:</strong> Expanded deal size and capabilities</p>
+                  </div>
+                </div>
+              }
+              back={
+                <ScrollArea className="h-full">
+                  <div className="space-y-4 pr-2">
+                    <h3 className="text-xl font-bold text-red-600">Partner Co-Sell Strategy</h3>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Microsoft Partnership</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Lenovo devices optimized for Microsoft 365 and Teams</li>
+                        <li>• Autopilot deployment and Intune management integration</li>
+                        <li>• Azure hybrid cloud connectivity through TruScale</li>
+                        <li>• Joint customer presentations and proposals</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">ServiceNow Integration</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• ITSM integration for unified service management</li>
+                        <li>• Automated incident management and resolution</li>
+                        <li>• Asset lifecycle management through ServiceNow ITAM</li>
+                        <li>• Employee portal integration for self-service</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Co-Sell Approach</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Joint discovery calls to identify integration opportunities</li>
+                        <li>• Combined proposals showcasing integrated value</li>
+                        <li>• Shared customer success stories and case studies</li>
+                        <li>• Partner referral programs and incentive alignment</li>
+                      </ul>
+                    </div>
+                  </div>
+                </ScrollArea>
+              }
+              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            />
+
+            {/* Change Management & Adoption */}
+            <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
+              front={
+                <div className="h-full flex flex-col">
+                  <h3 className="text-xl font-bold mb-3 text-red-600">Change Management</h3>
+                  <p className="mb-4 flex-grow">Ensuring smooth adoption and maximizing value realization from platform deployment.</p>
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Focus:</strong> User adoption and business value realization</p>
+                    <p><strong>Method:</strong> Structured change management</p>
+                    <p><strong>Outcome:</strong> High adoption rates and customer satisfaction</p>
+                  </div>
+                </div>
+              }
+              back={
+                <ScrollArea className="h-full">
+                  <div className="space-y-4 pr-2">
+                    <h3 className="text-xl font-bold text-red-600">Change Management Framework</h3>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Pre-Deployment</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Stakeholder mapping and communication planning</li>
+                        <li>• Change readiness assessment and risk mitigation</li>
+                        <li>• Executive sponsorship and change champion network</li>
+                        <li>• Training program design and resource preparation</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Deployment Phase</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Phased rollout with early adopter programs</li>
+                        <li>• Intensive support during transition periods</li>
+                        <li>• Regular feedback collection and issue resolution</li>
+                        <li>• Success story sharing and momentum building</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Post-Deployment</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Adoption metrics tracking and reporting</li>
+                        <li>• Advanced training and optimization workshops</li>
+                        <li>• Continuous improvement and feature enhancement</li>
+                        <li>• Customer success reviews and expansion planning</li>
                       </ul>
                     </div>
                   </div>
@@ -536,219 +929,337 @@ const LenovoMicrosite = () => {
       </section>
 
       {/* 2x2 Strategic Frameworks */}
-      <section id="frameworks" className="py-16 bg-white">
+      <section id="frameworks" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">Strategic 2×2 Frameworks</h2>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">5. Strategic 2×2 Frameworks</h2>
           
           <TwoByTwoHeatmap className="mb-8" />
           
           <div id="two-by-two-complete" className="space-y-8">
-            <h3 className="text-2xl font-bold text-gray-900">Customer Relationship</h3>
-            <table className="w-full border border-gray-300">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 p-3"></th>
-                  <th className="border border-gray-300 p-3">Transactional</th>
-                  <th className="border border-gray-300 p-3">Strategic</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Device-Focused</td>
-                  <td className="border border-gray-300 p-3">Basic refresh cycles, minimal relationship depth</td>
-                  <td className="border border-gray-300 p-3">Device lifecycle management with strategic planning</td>
-                </tr>
-                <tr>
-                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Platform-Focused</td>
-                  <td className="border border-gray-300 p-3">Service bundles sold as add-ons</td>
-                  <td className="border border-gray-300 p-3">Workforce transformation partnerships</td>
-                </tr>
-              </tbody>
-            </table>
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Customer Relationship Matrix</h3>
+              <table className="w-full border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 p-3"></th>
+                    <th className="border border-gray-300 p-3">Transactional</th>
+                    <th className="border border-gray-300 p-3">Strategic</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Device-Focused</td>
+                    <td className="border border-gray-300 p-3">6</td>
+                    <td className="border border-gray-300 p-3">7</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Platform-Focused</td>
+                    <td className="border border-gray-300 p-3">8</td>
+                    <td className="border border-gray-300 p-3">9</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-            <h3 className="text-2xl font-bold text-gray-900">Technology</h3>
-            <table className="w-full border border-gray-300">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 p-3"></th>
-                  <th className="border border-gray-300 p-3">Point Solutions</th>
-                  <th className="border border-gray-300 p-3">Integrated Platform</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Current State</td>
-                  <td className="border border-gray-300 p-3">Fragmented vendor ecosystem</td>
-                  <td className="border border-gray-300 p-3">Some integration but gaps remain</td>
-                </tr>
-                <tr>
-                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Future State</td>
-                  <td className="border border-gray-300 p-3">Best-of-breed specialist approach</td>
-                  <td className="border border-gray-300 p-3">TruScale unified workforce platform</td>
-                </tr>
-              </tbody>
-            </table>
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Technology Architecture Matrix</h3>
+              <table className="w-full border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 p-3"></th>
+                    <th className="border border-gray-300 p-3">Point Solutions</th>
+                    <th className="border border-gray-300 p-3">Integrated Platform</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Current State</td>
+                    <td className="border border-gray-300 p-3">4</td>
+                    <td className="border border-gray-300 p-3">6</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Future State</td>
+                    <td className="border border-gray-300 p-3">7</td>
+                    <td className="border border-gray-300 p-3">9</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-            <h3 className="text-2xl font-bold text-gray-900">Competitor</h3>
-            <table className="w-full border border-gray-300">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 p-3"></th>
-                  <th className="border border-gray-300 p-3">Device Heritage</th>
-                  <th className="border border-gray-300 p-3">Services Heritage</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Weak Platform</td>
-                  <td className="border border-gray-300 p-3">Traditional OEMs (HP, Dell) struggling with services</td>
-                  <td className="border border-gray-300 p-3">Pure-play integrators without device control</td>
-                </tr>
-                <tr>
-                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Strong Platform</td>
-                  <td className="border border-gray-300 p-3">Microsoft Surface + ecosystem integration</td>
-                  <td className="border border-gray-300 p-3">IBM, Accenture with consulting depth</td>
-                </tr>
-              </tbody>
-            </table>
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Competitive Positioning Matrix</h3>
+              <table className="w-full border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 p-3"></th>
+                    <th className="border border-gray-300 p-3">Device Heritage</th>
+                    <th className="border border-gray-300 p-3">Cloud Native</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Limited Services</td>
+                    <td className="border border-gray-300 p-3">5</td>
+                    <td className="border border-gray-300 p-3">6</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Full Platform</td>
+                    <td className="border border-gray-300 p-3">8</td>
+                    <td className="border border-gray-300 p-3">7</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-            <h3 className="text-2xl font-bold text-gray-900">Roles and Ownership</h3>
-            <table className="w-full border border-gray-300">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 p-3"></th>
-                  <th className="border border-gray-300 p-3">Lenovo-Led</th>
-                  <th className="border border-gray-300 p-3">Partner-Led</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Tactical</td>
-                  <td className="border border-gray-300 p-3">Device deployment and basic support</td>
-                  <td className="border border-gray-300 p-3">Specialized implementation and integration</td>
-                </tr>
-                <tr>
-                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Strategic</td>
-                  <td className="border border-gray-300 p-3">Platform architecture and customer success</td>
-                  <td className="border border-gray-300 p-3">Transformation consulting and change management</td>
-                </tr>
-              </tbody>
-            </table>
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Market Opportunity Matrix</h3>
+              <table className="w-full border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 p-3"></th>
+                    <th className="border border-gray-300 p-3">Low Competition</th>
+                    <th className="border border-gray-300 p-3">High Competition</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Niche Market</td>
+                    <td className="border border-gray-300 p-3">8</td>
+                    <td className="border border-gray-300 p-3">6</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Mass Market</td>
+                    <td className="border border-gray-300 p-3">9</td>
+                    <td className="border border-gray-300 p-3">5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-            <h3 className="text-2xl font-bold text-gray-900">Partners</h3>
-            <table className="w-full border border-gray-300">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 p-3"></th>
-                  <th className="border border-gray-300 p-3">Tactical Partners</th>
-                  <th className="border border-gray-300 p-3">Strategic Partners</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Capability</td>
-                  <td className="border border-gray-300 p-3">Implementation, basic integration</td>
-                  <td className="border border-gray-300 p-3">Transformation consulting, industry expertise</td>
-                </tr>
-                <tr>
-                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Market Access</td>
-                  <td className="border border-gray-300 p-3">Local presence, project delivery</td>
-                  <td className="border border-gray-300 p-3">C-suite relationships, strategic advisory</td>
-                </tr>
-              </tbody>
-            </table>
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Risk vs Opportunity Matrix</h3>
+              <table className="w-full border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 p-3"></th>
+                    <th className="border border-gray-300 p-3">Low Risk</th>
+                    <th className="border border-gray-300 p-3">High Risk</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Low Opportunity</td>
+                    <td className="border border-gray-300 p-3">4</td>
+                    <td className="border border-gray-300 p-3">3</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">High Opportunity</td>
+                    <td className="border border-gray-300 p-3">9</td>
+                    <td className="border border-gray-300 p-3">7</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-            <h3 className="text-2xl font-bold text-gray-900">Tactics</h3>
-            <table className="w-full border border-gray-300">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 p-3"></th>
-                  <th className="border border-gray-300 p-3">Push Model</th>
-                  <th className="border border-gray-300 p-3">Pull Model</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Product-Led</td>
-                  <td className="border border-gray-300 p-3">Feature demonstrations and technical specs</td>
-                  <td className="border border-gray-300 p-3">Trial programs and proof-of-concept</td>
-                </tr>
-                <tr>
-                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Outcome-Led</td>
-                  <td className="border border-gray-300 p-3">ROI calculators and business case development</td>
-                  <td className="border border-gray-300 p-3">Customer success stories and peer references</td>
-                </tr>
-              </tbody>
-            </table>
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Implementation Horizon Matrix</h3>
+              <table className="w-full border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 p-3"></th>
+                    <th className="border border-gray-300 p-3">Short Term</th>
+                    <th className="border border-gray-300 p-3">Long Term</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Low Complexity</td>
+                    <td className="border border-gray-300 p-3">8</td>
+                    <td className="border border-gray-300 p-3">7</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">High Complexity</td>
+                    <td className="border border-gray-300 p-3">6</td>
+                    <td className="border border-gray-300 p-3">9</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Revenue Trajectory */}
-      <section id="trajectory" className="py-16 bg-gray-50">
+      <section id="trajectory" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">5. Revenue Trajectory</h2>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">6. Revenue Trajectory</h2>
+          
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-bold mb-4">5-Year Growth Projection: $40M → $130M</h3>
+            <ChartContainer 
+              className="h-96"
+              config={{
+                education: { label: "Education", color: "#3b82f6" },
+                healthcare: { label: "Healthcare", color: "#10b981" },
+                government: { label: "Government", color: "#f59e0b" },
+                smb: { label: "SMB", color: "#ef4444" }
+              }}
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={revenueData}>
+                  <XAxis dataKey="year" />
+                  <YAxis />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Bar dataKey="education" stackId="a" fill="#3b82f6" name="Education" />
+                  <Bar dataKey="healthcare" stackId="a" fill="#10b981" name="Healthcare" />
+                  <Bar dataKey="government" stackId="a" fill="#f59e0b" name="Government" />
+                  <Bar dataKey="smb" stackId="a" fill="#ef4444" name="SMB" />
+                </BarChart>
+              </ResponsiveContainer>
+            </ChartContainer>
+            
+            <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="w-4 h-4 bg-blue-500 rounded mx-auto mb-2"></div>
+                <p className="text-sm font-semibold">Education</p>
+                <p className="text-xs text-gray-600">$8M → $25M</p>
+              </div>
+              <div className="text-center">
+                <div className="w-4 h-4 bg-green-500 rounded mx-auto mb-2"></div>
+                <p className="text-sm font-semibold">Healthcare</p>
+                <p className="text-xs text-gray-600">$12M → $35M</p>
+              </div>
+              <div className="text-center">
+                <div className="w-4 h-4 bg-amber-500 rounded mx-auto mb-2"></div>
+                <p className="text-sm font-semibold">Government</p>
+                <p className="text-xs text-gray-600">$15M → $50M</p>
+              </div>
+              <div className="text-center">
+                <div className="w-4 h-4 bg-red-500 rounded mx-auto mb-2"></div>
+                <p className="text-sm font-semibold">SMB</p>
+                <p className="text-xs text-gray-600">$5M → $20M</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Q&A Section */}
+      <section id="qa" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">7. Questions & Strategic Responses</h2>
+          
+          <div className="grid md:grid-cols-1 gap-6 mb-8">
+            <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
+              front={
+                <div className="h-full flex flex-col">
+                  <h3 className="text-xl font-bold mb-3 text-red-600">Strategic Vision & Market Analysis</h3>
+                  <p className="mb-4 flex-grow">Key questions about market positioning, competitive landscape, and strategic direction.</p>
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Focus:</strong> Long-term strategy and market dynamics</p>
+                    <p><strong>Depth:</strong> Executive-level strategic thinking</p>
+                    <p><strong>Value:</strong> Demonstrating market understanding and vision</p>
+                  </div>
+                </div>
+              }
+              back={
+                <ScrollArea className="h-full">
+                  <div className="space-y-4 pr-2">
+                    <h3 className="text-xl font-bold text-red-600">Strategic Q&A</h3>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Q: How do you see the ANZ market evolving for services-led growth?</h4>
+                      <p className="text-sm mb-3">
+                        <strong>A:</strong> ANZ is uniquely positioned for services transformation. Three drivers: 1) Regulatory complexity (data sovereignty, privacy) favors integrated compliance, 2) Skills shortage makes managed services attractive, 3) ESG mandates create demand for sustainability platforms. Lenovo's heritage in devices + TruScale platform positions us to capture this shift before pure-play cloud providers.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Q: What's your view on competitive threats from Microsoft, AWS, Google?</h4>
+                      <p className="text-sm mb-3">
+                        <strong>A:</strong> They're partners, not competitors. Microsoft needs device optimization for 365/Teams. AWS needs edge computing for hybrid workloads. Our opportunity is vertical specialization - healthcare compliance, education management, government sovereignty - areas where hyperscalers are commoditized. We become the "last mile" that makes their platforms valuable.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Q: How do you balance growth with profitability in services?</h4>
+                      <p className="text-sm mb-3">
+                        <strong>A:</strong> Services require different economics. Focus on recurring revenue, not transactional margins. Start with 20-25% gross margins on bundled services, expand to 35-40% as automation scales. Key is platform leverage - same TruScale infrastructure serves education, healthcare, government with vertical-specific overlays.
+                      </p>
+                    </div>
+                  </div>
+                </ScrollArea>
+              }
+              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* JD Alignment & Interview Prep */}
+      <section id="jd-alignment" className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">8. JD Alignment & Interview Preparation</h2>
           
           <FlipCard
             heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
             hideFlipHint={true}
             front={
               <div className="h-full flex flex-col">
-                <h3 className="text-xl font-bold mb-3 text-red-600">5-Year Growth Projection</h3>
-                <p className="mb-4 flex-grow">Transform baseline $40M into $130M+ expanded revenue through platform services.</p>
+                <h3 className="text-xl font-bold mb-3 text-red-600">Solution Sales Australia - Role Alignment</h3>
+                <p className="mb-4 flex-grow">How my experience and this playbook align with Lenovo's Solution Sales Australia requirements.</p>
                 <div className="space-y-2 text-sm">
-                  <p><strong>Year 1:</strong> $45M (+12% baseline growth)</p>
-                  <p><strong>Year 3:</strong> $75M (+87% platform expansion)</p>
-                  <p><strong>Year 5:</strong> $130M (+225% total growth)</p>
+                  <p><strong>Experience:</strong> 15+ years technology strategy and architecture</p>
+                  <p><strong>Market Knowledge:</strong> ANZ enterprise and government</p>
+                  <p><strong>Value Delivered:</strong> Comprehensive services playbook and execution plan</p>
                 </div>
               </div>
             }
             back={
               <ScrollArea className="h-full">
                 <div className="space-y-4 pr-2">
-                  <h3 className="text-xl font-bold text-red-600">Detailed Revenue Model</h3>
+                  <h3 className="text-xl font-bold text-red-600">Role Alignment Details</h3>
                   
                   <div>
-                    <h4 className="font-semibold text-lg mb-2">Year 1-2: Foundation ($45M-$60M)</h4>
+                    <h4 className="font-semibold text-lg mb-2">Technical Architecture Experience</h4>
                     <ul className="text-sm space-y-1">
-                      <li>• Device refresh with enhanced support packages</li>
-                      <li>• Basic TruScale adoption across 2-3 key accounts</li>
-                      <li>• Service desk integration and managed services pilot</li>
-                      <li>• Partner ecosystem establishment and training</li>
-                      <li>• Revenue mix: 70% devices, 30% services</li>
+                      <li>• 15+ years designing enterprise solutions (AWS, Oracle, Gartner, Unisys)</li>
+                      <li>• Cloud and hybrid infrastructure specialization</li>
+                      <li>• AI/ML and automation platform development</li>
+                      <li>• Government and enterprise compliance frameworks</li>
                     </ul>
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold text-lg mb-2">Year 3-4: Expansion ($75M-$100M)</h4>
+                    <h4 className="font-semibold text-lg mb-2">Market and Customer Understanding</h4>
                     <ul className="text-sm space-y-1">
-                      <li>• Platform services adoption across all verticals</li>
-                      <li>• AI and automation services integration</li>
-                      <li>• ESG and compliance automation rollout</li>
-                      <li>• Multi-year subscription contract conversions</li>
-                      <li>• Revenue mix: 50% devices, 50% services</li>
+                      <li>• Deep ANZ market knowledge across verticals</li>
+                      <li>• Understanding of local compliance and regulatory requirements</li>
+                      <li>• Experience with government procurement and enterprise sales cycles</li>
+                      <li>• Customer journey mapping and value proposition development</li>
                     </ul>
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold text-lg mb-2">Year 5+: Optimisation ($130M+)</h4>
+                    <h4 className="font-semibold text-lg mb-2">Strategic Contribution</h4>
                     <ul className="text-sm space-y-1">
-                      <li>• Full workforce platform subscriptions</li>
-                      <li>• Advanced analytics and business intelligence</li>
-                      <li>• Custom vertical solutions and industry packs</li>
-                      <li>• Strategic consulting and transformation services</li>
-                      <li>• Revenue mix: 30% devices, 70% services</li>
+                      <li>• Complete services transformation strategy and execution plan</li>
+                      <li>• Vertical-specific go-to-market approaches</li>
+                      <li>• Partner ecosystem strategy and integration frameworks</li>
+                      <li>• Revenue growth modeling and business case development</li>
+                      <li>• Sales enablement tools and customer engagement frameworks</li>
                     </ul>
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold text-lg mb-2">Key Success Metrics</h4>
-                    <ul className="text-sm space-y-1">
-                      <li>• Contract value per customer (target: 3x increase)</li>
-                      <li>• Subscription revenue percentage (target: 70%+)</li>
-                      <li>• Customer retention rate (target: 95%+)</li>
-                      <li>• Platform adoption rate (target: 80% by Year 3)</li>
-                    </ul>
+                    <h4 className="font-semibold text-lg mb-2">Immediate Value</h4>
+                    <p className="text-sm">
+                      This playbook represents the strategic thinking and execution capability I bring to Lenovo. 
+                      It's not just research - it's a comprehensive framework for transforming ANZ services revenue 
+                      from $40M to $130M+ through systematic vertical specialization and platform integration.
+                    </p>
                   </div>
                 </div>
               </ScrollArea>
@@ -757,124 +1268,6 @@ const LenovoMicrosite = () => {
           />
         </div>
       </section>
-
-      {/* JD Alignment */}
-      <section id="jd-alignment" className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">6. JD Alignment & Interview Prep</h2>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Solution Architecture Alignment</h3>
-                  <p className="mb-4 flex-grow">How my experience maps to Lenovo's Solution Sales Architect requirements.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Enterprise Architecture:</strong> 15+ years AWS/Oracle</p>
-                    <p><strong>Customer Success:</strong> $500M+ deals delivered</p>
-                    <p><strong>Market Knowledge:</strong> ANZ enterprise/gov expertise</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Detailed JD Mapping</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Solution Architecture (Required)</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• AWS Solutions Architect Professional (current)</li>
-                        <li>• Oracle Cloud Infrastructure Architect (2019-2024)</li>
-                        <li>• Designed $50M+ hybrid cloud implementations</li>
-                        <li>• Enterprise integration patterns and microservices</li>
-                        <li>• Security, compliance, and governance frameworks</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Sales & Customer Success (Required)</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• $500M+ in deals designed and delivered</li>
-                        <li>• C-suite engagement across Fortune 500 accounts</li>
-                        <li>• Technical sales support and solution validation</li>
-                        <li>• Post-sales delivery and customer success</li>
-                        <li>• Partner ecosystem development and enablement</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Market Knowledge (Preferred)</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• 8+ years ANZ enterprise and government</li>
-                        <li>• Deep understanding of procurement frameworks</li>
-                        <li>• Regulatory compliance (SOX, GDPR, local standards)</li>
-                        <li>• Industry vertical expertise (FSI, Healthcare, Gov)</li>
-                        <li>• Competitive landscape and positioning</li>
-                      </ul>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
-
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Interview Questions & Responses</h3>
-                  <p className="mb-4 flex-grow">Prepared responses for key interview scenarios and executive conversations.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Strategy:</strong> Services transformation approach</p>
-                    <p><strong>Technical:</strong> Platform architecture deep-dive</p>
-                    <p><strong>Cultural:</strong> Lenovo values alignment</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Key Interview Preparation</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Q: How would you approach services transformation?</h4>
-                      <p className="text-sm mb-2">
-                        <strong>A:</strong> Start with customer pain points, not product features. Map current vendor fragmentation costs, identify high-value consolidation opportunities, and design a phased approach that delivers quick wins while building toward platform transformation. Focus on business outcomes: cost predictability, operational efficiency, and strategic enablement.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Q: Describe your enterprise architecture approach.</h4>
-                      <p className="text-sm mb-2">
-                        <strong>A:</strong> I believe in platform thinking over point solutions. Design for integration, automation, and observability from day one. Use APIs and microservices patterns to enable ecosystem growth. Always consider the human element: change management, training, and adoption are as critical as technical architecture.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Q: Why Lenovo, and why now?</h4>
-                      <p className="text-sm mb-2">
-                        <strong>A:</strong> Lenovo is at an inflection point. Strong device heritage, growing services capability, and the TruScale platform provide the foundation for true workforce transformation. ANZ market timing is perfect: enterprises want vendor consolidation, subscription models, and platform approaches. I can help accelerate this transition.
-                      </p>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2024 Troy Latter. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 };
