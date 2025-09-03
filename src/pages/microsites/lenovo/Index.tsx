@@ -60,17 +60,12 @@ const LenovoMicrosite = () => {
           {/* Navigation */}
           <nav className="flex flex-wrap justify-center gap-4 mt-6">
             {[
-              { id: 'about', label: 'Overview' },
               { id: 'strategy', label: 'Strategy' },
               { id: 'trajectory', label: 'Revenue' },
               { id: 'packs', label: 'Vertical Packs' },
-              { id: 'enablement', label: 'Enablement' },
-              { id: 'competitive', label: 'Competitive' },
               { id: 'stories', label: 'Stories' },
               { id: 'vignettes', label: 'Case Vignettes' },
-              { id: 'enhancements', label: 'Enhancements' },
-              { id: 'jd-alignment', label: 'JD Alignment' },
-              { id: 'two-by-two-complete', label: 'Complete 2x2' }
+              { id: 'jd-alignment', label: 'JD Alignment' }
             ].map(({ id, label }) => (
               <button
                 key={id}
@@ -138,62 +133,35 @@ const LenovoMicrosite = () => {
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="text-4xl font-bold text-red-600 mb-6">1. Strategy Foundation</h2>
           
-          <div className="space-y-6 text-lg">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Vision</h3>
-              <p>Make every device sale a 5-year services relationship. Move from DaaS to Workforce Transformation as-a-Service.</p>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Offer Architecture</h3>
-              <p>Devices + Lifecycle (Premier Support, imaging, recycling) + Service Desk + Security (Autopilot/Intune/MDM, ZTNA) + TruScale + AI copilots + ESG Navigator.</p>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Motions</h3>
-              <ul className="space-y-2">
-                <li>• <strong>Customer Journey:</strong> Support → Managed → Advisory</li>
-                <li>• <strong>Quick-win bundles:</strong> Premier Support + collaboration kits + ESG dashboards</li>
-                <li>• <strong>Sector packs:</strong> Education, Healthcare, Government, SMB</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">12-Month Objectives</h3>
-              <ul className="space-y-2">
-                <li>• Raise Premier Support attach to 80%+ on new and refresh deals</li>
-                <li>• Launch sector packs (2 education pilots, 2 health pilots, 1 gov pilot, 3 SMB MSPs)</li>
-                <li>• Embed quarterly value reviews in all new services contracts</li>
-                <li>• Land at least one TruScale hybrid or VDI per sector</li>
-                <li>• Turn 30% of device-only customers into multi-service customers</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">KPIs</h3>
-              <p>Revenue mix (services %), attach rate by pack, gross margin uplift, NPS/CSAT, renewal rate, time-to-value.</p>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Governance & Cadence</h3>
-              <p>Joint steering group per major customer; QVRs; cross-functional deal reviews; standard SoW templates.</p>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Risks & Mitigations</h3>
-              <ul className="space-y-2">
-                <li>• <strong>Price-only competition:</strong> Reframe to outcomes & compliance</li>
-                <li>• <strong>Partner channel confusion:</strong> Clear roles</li>
-                <li>• <strong>Compliance gaps:</strong> ESG Navigator & policy patterns</li>
-                <li>• <strong>Change fatigue:</strong> Pilot-first, phased rollout</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">First 90 Days</h3>
-              <p>Build reference pricing bands, publish sector one-pagers, run 2 pilot QVRs, set pipeline tagging for attach steps.</p>
-            </div>
-          </div>
+          <Card className="bg-white border border-gray-200 shadow-sm">
+            <CardContent className="p-6 space-y-6 text-lg">
+              <div>
+                <p><strong>Baseline</strong><br />
+                  Today, Lenovo ANZ DaaS contracts often stop at device + warranty + lifecycle wrap. This delivers stability but caps growth. Value is typically &lt;$15M per vertical, with outcomes limited to hardware refresh and basic support. It's predictable but leaves margin on the table.
+                </p>
+              </div>
+              
+              <div>
+                <p><strong>Target</strong><br />
+                  Shift to verticalised workforce subscriptions that combine <strong>TruScale, AI, ESG, security, and cloud services</strong>. These packs move Lenovo from a "box seller" to a <strong>strategic workforce platform provider</strong>, embedding Lenovo across compliance, sustainability, and productivity domains.
+                </p>
+              </div>
+              
+              <div>
+                <p><strong>Customer Journey</strong><br />
+                  1. <strong>Support stage:</strong> Start with devices, Premier Support, and standard lifecycle services.<br />
+                  2. <strong>Managed stage:</strong> Add service desk integration, Autopilot/Intune, ZTNA, device analytics.<br />
+                  3. <strong>Advisory stage:</strong> Evolve into a true workforce platform subscription with TruScale hybrid cloud, AI copilots, and ESG Navigator dashboards — giving CIOs unified control and boards measurable ROI.
+                </p>
+              </div>
+              
+              <div>
+                <p><strong>Strategic Outcome</strong><br />
+                  A stable baseline of &lt;$15M becomes a <strong>growth trajectory of $50M+ per vertical</strong> over 3–5 years, with stronger partner attach and stickier client relationships.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
