@@ -667,27 +667,108 @@ const LenovoMicrosite = () => {
             solution design, and revenue outcomes across different verticals and stakeholders.
           </p>
 
-          {/* Vignette Cards */}
+          {/* Flip Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {[
-              { id: 'vignette-1', title: 'Education CIO', subtitle: 'Smart Campus Transformation' },
-              { id: 'vignette-2', title: 'Healthcare Procurement', subtitle: 'Digital Hospital Strategy' },
-              { id: 'vignette-3', title: 'State Government Executive', subtitle: 'Gov Compliance Platform' },
-              { id: 'vignette-4', title: 'SMB MSP Partner', subtitle: 'Workforce Pack Scale-out' },
-              { id: 'vignette-5', title: 'Lenovo Account Manager', subtitle: 'Land & Expand Strategy' },
-              { id: 'vignette-6', title: 'Board Chair', subtitle: 'Renewal & Expansion Decision' },
+              {
+                id: 'vignette-1',
+                title: 'Education CIO',
+                subtitle: 'Smart Campus Transformation',
+                context: 'University CIO tasked with modernising IT for hybrid learning. Budget caps, sustainability mandates.',
+                pain: 'Device fleet refresh becomes another short-term patch. Multiple vendor complexity.',
+                outcome: 'Multi-year Lenovo-led transformation. $2M baseline → $15M expanded.',
+                alignment: 'Client engagement • Solution design • Sales enablement • Market insight • Influence'
+              },
+              {
+                id: 'vignette-2',
+                title: 'Healthcare Procurement',
+                subtitle: 'Digital Hospital Strategy',
+                context: 'State hospital group must refresh rugged devices, meet compliance, cut downtime.',
+                pain: 'Procurement sees only cost; compliance risk growing; vendor fragmentation.',
+                outcome: 'Lenovo trusted partner for both procurement and clinicians. Platform approach wins.',
+                alignment: 'Client engagement • Solution delivery • Sales enablement • Market insight'
+              },
+              {
+                id: 'vignette-3',
+                title: 'State Government Executive',
+                subtitle: 'Gov Compliance Platform',
+                context: 'State department pressured by ESG targets, citizen trust, fragmented IT spend.',
+                pain: 'Too many vendors. No clear value view. Risk of complex procurement cycles.',
+                outcome: 'Lenovo positioned as strategic ANZ government partner. Compliance-ready workplace.',
+                alignment: 'Client engagement • Solution delivery • Sales enablement • Market insight'
+              },
+              {
+                id: 'vignette-4',
+                title: 'SMB MSP Partner',
+                subtitle: 'Workforce Pack Scale-out',
+                context: 'MSP servicing 500-seat commercial mid-market. Seeks growth via Lenovo partnership.',
+                pain: 'MSP wary of Lenovo cutting into margin. Complex integration challenges.',
+                outcome: 'Lenovo sticks in SMB via MSP scale-out. Partner-led revenue growth.',
+                alignment: 'Client engagement • Solution delivery • Sales enablement • Market insight'
+              },
+              {
+                id: 'vignette-5',
+                title: 'Lenovo Account Manager',
+                subtitle: 'Land & Expand Strategy',
+                context: 'AM wins devices but wants account growth. Limited services capability.',
+                pain: 'Short cycles. Price fights. No clear expansion pathway.',
+                outcome: 'Higher attach rates. Better renewals. Multi-year account relationship.',
+                alignment: 'Client engagement • Solution design • Sales enablement • Market insight'
+              },
+              {
+                id: 'vignette-6',
+                title: 'Board Chair',
+                subtitle: 'Renewal & Expansion Decision',
+                context: 'Large customer board deciding renewal. Chair wants confidence in compliance and ESG.',
+                pain: 'Vendor fatigue. Risk aversion. Need for simple governance story.',
+                outcome: 'Renewal approved, expansion budget unlocked, board trust cemented.',
+                alignment: 'Client engagement • Solution delivery • Sales enablement • Influence'
+              },
             ].map((vignette) => (
-              <Card key={vignette.id} 
-                className="bg-white border border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-                onClick={() => {
-                  document.getElementById(vignette.id)?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-bold text-red-600 mb-2">{vignette.title}</h3>
-                  <p className="text-gray-700">{vignette.subtitle}</p>
-                </CardContent>
-              </Card>
+              <FlipCard
+                key={vignette.id}
+                className="h-96"
+                front={
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-bold text-red-600">{vignette.title}</h3>
+                    <p className="text-gray-700 font-medium">{vignette.subtitle}</p>
+                    <div className="space-y-3">
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">Context:</p>
+                        <p className="text-sm text-gray-700">{vignette.context}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">Challenge:</p>
+                        <p className="text-sm text-gray-700">{vignette.pain}</p>
+                      </div>
+                    </div>
+                  </div>
+                }
+                back={
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-bold text-red-600">{vignette.title}</h3>
+                    <div className="space-y-3">
+                      <div>
+                        <p className="text-sm font-semibold text-green-700">Outcome:</p>
+                        <p className="text-sm text-gray-700">{vignette.outcome}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">JD Alignment:</p>
+                        <p className="text-xs text-gray-600">{vignette.alignment}</p>
+                      </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          document.getElementById(vignette.id)?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="mt-4 px-3 py-2 bg-red-600 text-white text-xs rounded-md hover:bg-red-700 transition-colors w-full"
+                      >
+                        View Full Vignette
+                      </button>
+                    </div>
+                  </div>
+                }
+              />
             ))}
           </div>
 
@@ -870,28 +951,28 @@ const LenovoMicrosite = () => {
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
-                    <p>Account Manager focused on device quotas, feels stuck in transactional selling. Needs help turning device wins into multi-year service deals.</p>
+                    <p>AM wins devices but wants account growth. Limited services experience. Customer open to more but needs guidance.</p>
                   </div>
                   
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
                     <ul className="space-y-1 text-sm">
-                      <li><strong>Client Engagement:</strong> Partner with AM to frame account plans around customer journeys.</li>
-                      <li><strong>Solution Delivery:</strong> Architect expansions (devices → managed → advisory) and orchestrate presales.</li>
-                      <li><strong>Sales Enablement:</strong> Shape demos, ROI pitches, and competitive positioning with AM.</li>
-                      <li><strong>Market Insight:</strong> Coach AM on differentiation vs HP/Dell.</li>
-                      <li><strong>Influence:</strong> Inspire AM team with frameworks and long-tail vision.</li>
+                      <li><strong>Client Engagement:</strong> Enablement and support for AM team to drive services attach.</li>
+                      <li><strong>Solution Design:</strong> Build account plan with clear growth pathways and attach points.</li>
+                      <li><strong>Sales Enablement:</strong> ROI slides, competitive points, clear price bands for each service tier.</li>
+                      <li><strong>Market Insight:</strong> Position against HP/Dell with platform story specific to customer sector.</li>
+                      <li><strong>Influence:</strong> Coach team, run exec calls, keep language plain and outcome-focused.</li>
                     </ul>
                   </div>
                   
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
-                    <p>AM nervous about quota reliance on devices. Troy introduces 2×2s, ROI curves, and sector packs → tools for deeper selling.</p>
+                    <p>AM stuck in device refresh cycles. Troy provides expansion roadmap: devices → support → managed → platform. Clear steps, clear value at each stage.</p>
                   </div>
                   
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
-                    <p className="font-medium text-green-700">AM sees Lenovo as services-led, Troy as their enabler.</p>
+                    <p className="font-medium text-green-700">Higher attach rates, better renewals, multi-year relationship.</p>
                   </div>
                 </div>
               </AccordionContent>
