@@ -8,7 +8,12 @@ interface MicrositeGuardProps {
 export const MicrositeGuard = ({ children }: MicrositeGuardProps) => {
   const location = useLocation();
   
-  // Block all microsite access - redirect to homepage
+  // Allow direct access to Lenovo microsite
+  if (location.pathname.startsWith('/microsites/lenovo')) {
+    return <>{children}</>;
+  }
+  
+  // Block all other microsite access - redirect to homepage
   if (location.pathname.startsWith('/microsites')) {
     return <Navigate to="/" replace />;
   }
