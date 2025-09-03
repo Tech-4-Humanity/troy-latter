@@ -49,6 +49,7 @@ const LenovoMicrosite = () => {
               { id: '2x2s', label: '2×2 Library' },
               { id: 'enablement', label: 'Enablement' },
               { id: 'competitive', label: 'Competitive' },
+              { id: 'vignettes', label: 'Case Vignettes' },
               { id: 'enhancements', label: 'Enhancements' },
               { id: 'jd-alignment', label: 'JD Alignment' },
               { id: 'two-by-two-complete', label: 'Complete 2x2' }
@@ -322,8 +323,231 @@ const LenovoMicrosite = () => {
         </div>
       </section>
 
+      {/* Case Vignettes */}
+      <section id="vignettes" className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">Case Vignettes</h2>
+          <p className="text-lg text-gray-700 mb-8">
+            Six real-world scenarios showing how Lenovo's DaaS strategy translates into customer engagement, 
+            solution design, and revenue outcomes across different verticals and stakeholders.
+          </p>
+          
+          <Accordion type="single" collapsible className="space-y-3">
+            <AccordionItem value="vignette-1" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                1. Education CIO – Smart Campus
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
+                    <p>University CIO tasked with modernising IT for hybrid learning. Budget caps, sustainability mandates, student expectations for digital-first experience.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
+                    <ul className="space-y-1 text-sm">
+                      <li><strong>Client Engagement & Strategy:</strong> Map CIO pain into Lenovo's "Future of Learning" pack. Frame as multi-year journey.</li>
+                      <li><strong>Solution Design & Delivery:</strong> Orchestrate Lenovo presales + MSP for Intune/Autopilot + TruScale VDI + ESG dashboards.</li>
+                      <li><strong>Sales Enablement & Execution:</strong> Present ROI curve: $2M baseline → $15M expanded.</li>
+                      <li><strong>Market Insight:</strong> Contrast Lenovo's ESG Navigator + OPEX model with HP/Dell infra-heavy.</li>
+                      <li><strong>Influence & Mindset:</strong> Simplify stack → "From device refresh to Smart Campus."</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
+                    <p>CIO fears device fleet refresh will become another short-term patch. Troy reframes: devices + TruScale + AI copilots + ESG = Smart Campus platform. Stakeholders (faculty, IT leads, board) each see their win.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
+                    <p className="font-medium text-green-700">Multi-year Lenovo-led transformation.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="vignette-2" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                2. Healthcare Procurement Lead – Digital Hospital
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
+                    <p>State hospital group must refresh rugged devices, meet compliance, cut downtime. Procurement driven by risk, cost, and compliance obligations.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
+                    <ul className="space-y-1 text-sm">
+                      <li><strong>Client Engagement:</strong> Build trust with procurement and CIO by showing compliance-first bundles.</li>
+                      <li><strong>Solution Delivery:</strong> Bundle rugged devices + TruScale infra + telehealth kits + patch automation.</li>
+                      <li><strong>Sales Enablement:</strong> ROI framing: downtime reduced 30%, compliance costs down, $3M baseline → $20M expanded.</li>
+                      <li><strong>Market Insight:</strong> Dell pushes infra, HP pushes lifecycle only. Lenovo differentiates on compliance dashboards + telehealth kits.</li>
+                      <li><strong>Influence:</strong> Translate "compliance risk" into measurable Lenovo outcomes.</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
+                    <p>Procurement sees only cost; Troy shows compliance and resilience wins. CIO and clinicians gain secure, reliable digital hospital tools.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
+                    <p className="font-medium text-green-700">Lenovo trusted partner for both procurement and clinicians.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="vignette-3" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                3. State Government Executive – Gov Compliance
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
+                    <p>State department pressured by ESG targets, citizen trust, and fragmented IT spend. Need predictable OPEX, compliance dashboards, and clear procurement models.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
+                    <ul className="space-y-1 text-sm">
+                      <li><strong>Client Engagement:</strong> Partner with agency execs to map ESG + OPEX pain into Lenovo Gov Pack.</li>
+                      <li><strong>Solution Delivery:</strong> Orchestrate service desk integration + TruScale hybrid + ESG Navigator.</li>
+                      <li><strong>Sales Enablement:</strong> ROI case = $5M baseline → $25M expanded.</li>
+                      <li><strong>Market Insight:</strong> HP strong in tenders, HPE infra-led, Lenovo wins with compliance story.</li>
+                      <li><strong>Influence:</strong> Use frameworks to show value to both procurement and board.</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
+                    <p>Exec wants "less vendor noise, more outcomes." Troy reframes Lenovo as compliance-ready workplace provider. Stakeholders: CIO, Procurement, ESG officer, Minister's office.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
+                    <p className="font-medium text-green-700">Lenovo positioned as strategic ANZ government partner.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="vignette-4" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                4. SMB MSP Partner – Workforce Pack
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
+                    <p>MSP servicing 500-seat commercial mid-market. Lenovo sees growth via partner-led SMB Workforce Pack.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
+                    <ul className="space-y-1 text-sm">
+                      <li><strong>Client Engagement:</strong> Work with MSP execs to package Lenovo Workforce Pack as white-label.</li>
+                      <li><strong>Solution Delivery:</strong> MSP integrates Lenovo devices + service desk + TruScale SMB + AI copilots.</li>
+                      <li><strong>Sales Enablement:</strong> ROI = $0.5M baseline → $5M expanded across multiple SMB clients.</li>
+                      <li><strong>Market Insight:</strong> Lenovo unique for MSP-ready bundles; Dell lacks SMB focus.</li>
+                      <li><strong>Influence:</strong> Position Lenovo as partner-enabler, not competitor.</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
+                    <p>MSP wary of Lenovo cutting into margin. Troy shows Lenovo's model = more recurring revenue for MSP.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
+                    <p className="font-medium text-green-700">Lenovo sticks in SMB via MSP scale-out.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="vignette-5" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                5. Lenovo Account Manager – Land & Expand
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
+                    <p>Account Manager focused on device quotas, feels stuck in transactional selling. Needs help turning device wins into multi-year service deals.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
+                    <ul className="space-y-1 text-sm">
+                      <li><strong>Client Engagement:</strong> Partner with AM to frame account plans around customer journeys.</li>
+                      <li><strong>Solution Delivery:</strong> Architect expansions (devices → managed → advisory) and orchestrate presales.</li>
+                      <li><strong>Sales Enablement:</strong> Shape demos, ROI pitches, and competitive positioning with AM.</li>
+                      <li><strong>Market Insight:</strong> Coach AM on differentiation vs HP/Dell.</li>
+                      <li><strong>Influence:</strong> Inspire AM team with frameworks and long-tail vision.</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
+                    <p>AM nervous about quota reliance on devices. Troy introduces 2×2s, ROI curves, and sector packs → tools for deeper selling.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
+                    <p className="font-medium text-green-700">AM sees Lenovo as services-led, Troy as their enabler.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="vignette-6" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                6. Board Chair – Renewal & Expansion
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
+                    <p>Large customer's board deciding renewal. Chair wants confidence in compliance, ESG, long-term partnership.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
+                    <ul className="space-y-1 text-sm">
+                      <li><strong>Client Engagement:</strong> Engage at board level with simple, outcome-first framing.</li>
+                      <li><strong>Solution Delivery:</strong> Position TruScale + ESG Navigator + AI copilots as the platform.</li>
+                      <li><strong>Sales Enablement:</strong> ROI story baseline → expanded, with compliance dashboards.</li>
+                      <li><strong>Market Insight:</strong> Show why Lenovo vs Dell/HP/HPE in long-term governance.</li>
+                      <li><strong>Influence:</strong> Translate complexity into a simple story the board can back.</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
+                    <p>Board wary of another vendor cycle. Troy reframes Lenovo as partner in compliance + ESG + digital workplace strategy.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
+                    <p className="font-medium text-green-700">Renewal approved, expansion budget unlocked, board trust cemented.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </section>
+
       {/* Enhancements */}
-      <section id="enhancements" className="py-16 bg-white">
+      <section id="enhancements" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="text-4xl font-bold text-red-600 mb-6">7. Enhancements & Differentiators</h2>
           <Card className="bg-white border border-gray-200">
@@ -836,6 +1060,7 @@ const LenovoMicrosite = () => {
               <button onClick={() => scrollToSection('about')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Overview</button>
               <button onClick={() => scrollToSection('2x2s')} className="block text-gray-300 hover:text-white mb-1 transition-colors">2×2 Library</button>
               <button onClick={() => scrollToSection('competitive')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Competitive</button>
+              <button onClick={() => scrollToSection('vignettes')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Case Vignettes</button>
               <button onClick={() => scrollToSection('enhancements')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Enhancements</button>
               <button onClick={() => scrollToSection('jd-alignment')} className="block text-gray-300 hover:text-white mb-1 transition-colors">JD Alignment</button>
               <button onClick={() => scrollToSection('two-by-two-complete')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Complete 2x2 Library</button>
