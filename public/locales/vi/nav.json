@@ -1,8 +1,18 @@
 {
   "home": "Trang chủ",
   "about": "Giới thiệu",
+  "aboutTroy": "Về Troy",
+  "executiveProfile": "Hồ sơ điều hành",
+  "leadershipStyle": "Phong cách lãnh đạo",
   "experience": "Kinh nghiệm",
+  "experienceAndImpact": "Kinh nghiệm & Tác động",
+  "strategicProjects": "Dự án chiến lược",
+  "coreCompetencies": "Năng lực cốt lõi",
+  "industryExpertise": "Chuyên môn ngành",
+  "peopleInvolved": "Người liên quan",
   "projects": "Dự án",
   "contact": "Liên hệ",
-  "getInTouch": "Liên hệ với tôi"
+  "getInTouch": "Liên hệ với tôi",
+  "talkToTroy": "Nói chuyện với Troy",
+  "microsites": "Trang web con"
 }

@@ -1,8 +1,18 @@
 {
   "home": "Home",
   "about": "About",
+  "aboutTroy": "About Troy",
+  "executiveProfile": "Executive Profile",
+  "leadershipStyle": "Leadership Style",
   "experience": "Experience",
+  "experienceAndImpact": "Experience & Impact",
+  "strategicProjects": "Strategic Projects",
+  "coreCompetencies": "Core Competencies",
+  "industryExpertise": "Industry Expertise",
+  "peopleInvolved": "People Involved",
   "projects": "Projects", 
   "contact": "Contact",
-  "getInTouch": "Get in Touch"
+  "getInTouch": "Get in Touch",
+  "talkToTroy": "Talk to Troy",
+  "microsites": "Microsites"
 }

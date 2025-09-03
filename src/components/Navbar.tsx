@@ -20,34 +20,34 @@ import {
 
 // Organized navigation structure
 const useNavigationStructure = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('nav');
   
   return [
     {
-      title: t('nav.aboutTroy'),
+      title: t('aboutTroy'),
       mainPath: '/executive-profile',
       items: [
-        { path: '/executive-profile', label: t('nav.executiveProfile') },
-        { path: '/leadership-style', label: t('nav.leadershipStyle') },
+        { path: '/executive-profile', label: t('executiveProfile') },
+        { path: '/leadership-style', label: t('leadershipStyle') },
         { path: '/your-profile-stars', label: 'Customer Activations' },
       ]
     },
     {
-      title: t('nav.experienceAndImpact'),
+      title: t('experienceAndImpact'),
       mainPath: '/experience-and-impact',
       items: [
-        { path: '/strategic-projects', label: t('nav.strategicProjects') },
+        { path: '/strategic-projects', label: t('strategicProjects') },
         { path: '/responsibilities', label: 'Customer Initiatives' },
         { path: '/customer-asks-stars', label: 'Innovation Approach' },
       ]
     },
     {
-      title: t('nav.coreCompetencies'),
+      title: t('coreCompetencies'),
       mainPath: '/core-competencies',
       items: [
-        { path: '/core-competencies', label: t('nav.coreCompetencies') },
-        { path: '/industry-expertise', label: t('nav.industryExpertise') },
-        { path: '/people-involved', label: t('nav.peopleInvolved') },
+        { path: '/core-competencies', label: t('coreCompetencies') },
+        { path: '/industry-expertise', label: t('industryExpertise') },
+        { path: '/people-involved', label: t('peopleInvolved') },
       ]
     },
   ];
@@ -56,7 +56,7 @@ const useNavigationStructure = () => {
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { t } = useTranslation();
+  const { t } = useTranslation('nav');
   const navigationCategories = useNavigationStructure();
   
   const isActiveCategory = (category: typeof navigationCategories[0]) => {
@@ -101,7 +101,7 @@ export const Navbar = () => {
               className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 hover:from-purple-600 hover:via-blue-600 hover:to-teal-600 text-white text-sm px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               <MessageCircle className="h-4 w-4 mr-2" />
-              {t('nav.talkToTroy')}
+              {t('talkToTroy')}
             </Button>
           </div>
 
@@ -159,7 +159,7 @@ export const Navbar = () => {
                     size="sm"
                     className="text-white hover:text-[#56A4E3] hover:bg-white/10 text-sm font-medium px-3 py-2"
                   >
-                    Microsites
+                    {t('microsites')}
                     <ChevronDown className="h-3 w-3 ml-1" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -190,7 +190,7 @@ export const Navbar = () => {
                 isActivePath('/contact') ? 'text-[#56A4E3]' : ''
               }`}
             >
-              {t('nav.contact')}
+              {t('contact')}
             </Link>
           </nav>
 
@@ -244,7 +244,7 @@ export const Navbar = () => {
               {/* Mobile Microsites Section */}
               <div className="border-b border-gray-700 pb-2 mb-2">
                 <div className="text-gray-200 text-sm font-medium px-2 py-3 block mb-1">
-                  Microsites
+                  {t('microsites')}
                 </div>
                 <Link
                   to="/microsites/lenovo"
@@ -269,7 +269,7 @@ export const Navbar = () => {
                 }`}
                 onClick={closeMobileMenu}
               >
-                {t('nav.contact')}
+                {t('contact')}
               </Link>
               
               {/* Mobile Talk to Troy CTA */}
@@ -290,7 +290,7 @@ export const Navbar = () => {
                 className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 hover:from-purple-600 hover:via-blue-600 hover:to-teal-600 text-white text-sm px-4 py-3 rounded-lg shadow-lg mx-2 mt-4 flex items-center justify-center"
               >
                 <MessageCircle className="h-4 w-4 mr-2" />
-                {t('nav.talkToTroy')}
+                {t('talkToTroy')}
               </Button>
             </nav>
           </div>

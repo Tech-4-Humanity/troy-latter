@@ -1,8 +1,18 @@
 {
   "home": "الرئيسية",
   "about": "حول",
+  "aboutTroy": "حول تروي",
+  "executiveProfile": "الملف التنفيذي",
+  "leadershipStyle": "أسلوب القيادة",
   "experience": "الخبرة",
+  "experienceAndImpact": "الخبرة والتأثير",
+  "strategicProjects": "المشاريع الاستراتيجية",
+  "coreCompetencies": "الكفاءات الأساسية",
+  "industryExpertise": "الخبرة الصناعية",
+  "peopleInvolved": "الأشخاص المعنيون",
   "projects": "المشاريع",
   "contact": "اتصل بنا",
-  "getInTouch": "تواصل معنا"
+  "getInTouch": "تواصل معنا",
+  "talkToTroy": "تحدث مع تروي",
+  "microsites": "المواقع الفرعية"
 }

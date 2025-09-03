@@ -1,8 +1,18 @@
 {
   "home": "首页",
   "about": "关于",
+  "aboutTroy": "关于特洛伊",
+  "executiveProfile": "执行档案",
+  "leadershipStyle": "领导风格",
   "experience": "经验",
+  "experienceAndImpact": "经验与影响",
+  "strategicProjects": "战略项目",
+  "coreCompetencies": "核心能力",
+  "industryExpertise": "行业专长",
+  "peopleInvolved": "相关人员",
   "projects": "项目",
   "contact": "联系我们",
-  "getInTouch": "联系我"
+  "getInTouch": "联系我",
+  "talkToTroy": "与特洛伊交谈",
+  "microsites": "微站点"
 }
