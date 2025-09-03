@@ -411,8 +411,6 @@ i18n
     resources,
     fallbackLng: 'en-AU',
     lng: 'en-AU',
-    defaultNS: 'common',
-    ns: ['common', 'nav', 'home', 'projects', 'footer'],
     
     interpolation: {
       escapeValue: false

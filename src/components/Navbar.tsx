@@ -20,34 +20,34 @@ import {
 
 // Organized navigation structure
 const useNavigationStructure = () => {
-  const { t } = useTranslation('nav');
+  const { t } = useTranslation();
   
   return [
     {
-      title: t('aboutTroy'),
+      title: t('nav.aboutTroy'),
       mainPath: '/executive-profile',
       items: [
-        { path: '/executive-profile', label: t('executiveProfile') },
-        { path: '/leadership-style', label: t('leadershipStyle') },
+        { path: '/executive-profile', label: t('nav.executiveProfile') },
+        { path: '/leadership-style', label: t('nav.leadershipStyle') },
         { path: '/your-profile-stars', label: 'Customer Activations' },
       ]
     },
     {
-      title: t('experienceAndImpact'),
+      title: t('nav.experienceAndImpact'),
       mainPath: '/experience-and-impact',
       items: [
-        { path: '/strategic-projects', label: t('strategicProjects') },
+        { path: '/strategic-projects', label: t('nav.strategicProjects') },
         { path: '/responsibilities', label: 'Customer Initiatives' },
         { path: '/customer-asks-stars', label: 'Innovation Approach' },
       ]
     },
     {
-      title: t('coreCompetencies'),
+      title: t('nav.coreCompetencies'),
       mainPath: '/core-competencies',
       items: [
-        { path: '/core-competencies', label: t('coreCompetencies') },
-        { path: '/industry-expertise', label: t('industryExpertise') },
-        { path: '/people-involved', label: t('peopleInvolved') },
+        { path: '/core-competencies', label: t('nav.coreCompetencies') },
+        { path: '/industry-expertise', label: t('nav.industryExpertise') },
+        { path: '/people-involved', label: t('nav.peopleInvolved') },
       ]
     },
   ];
@@ -56,11 +56,11 @@ const useNavigationStructure = () => {
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { t } = useTranslation('nav');
+  const { t } = useTranslation();
   const navigationCategories = useNavigationStructure();
   
   const isActiveCategory = (category: typeof navigationCategories[0]) => {
-    return category.items.some(item => location.pathname === item.path) || location.pathname === category.mainPath;
+    return category.items.some(item => location.pathname === item.path);
   };
 
   const isActivePath = (path: string) => location.pathname === path;
@@ -101,7 +101,7 @@ export const Navbar = () => {
               className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 hover:from-purple-600 hover:via-blue-600 hover:to-teal-600 text-white text-sm px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               <MessageCircle className="h-4 w-4 mr-2" />
-              {t('talkToTroy')}
+              {t('nav.talkToTroy')}
             </Button>
           </div>
 
@@ -190,7 +190,7 @@ export const Navbar = () => {
                 isActivePath('/contact') ? 'text-[#56A4E3]' : ''
               }`}
             >
-              {t('contact')}
+              {t('nav.contact')}
             </Link>
           </nav>
 
@@ -269,7 +269,7 @@ export const Navbar = () => {
                 }`}
                 onClick={closeMobileMenu}
               >
-                {t('contact')}
+                {t('nav.contact')}
               </Link>
               
               {/* Mobile Talk to Troy CTA */}
@@ -290,7 +290,7 @@ export const Navbar = () => {
                 className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 hover:from-purple-600 hover:via-blue-600 hover:to-teal-600 text-white text-sm px-4 py-3 rounded-lg shadow-lg mx-2 mt-4 flex items-center justify-center"
               >
                 <MessageCircle className="h-4 w-4 mr-2" />
-                {t('talkToTroy')}
+                {t('nav.talkToTroy')}
               </Button>
             </nav>
           </div>

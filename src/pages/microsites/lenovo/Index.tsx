@@ -1,17 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Card, CardContent } from '@/components/ui/card';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { FlipCard } from '@/components/ui/FlipCard';
 import { TwoByTwoHeatmap } from '@/components/ui/TwoByTwoHeatmap';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 const LenovoMicrosite = () => {
+  const [storiesValue, setStoriesValue] = useState<string[]>([]);
+
   useEffect(() => {
+    // Set noindex for SEO protection
+    const metaTag = document.createElement('meta');
+    metaTag.name = 'robots';
+    metaTag.content = 'noindex,nofollow';
+    document.head.appendChild(metaTag);
+    
     // Set page title
     document.title = 'Solution Sales Australia';
     
     return () => {
+      document.head.removeChild(metaTag);
       document.title = "Troy Latter - Executive Portfolio";
     };
   }, []);
@@ -20,14 +32,21 @@ const LenovoMicrosite = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Revenue trajectory data
-  const revenueData = [
-    { year: 'Year 1', education: 8, healthcare: 12, government: 15, smb: 5, total: 40 },
-    { year: 'Year 2', education: 12, healthcare: 18, government: 22, smb: 8, total: 60 },
-    { year: 'Year 3', education: 18, healthcare: 25, government: 35, smb: 12, total: 90 },
-    { year: 'Year 4', education: 22, healthcare: 30, government: 42, smb: 16, total: 110 },
-    { year: 'Year 5', education: 25, healthcare: 35, government: 50, smb: 20, total: 130 },
-  ];
+  const expandAllStories = () => {
+    setStoriesValue(['story-health-gov', 'story-education', 'story-health-procurement', 'story-gov-exec', 'story-smb-msp', 'story-am-expand', 'story-board']);
+  };
+
+  const collapseAllStories = () => {
+    setStoriesValue([]);
+  };
+
+  const scrollToStory = (storyId: string) => {
+    document.getElementById(storyId)?.scrollIntoView({ behavior: 'smooth' });
+    // Open the specific story if not already open
+    if (!storiesValue.includes(storyId)) {
+      setStoriesValue([...storiesValue, storyId]);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -45,14 +64,11 @@ const LenovoMicrosite = () => {
           {/* Navigation */}
           <nav className="flex flex-wrap justify-center gap-4 mt-6">
             {[
-              { id: 'about', label: 'About' },
               { id: 'strategy', label: 'Strategy' },
               { id: 'packs', label: 'Vertical Packs' },
               { id: 'stories', label: 'Stakeholder Vignettes' },
               { id: 'vignettes', label: 'Customer Engagement Vignettes' },
-              { id: 'frameworks', label: '2×2 Frameworks' },
               { id: 'trajectory', label: 'Revenue' },
-              { id: 'qa', label: 'Q&A' },
               { id: 'jd-alignment', label: 'JD Alignment' }
             ].map(({ id, label }) => (
               <button
@@ -126,1148 +142,1857 @@ const LenovoMicrosite = () => {
       </section>
 
       {/* Strategy Foundation */}
-      <section id="strategy" className="py-16 bg-gray-50">
+      <section id="strategy" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="text-4xl font-bold text-red-600 mb-6">1. Strategy Foundation</h2>
           
-          <FlipCard
-            heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-            hideFlipHint={true}
-            front={
-              <div className="h-full flex flex-col">
-                <h3 className="text-xl font-bold mb-3 text-red-600">Strategy Overview</h3>
-                <p className="mb-4 flex-grow">Transform Lenovo ANZ from device refresh cycles to strategic workforce platform subscriptions.</p>
-                <div className="space-y-2">
-                  <p><strong>From:</strong> $10.5M baseline device deals</p>
-                  <p><strong>To:</strong> $50M+ per vertical over 3-5 years</p>
-                  <p><strong>How:</strong> TruScale + AI + ESG + Services</p>
-                </div>
+          <Card className="bg-white border border-gray-200 shadow-sm">
+            <CardContent className="p-6 space-y-6 text-lg">
+              <div>
+                <p><strong>Baseline</strong><br />
+                  Today, Lenovo ANZ DaaS contracts often stop at device + warranty + lifecycle wrap. This delivers stability but caps growth. Value is typically &lt;$15M per vertical, with outcomes limited to hardware refresh and basic support. It's predictable but leaves margin on the table.
+                </p>
               </div>
-            }
-            back={
-              <ScrollArea className="h-full">
-                <div className="space-y-4 pr-2">
-                  <h3 className="text-xl font-bold text-red-600">Strategy Foundation Details</h3>
-                  
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Baseline</h4>
-                    <p className="text-sm mb-3">
-                      Today, Lenovo ANZ DaaS contracts often stop at device + warranty + lifecycle wrap. This delivers stability but caps growth. Value is typically &lt;$15M per vertical, with outcomes limited to hardware refresh and basic support. It's predictable but leaves margin on the table.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Target</h4>
-                    <p className="text-sm mb-3">
-                      Shift to verticalised workforce subscriptions that combine <strong>TruScale, AI, ESG, security, and cloud services</strong>. These packs move Lenovo from a "box seller" to a <strong>strategic workforce platform provider</strong>, embedding Lenovo across compliance, sustainability, and productivity domains.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Customer Journey</h4>
-                    <div className="text-sm space-y-2">
-                      <p><strong>1. Support stage:</strong> Start with devices, Premier Support, and standard lifecycle services.</p>
-                      <p><strong>2. Managed stage:</strong> Add service desk integration, Autopilot/Intune, ZTNA, device analytics.</p>
-                      <p><strong>3. Advisory stage:</strong> Evolve into a true workforce platform subscription with TruScale hybrid cloud, AI copilots, and ESG Navigator dashboards — giving CIOs unified control and boards measurable ROI.</p>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Strategic Outcome</h4>
-                    <p className="text-sm">
-                      A stable baseline of &lt;$15M becomes a <strong>growth trajectory of $50M+ per vertical</strong> over 3–5 years, with stronger partner attach and stickier client relationships.
-                    </p>
-                  </div>
-                </div>
-              </ScrollArea>
-            }
-            className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-          />
+              
+              <div>
+                <p><strong>Target</strong><br />
+                  Shift to verticalised workforce subscriptions that combine <strong>TruScale, AI, ESG, security, and cloud services</strong>. These packs move Lenovo from a "box seller" to a <strong>strategic workforce platform provider</strong>, embedding Lenovo across compliance, sustainability, and productivity domains.
+                </p>
+              </div>
+              
+              <div>
+                <p><strong>Customer Journey</strong><br />
+                  1. <strong>Support stage:</strong> Start with devices, Premier Support, and standard lifecycle services.<br />
+                  2. <strong>Managed stage:</strong> Add service desk integration, Autopilot/Intune, ZTNA, device analytics.<br />
+                  3. <strong>Advisory stage:</strong> Evolve into a true workforce platform subscription with TruScale hybrid cloud, AI copilots, and ESG Navigator dashboards — giving CIOs unified control and boards measurable ROI.
+                </p>
+              </div>
+              
+              <div>
+                <p><strong>Strategic Outcome</strong><br />
+                  A stable baseline of &lt;$15M becomes a <strong>growth trajectory of $50M+ per vertical</strong> over 3–5 years, with stronger partner attach and stickier client relationships.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+
+      {/* Customer Value Framework */}
+      <section id="value-framework" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">2. Customer Value Framework</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl mb-4">💰</div>
+                <h3 className="text-xl font-bold mb-3 text-red-600">OPEX Simplicity</h3>
+                <p className="text-gray-700">Single monthly fee covers everything: devices, support, security, AI tools, and ESG reporting.</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl mb-4">🚀</div>
+                <h3 className="text-xl font-bold mb-3 text-red-600">Platform Growth</h3>
+                <p className="text-gray-700">Start with devices, expand to TruScale cloud, AI productivity, and vertical-specific solutions.</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl mb-4">📊</div>
+                <h3 className="text-xl font-bold mb-3 text-red-600">Measurable Impact</h3>
+                <p className="text-gray-700">ESG dashboards, productivity metrics, and compliance reporting built into every solution.</p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
       {/* Vertical Packs */}
       <section id="packs" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">2. Vertical Packs Portfolio</h2>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {/* Education Pack */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">🎓 Education Pack</h3>
-                  <p className="mb-4 flex-grow">Comprehensive K-12 and Higher Ed solutions driving digital learning transformation.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Revenue:</strong> $8M → $25M (3x growth)</p>
-                    <p><strong>Target:</strong> Universities, TAFEs, Schools</p>
-                    <p><strong>Key Services:</strong> Device management, research compute, campus security</p>
-                  </div>
-                </div>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">3. Vertical DaaS Packs</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                title: '🎓 Future of Learning',
+                description: 'Devices + LMS integration + TruScale VDI + AI copilots + ESG dashboards.',
+                outcome: 'Smart campus, grant compliance.',
+                value: '$8–15M',
+                backContent: {
+                  summary: 'Lenovo helps universities move beyond device refresh into Smart Campus platforms. By bundling VDI, LMS integration, AI copilots, and ESG dashboards into one predictable fee, we align with student expectations and grant funding rules.',
+                  benefits: [
+                    'CIOs get lifecycle control and ESG compliance.',
+                    'Faculty see faster onboarding and better access to learning apps.',
+                    'Students gain hybrid learning anywhere, anytime.'
+                  ],
+                  roi: 'Reduced lab costs, faster deployment, improved satisfaction scores.'
+                }
+              },
+              {
+                title: '🏥 Digital Hospital',
+                description: 'Rugged devices + TruScale infra + telehealth kits + AI Edge + ESG Navigator.',
+                outcome: 'Secure, sustainable digital hospital.',
+                value: '$12–20M',
+                backContent: {
+                  summary: 'Hospitals need compliance, uptime, and trust. Lenovo\'s Digital Hospital Pack bundles rugged devices, TruScale infra, telehealth kits, and ESG Navigator into a secure OPEX model.',
+                  benefits: [
+                    'Procurement gains predictable cost and compliance dashboards.',
+                    'Clinicians gain reliable, patched devices and AI copilots that reduce admin by 20%.',
+                    'Boards see improved audit scores and ESG transparency.'
+                  ],
+                  roi: 'Downtime cut by 30%, compliance fines avoided, $12–20M long-term uplift.'
+                }
+              },
+              {
+                title: '🏛 Gov Compliance',
+                description: 'Devices + service desk + ZTNA + TruScale hybrid + ESG dashboards.',
+                outcome: 'Procurement-ready, compliance-ready workplace.',
+                value: '$15–25M',
+                backContent: {
+                  summary: 'Governments demand accountability and transparency. Lenovo\'s Compliance Pack turns devices into full workplace platforms with service desk, ZTNA, TruScale hybrid, and ESG dashboards.',
+                  benefits: [
+                    'Executives gain simple OPEX control.',
+                    'IT leads gain standard secure builds and faster audits.',
+                    'Boards and ministers gain ESG reporting they can take to the public.'
+                  ],
+                  roi: 'Faster compliance cycles, carbon footprint visibility, $15–25M program value.'
+                }
+              },
+              {
+                title: '💼 SMB Workforce',
+                description: 'Devices + MSP service desk + TruScale SMB + AI copilots + simplified ESG.',
+                outcome: 'Workforce transformation without enterprise cost.',
+                value: '$2–5M',
+                backContent: {
+                  summary: 'Small and mid-market businesses need enterprise-grade capability without enterprise cost. Lenovo\'s Workforce Pack gives MSPs a white-labeled solution that scales.',
+                  benefits: [
+                    'Owners gain predictable monthly pricing.',
+                    'Employees get full kits (laptop, dock, monitor, headset) supported by MSP-led service desk.',
+                    'MSPs unlock recurring revenue and margin.'
+                  ],
+                  roi: 'Reduced churn, workforce productivity gains, $2–5M deal size with multi-client rollouts.'
+                }
               }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Education Pack Details</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Core Offerings</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• K-12 Device Management with parent portal integration</li>
-                        <li>• Higher Ed Research Compute clusters and GPU farms</li>
-                        <li>• Campus Security & Analytics with video management</li>
-                        <li>• Student Information System integrations</li>
-                        <li>• Remote learning infrastructure and support</li>
-                        <li>• Library and lab management systems</li>
-                        <li>• Student device lending programs</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Value Proposition</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Reduced IT overhead with managed services</li>
-                        <li>• Enhanced student outcomes through technology</li>
-                        <li>• Compliance with educational data protection</li>
-                        <li>• Scalable infrastructure for research projects</li>
-                        <li>• Cost-effective device refresh programs</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Revenue Model</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Subscription-based device management</li>
-                        <li>• Per-student licensing for educational software</li>
-                        <li>• Usage-based research compute billing</li>
-                        <li>• Annual security and compliance packages</li>
-                      </ul>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
-
-            {/* Healthcare Pack */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">🏥 Healthcare Pack</h3>
-                  <p className="mb-4 flex-grow">FHIR-compliant solutions for hospitals, clinics, and healthcare providers.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Revenue:</strong> $12M → $35M (3x growth)</p>
-                    <p><strong>Target:</strong> Hospitals, Clinics, Aged Care</p>
-                    <p><strong>Key Services:</strong> Compliance workstations, telemedicine, analytics</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Healthcare Pack Details</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Core Offerings</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• FHIR-Compliant Workstations with patient data protection</li>
-                        <li>• Telemedicine Infrastructure including video conferencing</li>
-                        <li>• Clinical Analytics dashboards and reporting</li>
-                        <li>• Medical device integration and IoT monitoring</li>
-                        <li>• HIPAA compliance automation and auditing</li>
-                        <li>• Electronic Health Records (EHR) integration</li>
-                        <li>• Mobile clinical workstations for bedside care</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Value Proposition</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Improved patient outcomes through digital health</li>
-                        <li>• Reduced administrative burden on clinical staff</li>
-                        <li>• Enhanced data security and privacy compliance</li>
-                        <li>• Streamlined clinical workflows and processes</li>
-                        <li>• Better resource utilization and cost management</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Revenue Model</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Per-bed licensing for hospital infrastructure</li>
-                        <li>• Subscription-based compliance monitoring</li>
-                        <li>• Usage-based telemedicine platform fees</li>
-                        <li>• Annual security and audit packages</li>
-                      </ul>
+            ].map((pack, index) => (
+              <FlipCard
+                key={index}
+                front={
+                  <div className="h-full flex flex-col">
+                    <h3 className="text-xl font-bold mb-3">{pack.title}</h3>
+                    <p className="mb-3 flex-grow">{pack.description}</p>
+                    <div className="space-y-1">
+                      <p><strong>Outcome:</strong> {pack.outcome}</p>
+                      <p><strong>Value:</strong> {pack.value}</p>
                     </div>
                   </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
-
-            {/* Government Pack */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">🏛️ Government Pack</h3>
-                  <p className="mb-4 flex-grow">Sovereign cloud and compliance solutions for federal, state, and local government.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Revenue:</strong> $15M → $50M (3.3x growth)</p>
-                    <p><strong>Target:</strong> Federal, State, Local Government</p>
-                    <p><strong>Key Services:</strong> Protected utility, sovereign cloud, compliance</p>
+                }
+                back={
+                  <div className="h-full flex flex-col">
+                    <h3 className="text-xl font-bold mb-3">{pack.title} - Details</h3>
+                    <p className="mb-4 text-sm">{pack.backContent.summary}</p>
+                    <div className="mb-4 flex-grow">
+                      <ul className="space-y-2">
+                        {pack.backContent.benefits.map((benefit, i) => (
+                          <li key={i} className="text-sm">• <strong>{benefit.split(' ')[0]}</strong> {benefit.substring(benefit.indexOf(' ') + 1)}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <p className="text-sm"><strong>ROI:</strong> {pack.backContent.roi}</p>
                   </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Government Pack Details</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Core Offerings</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Protected Utility Models for sensitive data</li>
-                        <li>• Sovereign Cloud Integration with local data residency</li>
-                        <li>• Compliance Automation for regulatory requirements</li>
-                        <li>• Citizen service portal integrations</li>
-                        <li>• Emergency response and disaster recovery</li>
-                        <li>• Secure collaboration platforms for inter-agency work</li>
-                        <li>• Digital identity and access management</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Value Proposition</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Enhanced citizen service delivery and satisfaction</li>
-                        <li>• Improved data security and sovereignty</li>
-                        <li>• Streamlined inter-agency collaboration</li>
-                        <li>• Cost-effective digital transformation</li>
-                        <li>• Future-ready infrastructure and services</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Revenue Model</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Per-agency subscription for cloud services</li>
-                        <li>• Usage-based data processing and storage</li>
-                        <li>• Annual compliance and security packages</li>
-                        <li>• Project-based digital transformation consulting</li>
-                      </ul>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
-
-            {/* SMB Pack */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">🚀 SMB Growth Pack</h3>
-                  <p className="mb-4 flex-grow">Scalable IT-as-a-Service solutions for growing small and medium businesses.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Revenue:</strong> $5M → $20M (4x growth)</p>
-                    <p><strong>Target:</strong> SMBs, Scale-ups, Professional Services</p>
-                    <p><strong>Key Services:</strong> Managed IT, business continuity, scaling support</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">SMB Growth Pack Details</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Core Offerings</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Managed IT-as-a-Service with 24/7 support</li>
-                        <li>• Business Continuity planning and implementation</li>
-                        <li>• Growth-Stage Scaling with elastic infrastructure</li>
-                        <li>• Small business collaboration tools</li>
-                        <li>• Cyber security essentials packages</li>
-                        <li>• Cloud migration and hybrid infrastructure</li>
-                        <li>• Employee onboarding and device management</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Value Proposition</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Enterprise-grade IT without enterprise costs</li>
-                        <li>• Focus on core business while IT is managed</li>
-                        <li>• Scalable solutions that grow with the business</li>
-                        <li>• Proactive security and compliance management</li>
-                        <li>• Expert support and strategic guidance</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Revenue Model</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Per-employee monthly subscription</li>
-                        <li>• Tiered service packages (Starter, Growth, Enterprise)</li>
-                        <li>• Project-based implementation and migration fees</li>
-                        <li>• Add-on services for specialized needs</li>
-                      </ul>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
+                }
+                className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Stakeholder Vignettes */}
+      {/* Enablement Assets */}
+      <section id="enablement" className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">4. Enablement Assets</h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <Card className="bg-white border border-gray-200">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-4">🔹 Customer One-Pager</h3>
+                <p className="mb-4 font-semibold">One predictable monthly fee. Everything your workforce needs.</p>
+                
+                <p className="mb-4">
+                  Lenovo's Device-as-a-Service (DaaS) model in ANZ is built to shift the conversation from hardware refresh to workforce transformation. Every subscription bundles devices, service desk, security, AI productivity tools, and ESG dashboards — wrapped into a single OPEX line.
+                </p>
+
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-semibold">Education – Smart Campus ($8–15M)</h4>
+                    <p className="text-sm"><strong>Baseline:</strong> fleet refresh with ThinkPads + Premier Support.</p>
+                    <p className="text-sm"><strong>Expansion:</strong> TruScale VDI for labs, LMS integration, Autopilot for faculty onboarding.</p>
+                    <p className="text-sm"><strong>ROI:</strong> lower lab operating costs, faster student access, compliance with sustainability grants.</p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold">Healthcare – Digital Hospital ($12–20M)</h4>
+                    <p className="text-sm"><strong>Baseline:</strong> rugged devices with secure imaging and patch compliance.</p>
+                    <p className="text-sm"><strong>Expansion:</strong> TruScale hybrid cloud for patient record access, AI copilots for clinicians, telehealth kits.</p>
+                    <p className="text-sm"><strong>ROI:</strong> downtime reduced 30%, compliance penalties avoided, measurable patient experience improvements.</p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold">Government – Compliance-Ready Workplace ($15–25M)</h4>
+                    <p className="text-sm"><strong>Baseline:</strong> standard secure builds with Premier Support.</p>
+                    <p className="text-sm"><strong>Expansion:</strong> TruScale hybrid + ESG Navigator dashboards, managed service desk, ZTNA.</p>
+                    <p className="text-sm"><strong>ROI:</strong> faster audits, carbon tracking per device, predictable budget cycles.</p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold">SMB – Workforce Packs ($2–5M)</h4>
+                    <p className="text-sm"><strong>Baseline:</strong> laptops, docking, monitors, Premier Support.</p>
+                    <p className="text-sm"><strong>Expansion:</strong> MSP-delivered service desk, Autopilot, AI copilots, ESG dashboards.</p>
+                    <p className="text-sm"><strong>ROI:</strong> reduced churn, improved staff experience, simple billing per headcount.</p>
+                  </div>
+                </div>
+
+                <p className="mt-4 font-medium">Why it matters: Customers move from device churn to a 5-year transformation journey. Each step adds services, margin, and measurable business outcomes.</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-white border border-gray-200">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-4">🔹 Partner One-Pager</h3>
+                <p className="mb-4 font-semibold">Every device becomes a 5-year services relationship.</p>
+                
+                <p className="mb-4">
+                  Lenovo's DaaS and TruScale model is designed for partner profitability and client stickiness. Instead of one-off hardware deals, partners lock in recurring revenue streams tied to devices, services, and ESG/AI value.
+                </p>
+
+                <div className="mb-4">
+                  <h4 className="font-semibold mb-2">Partner Benefits</h4>
+                  <ul className="space-y-1 text-sm">
+                    <li>• <strong>Recurring revenue:</strong> Shift from transactional hardware sales to annuity-style income.</li>
+                    <li>• <strong>Higher margins:</strong> Services, AI copilots, and ESG Navigator add 15–25% uplift.</li>
+                    <li>• <strong>Stickier clients:</strong> Bundles embed Lenovo into daily operations, raising renewal rates.</li>
+                    <li>• <strong>Rebates:</strong> Up to 4% for TruScale and DaaS contracts.</li>
+                    <li>• <strong>Revenue uplift:</strong> 5–10x baseline deal size when bundles are fully adopted.</li>
+                  </ul>
+                </div>
+
+                <div className="mb-4">
+                  <h4 className="font-semibold mb-2">Partner Motions</h4>
+                  <ul className="space-y-1 text-sm">
+                    <li>• <strong>MSPs:</strong> White-label Lenovo Workforce Packs for SMB, with Lenovo brand + partner delivery.</li>
+                    <li>• <strong>GSIs:</strong> Integrate Lenovo's compliance and ESG tools into large government and healthcare programs.</li>
+                    <li>• <strong>ISVs:</strong> Package LMS, telehealth, or retail POS software with Lenovo DaaS bundles.</li>
+                  </ul>
+                </div>
+
+                <p className="font-medium">Why it matters: Partners don't just sell boxes. They own multi-year client relationships, with Lenovo as the backbone for compliance, ESG, and workforce productivity.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Competitive Comparison */}
+      <section id="competitive" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">5. Competitive Comparison</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse bg-white rounded-lg shadow-sm">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border border-gray-300 p-3 text-left font-semibold">Sector</th>
+                  <th className="border border-gray-300 p-3 text-left font-semibold">Lenovo Strength</th>
+                  <th className="border border-gray-300 p-3 text-left font-semibold">HP</th>
+                  <th className="border border-gray-300 p-3 text-left font-semibold">Dell</th>
+                  <th className="border border-gray-300 p-3 text-left font-semibold">HPE</th>
+                  <th className="border border-gray-300 p-3 text-left font-semibold">Apple</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td className="border border-gray-300 p-3">Education</td><td className="border border-gray-300 p-3 text-green-600 font-bold">✔ LMS, VDI, ESG</td><td className="border border-gray-300 p-3">Strong tenders</td><td className="border border-gray-300 p-3">Moderate</td><td className="border border-gray-300 p-3 text-red-600 font-bold">✘ Weak</td><td className="border border-gray-300 p-3">Brand pull, poor lifecycle</td></tr>
+                <tr><td className="border border-gray-300 p-3">Healthcare</td><td className="border border-gray-300 p-3 text-green-600 font-bold">✔ Rugged, telehealth, ESG</td><td className="border border-gray-300 p-3">Lifecycle only</td><td className="border border-gray-300 p-3">Infra-strong</td><td className="border border-gray-300 p-3">Infra-led</td><td className="border border-gray-300 p-3 text-red-600 font-bold">✘ iPads, compliance weak</td></tr>
+                <tr><td className="border border-gray-300 p-3">Government</td><td className="border border-gray-300 p-3 text-green-600 font-bold">✔ Service desk, ESG</td><td className="border border-gray-300 p-3">DaaS leader</td><td className="border border-gray-300 p-3">Moderate</td><td className="border border-gray-300 p-3">PointNext strong</td><td className="border border-gray-300 p-3 text-red-600 font-bold">✘ Weak</td></tr>
+                <tr><td className="border border-gray-300 p-3">SMB</td><td className="border border-gray-300 p-3 text-green-600 font-bold">✔ MSP packs, AI, ESG</td><td className="border border-gray-300 p-3">Channel strong</td><td className="border border-gray-300 p-3">APEX infra</td><td className="border border-gray-300 p-3 text-red-600 font-bold">✘ Weak</td><td className="border border-gray-300 p-3">Leasing, no MSP depth</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Stories */}
       <section id="stories" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">3. Stakeholder Vignettes</h2>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {/* COO Vignette */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">COO: Operational Excellence</h3>
-                  <p className="mb-4 flex-grow">From fragmented operations to unified workforce management platform.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Challenge:</strong> Disparate systems, poor visibility</p>
-                    <p><strong>Solution:</strong> Integrated workforce platform</p>
-                    <p><strong>Outcome:</strong> 35% efficiency gain, real-time dashboards</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">COO Success Story</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">The Challenge</h4>
-                      <p className="text-sm mb-3">
-                        Emma, COO at a major logistics company, struggled with operational visibility. Her workforce was spread across warehouses, offices, and mobile workers, but she had no unified view of productivity, asset utilization, or operational bottlenecks. Different departments used different systems, making cross-functional optimization impossible.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">The Lenovo Solution</h4>
-                      <p className="text-sm mb-3">
-                        Lenovo's TruScale Workforce Platform provided Emma with unified operational dashboards across all workforce segments. Device analytics, productivity metrics, and resource utilization data flowed into a single operational control center, giving her real-time visibility into workforce efficiency and asset performance.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">The Outcome</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• 35% improvement in operational efficiency metrics</li>
-                        <li>• Real-time visibility into workforce productivity</li>
-                        <li>• Proactive maintenance reducing downtime by 45%</li>
-                        <li>• Cross-functional optimization based on unified data</li>
-                        <li>• Strategic workforce planning based on actual usage patterns</li>
-                      </ul>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
+          <h2 className="text-4xl font-bold text-red-600 mb-6">6. Stakeholder Vignettes</h2>
+          <p className="text-lg text-gray-700 mb-8">
+            Real scenarios that show the architect role in action. Each story maps to the job description pillars. 
+            Pick a card or open them all.
+          </p>
 
-            {/* CISO Vignette */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">CISO: Security Leadership</h3>
-                  <p className="mb-4 flex-grow">From security gaps to comprehensive zero-trust workforce protection.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Challenge:</strong> Endpoint security gaps, compliance burden</p>
-                    <p><strong>Solution:</strong> Integrated security platform</p>
-                    <p><strong>Outcome:</strong> 90% reduction in incidents, automated compliance</p>
-                  </div>
-                </div>
+          {/* Flip Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {[
+              {
+                id: 'story-health-gov',
+                title: 'Digital health plus government',
+                description: 'Compliance ready hospital network with public reporting and steady OPEX.',
+                tags: 'Health • Government • Compliance • ESG',
+                fullContent: {
+                  context: 'State hospitals face outages and audit findings. The ministry needs trust back. The network needs a plan that works across sites and budgets.',
+                  pain: 'Unpatched devices. Slow ticket times. No clear ESG view. Headlines and board pressure.',
+                  engagement: 'Set the journey. Support then managed then advisory. Use the risk and opportunity 2x2 to move off device only. Build a joint plan with the CIO and procurement.',
+                  solution: 'Rugged ThinkPads and ThinkSmart. Premier Support with service desk integration. TruScale VDI for secure access. Intune and ZTNA. AI copilots for notes and asset health. ESG Navigator with site and fleet views. One OPEX line.',
+                  enablement: 'Baseline three million then grow to twenty million across eight hospitals. Downtime down by a third. Compliance penalties avoided. Clear service levels and value reviews.',
+                  market: 'HP strong in tenders. Dell infra heavy. HPE program led. Lenovo wins with ESG Navigator and TruScale with partner delivery.',
+                  influence: 'Board wants a clean story. Show quick wins in year one and a platform by year five. Use the execution horizon 2x2. Make outcomes plain.',
+                  outcomes: 'Year one stability and audit fixes. Year three VDI and AI in service. Year five ESG reporting at network level and steady OPEX. Public trust improves.',
+                  lessons: 'Compliance drives adoption. OPEX plus ESG plus AI is the winning mix. Partners extend reach without noise.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
+              },
+              {
+                id: 'story-education',
+                title: 'Smart campus',
+                description: 'Hybrid learning that scales with ESG and VDI. Clear ROI for the board.',
+                tags: 'Education • CIO • VDI • AI',
+                fullContent: {
+                  context: 'A university wants hybrid learning that works and a footprint that meets ESG rules. Spend is tight and student demand is high.',
+                  pain: 'Lab desktops are slow. Imaging is manual. Remote access is clunky. No clean carbon view for grants.',
+                  engagement: 'Map needs to the future of learning pack. Start with one faculty. Show a path to campus wide rollout. Use the customer journey 2x2 to set scope.',
+                  solution: 'ThinkPad and ThinkCentre refresh. Autopilot and Intune. Premier Support with predictive care. TruScale VDI for labs. LMS links for Moodle and Canvas. AI copilots for students and staff. ESG Navigator by cohort and device.',
+                  enablement: 'Baseline two million then expand to fifteen million over five years. Lower cost to run labs. Faster device setup. Better learning access.',
+                  market: 'HP leads many tenders. Apple has brand pull but weak lifecycle. Lenovo wins with VDI and ESG in one plan.',
+                  influence: 'Senate cares about student outcomes and grants. Show access gains and ESG proof. Keep the story in plain terms.',
+                  outcomes: 'Year one pilot live. Year three campus wide VDI. Year five AI and ESG as standard practice.',
+                  lessons: 'Start small. Prove value fast. Make the platform hard to replace.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
+              },
+              {
+                id: 'story-health-procurement',
+                title: 'Procurement first digital hospital',
+                description: 'Risk down and uptime up. Rugged fleet with service desk and TruScale.',
+                tags: 'Health • Procurement • SLAs • OPEX',
+                fullContent: {
+                  context: 'A hospital network buys on risk and value. They want steady cost and clean contracts.',
+                  pain: 'Many device models. Many vendors. SLAs missed. No one view of service.',
+                  engagement: 'Lead with a compliance first pack. Show how OPEX and service desk give control. Bring the partner who runs the desk.',
+                  solution: 'One fleet standard. Premier Support with a shared portal. Patch and image as code. TruScale for peak loads. Telehealth kits. AI for ticket triage.',
+                  enablement: 'Uptime up. Incident time down. Cost spread over the term. Baseline three million to twenty million with scale by site.',
+                  market: 'Dell will push infra and HPE will push programs. Keep the focus on outcomes and service. That is the Lenovo edge.',
+                  influence: 'Keep the language in control terms. Risk down. Outcome up. Contract simple.',
+                  outcomes: 'Better audits. Fewer vendors. Faster rollout. Clear value reviews.',
+                  lessons: 'Procurement is a partner when you speak in their terms and show real control.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
+              },
+              {
+                id: 'story-gov-exec',
+                title: 'State workplace compliance',
+                description: 'Secure devices and service desk with ESG dashboards across sites.',
+                tags: 'Government • Exec • Compliance • ESG',
+                fullContent: {
+                  context: 'A state department needs a secure workplace that meets ESG targets and public rules.',
+                  pain: 'Split budgets. Inconsistent builds. No shared metrics. Slow response to audits.',
+                  engagement: 'Use the gov pack. Show a secure build and a managed desk with TruScale hybrid. Tie it to ESG Navigator so reporting is instant.',
+                  solution: 'Standard devices. ZTNA. Autopilot. Premier Support. TruScale for burst. Dashboards for ESG and SLAs.',
+                  enablement: 'Baseline five million then move to twenty five million with a multi agency scope. One contract and a services catalog.',
+                  market: 'HP strong in this space. Lenovo wins when the story is compliance and service with OPEX and partner reach.',
+                  influence: 'Execs need a clean plan and a single view of value. Keep it simple and prove it in one branch first.',
+                  outcomes: 'Faster audits. Measured service. Better staff experience.',
+                  lessons: 'Compliance gives cover to move fast when the offer is clear and safe.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
+              },
+              {
+                id: 'story-smb-msp',
+                title: 'MSP workforce pack',
+                description: 'Channel led growth in mid market with white label service desk.',
+                tags: 'SMB • MSP • Recurring revenue',
+                fullContent: {
+                  context: 'An MSP wants growth and stable margin. Their clients want simple and fast.',
+                  pain: 'Many tools. Many tickets. Hard to price. Hard to scale.',
+                  engagement: 'Offer the workforce pack under Lenovo brand with MSP delivery. White label the desk. Shared dashboard.',
+                  solution: 'ThinkBook and ThinkCentre. Dock and monitor. Premier Support. Intune and Autopilot. TruScale SMB. AI copilots. Simple tiers.',
+                  enablement: 'One client worth two to five million over term. Ten clients become a stable book. Renewals are built in.',
+                  market: 'Dell will talk infra. Apple will talk devices. Lenovo gives a repeatable pack with partner margin.',
+                  influence: 'Show the MSP how attach creates stickiness. Show how the desk is theirs to run.',
+                  outcomes: 'Faster sales. Lower churn. Better NPS. More cross sell.',
+                  lessons: 'Keep tiers clean. Keep billing simple. Share the win.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
+              },
+              {
+                id: 'story-am-expand',
+                title: 'Land and expand with the AM',
+                description: 'From device win to multi year program with clear attach steps.',
+                tags: 'Sales • Presales • Attach',
+                fullContent: {
+                  context: 'An account manager wins devices. They want to grow the account but the path is not clear.',
+                  pain: 'Short cycles. Price fights. No air cover for service deals.',
+                  engagement: 'Build the account plan with the journey view. Set attach steps. Map roles and ownership with the roles 2x2.',
+                  solution: 'From devices to Premier Support to security and desk. Then TruScale and AI. Then ESG Navigator. Each step has simple proof and a call to value review.',
+                  enablement: 'Sales kit for demos. ROI slides. Competitive points that fit the sector. Clear price bands.',
+                  market: 'Position against HP and Dell with the platform story. Use case links in that sector.',
+                  influence: 'Coach the team. Run exec calls. Keep language plain and linked to outcomes.',
+                  outcomes: 'Higher attach. Better renewals. Multi year view.',
+                  lessons: 'Make the next step obvious. Always book the value review.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
+              },
+              {
+                id: 'story-board',
+                title: 'Board renewal and expansion',
+                description: 'Simple story that links cost trust and compliance to outcomes.',
+                tags: 'Board • Renewal • ESG • Risk',
+                fullContent: {
+                  context: 'A large client is up for renewal. The chair wants trust and proof. The team wants a simple choice.',
+                  pain: 'Many vendors. No single view of value. Fear of risk if they switch.',
+                  engagement: 'Build a board brief with outcomes and numbers. Use the competitor 2x2 to show why Lenovo. Keep to one page per topic in the talk.',
+                  solution: 'Devices and desk and TruScale and AI and ESG as one platform. One OPEX. One dashboard. One owner.',
+                  enablement: 'Baseline to expanded curve with real dates. Audits passed. Staff scores up. Cost stable.',
+                  market: 'Others can sell parts. Lenovo brings the whole. That is the win.',
+                  influence: 'Speak in board terms. Risk and outcome and trust. Make it easy to say yes.',
+                  outcomes: 'Renewal approved. Expansion funded. Simple plan locked.',
+                  lessons: 'Boards back simple plans that show proof and control.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
               }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">CISO Success Story</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">The Challenge</h4>
-                      <p className="text-sm mb-3">
-                        James, CISO at a financial services firm, faced constant security incidents from poorly managed endpoints. His team spent 60% of their time on basic hygiene - patch management, compliance reporting, and incident response - leaving little time for strategic security initiatives. The board was questioning security ROI.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">The Lenovo Solution</h4>
-                      <p className="text-sm mb-3">
-                        Lenovo's integrated security platform automated endpoint management, patch deployment, and compliance reporting. Zero-trust network access, device-level encryption, and AI-powered threat detection created a comprehensive security fabric that required minimal manual intervention.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">The Outcome</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• 90% reduction in security incidents within 12 months</li>
-                        <li>• Automated compliance reporting saving 20 hours/week</li>
-                        <li>• Security team refocused on strategic initiatives</li>
-                        <li>• Comprehensive threat visibility across all endpoints</li>
-                        <li>• Board confidence in security posture and ROI</li>
-                      </ul>
+            ].map((story) => (
+              <FlipCard
+                key={story.id}
+                className="h-96"
+                front={
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-bold text-red-600">{story.title}</h3>
+                    <p className="text-gray-700 font-medium">{story.description}</p>
+                    <p className="text-xs text-red-600 font-medium">{story.tags}</p>
+                    <div className="space-y-2">
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">Context:</p>
+                        <p className="text-sm text-gray-700">{story.fullContent.context}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">Pain:</p>
+                        <p className="text-sm text-gray-700">{story.fullContent.pain}</p>
+                      </div>
                     </div>
                   </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
-
-            {/* CHRO Vignette */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">CHRO: People Experience</h3>
-                  <p className="mb-4 flex-grow">From IT friction to seamless employee experience and productivity insights.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Challenge:</strong> Poor employee IT experience, no productivity data</p>
-                    <p><strong>Solution:</strong> Employee-centric workforce platform</p>
-                    <p><strong>Outcome:</strong> 85% employee satisfaction, data-driven insights</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">CHRO Success Story</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">The Challenge</h4>
-                      <p className="text-sm mb-3">
-                        Lisa, CHRO at a consulting firm, received constant complaints about IT performance affecting productivity. Employee surveys showed technology frustration as the #2 factor in turnover decisions. She had no visibility into how technology choices impacted employee performance and satisfaction.
-                      </p>
+                }
+                back={
+                  <ScrollArea className="h-full">
+                    <div className="space-y-3 pr-2">
+                      <h3 className="text-lg font-bold text-red-600">{story.title}</h3>
+                      <div className="space-y-2 text-xs">
+                        <div>
+                          <p className="font-semibold text-gray-900">Engagement:</p>
+                          <p className="text-gray-700">{story.fullContent.engagement}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">Solution:</p>
+                          <p className="text-gray-700">{story.fullContent.solution}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">Market:</p>
+                          <p className="text-gray-700">{story.fullContent.market}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-green-700">Outcomes:</p>
+                          <p className="text-gray-700">{story.fullContent.outcomes}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">Lessons:</p>
+                          <p className="text-gray-700">{story.fullContent.lessons}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">JD Alignment:</p>
+                          <p className="text-gray-700">{story.fullContent.jdAlignment}</p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          document.getElementById(story.id)?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="mt-4 px-3 py-2 bg-red-600 text-white text-xs rounded-md hover:bg-red-700 transition-colors w-full"
+                      >
+                        View Full Vignette
+                      </button>
                     </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">The Lenovo Solution</h4>
-                      <p className="text-sm mb-3">
-                        Lenovo's employee-focused platform provided both seamless IT experiences and productivity analytics. Employees got consumer-grade device experiences with enterprise security, while Lisa gained insights into technology's impact on performance, collaboration patterns, and employee satisfaction.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">The Outcome</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Employee IT satisfaction improved from 45% to 85%</li>
-                        <li>• Technology-related turnover reduced by 60%</li>
-                        <li>• Data-driven insights for workspace optimization</li>
-                        <li>• Improved collaboration patterns and productivity metrics</li>
-                        <li>• Technology becomes competitive advantage for talent retention</li>
-                      </ul>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
-
-            {/* Head of Procurement Vignette */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Head of Procurement</h3>
-                  <p className="mb-4 flex-grow">From complex vendor management to streamlined strategic partnerships.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Challenge:</strong> Multiple vendors, complex contracts, risk exposure</p>
-                    <p><strong>Solution:</strong> Consolidated vendor platform</p>
-                    <p><strong>Outcome:</strong> 50% vendor reduction, simplified contracts</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Procurement Success Story</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">The Challenge</h4>
-                      <p className="text-sm mb-3">
-                        Michael, Head of Procurement at a healthcare network, managed 15+ technology vendors with overlapping SLAs, conflicting contract terms, and complex renewal cycles. Risk exposure was high, administrative overhead was crushing his team, and cost optimization was limited by fragmented negotiations.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">The Lenovo Solution</h4>
-                      <p className="text-sm mb-3">
-                        Lenovo's consolidated platform approach allowed Michael to replace multiple vendor relationships with a single strategic partnership. Unified contracts, aligned SLAs, and integrated service delivery simplified procurement while maintaining competitive pricing through Lenovo's partner ecosystem.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">The Outcome</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• 50% reduction in active technology vendors</li>
-                        <li>• Simplified contract structure with unified SLAs</li>
-                        <li>• 30% reduction in procurement administrative overhead</li>
-                        <li>• Improved cost optimization through consolidated negotiations</li>
-                        <li>• Strategic partnership enabling innovation focus</li>
-                      </ul>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
+                  </ScrollArea>
+                }
+              />
+            ))}
           </div>
+
+          {/* Controls */}
+          <div className="mb-8 flex gap-3">
+            <button 
+              onClick={expandAllStories}
+              className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors font-medium"
+            >
+              Expand all
+            </button>
+            <button 
+              onClick={collapseAllStories}
+              className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors font-medium"
+            >
+              Collapse all
+            </button>
+          </div>
+
+          {/* Stories accordion */}
+          <Accordion type="multiple" value={storiesValue} onValueChange={setStoriesValue} className="space-y-3">
+            {/* Story 1 */}
+            <AccordionItem id="story-health-gov" value="story-health-gov" className="bg-white rounded-lg shadow-sm border border-gray-200">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                Digital health plus government
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-1">
+                <div className="space-y-4 text-sm">
+                  <p><strong>Context:</strong> State hospitals face outages and audit findings. The ministry needs trust back. The network needs a plan that works across sites and budgets.</p>
+                  <p><strong>Pain:</strong> Unpatched devices. Slow ticket times. No clear ESG view. Headlines and board pressure.</p>
+                  <p><strong>Engagement:</strong> Set the journey. Support then managed then advisory. Use the risk and opportunity 2x2 to move off device only. Build a joint plan with the CIO and procurement.</p>
+                  <p><strong>Solution:</strong> Rugged ThinkPads and ThinkSmart. Premier Support with service desk integration. TruScale VDI for secure access. Intune and ZTNA. AI copilots for notes and asset health. ESG Navigator with site and fleet views. One OPEX line.</p>
+                  <p><strong>Enablement:</strong> Baseline three million then grow to twenty million across eight hospitals. Downtime down by a third. Compliance penalties avoided. Clear service levels and value reviews.</p>
+                  <p><strong>Market:</strong> HP strong in tenders. Dell infra heavy. HPE program led. Lenovo wins with ESG Navigator and TruScale with partner delivery.</p>
+                  <p><strong>Influence:</strong> Board wants a clean story. Show quick wins in year one and a platform by year five. Use the execution horizon 2x2. Make outcomes plain.</p>
+                  <p><strong>Outcomes:</strong> Year one stability and audit fixes. Year three VDI and AI in service. Year five ESG reporting at network level and steady OPEX. Public trust improves.</p>
+                  <p><strong>Lessons:</strong> Compliance drives adoption. OPEX plus ESG plus AI is the winning mix. Partners extend reach without noise.</p>
+                  <p><strong>JD alignment:</strong> Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset</p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Story 2 */}
+            <AccordionItem id="story-education" value="story-education" className="bg-white rounded-lg shadow-sm border border-gray-200">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                Smart campus
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-1">
+                <div className="space-y-4 text-sm">
+                  <p><strong>Context:</strong> A university wants hybrid learning that works and a footprint that meets ESG rules. Spend is tight and student demand is high.</p>
+                  <p><strong>Pain:</strong> Lab desktops are slow. Imaging is manual. Remote access is clunky. No clean carbon view for grants.</p>
+                  <p><strong>Engagement:</strong> Map needs to the future of learning pack. Start with one faculty. Show a path to campus wide rollout. Use the customer journey 2x2 to set scope.</p>
+                  <p><strong>Solution:</strong> ThinkPad and ThinkCentre refresh. Autopilot and Intune. Premier Support with predictive care. TruScale VDI for labs. LMS links for Moodle and Canvas. AI copilots for students and staff. ESG Navigator by cohort and device.</p>
+                  <p><strong>Enablement:</strong> Baseline two million then expand to fifteen million over five years. Lower cost to run labs. Faster device setup. Better learning access.</p>
+                  <p><strong>Market:</strong> HP leads many tenders. Apple has brand pull but weak lifecycle. Lenovo wins with VDI and ESG in one plan.</p>
+                  <p><strong>Influence:</strong> Senate cares about student outcomes and grants. Show access gains and ESG proof. Keep the story in plain terms.</p>
+                  <p><strong>Outcomes:</strong> Year one pilot live. Year three campus wide VDI. Year five AI and ESG as standard practice.</p>
+                  <p><strong>Lessons:</strong> Start small. Prove value fast. Make the platform hard to replace.</p>
+                  <p><strong>JD alignment:</strong> Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset</p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Story 3 */}
+            <AccordionItem id="story-health-procurement" value="story-health-procurement" className="bg-white rounded-lg shadow-sm border border-gray-200">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                Procurement first digital hospital
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-1">
+                <div className="space-y-4 text-sm">
+                  <p><strong>Context:</strong> A hospital network buys on risk and value. They want steady cost and clean contracts.</p>
+                  <p><strong>Pain:</strong> Many device models. Many vendors. SLAs missed. No one view of service.</p>
+                  <p><strong>Engagement:</strong> Lead with a compliance first pack. Show how OPEX and service desk give control. Bring the partner who runs the desk.</p>
+                  <p><strong>Solution:</strong> One fleet standard. Premier Support with a shared portal. Patch and image as code. TruScale for peak loads. Telehealth kits. AI for ticket triage.</p>
+                  <p><strong>Enablement:</strong> Uptime up. Incident time down. Cost spread over the term. Baseline three million to twenty million with scale by site.</p>
+                  <p><strong>Market:</strong> Dell will push infra and HPE will push programs. Keep the focus on outcomes and service. That is the Lenovo edge.</p>
+                  <p><strong>Influence:</strong> Keep the language in control terms. Risk down. Outcome up. Contract simple.</p>
+                  <p><strong>Outcomes:</strong> Better audits. Fewer vendors. Faster rollout. Clear value reviews.</p>
+                  <p><strong>Lessons:</strong> Procurement is a partner when you speak in their terms and show real control.</p>
+                  <p><strong>JD alignment:</strong> Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset</p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Story 4 */}
+            <AccordionItem id="story-gov-exec" value="story-gov-exec" className="bg-white rounded-lg shadow-sm border border-gray-200">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                State workplace compliance
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-1">
+                <div className="space-y-4 text-sm">
+                  <p><strong>Context:</strong> A state department needs a secure workplace that meets ESG targets and public rules.</p>
+                  <p><strong>Pain:</strong> Split budgets. Inconsistent builds. No shared metrics. Slow response to audits.</p>
+                  <p><strong>Engagement:</strong> Use the gov pack. Show a secure build and a managed desk with TruScale hybrid. Tie it to ESG Navigator so reporting is instant.</p>
+                  <p><strong>Solution:</strong> Standard devices. ZTNA. Autopilot. Premier Support. TruScale for burst. Dashboards for ESG and SLAs.</p>
+                  <p><strong>Enablement:</strong> Baseline five million then move to twenty five million with a multi agency scope. One contract and a services catalog.</p>
+                  <p><strong>Market:</strong> HP strong in this space. Lenovo wins when the story is compliance and service with OPEX and partner reach.</p>
+                  <p><strong>Influence:</strong> Execs need a clean plan and a single view of value. Keep it simple and prove it in one branch first.</p>
+                  <p><strong>Outcomes:</strong> Faster audits. Measured service. Better staff experience.</p>
+                  <p><strong>Lessons:</strong> Compliance gives cover to move fast when the offer is clear and safe.</p>
+                  <p><strong>JD alignment:</strong> Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset</p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Story 5 */}
+            <AccordionItem id="story-smb-msp" value="story-smb-msp" className="bg-white rounded-lg shadow-sm border border-gray-200">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                MSP workforce pack
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-1">
+                <div className="space-y-4 text-sm">
+                  <p><strong>Context:</strong> An MSP wants growth and stable margin. Their clients want simple and fast.</p>
+                  <p><strong>Pain:</strong> Many tools. Many tickets. Hard to price. Hard to scale.</p>
+                  <p><strong>Engagement:</strong> Offer the workforce pack under Lenovo brand with MSP delivery. White label the desk. Shared dashboard.</p>
+                  <p><strong>Solution:</strong> ThinkBook and ThinkCentre. Dock and monitor. Premier Support. Intune and Autopilot. TruScale SMB. AI copilots. Simple tiers.</p>
+                  <p><strong>Enablement:</strong> One client worth two to five million over term. Ten clients become a stable book. Renewals are built in.</p>
+                  <p><strong>Market:</strong> Dell will talk infra. Apple will talk devices. Lenovo gives a repeatable pack with partner margin.</p>
+                  <p><strong>Influence:</strong> Show the MSP how attach creates stickiness. Show how the desk is theirs to run.</p>
+                  <p><strong>Outcomes:</strong> Faster sales. Lower churn. Better NPS. More cross sell.</p>
+                  <p><strong>Lessons:</strong> Keep tiers clean. Keep billing simple. Share the win.</p>
+                  <p><strong>JD alignment:</strong> Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset</p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Story 6 */}
+            <AccordionItem id="story-am-expand" value="story-am-expand" className="bg-white rounded-lg shadow-sm border border-gray-200">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                Land and expand with the AM
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-1">
+                <div className="space-y-4 text-sm">
+                  <p><strong>Context:</strong> An account manager wins devices. They want to grow the account but the path is not clear.</p>
+                  <p><strong>Pain:</strong> Short cycles. Price fights. No air cover for service deals.</p>
+                  <p><strong>Engagement:</strong> Build the account plan with the journey view. Set attach steps. Map roles and ownership with the roles 2x2.</p>
+                  <p><strong>Solution:</strong> From devices to Premier Support to security and desk. Then TruScale and AI. Then ESG Navigator. Each step has simple proof and a call to value review.</p>
+                  <p><strong>Enablement:</strong> Sales kit for demos. ROI slides. Competitive points that fit the sector. Clear price bands.</p>
+                  <p><strong>Market:</strong> Position against HP and Dell with the platform story. Use case links in that sector.</p>
+                  <p><strong>Influence:</strong> Coach the team. Run exec calls. Keep language plain and linked to outcomes.</p>
+                  <p><strong>Outcomes:</strong> Higher attach. Better renewals. Multi year view.</p>
+                  <p><strong>Lessons:</strong> Make the next step obvious. Always book the value review.</p>
+                  <p><strong>JD alignment:</strong> Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset</p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Story 7 */}
+            <AccordionItem id="story-board" value="story-board" className="bg-white rounded-lg shadow-sm border border-gray-200">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                Board renewal and expansion
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-1">
+                <div className="space-y-4 text-sm">
+                  <p><strong>Context:</strong> A large client is up for renewal. The chair wants trust and proof. The team wants a simple choice.</p>
+                  <p><strong>Pain:</strong> Many vendors. No single view of value. Fear of risk if they switch.</p>
+                  <p><strong>Engagement:</strong> Build a board brief with outcomes and numbers. Use the competitor 2x2 to show why Lenovo. Keep to one page per topic in the talk.</p>
+                  <p><strong>Solution:</strong> Devices and desk and TruScale and AI and ESG as one platform. One OPEX. One dashboard. One owner.</p>
+                  <p><strong>Enablement:</strong> Baseline to expanded curve with real dates. Audits passed. Staff scores up. Cost stable.</p>
+                  <p><strong>Market:</strong> Others can sell parts. Lenovo brings the whole. That is the win.</p>
+                  <p><strong>Influence:</strong> Speak in board terms. Risk and outcome and trust. Make it easy to say yes.</p>
+                  <p><strong>Outcomes:</strong> Renewal approved. Expansion funded. Simple plan locked.</p>
+                  <p><strong>Lessons:</strong> Boards back simple plans that show proof and control.</p>
+                  <p><strong>JD alignment:</strong> Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset</p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </section>
 
       {/* Customer Engagement Vignettes */}
       <section id="vignettes" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">4. Customer Engagement Vignettes</h2>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {/* Objection Handling */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Objection Handling</h3>
-                  <p className="mb-4 flex-grow">Turning pricing and vendor concerns into platform value conversations.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Common Objection:</strong> "Lenovo is too expensive"</p>
-                    <p><strong>Strategy:</strong> Total cost of ownership analysis</p>
-                    <p><strong>Outcome:</strong> Value-based purchasing decision</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Objection Handling Playbook</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">"Lenovo is too expensive"</h4>
-                      <p className="text-sm mb-2"><strong>Response Framework:</strong></p>
-                      <ul className="text-sm space-y-1">
-                        <li>• "I understand cost is important. Let's look at total value, not just device price."</li>
-                        <li>• "What's your current annual cost for devices + support + security + management?"</li>
-                        <li>• "Our platform typically reduces total workforce costs by 20-40% while improving outcomes."</li>
-                        <li>• Present ROI calculator showing 3-year savings</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">"We're happy with our current vendor"</h4>
-                      <p className="text-sm mb-2"><strong>Response Framework:</strong></p>
-                      <ul className="text-sm space-y-1">
-                        <li>• "That's great to hear. What's working well in your current setup?"</li>
-                        <li>• "If you could improve one thing about your current arrangement, what would it be?"</li>
-                        <li>• "Have you considered the benefits of vendor consolidation?"</li>
-                        <li>• Focus on gaps and future needs, not replacement</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">"We don't need all those services"</h4>
-                      <p className="text-sm mb-2"><strong>Response Framework:</strong></p>
-                      <ul className="text-sm space-y-1">
-                        <li>• "You're right - let's start with what you need today."</li>
-                        <li>• "Our platform grows with you. No need to buy everything upfront."</li>
-                        <li>• "Many clients start with devices and expand as they see value."</li>
-                        <li>• Present modular approach with expansion roadmap</li>
-                      </ul>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
+          <h2 className="text-4xl font-bold text-red-600 mb-6">7. Customer Engagement Vignettes</h2>
+          <p className="text-lg text-gray-700 mb-8">
+            Six real-world scenarios showing how Lenovo's DaaS strategy translates into customer engagement, 
+            solution design, and revenue outcomes across different verticals and stakeholders.
+          </p>
 
-            {/* Renewal & Expansion Motion */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Renewal & Expansion</h3>
-                  <p className="mb-4 flex-grow">Converting existing device clients to full platform subscribers.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Trigger:</strong> 18 months before renewal</p>
-                    <p><strong>Strategy:</strong> Value demonstration and expansion</p>
-                    <p><strong>Outcome:</strong> Platform upsell and multi-year commitment</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Renewal & Expansion Strategy</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Pre-Renewal Activities (18 months out)</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Quarterly business reviews showcasing value delivered</li>
-                        <li>• Usage analytics and optimization recommendations</li>
-                        <li>• Identification of new business challenges and opportunities</li>
-                        <li>• Introduction of new platform capabilities</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Expansion Conversation Framework</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• "Based on your usage patterns, I see opportunities to add..."</li>
-                        <li>• "Your team mentioned challenges with [X]. Our platform can help."</li>
-                        <li>• "Companies similar to yours typically expand into these areas..."</li>
-                        <li>• Present pilot program for new services</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Value Reinforcement</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Document cost savings achieved (typically 25-40%)</li>
-                        <li>• Showcase productivity improvements and user satisfaction</li>
-                        <li>• Highlight security and compliance benefits</li>
-                        <li>• Present roadmap for future platform enhancements</li>
-                      </ul>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
-
-            {/* Pilot-to-Scale Path */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Pilot-to-Scale Path</h3>
-                  <p className="mb-4 flex-grow">Structured approach to proving platform value through targeted pilots.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Start:</strong> Department-level pilot (3-6 months)</p>
-                    <p><strong>Prove:</strong> Measurable value and ROI</p>
-                    <p><strong>Scale:</strong> Organization-wide platform adoption</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Pilot-to-Scale Framework</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Pilot Design (3-6 months)</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Select representative department (50-200 users)</li>
-                        <li>• Define clear success metrics and measurement methods</li>
-                        <li>• Implement core platform services with full support</li>
-                        <li>• Weekly check-ins and monthly progress reviews</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Success Metrics Tracking</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• User satisfaction scores (target: 8.0+)</li>
-                        <li>• IT support ticket reduction (target: 40-60%)</li>
-                        <li>• Device performance and reliability metrics</li>
-                        <li>• Cost per user compared to baseline</li>
-                        <li>• Security incident reduction</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Scale Preparation</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Document pilot results and lessons learned</li>
-                        <li>• Create business case for organization-wide deployment</li>
-                        <li>• Design phased rollout plan for remaining users</li>
-                        <li>• Establish change management and training programs</li>
-                      </ul>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
-
-            {/* Partner Co-Sell Play */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Partner Co-Sell</h3>
-                  <p className="mb-4 flex-grow">Leveraging ecosystem partners to expand platform reach and capabilities.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Key Partners:</strong> Microsoft, VMware, ServiceNow</p>
-                    <p><strong>Strategy:</strong> Joint value propositions</p>
-                    <p><strong>Outcome:</strong> Expanded deal size and capabilities</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Partner Co-Sell Strategy</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Microsoft Partnership</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Lenovo devices optimized for Microsoft 365 and Teams</li>
-                        <li>• Autopilot deployment and Intune management integration</li>
-                        <li>• Azure hybrid cloud connectivity through TruScale</li>
-                        <li>• Joint customer presentations and proposals</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">ServiceNow Integration</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• ITSM integration for unified service management</li>
-                        <li>• Automated incident management and resolution</li>
-                        <li>• Asset lifecycle management through ServiceNow ITAM</li>
-                        <li>• Employee portal integration for self-service</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Co-Sell Approach</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Joint discovery calls to identify integration opportunities</li>
-                        <li>• Combined proposals showcasing integrated value</li>
-                        <li>• Shared customer success stories and case studies</li>
-                        <li>• Partner referral programs and incentive alignment</li>
-                      </ul>
+          {/* Flip Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {[
+              {
+                id: 'vignette-1',
+                title: 'Education CIO',
+                subtitle: 'Smart Campus Transformation',
+                context: 'University CIO tasked with modernising IT for hybrid learning. Budget caps, sustainability mandates.',
+                pain: 'Device fleet refresh becomes another short-term patch. Multiple vendor complexity.',
+                outcome: 'Multi-year Lenovo-led transformation. $2M baseline → $15M expanded.',
+                alignment: 'Client engagement • Solution design • Sales enablement • Market insight • Influence',
+                fullDetails: {
+                  jdAlignment: [
+                    'Client Engagement & Strategy: Map CIO pain into Lenovo\'s "Future of Learning" pack. Frame as multi-year journey.',
+                    'Solution Design & Delivery: Orchestrate Lenovo presales + MSP for Intune/Autopilot + TruScale VDI + ESG dashboards.',
+                    'Sales Enablement & Execution: Present ROI curve: $2M baseline → $15M expanded.',
+                    'Market Insight: Contrast Lenovo\'s ESG Navigator + OPEX model with HP/Dell infra-heavy.',
+                    'Influence & Mindset: Simplify stack → "From device refresh to Smart Campus."'
+                  ],
+                  narrative: 'CIO fears device fleet refresh will become another short-term patch. Troy reframes: devices + TruScale + AI copilots + ESG = Smart Campus platform. Stakeholders (faculty, IT leads, board) each see their win.'
+                }
+              },
+              {
+                id: 'vignette-2',
+                title: 'Healthcare Procurement',
+                subtitle: 'Digital Hospital Strategy',
+                context: 'State hospital group must refresh rugged devices, meet compliance, cut downtime.',
+                pain: 'Procurement sees only cost; compliance risk growing; vendor fragmentation.',
+                outcome: 'Lenovo trusted partner for both procurement and clinicians. Platform approach wins.',
+                alignment: 'Client engagement • Solution delivery • Sales enablement • Market insight',
+                fullDetails: {
+                  jdAlignment: [
+                    'Client Engagement & Strategy: Reframe procurement conversation from "cost" to "compliance + control."',
+                    'Solution Design & Delivery: Build sector-specific health pack with rugged devices + service desk + compliance dashboard.',
+                    'Sales Enablement & Execution: Show TCO with risk mitigation vs. device-only approaches.',
+                    'Market Insight: Position against Dell/HP infra complexity with simpler Lenovo platform story.'
+                  ],
+                  narrative: 'Procurement lead initially sees device refresh as commodity purchase. Troy demonstrates how Lenovo\'s health pack reduces vendor complexity, meets compliance mandates, and provides OPEX predictability. Board approves multi-year platform approach.'
+                }
+              },
+              {
+                id: 'vignette-3',
+                title: 'State Government Executive',
+                subtitle: 'Gov Compliance Platform',
+                context: 'State department pressured by ESG targets, citizen trust, fragmented IT spend.',
+                pain: 'Too many vendors. No clear value view. Risk of complex procurement cycles.',
+                outcome: 'Lenovo positioned as strategic ANZ government partner. Compliance-ready workplace.',
+                alignment: 'Client engagement • Solution delivery • Sales enablement • Market insight',
+                fullDetails: {
+                  jdAlignment: [
+                    'Client Engagement & Strategy: Frame Lenovo as the "whole-of-government workplace" partner.',
+                    'Solution Design & Delivery: Orchestrate secure devices + ESG Navigator + compliance dashboards.',
+                    'Sales Enablement & Execution: Present government pack with clear ROI and risk mitigation.',
+                    'Market Insight: Differentiate from HP/Dell with integrated ESG + compliance story.'
+                  ],
+                  narrative: 'Executive wants simple governance story for citizen trust. Troy positions Lenovo government pack as the single-vendor solution for secure, compliant, and sustainable workplace across agencies.'
+                }
+              },
+              {
+                id: 'vignette-4',
+                title: 'SMB MSP Partner',
+                subtitle: 'Workforce Pack Scale-out',
+                context: 'MSP servicing 500-seat commercial mid-market. Seeks growth via Lenovo partnership.',
+                pain: 'MSP wary of Lenovo cutting into margin. Complex integration challenges.',
+                outcome: 'Lenovo sticks in SMB via MSP scale-out. Partner-led revenue growth.',
+                alignment: 'Client engagement • Solution delivery • Sales enablement • Market insight',
+                fullDetails: {
+                  jdAlignment: [
+                    'Client Engagement & Strategy: Build MSP as true partner, not just channel.',
+                    'Solution Design & Delivery: Design white-label workforce packs with MSP branding.',
+                    'Sales Enablement & Execution: Enable MSP with repeatable sales playbooks and ROI models.',
+                    'Market Insight: Position Lenovo+MSP as alternative to Dell/HP direct approaches.'
+                  ],
+                  narrative: 'MSP wants growth but fears vendor conflict. Troy structures partnership where Lenovo provides platform, MSP owns client relationship, shared success metrics align both parties.'
+                }
+              },
+              {
+                id: 'vignette-5',
+                title: 'Lenovo Account Manager',
+                subtitle: 'Land & Expand Strategy',
+                context: 'AM wins devices but wants account growth. Limited services capability.',
+                pain: 'Short cycles. Price fights. No clear expansion pathway.',
+                outcome: 'Higher attach rates. Better renewals. Multi-year account relationship.',
+                alignment: 'Client engagement • Solution design • Sales enablement • Market insight',
+                fullDetails: {
+                  jdAlignment: [
+                    'Client Engagement & Strategy: Coach AM to move from transactional to strategic account management.',
+                    'Solution Design & Delivery: Build account expansion roadmap using vertical packs.',
+                    'Sales Enablement & Execution: Provide AM with attach tools, competitive battlecards, ROI calculators.',
+                    'Market Insight: Position services attach as differentiation vs. HP/Dell device-only approaches.'
+                  ],
+                  narrative: 'AM comfortable selling devices but struggles with services expansion. Troy enables with structured land-and-expand methodology, clear value propositions for each attach opportunity.'
+                }
+              },
+              {
+                id: 'vignette-6',
+                title: 'Board Chair',
+                subtitle: 'Renewal & Expansion Decision',
+                context: 'Large customer board deciding renewal. Chair wants confidence in compliance and ESG.',
+                pain: 'Vendor fatigue. Risk aversion. Need for simple governance story.',
+                outcome: 'Renewal approved, expansion budget unlocked, board trust cemented.',
+                alignment: 'Client engagement • Solution delivery • Sales enablement • Influence',
+                fullDetails: {
+                  jdAlignment: [
+                    'Client Engagement & Strategy: Frame Lenovo as the "trusted platform partner" for board confidence.',
+                    'Solution Design & Delivery: Present integrated platform story: devices + services + ESG + compliance.',
+                    'Sales Enablement & Execution: Enable stakeholders with board-ready business case and ROI proof.',
+                    'Influence & Mindset: Simplify complex IT landscape into single vendor relationship for governance ease.'
+                  ],
+                  narrative: 'Board chair tired of vendor complexity, wants simple renewal decision. Troy presents Lenovo as the single-platform solution that reduces vendor risk, meets compliance obligations, and delivers measurable outcomes.'
+                }
+              },
+            ].map((vignette) => (
+              <FlipCard
+                key={vignette.id}
+                className="h-96"
+                front={
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-bold text-red-600">{vignette.title}</h3>
+                    <p className="text-gray-700 font-medium">{vignette.subtitle}</p>
+                    <div className="space-y-3">
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">Context:</p>
+                        <p className="text-sm text-gray-700">{vignette.context}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">Challenge:</p>
+                        <p className="text-sm text-gray-700">{vignette.pain}</p>
+                      </div>
                     </div>
                   </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
-
-            {/* Change Management & Adoption */}
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Change Management</h3>
-                  <p className="mb-4 flex-grow">Ensuring smooth adoption and maximizing value realization from platform deployment.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Focus:</strong> User adoption and business value realization</p>
-                    <p><strong>Method:</strong> Structured change management</p>
-                    <p><strong>Outcome:</strong> High adoption rates and customer satisfaction</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Change Management Framework</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Pre-Deployment</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Stakeholder mapping and communication planning</li>
-                        <li>• Change readiness assessment and risk mitigation</li>
-                        <li>• Executive sponsorship and change champion network</li>
-                        <li>• Training program design and resource preparation</li>
-                      </ul>
+                }
+                back={
+                  <ScrollArea className="h-full">
+                    <div className="space-y-3 pr-2">
+                      <h3 className="text-lg font-bold text-red-600">{vignette.title}</h3>
+                      <div className="space-y-2 text-xs">
+                        <div>
+                          <p className="font-semibold text-green-700">Outcome:</p>
+                          <p className="text-gray-700">{vignette.outcome}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">JD Alignment:</p>
+                          <ul className="space-y-1 text-gray-700">
+                            {vignette.fullDetails.jdAlignment.map((item, index) => (
+                              <li key={index}>• {item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">Narrative Arc:</p>
+                          <p className="text-gray-700">{vignette.fullDetails.narrative}</p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          document.getElementById(vignette.id)?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="mt-4 px-3 py-2 bg-red-600 text-white text-xs rounded-md hover:bg-red-700 transition-colors w-full"
+                      >
+                        View Full Vignette
+                      </button>
                     </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Deployment Phase</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Phased rollout with early adopter programs</li>
-                        <li>• Intensive support during transition periods</li>
-                        <li>• Regular feedback collection and issue resolution</li>
-                        <li>• Success story sharing and momentum building</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Post-Deployment</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Adoption metrics tracking and reporting</li>
-                        <li>• Advanced training and optimization workshops</li>
-                        <li>• Continuous improvement and feature enhancement</li>
-                        <li>• Customer success reviews and expansion planning</li>
-                      </ul>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
+                  </ScrollArea>
+                }
+              />
+            ))}
           </div>
+
+          {/* Expand/Collapse Controls */}
+          <div className="flex justify-center gap-4 mb-8">
+            <button
+              onClick={() => {
+                const allItems = ['vignette-1', 'vignette-2', 'vignette-3', 'vignette-4', 'vignette-5', 'vignette-6'];
+                // Simulate expanding all accordions by clicking each trigger
+                allItems.forEach(id => {
+                  const trigger = document.querySelector(`[data-state="closed"][aria-controls*="${id}"]`) as HTMLButtonElement;
+                  if (trigger) trigger.click();
+                });
+              }}
+              className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+            >
+              Expand All
+            </button>
+            <button
+              onClick={() => {
+                const allItems = ['vignette-1', 'vignette-2', 'vignette-3', 'vignette-4', 'vignette-5', 'vignette-6'];
+                // Simulate collapsing all accordions by clicking each open trigger
+                allItems.forEach(id => {
+                  const trigger = document.querySelector(`[data-state="open"][aria-controls*="${id}"]`) as HTMLButtonElement;
+                  if (trigger) trigger.click();
+                });
+              }}
+              className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors"
+            >
+              Collapse All
+            </button>
+          </div>
+          
+          <Accordion type="single" collapsible className="space-y-3">
+            <AccordionItem id="vignette-1" value="vignette-1" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                1. Education CIO – Smart Campus
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
+                    <p>University CIO tasked with modernising IT for hybrid learning. Budget caps, sustainability mandates, student expectations for digital-first experience.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
+                    <ul className="space-y-1 text-sm">
+                      <li><strong>Client Engagement & Strategy:</strong> Map CIO pain into Lenovo's "Future of Learning" pack. Frame as multi-year journey.</li>
+                      <li><strong>Solution Design & Delivery:</strong> Orchestrate Lenovo presales + MSP for Intune/Autopilot + TruScale VDI + ESG dashboards.</li>
+                      <li><strong>Sales Enablement & Execution:</strong> Present ROI curve: $2M baseline → $15M expanded.</li>
+                      <li><strong>Market Insight:</strong> Contrast Lenovo's ESG Navigator + OPEX model with HP/Dell infra-heavy.</li>
+                      <li><strong>Influence & Mindset:</strong> Simplify stack → "From device refresh to Smart Campus."</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
+                    <p>CIO fears device fleet refresh will become another short-term patch. Troy reframes: devices + TruScale + AI copilots + ESG = Smart Campus platform. Stakeholders (faculty, IT leads, board) each see their win.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
+                    <p className="font-medium text-green-700">Multi-year Lenovo-led transformation.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem id="vignette-2" value="vignette-2" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                2. Healthcare Procurement Lead – Digital Hospital
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
+                    <p>State hospital group must refresh rugged devices, meet compliance, cut downtime. Procurement driven by risk, cost, and compliance obligations.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
+                    <ul className="space-y-1 text-sm">
+                      <li><strong>Client Engagement:</strong> Build trust with procurement and CIO by showing compliance-first bundles.</li>
+                      <li><strong>Solution Delivery:</strong> Bundle rugged devices + TruScale infra + telehealth kits + patch automation.</li>
+                      <li><strong>Sales Enablement:</strong> ROI framing: downtime reduced 30%, compliance costs down, $3M baseline → $20M expanded.</li>
+                      <li><strong>Market Insight:</strong> Dell pushes infra, HP pushes lifecycle only. Lenovo differentiates on compliance dashboards + telehealth kits.</li>
+                      <li><strong>Influence:</strong> Translate "compliance risk" into measurable Lenovo outcomes.</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
+                    <p>Procurement sees only cost; Troy shows compliance and resilience wins. CIO and clinicians gain secure, reliable digital hospital tools.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
+                    <p className="font-medium text-green-700">Lenovo trusted partner for both procurement and clinicians.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem id="vignette-3" value="vignette-3" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                3. State Government Executive – Gov Compliance
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
+                    <p>State department pressured by ESG targets, citizen trust, and fragmented IT spend. Need predictable OPEX, compliance dashboards, and clear procurement models.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
+                    <ul className="space-y-1 text-sm">
+                      <li><strong>Client Engagement:</strong> Partner with agency execs to map ESG + OPEX pain into Lenovo Gov Pack.</li>
+                      <li><strong>Solution Delivery:</strong> Orchestrate service desk integration + TruScale hybrid + ESG Navigator.</li>
+                      <li><strong>Sales Enablement:</strong> ROI case = $5M baseline → $25M expanded.</li>
+                      <li><strong>Market Insight:</strong> HP strong in tenders, HPE infra-led, Lenovo wins with compliance story.</li>
+                      <li><strong>Influence:</strong> Use frameworks to show value to both procurement and board.</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
+                    <p>Exec wants "less vendor noise, more outcomes." Troy reframes Lenovo as compliance-ready workplace provider. Stakeholders: CIO, Procurement, ESG officer, Minister's office.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
+                    <p className="font-medium text-green-700">Lenovo positioned as strategic ANZ government partner.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem id="vignette-4" value="vignette-4" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                4. SMB MSP Partner – Workforce Pack
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
+                    <p>MSP servicing 500-seat commercial mid-market. Lenovo sees growth via partner-led SMB Workforce Pack.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
+                    <ul className="space-y-1 text-sm">
+                      <li><strong>Client Engagement:</strong> Work with MSP execs to package Lenovo Workforce Pack as white-label.</li>
+                      <li><strong>Solution Delivery:</strong> MSP integrates Lenovo devices + service desk + TruScale SMB + AI copilots.</li>
+                      <li><strong>Sales Enablement:</strong> ROI = $0.5M baseline → $5M expanded across multiple SMB clients.</li>
+                      <li><strong>Market Insight:</strong> Lenovo unique for MSP-ready bundles; Dell lacks SMB focus.</li>
+                      <li><strong>Influence:</strong> Position Lenovo as partner-enabler, not competitor.</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
+                    <p>MSP wary of Lenovo cutting into margin. Troy shows Lenovo's model = more recurring revenue for MSP.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
+                    <p className="font-medium text-green-700">Lenovo sticks in SMB via MSP scale-out.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem id="vignette-5" value="vignette-5" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                5. Lenovo Account Manager – Land & Expand
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
+                    <p>AM wins devices but wants account growth. Limited services experience. Customer open to more but needs guidance.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
+                    <ul className="space-y-1 text-sm">
+                      <li><strong>Client Engagement:</strong> Enablement and support for AM team to drive services attach.</li>
+                      <li><strong>Solution Design:</strong> Build account plan with clear growth pathways and attach points.</li>
+                      <li><strong>Sales Enablement:</strong> ROI slides, competitive points, clear price bands for each service tier.</li>
+                      <li><strong>Market Insight:</strong> Position against HP/Dell with platform story specific to customer sector.</li>
+                      <li><strong>Influence:</strong> Coach team, run exec calls, keep language plain and outcome-focused.</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
+                    <p>AM stuck in device refresh cycles. Troy provides expansion roadmap: devices → support → managed → platform. Clear steps, clear value at each stage.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
+                    <p className="font-medium text-green-700">Higher attach rates, better renewals, multi-year relationship.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem id="vignette-6" value="vignette-6" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                6. Board Chair – Renewal & Expansion
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Context</h4>
+                    <p>Large customer's board deciding renewal. Chair wants confidence in compliance, ESG, long-term partnership.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">JD Alignment</h4>
+                    <ul className="space-y-1 text-sm">
+                      <li><strong>Client Engagement:</strong> Engage at board level with simple, outcome-first framing.</li>
+                      <li><strong>Solution Delivery:</strong> Position TruScale + ESG Navigator + AI copilots as the platform.</li>
+                      <li><strong>Sales Enablement:</strong> ROI story baseline → expanded, with compliance dashboards.</li>
+                      <li><strong>Market Insight:</strong> Show why Lenovo vs Dell/HP/HPE in long-term governance.</li>
+                      <li><strong>Influence:</strong> Translate complexity into a simple story the board can back.</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Narrative Arc</h4>
+                    <p>Board wary of another vendor cycle. Troy reframes Lenovo as partner in compliance + ESG + digital workplace strategy.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Outcome</h4>
+                    <p className="font-medium text-green-700">Renewal approved, expansion budget unlocked, board trust cemented.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </section>
 
-      {/* 2x2 Strategic Frameworks */}
-      <section id="frameworks" className="py-16 bg-gray-50">
+      {/* Enhancements & Differentiators */}
+      <section id="enhancements-expanded" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">5. Strategic 2×2 Frameworks</h2>
-          
-          <TwoByTwoHeatmap className="mb-8" />
-          
-          <div id="two-by-two-complete" className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Customer Relationship Matrix</h3>
-              <table className="w-full border border-gray-300">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border border-gray-300 p-3"></th>
-                    <th className="border border-gray-300 p-3">Transactional</th>
-                    <th className="border border-gray-300 p-3">Strategic</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Device-Focused</td>
-                    <td className="border border-gray-300 p-3">6</td>
-                    <td className="border border-gray-300 p-3">7</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Platform-Focused</td>
-                    <td className="border border-gray-300 p-3">8</td>
-                    <td className="border border-gray-300 p-3">9</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">8. Enhancements & Differentiators</h2>
 
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Technology Architecture Matrix</h3>
-              <table className="w-full border border-gray-300">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border border-gray-300 p-3"></th>
-                    <th className="border border-gray-300 p-3">Point Solutions</th>
-                    <th className="border border-gray-300 p-3">Integrated Platform</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Current State</td>
-                    <td className="border border-gray-300 p-3">4</td>
-                    <td className="border border-gray-300 p-3">6</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Future State</td>
-                    <td className="border border-gray-300 p-3">7</td>
-                    <td className="border border-gray-300 p-3">9</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <p className="text-lg mb-8">
+            DaaS is the start. The edge comes from turning every deal into a platform subscription. 
+            Hardware plus cloud plus AI plus ESG plus employee experience. One predictable fee. 
+            This is how Lenovo becomes a strategic partner, not a box supplier.
+          </p>
 
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Competitive Positioning Matrix</h3>
-              <table className="w-full border border-gray-300">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border border-gray-300 p-3"></th>
-                    <th className="border border-gray-300 p-3">Device Heritage</th>
-                    <th className="border border-gray-300 p-3">Cloud Native</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Limited Services</td>
-                    <td className="border border-gray-300 p-3">5</td>
-                    <td className="border border-gray-300 p-3">6</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Full Platform</td>
-                    <td className="border border-gray-300 p-3">8</td>
-                    <td className="border border-gray-300 p-3">7</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Unified CIO Dashboard */}
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-red-600 mb-3">Unified CIO Dashboard</h3>
+                <p className="mb-4">
+                  One control plane. CIOs see device health, ticket volume, SLA trends, AI usage, and ESG metrics. 
+                  Reports are ready for exec and board review. Risk is visible and managed. 
+                  Actions tie back to services and renewals, which keeps Lenovo at the table.
+                </p>
+                <p className="text-sm text-gray-600">
+                  Value to customer is faster decisions and cleaner audits. 
+                  Value to Lenovo is stickier services and clear expansion paths.
+                </p>
+              </CardContent>
+            </Card>
 
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Market Opportunity Matrix</h3>
-              <table className="w-full border border-gray-300">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border border-gray-300 p-3"></th>
-                    <th className="border border-gray-300 p-3">Low Competition</th>
-                    <th className="border border-gray-300 p-3">High Competition</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Niche Market</td>
-                    <td className="border border-gray-300 p-3">8</td>
-                    <td className="border border-gray-300 p-3">6</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Mass Market</td>
-                    <td className="border border-gray-300 p-3">9</td>
-                    <td className="border border-gray-300 p-3">5</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            {/* TruScale Cloud Credits */}
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-red-600 mb-3">TruScale Cloud Credits</h3>
+                <p className="mb-4">
+                  Every DaaS deal includes cloud credits. Azure or AWS or GCP on Lenovo infrastructure. 
+                  Devices lead to hybrid use cases. VDI. App hosting. Data workloads. 
+                  Credits convert to steady TruScale consumption.
+                </p>
+                <p className="text-sm text-gray-600">
+                  Customers move from refresh cycles to a simple OPEX model. 
+                  Lenovo grows as usage grows. Partners can attach migration and ops services.
+                </p>
+              </CardContent>
+            </Card>
 
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Risk vs Opportunity Matrix</h3>
-              <table className="w-full border border-gray-300">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border border-gray-300 p-3"></th>
-                    <th className="border border-gray-300 p-3">Low Risk</th>
-                    <th className="border border-gray-300 p-3">High Risk</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Low Opportunity</td>
-                    <td className="border border-gray-300 p-3">4</td>
-                    <td className="border border-gray-300 p-3">3</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">High Opportunity</td>
-                    <td className="border border-gray-300 p-3">9</td>
-                    <td className="border border-gray-300 p-3">7</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            {/* Employee Experience Tier */}
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-red-600 mb-3">Employee Experience Tier</h3>
+                <p className="mb-4">
+                  Beyond uptime. Add ThinkSmart rooms, headset and monitor kits, and AI copilots. 
+                  Layer in wellbeing and productivity insights. Tie telemetry to actions like image fixes and device swaps.
+                </p>
+                <p className="text-sm text-gray-600">
+                  HR sees better retention signals. IT sees fewer tickets. 
+                  Finance sees value per headcount. This turns DEX into a renewal driver.
+                </p>
+              </CardContent>
+            </Card>
 
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Implementation Horizon Matrix</h3>
-              <table className="w-full border border-gray-300">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border border-gray-300 p-3"></th>
-                    <th className="border border-gray-300 p-3">Short Term</th>
-                    <th className="border border-gray-300 p-3">Long Term</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Low Complexity</td>
-                    <td className="border border-gray-300 p-3">8</td>
-                    <td className="border border-gray-300 p-3">7</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-3 font-semibold bg-gray-50">High Complexity</td>
-                    <td className="border border-gray-300 p-3">6</td>
-                    <td className="border border-gray-300 p-3">9</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            {/* Sustainability Guarantee */}
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-red-600 mb-3">Sustainability Guarantee</h3>
+                <p className="mb-4">
+                  ESG Navigator is included. Carbon per device is tracked. Asset reuse and recycling are logged. 
+                  Optional offsets close the loop. Reports align to state and federal rules in ANZ.
+                </p>
+                <p className="text-sm text-gray-600">
+                  Boards get proof. Procurement gets a safer tender response. 
+                  Lenovo stands out when price is close and risk is the tie breaker.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Named Vertical Packs */}
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-red-600 mb-3">Named Vertical Packs</h3>
+                <p className="mb-4">
+                  Future of Learning. Digital Hospital. Gov Compliance. SMB Workforce. 
+                  Each pack is a ready path from device to platform. Clear steps. Clear pricing bands. Clear ROI ranges.
+                </p>
+                <p className="text-sm text-gray-600">
+                  Sales teams move fast. Partners see where they fit. 
+                  Customers know the next step after the pilot. Deals scale to program size.
+                </p>
+              </CardContent>
+            </Card>
           </div>
+
+          <p className="text-lg mt-8 text-center">
+            Strategic outcome is simple. Higher attach. Larger average deal size. 
+            Better renewals. A services led business that compounds over time.
+          </p>
         </div>
       </section>
 
       {/* Revenue Trajectory */}
       <section id="trajectory" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">6. Revenue Trajectory</h2>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">9. 5-Year Revenue Trajectory</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse bg-white rounded-lg shadow-sm">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border border-gray-300 p-3 text-left font-semibold">Sector</th>
+                  <th className="border border-gray-300 p-3 text-left font-semibold">Baseline Year 5</th>
+                  <th className="border border-gray-300 p-3 text-left font-semibold">Expanded Year 5</th>
+                  <th className="border border-gray-300 p-3 text-left font-semibold">Growth Multiple</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td className="border border-gray-300 p-3">Education</td><td className="border border-gray-300 p-3">$2M</td><td className="border border-gray-300 p-3">$15M</td><td className="border border-gray-300 p-3">4–7x</td></tr>
+                <tr><td className="border border-gray-300 p-3">Healthcare</td><td className="border border-gray-300 p-3">$3M</td><td className="border border-gray-300 p-3">$20M</td><td className="border border-gray-300 p-3">5–6x</td></tr>
+                <tr><td className="border border-gray-300 p-3">Government</td><td className="border border-gray-300 p-3">$5M</td><td className="border border-gray-300 p-3">$25M</td><td className="border border-gray-300 p-3">4–5x</td></tr>
+                <tr><td className="border border-gray-300 p-3">SMB</td><td className="border border-gray-300 p-3">$0.5M</td><td className="border border-gray-300 p-3">$5M</td><td className="border border-gray-300 p-3">5–10x</td></tr>
+                <tr className="bg-gray-50 font-semibold"><td className="border border-gray-300 p-3">Total</td><td className="border border-gray-300 p-3">$10.5M</td><td className="border border-gray-300 p-3">$65M</td><td className="border border-gray-300 p-3">~6x</td></tr>
+              </tbody>
+            </table>
+          </div>
           
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold mb-4">5-Year Growth Projection: $40M → $130M</h3>
-            <ChartContainer 
-              className="h-96"
+          {/* Revenue Chart */}
+          <div className="mt-8 bg-white p-6 rounded-lg shadow-sm">
+            <ChartContainer
               config={{
-                education: { label: "Education", color: "#3b82f6" },
-                healthcare: { label: "Healthcare", color: "#10b981" },
-                government: { label: "Government", color: "#f59e0b" },
-                smb: { label: "SMB", color: "#ef4444" }
+                baseline: {
+                  label: "Baseline Year 5",
+                  color: "#777777",
+                },
+                expanded: {
+                  label: "Expanded Year 5", 
+                  color: "#e2231a",
+                },
               }}
+              className="h-80 w-full"
             >
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={revenueData}>
-                  <XAxis dataKey="year" />
-                  <YAxis />
-                  <ChartTooltip content={<ChartTooltipContent />} />
-                  <Bar dataKey="education" stackId="a" fill="#3b82f6" name="Education" />
-                  <Bar dataKey="healthcare" stackId="a" fill="#10b981" name="Healthcare" />
-                  <Bar dataKey="government" stackId="a" fill="#f59e0b" name="Government" />
-                  <Bar dataKey="smb" stackId="a" fill="#ef4444" name="SMB" />
-                </BarChart>
-              </ResponsiveContainer>
+              <BarChart
+                data={[
+                  { sector: "Education", baseline: 2, expanded: 15 },
+                  { sector: "Healthcare", baseline: 3, expanded: 20 },
+                  { sector: "Government", baseline: 5, expanded: 25 },
+                  { sector: "SMB", baseline: 0.5, expanded: 5 },
+                ]}
+              >
+                <XAxis dataKey="sector" />
+                <YAxis label={{ value: 'Revenue ($M)', angle: -90, position: 'insideLeft' }} />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Bar dataKey="baseline" fill="#777777" />
+                <Bar dataKey="expanded" fill="#e2231a" />
+              </BarChart>
             </ChartContainer>
-            
-            <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="text-center">
-                <div className="w-4 h-4 bg-blue-500 rounded mx-auto mb-2"></div>
-                <p className="text-sm font-semibold">Education</p>
-                <p className="text-xs text-gray-600">$8M → $25M</p>
-              </div>
-              <div className="text-center">
-                <div className="w-4 h-4 bg-green-500 rounded mx-auto mb-2"></div>
-                <p className="text-sm font-semibold">Healthcare</p>
-                <p className="text-xs text-gray-600">$12M → $35M</p>
-              </div>
-              <div className="text-center">
-                <div className="w-4 h-4 bg-amber-500 rounded mx-auto mb-2"></div>
-                <p className="text-sm font-semibold">Government</p>
-                <p className="text-xs text-gray-600">$15M → $50M</p>
-              </div>
-              <div className="text-center">
-                <div className="w-4 h-4 bg-red-500 rounded mx-auto mb-2"></div>
-                <p className="text-sm font-semibold">SMB</p>
-                <p className="text-xs text-gray-600">$5M → $20M</p>
-              </div>
-            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Q&A Section */}
-      <section id="qa" className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">7. Questions & Strategic Responses</h2>
           
-          <div className="grid md:grid-cols-1 gap-6 mb-8">
-            <FlipCard
-              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-              hideFlipHint={true}
-              front={
-                <div className="h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-red-600">Strategic Vision & Market Analysis</h3>
-                  <p className="mb-4 flex-grow">Key questions about market positioning, competitive landscape, and strategic direction.</p>
-                  <div className="space-y-2 text-sm">
-                    <p><strong>Focus:</strong> Long-term strategy and market dynamics</p>
-                    <p><strong>Depth:</strong> Executive-level strategic thinking</p>
-                    <p><strong>Value:</strong> Demonstrating market understanding and vision</p>
-                  </div>
-                </div>
-              }
-              back={
-                <ScrollArea className="h-full">
-                  <div className="space-y-4 pr-2">
-                    <h3 className="text-xl font-bold text-red-600">Strategic Q&A</h3>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Q: How do you see the ANZ market evolving for services-led growth?</h4>
-                      <p className="text-sm mb-3">
-                        <strong>A:</strong> ANZ is uniquely positioned for services transformation. Three drivers: 1) Regulatory complexity (data sovereignty, privacy) favors integrated compliance, 2) Skills shortage makes managed services attractive, 3) ESG mandates create demand for sustainability platforms. Lenovo's heritage in devices + TruScale platform positions us to capture this shift before pure-play cloud providers.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Q: What's your view on competitive threats from Microsoft, AWS, Google?</h4>
-                      <p className="text-sm mb-3">
-                        <strong>A:</strong> They're partners, not competitors. Microsoft needs device optimization for 365/Teams. AWS needs edge computing for hybrid workloads. Our opportunity is vertical specialization - healthcare compliance, education management, government sovereignty - areas where hyperscalers are commoditized. We become the "last mile" that makes their platforms valuable.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Q: How do you balance growth with profitability in services?</h4>
-                      <p className="text-sm mb-3">
-                        <strong>A:</strong> Services require different economics. Focus on recurring revenue, not transactional margins. Start with 20-25% gross margins on bundled services, expand to 35-40% as automation scales. Key is platform leverage - same TruScale infrastructure serves education, healthcare, government with vertical-specific overlays.
-                      </p>
-                    </div>
-                  </div>
-                </ScrollArea>
-              }
-              className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            />
-          </div>
+          <p className="mt-6 text-lg"><strong>Takeaway:</strong> Cross-sell is not optional. Bundled + advisory moves DaaS into $60M+ territory.</p>
         </div>
       </section>
 
       {/* JD Alignment & Interview Prep */}
-      <section id="jd-alignment" className="py-16 bg-white">
+      <section id="jd-alignment" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">8. JD Alignment & Interview Preparation</h2>
-          
-          <FlipCard
-            heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
-            hideFlipHint={true}
-            front={
-              <div className="h-full flex flex-col">
-                <h3 className="text-xl font-bold mb-3 text-red-600">Solution Sales Australia - Role Alignment</h3>
-                <p className="mb-4 flex-grow">How my experience and this playbook align with Lenovo's Solution Sales Australia requirements.</p>
-                <div className="space-y-2 text-sm">
-                  <p><strong>Experience:</strong> 15+ years technology strategy and architecture</p>
-                  <p><strong>Market Knowledge:</strong> ANZ enterprise and government</p>
-                  <p><strong>Value Delivered:</strong> Comprehensive services playbook and execution plan</p>
-                </div>
-              </div>
-            }
-            back={
-              <ScrollArea className="h-full">
-                <div className="space-y-4 pr-2">
-                  <h3 className="text-xl font-bold text-red-600">Role Alignment Details</h3>
-                  
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Technical Architecture Experience</h4>
-                    <ul className="text-sm space-y-1">
-                      <li>• 15+ years designing enterprise solutions (AWS, Oracle, Gartner, Unisys)</li>
-                      <li>• Cloud and hybrid infrastructure specialization</li>
-                      <li>• AI/ML and automation platform development</li>
-                      <li>• Government and enterprise compliance frameworks</li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Market and Customer Understanding</h4>
-                    <ul className="text-sm space-y-1">
-                      <li>• Deep ANZ market knowledge across verticals</li>
-                      <li>• Understanding of local compliance and regulatory requirements</li>
-                      <li>• Experience with government procurement and enterprise sales cycles</li>
-                      <li>• Customer journey mapping and value proposition development</li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Strategic Contribution</h4>
-                    <ul className="text-sm space-y-1">
-                      <li>• Complete services transformation strategy and execution plan</li>
-                      <li>• Vertical-specific go-to-market approaches</li>
-                      <li>• Partner ecosystem strategy and integration frameworks</li>
-                      <li>• Revenue growth modeling and business case development</li>
-                      <li>• Sales enablement tools and customer engagement frameworks</li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Immediate Value</h4>
-                    <p className="text-sm">
-                      This playbook represents the strategic thinking and execution capability I bring to Lenovo. 
-                      It's not just research - it's a comprehensive framework for transforming ANZ services revenue 
-                      from $40M to $130M+ through systematic vertical specialization and platform integration.
-                    </p>
-                  </div>
-                </div>
-              </ScrollArea>
-            }
-            className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-          />
+          <h2 className="text-4xl font-bold text-red-600 mb-6">10. JD Alignment & Interview Prep</h2>
+
+          {/* JD Alignment Accordions */}
+          <div className="mb-8">
+            <Accordion type="single" collapsible className="space-y-3">
+              <AccordionItem value="jd-1" className="bg-white rounded-lg shadow-sm">
+                <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                  1. Client Engagement & Strategy
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-3 pt-1">
+                  <p><strong>JD asks for:</strong> Strategic account planning, relationships, advocacy inside Lenovo.</p>
+                  <p><strong>Troy brings:</strong> Sector-specific DaaS packs (Education, Healthcare, Gov, SMB), cross-sell pathways (Support → Managed → Advisory), and 2×2 frameworks for customers, partners, stakeholders.</p>
+                  <p><strong>Troy's comment:</strong> "I take device refresh conversations and reframe them as transformation journeys. That's how Lenovo earns trust as a partner, not a supplier."</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="jd-2" className="bg-white rounded-lg shadow-sm">
+                <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                  2. Solution Design & Delivery
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-3 pt-1">
+                  <p><strong>JD asks for:</strong> Lead solution development, provide consultative advice, orchestrate technical program discussions.</p>
+                  <p><strong>Troy brings:</strong> Designed bundled solutions (Lenovo hardware + TruScale + AI copilots + ESG Navigator), orchestration frameworks (tactics, stakeholder, partner 2×2s), and mapped integration points (M365, Intune, ZTNA, Azure/AWS/GCP).</p>
+                  <p><strong>Troy's comment:</strong> "My architecture method is orchestration. I define Lenovo building blocks and pull them together with partners so the client gets a complete, compliant solution."</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="jd-3" className="bg-white rounded-lg shadow-sm">
+                <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                  3. Sales Enablement & Execution
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-3 pt-1">
+                  <p><strong>JD asks for:</strong> Shape sales process, ROI-driven business cases, pricing alignment.</p>
+                  <p><strong>Troy brings:</strong> Customer and Partner one-pagers, ROI trajectories ($10.5M → $65M), clear competitive differentiation (Lenovo vs HP/Dell/HPE/Apple), and OPEX/TruScale pricing framing.</p>
+                  <p><strong>Troy's comment:</strong> "I don't just describe Lenovo technology. I show how a $2M deal becomes $15M over five years with bundled services. That's ROI in a story CFOs understand."</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="jd-4" className="bg-white rounded-lg shadow-sm">
+                <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                  4. Market & Competitive Insight
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-3 pt-1">
+                  <p><strong>JD asks for:</strong> Stay ahead of trends, use competitive intelligence to position Lenovo's strengths.</p>
+                  <p><strong>Troy brings:</strong> Competitive tables with ticks/crosses, identified white-space growth in ANZ (universities, state health, SMB), and positioned Lenovo as "Workforce Platform Subscription."</p>
+                  <p><strong>Troy's comment:</strong> "AI is a given. The real differentiator is AI tied to compliance, ESG, and cost transparency. That's Lenovo's angle against HP and Dell in ANZ."</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="jd-5" className="bg-white rounded-lg shadow-sm">
+                <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                  5. Influence & Mindset
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-3 pt-1">
+                  <p><strong>JD asks for:</strong> Confident with C-suite, simplify complexity, consultative style.</p>
+                  <p><strong>Troy brings:</strong> Executive-ready frameworks (2×2s, ROI curves), outcome-first narratives (CIO dashboards, compliance, ESG guarantees), and consultative approach that guides transformation.</p>
+                  <p><strong>Troy's comment:</strong> "C-level leaders don't want another vendor. They want a partner who can simplify complexity into outcomes. That's how I position Lenovo."</p>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+
+          <h3 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Mock Interview Q&A</h3>
+
+          {/* Q&A Accordions */}
+          <Accordion type="single" collapsible className="space-y-3">
+            <AccordionItem value="q1" className="bg-white rounded-lg shadow-sm">
+              <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                Q1. How do you see Lenovo's services opportunity in ANZ?
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-3 pt-1">
+                <p>A: Lenovo has a strong baseline in devices and Premier Support, but the opportunity is in evolving DaaS into "Workforce Transformation as-a-Service" with TruScale, AI, ESG, and managed services. That shifts a $2M education deal into a $15M platform.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="q2" className="bg-white rounded-lg shadow-sm">
+              <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                Q2. How would you engage Country Client Managers to build account strategy?
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-3 pt-1">
+                <p>A: Start with journey mapping—Support → Managed → Advisory. Align sector packs with account priorities (Smart Campus, Digital Hospital, Gov Compliance, SMB Workforce). Co-own the plan with ROI trajectories and competitive positioning baked in.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="q3" className="bg-white rounded-lg shadow-sm">
+              <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                Q3. What would you say to a CIO who sees Lenovo only as a hardware vendor?
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-3 pt-1">
+                <p>A: Reframe Lenovo as a platform partner. In healthcare, it's not "here's a rugged device." It's "here's a Digital Hospital with secure devices, TruScale cloud, telehealth kits, and ESG reporting." That shifts Lenovo from supplier to transformation partner.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="q4" className="bg-white rounded-lg shadow-sm">
+              <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                Q4. How do you lead solution design in complex environments?
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-3 pt-1">
+                <p>A: By orchestrating across presales, delivery, and partners. Define the building blocks—devices, TruScale, managed security, AI—and map them to the customer's environment. Always ensure compliance and integration with M365, Intune, ZTNA, cloud credits.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="q5" className="bg-white rounded-lg shadow-sm">
+              <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                Q5. What makes Lenovo's proposition different from HP, Dell, or HPE?
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-3 pt-1">
+                <p>A: Three differentiators: ESG Navigator and lifecycle reporting; TruScale as the bridge to hybrid cloud; and MSP enablement for SMB. Together, they create stickier, higher-margin deals.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="q6" className="bg-white rounded-lg shadow-sm">
+              <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                Q6. How do you simplify complex solutions for C-level executives?
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-3 pt-1">
+                <p>A: Use frameworks—2×2s, ROI curves, customer journeys. Instead of technical dives, show baseline vs expanded and the growth impact. A CFO sees the $10.5M → $65M curve and immediately understands.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="q7" className="bg-white rounded-lg shadow-sm">
+              <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                Q7. How would you influence a buying coalition with multiple stakeholders?
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-3 pt-1">
+                <p>A: Map the coalition by role: CIO cares about compliance, Procurement about OPEX, Operations about SLAs. I orchestrate Lenovo + partners so each stakeholder sees their outcome delivered in the solution.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="q8" className="bg-white rounded-lg shadow-sm">
+              <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                Q8. What role do partners play in your architectural approach?
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-3 pt-1">
+                <p>A: Partners are multipliers. MSPs extend Lenovo into SMB, GSIs drive government projects, ISVs support education. I design Lenovo's stack so it's consumable by partners while retaining Lenovo branding.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="q9" className="bg-white rounded-lg shadow-sm">
+              <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                Q9. How do you build competitive differentiation into a sales process?
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-3 pt-1">
+                <p>A: Bake it into presales deliverables. Position ESG Navigator as compliance differentiator, TruScale credits as OPEX lever. Always shift discussion to total cost-to-outcome, not unit pricing.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="q10" className="bg-white rounded-lg shadow-sm">
+              <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                Q10. How do you stay ahead of market trends?
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-3 pt-1">
+                <p>A: Track three lenses: AI productivity, ESG compliance, OPEX-driven models. Lenovo's unique position is combining these into one subscription. That's the market lead story.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="q11" className="bg-white rounded-lg shadow-sm">
+              <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                Q11. How do you approach ROI-driven business cases?
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-3 pt-1">
+                <p>A: By quantifying growth multipliers. Example: $2M education baseline → $15M if we add LMS integration, TruScale VDI, AI copilots. Show the uplift curves sector by sector.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="q12" className="bg-white rounded-lg shadow-sm">
+              <AccordionTrigger className="px-4 py-3 font-semibold text-left hover:bg-gray-50">
+                Q12. What's your leadership style with presales and delivery teams?
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-3 pt-1">
+                <p>A: Collaborative and orchestration-focused. Tag ownership by role, provide clarity on architecture, and let specialists own their domains. Builds accountability and accelerates execution.</p>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </section>
+
+      {/* Sales & Delivery Support */}
+      <section id="sales-support" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">11. Sales & Delivery Support</h2>
+          
+          <Accordion type="single" collapsible className="space-y-3">
+            <AccordionItem value="sow-proposal" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                SoW & Proposal Development
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <p className="mb-4">Proven record in <strong>structuring Statements of Work (SoWs), RFP/RFI responses, and commercial proposals</strong> that align technical scope with client outcomes. Skilled in:</p>
+                <ul className="space-y-2 mb-4">
+                  <li>• Translating solution architecture into contractual deliverables and service-level definitions.</li>
+                  <li>• Negotiating scope, acceptance criteria, and change controls with procurement and legal stakeholders.</li>
+                  <li>• Building pricing and delivery models that balance customer value with Lenovo margin and partner contribution.</li>
+                </ul>
+                <p><strong>Outcome:</strong> Faster bid cycles, reduced rework, and stronger win rates across enterprise and government accounts.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="governance-risk" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                Governance & Risk Management
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <p className="mb-4">Deep experience in <strong>navigating internal approvals and compliance frameworks</strong> to protect both Lenovo and client interests. Competencies include:</p>
+                <ul className="space-y-2 mb-4">
+                  <li>• Running structured risk assessments on large-scale bids and complex service engagements.</li>
+                  <li>• Ensuring workflows meet corporate governance, security, and financial controls.</li>
+                  <li>• Maintaining bid discipline through gated reviews, steering committees, and documented sign-offs.</li>
+                </ul>
+                <p><strong>Outcome:</strong> Predictable execution, fewer escalations, and a reputation as a safe partner in regulated sectors.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="evangelism-enablement" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                Internal Evangelism & Enablement
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <p className="mb-4">Trusted <strong>bridge between field sales, product management, and delivery teams</strong>. Contributions include:</p>
+                <ul className="space-y-2 mb-4">
+                  <li>• Feeding market and client insights back to offering teams to improve Lenovo service packs.</li>
+                  <li>• Designing and running enablement sessions for account managers and presales, using 2×2 frameworks and sector packs.</li>
+                  <li>• Creating proposal toolkits, playbooks, and ROI models that improve attach rates and average deal size.</li>
+                </ul>
+                <p><strong>Outcome:</strong> Sales teams become more confident positioning Lenovo services; product teams gain market validation.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="order-escalation" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                Order & Escalation Support
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <p className="mb-4">Hands-on experience <strong>supporting delivery transitions and resolving deal blockers</strong>. Activities include:</p>
+                <ul className="space-y-2 mb-4">
+                  <li>• Coordinating with PMOs on go-to-delivery handoffs and ensuring contracts are operationalised.</li>
+                  <li>• Managing exceptions in complex global deals — licensing variations, custom SLAs, multi-partner orchestrations.</li>
+                  <li>• Acting as escalation point for delivery and customer success managers when contractual or scope issues arise.</li>
+                </ul>
+                <p><strong>Outcome:</strong> Smoother service activation, reduced delivery friction, and stronger customer trust at renewal points.</p>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </section>
+
+      {/* 2×2 Frameworks Summary & Key Findings */}
+      <section id="two-by-two-summary" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">2×2 Frameworks – Summary & Key Findings</h2>
+
+          <p className="text-lg mb-6">
+            The 2×2 library is not theory. It is a working set of tools for sales, presales, and partners. 
+            Each framework maps effort, risk, and opportunity to show where Lenovo should push and where to hold. 
+            They connect directly to the DaaS packs, JD pillars, and account motions in ANZ.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Key Findings</h3>
+          <ul className="space-y-3 text-lg mb-8">
+            <li>• <strong>Customer 2×2:</strong> Most accounts sit in transactional + low maturity. Quick wins exist but must pivot to strategic + high maturity or Lenovo remains stuck in device cycles.</li>
+            <li>• <strong>Technology 2×2:</strong> The uplift is in advanced stack adoption — Autopilot, Intune, TruScale hybrid, AI, ESG. This is where margins and stickiness grow.</li>
+            <li>• <strong>Competitor 2×2:</strong> Competitors win on cost when outcomes aren't framed. When ROI and compliance are shown, Lenovo's platform approach wins against HP, Dell, HPE.</li>
+            <li>• <strong>Roles 2×2:</strong> Expansion depends on orchestration across AMs, presales, delivery, partners, and exec sponsors. Ownership must be clear or deals stall.</li>
+            <li>• <strong>Partners 2×2:</strong> MSPs scale SMB packs fast. GSIs drive health and government. Rebates and shared dashboards make Lenovo a safer attach choice.</li>
+            <li>• <strong>Tactics & Orchestration 2×2:</strong> Quick motions deliver pilots. Build motions deliver multi-year programs. The balance is what creates both speed and scale.</li>
+            <li>• <strong>Stakeholder 2×2:</strong> Procurement focuses on OPEX control. CIOs focus on compliance and risk. Boards focus on trust and ESG. All three must see their win.</li>
+            <li>• <strong>Execution Horizon 2×2:</strong> Short-term low effort is devices + support. Long-term high effort is the platform. The path is to land small, expand big.</li>
+            <li>• <strong>Risk vs Opportunity 2×2:</strong> Device-only is safe but flat. Sector transformation is high risk but delivers 4–7× revenue uplift. Strategy is to sequence moves up the curve.</li>
+            <li>• <strong>Geographic 2×2:</strong> Regional ANZ growth is strong in health and universities outside capital cities. Canberra remains locked but NSW/VIC are prime for platform expansion.</li>
+          </ul>
+
+          <p className="text-lg">
+            <strong>Takeaway:</strong> The 2×2s show Lenovo's ANZ services business is still weighted to the bottom left quadrants. 
+            The opportunity is in moving up and right — higher maturity, advanced stack, strategic relationships, 
+            and multi-year platform deals.
+          </p>
+        </div>
+      </section>
+
+      {/* Complete 2x2 Framework Library */}
+      <section id="two-by-two-complete" className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-8">Complete 2x2 Framework Library</h2>
+          
+          <TwoByTwoHeatmap className="mb-8" />
+          
+          {/* Customer Relationship */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Customer Relationship 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Customer maturity low</TableHead>
+                <TableHead>Customer maturity high</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Relationship transactional</TableHead>
+                <TableCell>Quote cycles for devices and support. Land quick wins with Premier Support plus collaboration kits and ESG dashboards. Prove delivery speed and quality.</TableCell>
+                <TableCell>Risk of being sidelined on price. Move to platform talk with TruScale credits and service desk attach. Set a three step adoption plan.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Relationship strategic</TableHead>
+                <TableCell>Define a roadmap. Phase one DaaS baseline. Phase two security and Autopilot. Phase three VDI or cloud tie in.</TableCell>
+                <TableCell>Multi year program. Digital campus or digital hospital or gov workplace. Joint steering group. Quarterly value reviews.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Technology */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Technology 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Core stack</TableHead>
+                <TableHead>Advanced stack</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>End user layer</TableHead>
+                <TableCell>ThinkPad ThinkBook ThinkCentre. Premier Support. Imaging and asset recovery.</TableCell>
+                <TableCell>DaaS with Autopilot and Intune. Endpoint security and ZTNA. Collaboration kits with ThinkSmart.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Platform layer</TableHead>
+                <TableCell>Service desk integration. Device analytics. VDI starter on TruScale.</TableCell>
+                <TableCell>TruScale hybrid cloud. AI copilots. AI Edge for sites. ESG Navigator dashboards.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Competitor */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Competitor 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Customer priority cost</TableHead>
+                <TableHead>Customer priority outcome</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Competitor strength weak</TableHead>
+                <TableCell>Lead with bundle TCO. Devices plus support plus security. Fast rollout and one invoice.</TableCell>
+                <TableCell>Land the platform story. DaaS plus service desk plus TruScale. Clear success metrics and SLA gains.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Competitor strength strong</TableHead>
+                <TableCell>Reframe to risk and compliance. ESG reporting and lifecycle proof. Reduce hidden costs from breaches and rework.</TableCell>
+                <TableCell>Bring proof with pilots and Innovation Center. Co sell with partners. Show time to value and adoption curve.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Roles and Ownership */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Roles and Ownership 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Pre sale</TableHead>
+                <TableHead>Post sale</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Customer facing</TableHead>
+                <TableCell>Account manager and solution architect. Discovery and value map. Competitive position.</TableCell>
+                <TableCell>Success manager and exec sponsor. Quarterly value review. Expansion plan.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Delivery teams</TableHead>
+                <TableCell>Presales engineer and partner manager. Scope and sizing. Statement of work.</TableCell>
+                <TableCell>Delivery lead and service desk lead and security lead and cloud lead. Run and improve.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Partners */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Partners 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>MSP focus</TableHead>
+                <TableHead>GSI focus</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Co sell motion</TableHead>
+                <TableCell>SMB Workforce packs with MSP service desk. Lenovo brand with partner delivery.</TableCell>
+                <TableCell>State health and state gov programs. Lenovo stack inside GSI program plan.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Resell motion</TableHead>
+                <TableCell>Device and support resale with light managed add ons. Quick throughput.</TableCell>
+                <TableCell>Framework supply where GSI primes the deal. Align rebates and attach targets.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Tactics */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Tactics 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Quick motion</TableHead>
+                <TableHead>Build motion</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Direct led</TableHead>
+                <TableCell>Bundle security and collaboration and ESG with DaaS. Pilot in one site and then expand.</TableCell>
+                <TableCell>Create sector blueprint and reference kit. Publish pricing bands and service catalog.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Partner led</TableHead>
+                <TableCell>MSP sells Workforce pack. Fast device swaps and remote setup.</TableCell>
+                <TableCell>GSI joint solution for gov or health. Shared pipeline and executive cover.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Orchestration */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Orchestration 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Early stage</TableHead>
+                <TableHead>Late stage</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Business track</TableHead>
+                <TableCell>Map outcomes and value metrics. Approve scope and timeline. Secure sponsor.</TableCell>
+                <TableCell>Run value reviews and renewals. Expand to new sites and teams.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Technical track</TableHead>
+                <TableCell>Environment fit and privacy. Integration plan for M365 and identity and network.</TableCell>
+                <TableCell>Cutover and steady state. Telemetry and SLA dashboards and change plan.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Stakeholder */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Stakeholder 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Tactical focus</TableHead>
+                <TableHead>Strategic focus</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Operational roles</TableHead>
+                <TableCell>IT leads want uptime and ticket speed and image control.</TableCell>
+                <TableCell>Ops managers want lifecycle analytics and ESG reporting and budget predictability.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Executive roles</TableHead>
+                <TableCell>Procurement wants clean OPEX and clear terms.</TableCell>
+                <TableCell>CIO and board want compliance and resilience and long term value.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Execution Horizon */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Execution Horizon 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Short term</TableHead>
+                <TableHead>Long term</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Low effort</TableHead>
+                <TableCell>Wrap DaaS with collaboration kits and security and ESG dashboards. Target education and SMB.</TableCell>
+                <TableCell>Basic managed services add. Service desk and patch and device analytics. Keeps footprint sticky.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>High effort</TableHead>
+                <TableCell>Launch sector packs in pilots. Orchestrate MSP delivery and light GSI input.</TableCell>
+                <TableCell>Full platform subscription with TruScale and AI copilots and ESG guarantee. ANZ flagship model.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Risk vs Opportunity */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Risk vs Opportunity 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Low opportunity</TableHead>
+                <TableHead>High opportunity</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Low risk</TableHead>
+                <TableCell>Device only DaaS. Predictable yet flat. Margin pressure.</TableCell>
+                <TableCell>Bundled add ons like security and ESG and collaboration. Clear ROI. Partner friendly.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>High risk</TableHead>
+                <TableCell>Point tools with little reuse. High cost and little payoff.</TableCell>
+                <TableCell>Sector transformation such as Gov Compliance or Digital Hospital. Needs orchestration yet gives four to seven times revenue.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Geographic Growth */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Geographic Growth 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Growth potential low</TableHead>
+                <TableHead>Growth potential high</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Lenovo presence low</TableHead>
+                <TableCell>Small councils and one off buys. Keep light touch and nurture.</TableCell>
+                <TableCell>Regional health in QLD and WA. Regional universities. NZ SMB via MSPs. Prioritise packs.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Lenovo presence strong</TableHead>
+                <TableCell>Federal areas under SI strongholds in Canberra. Maintain device share and wait for entry point.</TableCell>
+                <TableCell>NSW and VIC state agencies. Top universities. Large health networks. Push platform subscription.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* Customer Journey */}
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Customer Journey 2x2</h3>
+          <Table className="mb-8">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Device scope</TableHead>
+                <TableHead>Platform scope</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHead>Early stage</TableHead>
+                <TableCell>DaaS baseline with Premier Support. Imaging and recycling. One site or one unit.</TableCell>
+                <TableCell>Add service desk and endpoint security and Autopilot. Start with one function such as finance or field.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Advanced stage</TableHead>
+                <TableCell>Fleet wide refresh and standard build. Stable run and simple adds and moves.</TableCell>
+                <TableCell>TruScale hybrid and VDI and AI copilots. ESG Navigator live. Multi year program with value reviews.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300 py-12">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <h3 className="text-white font-bold mb-3">Strategy</h3>
+              <button onClick={() => scrollToSection('strategy')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Foundation</button>
+              <button onClick={() => scrollToSection('trajectory')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Revenue</button>
+            </div>
+            <div>
+              <h3 className="text-white font-bold mb-3">Packs</h3>
+              <button onClick={() => scrollToSection('packs')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Education</button>
+              <button onClick={() => scrollToSection('packs')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Healthcare</button>
+              <button onClick={() => scrollToSection('packs')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Gov</button>
+              <button onClick={() => scrollToSection('packs')} className="block text-gray-300 hover:text-white mb-1 transition-colors">SMB</button>
+            </div>
+            <div>
+              <h3 className="text-white font-bold mb-3">Resources</h3>
+              <button onClick={() => scrollToSection('about')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Overview</button>
+              <button onClick={() => scrollToSection('competitive')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Competitive</button>
+              <button onClick={() => scrollToSection('stories')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Stakeholder Vignettes</button>
+              <button onClick={() => scrollToSection('vignettes')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Case Vignettes</button>
+              <button onClick={() => scrollToSection('enhancements')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Enhancements</button>
+              <button onClick={() => scrollToSection('jd-alignment')} className="block text-gray-300 hover:text-white mb-1 transition-colors">JD Alignment</button>
+              <button onClick={() => scrollToSection('two-by-two-complete')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Complete 2x2 Library</button>
+            </div>
+          </div>
+          
+          <div className="text-center border-t border-gray-700 pt-6">
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="inline-block text-white hover:text-red-300 mb-4 text-sm transition-colors"
+            >
+              ↑ Back to top
+            </button>
+            <p className="text-gray-400">&copy; Solution Sales Australia | Growth Playbook</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

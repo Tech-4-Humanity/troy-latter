@@ -2,84 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main Portfolio Pages -->
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/executive-profile</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/about-troy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/core-competencies</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/core-competencies</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/innovation-journey</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/innovation-journey</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/strategic-projects</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/strategic-projects</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/whitepapers</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/whitepapers</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/faqs</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/faqs</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <!-- Microsites -->
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/microsites</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/microsites</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/microsites/envato</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/microsites/envato</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/microsites/envato/orchestrator</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/microsites/envato/orchestrator</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/microsites/envato/summary</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/microsites/envato/summary</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/microsites/envato/assets</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/microsites/envato/assets</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/microsites/interview-prep</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/microsites/interview-prep</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/microsites/lab3</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/microsites/lab3</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://troylatter.tech4humanity.com.au/microsites/agentforce</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://troylatter.tech4humanity.com.au/microsites/lenovo</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/microsites/agentforce</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -13954,53 +13954,6 @@ export type Database = {
         }
         Relationships: []
       }
-      linkedin_posts_enriched: {
-        Row: {
-          engagement_prediction: number | null
-          enriched_at: string | null
-          family_tags: string[] | null
-          post_id: string
-          sentiment: string | null
-          sentiment_confidence: number | null
-          theme_score_ai_disruption: number | null
-          theme_score_mcp: number | null
-          theme_score_policy: number | null
-          theme_score_workforce: number | null
-        }
-        Insert: {
-          engagement_prediction?: number | null
-          enriched_at?: string | null
-          family_tags?: string[] | null
-          post_id: string
-          sentiment?: string | null
-          sentiment_confidence?: number | null
-          theme_score_ai_disruption?: number | null
-          theme_score_mcp?: number | null
-          theme_score_policy?: number | null
-          theme_score_workforce?: number | null
-        }
-        Update: {
-          engagement_prediction?: number | null
-          enriched_at?: string | null
-          family_tags?: string[] | null
-          post_id?: string
-          sentiment?: string | null
-          sentiment_confidence?: number | null
-          theme_score_ai_disruption?: number | null
-          theme_score_mcp?: number | null
-          theme_score_policy?: number | null
-          theme_score_workforce?: number | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "linkedin_posts_enriched_post_id_fkey"
-            columns: ["post_id"]
-            isOneToOne: true
-            referencedRelation: "linkedin_posts"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       living_state_leads: {
         Row: {
           consent: boolean | null

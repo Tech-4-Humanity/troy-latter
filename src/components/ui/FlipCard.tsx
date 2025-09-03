@@ -5,18 +5,15 @@ interface FlipCardProps {
   front: React.ReactNode;
   back: React.ReactNode;
   className?: string;
-  heightClass?: string;
-  hideFlipHint?: boolean;
 }
 
-export const FlipCard = ({ front, back, className, heightClass = "h-80", hideFlipHint = false }: FlipCardProps) => {
+export const FlipCard = ({ front, back, className }: FlipCardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
     <div 
       className={cn(
-        "relative w-full perspective-1000 cursor-pointer group",
-        heightClass,
+        "relative w-full h-80 perspective-1000 cursor-pointer group",
         className
       )}
       onClick={() => setIsFlipped(!isFlipped)}
@@ -40,11 +37,9 @@ export const FlipCard = ({ front, back, className, heightClass = "h-80", hideFli
         <div className="absolute inset-0 w-full h-full backface-hidden bg-card border rounded-lg shadow-sm">
           <div className="p-6 h-full flex flex-col">
             {front}
-            {!hideFlipHint && (
-              <div className="mt-auto text-xs text-muted-foreground text-center">
-                Click to flip
-              </div>
-            )}
+            <div className="mt-auto text-xs text-muted-foreground text-center">
+              Click to flip
+            </div>
           </div>
         </div>
         
@@ -52,11 +47,9 @@ export const FlipCard = ({ front, back, className, heightClass = "h-80", hideFli
         <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-card border rounded-lg shadow-sm">
           <div className="p-6 h-full flex flex-col">
             {back}
-            {!hideFlipHint && (
-              <div className="mt-auto text-xs text-muted-foreground text-center">
-                Click to return
-              </div>
-            )}
+            <div className="mt-auto text-xs text-muted-foreground text-center">
+              Click to return
+            </div>
           </div>
         </div>
       </div>
