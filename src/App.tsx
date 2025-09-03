@@ -30,6 +30,7 @@ import OrchestratePage from "./pages/microsites/envato/Orchestrator";
 import EnvatoSummary from "./pages/microsites/envato/Summary";
 import EnvatoAssets from "./pages/microsites/envato/Assets";
 import LenovoIndex from "./pages/microsites/lenovo/Index";
+import LenovoFocusImages from "./pages/microsites/lenovo/FocusImages";
 
 // Legacy pages that are still accessible but redirected
 import InnovationDefinition from "./pages/InnovationDefinition";
@@ -83,6 +84,7 @@ const App = () => (
           <Route path="/microsites/envato/summary" element={<EnvatoSummary />} />
           <Route path="/microsites/envato/assets" element={<EnvatoAssets />} />
           <Route path="/microsites/lenovo" element={<MicrositeLayout><LenovoIndex /></MicrositeLayout>} />
+          <Route path="/microsites/lenovo/focus-images" element={<LenovoFocusImages />} />
           
           {/* Navigation redirects - consolidate similar content */}
           <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />

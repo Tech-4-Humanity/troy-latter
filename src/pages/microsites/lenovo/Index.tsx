@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { FlipCard } from '@/components/ui/FlipCard';
 
 const LenovoMicrosite = () => {
   const [storiesValue, setStoriesValue] = useState<string[]>([]);
@@ -75,6 +77,12 @@ const LenovoMicrosite = () => {
                 {label}
               </button>
             ))}
+            <Link
+              to="/microsites/lenovo/focus-images"
+              className="px-4 py-2 text-white hover:text-red-300 font-semibold transition-colors border border-white/20 rounded-md hover:bg-white/10"
+            >
+              Focus Images
+            </Link>
           </nav>
         </div>
       </header>
@@ -117,6 +125,7 @@ const LenovoMicrosite = () => {
                 <li>• <b>Revenue Projections:</b> 5-year growth trajectory with sector-specific ROI models.</li>
                 <li>• <b>Stories & Vignettes:</b> Real customer scenarios and engagement frameworks.</li>
                 <li>• <b>Sales Support:</b> Enablement tools, proposal development, and delivery frameworks.</li>
+                <li>• <b>Focus Images:</b> Strategic visualizations and frameworks for stakeholder presentations.</li>
                 <li>• <b>Interview Prep:</b> Alignment with Lenovo's architect JD, plus Q&A for exec-level conversations.</li>
               </ul>
             </div>
@@ -177,109 +186,92 @@ const LenovoMicrosite = () => {
                 title: '🎓 Future of Learning',
                 description: 'Devices + LMS integration + TruScale VDI + AI copilots + ESG dashboards.',
                 outcome: 'Smart campus, grant compliance.',
-                value: '$8–15M'
+                value: '$8–15M',
+                backContent: {
+                  summary: 'Lenovo helps universities move beyond device refresh into Smart Campus platforms. By bundling VDI, LMS integration, AI copilots, and ESG dashboards into one predictable fee, we align with student expectations and grant funding rules.',
+                  benefits: [
+                    'CIOs get lifecycle control and ESG compliance.',
+                    'Faculty see faster onboarding and better access to learning apps.',
+                    'Students gain hybrid learning anywhere, anytime.'
+                  ],
+                  roi: 'Reduced lab costs, faster deployment, improved satisfaction scores.'
+                }
               },
               {
                 title: '🏥 Digital Hospital',
                 description: 'Rugged devices + TruScale infra + telehealth kits + AI Edge + ESG Navigator.',
                 outcome: 'Secure, sustainable digital hospital.',
-                value: '$12–20M'
+                value: '$12–20M',
+                backContent: {
+                  summary: 'Hospitals need compliance, uptime, and trust. Lenovo\'s Digital Hospital Pack bundles rugged devices, TruScale infra, telehealth kits, and ESG Navigator into a secure OPEX model.',
+                  benefits: [
+                    'Procurement gains predictable cost and compliance dashboards.',
+                    'Clinicians gain reliable, patched devices and AI copilots that reduce admin by 20%.',
+                    'Boards see improved audit scores and ESG transparency.'
+                  ],
+                  roi: 'Downtime cut by 30%, compliance fines avoided, $12–20M long-term uplift.'
+                }
               },
               {
                 title: '🏛 Gov Compliance',
                 description: 'Devices + service desk + ZTNA + TruScale hybrid + ESG dashboards.',
                 outcome: 'Procurement-ready, compliance-ready workplace.',
-                value: '$15–25M'
+                value: '$15–25M',
+                backContent: {
+                  summary: 'Governments demand accountability and transparency. Lenovo\'s Compliance Pack turns devices into full workplace platforms with service desk, ZTNA, TruScale hybrid, and ESG dashboards.',
+                  benefits: [
+                    'Executives gain simple OPEX control.',
+                    'IT leads gain standard secure builds and faster audits.',
+                    'Boards and ministers gain ESG reporting they can take to the public.'
+                  ],
+                  roi: 'Faster compliance cycles, carbon footprint visibility, $15–25M program value.'
+                }
               },
               {
                 title: '💼 SMB Workforce',
                 description: 'Devices + MSP service desk + TruScale SMB + AI copilots + simplified ESG.',
                 outcome: 'Workforce transformation without enterprise cost.',
-                value: '$2–5M'
+                value: '$2–5M',
+                backContent: {
+                  summary: 'Small and mid-market businesses need enterprise-grade capability without enterprise cost. Lenovo\'s Workforce Pack gives MSPs a white-labeled solution that scales.',
+                  benefits: [
+                    'Owners gain predictable monthly pricing.',
+                    'Employees get full kits (laptop, dock, monitor, headset) supported by MSP-led service desk.',
+                    'MSPs unlock recurring revenue and margin.'
+                  ],
+                  roi: 'Reduced churn, workforce productivity gains, $2–5M deal size with multi-client rollouts.'
+                }
               }
             ].map((pack, index) => (
-              <Card key={index} className="bg-white border border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-3">{pack.title}</h3>
-                  <p className="mb-3">{pack.description}</p>
-                  <p><strong>Outcome:</strong> {pack.outcome} <strong>Value:</strong> {pack.value}</p>
-                </CardContent>
-              </Card>
+              <FlipCard
+                key={index}
+                front={
+                  <div className="h-full flex flex-col">
+                    <h3 className="text-xl font-bold mb-3">{pack.title}</h3>
+                    <p className="mb-3 flex-grow">{pack.description}</p>
+                    <div className="space-y-1">
+                      <p><strong>Outcome:</strong> {pack.outcome}</p>
+                      <p><strong>Value:</strong> {pack.value}</p>
+                    </div>
+                  </div>
+                }
+                back={
+                  <div className="h-full flex flex-col">
+                    <h3 className="text-xl font-bold mb-3">{pack.title} - Details</h3>
+                    <p className="mb-4 text-sm">{pack.backContent.summary}</p>
+                    <div className="mb-4 flex-grow">
+                      <ul className="space-y-2">
+                        {pack.backContent.benefits.map((benefit, i) => (
+                          <li key={i} className="text-sm">• <strong>{benefit.split(' ')[0]}</strong> {benefit.substring(benefit.indexOf(' ') + 1)}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <p className="text-sm"><strong>ROI:</strong> {pack.backContent.roi}</p>
+                  </div>
+                }
+                className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              />
             ))}
-          </div>
-
-          {/* Back of Card: Sector Details */}
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Back of Card: Sector Details</h3>
-            <Accordion type="multiple" className="space-y-3">
-              <AccordionItem value="education-detail" className="bg-white rounded-lg shadow-sm border border-gray-200">
-                <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
-                  🎓 Future of Learning – Back of Card
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 pt-1">
-                  <p className="mb-4">
-                    Lenovo helps universities move beyond device refresh into Smart Campus platforms. By bundling VDI, LMS integration, AI copilots, and ESG dashboards into one predictable fee, we align with student expectations and grant funding rules.
-                  </p>
-                  <ul className="space-y-2 mb-4">
-                    <li>• <strong>CIOs</strong> get lifecycle control and ESG compliance.</li>
-                    <li>• <strong>Faculty</strong> see faster onboarding and better access to learning apps.</li>
-                    <li>• <strong>Students</strong> gain hybrid learning anywhere, anytime.</li>
-                  </ul>
-                  <p><strong>ROI:</strong> Reduced lab costs, faster deployment, improved satisfaction scores.</p>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="healthcare-detail" className="bg-white rounded-lg shadow-sm border border-gray-200">
-                <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
-                  🏥 Digital Hospital – Back of Card
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 pt-1">
-                  <p className="mb-4">
-                    Hospitals need compliance, uptime, and trust. Lenovo's Digital Hospital Pack bundles rugged devices, TruScale infra, telehealth kits, and ESG Navigator into a secure OPEX model.
-                  </p>
-                  <ul className="space-y-2 mb-4">
-                    <li>• <strong>Procurement</strong> gains predictable cost and compliance dashboards.</li>
-                    <li>• <strong>Clinicians</strong> gain reliable, patched devices and AI copilots that reduce admin by 20%.</li>
-                    <li>• <strong>Boards</strong> see improved audit scores and ESG transparency.</li>
-                  </ul>
-                  <p><strong>ROI:</strong> Downtime cut by 30%, compliance fines avoided, $12–20M long-term uplift.</p>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="government-detail" className="bg-white rounded-lg shadow-sm border border-gray-200">
-                <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
-                  🏛 Gov Compliance – Back of Card
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 pt-1">
-                  <p className="mb-4">
-                    Governments demand accountability and transparency. Lenovo's Compliance Pack turns devices into full workplace platforms with service desk, ZTNA, TruScale hybrid, and ESG dashboards.
-                  </p>
-                  <ul className="space-y-2 mb-4">
-                    <li>• <strong>Executives</strong> gain simple OPEX control.</li>
-                    <li>• <strong>IT leads</strong> gain standard secure builds and faster audits.</li>
-                    <li>• <strong>Boards and ministers</strong> gain ESG reporting they can take to the public.</li>
-                  </ul>
-                  <p><strong>ROI:</strong> Faster compliance cycles, carbon footprint visibility, $15–25M program value.</p>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="smb-detail" className="bg-white rounded-lg shadow-sm border border-gray-200">
-                <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
-                  💼 SMB Workforce – Back of Card
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 pt-1">
-                  <p className="mb-4">
-                    Small and mid-market businesses need enterprise-grade capability without enterprise cost. Lenovo's Workforce Pack gives MSPs a white-labeled solution that scales.
-                  </p>
-                  <ul className="space-y-2 mb-4">
-                    <li>• <strong>Owners</strong> gain predictable monthly pricing.</li>
-                    <li>• <strong>Employees</strong> get full kits (laptop, dock, monitor, headset) supported by MSP-led service desk.</li>
-                    <li>• <strong>MSPs</strong> unlock recurring revenue and margin.</li>
-                  </ul>
-                  <p><strong>ROI:</strong> Reduced churn, workforce productivity gains, $2–5M deal size with multi-client rollouts.</p>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
           </div>
         </div>
       </section>
