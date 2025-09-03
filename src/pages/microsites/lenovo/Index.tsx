@@ -8,17 +8,10 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 
 const LenovoMicrosite = () => {
   useEffect(() => {
-    // Set noindex for SEO protection
-    const metaTag = document.createElement('meta');
-    metaTag.name = 'robots';
-    metaTag.content = 'noindex,nofollow';
-    document.head.appendChild(metaTag);
-    
     // Set page title
     document.title = 'Solution Sales Australia';
     
     return () => {
-      document.head.removeChild(metaTag);
       document.title = "Troy Latter - Executive Portfolio";
     };
   }, []);
@@ -47,6 +40,7 @@ const LenovoMicrosite = () => {
               { id: 'packs', label: 'Vertical Packs' },
               { id: 'stories', label: 'Stakeholder Vignettes' },
               { id: 'vignettes', label: 'Customer Engagement Vignettes' },
+              { id: 'frameworks', label: '2×2 Frameworks' },
               { id: 'trajectory', label: 'Revenue' },
               { id: 'jd-alignment', label: 'JD Alignment' }
             ].map(({ id, label }) => (
@@ -127,6 +121,8 @@ const LenovoMicrosite = () => {
           <h2 className="text-4xl font-bold text-red-600 mb-6">1. Strategy Foundation</h2>
           
           <FlipCard
+            heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+            hideFlipHint={true}
             front={
               <div className="h-full flex flex-col">
                 <h3 className="text-xl font-bold mb-3 text-red-600">Strategy Overview</h3>
@@ -187,6 +183,8 @@ const LenovoMicrosite = () => {
           
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
               front={
                 <div className="h-full flex flex-col">
                   <h3 className="text-xl font-bold mb-3 text-red-600">Vertical Revenue Targets</h3>
@@ -256,6 +254,8 @@ const LenovoMicrosite = () => {
             />
 
             <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
               front={
                 <div className="h-full flex flex-col">
                   <h3 className="text-xl font-bold mb-3 text-red-600">Customer Value Framework</h3>
@@ -535,12 +535,163 @@ const LenovoMicrosite = () => {
         </div>
       </section>
 
+      {/* 2x2 Strategic Frameworks */}
+      <section id="frameworks" className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">Strategic 2×2 Frameworks</h2>
+          
+          <TwoByTwoHeatmap className="mb-8" />
+          
+          <div id="two-by-two-complete" className="space-y-8">
+            <h3 className="text-2xl font-bold text-gray-900">Customer Relationship</h3>
+            <table className="w-full border border-gray-300">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border border-gray-300 p-3"></th>
+                  <th className="border border-gray-300 p-3">Transactional</th>
+                  <th className="border border-gray-300 p-3">Strategic</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Device-Focused</td>
+                  <td className="border border-gray-300 p-3">Basic refresh cycles, minimal relationship depth</td>
+                  <td className="border border-gray-300 p-3">Device lifecycle management with strategic planning</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Platform-Focused</td>
+                  <td className="border border-gray-300 p-3">Service bundles sold as add-ons</td>
+                  <td className="border border-gray-300 p-3">Workforce transformation partnerships</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 className="text-2xl font-bold text-gray-900">Technology</h3>
+            <table className="w-full border border-gray-300">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border border-gray-300 p-3"></th>
+                  <th className="border border-gray-300 p-3">Point Solutions</th>
+                  <th className="border border-gray-300 p-3">Integrated Platform</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Current State</td>
+                  <td className="border border-gray-300 p-3">Fragmented vendor ecosystem</td>
+                  <td className="border border-gray-300 p-3">Some integration but gaps remain</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Future State</td>
+                  <td className="border border-gray-300 p-3">Best-of-breed specialist approach</td>
+                  <td className="border border-gray-300 p-3">TruScale unified workforce platform</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 className="text-2xl font-bold text-gray-900">Competitor</h3>
+            <table className="w-full border border-gray-300">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border border-gray-300 p-3"></th>
+                  <th className="border border-gray-300 p-3">Device Heritage</th>
+                  <th className="border border-gray-300 p-3">Services Heritage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Weak Platform</td>
+                  <td className="border border-gray-300 p-3">Traditional OEMs (HP, Dell) struggling with services</td>
+                  <td className="border border-gray-300 p-3">Pure-play integrators without device control</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Strong Platform</td>
+                  <td className="border border-gray-300 p-3">Microsoft Surface + ecosystem integration</td>
+                  <td className="border border-gray-300 p-3">IBM, Accenture with consulting depth</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 className="text-2xl font-bold text-gray-900">Roles and Ownership</h3>
+            <table className="w-full border border-gray-300">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border border-gray-300 p-3"></th>
+                  <th className="border border-gray-300 p-3">Lenovo-Led</th>
+                  <th className="border border-gray-300 p-3">Partner-Led</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Tactical</td>
+                  <td className="border border-gray-300 p-3">Device deployment and basic support</td>
+                  <td className="border border-gray-300 p-3">Specialized implementation and integration</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Strategic</td>
+                  <td className="border border-gray-300 p-3">Platform architecture and customer success</td>
+                  <td className="border border-gray-300 p-3">Transformation consulting and change management</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 className="text-2xl font-bold text-gray-900">Partners</h3>
+            <table className="w-full border border-gray-300">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border border-gray-300 p-3"></th>
+                  <th className="border border-gray-300 p-3">Tactical Partners</th>
+                  <th className="border border-gray-300 p-3">Strategic Partners</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Capability</td>
+                  <td className="border border-gray-300 p-3">Implementation, basic integration</td>
+                  <td className="border border-gray-300 p-3">Transformation consulting, industry expertise</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Market Access</td>
+                  <td className="border border-gray-300 p-3">Local presence, project delivery</td>
+                  <td className="border border-gray-300 p-3">C-suite relationships, strategic advisory</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 className="text-2xl font-bold text-gray-900">Tactics</h3>
+            <table className="w-full border border-gray-300">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border border-gray-300 p-3"></th>
+                  <th className="border border-gray-300 p-3">Push Model</th>
+                  <th className="border border-gray-300 p-3">Pull Model</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Product-Led</td>
+                  <td className="border border-gray-300 p-3">Feature demonstrations and technical specs</td>
+                  <td className="border border-gray-300 p-3">Trial programs and proof-of-concept</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 p-3 font-semibold bg-gray-50">Outcome-Led</td>
+                  <td className="border border-gray-300 p-3">ROI calculators and business case development</td>
+                  <td className="border border-gray-300 p-3">Customer success stories and peer references</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* Revenue Trajectory */}
-      <section id="trajectory" className="py-16 bg-white">
+      <section id="trajectory" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="text-4xl font-bold text-red-600 mb-6">5. Revenue Trajectory</h2>
           
           <FlipCard
+            heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+            hideFlipHint={true}
             front={
               <div className="h-full flex flex-col">
                 <h3 className="text-xl font-bold mb-3 text-red-600">5-Year Growth Projection</h3>
@@ -608,12 +759,14 @@ const LenovoMicrosite = () => {
       </section>
 
       {/* JD Alignment */}
-      <section id="jd-alignment" className="py-16 bg-gray-50">
+      <section id="jd-alignment" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="text-4xl font-bold text-red-600 mb-6">6. JD Alignment & Interview Prep</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
               front={
                 <div className="h-full flex flex-col">
                   <h3 className="text-xl font-bold mb-3 text-red-600">Solution Architecture Alignment</h3>
@@ -669,6 +822,8 @@ const LenovoMicrosite = () => {
             />
 
             <FlipCard
+              heightClass="h-[36rem] md:h-[42rem] lg:h-[52rem]"
+              hideFlipHint={true}
               front={
                 <div className="h-full flex flex-col">
                   <h3 className="text-xl font-bold mb-3 text-red-600">Interview Questions & Responses</h3>
