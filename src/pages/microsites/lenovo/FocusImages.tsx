@@ -71,7 +71,7 @@ export default function FocusImages() {
             Lenovo Focus Images
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Strategic visualizations and frameworks supporting Lenovo's ANZ DaaS initiative. 
+            Strategic visualisations and frameworks supporting Lenovo's ANZ DaaS initiative. 
             Click on any image to view it in detail with full commentary.
           </p>
         </div>
@@ -129,7 +129,7 @@ export default function FocusImages() {
           <div className="text-center py-12">
             <div className="text-muted-foreground">
               <p className="text-lg mb-2">No focus images available</p>
-              <p className="text-sm">Check back later for strategic visualizations and frameworks.</p>
+              <p className="text-sm">Check back later for strategic visualisations and frameworks.</p>
             </div>
           </div>
         )}

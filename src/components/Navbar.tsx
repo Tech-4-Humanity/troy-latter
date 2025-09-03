@@ -150,6 +150,40 @@ export const Navbar = () => {
               </div>
             ))}
             
+            {/* Microsites Dropdown */}
+            <div className="relative">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-white hover:text-[#56A4E3] hover:bg-white/10 text-sm font-medium px-3 py-2"
+                  >
+                    Microsites
+                    <ChevronDown className="h-3 w-3 ml-1" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-[#0A101E]/95 backdrop-blur-sm border-gray-700 shadow-xl min-w-[200px] z-50">
+                  <DropdownMenuItem className="focus:bg-white/10 p-0">
+                    <Link
+                      to="/microsites/lenovo"
+                      className="w-full px-3 py-2 text-sm text-gray-200 hover:text-[#56A4E3] transition-colors"
+                    >
+                      Lenovo Playbook
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="focus:bg-white/10 p-0">
+                    <Link
+                      to="/microsites/lenovo/focus-images"
+                      className="w-full px-3 py-2 text-sm text-gray-200 hover:text-[#56A4E3] transition-colors"
+                    >
+                      Focus Images
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+            
             <Link
               to="/contact"
               className={`text-white hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-3 py-2 ${
@@ -206,6 +240,27 @@ export const Navbar = () => {
                   ))}
                 </div>
               ))}
+              
+              {/* Mobile Microsites Section */}
+              <div className="border-b border-gray-700 pb-2 mb-2">
+                <div className="text-gray-200 text-sm font-medium px-2 py-3 block mb-1">
+                  Microsites
+                </div>
+                <Link
+                  to="/microsites/lenovo"
+                  className="text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-4 py-2 block rounded-lg hover:bg-white/5 active:bg-white/10"
+                  onClick={closeMobileMenu}
+                >
+                  Lenovo Playbook
+                </Link>
+                <Link
+                  to="/microsites/lenovo/focus-images"
+                  className="text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-4 py-2 block rounded-lg hover:bg-white/5 active:bg-white/10"
+                  onClick={closeMobileMenu}
+                >
+                  Focus Images
+                </Link>
+              </div>
               
               <Link
                 to="/contact"
