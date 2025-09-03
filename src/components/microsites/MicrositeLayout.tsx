@@ -31,12 +31,6 @@ export const MicrositeLayout = ({ children }: MicrositeLayoutProps) => {
                  location.pathname.includes('lenovo') ? 'Lenovo ANZ' : 'Micro-Sites'}
               </h1>
             </div>
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/microsites">
-                <Home className="h-4 w-4 mr-2" />
-                Micro-Sites Home
-              </Link>
-            </Button>
           </div>
         </div>
       </header>

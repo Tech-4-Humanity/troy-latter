@@ -13,4 +13,4 @@ Allow: /
 
 User-agent: *
 Allow: /
-Disallow: /microsites/lenovo
+Disallow: /microsites/
