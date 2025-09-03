@@ -7,7 +7,12 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/about-troy</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/executive-profile</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://troy-latter-portfolio.vercel.app/experience-and-impact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -17,17 +22,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/innovation-journey</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/industry-expertise</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/strategic-projects</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://troy-latter-portfolio.vercel.app/whitepapers</loc>
+    <loc>https://troy-latter-portfolio.vercel.app/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -35,6 +35,45 @@
     <loc>https://troy-latter-portfolio.vercel.app/faqs</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  
+  <!-- Resources -->
+  <url>
+    <loc>https://troy-latter-portfolio.vercel.app/resources/90-day-plan</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://troy-latter-portfolio.vercel.app/resources/whitepapers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://troy-latter-portfolio.vercel.app/resources/projects</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://troy-latter-portfolio.vercel.app/resources/lean-canvas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Legacy Content -->
+  <url>
+    <loc>https://troy-latter-portfolio.vercel.app/innovation-journey</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://troy-latter-portfolio.vercel.app/strategic-projects</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://troy-latter-portfolio.vercel.app/leadership-style</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
 </urlset>

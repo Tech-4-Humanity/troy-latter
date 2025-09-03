@@ -109,6 +109,8 @@ const App = () => (
           
           {/* Legacy redirects - maintain old URLs for bookmarks */}
           <Route path="/about-troy" element={<Navigate to="/executive-profile" replace />} />
+          <Route path="/whitepapers" element={<Navigate to="/resources/whitepapers" replace />} />
+          <Route path="/projects" element={<Navigate to="/resources/projects" replace />} />
           <Route path="/inspiration" element={<Layout><CustomerAsksStars /></Layout>} />
           <Route path="/customer-asks" element={<Navigate to="/customer-asks-stars" replace />} />
           <Route path="/vision" element={<Navigate to="/customer-asks-stars" replace />} />

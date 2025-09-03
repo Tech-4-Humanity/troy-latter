@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { supabase } from "@/integrations/supabase/client";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
@@ -64,6 +65,11 @@ export default function FocusImages() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Lenovo Focus Images - Troy Latter</title>
+        <meta name="robots" content="noindex,nofollow" />
+        <meta name="description" content="Strategic visualisations and frameworks supporting Lenovo's ANZ DaaS initiative" />
+      </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-12">
