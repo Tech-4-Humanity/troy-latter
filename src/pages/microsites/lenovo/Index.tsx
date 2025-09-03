@@ -7,6 +7,7 @@ import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { FlipCard } from '@/components/ui/FlipCard';
 import { TwoByTwoHeatmap } from '@/components/ui/TwoByTwoHeatmap';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const LenovoMicrosite = () => {
   const [storiesValue, setStoriesValue] = useState<string[]>([]);
@@ -430,63 +431,199 @@ const LenovoMicrosite = () => {
             Pick a card or open them all.
           </p>
 
-          {/* Card grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          {/* Flip Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {[
               {
                 id: 'story-health-gov',
                 title: 'Digital health plus government',
                 description: 'Compliance ready hospital network with public reporting and steady OPEX.',
-                tags: 'Health • Government • Compliance • ESG'
+                tags: 'Health • Government • Compliance • ESG',
+                fullContent: {
+                  context: 'State hospitals face outages and audit findings. The ministry needs trust back. The network needs a plan that works across sites and budgets.',
+                  pain: 'Unpatched devices. Slow ticket times. No clear ESG view. Headlines and board pressure.',
+                  engagement: 'Set the journey. Support then managed then advisory. Use the risk and opportunity 2x2 to move off device only. Build a joint plan with the CIO and procurement.',
+                  solution: 'Rugged ThinkPads and ThinkSmart. Premier Support with service desk integration. TruScale VDI for secure access. Intune and ZTNA. AI copilots for notes and asset health. ESG Navigator with site and fleet views. One OPEX line.',
+                  enablement: 'Baseline three million then grow to twenty million across eight hospitals. Downtime down by a third. Compliance penalties avoided. Clear service levels and value reviews.',
+                  market: 'HP strong in tenders. Dell infra heavy. HPE program led. Lenovo wins with ESG Navigator and TruScale with partner delivery.',
+                  influence: 'Board wants a clean story. Show quick wins in year one and a platform by year five. Use the execution horizon 2x2. Make outcomes plain.',
+                  outcomes: 'Year one stability and audit fixes. Year three VDI and AI in service. Year five ESG reporting at network level and steady OPEX. Public trust improves.',
+                  lessons: 'Compliance drives adoption. OPEX plus ESG plus AI is the winning mix. Partners extend reach without noise.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
               },
               {
                 id: 'story-education',
                 title: 'Smart campus',
                 description: 'Hybrid learning that scales with ESG and VDI. Clear ROI for the board.',
-                tags: 'Education • CIO • VDI • AI'
+                tags: 'Education • CIO • VDI • AI',
+                fullContent: {
+                  context: 'A university wants hybrid learning that works and a footprint that meets ESG rules. Spend is tight and student demand is high.',
+                  pain: 'Lab desktops are slow. Imaging is manual. Remote access is clunky. No clean carbon view for grants.',
+                  engagement: 'Map needs to the future of learning pack. Start with one faculty. Show a path to campus wide rollout. Use the customer journey 2x2 to set scope.',
+                  solution: 'ThinkPad and ThinkCentre refresh. Autopilot and Intune. Premier Support with predictive care. TruScale VDI for labs. LMS links for Moodle and Canvas. AI copilots for students and staff. ESG Navigator by cohort and device.',
+                  enablement: 'Baseline two million then expand to fifteen million over five years. Lower cost to run labs. Faster device setup. Better learning access.',
+                  market: 'HP leads many tenders. Apple has brand pull but weak lifecycle. Lenovo wins with VDI and ESG in one plan.',
+                  influence: 'Senate cares about student outcomes and grants. Show access gains and ESG proof. Keep the story in plain terms.',
+                  outcomes: 'Year one pilot live. Year three campus wide VDI. Year five AI and ESG as standard practice.',
+                  lessons: 'Start small. Prove value fast. Make the platform hard to replace.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
               },
               {
                 id: 'story-health-procurement',
                 title: 'Procurement first digital hospital',
                 description: 'Risk down and uptime up. Rugged fleet with service desk and TruScale.',
-                tags: 'Health • Procurement • SLAs • OPEX'
+                tags: 'Health • Procurement • SLAs • OPEX',
+                fullContent: {
+                  context: 'A hospital network buys on risk and value. They want steady cost and clean contracts.',
+                  pain: 'Many device models. Many vendors. SLAs missed. No one view of service.',
+                  engagement: 'Lead with a compliance first pack. Show how OPEX and service desk give control. Bring the partner who runs the desk.',
+                  solution: 'One fleet standard. Premier Support with a shared portal. Patch and image as code. TruScale for peak loads. Telehealth kits. AI for ticket triage.',
+                  enablement: 'Uptime up. Incident time down. Cost spread over the term. Baseline three million to twenty million with scale by site.',
+                  market: 'Dell will push infra and HPE will push programs. Keep the focus on outcomes and service. That is the Lenovo edge.',
+                  influence: 'Keep the language in control terms. Risk down. Outcome up. Contract simple.',
+                  outcomes: 'Better audits. Fewer vendors. Faster rollout. Clear value reviews.',
+                  lessons: 'Procurement is a partner when you speak in their terms and show real control.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
               },
               {
                 id: 'story-gov-exec',
                 title: 'State workplace compliance',
                 description: 'Secure devices and service desk with ESG dashboards across sites.',
-                tags: 'Government • Exec • Compliance • ESG'
+                tags: 'Government • Exec • Compliance • ESG',
+                fullContent: {
+                  context: 'A state department needs a secure workplace that meets ESG targets and public rules.',
+                  pain: 'Split budgets. Inconsistent builds. No shared metrics. Slow response to audits.',
+                  engagement: 'Use the gov pack. Show a secure build and a managed desk with TruScale hybrid. Tie it to ESG Navigator so reporting is instant.',
+                  solution: 'Standard devices. ZTNA. Autopilot. Premier Support. TruScale for burst. Dashboards for ESG and SLAs.',
+                  enablement: 'Baseline five million then move to twenty five million with a multi agency scope. One contract and a services catalog.',
+                  market: 'HP strong in this space. Lenovo wins when the story is compliance and service with OPEX and partner reach.',
+                  influence: 'Execs need a clean plan and a single view of value. Keep it simple and prove it in one branch first.',
+                  outcomes: 'Faster audits. Measured service. Better staff experience.',
+                  lessons: 'Compliance gives cover to move fast when the offer is clear and safe.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
               },
               {
                 id: 'story-smb-msp',
                 title: 'MSP workforce pack',
                 description: 'Channel led growth in mid market with white label service desk.',
-                tags: 'SMB • MSP • Recurring revenue'
+                tags: 'SMB • MSP • Recurring revenue',
+                fullContent: {
+                  context: 'An MSP wants growth and stable margin. Their clients want simple and fast.',
+                  pain: 'Many tools. Many tickets. Hard to price. Hard to scale.',
+                  engagement: 'Offer the workforce pack under Lenovo brand with MSP delivery. White label the desk. Shared dashboard.',
+                  solution: 'ThinkBook and ThinkCentre. Dock and monitor. Premier Support. Intune and Autopilot. TruScale SMB. AI copilots. Simple tiers.',
+                  enablement: 'One client worth two to five million over term. Ten clients become a stable book. Renewals are built in.',
+                  market: 'Dell will talk infra. Apple will talk devices. Lenovo gives a repeatable pack with partner margin.',
+                  influence: 'Show the MSP how attach creates stickiness. Show how the desk is theirs to run.',
+                  outcomes: 'Faster sales. Lower churn. Better NPS. More cross sell.',
+                  lessons: 'Keep tiers clean. Keep billing simple. Share the win.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
               },
               {
                 id: 'story-am-expand',
                 title: 'Land and expand with the AM',
                 description: 'From device win to multi year program with clear attach steps.',
-                tags: 'Sales • Presales • Attach'
+                tags: 'Sales • Presales • Attach',
+                fullContent: {
+                  context: 'An account manager wins devices. They want to grow the account but the path is not clear.',
+                  pain: 'Short cycles. Price fights. No air cover for service deals.',
+                  engagement: 'Build the account plan with the journey view. Set attach steps. Map roles and ownership with the roles 2x2.',
+                  solution: 'From devices to Premier Support to security and desk. Then TruScale and AI. Then ESG Navigator. Each step has simple proof and a call to value review.',
+                  enablement: 'Sales kit for demos. ROI slides. Competitive points that fit the sector. Clear price bands.',
+                  market: 'Position against HP and Dell with the platform story. Use case links in that sector.',
+                  influence: 'Coach the team. Run exec calls. Keep language plain and linked to outcomes.',
+                  outcomes: 'Higher attach. Better renewals. Multi year view.',
+                  lessons: 'Make the next step obvious. Always book the value review.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
               },
               {
                 id: 'story-board',
                 title: 'Board renewal and expansion',
                 description: 'Simple story that links cost trust and compliance to outcomes.',
-                tags: 'Board • Renewal • ESG • Risk'
+                tags: 'Board • Renewal • ESG • Risk',
+                fullContent: {
+                  context: 'A large client is up for renewal. The chair wants trust and proof. The team wants a simple choice.',
+                  pain: 'Many vendors. No single view of value. Fear of risk if they switch.',
+                  engagement: 'Build a board brief with outcomes and numbers. Use the competitor 2x2 to show why Lenovo. Keep to one page per topic in the talk.',
+                  solution: 'Devices and desk and TruScale and AI and ESG as one platform. One OPEX. One dashboard. One owner.',
+                  enablement: 'Baseline to expanded curve with real dates. Audits passed. Staff scores up. Cost stable.',
+                  market: 'Others can sell parts. Lenovo brings the whole. That is the win.',
+                  influence: 'Speak in board terms. Risk and outcome and trust. Make it easy to say yes.',
+                  outcomes: 'Renewal approved. Expansion funded. Simple plan locked.',
+                  lessons: 'Boards back simple plans that show proof and control.',
+                  jdAlignment: 'Client engagement and strategy • Solution design and delivery • Sales enablement and execution • Market and competitive insight • Influence and mindset'
+                }
               }
             ].map((story) => (
-              <Card 
-                key={story.id} 
-                className="bg-white border border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-                onClick={() => scrollToStory(story.id)}
-              >
-                <CardContent className="p-4">
-                  <h3 className="text-lg font-bold mb-2">{story.title}</h3>
-                  <p className="text-sm text-gray-600 mb-3">{story.description}</p>
-                  <p className="text-xs text-red-600 font-medium">{story.tags}</p>
-                </CardContent>
-              </Card>
+              <FlipCard
+                key={story.id}
+                className="h-96"
+                front={
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-bold text-red-600">{story.title}</h3>
+                    <p className="text-gray-700 font-medium">{story.description}</p>
+                    <p className="text-xs text-red-600 font-medium">{story.tags}</p>
+                    <div className="space-y-2">
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">Context:</p>
+                        <p className="text-sm text-gray-700">{story.fullContent.context}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">Pain:</p>
+                        <p className="text-sm text-gray-700">{story.fullContent.pain}</p>
+                      </div>
+                    </div>
+                  </div>
+                }
+                back={
+                  <ScrollArea className="h-full">
+                    <div className="space-y-3 pr-2">
+                      <h3 className="text-lg font-bold text-red-600">{story.title}</h3>
+                      <div className="space-y-2 text-xs">
+                        <div>
+                          <p className="font-semibold text-gray-900">Engagement:</p>
+                          <p className="text-gray-700">{story.fullContent.engagement}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">Solution:</p>
+                          <p className="text-gray-700">{story.fullContent.solution}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">Market:</p>
+                          <p className="text-gray-700">{story.fullContent.market}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-green-700">Outcomes:</p>
+                          <p className="text-gray-700">{story.fullContent.outcomes}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">Lessons:</p>
+                          <p className="text-gray-700">{story.fullContent.lessons}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">JD Alignment:</p>
+                          <p className="text-gray-700">{story.fullContent.jdAlignment}</p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          document.getElementById(story.id)?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="mt-4 px-3 py-2 bg-red-600 text-white text-xs rounded-md hover:bg-red-700 transition-colors w-full"
+                      >
+                        View Full Vignette
+                      </button>
+                    </div>
+                  </ScrollArea>
+                }
+              />
             ))}
           </div>
 
@@ -677,7 +814,17 @@ const LenovoMicrosite = () => {
                 context: 'University CIO tasked with modernising IT for hybrid learning. Budget caps, sustainability mandates.',
                 pain: 'Device fleet refresh becomes another short-term patch. Multiple vendor complexity.',
                 outcome: 'Multi-year Lenovo-led transformation. $2M baseline → $15M expanded.',
-                alignment: 'Client engagement • Solution design • Sales enablement • Market insight • Influence'
+                alignment: 'Client engagement • Solution design • Sales enablement • Market insight • Influence',
+                fullDetails: {
+                  jdAlignment: [
+                    'Client Engagement & Strategy: Map CIO pain into Lenovo\'s "Future of Learning" pack. Frame as multi-year journey.',
+                    'Solution Design & Delivery: Orchestrate Lenovo presales + MSP for Intune/Autopilot + TruScale VDI + ESG dashboards.',
+                    'Sales Enablement & Execution: Present ROI curve: $2M baseline → $15M expanded.',
+                    'Market Insight: Contrast Lenovo\'s ESG Navigator + OPEX model with HP/Dell infra-heavy.',
+                    'Influence & Mindset: Simplify stack → "From device refresh to Smart Campus."'
+                  ],
+                  narrative: 'CIO fears device fleet refresh will become another short-term patch. Troy reframes: devices + TruScale + AI copilots + ESG = Smart Campus platform. Stakeholders (faculty, IT leads, board) each see their win.'
+                }
               },
               {
                 id: 'vignette-2',
@@ -686,7 +833,16 @@ const LenovoMicrosite = () => {
                 context: 'State hospital group must refresh rugged devices, meet compliance, cut downtime.',
                 pain: 'Procurement sees only cost; compliance risk growing; vendor fragmentation.',
                 outcome: 'Lenovo trusted partner for both procurement and clinicians. Platform approach wins.',
-                alignment: 'Client engagement • Solution delivery • Sales enablement • Market insight'
+                alignment: 'Client engagement • Solution delivery • Sales enablement • Market insight',
+                fullDetails: {
+                  jdAlignment: [
+                    'Client Engagement & Strategy: Reframe procurement conversation from "cost" to "compliance + control."',
+                    'Solution Design & Delivery: Build sector-specific health pack with rugged devices + service desk + compliance dashboard.',
+                    'Sales Enablement & Execution: Show TCO with risk mitigation vs. device-only approaches.',
+                    'Market Insight: Position against Dell/HP infra complexity with simpler Lenovo platform story.'
+                  ],
+                  narrative: 'Procurement lead initially sees device refresh as commodity purchase. Troy demonstrates how Lenovo\'s health pack reduces vendor complexity, meets compliance mandates, and provides OPEX predictability. Board approves multi-year platform approach.'
+                }
               },
               {
                 id: 'vignette-3',
@@ -695,7 +851,16 @@ const LenovoMicrosite = () => {
                 context: 'State department pressured by ESG targets, citizen trust, fragmented IT spend.',
                 pain: 'Too many vendors. No clear value view. Risk of complex procurement cycles.',
                 outcome: 'Lenovo positioned as strategic ANZ government partner. Compliance-ready workplace.',
-                alignment: 'Client engagement • Solution delivery • Sales enablement • Market insight'
+                alignment: 'Client engagement • Solution delivery • Sales enablement • Market insight',
+                fullDetails: {
+                  jdAlignment: [
+                    'Client Engagement & Strategy: Frame Lenovo as the "whole-of-government workplace" partner.',
+                    'Solution Design & Delivery: Orchestrate secure devices + ESG Navigator + compliance dashboards.',
+                    'Sales Enablement & Execution: Present government pack with clear ROI and risk mitigation.',
+                    'Market Insight: Differentiate from HP/Dell with integrated ESG + compliance story.'
+                  ],
+                  narrative: 'Executive wants simple governance story for citizen trust. Troy positions Lenovo government pack as the single-vendor solution for secure, compliant, and sustainable workplace across agencies.'
+                }
               },
               {
                 id: 'vignette-4',
@@ -704,7 +869,16 @@ const LenovoMicrosite = () => {
                 context: 'MSP servicing 500-seat commercial mid-market. Seeks growth via Lenovo partnership.',
                 pain: 'MSP wary of Lenovo cutting into margin. Complex integration challenges.',
                 outcome: 'Lenovo sticks in SMB via MSP scale-out. Partner-led revenue growth.',
-                alignment: 'Client engagement • Solution delivery • Sales enablement • Market insight'
+                alignment: 'Client engagement • Solution delivery • Sales enablement • Market insight',
+                fullDetails: {
+                  jdAlignment: [
+                    'Client Engagement & Strategy: Build MSP as true partner, not just channel.',
+                    'Solution Design & Delivery: Design white-label workforce packs with MSP branding.',
+                    'Sales Enablement & Execution: Enable MSP with repeatable sales playbooks and ROI models.',
+                    'Market Insight: Position Lenovo+MSP as alternative to Dell/HP direct approaches.'
+                  ],
+                  narrative: 'MSP wants growth but fears vendor conflict. Troy structures partnership where Lenovo provides platform, MSP owns client relationship, shared success metrics align both parties.'
+                }
               },
               {
                 id: 'vignette-5',
@@ -713,7 +887,16 @@ const LenovoMicrosite = () => {
                 context: 'AM wins devices but wants account growth. Limited services capability.',
                 pain: 'Short cycles. Price fights. No clear expansion pathway.',
                 outcome: 'Higher attach rates. Better renewals. Multi-year account relationship.',
-                alignment: 'Client engagement • Solution design • Sales enablement • Market insight'
+                alignment: 'Client engagement • Solution design • Sales enablement • Market insight',
+                fullDetails: {
+                  jdAlignment: [
+                    'Client Engagement & Strategy: Coach AM to move from transactional to strategic account management.',
+                    'Solution Design & Delivery: Build account expansion roadmap using vertical packs.',
+                    'Sales Enablement & Execution: Provide AM with attach tools, competitive battlecards, ROI calculators.',
+                    'Market Insight: Position services attach as differentiation vs. HP/Dell device-only approaches.'
+                  ],
+                  narrative: 'AM comfortable selling devices but struggles with services expansion. Troy enables with structured land-and-expand methodology, clear value propositions for each attach opportunity.'
+                }
               },
               {
                 id: 'vignette-6',
@@ -722,7 +905,16 @@ const LenovoMicrosite = () => {
                 context: 'Large customer board deciding renewal. Chair wants confidence in compliance and ESG.',
                 pain: 'Vendor fatigue. Risk aversion. Need for simple governance story.',
                 outcome: 'Renewal approved, expansion budget unlocked, board trust cemented.',
-                alignment: 'Client engagement • Solution delivery • Sales enablement • Influence'
+                alignment: 'Client engagement • Solution delivery • Sales enablement • Influence',
+                fullDetails: {
+                  jdAlignment: [
+                    'Client Engagement & Strategy: Frame Lenovo as the "trusted platform partner" for board confidence.',
+                    'Solution Design & Delivery: Present integrated platform story: devices + services + ESG + compliance.',
+                    'Sales Enablement & Execution: Enable stakeholders with board-ready business case and ROI proof.',
+                    'Influence & Mindset: Simplify complex IT landscape into single vendor relationship for governance ease.'
+                  ],
+                  narrative: 'Board chair tired of vendor complexity, wants simple renewal decision. Troy presents Lenovo as the single-platform solution that reduces vendor risk, meets compliance obligations, and delivers measurable outcomes.'
+                }
               },
             ].map((vignette) => (
               <FlipCard
@@ -745,16 +937,26 @@ const LenovoMicrosite = () => {
                   </div>
                 }
                 back={
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-bold text-red-600">{vignette.title}</h3>
-                    <div className="space-y-3">
-                      <div>
-                        <p className="text-sm font-semibold text-green-700">Outcome:</p>
-                        <p className="text-sm text-gray-700">{vignette.outcome}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-gray-900">JD Alignment:</p>
-                        <p className="text-xs text-gray-600">{vignette.alignment}</p>
+                  <ScrollArea className="h-full">
+                    <div className="space-y-3 pr-2">
+                      <h3 className="text-lg font-bold text-red-600">{vignette.title}</h3>
+                      <div className="space-y-2 text-xs">
+                        <div>
+                          <p className="font-semibold text-green-700">Outcome:</p>
+                          <p className="text-gray-700">{vignette.outcome}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">JD Alignment:</p>
+                          <ul className="space-y-1 text-gray-700">
+                            {vignette.fullDetails.jdAlignment.map((item, index) => (
+                              <li key={index}>• {item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">Narrative Arc:</p>
+                          <p className="text-gray-700">{vignette.fullDetails.narrative}</p>
+                        </div>
                       </div>
                       <button
                         onClick={(e) => {
@@ -766,7 +968,7 @@ const LenovoMicrosite = () => {
                         View Full Vignette
                       </button>
                     </div>
-                  </div>
+                  </ScrollArea>
                 }
               />
             ))}
@@ -803,7 +1005,7 @@ const LenovoMicrosite = () => {
           </div>
           
           <Accordion type="single" collapsible className="space-y-3">
-            <AccordionItem value="vignette-1" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+            <AccordionItem id="vignette-1" value="vignette-1" className="bg-white border border-gray-200 rounded-lg shadow-sm">
               <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
                 1. Education CIO – Smart Campus
               </AccordionTrigger>
@@ -838,7 +1040,7 @@ const LenovoMicrosite = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="vignette-2" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+            <AccordionItem id="vignette-2" value="vignette-2" className="bg-white border border-gray-200 rounded-lg shadow-sm">
               <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
                 2. Healthcare Procurement Lead – Digital Hospital
               </AccordionTrigger>
@@ -873,7 +1075,7 @@ const LenovoMicrosite = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="vignette-3" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+            <AccordionItem id="vignette-3" value="vignette-3" className="bg-white border border-gray-200 rounded-lg shadow-sm">
               <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
                 3. State Government Executive – Gov Compliance
               </AccordionTrigger>
@@ -908,7 +1110,7 @@ const LenovoMicrosite = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="vignette-4" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+            <AccordionItem id="vignette-4" value="vignette-4" className="bg-white border border-gray-200 rounded-lg shadow-sm">
               <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
                 4. SMB MSP Partner – Workforce Pack
               </AccordionTrigger>
@@ -943,7 +1145,7 @@ const LenovoMicrosite = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="vignette-5" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+            <AccordionItem id="vignette-5" value="vignette-5" className="bg-white border border-gray-200 rounded-lg shadow-sm">
               <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
                 5. Lenovo Account Manager – Land & Expand
               </AccordionTrigger>
@@ -978,7 +1180,7 @@ const LenovoMicrosite = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="vignette-6" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+            <AccordionItem id="vignette-6" value="vignette-6" className="bg-white border border-gray-200 rounded-lg shadow-sm">
               <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
                 6. Board Chair – Renewal & Expansion
               </AccordionTrigger>

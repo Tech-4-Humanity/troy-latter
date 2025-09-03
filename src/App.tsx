@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { MicrositeLayout } from "./components/microsites/MicrositeLayout";
+import { MicrositeGuard } from "./components/MicrositeGuard";
 
 import Index from "./pages/Index";
 import ExecutiveProfile from "./pages/ExecutiveProfile";
@@ -74,17 +75,17 @@ const App = () => (
           <Route path="/resources/lean-canvas" element={<Layout><LeanCanvas /></Layout>} />
           
           {/* Microsite routes with separate layout */}
-          <Route path="/microsites" element={<MicrositeLayout><MicrositeIndex /></MicrositeLayout>} />
-          <Route path="/microsites/interview-prep" element={<MicrositeLayout><InterviewPrepIndex /></MicrositeLayout>} />
-          <Route path="/microsites/agentforce" element={<MicrositeLayout><AgentforceIndex /></MicrositeLayout>} />
-          <Route path="/microsites/lab3" element={<MicrositeLayout><Lab3Index /></MicrositeLayout>} />
-          <Route path="/microsites/pega" element={<MicrositeLayout><PegaIndex /></MicrositeLayout>} />
-          <Route path="/microsites/envato" element={<EnvatoIndex />} />
-          <Route path="/microsites/envato/orchestrator" element={<OrchestratePage />} />
-          <Route path="/microsites/envato/summary" element={<EnvatoSummary />} />
-          <Route path="/microsites/envato/assets" element={<EnvatoAssets />} />
-          <Route path="/microsites/lenovo" element={<MicrositeLayout><LenovoIndex /></MicrositeLayout>} />
-          <Route path="/microsites/lenovo/focus-images" element={<LenovoFocusImages />} />
+          <Route path="/microsites" element={<MicrositeGuard><MicrositeLayout><MicrositeIndex /></MicrositeLayout></MicrositeGuard>} />
+          <Route path="/microsites/interview-prep" element={<MicrositeGuard><MicrositeLayout><InterviewPrepIndex /></MicrositeLayout></MicrositeGuard>} />
+          <Route path="/microsites/agentforce" element={<MicrositeGuard><MicrositeLayout><AgentforceIndex /></MicrositeLayout></MicrositeGuard>} />
+          <Route path="/microsites/lab3" element={<MicrositeGuard><MicrositeLayout><Lab3Index /></MicrositeLayout></MicrositeGuard>} />
+          <Route path="/microsites/pega" element={<MicrositeGuard><MicrositeLayout><PegaIndex /></MicrositeLayout></MicrositeGuard>} />
+          <Route path="/microsites/envato" element={<MicrositeGuard><EnvatoIndex /></MicrositeGuard>} />
+          <Route path="/microsites/envato/orchestrator" element={<MicrositeGuard><OrchestratePage /></MicrositeGuard>} />
+          <Route path="/microsites/envato/summary" element={<MicrositeGuard><EnvatoSummary /></MicrositeGuard>} />
+          <Route path="/microsites/envato/assets" element={<MicrositeGuard><EnvatoAssets /></MicrositeGuard>} />
+          <Route path="/microsites/lenovo" element={<MicrositeGuard><MicrositeLayout><LenovoIndex /></MicrositeLayout></MicrositeGuard>} />
+          <Route path="/microsites/lenovo/focus-images" element={<MicrositeGuard><LenovoFocusImages /></MicrositeGuard>} />
           
           {/* Navigation redirects - consolidate similar content */}
           <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />
