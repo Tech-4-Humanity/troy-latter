@@ -65,7 +65,7 @@ const LenovoMicrosite = () => {
             {[
               { id: 'strategy', label: 'Strategy' },
               { id: 'packs', label: 'Vertical Packs' },
-              { id: 'stories', label: 'Stories' },
+              { id: 'stories', label: 'Stakeholder Vignettes' },
               { id: 'vignettes', label: 'Customer Engagement Vignettes' },
               { id: 'trajectory', label: 'Revenue' },
               { id: 'jd-alignment', label: 'JD Alignment' }
@@ -177,6 +177,37 @@ const LenovoMicrosite = () => {
         </div>
       </section>
 
+
+      {/* Customer Value Framework */}
+      <section id="value-framework" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">2. Customer Value Framework</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl mb-4">💰</div>
+                <h3 className="text-xl font-bold mb-3 text-red-600">OPEX Simplicity</h3>
+                <p className="text-gray-700">Single monthly fee covers everything: devices, support, security, AI tools, and ESG reporting.</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl mb-4">🚀</div>
+                <h3 className="text-xl font-bold mb-3 text-red-600">Platform Growth</h3>
+                <p className="text-gray-700">Start with devices, expand to TruScale cloud, AI productivity, and vertical-specific solutions.</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl mb-4">📊</div>
+                <h3 className="text-xl font-bold mb-3 text-red-600">Measurable Impact</h3>
+                <p className="text-gray-700">ESG dashboards, productivity metrics, and compliance reporting built into every solution.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
 
       {/* Vertical Packs */}
       <section id="packs" className="py-16 bg-white">
@@ -393,7 +424,7 @@ const LenovoMicrosite = () => {
       {/* Stories */}
       <section id="stories" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">6. Stories</h2>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">6. Stakeholder Vignettes</h2>
           <p className="text-lg text-gray-700 mb-8">
             Real scenarios that show the architect role in action. Each story maps to the job description pillars. 
             Pick a card or open them all.
@@ -907,7 +938,7 @@ const LenovoMicrosite = () => {
       {/* Enhancements & Differentiators */}
       <section id="enhancements-expanded" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">9. Enhancements & Differentiators</h2>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">8. Enhancements & Differentiators</h2>
 
           <p className="text-lg mb-8">
             DaaS is the start. The edge comes from turning every deal into a platform subscription. 
@@ -1004,7 +1035,7 @@ const LenovoMicrosite = () => {
       {/* Revenue Trajectory */}
       <section id="trajectory" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">8. 5-Year Revenue Trajectory</h2>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">9. 5-Year Revenue Trajectory</h2>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse bg-white rounded-lg shadow-sm">
               <thead>
@@ -1064,7 +1095,7 @@ const LenovoMicrosite = () => {
       {/* JD Alignment & Interview Prep */}
       <section id="jd-alignment" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">9. JD Alignment & Interview Prep</h2>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">10. JD Alignment & Interview Prep</h2>
 
           {/* JD Alignment Accordions */}
           <div className="mb-8">
@@ -1244,7 +1275,7 @@ const LenovoMicrosite = () => {
       {/* Sales & Delivery Support */}
       <section id="sales-support" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">8. Sales & Delivery Support</h2>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">11. Sales & Delivery Support</h2>
           
           <Accordion type="single" collapsible className="space-y-3">
             <AccordionItem value="sow-proposal" className="bg-white border border-gray-200 rounded-lg shadow-sm">
@@ -1660,7 +1691,7 @@ const LenovoMicrosite = () => {
               <h3 className="text-white font-bold mb-3">Resources</h3>
               <button onClick={() => scrollToSection('about')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Overview</button>
               <button onClick={() => scrollToSection('competitive')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Competitive</button>
-              <button onClick={() => scrollToSection('stories')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Stories</button>
+              <button onClick={() => scrollToSection('stories')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Stakeholder Vignettes</button>
               <button onClick={() => scrollToSection('vignettes')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Case Vignettes</button>
               <button onClick={() => scrollToSection('enhancements')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Enhancements</button>
               <button onClick={() => scrollToSection('jd-alignment')} className="block text-gray-300 hover:text-white mb-1 transition-colors">JD Alignment</button>
