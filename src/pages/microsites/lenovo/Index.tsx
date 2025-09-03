@@ -6,6 +6,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { FlipCard } from '@/components/ui/FlipCard';
+import { TwoByTwoHeatmap } from '@/components/ui/TwoByTwoHeatmap';
 
 const LenovoMicrosite = () => {
   const [storiesValue, setStoriesValue] = useState<string[]>([]);
@@ -111,9 +112,10 @@ const LenovoMicrosite = () => {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Why I Created This</h3>
               <p>
-                Too often, sales conversations stop at devices. This playbook exists to show the bigger story: 
-                how DaaS expands into vertical packs, managed services, and long-tail subscriptions. It gives 
-                a common language for account managers, architects, delivery teams, and partners to align around.
+                As I prepared for this interview, I wanted to make sure I could show up as a serious candidate who understands both Lenovo's business and the ANZ market. In doing the work, I uncovered a clear pattern: too many sales conversations stall at devices, when the real opportunity is in DaaS expanding into vertical packs, managed services, and long-tail subscriptions.
+              </p>
+              <p className="mt-3">
+                I built this playbook to organise that insight. Sometimes I work visually, sometimes in words, and by structuring it this way I created both an update for myself and a way to demonstrate to you that I understand the customer journey, the partner ecosystem, and the path Lenovo is on. It's not just research — it's evidence I'm ready to contribute immediately.
               </p>
             </div>
 
@@ -1345,6 +1347,8 @@ const LenovoMicrosite = () => {
       <section id="two-by-two-complete" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
           <h2 className="text-4xl font-bold text-red-600 mb-8">Complete 2x2 Framework Library</h2>
+          
+          <TwoByTwoHeatmap className="mb-8" />
           
           {/* Customer Relationship */}
           <h3 className="text-2xl font-semibold mb-4 text-gray-800">Customer Relationship 2x2</h3>
