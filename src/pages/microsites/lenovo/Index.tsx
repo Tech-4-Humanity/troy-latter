@@ -64,7 +64,7 @@ const LenovoMicrosite = () => {
               { id: 'trajectory', label: 'Revenue' },
               { id: 'packs', label: 'Vertical Packs' },
               { id: 'stories', label: 'Stories' },
-              { id: 'vignettes', label: 'Case Vignettes' },
+              { id: 'vignettes', label: 'Customer Engagement Vignettes' },
               { id: 'jd-alignment', label: 'JD Alignment' }
             ].map(({ id, label }) => (
               <button
@@ -112,11 +112,12 @@ const LenovoMicrosite = () => {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">What You'll Find Here</h3>
               <ul className="space-y-2">
-                <li><b>Strategy:</b> Clear trajectory from $10.5M baseline to $65M+ expanded revenue.</li>
-                <li><b>2×2 Library:</b> Frameworks for customers, technology, partners, competitors, and more.</li>
-                <li><b>Vertical Packs:</b> Education, Healthcare, Government, SMB — each mapped to Lenovo services and partner pathways.</li>
-                <li><b>Enablement:</b> One-pagers, ROI curves, and competitive positioning tools.</li>
-                <li><b>Interview Prep:</b> Alignment with Lenovo's architect JD, plus Q&A for exec-level conversations.</li>
+                <li>• <b>Strategy:</b> Clear trajectory from $10.5M baseline to $65M+ expanded revenue.</li>
+                <li>• <b>Vertical Packs:</b> Education, Healthcare, Government, SMB — each mapped to Lenovo services and partner pathways.</li>
+                <li>• <b>Revenue Projections:</b> 5-year growth trajectory with sector-specific ROI models.</li>
+                <li>• <b>Stories & Vignettes:</b> Real customer scenarios and engagement frameworks.</li>
+                <li>• <b>Sales Support:</b> Enablement tools, proposal development, and delivery frameworks.</li>
+                <li>• <b>Interview Prep:</b> Alignment with Lenovo's architect JD, plus Q&A for exec-level conversations.</li>
               </ul>
             </div>
 
@@ -691,14 +692,68 @@ const LenovoMicrosite = () => {
         </div>
       </section>
 
-      {/* Case Vignettes */}
+      {/* Customer Engagement Vignettes */}
       <section id="vignettes" className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-4xl font-bold text-red-600 mb-6">7. Case Vignettes</h2>
+          <h2 className="text-4xl font-bold text-red-600 mb-6">7. Customer Engagement Vignettes</h2>
           <p className="text-lg text-gray-700 mb-8">
             Six real-world scenarios showing how Lenovo's DaaS strategy translates into customer engagement, 
             solution design, and revenue outcomes across different verticals and stakeholders.
           </p>
+
+          {/* Vignette Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {[
+              { id: 'vignette-1', title: 'Education CIO', subtitle: 'Smart Campus Transformation' },
+              { id: 'vignette-2', title: 'Healthcare Procurement', subtitle: 'Digital Hospital Strategy' },
+              { id: 'vignette-3', title: 'State Government Executive', subtitle: 'Gov Compliance Platform' },
+              { id: 'vignette-4', title: 'SMB MSP Partner', subtitle: 'Workforce Pack Scale-out' },
+              { id: 'vignette-5', title: 'Lenovo Account Manager', subtitle: 'Land & Expand Strategy' },
+              { id: 'vignette-6', title: 'Board Chair', subtitle: 'Renewal & Expansion Decision' },
+            ].map((vignette) => (
+              <Card key={vignette.id} 
+                className="bg-white border border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                onClick={() => {
+                  document.getElementById(vignette.id)?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-bold text-red-600 mb-2">{vignette.title}</h3>
+                  <p className="text-gray-700">{vignette.subtitle}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Expand/Collapse Controls */}
+          <div className="flex justify-center gap-4 mb-8">
+            <button
+              onClick={() => {
+                const allItems = ['vignette-1', 'vignette-2', 'vignette-3', 'vignette-4', 'vignette-5', 'vignette-6'];
+                // Simulate expanding all accordions by clicking each trigger
+                allItems.forEach(id => {
+                  const trigger = document.querySelector(`[data-state="closed"][aria-controls*="${id}"]`) as HTMLButtonElement;
+                  if (trigger) trigger.click();
+                });
+              }}
+              className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+            >
+              Expand All
+            </button>
+            <button
+              onClick={() => {
+                const allItems = ['vignette-1', 'vignette-2', 'vignette-3', 'vignette-4', 'vignette-5', 'vignette-6'];
+                // Simulate collapsing all accordions by clicking each open trigger
+                allItems.forEach(id => {
+                  const trigger = document.querySelector(`[data-state="open"][aria-controls*="${id}"]`) as HTMLButtonElement;
+                  if (trigger) trigger.click();
+                });
+              }}
+              className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors"
+            >
+              Collapse All
+            </button>
+          </div>
           
           <Accordion type="single" collapsible className="space-y-3">
             <AccordionItem value="vignette-1" className="bg-white border border-gray-200 rounded-lg shadow-sm">
@@ -1106,6 +1161,75 @@ const LenovoMicrosite = () => {
               </AccordionTrigger>
               <AccordionContent className="px-4 pb-3 pt-1">
                 <p>A: Collaborative and orchestration-focused. Tag ownership by role, provide clarity on architecture, and let specialists own their domains. Builds accountability and accelerates execution.</p>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </section>
+
+      {/* Sales & Delivery Support */}
+      <section id="sales-support" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-4xl font-bold text-red-600 mb-6">8. Sales & Delivery Support</h2>
+          
+          <Accordion type="single" collapsible className="space-y-3">
+            <AccordionItem value="sow-proposal" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                SoW & Proposal Development
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <p className="mb-4">Proven record in <strong>structuring Statements of Work (SoWs), RFP/RFI responses, and commercial proposals</strong> that align technical scope with client outcomes. Skilled in:</p>
+                <ul className="space-y-2 mb-4">
+                  <li>• Translating solution architecture into contractual deliverables and service-level definitions.</li>
+                  <li>• Negotiating scope, acceptance criteria, and change controls with procurement and legal stakeholders.</li>
+                  <li>• Building pricing and delivery models that balance customer value with Lenovo margin and partner contribution.</li>
+                </ul>
+                <p><strong>Outcome:</strong> Faster bid cycles, reduced rework, and stronger win rates across enterprise and government accounts.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="governance-risk" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                Governance & Risk Management
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <p className="mb-4">Deep experience in <strong>navigating internal approvals and compliance frameworks</strong> to protect both Lenovo and client interests. Competencies include:</p>
+                <ul className="space-y-2 mb-4">
+                  <li>• Running structured risk assessments on large-scale bids and complex service engagements.</li>
+                  <li>• Ensuring workflows meet corporate governance, security, and financial controls.</li>
+                  <li>• Maintaining bid discipline through gated reviews, steering committees, and documented sign-offs.</li>
+                </ul>
+                <p><strong>Outcome:</strong> Predictable execution, fewer escalations, and a reputation as a safe partner in regulated sectors.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="evangelism-enablement" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                Internal Evangelism & Enablement
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <p className="mb-4">Trusted <strong>bridge between field sales, product management, and delivery teams</strong>. Contributions include:</p>
+                <ul className="space-y-2 mb-4">
+                  <li>• Feeding market and client insights back to offering teams to improve Lenovo service packs.</li>
+                  <li>• Designing and running enablement sessions for account managers and presales, using 2×2 frameworks and sector packs.</li>
+                  <li>• Creating proposal toolkits, playbooks, and ROI models that improve attach rates and average deal size.</li>
+                </ul>
+                <p><strong>Outcome:</strong> Sales teams become more confident positioning Lenovo services; product teams gain market validation.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="order-escalation" className="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <AccordionTrigger className="px-6 py-4 font-semibold text-left hover:bg-gray-50">
+                Order & Escalation Support
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 pt-2">
+                <p className="mb-4">Hands-on experience <strong>supporting delivery transitions and resolving deal blockers</strong>. Activities include:</p>
+                <ul className="space-y-2 mb-4">
+                  <li>• Coordinating with PMOs on go-to-delivery handoffs and ensuring contracts are operationalised.</li>
+                  <li>• Managing exceptions in complex global deals — licensing variations, custom SLAs, multi-partner orchestrations.</li>
+                  <li>• Acting as escalation point for delivery and customer success managers when contractual or scope issues arise.</li>
+                </ul>
+                <p><strong>Outcome:</strong> Smoother service activation, reduced delivery friction, and stronger customer trust at renewal points.</p>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
