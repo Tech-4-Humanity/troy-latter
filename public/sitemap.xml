@@ -2,76 +2,76 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main Portfolio Pages -->
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/executive-profile</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/executive-profile</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/experience-and-impact</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/experience-and-impact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/core-competencies</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/core-competencies</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/industry-expertise</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/industry-expertise</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/contact</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/faqs</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/faqs</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <!-- Resources -->
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/resources/90-day-plan</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/resources/90-day-plan</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/resources/whitepapers</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/resources/whitepapers</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/resources/projects</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/resources/projects</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/resources/lean-canvas</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/resources/lean-canvas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <!-- Legacy Content -->
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/innovation-journey</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/innovation-journey</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/strategic-projects</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/strategic-projects</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.vercel.app/leadership-style</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/leadership-style</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
