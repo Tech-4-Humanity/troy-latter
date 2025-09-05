@@ -85,6 +85,12 @@ const LenovoMicrosite = () => {
             >
               Focus Images
             </Link>
+            <Link
+              to="/microsites/lenovo/tactical-deck"
+              className="px-4 py-2 text-white hover:text-red-300 font-semibold transition-colors border border-white/20 rounded-md hover:bg-white/10"
+            >
+              Tactical Deck
+            </Link>
           </nav>
         </div>
       </header>
