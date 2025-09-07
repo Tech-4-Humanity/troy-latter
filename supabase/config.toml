@@ -11,3 +11,6 @@ verify_jwt = false
 
 [functions.voice-to-text]
 verify_jwt = false
+
+[functions.lenovo-advisor]
+verify_jwt = false

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Helmet } from 'react-helmet';
+import { LenovoAdvisor } from '@/components/lenovo/LenovoAdvisor';
 
 const TacticalDeck = () => {
   const [filter, setFilter] = useState('');
@@ -154,6 +155,12 @@ const TacticalDeck = () => {
         <p className="text-[hsl(220_15%_70%)] mb-4 max-w-[80ch]">
           Use this to map pain to stack to outcome. Keep it clean. Say when it fits. Say when it does not. Name a competitor. Close with a result.
         </p>
+
+        {/* Lenovo Tactical Advisor */}
+        <LenovoAdvisor 
+          activeChip={activeChip} 
+          currentSection="tactical-deck"
+        />
 
         {/* Banking Section */}
         <section id="banking" className="mt-7 p-4 rounded-2xl border" style={{
