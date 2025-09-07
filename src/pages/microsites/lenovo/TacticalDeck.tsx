@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Helmet } from 'react-helmet';
 
 const TacticalDeck = () => {
   const [filter, setFilter] = useState('');
   const [activeChip, setActiveChip] = useState('');
+  const headerRef = useRef<HTMLElement>(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
 
   const clearFilter = () => {
     setFilter('');
@@ -27,9 +29,33 @@ const TacticalDeck = () => {
     });
   };
 
+  const measureHeader = useCallback(() => {
+    if (headerRef.current) {
+      const height = headerRef.current.offsetHeight;
+      setHeaderHeight(height);
+      document.documentElement.style.setProperty('--deck-header-h', `${height}px`);
+    }
+  }, []);
+
   useEffect(() => {
     applyFilter(filter);
   }, [filter]);
+
+  useEffect(() => {
+    measureHeader();
+    
+    const observer = new ResizeObserver(measureHeader);
+    if (headerRef.current) {
+      observer.observe(headerRef.current);
+    }
+    
+    window.addEventListener('resize', measureHeader);
+    
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', measureHeader);
+    };
+  }, [measureHeader]);
 
   const chips = [
     'ThinkPad', 'ThinkStation', 'ThinkSystem', 'ThinkAgile', 'ThinkCentre',
@@ -48,14 +74,24 @@ const TacticalDeck = () => {
         <meta name="description" content="Concise Lenovo product tactics by industry with vignettes and competitor context." />
         <meta name="robots" content="noindex,nofollow" />
         <style type="text/css">{`
+          :root {
+            --deck-header-h: 100px;
+          }
           tbody tr.highlight {
             background: rgba(108, 212, 255, 0.18) !important;
+          }
+          thead th.sticky-header {
+            position: sticky;
+            top: var(--deck-header-h);
+            z-index: 20;
+            background: hsl(220 20% 7%) !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
           }
         `}</style>
       </Helmet>
 
       {/* Header */}
-      <header className="sticky top-0 z-10" style={{
+      <header ref={headerRef} className="sticky top-0 z-10" style={{
         background: 'linear-gradient(180deg, rgba(15,18,32,0.98), rgba(15,18,32,0.85))',
         backdropFilter: 'saturate(1.2) blur(6px)',
         borderBottom: '1px solid hsl(225 15% 15%)'
@@ -153,7 +189,7 @@ const TacticalDeck = () => {
               <thead>
                 <tr>
                   {['Pain', 'Lenovo stack', 'Outcome', 'Competitors', 'Vignette'].map((header) => (
-                    <th key={header} className="sticky top-[52px] text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
+                   <th key={header} className="sticky-header text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
                       background: 'hsl(220 20% 7%)',
                       color: 'hsl(220 15% 70%)',
                       borderBottom: '1px solid hsl(225 15% 15%)'
@@ -266,7 +302,7 @@ const TacticalDeck = () => {
               <thead>
                 <tr>
                   {['Pain', 'Lenovo stack', 'Outcome', 'Competitors', 'Vignette'].map((header) => (
-                    <th key={header} className="sticky top-[52px] text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
+                   <th key={header} className="sticky-header text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
                       background: 'hsl(220 20% 7%)',
                       color: 'hsl(220 15% 70%)',
                       borderBottom: '1px solid hsl(225 15% 15%)'
@@ -379,7 +415,7 @@ const TacticalDeck = () => {
               <thead>
                 <tr>
                   {['Pain', 'Lenovo stack', 'Outcome', 'Competitors', 'Vignette'].map((header) => (
-                    <th key={header} className="sticky top-[52px] text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
+                   <th key={header} className="sticky-header text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
                       background: 'hsl(220 20% 7%)',
                       color: 'hsl(220 15% 70%)',
                       borderBottom: '1px solid hsl(225 15% 15%)'
@@ -492,7 +528,7 @@ const TacticalDeck = () => {
               <thead>
                 <tr>
                   {['Pain', 'Lenovo stack', 'Outcome', 'Competitors', 'Vignette'].map((header) => (
-                    <th key={header} className="sticky top-[52px] text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
+                   <th key={header} className="sticky-header text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
                       background: 'hsl(220 20% 7%)',
                       color: 'hsl(220 15% 70%)',
                       borderBottom: '1px solid hsl(225 15% 15%)'
@@ -605,7 +641,7 @@ const TacticalDeck = () => {
               <thead>
                 <tr>
                   {['Pain', 'Lenovo stack', 'Outcome', 'Competitors', 'Vignette'].map((header) => (
-                    <th key={header} className="sticky top-[52px] text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
+                   <th key={header} className="sticky-header text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
                       background: 'hsl(220 20% 7%)',
                       color: 'hsl(220 15% 70%)',
                       borderBottom: '1px solid hsl(225 15% 15%)'
@@ -695,7 +731,7 @@ const TacticalDeck = () => {
               <thead>
                 <tr>
                   {['Product line', 'Use', 'Do not use', 'Competitors', 'Integrate'].map((header) => (
-                    <th key={header} className="sticky top-[52px] text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
+                    <th key={header} className="sticky-header text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
                       background: 'hsl(220 20% 7%)',
                       color: 'hsl(220 15% 70%)',
                       borderBottom: '1px solid hsl(225 15% 15%)'
