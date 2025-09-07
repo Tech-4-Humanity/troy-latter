@@ -1,5 +1,6 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -106,8 +107,55 @@ CONTEXT:
       throw new Error('Invalid response format from AI');
     }
 
+    // Save to database
+    let documentId = null;
+    try {
+      const supabase = createClient(
+        'https://lzfgigiyqpuuxslsygjt.supabase.co',
+        Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+      );
+
+      // Extract product tags from the response
+      const productTags = Object.keys(LENOVO_PRODUCT_MAP).filter(product => 
+        parsedResponse.stack?.toLowerCase().includes(product.toLowerCase())
+      );
+
+      const { data: docData, error: dbError } = await supabase
+        .from('knowledge_documents')
+        .insert({
+          title: `Lenovo Tactical Recommendation`,
+          content: JSON.stringify({
+            prompt: prompt.trim(),
+            context: context || {},
+            response: parsedResponse,
+            timestamp: new Date().toISOString()
+          }),
+          source_type: 'lenovo-advisor',
+          tags: productTags,
+          metadata: {
+            activeChip: context?.activeChip,
+            currentSection: context?.currentSection,
+            productRecommendations: productTags
+          }
+        })
+        .select('id')
+        .single();
+
+      if (dbError) {
+        console.error('Database save error:', dbError);
+      } else {
+        documentId = docData?.id;
+        console.log('Saved to database with ID:', documentId);
+      }
+    } catch (dbError) {
+      console.error('Database operation failed:', dbError);
+    }
+
     return new Response(
-      JSON.stringify({ response: parsedResponse }),
+      JSON.stringify({ 
+        response: parsedResponse, 
+        documentId 
+      }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
 

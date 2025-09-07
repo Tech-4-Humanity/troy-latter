@@ -1,8 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Mic, Send, Volume2 } from 'lucide-react';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Mic, Send, Volume2, History, ChevronDown, Check } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -31,9 +33,40 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
   const [isProcessing, setIsProcessing] = useState(false);
   const [response, setResponse] = useState<AdvisorResponse | null>(null);
   const [speakEnabled, setSpeakEnabled] = useState(false);
+  const [autoSave, setAutoSave] = useState(true);
+  const [lastSaved, setLastSaved] = useState<string | null>(null);
+  const [history, setHistory] = useState<any[]>([]);
+  const [showHistory, setShowHistory] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const { toast } = useToast();
+
+  // Load history on component mount
+  useEffect(() => {
+    loadHistory();
+  }, []);
+
+  const loadHistory = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('knowledge_documents')
+        .select('id, title, content, created_at')
+        .eq('source_type', 'lenovo-advisor')
+        .order('created_at', { ascending: false })
+        .limit(10);
+
+      if (error) throw error;
+      
+      const parsedHistory = data?.map(doc => ({
+        ...doc,
+        parsedContent: JSON.parse(doc.content)
+      })) || [];
+      
+      setHistory(parsedHistory);
+    } catch (error) {
+      console.error('Failed to load history:', error);
+    }
+  };
 
   const startRecording = async () => {
     try {
@@ -123,6 +156,11 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
       if (data?.response) {
         setResponse(data.response);
         
+        if (data.documentId) {
+          setLastSaved(data.documentId);
+          loadHistory(); // Refresh history
+        }
+        
         if (speakEnabled && data.response.vignette) {
           playTextAsAudio(data.response.vignette);
         }
@@ -196,24 +234,43 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
               {isProcessing ? "Analyzing..." : "Get Recommendation"}
             </Button>
 
-            <div className="flex items-center gap-2 ml-auto">
-              <input
-                type="checkbox"
-                id="speak-answer"
-                checked={speakEnabled}
-                onChange={(e) => setSpeakEnabled(e.target.checked)}
-                className="rounded"
-              />
-              <label htmlFor="speak-answer" className="text-sm flex items-center gap-1">
-                <Volume2 className="h-3 w-3" />
-                Speak answer
-              </label>
+            <div className="flex items-center gap-4 ml-auto">
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="auto-save"
+                  checked={autoSave}
+                  onCheckedChange={(checked) => setAutoSave(checked as boolean)}
+                />
+                <label htmlFor="auto-save" className="text-sm">Auto-save</label>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="speak-answer"
+                  checked={speakEnabled}
+                  onCheckedChange={(checked) => setSpeakEnabled(checked as boolean)}
+                />
+                <label htmlFor="speak-answer" className="text-sm flex items-center gap-1">
+                  <Volume2 className="h-3 w-3" />
+                  Speak answer
+                </label>
+              </div>
             </div>
           </div>
         </div>
 
         {response && (
           <div className="border-t pt-4 space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="font-semibold">Recommendation</h3>
+              {lastSaved && (
+                <div className="flex items-center gap-1 text-sm text-green-600">
+                  <Check className="h-3 w-3" />
+                  Saved
+                </div>
+              )}
+            </div>
+            
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-3">
                 <div>
@@ -263,6 +320,45 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
             )}
           </div>
         )}
+
+        {/* History Section */}
+        <Collapsible open={showHistory} onOpenChange={setShowHistory}>
+          <CollapsibleTrigger asChild>
+            <Button variant="outline" size="sm" className="w-full">
+              <History className="h-4 w-4 mr-2" />
+              View History ({history.length})
+              <ChevronDown className={`h-4 w-4 ml-auto transition-transform ${showHistory ? 'rotate-180' : ''}`} />
+            </Button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="space-y-2 mt-2">
+            {history.length === 0 ? (
+              <p className="text-sm text-muted-foreground text-center py-4">No previous recommendations</p>
+            ) : (
+              history.map((item) => (
+                <div key={item.id} className="border rounded-md p-3 text-sm space-y-2">
+                  <div className="flex justify-between items-start">
+                    <p className="font-medium truncate">{item.parsedContent.prompt}</p>
+                    <span className="text-xs text-muted-foreground ml-2">
+                      {new Date(item.created_at).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <p className="text-muted-foreground line-clamp-2">{item.parsedContent.response?.stack}</p>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      setPrompt(item.parsedContent.prompt);
+                      setResponse(item.parsedContent.response);
+                    }}
+                    className="h-6 text-xs"
+                  >
+                    Load this recommendation
+                  </Button>
+                </div>
+              ))
+            )}
+          </CollapsibleContent>
+        </Collapsible>
       </CardContent>
     </Card>
   );
