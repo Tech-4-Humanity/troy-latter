@@ -3,8 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Mic, Send, Volume2, History, ChevronDown, Check } from 'lucide-react';
+import { Mic, Send, Volume2, History, ChevronDown, Check, Globe, AlertCircle } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -37,6 +38,8 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
   const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [history, setHistory] = useState<any[]>([]);
   const [showHistory, setShowHistory] = useState(false);
+  const [useWebContext, setUseWebContext] = useState(false);
+  const [webUrls, setWebUrls] = useState('');
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const { toast } = useToast();
@@ -141,17 +144,26 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
     setIsProcessing(true);
     
     try {
+      // Parse web URLs if provided
+      const urlList = useWebContext && webUrls.trim() 
+        ? webUrls.split('\n').map(url => url.trim()).filter(url => url.length > 0)
+        : [];
+
       const { data, error } = await supabase.functions.invoke('lenovo-advisor', {
         body: { 
           prompt: prompt.trim(),
           context: {
             activeChip,
             currentSection
-          }
+          },
+          webUrls: urlList
         }
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Lenovo advisor error:', error);
+        throw new Error(error.message || 'Failed to get recommendation');
+      }
 
       if (data?.response) {
         setResponse(data.response);
@@ -165,10 +177,11 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
           playTextAsAudio(data.response.vignette);
         }
       }
-    } catch (error) {
+    } catch (error: any) {
+      console.error('Submit error:', error);
       toast({
         title: "Analysis Error",
-        description: "Could not analyze your request. Please try again.",
+        description: error?.message || "Could not analyze your request. Please try again.",
         variant: "destructive"
       });
     } finally {
@@ -213,7 +226,7 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
             disabled={isProcessing}
           />
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <Button
               variant="outline"
               size="sm"
@@ -234,7 +247,19 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
               {isProcessing ? "Analyzing..." : "Get Recommendation"}
             </Button>
 
-            <div className="flex items-center gap-4 ml-auto">
+            <div className="flex items-center gap-4 ml-auto flex-wrap">
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="web-context"
+                  checked={useWebContext}
+                  onCheckedChange={(checked) => setUseWebContext(checked as boolean)}
+                />
+                <label htmlFor="web-context" className="text-sm flex items-center gap-1">
+                  <Globe className="h-3 w-3" />
+                  Web context
+                </label>
+              </div>
+              
               <div className="flex items-center gap-2">
                 <Checkbox
                   id="auto-save"
@@ -258,6 +283,26 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
             </div>
           </div>
         </div>
+
+        {useWebContext && (
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <Globe className="h-4 w-4" />
+              <span className="text-sm font-medium">Lenovo Web Sources</span>
+              <AlertCircle className="h-3 w-3 text-muted-foreground" />
+            </div>
+            <Input
+              value={webUrls}
+              onChange={(e) => setWebUrls(e.target.value)}
+              placeholder="Enter Lenovo URLs (one per line, e.g., https://www.lenovo.com/us/en/laptops/thinkpad/)"
+              className="min-h-[60px] resize-none"
+              disabled={isProcessing}
+            />
+            <p className="text-xs text-muted-foreground">
+              Only Lenovo.com domains are allowed for security. URLs will be fetched to provide current product context.
+            </p>
+          </div>
+        )}
 
         {response && (
           <div className="border-t pt-4 space-y-4">

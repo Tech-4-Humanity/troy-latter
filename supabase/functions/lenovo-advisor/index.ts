@@ -7,6 +7,59 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Allowed domains for web enrichment
+const ALLOWED_DOMAINS = [
+  'lenovo.com',
+  'www.lenovo.com',
+  'news.lenovo.com',
+  'blog.lenovo.com',
+  'support.lenovo.com'
+];
+
+// Simple web content fetcher with domain validation
+async function fetchWebContent(url: string): Promise<string | null> {
+  try {
+    const urlObj = new URL(url);
+    
+    // Check if domain is allowed
+    if (!ALLOWED_DOMAINS.some(domain => urlObj.hostname.endsWith(domain))) {
+      console.log(`Domain not allowed: ${urlObj.hostname}`);
+      return null;
+    }
+    
+    console.log(`Fetching content from: ${url}`);
+    
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': 'Lenovo-Advisor-Bot/1.0'
+      },
+      signal: AbortSignal.timeout(10000) // 10 second timeout
+    });
+    
+    if (!response.ok) {
+      console.log(`Failed to fetch ${url}: ${response.status}`);
+      return null;
+    }
+    
+    const html = await response.text();
+    
+    // Basic text extraction (remove HTML tags and clean up)
+    const textContent = html
+      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+      .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    
+    // Limit to first 2000 characters for context
+    return textContent.substring(0, 2000);
+    
+  } catch (error) {
+    console.error(`Error fetching web content from ${url}:`, error);
+    return null;
+  }
+}
+
 const LENOVO_PRODUCT_MAP = {
   "ThinkPad": "Laptops and mobile workstations for professionals",
   "ThinkSystem": "Servers and enterprise infrastructure",
@@ -51,18 +104,47 @@ serve(async (req) => {
   }
 
   try {
-    const { prompt, context } = await req.json();
+    const { prompt, context, webUrls } = await req.json();
     
     if (!prompt) {
       throw new Error('Prompt is required');
     }
 
-    console.log('Lenovo advisor request:', { prompt, context });
+    console.log('Lenovo advisor request:', { prompt, context, webUrls });
+
+    // Fetch web content if URLs provided
+    let webContext = '';
+    const fetchedSources: string[] = [];
+    
+    if (webUrls && Array.isArray(webUrls) && webUrls.length > 0) {
+      console.log('Fetching web content from provided URLs...');
+      
+      const webContents = await Promise.allSettled(
+        webUrls.slice(0, 3).map(async (url: string) => { // Limit to 3 URLs
+          const content = await fetchWebContent(url);
+          if (content) {
+            fetchedSources.push(url);
+            return `SOURCE: ${url}\nCONTENT: ${content}\n\n`;
+          }
+          return null;
+        })
+      );
+      
+      webContext = webContents
+        .filter(result => result.status === 'fulfilled' && result.value)
+        .map(result => (result as any).value)
+        .join('');
+    }
 
     const contextInfo = context ? `
 CONTEXT:
 - Active Filter: ${context.activeChip || 'None'}
 - Current Section: ${context.currentSection || 'General'}
+    `.trim() : '';
+
+    const webContextInfo = webContext ? `
+WEB CONTEXT (from Lenovo sources):
+${webContext}
     `.trim() : '';
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -80,7 +162,7 @@ CONTEXT:
           },
           { 
             role: 'user', 
-            content: `${contextInfo}\n\nCUSTOMER REQUEST: ${prompt}` 
+            content: `${contextInfo}${webContextInfo}\n\nCUSTOMER REQUEST: ${prompt}` 
           }
         ],
         max_completion_tokens: 1000,
@@ -128,6 +210,7 @@ CONTEXT:
             prompt: prompt.trim(),
             context: context || {},
             response: parsedResponse,
+            webSources: fetchedSources,
             timestamp: new Date().toISOString()
           }),
           source_type: 'lenovo-advisor',
@@ -135,7 +218,8 @@ CONTEXT:
           metadata: {
             activeChip: context?.activeChip,
             currentSection: context?.currentSection,
-            productRecommendations: productTags
+            productRecommendations: productTags,
+            webSourcesUsed: fetchedSources.length > 0
           }
         })
         .select('id')
