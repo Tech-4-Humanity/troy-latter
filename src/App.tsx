@@ -50,6 +50,7 @@ import YourProfileStars from "./pages/YourProfileStars";
 import TheOpportunity from "./pages/TheOpportunity";
 import YourPitch from "./pages/YourPitch";
 import WhatIsInnovation from "./pages/WhatIsInnovation";
+import { SmokeTest } from "./pages/dev/SmokeTest";
 
 const queryClient = new QueryClient();
 
@@ -116,9 +117,14 @@ const App = () => (
           <Route path="/inspiration" element={<Layout><CustomerAsksStars /></Layout>} />
           <Route path="/customer-asks" element={<Navigate to="/customer-asks-stars" replace />} />
           <Route path="/vision" element={<Navigate to="/customer-asks-stars" replace />} />
-          <Route path="/head-of-innovation" element={<Navigate to="/" replace />} />
-          
-          <Route path="*" element={<Layout><NotFound /></Layout>} />
+           <Route path="/head-of-innovation" element={<Navigate to="/" replace />} />
+           
+           {/* Dev-only smoke test */}
+           {import.meta.env.DEV && (
+             <Route path="/__smoke" element={<SmokeTest />} />
+           )}
+           
+           <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
