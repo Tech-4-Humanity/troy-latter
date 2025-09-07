@@ -47,6 +47,11 @@ const TacticalDeck = () => {
         <title>Lenovo Tactical Deck</title>
         <meta name="description" content="Concise Lenovo product tactics by industry with vignettes and competitor context." />
         <meta name="robots" content="noindex,nofollow" />
+        <style type="text/css">{`
+          tbody tr.highlight {
+            background: rgba(108, 212, 255, 0.18) !important;
+          }
+        `}</style>
       </Helmet>
 
       {/* Header */}
