@@ -99,12 +99,28 @@ Guidelines:
 - Keep responses concise but actionable`;
 
 serve(async (req) => {
+  console.log('Lenovo advisor function called', req.method, req.url);
+  
+  // Health check endpoint
+  if (req.method === 'GET') {
+    return new Response(JSON.stringify({ 
+      status: 'healthy', 
+      timestamp: new Date().toISOString(),
+      openai_key_available: !!Deno.env.get('OPENAI_API_KEY'),
+      service_role_key_available: !!Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
+    }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
+  }
+  
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
+    console.log('Processing request...');
     const { prompt, context, webUrls } = await req.json();
+    console.log('Request data received:', { prompt: prompt?.substring(0, 50) + '...', context, webUrlsCount: webUrls?.length || 0 });
     
     if (!prompt) {
       throw new Error('Prompt is required');

@@ -142,6 +142,7 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
     if (!prompt.trim() || isProcessing) return;
 
     setIsProcessing(true);
+    console.log('LenovoAdvisor: Starting submission', { prompt: prompt.trim(), useWebContext, webUrls });
     
     try {
       // Parse web URLs if provided
@@ -149,19 +150,27 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
         ? webUrls.split('\n').map(url => url.trim()).filter(url => url.length > 0)
         : [];
 
+      console.log('LenovoAdvisor: Parsed URLs', urlList);
+
+      const requestBody = { 
+        prompt: prompt.trim(),
+        context: {
+          activeChip,
+          currentSection
+        },
+        webUrls: urlList
+      };
+
+      console.log('LenovoAdvisor: Calling lenovo-advisor function with body:', requestBody);
+
       const { data, error } = await supabase.functions.invoke('lenovo-advisor', {
-        body: { 
-          prompt: prompt.trim(),
-          context: {
-            activeChip,
-            currentSection
-          },
-          webUrls: urlList
-        }
+        body: requestBody
       });
 
+      console.log('LenovoAdvisor: Function response', { data, error });
+
       if (error) {
-        console.error('Lenovo advisor error:', error);
+        console.error('Lenovo advisor function error:', error);
         throw new Error(error.message || 'Failed to get recommendation');
       }
 
@@ -178,10 +187,19 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
         }
       }
     } catch (error: any) {
-      console.error('Submit error:', error);
+      console.error('Submit error details:', {
+        error,
+        message: error?.message,
+        stack: error?.stack,
+        name: error?.name
+      });
+      
+      // Show more detailed error information
+      const errorMessage = error?.message || error?.toString() || "Could not analyze your request. Please try again.";
+      
       toast({
         title: "Analysis Error",
-        description: error?.message || "Could not analyze your request. Please try again.",
+        description: `${errorMessage} ${error?.details ? `(${error.details})` : ''}`,
         variant: "destructive"
       });
     } finally {
@@ -203,6 +221,33 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
       }
     } catch (error) {
       console.error('Text-to-speech error:', error);
+    }
+  };
+
+  const testFunction = async () => {
+    try {
+      console.log('Testing lenovo-advisor function health...');
+      const response = await fetch('https://lzfgigiyqpuuxslsygjt.supabase.co/functions/v1/lenovo-advisor', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6ZmdpZ2l5cXB1dXhzbHN5Z2p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ0MTc0NjksImV4cCI6MjA1OTk5MzQ2OX0.qUNzDEr2rxjRSClh5P4jeDv_18_yCCkFXTizJqNYSgg`,
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6ZmdpZ2l5cXB1dXhzbHN5Z2p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ0MTc0NjksImV4cCI6MjA1OTk5MzQ2OX0.qUNzDEr2rxjRSClh5P4jeDv_18_yCCkFXTizJqNYSgg'
+        }
+      });
+      const data = await response.json();
+      console.log('Function health check:', data);
+      toast({
+        title: "Function Test", 
+        description: `Status: ${data.status || 'unknown'}, OpenAI: ${data.openai_key_available ? 'available' : 'missing'}`,
+        variant: data.status === 'healthy' ? 'default' : 'destructive'
+      });
+    } catch (error) {
+      console.error('Function test error:', error);
+      toast({
+        title: "Function Test Failed", 
+        description: String(error),
+        variant: "destructive"
+      });
     }
   };
 
@@ -245,6 +290,15 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
             >
               <Send className="h-4 w-4" />
               {isProcessing ? "Analyzing..." : "Get Recommendation"}
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={testFunction}
+              disabled={isProcessing}
+            >
+              Test Function
             </Button>
 
             <div className="flex items-center gap-4 ml-auto flex-wrap">
