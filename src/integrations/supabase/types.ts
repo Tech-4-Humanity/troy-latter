@@ -13430,6 +13430,7 @@ export type Database = {
           metadata: Json | null
           source_type: string
           source_url: string | null
+          tags: string[] | null
           title: string
           updated_at: string
         }
@@ -13441,6 +13442,7 @@ export type Database = {
           metadata?: Json | null
           source_type: string
           source_url?: string | null
+          tags?: string[] | null
           title: string
           updated_at?: string
         }
@@ -13452,6 +13454,7 @@ export type Database = {
           metadata?: Json | null
           source_type?: string
           source_url?: string | null
+          tags?: string[] | null
           title?: string
           updated_at?: string
         }
@@ -16636,7 +16639,10 @@ export type Database = {
           amount: number | null
           created_at: string
           currency: string | null
+          email: string | null
           id: string
+          product_tier: string | null
+          product_type: string | null
           status: string | null
           stripe_session_id: string | null
           updated_at: string
@@ -16646,7 +16652,10 @@ export type Database = {
           amount?: number | null
           created_at?: string
           currency?: string | null
+          email?: string | null
           id?: string
+          product_tier?: string | null
+          product_type?: string | null
           status?: string | null
           stripe_session_id?: string | null
           updated_at?: string
@@ -16656,7 +16665,10 @@ export type Database = {
           amount?: number | null
           created_at?: string
           currency?: string | null
+          email?: string | null
           id?: string
+          product_tier?: string | null
+          product_type?: string | null
           status?: string | null
           stripe_session_id?: string | null
           updated_at?: string
