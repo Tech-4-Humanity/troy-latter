@@ -267,7 +267,7 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Describe your IT challenge, pain point, or requirements... (type, paste, or use voice)"
-            className="min-h-[100px] resize-none"
+            className="min-h-[120px] resize-y"
             disabled={isProcessing}
           />
           
@@ -349,7 +349,7 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
               value={webUrls}
               onChange={(e) => setWebUrls(e.target.value)}
               placeholder="Enter Lenovo URLs (one per line, e.g., https://www.lenovo.com/us/en/laptops/thinkpad/)"
-              className="min-h-[80px] resize-none"
+              className="min-h-[100px] resize-y"
               disabled={isProcessing}
             />
             <p className="text-xs text-muted-foreground">
@@ -370,51 +370,51 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
               )}
             </div>
             
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="space-y-3">
-                <div>
-                  <h4 className="font-semibold text-sm text-primary">Pain Point</h4>
-                  <p className="text-sm">{response.pain}</p>
+            <div className="grid gap-6 lg:grid-cols-2">
+              <div className="space-y-4">
+                <div className="bg-accent/20 p-4 rounded-lg">
+                  <h4 className="font-semibold text-sm text-primary mb-2">Pain Point</h4>
+                  <p className="text-sm leading-relaxed whitespace-pre-wrap">{response.pain}</p>
                 </div>
                 
-                <div>
-                  <h4 className="font-semibold text-sm text-primary">Recommended Lenovo Stack</h4>
-                  <p className="text-sm">{response.stack}</p>
+                <div className="bg-accent/20 p-4 rounded-lg">
+                  <h4 className="font-semibold text-sm text-primary mb-2">Recommended Lenovo Stack</h4>
+                  <p className="text-sm leading-relaxed whitespace-pre-wrap">{response.stack}</p>
                 </div>
                 
-                <div>
-                  <h4 className="font-semibold text-sm text-primary">Expected Outcomes</h4>
-                  <p className="text-sm">{response.outcomes}</p>
+                <div className="bg-accent/20 p-4 rounded-lg">
+                  <h4 className="font-semibold text-sm text-primary mb-2">Expected Outcomes</h4>
+                  <p className="text-sm leading-relaxed whitespace-pre-wrap">{response.outcomes}</p>
                 </div>
               </div>
               
-              <div className="space-y-3">
-                <div>
-                  <h4 className="font-semibold text-sm text-green-600 dark:text-green-400">When It Fits</h4>
-                  <p className="text-sm">{response.when_fit}</p>
+              <div className="space-y-4">
+                <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border border-green-200 dark:border-green-700">
+                  <h4 className="font-semibold text-sm text-green-700 dark:text-green-400 mb-2">When It Fits</h4>
+                  <p className="text-sm leading-relaxed whitespace-pre-wrap text-green-800 dark:text-green-300">{response.when_fit}</p>
                 </div>
                 
-                <div>
-                  <h4 className="font-semibold text-sm text-orange-600 dark:text-orange-400">When to Consider Alternatives</h4>
-                  <p className="text-sm">{response.when_not}</p>
+                <div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg border border-orange-200 dark:border-orange-700">
+                  <h4 className="font-semibold text-sm text-orange-700 dark:text-orange-400 mb-2">When to Consider Alternatives</h4>
+                  <p className="text-sm leading-relaxed whitespace-pre-wrap text-orange-800 dark:text-orange-300">{response.when_not}</p>
                 </div>
                 
-                <div>
-                  <h4 className="font-semibold text-sm text-primary">Key Competitors</h4>
-                  <p className="text-sm">{response.competitors}</p>
+                <div className="bg-accent/20 p-4 rounded-lg">
+                  <h4 className="font-semibold text-sm text-primary mb-2">Key Competitors</h4>
+                  <p className="text-sm leading-relaxed whitespace-pre-wrap">{response.competitors}</p>
                 </div>
               </div>
             </div>
             
-            <div className="bg-accent/30 p-3 rounded-md">
-              <h4 className="font-semibold text-sm text-primary mb-1">Success Vignette</h4>
-              <p className="text-sm italic">"{response.vignette}"</p>
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-700">
+              <h4 className="font-semibold text-sm text-blue-700 dark:text-blue-400 mb-2">Success Vignette</h4>
+              <p className="text-sm italic leading-relaxed whitespace-pre-wrap text-blue-800 dark:text-blue-300">"{response.vignette}"</p>
             </div>
             
             {response.notes && (
-              <div>
-                <h4 className="font-semibold text-sm text-muted-foreground">Additional Notes</h4>
-                <p className="text-sm text-muted-foreground">{response.notes}</p>
+              <div className="bg-muted/50 p-4 rounded-lg">
+                <h4 className="font-semibold text-sm text-muted-foreground mb-2">Additional Notes</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-wrap">{response.notes}</p>
               </div>
             )}
           </div>
@@ -434,14 +434,19 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
               <p className="text-sm text-muted-foreground text-center py-4">No previous recommendations</p>
             ) : (
               history.map((item) => (
-                <div key={item.id} className="border rounded-md p-3 text-sm space-y-2">
-                  <div className="flex justify-between items-start">
-                    <p className="font-medium truncate">{item.parsedContent.prompt}</p>
-                    <span className="text-xs text-muted-foreground ml-2">
+                <div key={item.id} className="border rounded-lg p-4 text-sm space-y-3 bg-accent/10">
+                  <div className="flex justify-between items-start gap-4">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-primary leading-relaxed">{item.parsedContent.prompt}</p>
+                    </div>
+                    <span className="text-xs text-muted-foreground whitespace-nowrap">
                       {new Date(item.created_at).toLocaleDateString()}
                     </span>
                   </div>
-                  <p className="text-muted-foreground line-clamp-2">{item.parsedContent.response?.stack}</p>
+                  <div className="space-y-2">
+                    <p className="text-xs font-medium text-muted-foreground">Recommended Stack:</p>
+                    <p className="text-muted-foreground leading-relaxed">{item.parsedContent.response?.stack}</p>
+                  </div>
                   <Button
                     variant="ghost"
                     size="sm"
@@ -449,7 +454,7 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
                       setPrompt(item.parsedContent.prompt);
                       setResponse(item.parsedContent.response);
                     }}
-                    className="h-6 text-xs"
+                    className="h-8 text-xs w-full mt-2"
                   >
                     Load this recommendation
                   </Button>
