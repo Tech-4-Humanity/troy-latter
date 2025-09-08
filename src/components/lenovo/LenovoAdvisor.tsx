@@ -291,11 +291,11 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
               <span className="text-sm font-medium">Lenovo Web Sources</span>
               <AlertCircle className="h-3 w-3 text-muted-foreground" />
             </div>
-            <Input
+            <Textarea
               value={webUrls}
               onChange={(e) => setWebUrls(e.target.value)}
               placeholder="Enter Lenovo URLs (one per line, e.g., https://www.lenovo.com/us/en/laptops/thinkpad/)"
-              className="min-h-[60px] resize-none"
+              className="min-h-[80px] resize-none"
               disabled={isProcessing}
             />
             <p className="text-xs text-muted-foreground">
@@ -336,12 +336,12 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
               
               <div className="space-y-3">
                 <div>
-                  <h4 className="font-semibold text-sm text-green-700">When It Fits</h4>
+                  <h4 className="font-semibold text-sm text-green-600 dark:text-green-400">When It Fits</h4>
                   <p className="text-sm">{response.when_fit}</p>
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold text-sm text-orange-700">When to Consider Alternatives</h4>
+                  <h4 className="font-semibold text-sm text-orange-600 dark:text-orange-400">When to Consider Alternatives</h4>
                   <p className="text-sm">{response.when_not}</p>
                 </div>
                 

@@ -189,13 +189,16 @@ ${webContext}
       throw new Error('Invalid response format from AI');
     }
 
-    // Save to database
+    // Save to database (optional)
     let documentId = null;
-    try {
-      const supabase = createClient(
-        'https://lzfgigiyqpuuxslsygjt.supabase.co',
-        Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-      );
+    const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+    
+    if (serviceRoleKey) {
+      try {
+        const supabase = createClient(
+          'https://lzfgigiyqpuuxslsygjt.supabase.co',
+          serviceRoleKey
+        );
 
       // Extract product tags from the response
       const productTags = Object.keys(LENOVO_PRODUCT_MAP).filter(product => 
@@ -225,14 +228,17 @@ ${webContext}
         .select('id')
         .single();
 
-      if (dbError) {
-        console.error('Database save error:', dbError);
-      } else {
-        documentId = docData?.id;
-        console.log('Saved to database with ID:', documentId);
+        if (dbError) {
+          console.error('Database save error:', dbError);
+        } else {
+          documentId = docData?.id;
+          console.log('Saved to database with ID:', documentId);
+        }
+      } catch (dbError) {
+        console.error('Database operation failed:', dbError);
       }
-    } catch (dbError) {
-      console.error('Database operation failed:', dbError);
+    } else {
+      console.log('No service role key available, skipping database save');
     }
 
     return new Response(
