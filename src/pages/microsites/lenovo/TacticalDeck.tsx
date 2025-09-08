@@ -64,11 +64,11 @@ const TacticalDeck = () => {
   ];
 
   return (
-    <div className="min-h-screen" style={{ 
+    <div id="tactical-deck" className="min-h-screen" style={{ 
       background: 'hsl(220 20% 7%)',
       color: 'hsl(220 15% 92%)',
       fontFamily: 'ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif',
-      lineHeight: '1.35'
+      lineHeight: '1.5'
     }}>
       <Helmet>
         <title>Lenovo Tactical Deck</title>
@@ -87,6 +87,24 @@ const TacticalDeck = () => {
             z-index: 20;
             background: hsl(220 20% 7%) !important;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          }
+          #tactical-deck table td,
+          #tactical-deck table th {
+            white-space: normal !important;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.5;
+          }
+          #tactical-deck .deck-card,
+          #tactical-deck .deck-note,
+          #tactical-deck .deck-vignette {
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.5;
+          }
+          #tactical-deck .chip {
+            white-space: nowrap;
           }
         `}</style>
       </Helmet>
@@ -168,27 +186,27 @@ const TacticalDeck = () => {
           border: '1px solid hsl(225 15% 15%)'
         }}>
           <h2 className="text-xl font-bold mb-2">Banking</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-2">
-            <div className="p-2 rounded-lg border text-sm" style={{
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Use case focus</strong>
-              <span className="text-[hsl(220_15%_70%)]">Fraud models. Secure fleets. Trader screens.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Use case focus</strong>
+              <p className="text-[hsl(220_15%_70%)]">Fraud models. Secure fleets. Trader screens.</p>
             </div>
-            <div className="p-2 rounded-lg border text-sm" style={{
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Cred note</strong>
-              <span className="text-[hsl(220_15%_70%)]">Call out TruScale for elastic spend. Call out ThinkShield for device control.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Cred note</strong>
+              <p className="text-[hsl(220_15%_70%)]">Call out TruScale for elastic spend. Call out ThinkShield for device control.</p>
             </div>
-            <div className="p-2 rounded-lg border text-sm" style={{
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Watchouts</strong>
-              <span className="text-[hsl(220_15%_70%)]">Mac fleets in exec teams. Validate ISV needs for traders.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Watchouts</strong>
+              <p className="text-[hsl(220_15%_70%)]">Mac fleets in exec teams. Validate ISV needs for traders.</p>
             </div>
           </div>
           <div className="overflow-auto rounded-lg border" style={{ border: '1px solid hsl(225 15% 15%)' }}>
@@ -208,60 +226,63 @@ const TacticalDeck = () => {
               </thead>
               <tbody>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Device sprawl and risk</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkPad T14s Gen 6 with ThinkShield</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Device sprawl and risk">Device sprawl and risk</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkPad T14s Gen 6 with ThinkShield">ThinkPad T14s Gen 6 with ThinkShield</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Encrypted fleet</span> clean manage
+                    }}>Encrypted fleet</span>
+                    <span>clean manage</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell Latitude HP EliteBook Apple MacBook</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Dell Latitude HP EliteBook Apple MacBook">Dell Latitude HP EliteBook Apple MacBook</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
                       Bank rolled 20k ThinkPads and cut breaches in year one
                     </div>
                   </td>
                 </tr>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Fraud detection speed</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkSystem with AI starter kit and TruScale</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Fraud detection speed">Fraud detection speed</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkSystem with AI starter kit and TruScale">ThinkSystem with AI starter kit and TruScale</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Faster scores</span> elastic spend
+                    }}>Faster scores</span>
+                    <span>elastic spend</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell PowerEdge HPE ProLiant</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Dell PowerEdge HPE ProLiant">Dell PowerEdge HPE ProLiant</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
                       Pilot scaled at peaks only and saved millions
                     </div>
                   </td>
                 </tr>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Trading floor density</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkVision multi screen plus P series workstations</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Trading floor density">Trading floor density</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkVision multi screen plus P series workstations">ThinkVision multi screen plus P series workstations</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Lower energy</span> higher focus
+                    }}>Lower energy</span>
+                    <span>higher focus</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell UltraSharp HP Z Displays</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Dell UltraSharp HP Z Displays">Dell UltraSharp HP Z Displays</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
                       Energy use fell on the floor after panel swap
                     </div>
@@ -270,7 +291,7 @@ const TacticalDeck = () => {
               </tbody>
             </table>
           </div>
-          <p className="text-xs mt-2" style={{ color: 'hsl(220 15% 70%)' }}>
+          <p className="deck-note text-xs mt-2" style={{ color: 'hsl(220 15% 70%)' }}>
             If macOS is mandated then pivot to device services and monitors.
           </p>
         </section>
@@ -281,27 +302,27 @@ const TacticalDeck = () => {
           border: '1px solid hsl(225 15% 15%)'
         }}>
           <h2 className="text-xl font-bold mb-2">Government</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-2">
-            <div className="p-2 rounded-lg border text-sm" style={{
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Use case focus</strong>
-              <span className="text-[hsl(220_15%_70%)]">Sovereign data. Transport signals. Branch sites.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Use case focus</strong>
+              <p className="text-[hsl(220_15%_70%)]">Sovereign data. Transport signals. Branch sites.</p>
             </div>
-            <div className="p-2 rounded-lg border text-sm" style={{
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Cred note</strong>
-              <span className="text-[hsl(220_15%_70%)]">Say edge to core. Say service wrap. Keep it measurable.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Cred note</strong>
+              <p className="text-[hsl(220_15%_70%)]">Say edge to core. Say service wrap. Keep it measurable.</p>
             </div>
-            <div className="p-2 rounded-lg border text-sm" style={{
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Watchouts</strong>
-              <span className="text-[hsl(220_15%_70%)]">Legacy vendor lock. Formal frameworks. Procurement cycles.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Watchouts</strong>
+              <p className="text-[hsl(220_15%_70%)]">Legacy vendor lock. Formal frameworks. Procurement cycles.</p>
             </div>
           </div>
           <div className="overflow-auto rounded-lg border" style={{ border: '1px solid hsl(225 15% 15%)' }}>
@@ -321,60 +342,63 @@ const TacticalDeck = () => {
               </thead>
               <tbody>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>IoT and transport data</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>SE350 at depots with ThinkAgile in core</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="IoT and transport data">IoT and transport data</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="SE350 at depots with ThinkAgile in core">SE350 at depots with ThinkAgile in core</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Real time</span> better plans
+                    }}>Real time</span>
+                    <span>better plans</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>HPE Edgeline Cisco HyperFlex</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="HPE Edgeline Cisco HyperFlex">HPE Edgeline Cisco HyperFlex</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
                       Agency forecast congestion and moved crews early
                     </div>
                   </td>
                 </tr>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Secure desktop fleets</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkCentre Neo with ThinkShield</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Secure desktop fleets">Secure desktop fleets</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkCentre Neo with ThinkShield">ThinkCentre Neo with ThinkShield</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Stable fleet</span> fewer tickets
+                    }}>Stable fleet</span>
+                    <span>fewer tickets</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell OptiPlex HP ProDesk</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Dell OptiPlex HP ProDesk">Dell OptiPlex HP ProDesk</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
                       Five thousand units went in and calls dropped fast
                     </div>
                   </td>
                 </tr>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Data stays onshore</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkSystem DG7200 for records and imaging</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Data stays onshore">Data stays onshore</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkSystem DG7200 for records and imaging">ThinkSystem DG7200 for records and imaging</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Sovereign</span> AI ready
+                    }}>Audit clean</span>
+                    <span>sovereign store</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell EMC NetApp</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Dell EMC NetApp">Dell EMC NetApp</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
                       Records processed onshore with audit paths clean
                     </div>
@@ -383,7 +407,7 @@ const TacticalDeck = () => {
               </tbody>
             </table>
           </div>
-          <p className="text-xs mt-2" style={{ color: 'hsl(220 15% 70%)' }}>
+          <p className="deck-note text-xs mt-2" style={{ color: 'hsl(220 15% 70%)' }}>
             If a rival owns the DC then lead with device and edge first.
           </p>
         </section>
@@ -394,27 +418,27 @@ const TacticalDeck = () => {
           border: '1px solid hsl(225 15% 15%)'
         }}>
           <h2 className="text-xl font-bold mb-2">Healthcare</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-2">
-            <div className="p-2 rounded-lg border text-sm" style={{
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Use case focus</strong>
-              <span className="text-[hsl(220_15%_70%)]">Imaging. Triage. Ward endpoints. Clinician rounds.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Use case focus</strong>
+              <p className="text-[hsl(220_15%_70%)]">Imaging. Triage. Ward endpoints. Clinician rounds.</p>
             </div>
-            <div className="p-2 rounded-lg border text-sm" style={{
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Cred note</strong>
-              <span className="text-[hsl(220_15%_70%)]">Say storage for AI. Say device safety for wards.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Cred note</strong>
+              <p className="text-[hsl(220_15%_70%)]">Say storage for AI. Say device safety for wards.</p>
             </div>
-            <div className="p-2 rounded-lg border text-sm" style={{
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Watchouts</strong>
-              <span className="text-[hsl(220_15%_70%)]">Clinical ISV needs. Peripherals. Wifi zones.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Watchouts</strong>
+              <p className="text-[hsl(220_15%_70%)]">Clinical ISV needs. Peripherals. Wifi zones.</p>
             </div>
           </div>
           <div className="overflow-auto rounded-lg border" style={{ border: '1px solid hsl(225 15% 15%)' }}>
@@ -434,70 +458,73 @@ const TacticalDeck = () => {
               </thead>
               <tbody>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Imaging choke</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkSystem DG7200 for imaging sets</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Imaging choke">Imaging choke</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkSystem DG7200 for imaging sets">ThinkSystem DG7200 for imaging sets</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Faster triage</span> smooth flow
+                    }}>Faster reads</span>
+                    <span>smarter care</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell EMC PowerStore GE Healthcare</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Dell EMC PowerStore GE Healthcare">Dell EMC PowerStore GE Healthcare</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
-                      Lag fell across five hospitals after the move
+                      AI reads are live and helping triage faster
                     </div>
                   </td>
                 </tr>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Doctor mobility</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkPad X1 Yoga with secure sync</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Doctor mobility">Doctor mobility</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkPad X1 Yoga with secure sync">ThinkPad X1 Yoga with secure sync</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Fast access</span> safer notes
+                    }}>Live notes</span>
+                    <span>ward ready</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>HP Elite x360 iPad Pro</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="HP Elite x360 iPad Pro">HP Elite x360 iPad Pro</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
-                      Rounds ran faster and notes stayed in control
+                      Doctors take notes that sync and stay private
                     </div>
                   </td>
                 </tr>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Endpoint sprawl</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkCentre with ThinkShield in wards</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Endpoint sprawl">Endpoint sprawl</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkCentre with ThinkShield in wards">ThinkCentre with ThinkShield in wards</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Locked devices</span> clean fleet
+                    }}>Safe fleet</span>
+                    <span>clean rooms</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell OptiPlex HP ProDesk</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Dell OptiPlex HP ProDesk">Dell OptiPlex HP ProDesk</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
-                      No patient record breaches after the rollout
+                      Endpoints deployed safely in every ward and cleaned easy
                     </div>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p className="text-xs mt-2" style={{ color: 'hsl(220 15% 70%)' }}>
-            If Apple is fixed in clinic then lead with storage and monitors.
+          <p className="deck-note text-xs mt-2" style={{ color: 'hsl(220 15% 70%)' }}>
+            If they are Apple heavy then lead with monitors and infrastructure.
           </p>
         </section>
 
@@ -507,27 +534,27 @@ const TacticalDeck = () => {
           border: '1px solid hsl(225 15% 15%)'
         }}>
           <h2 className="text-xl font-bold mb-2">Education</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-2">
-            <div className="p-2 rounded-lg border text-sm" style={{
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Use case focus</strong>
-              <span className="text-[hsl(220_15%_70%)]">Research compute. Labs. Student fleets. Semester spikes.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Use case focus</strong>
+              <p className="text-[hsl(220_15%_70%)]">Research compute. Labs. Student fleets. Semester spikes.</p>
             </div>
-            <div className="p-2 rounded-lg border text-sm" style={{
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Cred note</strong>
-              <span className="text-[hsl(220_15%_70%)]">Say TruScale for peaks. Say rugged for labs and carts.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Cred note</strong>
+              <p className="text-[hsl(220_15%_70%)]">Say rugged for class. Say TruScale for peak loads.</p>
             </div>
-            <div className="p-2 rounded-lg border text-sm" style={{
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Watchouts</strong>
-              <span className="text-[hsl(220_15%_70%)]">BYOD rules. Grant timelines. AV stacks.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Watchouts</strong>
+              <p className="text-[hsl(220_15%_70%)]">Budget cycles. Student damage. Summer cooling fell</p>
             </div>
           </div>
           <div className="overflow-auto rounded-lg border" style={{ border: '1px solid hsl(225 15% 15%)' }}>
@@ -547,60 +574,63 @@ const TacticalDeck = () => {
               </thead>
               <tbody>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>HPC demand in research</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkSystem clusters with ThinkAgile</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="HPC demand in research">HPC demand in research</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkSystem clusters with ThinkAgile">ThinkSystem clusters with ThinkAgile</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Scaled HPC</span> cooler rooms
+                    }}>Research boost</span>
+                    <span>grant ready</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell VxRail HPE SimpliVity</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Dell VxRail HPE SimpliVity">Dell VxRail HPE SimpliVity</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
-                      Twenty racks became four nodes and cooling fell
+                      Research lab got faster results and more funding
                     </div>
                   </td>
                 </tr>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Student fleets</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkBook and ThinkPad EDU bundles</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Student fleets">Student fleets</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkBook and ThinkPad EDU bundles">ThinkBook and ThinkPad EDU bundles</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Rugged</span> fair cost
+                    }}>Rugged fleet</span>
+                    <span>low break</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>HP ProBook Dell Latitude EDU</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="HP ProBook Dell Latitude EDU">HP ProBook Dell Latitude EDU</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
-                      Fifty thousand students with no ticket spike
+                      Student damage dropped and IT calls fell fast
                     </div>
                   </td>
                 </tr>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Teaching labs</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkStation P series for CAD and VR</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Teaching labs">Teaching labs</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkStation P series for CAD and VR">ThinkStation P series for CAD and VR</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Ready labs</span> simple care
+                    }}>Ready labs</span>
+                    <span>simple care</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>HP Z Workstations Dell Precision</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="HP Z Workstations Dell Precision">HP Z Workstations Dell Precision</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
                       VR units ran stable on P7 in live classes
                     </div>
@@ -609,7 +639,7 @@ const TacticalDeck = () => {
               </tbody>
             </table>
           </div>
-          <p className="text-xs mt-2" style={{ color: 'hsl(220 15% 70%)' }}>
+          <p className="deck-note text-xs mt-2" style={{ color: 'hsl(220 15% 70%)' }}>
             If campus is Apple heavy then lean on clusters and monitors first.
           </p>
         </section>
@@ -620,27 +650,27 @@ const TacticalDeck = () => {
           border: '1px solid hsl(225 15% 15%)'
         }}>
           <h2 className="text-xl font-bold mb-2">Startup and scale up</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-2">
-            <div className="p-2 rounded-lg border text-sm" style={{
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Use case focus</strong>
-              <span className="text-[hsl(220_15%_70%)]">Cloud gaps. GPU need. Cash care. Fast hires.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Use case focus</strong>
+              <p className="text-[hsl(220_15%_70%)]">Cloud gaps. GPU need. Cash care. Fast hires.</p>
             </div>
-            <div className="p-2 rounded-lg border text-sm" style={{
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Cred note</strong>
-              <span className="text-[hsl(220_15%_70%)]">Say hybrid. Say OPEX. Keep burn low.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Cred note</strong>
+              <p className="text-[hsl(220_15%_70%)]">Say hybrid. Say OPEX. Keep burn low.</p>
             </div>
-            <div className="p-2 rounded-lg border text-sm" style={{
+            <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-1">Watchouts</strong>
-              <span className="text-[hsl(220_15%_70%)]">Pure cloud rules. Zero DC ops. Short cycles.</span>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Watchouts</strong>
+              <p className="text-[hsl(220_15%_70%)]">Pure cloud rules. Zero DC ops. Short cycles.</p>
             </div>
           </div>
           <div className="overflow-auto rounded-lg border" style={{ border: '1px solid hsl(225 15% 15%)' }}>
@@ -660,176 +690,54 @@ const TacticalDeck = () => {
               </thead>
               <tbody>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Cloud GPU shortage</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkStation P8 with TruScale GPU nodes</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Cloud GPU shortage">Cloud GPU shortage</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkStation P8 with TruScale GPU nodes">ThinkStation P8 with TruScale GPU nodes</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Local train</span> hybrid flex
+                    }}>Local train</span>
+                    <span>hybrid flex</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>HP Z series Dell Precision</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="HP Z series Dell Precision XPS">HP Z series Dell Precision XPS</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
                       Models trained on site and spend stayed sane
                     </div>
                   </td>
                 </tr>
                 <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Staff on the move</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkPad P1 mobile workstations</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Budget guard">Budget guard</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="ThinkBook fleets">ThinkBook fleets</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <span className="chip inline-block px-2 py-0.5 rounded-full text-xs border mr-2" style={{
                       color: 'hsl(120 60% 70%)',
                       border: '1px solid rgba(122,247,200,0.4)',
                       background: 'hsl(225 20% 10%)'
-                    }}>Portability</span> real power
+                    }}>Durable</span>
+                    <span>fair OPEX</span>
                   </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Apple MacBook Pro Dell XPS</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }} title="Acer HP ProBook">Acer HP ProBook</td>
+                  <td className="border-b px-3 py-4 text-sm align-top leading-relaxed break-words" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
+                    <div className="deck-vignette mt-2 p-3 rounded border-l-4 text-sm leading-relaxed" style={{
                       background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
+                      borderLeft: '4px solid hsl(120 60% 70%)'
                     }}>
-                      Teams built offline and synced later with no fuss
-                    </div>
-                  </td>
-                </tr>
-                <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Budget guard</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkBook fleets</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs border whitespace-nowrap" style={{
-                      color: 'hsl(120 60% 70%)',
-                      border: '1px solid rgba(122,247,200,0.4)',
-                      background: 'hsl(225 20% 10%)'
-                    }}>Durable</span> fair OPEX
-                  </td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Acer HP ProBook</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>
-                    <div className="mt-2 p-2 rounded border-l-2 text-xs" style={{
-                      background: 'rgba(122,247,200,0.06)',
-                      borderLeft: '3px solid hsl(120 60% 70%)'
-                    }}>
-                      Two hundred staff kitted with headroom intact
+                      Two hundred staff kitted and spend stayed in check with no fuss
                     </div>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p className="text-xs mt-2" style={{ color: 'hsl(220 15% 70%)' }}>
-            If cloud only then offer device and monitor and services first.
+          <p className="deck-note text-xs mt-2" style={{ color: 'hsl(220 15% 70%)' }}>
+            If they insist on pure cloud then offer device services only.
           </p>
         </section>
-
-        {/* Product Quick Map */}
-        <section id="products" className="mt-7 p-4 rounded-2xl border" style={{
-          background: 'hsl(225 20% 12%)',
-          border: '1px solid hsl(225 15% 15%)'
-        }}>
-          <h2 className="text-xl font-bold mb-2">Product quick map</h2>
-          <div className="overflow-auto rounded-lg border" style={{ border: '1px solid hsl(225 15% 15%)' }}>
-            <table className="w-full border-collapse min-w-[820px]" style={{ background: 'hsl(220 20% 7%)' }}>
-              <thead>
-                <tr>
-                  {['Product line', 'Use', 'Do not use', 'Competitors', 'Integrate'].map((header) => (
-                    <th key={header} className="sticky-header text-left text-xs font-semibold tracking-wide px-3 py-2 border-b" style={{
-                      background: 'hsl(220 20% 7%)',
-                      color: 'hsl(220 15% 70%)',
-                      borderBottom: '1px solid hsl(225 15% 15%)'
-                    }}>
-                      {header}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkPad T X P X1</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Enterprise mobility secure manage</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Creative on mac or tiny EDU only</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell Latitude HP EliteBook Apple</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Windows 11 Intune M365 ThinkShield VDI</td>
-                </tr>
-                <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkStation P series</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>CAD BIM render AI dev</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Mobile only staff or tight sites</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>HP Z series Dell Precision Apple Mac Pro</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>NVIDIA AMD ISV stacks Linux</td>
-                </tr>
-                <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkSystem</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Core DC hybrid AI database ERP</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Pure cloud native only</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell PowerEdge HPE ProLiant Cisco UCS</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>VMware Nutanix OpenShift K8s Databricks</td>
-                </tr>
-                <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkAgile</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>HCI simplify racks AI HPC</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Tiny shops or no DC</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell VxRail HPE SimpliVity Cisco HyperFlex</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>vSAN Nutanix K8s</td>
-                </tr>
-                <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkCentre</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Gov and EDU desktops kiosks</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>High end media and AI dev</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell OptiPlex HP ProDesk Acer</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>SCCM Horizon Citrix VDI</td>
-                </tr>
-                <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkVision</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Office and labs and trading</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Gaming or cinema colorists</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell UltraSharp HP Z LG</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>USB C docks thin clients</td>
-                </tr>
-                <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkBook</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>SMB value and rugged</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Deep manage needs</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>HP ProBook Dell lower bands Acer</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Windows Pro Vantage</td>
-                </tr>
-                <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>ThinkShield</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Zero Trust and compliance</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Very small shops</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>HP Wolf Dell SafeGuard</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Azure AD Intune</td>
-                </tr>
-                <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>TruScale</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>OPEX peaks hybrid AI</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>CAPEX only buyers</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>HPE GreenLake Dell APEX Cisco Plus</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Across all Lenovo lines</td>
-                </tr>
-                <tr className="hover:bg-[rgba(124,135,255,0.06)]">
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Edge SE350 SE450</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Retail transport floor sites</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Central DC only</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Dell Edge HPE Edgeline Cisco Edge</td>
-                  <td className="border-b px-3 py-3 text-sm align-top" style={{ borderBottom: '1px solid hsl(225 15% 15%)' }}>Azure IoT AWS Greengrass SCADA</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="text-xs mt-2" style={{ color: 'hsl(220 15% 70%)' }}>
-            Say when it fits. Say when it does not. That builds trust fast.
-          </p>
-        </section>
-
-        <footer className="text-center text-xs mt-6 mb-10" style={{ color: 'hsl(220 15% 70%)' }}>
-          RPT_LenovoTacticalDeck_Microsite_20250905.html
-        </footer>
       </main>
     </div>
   );
