@@ -5,6 +5,8 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+  'Access-Control-Max-Age': '86400',
 };
 
 // Allowed domains for web enrichment
@@ -172,17 +174,12 @@ ${webContext}
       body: JSON.stringify({
         model: 'gpt-4.1-2025-04-14',
         messages: [
-          { 
-            role: 'system', 
-            content: SYSTEM_PROMPT 
-          },
-          { 
-            role: 'user', 
-            content: `${contextInfo}${webContextInfo}\n\nCUSTOMER REQUEST: ${prompt}` 
-          }
+          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'user', content: `${contextInfo}${webContextInfo}\n\nCUSTOMER REQUEST: ${prompt}` }
         ],
         max_completion_tokens: 1000,
       }),
+      signal: AbortSignal.timeout(25000)
     });
 
     if (!response.ok) {

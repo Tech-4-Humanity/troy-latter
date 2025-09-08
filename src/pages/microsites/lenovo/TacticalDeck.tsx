@@ -180,6 +180,38 @@ const TacticalDeck = () => {
           currentSection="tactical-deck"
         />
 
+        {/* Product Quick Guide */}
+        <section id="product-guide" className="mt-7 p-4 rounded-2xl border" style={{
+          background: 'hsl(225 20% 12%)',
+          border: '1px solid hsl(225 15% 15%)'
+        }}>
+          <h2 className="text-xl font-bold mb-2">Product quick guide</h2>
+          <p className="text-[hsl(220_15%_70%)] mb-3 max-w-[90ch]">
+            Short descriptions and where each product shines.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { name: 'ThinkPad', desc: 'Laptops and mobile workstations for professionals', summary: 'Secure, reliable endpoints for staff and execs.' },
+              { name: 'ThinkSystem', desc: 'Servers and enterprise infrastructure', summary: 'Core compute for AI, databases, and virtualization.' },
+              { name: 'ThinkEdge', desc: 'Edge computing and IoT solutions', summary: 'Rugged edge nodes for sites, branches, and transport.' },
+              { name: 'ThinkCentre', desc: 'Desktop computers and workstations', summary: 'Managed desktops for contact centres and wards.' },
+              { name: 'ThinkVision', desc: 'Professional monitors for productivity', summary: 'High‑density screens for trading floors and design teams.' },
+              { name: 'SE350', desc: 'Edge servers and micro data centers', summary: 'Compact edge compute for constrained spaces.' },
+              { name: 'Storage', desc: 'Enterprise storage solutions', summary: 'Storage for AI models, imaging sets, and training data.' },
+              { name: 'TruScale', desc: 'As‑a‑service consumption model', summary: 'Elastic spend aligned to usage and peaks.' }
+            ].map((p) => (
+              <article key={p.name} className="deck-card p-4 rounded-lg border" style={{
+                background: 'hsl(220 20% 7%)',
+                border: '1px solid hsl(225 15% 15%)'
+              }}>
+                <h3 className="font-semibold mb-1 text-[hsl(220_15%_92%)]">{p.name}</h3>
+                <p className="text-[hsl(220_15%_78%)] text-sm">{p.desc}</p>
+                <p className="text-[hsl(220_15%_70%)] text-sm mt-1">{p.summary}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         {/* Banking Section */}
         <section id="banking" className="mt-7 p-4 rounded-2xl border" style={{
           background: 'hsl(225 20% 12%)',
@@ -191,21 +223,21 @@ const TacticalDeck = () => {
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-2">Use case focus</strong>
-              <p className="text-[hsl(220_15%_70%)]">Fraud models. Secure fleets. Trader screens.</p>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Where this helps</strong>
+              <p className="text-[hsl(220_15%_70%)]">Fraud detection. Secure device fleets. High‑density trader screens.</p>
             </div>
             <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-2">Cred note</strong>
-              <p className="text-[hsl(220_15%_70%)]">Call out TruScale for elastic spend. Call out ThinkShield for device control.</p>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Why it matters (and to whom)</strong>
+              <p className="text-[hsl(220_15%_70%)]">CFOs: elastic spend via TruScale. CISOs: device control with ThinkShield.</p>
             </div>
             <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-2">Watchouts</strong>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Watch-outs</strong>
               <p className="text-[hsl(220_15%_70%)]">Mac fleets in exec teams. Validate ISV needs for traders.</p>
             </div>
           </div>
@@ -307,21 +339,21 @@ const TacticalDeck = () => {
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-2">Use case focus</strong>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Where this helps</strong>
               <p className="text-[hsl(220_15%_70%)]">Sovereign data. Transport signals. Branch sites.</p>
             </div>
             <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-2">Cred note</strong>
-              <p className="text-[hsl(220_15%_70%)]">Say edge to core. Say service wrap. Keep it measurable.</p>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Why it matters (and to whom)</strong>
+              <p className="text-[hsl(220_15%_70%)]">Ministers & agency heads: measurable outcomes. CIOs: edge‑to‑core with a service wrap.</p>
             </div>
             <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-2">Watchouts</strong>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Watch-outs</strong>
               <p className="text-[hsl(220_15%_70%)]">Legacy vendor lock. Formal frameworks. Procurement cycles.</p>
             </div>
           </div>
@@ -423,21 +455,21 @@ const TacticalDeck = () => {
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-2">Use case focus</strong>
-              <p className="text-[hsl(220_15%_70%)]">Imaging. Triage. Ward endpoints. Clinician rounds.</p>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Where this helps</strong>
+              <p className="text-[hsl(220_15%_70%)]">Imaging, triage, ward endpoints, clinician rounds.</p>
             </div>
             <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-2">Cred note</strong>
-              <p className="text-[hsl(220_15%_70%)]">Say storage for AI. Say device safety for wards.</p>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Why it matters (and to whom)</strong>
+              <p className="text-[hsl(220_15%_70%)]">Clinical leads: device safety for wards (ThinkShield). Data teams: storage for AI imaging/training (ThinkSystem DG series).</p>
             </div>
             <div className="deck-card p-4 rounded-lg border text-sm leading-relaxed" style={{
               background: 'hsl(220 20% 7%)',
               border: '1px solid hsl(225 15% 15%)'
             }}>
-              <strong className="text-[hsl(220_15%_92%)] block mb-2">Watchouts</strong>
+              <strong className="text-[hsl(220_15%_92%)] block mb-2">Watch-outs</strong>
               <p className="text-[hsl(220_15%_70%)]">Clinical ISV needs. Peripherals. Wifi zones.</p>
             </div>
           </div>
