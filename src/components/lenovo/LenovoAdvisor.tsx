@@ -161,11 +161,24 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
         webUrls: urlList
       };
 
-      console.log('LenovoAdvisor: Calling lenovo-advisor function with body:', requestBody);
+      console.log('LenovoAdvisor: Calling tactical-engine function with body:', requestBody);
 
-      const { data, error } = await supabase.functions.invoke('lenovo-advisor', {
-        body: requestBody
-      });
+      // Try new function name first, fallback to old name
+      let data, error;
+      try {
+        const result = await supabase.functions.invoke('tactical-engine', {
+          body: requestBody
+        });
+        data = result.data;
+        error = result.error;
+      } catch (primaryError) {
+        console.log('Primary function failed, trying fallback:', primaryError);
+        const fallbackResult = await supabase.functions.invoke('lenovo-advisor', {
+          body: requestBody
+        });
+        data = fallbackResult.data;
+        error = fallbackResult.error;
+      }
 
       console.log('LenovoAdvisor: Function response', { data, error });
 
@@ -226,19 +239,34 @@ export const LenovoAdvisor: React.FC<LenovoAdvisorProps> = ({
 
   const testFunction = async () => {
     try {
-      console.log('Testing lenovo-advisor function health...');
-      const response = await fetch('https://lzfgigiyqpuuxslsygjt.supabase.co/functions/v1/lenovo-advisor', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6ZmdpZ2l5cXB1dXhzbHN5Z2p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ0MTc0NjksImV4cCI6MjA1OTk5MzQ2OX0.qUNzDEr2rxjRSClh5P4jeDv_18_yCCkFXTizJqNYSgg`,
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6ZmdpZ2l5cXB1dXhzbHN5Z2p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ0MTc0NjksImV4cCI6MjA1OTk5MzQ2OX0.qUNzDEr2rxjRSClh5P4jeDv_18_yCCkFXTizJqNYSgg'
-        }
-      });
-      const data = await response.json();
+      console.log('Testing tactical-engine function health...');
+      // Try tactical-engine first, fallback to lenovo-advisor
+      let response, data;
+      try {
+        response = await fetch('https://lzfgigiyqpuuxslsygjt.supabase.co/functions/v1/tactical-engine', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6ZmdpZ2l5cXB1dXhzbHN5Z2p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ0MTc0NjksImV4cCI6MjA1OTk5MzQ2OX0.qUNzDEr2rxjRSClh5P4jeDv_18_yCCkFXTizJqNYSgg`,
+            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6ZmdpZ2l5cXB1dXhzbHN5Z2p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ0MTc0NjksImV4cCI6MjA1OTk5MzQ2OX0.qUNzDEr2rxjRSClh5P4jeDv_18_yCCkFXTizJqNYSgg'
+          }
+        });
+        data = await response.json();
+      } catch (primaryError) {
+        console.log('Primary function test failed, trying fallback');
+        response = await fetch('https://lzfgigiyqpuuxslsygjt.supabase.co/functions/v1/lenovo-advisor', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6ZmdpZ2l5cXB1dXhzbHN5Z2p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ0MTc0NjksImV4cCI6MjA1OTk5MzQ2OX0.qUNzDEr2rxjRSClh5P4jeDv_18_yCCkFXTizJqNYSgg`,
+            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6ZmdpZ2l5cXB1dXhzbHN5Z2p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ0MTc0NjksImV4cCI6MjA1OTk5MzQ2OX0.qUNzDEr2rxjRSClh5P4jeDv_18_yCCkFXTizJqNYSgg'
+          }
+        });
+        data = await response.json();
+      }
+      
       console.log('Function health check:', data);
       toast({
         title: "Function Test", 
-        description: `Status: ${data.status || 'unknown'}, OpenAI: ${data.openai_key_available ? 'available' : 'missing'}`,
+        description: `Status: ${data.status || 'unknown'}, OpenAI: ${data.openai_key_available ? 'available' : 'missing'}, Service Role: ${data.service_role_key_available ? 'available' : 'missing'}`,
         variant: data.status === 'healthy' ? 'default' : 'destructive'
       });
     } catch (error) {

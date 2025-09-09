@@ -14,3 +14,6 @@ verify_jwt = false
 
 [functions.lenovo-advisor]
 verify_jwt = false
+
+[functions.tactical-engine]
+verify_jwt = false
