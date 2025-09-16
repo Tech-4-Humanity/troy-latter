@@ -1,12 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Shield, Eye, Lock, Brain, Users, FileCheck, AlertTriangle, Target, Download, ExternalLink } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { AIAccessGate } from '@/components/AIAccessGate';
+import { useAIAccess } from '@/hooks/useAIAccess';
 
 const AIEthics = () => {
+  const { hasAccess, grantAccess } = useAIAccess();
+  const [showAccessGate, setShowAccessGate] = useState(false);
+  const [gateContext, setGateContext] = useState({ title: '', description: '' });
+
+  const handleProtectedAction = (title: string, description: string, action: () => void) => {
+    if (hasAccess) {
+      action();
+    } else {
+      setGateContext({ title, description });
+      setShowAccessGate(true);
+    }
+  };
+
+  const handleAccessGranted = () => {
+    grantAccess();
+    setShowAccessGate(false);
+  };
+
+  const downloadFramework = () => {
+    // Create a comprehensive AI Ethics Framework PDF content
+    const content = `
+AI ETHICS FRAMEWORK
+by Troy Latter
+
+CORE PRINCIPLES:
+1. Safety & Security - Robust safety measures and security protocols
+2. Transparency & Explainability - Interpretable and auditable decisions
+3. Fairness & Bias Mitigation - Equitable outcomes across demographics
+4. Privacy & Data Sovereignty - Australian data sovereignty compliance
+5. Human Agency & Oversight - Meaningful human control and oversight
+6. Accountability & Governance - Clear responsibility and governance structures
+
+IMPLEMENTATION CHECKLIST:
+□ Conduct ethical impact assessment
+□ Implement bias testing protocols
+□ Establish human oversight mechanisms
+□ Create audit and compliance processes
+□ Develop incident response procedures
+
+For full framework implementation guidance, contact Troy Latter.
+    `;
+    
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Troy-Latter-AI-Ethics-Framework.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const startAssessment = () => {
+    alert('AI Ethics Assessment tool coming soon! This will provide a comprehensive evaluation of your organization\'s AI ethics maturity.');
+  };
+
+  const scheduleReview = () => {
+    window.open('https://calendly.com/troy-latter/ai-ethics-consultation', '_blank');
+  };
   const principles = [
     {
       icon: Shield,
@@ -148,15 +210,41 @@ const AIEthics = () => {
 
         {/* Quick Access Actions */}
         <div className="flex flex-wrap justify-center gap-4">
-          <Button size="lg" className="gap-2">
+          <Button 
+            size="lg" 
+            className="gap-2"
+            onClick={() => handleProtectedAction(
+              "Download AI Ethics Framework",
+              "Get comprehensive AI ethics guidelines, implementation checklists, and governance templates.",
+              downloadFramework
+            )}
+          >
             <Download className="h-4 w-4" />
             Download AI Ethics Framework
           </Button>
-          <Button variant="outline" size="lg" className="gap-2">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="gap-2"
+            onClick={() => handleProtectedAction(
+              "AI Ethics Assessment",
+              "Access our comprehensive AI ethics assessment tool to evaluate your organization's readiness.",
+              startAssessment
+            )}
+          >
             <Target className="h-4 w-4" />
             AI Ethics Assessment
           </Button>
-          <Button variant="outline" size="lg" className="gap-2">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="gap-2"
+            onClick={() => handleProtectedAction(
+              "Schedule Ethics Review",
+              "Book a consultation to discuss AI ethics implementation for your organization.",
+              scheduleReview
+            )}
+          >
             <ExternalLink className="h-4 w-4" />
             Schedule Ethics Review
           </Button>
@@ -263,7 +351,16 @@ const AIEthics = () => {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <CardDescription>{framework.description}</CardDescription>
-                    <Button variant="outline" size="sm" className="w-full gap-2">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full gap-2"
+                      onClick={() => handleProtectedAction(
+                        `${framework.title} Details`,
+                        `Learn more about ${framework.title} implementation and best practices.`,
+                        () => alert(`Detailed information about ${framework.title} coming soon!`)
+                      )}
+                    >
                       <ExternalLink className="h-3 w-3" />
                       Learn More
                     </Button>
@@ -415,17 +512,54 @@ const AIEthics = () => {
               Let's discuss how these ethical frameworks can be adapted and implemented for your specific AI initiatives and organizational context.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="gap-2">
+              <Button 
+                size="lg" 
+                className="gap-2"
+                onClick={() => handleProtectedAction(
+                  "Schedule AI Ethics Consultation",
+                  "Book a personalized consultation to discuss AI ethics strategy for your organization.",
+                  scheduleReview
+                )}
+              >
                 <Shield className="h-4 w-4" />
                 Schedule Ethics Consultation
               </Button>
-              <Button variant="outline" size="lg" className="gap-2">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="gap-2"
+                onClick={() => handleProtectedAction(
+                  "Download Complete Implementation Guide",
+                  "Access comprehensive AI ethics implementation guide with templates and checklists.",
+                  downloadFramework
+                )}
+              >
                 <Download className="h-4 w-4" />
                 Download Implementation Guide
               </Button>
             </div>
           </CardContent>
         </Card>
+
+        {/* AI Access Gate Modal */}
+        {showAccessGate && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+            <div className="bg-background rounded-lg p-6 max-w-md w-full">
+              <AIAccessGate
+                onAccessGranted={handleAccessGranted}
+                title={gateContext.title}
+                description={gateContext.description}
+              />
+              <Button
+                variant="outline"
+                className="w-full mt-4"
+                onClick={() => setShowAccessGate(false)}
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
