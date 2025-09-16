@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Shield, Eye, Lock, Brain, Users, FileCheck, AlertTriangle, Target, Download, ExternalLink } from 'lucide-react';
+import { Shield, Eye, Lock, Brain, Users, FileCheck, AlertTriangle, Target, Download, ExternalLink, GraduationCap, BookOpen, Crown, Award, Globe, Calendar, CheckCircle } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { AIAccessGate } from '@/components/AIAccessGate';
 import { useAIAccess } from '@/hooks/useAIAccess';
@@ -252,10 +252,12 @@ For full framework implementation guidance, contact Troy Latter.
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="principles" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="principles">Core Principles</TabsTrigger>
             <TabsTrigger value="frameworks">Frameworks</TabsTrigger>
             <TabsTrigger value="implementation">Implementation</TabsTrigger>
+            <TabsTrigger value="capability">Capability Building</TabsTrigger>
+            <TabsTrigger value="leadership">Leadership</TabsTrigger>
             <TabsTrigger value="case-studies">Case Studies</TabsTrigger>
           </TabsList>
 
@@ -459,6 +461,325 @@ For full framework implementation guidance, contact Troy Latter.
                   </div>
                 </CardContent>
               </Card>
+            </div>
+          </TabsContent>
+
+          {/* Capability Building Tab */}
+          <TabsContent value="capability" className="space-y-6">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold text-foreground">Capability Building & Training</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Comprehensive training programs and mentoring to uplift ethical literacy across organizations
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <GraduationCap className="h-5 w-5" />
+                    Executive Training Programs
+                  </CardTitle>
+                  <CardDescription>Comprehensive ethics education for senior leadership</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="bg-muted p-4 rounded-lg">
+                      <h4 className="font-semibold mb-2">Delivered 100+ Executive Briefings</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Across technical, policy, and executive audiences through AWS, Unisys, and Tech 4 Humanity roles
+                      </p>
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="font-semibold">Program Formats:</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Strategic AI Ethics for C-Suite</li>
+                        <li>• Responsible AI for Government Leaders</li>
+                        <li>• Hands-on Ethical Framework Application</li>
+                        <li>• Cross-Agency Coordination Workshops</li>
+                      </ul>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Users className="h-5 w-5" />
+                    Mentoring & Capability Uplift
+                  </CardTitle>
+                  <CardDescription>Building ethical confidence across teams</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="bg-muted p-4 rounded-lg">
+                      <h4 className="font-semibold mb-2">Government Context Training</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Practical scenarios relevant to Australian government contexts with immediate application
+                      </p>
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="font-semibold">Capability Outcomes:</h4>
+                      <ul className="text-sm space-y-1">
+                        <li>• Measurable ethical decision-making confidence</li>
+                        <li>• Project team framework application</li>
+                        <li>• Cross-portfolio consistency</li>
+                        <li>• Real-world ethical problem solving</li>
+                      </ul>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Target className="h-5 w-5" />
+                    Stakeholder-Specific Programs
+                  </CardTitle>
+                  <CardDescription>Tailored training for different audiences</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <div className="border-l-4 border-primary pl-3">
+                      <h4 className="font-semibold">Technical Teams</h4>
+                      <p className="text-sm text-muted-foreground">AI/ML engineers, data scientists, architects</p>
+                    </div>
+                    <div className="border-l-4 border-secondary pl-3">
+                      <h4 className="font-semibold">Policy Officers</h4>
+                      <p className="text-sm text-muted-foreground">Framework implementation, compliance assessment</p>
+                    </div>
+                    <div className="border-l-4 border-accent pl-3">
+                      <h4 className="font-semibold">Executive Leadership</h4>
+                      <p className="text-sm text-muted-foreground">Strategic direction, portfolio oversight</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <BookOpen className="h-5 w-5" />
+                    Training Resources
+                  </CardTitle>
+                  <CardDescription>Comprehensive materials and tools</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start"
+                      onClick={() => handleProtectedAction(
+                        "Executive Training Toolkit",
+                        "Access comprehensive training materials designed for senior leadership and strategic decision makers.",
+                        () => alert('Executive Training Toolkit coming soon!')
+                      )}
+                    >
+                      <Download className="h-4 w-4 mr-2" />
+                      Executive Training Toolkit
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start"
+                      onClick={() => handleProtectedAction(
+                        "Workshop Templates & Scenarios",
+                        "Download workshop materials with practical government scenarios and ethical decision frameworks.",
+                        () => alert('Workshop Templates coming soon!')
+                      )}
+                    >
+                      <FileCheck className="h-4 w-4 mr-2" />
+                      Workshop Templates & Scenarios
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start"
+                      onClick={() => handleProtectedAction(
+                        "Capability Assessment Tools",
+                        "Access tools to measure and track ethical decision-making capability across your organization.",
+                        () => alert('Capability Assessment Tools coming soon!')
+                      )}
+                    >
+                      <CheckCircle className="h-4 w-4 mr-2" />
+                      Capability Assessment Tools
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+
+          {/* Leadership Tab */}
+          <TabsContent value="leadership" className="space-y-6">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold text-foreground">Portfolio Leadership & Strategic Representation</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Authoritative ethics voice across government technology initiatives and international forums
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2 space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Crown className="h-5 w-5" />
+                      Portfolio Leadership & Strategic Influence
+                    </CardTitle>
+                    <CardDescription>Authoritative ethics voice across government technology initiatives</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="bg-gradient-to-r from-primary/10 to-secondary/10 p-4 rounded-lg">
+                        <h4 className="font-semibold mb-2">Ministerial & Executive Representation</h4>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          Represented organizations at ministerial and executive levels on AI ethics across ASEAN governments
+                        </p>
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <div>
+                            <span className="font-medium">50+ CIOs Advised</span>
+                            <p className="text-muted-foreground">Australia, ASEAN & Pacific regions</p>
+                          </div>
+                          <div>
+                            <span className="font-medium">10+ Countries</span>
+                            <p className="text-muted-foreground">Portfolio representation</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-3">
+                        <h4 className="font-semibold">Strategic Policy Influence</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          <div className="border rounded-lg p-3">
+                            <h5 className="font-medium">National AI Policy</h5>
+                            <p className="text-sm text-muted-foreground">Contributing to Australian Government AI Ethics Framework development</p>
+                          </div>
+                          <div className="border rounded-lg p-3">
+                            <h5 className="font-medium">Procurement Leadership</h5>
+                            <p className="text-sm text-muted-foreground">Leading ethics components of major technology procurements</p>
+                          </div>
+                          <div className="border rounded-lg p-3">
+                            <h5 className="font-medium">Standards Development</h5>
+                            <p className="text-sm text-muted-foreground">Standards Australia Brain-Computer Interface Committee</p>
+                          </div>
+                          <div className="border rounded-lg p-3">
+                            <h5 className="font-medium">Multi-Agency Coordination</h5>
+                            <p className="text-sm text-muted-foreground">Cross-portfolio ethical consistency and alignment</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Shield className="h-5 w-5" />
+                      Government & Defence Expertise
+                    </CardTitle>
+                    <CardDescription>Specialized experience in sovereign and security contexts</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-muted p-4 rounded-lg">
+                          <h4 className="font-semibold mb-2">Security Clearance</h4>
+                          <p className="text-sm text-muted-foreground">AGSVA NV2 cleared for sensitive government work</p>
+                        </div>
+                        <div className="bg-muted p-4 rounded-lg">
+                          <h4 className="font-semibold mb-2">IRAP Environments</h4>
+                          <p className="text-sm text-muted-foreground">Designed assurance frameworks for classified systems</p>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <h4 className="font-semibold">Specialist Capabilities:</h4>
+                        <ul className="text-sm space-y-1 ml-4">
+                          <li>• Data sovereignty requirements for Defence & Home Affairs</li>
+                          <li>• Cross-agency coordination across sensitive programs</li>
+                          <li>• Top Secret cloud systems ethical assurance</li>
+                          <li>• Indigenous data sovereignty and cultural competency</li>
+                          <li>• International standards alignment (IEEE, ISO)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Award className="h-5 w-5" />
+                      Board & Standards Roles
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="border-l-4 border-primary pl-3">
+                      <h4 className="font-semibold">Queensland Government AI Hub</h4>
+                      <p className="text-sm text-muted-foreground">Board Member - Strategic AI policy advisory</p>
+                    </div>
+                    <div className="border-l-4 border-secondary pl-3">
+                      <h4 className="font-semibold">Standards Australia</h4>
+                      <p className="text-sm text-muted-foreground">BCI Committee Member - Standards development</p>
+                    </div>
+                    <div className="border-l-4 border-accent pl-3">
+                      <h4 className="font-semibold">Tech 4 Humanity</h4>
+                      <p className="text-sm text-muted-foreground">Founder & CEO - Global ethics practice</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Globe className="h-5 w-5" />
+                      International Reach
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="text-center p-3 bg-primary/10 rounded-lg">
+                        <div className="text-2xl font-bold text-primary">100+</div>
+                        <div className="text-sm text-muted-foreground">Executive Briefings</div>
+                      </div>
+                      <div className="text-center p-3 bg-secondary/10 rounded-lg">
+                        <div className="text-2xl font-bold text-secondary">50+</div>
+                        <div className="text-sm text-muted-foreground">CIOs Advised</div>
+                      </div>
+                      <div className="text-center p-3 bg-accent/10 rounded-lg">
+                        <div className="text-2xl font-bold text-accent">10+</div>
+                        <div className="text-sm text-muted-foreground">Countries</div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Calendar className="h-5 w-5" />
+                      Strategic Consultation
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <Button 
+                      className="w-full"
+                      onClick={() => handleProtectedAction(
+                        "Schedule Strategic AI Ethics Consultation",
+                        "Book a strategic consultation to discuss portfolio-level AI ethics leadership and implementation.",
+                        scheduleReview
+                      )}
+                    >
+                      <Calendar className="h-4 w-4 mr-2" />
+                      Schedule Strategic Consultation
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </TabsContent>
 
