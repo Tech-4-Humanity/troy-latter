@@ -19,6 +19,7 @@ import Whitepapers from "./pages/Whitepapers";
 import Projects from "./pages/Projects";
 import LeanCanvas from "./pages/LeanCanvas";
 import ExperienceAndImpact from "./pages/ExperienceAndImpact";
+import AIEthics from "./pages/AIEthics";
 
 // Microsite pages
 import MicrositeIndex from "./pages/microsites/MicrositeIndex";
@@ -75,6 +76,7 @@ const App = () => (
           <Route path="/resources/whitepapers" element={<Layout><Whitepapers /></Layout>} />
           <Route path="/resources/projects" element={<Layout><Projects /></Layout>} />
           <Route path="/resources/lean-canvas" element={<Layout><LeanCanvas /></Layout>} />
+          <Route path="/ai-ethics" element={<Layout><AIEthics /></Layout>} />
           
           {/* Microsite routes with separate layout */}
           <Route path="/microsites" element={<MicrositeGuard><MicrositeLayout><MicrositeIndex /></MicrositeLayout></MicrositeGuard>} />
