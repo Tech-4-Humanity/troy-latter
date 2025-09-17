@@ -61,24 +61,20 @@ const LenovoMicrosite = () => {
           <h1 className="text-5xl font-bold mb-4">Solution Sales Australia</h1>
           <p className="text-xl mb-6 opacity-90">$10.5M baseline → $65M+ target by Year 5. Workforce Transformation as-a-Service.</p>
           
-          {/* Navigation */}
+          {/* Navigation - Simplified to 4 key items */}
           <nav className="flex flex-wrap justify-center gap-4 mt-6">
-            {[
-              { id: 'strategy', label: 'Strategy' },
-              { id: 'packs', label: 'Vertical Packs' },
-              { id: 'stories', label: 'Stakeholder Vignettes' },
-              { id: 'vignettes', label: 'Customer Engagement Vignettes' },
-              { id: 'trajectory', label: 'Revenue' },
-              { id: 'jd-alignment', label: 'JD Alignment' }
-            ].map(({ id, label }) => (
-              <button
-                key={id}
-                onClick={() => scrollToSection(id)}
-                className="px-4 py-2 text-white hover:text-red-300 font-semibold transition-colors border border-white/20 rounded-md hover:bg-white/10"
-              >
-                {label}
-              </button>
-            ))}
+            <button
+              onClick={() => scrollToSection('stories')}
+              className="px-4 py-2 text-white hover:text-red-300 font-semibold transition-colors border border-white/20 rounded-md hover:bg-white/10"
+            >
+              Stakeholder Vignettes
+            </button>
+            <button
+              onClick={() => scrollToSection('vignettes')}
+              className="px-4 py-2 text-white hover:text-red-300 font-semibold transition-colors border border-white/20 rounded-md hover:bg-white/10"
+            >
+              Customer Engagement Vignettes
+            </button>
             <Link
               to="/microsites/lenovo/focus-images"
               className="px-4 py-2 text-white hover:text-red-300 font-semibold transition-colors border border-white/20 rounded-md hover:bg-white/10"
@@ -286,27 +282,27 @@ const LenovoMicrosite = () => {
               <FlipCard
                 key={index}
                 front={
-                  <div className="h-full flex flex-col">
-                    <h3 className="text-xl font-bold mb-3">{pack.title}</h3>
-                    <p className="mb-3 flex-grow">{pack.description}</p>
+                  <div className="h-full flex flex-col p-1">
+                    <h3 className="text-lg font-bold mb-2 text-red-600">{pack.title}</h3>
+                    <p className="mb-3 flex-grow text-sm leading-relaxed">{pack.description}</p>
                     <div className="space-y-1">
-                      <p><strong>Outcome:</strong> {pack.outcome}</p>
-                      <p><strong>Value:</strong> {pack.value}</p>
+                      <p className="text-sm"><strong>Outcome:</strong> {pack.outcome}</p>
+                      <p className="text-sm"><strong>Value:</strong> {pack.value}</p>
                     </div>
                   </div>
                 }
                 back={
-                  <div className="h-full flex flex-col">
-                    <h3 className="text-xl font-bold mb-3">{pack.title} - Details</h3>
-                    <p className="mb-4 text-sm">{pack.backContent.summary}</p>
-                    <div className="mb-4 flex-grow">
-                      <ul className="space-y-2">
+                  <div className="h-full flex flex-col p-1">
+                    <h3 className="text-lg font-bold mb-2 text-red-600">{pack.title} - Details</h3>
+                    <p className="mb-3 text-sm leading-relaxed">{pack.backContent.summary}</p>
+                    <div className="mb-3 flex-grow">
+                      <ul className="space-y-1">
                         {pack.backContent.benefits.map((benefit, i) => (
-                          <li key={i} className="text-sm">• <strong>{benefit.split(' ')[0]}</strong> {benefit.substring(benefit.indexOf(' ') + 1)}</li>
+                          <li key={i} className="text-xs leading-relaxed">• <strong>{benefit.split(' ')[0]}</strong> {benefit.substring(benefit.indexOf(' ') + 1)}</li>
                         ))}
                       </ul>
                     </div>
-                    <p className="text-sm"><strong>ROI:</strong> {pack.backContent.roi}</p>
+                    <p className="text-xs leading-relaxed"><strong>ROI:</strong> {pack.backContent.roi}</p>
                   </div>
                 }
                 className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
@@ -1961,41 +1957,91 @@ const LenovoMicrosite = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-12">
+      <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-white font-bold mb-3">Strategy</h3>
-              <button onClick={() => scrollToSection('strategy')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Foundation</button>
-              <button onClick={() => scrollToSection('trajectory')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Revenue</button>
+              <h3 className="text-lg font-bold mb-4 text-red-400">Quick Access</h3>
+              <ul className="space-y-2">
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('strategy')}
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    Strategy Foundation
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('packs')}
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    Vertical DaaS Packs
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('trajectory')}
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    Revenue Projections
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('jd-alignment')}
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    JD Alignment
+                  </button>
+                </li>
+              </ul>
             </div>
             <div>
-              <h3 className="text-white font-bold mb-3">Packs</h3>
-              <button onClick={() => scrollToSection('packs')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Education</button>
-              <button onClick={() => scrollToSection('packs')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Healthcare</button>
-              <button onClick={() => scrollToSection('packs')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Gov</button>
-              <button onClick={() => scrollToSection('packs')} className="block text-gray-300 hover:text-white mb-1 transition-colors">SMB</button>
+              <h3 className="text-lg font-bold mb-4 text-red-400">Demos & Tools</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link 
+                    to="/microsites/lenovo/demo-choices"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    Demo Choices
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/microsites/lenovo/focus-images"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    Focus Images Gallery
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/microsites/lenovo/tactical-deck"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    Tactical Deck
+                  </Link>
+                </li>
+              </ul>
             </div>
             <div>
-              <h3 className="text-white font-bold mb-3">Resources</h3>
-              <button onClick={() => scrollToSection('about')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Overview</button>
-              <button onClick={() => scrollToSection('competitive')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Competitive</button>
-              <button onClick={() => scrollToSection('stories')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Stakeholder Vignettes</button>
-              <button onClick={() => scrollToSection('vignettes')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Case Vignettes</button>
-              <button onClick={() => scrollToSection('enhancements')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Enhancements</button>
-              <button onClick={() => scrollToSection('jd-alignment')} className="block text-gray-300 hover:text-white mb-1 transition-colors">JD Alignment</button>
-              <button onClick={() => scrollToSection('two-by-two-complete')} className="block text-gray-300 hover:text-white mb-1 transition-colors">Complete 2x2 Library</button>
+              <h3 className="text-lg font-bold mb-4 text-red-400">About</h3>
+              <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                This site demonstrates strategic thinking for Lenovo ANZ's services transformation, 
+                moving from device sales to comprehensive workforce platforms.
+              </p>
+              <Link 
+                to="/"
+                className="inline-block text-red-400 hover:text-red-300 transition-colors text-sm"
+              >
+                → Back to Troy's Portfolio
+              </Link>
             </div>
           </div>
-          
-          <div className="text-center border-t border-gray-700 pt-6">
-            <button 
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="inline-block text-white hover:text-red-300 mb-4 text-sm transition-colors"
-            >
-              ↑ Back to top
-            </button>
-            <p className="text-gray-400">&copy; Solution Sales Australia | Growth Playbook</p>
+          <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">
+            Part of Troy Latter's Executive Portfolio - Lenovo ANZ Solution Sales Strategy
           </div>
         </div>
       </footer>
