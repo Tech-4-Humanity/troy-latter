@@ -404,8 +404,8 @@ const TruScaleScenarios = () => {
                 </Link>
               </Button>
               <Button asChild variant="outline">
-                <Link to="/microsites/lenovo/tactical-deck">
-                  View Tactical Deck
+                <Link to="/microsites/lenovo/technical-stack">
+                  View Technical Stack
                 </Link>
               </Button>
             </div>

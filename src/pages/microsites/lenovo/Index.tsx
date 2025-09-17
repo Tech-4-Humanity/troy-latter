@@ -82,10 +82,10 @@ const LenovoMicrosite = () => {
               Focus Images
             </Link>
             <Link
-              to="/microsites/lenovo/tactical-deck"
+              to="/microsites/lenovo/technical-stack"
               className="px-4 py-2 text-white hover:text-red-300 font-semibold transition-colors border border-white/20 rounded-md hover:bg-white/10"
             >
-              Tactical Deck
+              Technical Stack
             </Link>
           </nav>
         </div>
@@ -2018,10 +2018,10 @@ const LenovoMicrosite = () => {
                 </li>
                 <li>
                   <Link 
-                    to="/microsites/lenovo/tactical-deck"
+                    to="/microsites/lenovo/technical-stack"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
-                    Tactical Deck
+                    Technical Stack
                   </Link>
                 </li>
               </ul>

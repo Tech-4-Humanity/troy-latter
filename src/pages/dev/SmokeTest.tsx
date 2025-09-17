@@ -34,7 +34,7 @@ const routes = [
   { path: '/whitepapers', name: 'Whitepapers', selectors: ['h1', 'main'] },
   { path: '/microsites/lenovo', name: 'Lenovo Microsite', selectors: ['h1', 'main'] },
   { path: '/microsites/lenovo/focus-images', name: 'Lenovo Focus Images', selectors: ['h1', 'main'] },
-  { path: '/microsites/lenovo/tactical-deck', name: 'Lenovo Tactical Deck', selectors: ['h1', 'main'] }
+  { path: '/microsites/lenovo/technical-stack', name: 'Lenovo Technical Stack', selectors: ['h1', 'main'] }
 ];
 
 interface TestResult {

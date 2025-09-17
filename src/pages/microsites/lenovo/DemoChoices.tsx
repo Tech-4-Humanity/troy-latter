@@ -16,10 +16,10 @@ const DemoChoices = () => {
       color: 'bg-pink-50 border-pink-200 hover:bg-pink-100'
     },
     {
-      title: 'Tactical Deck',
+      title: 'Technical Stack',
       description: 'Interactive product catalog and sales enablement demo tool.',
       icon: Presentation,
-      link: '/microsites/lenovo/tactical-deck',
+      link: '/microsites/lenovo/technical-stack',
       color: 'bg-red-50 border-red-200 hover:bg-red-100'
     }
   ];
@@ -117,8 +117,8 @@ const DemoChoices = () => {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link to="/microsites/lenovo/tactical-deck">
-                Jump to Tactical Deck
+              <Link to="/microsites/lenovo/technical-stack">
+                Jump to Technical Stack
               </Link>
             </Button>
           </div>

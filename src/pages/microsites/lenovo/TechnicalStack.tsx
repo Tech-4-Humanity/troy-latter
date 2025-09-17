@@ -210,7 +210,7 @@ const productData = {
   }
 };
 
-const TacticalDeck = () => {
+const TechnicalStack = () => {
   const navigate = useNavigate();
   const [filter, setFilter] = useState('');
   const [activeChip, setActiveChip] = useState('');
@@ -283,14 +283,14 @@ const TacticalDeck = () => {
   ];
 
   return (
-    <div id="tactical-deck" className="min-h-screen" style={{ 
+    <div id="technical-stack" className="min-h-screen" style={{ 
       background: 'hsl(220 20% 7%)',
       color: 'hsl(220 15% 92%)',
       fontFamily: 'ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif',
       lineHeight: '1.5'
     }}>
       <Helmet>
-        <title>Lenovo Tactical Deck</title>
+        <title>Lenovo Technical Stack</title>
         <meta name="description" content="Concise Lenovo product tactics by industry with vignettes and competitor context." />
         <meta name="robots" content="noindex,nofollow" />
         <style type="text/css">{`
@@ -307,22 +307,22 @@ const TacticalDeck = () => {
             background: hsl(220 20% 7%) !important;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
           }
-          #tactical-deck table td,
-          #tactical-deck table th {
+          #technical-stack table td,
+          #technical-stack table th {
             white-space: normal !important;
             overflow-wrap: anywhere;
             word-break: break-word;
             line-height: 1.5;
           }
-          #tactical-deck .deck-card,
-          #tactical-deck .deck-note,
-          #tactical-deck .deck-vignette {
+          #technical-stack .deck-card,
+          #technical-stack .deck-note,
+          #technical-stack .deck-vignette {
             white-space: normal;
             overflow-wrap: anywhere;
             word-break: break-word;
             line-height: 1.5;
           }
-          #tactical-deck .chip {
+          #technical-stack .chip {
             white-space: nowrap;
           }
         `}</style>
@@ -364,7 +364,7 @@ const TacticalDeck = () => {
         borderBottom: '1px solid hsl(225 15% 15%)'
       }}>
         <div className="max-w-[1200px] mx-auto px-6 py-3 grid grid-cols-2 gap-3 items-center">
-          <div className="text-lg font-bold tracking-wide">Lenovo tactical deck</div>
+          <div className="text-lg font-bold tracking-wide">Lenovo technical stack</div>
           <div className="flex gap-2 justify-end">
             <input
               type="search"
@@ -607,7 +607,7 @@ const TacticalDeck = () => {
         {/* Lenovo Tactical Advisor */}
         <LenovoAdvisor 
           activeChip={activeChip} 
-          currentSection="tactical-deck"
+          currentSection="technical-stack"
         />
 
         {/* Product Quick Guide */}
@@ -1265,4 +1265,4 @@ const TacticalDeck = () => {
   );
 };
 
-export default TacticalDeck;
+export default TechnicalStack;

@@ -11,10 +11,10 @@ export const MicrositeGuard = ({ children }: MicrositeGuardProps) => {
   const location = useLocation();
   const { hasAccess, isChecking, grantAccess } = useLenovoAccess();
   
-  // Handle Lenovo microsite access - tactical deck is always public
+  // Handle Lenovo microsite access - technical stack is always public
   if (location.pathname.startsWith('/microsites/lenovo')) {
-    // Tactical deck is always publicly accessible
-    if (location.pathname.startsWith('/microsites/lenovo/tactical-deck')) {
+    // Technical stack is always publicly accessible
+    if (location.pathname.startsWith('/microsites/lenovo/technical-stack')) {
       return <>{children}</>;
     }
     
