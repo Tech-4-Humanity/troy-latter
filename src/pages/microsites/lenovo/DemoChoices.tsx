@@ -9,73 +9,18 @@ const DemoChoices = () => {
 
   const demoOptions = [
     {
-      title: 'Strategy Overview',
-      description: 'Complete strategic foundation and transformation roadmap from $10.5M baseline to $65M+ target.',
-      icon: Target,
-      action: () => document.getElementById('strategy')?.scrollIntoView({ behavior: 'smooth' }),
-      link: '/microsites/lenovo#strategy',
-      color: 'bg-blue-50 border-blue-200 hover:bg-blue-100'
-    },
-    {
-      title: 'Vertical Packs Demo',
-      description: 'Education, Healthcare, Government, and SMB workforce transformation packages.',
-      icon: Building,
-      action: () => document.getElementById('packs')?.scrollIntoView({ behavior: 'smooth' }),
-      link: '/microsites/lenovo#packs',
-      color: 'bg-green-50 border-green-200 hover:bg-green-100'
-    },
-    {
-      title: 'Stakeholder Vignettes',
-      description: 'Real customer scenarios and engagement frameworks for different stakeholders.',
-      icon: Users,
-      action: () => document.getElementById('stories')?.scrollIntoView({ behavior: 'smooth' }),
-      link: '/microsites/lenovo#stories',
-      color: 'bg-purple-50 border-purple-200 hover:bg-purple-100'
-    },
-    {
-      title: 'Customer Engagement Vignettes',
-      description: 'Interactive customer journey and engagement scenarios.',
-      icon: Zap,
-      action: () => document.getElementById('vignettes')?.scrollIntoView({ behavior: 'smooth' }),
-      link: '/microsites/lenovo#vignettes',
-      color: 'bg-orange-50 border-orange-200 hover:bg-orange-100'
-    },
-    {
-      title: 'Revenue Projections',
-      description: '5-year growth trajectory with sector-specific ROI models and financial projections.',
-      icon: BarChart3,
-      action: () => document.getElementById('trajectory')?.scrollIntoView({ behavior: 'smooth' }),
-      link: '/microsites/lenovo#trajectory',
-      color: 'bg-emerald-50 border-emerald-200 hover:bg-emerald-100'
-    },
-    {
-      title: 'JD Alignment',
-      description: 'Solution architect role alignment and competency mapping.',
-      icon: Shield,
-      action: () => document.getElementById('jd-alignment')?.scrollIntoView({ behavior: 'smooth' }),
-      link: '/microsites/lenovo#jd-alignment',
-      color: 'bg-indigo-50 border-indigo-200 hover:bg-indigo-100'
-    },
-    {
       title: 'Focus Images Gallery',
-      description: 'Strategic visualizations and frameworks for stakeholder presentations.',
+      description: 'Interactive gallery tool for strategic visualizations and frameworks for stakeholder presentations.',
       icon: Image,
       link: '/microsites/lenovo/focus-images',
       color: 'bg-pink-50 border-pink-200 hover:bg-pink-100'
     },
     {
       title: 'Tactical Deck',
-      description: 'Interactive product catalog and sales enablement tools.',
+      description: 'Interactive product catalog and sales enablement demo tool.',
       icon: Presentation,
       link: '/microsites/lenovo/tactical-deck',
       color: 'bg-red-50 border-red-200 hover:bg-red-100'
-    },
-    {
-      title: 'TruScale Pilot Scenarios',
-      description: '15+ real-world pilot scenarios across AI, cloud, edge, and enterprise workloads with setup guides and ROI models.',
-      icon: Database,
-      link: '/microsites/lenovo/truscale-scenarios',
-      color: 'bg-cyan-50 border-cyan-200 hover:bg-cyan-100'
     }
   ];
 
@@ -141,23 +86,14 @@ const DemoChoices = () => {
                     <p className="text-gray-700 mb-4 text-sm leading-relaxed">
                       {demo.description}
                     </p>
-                    {demo.link ? (
-                      <Button 
-                        asChild 
-                        className="w-full bg-red-600 hover:bg-red-700 text-white"
-                      >
-                        <Link to={demo.link}>
-                          Explore Demo
-                        </Link>
-                      </Button>
-                    ) : (
-                      <Button 
-                        onClick={demo.action}
-                        className="w-full bg-red-600 hover:bg-red-700 text-white"
-                      >
-                        View Section
-                      </Button>
-                    )}
+                    <Button 
+                      asChild 
+                      className="w-full bg-red-600 hover:bg-red-700 text-white"
+                    >
+                      <Link to={demo.link}>
+                        Explore Demo
+                      </Link>
+                    </Button>
                   </CardContent>
                 </Card>
               );
