@@ -11,8 +11,25 @@ export const MicrositeGuard = ({ children }: MicrositeGuardProps) => {
   const location = useLocation();
   const { hasAccess, isChecking, grantAccess } = useLenovoAccess();
   
-  // Handle Lenovo microsite access with authorization
+  // Handle Lenovo microsite access - tactical deck is always public
   if (location.pathname.startsWith('/microsites/lenovo')) {
+    // Tactical deck is always publicly accessible
+    if (location.pathname.startsWith('/microsites/lenovo/tactical-deck')) {
+      return <>{children}</>;
+    }
+    
+    // In development, always allow access
+    if (import.meta.env.DEV) {
+      return <>{children}</>;
+    }
+    
+    // Check if Lenovo gate is enabled via environment variable
+    const lenovoGateEnabled = import.meta.env.VITE_ENABLE_LENOVO_GATE === 'true';
+    if (!lenovoGateEnabled) {
+      return <>{children}</>;
+    }
+    
+    // Apply authorization gate for other Lenovo content if enabled
     if (isChecking) {
       return (
         <div className="min-h-screen flex items-center justify-center">
