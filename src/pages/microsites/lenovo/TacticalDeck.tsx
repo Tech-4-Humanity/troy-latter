@@ -1,21 +1,237 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Helmet } from 'react-helmet';
+import { ChevronDown, ChevronUp, Users, Target, Zap, Shield, Building, Cog, Layers, DollarSign, Monitor, Laptop, Server, HardDrive, Settings, ArrowRight } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
 import { LenovoAdvisor } from '@/components/lenovo/LenovoAdvisor';
+
+// Enhanced product data with comprehensive details
+const productData = {
+  'ThinkPad': {
+    icon: Laptop,
+    category: 'Endpoint Computing',
+    description: 'Business laptops and mobile workstations for professionals',
+    whatItDoes: 'Secure, reliable mobile computing for business users, executives, and mobile professionals',
+    keyUseCases: [
+      'Executive and management mobile computing',
+      'Field worker and remote employee devices', 
+      'Secure endpoint computing for regulated industries',
+      'High-performance mobile workstations for creators'
+    ],
+    targetUsers: 'Business executives, knowledge workers, field technicians, creative professionals',
+    ecosystemFit: 'Integrates with ThinkShield security platform, managed via Lenovo cloud services',
+    competitiveEdge: 'Military-grade durability, comprehensive security features, spill-resistant keyboards',
+    pricingModel: 'Purchase or TruScale lease options',
+    relatedProducts: ['ThinkShield', 'TruScale', 'ThinkVision'],
+    industryFit: ['Banking', 'Government', 'Healthcare', 'Education']
+  },
+  'ThinkStation': {
+    icon: Cog,
+    category: 'Professional Computing',
+    description: 'Professional workstations for demanding applications',
+    whatItDoes: 'High-performance desktop workstations for compute-intensive professional workflows',
+    keyUseCases: [
+      'CAD/CAM design and engineering',
+      '3D rendering and animation',
+      'Scientific computing and analysis',
+      'Financial modeling and trading applications'
+    ],
+    targetUsers: 'Engineers, architects, data scientists, financial analysts, content creators',
+    ecosystemFit: 'Pairs with ThinkVision professional displays, integrates with ThinkSystem infrastructure',
+    competitiveEdge: 'ISV certifications, thermal management, tool-free serviceability',
+    pricingModel: 'Purchase, lease, or TruScale consumption',
+    relatedProducts: ['ThinkVision', 'ThinkSystem', 'TruScale'],
+    industryFit: ['Banking', 'Government', 'Healthcare', 'Education']
+  },
+  'ThinkSystem': {
+    icon: Server,
+    category: 'Infrastructure',
+    description: 'Servers and enterprise infrastructure',
+    whatItDoes: 'Enterprise-grade servers and infrastructure for data centers and edge computing',
+    keyUseCases: [
+      'AI and machine learning workloads',
+      'Database and application hosting',
+      'Virtualization and cloud infrastructure',
+      'High-performance computing clusters'
+    ],
+    targetUsers: 'IT administrators, data center managers, cloud architects',
+    ecosystemFit: 'Foundation for ThinkAgile solutions, integrates with Lenovo storage and networking',
+    competitiveEdge: 'Superior performance per watt, advanced thermal design, comprehensive management tools',
+    pricingModel: 'Purchase, lease, or TruScale as-a-service',
+    relatedProducts: ['ThinkAgile', 'TruScale', 'Storage'],
+    industryFit: ['Banking', 'Government', 'Healthcare', 'Education']
+  },
+  'ThinkAgile': {
+    icon: Layers,
+    category: 'Infrastructure',
+    description: 'Hyper-converged infrastructure and software-defined solutions',
+    whatItDoes: 'Simplified, integrated infrastructure combining compute, storage, and networking',
+    keyUseCases: [
+      'Virtual desktop infrastructure (VDI)',
+      'Cloud-native application platforms',
+      'Edge computing deployments',
+      'Disaster recovery and backup'
+    ],
+    targetUsers: 'IT architects, virtualization administrators, cloud platform teams',
+    ecosystemFit: 'Built on ThinkSystem hardware, managed through unified console',
+    competitiveEdge: 'Single-vendor support, pre-validated configurations, rapid deployment',
+    pricingModel: 'Integrated solutions via purchase or TruScale',
+    relatedProducts: ['ThinkSystem', 'TruScale', 'SE350'],
+    industryFit: ['Banking', 'Government', 'Healthcare', 'Education']
+  },
+  'ThinkCentre': {
+    icon: Monitor,
+    category: 'Endpoint Computing',
+    description: 'Desktop computers and workstations',
+    whatItDoes: 'Reliable desktop computing for office environments and specialized applications',
+    keyUseCases: [
+      'General office productivity',
+      'Call center and customer service',
+      'Kiosk and digital signage',
+      'Secure desktop environments'
+    ],
+    targetUsers: 'Office workers, customer service representatives, front-desk staff',
+    ecosystemFit: 'Managed with ThinkShield security, pairs with ThinkVision displays',
+    competitiveEdge: 'Small form factors, energy efficiency, comprehensive security',
+    pricingModel: 'Volume purchase or TruScale fleet management',
+    relatedProducts: ['ThinkShield', 'ThinkVision', 'TruScale'],
+    industryFit: ['Banking', 'Government', 'Healthcare', 'Education']
+  },
+  'ThinkVision': {
+    icon: Monitor,
+    category: 'Displays',
+    description: 'Professional monitors for productivity',
+    whatItDoes: 'High-quality displays optimized for professional workflows and multi-monitor setups',
+    keyUseCases: [
+      'Trading floor multi-monitor arrays',
+      'Design and creative workflows',
+      'Data analysis and visualization',
+      'Medical imaging and diagnostics'
+    ],
+    targetUsers: 'Financial traders, graphic designers, data analysts, medical professionals',
+    ecosystemFit: 'Complements ThinkStation and ThinkPad deployments',
+    competitiveEdge: 'Color accuracy, ergonomic design, daisy-chaining capabilities',
+    pricingModel: 'Purchase or include in TruScale device packages',
+    relatedProducts: ['ThinkStation', 'ThinkPad', 'TruScale'],
+    industryFit: ['Banking', 'Government', 'Healthcare', 'Education']
+  },
+  'ThinkBook': {
+    icon: Laptop,
+    category: 'Endpoint Computing', 
+    description: 'Business laptops for SMB and enterprise users',
+    whatItDoes: 'Modern, stylish laptops designed for contemporary business environments',
+    keyUseCases: [
+      'SMB employee computing',
+      'Hybrid work environments',
+      'Student and faculty devices',
+      'Modern office productivity'
+    ],
+    targetUsers: 'SMB employees, hybrid workers, students, young professionals',
+    ecosystemFit: 'Entry point to Lenovo business ecosystem',
+    competitiveEdge: 'Modern design, competitive pricing, business-grade reliability',
+    pricingModel: 'Competitive purchase pricing, volume discounts',
+    relatedProducts: ['ThinkShield', 'TruScale'],
+    industryFit: ['Education', 'SMB', 'Government']
+  },
+  'ThinkShield': {
+    icon: Shield,
+    category: 'Security',
+    description: 'Comprehensive security platform across devices',
+    whatItDoes: 'End-to-end security from hardware to cloud for all Lenovo devices',
+    keyUseCases: [
+      'Device fleet security management',
+      'Zero-trust endpoint protection',
+      'Compliance and audit requirements',
+      'Threat detection and response'
+    ],
+    targetUsers: 'CISOs, IT security teams, compliance officers',
+    ecosystemFit: 'Integrates across all Lenovo device categories',
+    competitiveEdge: 'Hardware-rooted security, comprehensive coverage, integrated management',
+    pricingModel: 'Included with devices, premium tiers available',
+    relatedProducts: ['ThinkPad', 'ThinkCentre', 'ThinkStation'],
+    industryFit: ['Banking', 'Government', 'Healthcare']
+  },
+  'SE350': {
+    icon: Building,
+    category: 'Edge Computing',
+    description: 'Edge servers and micro data centers',
+    whatItDoes: 'Compact, rugged servers designed for edge computing and remote locations',
+    keyUseCases: [
+      'Remote site computing',
+      'IoT data processing',
+      'Branch office infrastructure',
+      'Industrial edge computing'
+    ],
+    targetUsers: 'Edge architects, site managers, IoT engineers',
+    ecosystemFit: 'Extends ThinkSystem capabilities to the edge',
+    competitiveEdge: 'Extreme durability, fanless operation, space efficiency',
+    pricingModel: 'Purchase or TruScale edge-as-a-service',
+    relatedProducts: ['ThinkSystem', 'ThinkAgile', 'TruScale'],
+    industryFit: ['Government', 'Manufacturing', 'Retail']
+  },
+  'TruScale': {
+    icon: DollarSign,
+    category: 'Services',
+    description: 'As-a-service consumption model',
+    whatItDoes: 'Flexible, consumption-based pricing for all Lenovo infrastructure and devices',
+    keyUseCases: [
+      'OpEx vs CapEx optimization',
+      'Elastic capacity scaling',
+      'Predictable monthly costs',
+      'End-of-life device management'
+    ],
+    targetUsers: 'CFOs, procurement teams, IT leaders',
+    ecosystemFit: 'Available across entire Lenovo portfolio',
+    competitiveEdge: 'No lock-in contracts, transparent pricing, comprehensive service',
+    pricingModel: 'Pay-per-use, monthly subscriptions, outcome-based pricing',
+    relatedProducts: ['ThinkSystem', 'ThinkPad', 'ThinkAgile'],
+    industryFit: ['Banking', 'Government', 'Healthcare', 'Education']
+  },
+  'P1': {
+    icon: Laptop,
+    category: 'Mobile Workstations',
+    description: 'Premium mobile workstations',
+    whatItDoes: 'Ultra-thin, high-performance mobile workstations for professional workflows',
+    keyUseCases: [
+      'Mobile CAD and design work',
+      'On-site engineering and consulting',
+      'Creative content creation',
+      'Data science and analytics'
+    ],
+    targetUsers: 'Mobile professionals, consultants, field engineers, creative professionals',
+    ecosystemFit: 'Premium tier of ThinkPad family',
+    competitiveEdge: 'Thin and light design with workstation performance, ISV certifications',
+    pricingModel: 'Premium pricing, lease and TruScale options',
+    relatedProducts: ['ThinkPad', 'ThinkVision', 'TruScale'],
+    industryFit: ['Banking', 'Government', 'Healthcare', 'Education']
+  }
+};
 
 const TacticalDeck = () => {
   const [filter, setFilter] = useState('');
   const [activeChip, setActiveChip] = useState('');
+  const [expandedProduct, setExpandedProduct] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
 
   const clearFilter = () => {
     setFilter('');
     setActiveChip('');
+    setExpandedProduct(null);
   };
 
   const handleChipClick = (query: string) => {
-    setActiveChip(activeChip === query ? '' : query);
-    setFilter(activeChip === query ? '' : query);
+    // Toggle product expansion
+    if (expandedProduct === query) {
+      setExpandedProduct(null);
+      setActiveChip('');
+      setFilter('');
+    } else {
+      setExpandedProduct(query);
+      setActiveChip(query);
+      setFilter(query);
+    }
   };
 
   const applyFilter = (term: string) => {
@@ -164,8 +380,7 @@ const TacticalDeck = () => {
                 <span
                   key={chip}
                   onClick={() => handleChipClick(chip)}
-                  title={tooltips[chip] || chip}
-                  className={`px-2.5 py-1.5 rounded-full text-xs cursor-pointer border transition-all hover:border-[hsl(195_100%_70%)] ${
+                  className={`px-3 py-2 rounded-full text-xs cursor-pointer border transition-all hover:border-[hsl(195_100%_70%)] flex items-center gap-1.5 ${
                     activeChip === chip 
                       ? 'text-[hsl(220_15%_92%)] border-[hsl(195_100%_70%)]' 
                       : 'text-[hsl(220_15%_70%)] border-[hsl(225_15%_15%)]'
@@ -175,14 +390,180 @@ const TacticalDeck = () => {
                       ? 'rgba(108,212,255,0.12)' 
                       : 'hsl(225 15% 11%)'
                   }}
+                  title={`Click to see detailed info about ${chip}`}
                 >
                   {chip}
+                  {expandedProduct === chip ? (
+                    <ChevronUp className="h-3 w-3" />
+                  ) : (
+                    <ChevronDown className="h-3 w-3 opacity-60" />
+                  )}
                 </span>
               );
             })}
           </div>
         </div>
       </header>
+
+      {/* Expanded Product Detail Panel */}
+      {expandedProduct && productData[expandedProduct] && (
+        <div className="max-w-[1200px] mx-auto px-6 py-4">
+          <Card className="border-[hsl(195_100%_50%/0.3)] bg-[hsl(225_20%_12%)]">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  {React.createElement(productData[expandedProduct].icon, { 
+                    className: "h-6 w-6 text-[hsl(195_100%_70%)]" 
+                  })}
+                  <div>
+                    <CardTitle className="text-[hsl(220_15%_92%)] text-xl">
+                      {expandedProduct}
+                    </CardTitle>
+                    <CardDescription className="text-[hsl(220_15%_70%)]">
+                      {productData[expandedProduct].category}
+                    </CardDescription>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setExpandedProduct(null)}
+                  className="p-2 hover:bg-[hsl(225_15%_15%)] rounded-lg transition-colors"
+                >
+                  <ChevronUp className="h-4 w-4 text-[hsl(220_15%_70%)]" />
+                </button>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* What it does */}
+              <div>
+                <h4 className="text-sm font-semibold text-[hsl(220_15%_92%)] mb-2 flex items-center gap-2">
+                  <Target className="h-4 w-4 text-[hsl(195_100%_70%)]" />
+                  What it does
+                </h4>
+                <p className="text-[hsl(220_15%_78%)] text-sm leading-relaxed">
+                  {productData[expandedProduct].whatItDoes}
+                </p>
+              </div>
+
+              {/* Key use cases */}
+              <div>
+                <h4 className="text-sm font-semibold text-[hsl(220_15%_92%)] mb-2 flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-[hsl(195_100%_70%)]" />
+                  Key use cases
+                </h4>
+                <ul className="space-y-1">
+                  {productData[expandedProduct].keyUseCases.map((useCase, index) => (
+                    <li key={index} className="text-[hsl(220_15%_78%)] text-sm flex items-start gap-2">
+                      <ArrowRight className="h-3 w-3 text-[hsl(195_100%_70%)] mt-0.5 flex-shrink-0" />
+                      {useCase}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Target users */}
+                <div>
+                  <h4 className="text-sm font-semibold text-[hsl(220_15%_92%)] mb-2 flex items-center gap-2">
+                    <Users className="h-4 w-4 text-[hsl(195_100%_70%)]" />
+                    Target users
+                  </h4>
+                  <p className="text-[hsl(220_15%_78%)] text-sm leading-relaxed">
+                    {productData[expandedProduct].targetUsers}
+                  </p>
+                </div>
+
+                {/* Competitive edge */}
+                <div>
+                  <h4 className="text-sm font-semibold text-[hsl(220_15%_92%)] mb-2 flex items-center gap-2">
+                    <Shield className="h-4 w-4 text-[hsl(195_100%_70%)]" />
+                    Competitive edge
+                  </h4>
+                  <p className="text-[hsl(220_15%_78%)] text-sm leading-relaxed">
+                    {productData[expandedProduct].competitiveEdge}
+                  </p>
+                </div>
+
+                {/* Ecosystem fit */}
+                <div>
+                  <h4 className="text-sm font-semibold text-[hsl(220_15%_92%)] mb-2 flex items-center gap-2">
+                    <Layers className="h-4 w-4 text-[hsl(195_100%_70%)]" />
+                    Ecosystem fit
+                  </h4>
+                  <p className="text-[hsl(220_15%_78%)] text-sm leading-relaxed">
+                    {productData[expandedProduct].ecosystemFit}
+                  </p>
+                </div>
+
+                {/* Pricing model */}
+                <div>
+                  <h4 className="text-sm font-semibold text-[hsl(220_15%_92%)] mb-2 flex items-center gap-2">
+                    <DollarSign className="h-4 w-4 text-[hsl(195_100%_70%)]" />
+                    Pricing model
+                  </h4>
+                  <p className="text-[hsl(220_15%_78%)] text-sm leading-relaxed">
+                    {productData[expandedProduct].pricingModel}
+                  </p>
+                </div>
+              </div>
+
+              {/* Related products */}
+              <div>
+                <h4 className="text-sm font-semibold text-[hsl(220_15%_92%)] mb-3 flex items-center gap-2">
+                  <Settings className="h-4 w-4 text-[hsl(195_100%_70%)]" />
+                  Works well with
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {productData[expandedProduct].relatedProducts.map((related) => (
+                    <Badge
+                      key={related}
+                      variant="outline"
+                      className="text-[hsl(220_15%_78%)] border-[hsl(225_15%_25%)] hover:border-[hsl(195_100%_70%)] cursor-pointer transition-colors"
+                      onClick={() => handleChipClick(related)}
+                    >
+                      {related}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+
+              {/* Industry fit indicators */}
+              <div>
+                <h4 className="text-sm font-semibold text-[hsl(220_15%_92%)] mb-3 flex items-center gap-2">
+                  <Building className="h-4 w-4 text-[hsl(195_100%_70%)]" />
+                  Industry fit
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {productData[expandedProduct].industryFit.map((industry) => (
+                    <Badge
+                      key={industry}
+                      className="bg-[hsl(120_60%_50%/0.15)] text-[hsl(120_60%_70%)] border-[hsl(120_60%_50%/0.3)]"
+                    >
+                      {industry}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+
+              {/* Jump to examples */}
+              <div className="pt-4 border-t border-[hsl(225_15%_15%)]">
+                <button
+                  onClick={() => {
+                    const firstMatch = document.querySelector('tbody tr.highlight') || 
+                                     document.querySelector(`tbody tr:has(*:contains("${expandedProduct}"))`);
+                    if (firstMatch) {
+                      firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                  }}
+                  className="text-sm text-[hsl(195_100%_70%)] hover:text-[hsl(195_100%_80%)] flex items-center gap-2 transition-colors"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                  Jump to examples in tactical sections
+                </button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
 
       {/* Main Content */}
       <main className="max-w-[1200px] mx-auto px-6 py-6">
