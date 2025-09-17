@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Helmet } from 'react-helmet';
-import { ChevronDown, ChevronUp, Users, Target, Zap, Shield, Building, Cog, Layers, DollarSign, Monitor, Laptop, Server, HardDrive, Settings, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { ChevronDown, ChevronUp, Users, Target, Zap, Shield, Building, Cog, Layers, DollarSign, Monitor, Laptop, Server, HardDrive, Settings, ArrowRight, ArrowLeft, Home } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { Button } from '@/components/ui/button';
 import { LenovoAdvisor } from '@/components/lenovo/LenovoAdvisor';
 
 // Enhanced product data with comprehensive details
@@ -209,6 +211,7 @@ const productData = {
 };
 
 const TacticalDeck = () => {
+  const navigate = useNavigate();
   const [filter, setFilter] = useState('');
   const [activeChip, setActiveChip] = useState('');
   const [expandedProduct, setExpandedProduct] = useState<string | null>(null);
@@ -292,7 +295,7 @@ const TacticalDeck = () => {
         <meta name="robots" content="noindex,nofollow" />
         <style type="text/css">{`
           :root {
-            --deck-header-h: 100px;
+            --deck-header-h: 140px;
           }
           tbody tr.highlight {
             background: rgba(108, 212, 255, 0.18) !important;
@@ -325,8 +328,37 @@ const TacticalDeck = () => {
         `}</style>
       </Helmet>
 
+      {/* Navigation Header */}
+      <div className="sticky top-0 z-20" style={{
+        background: 'hsl(0 84% 60%)', // Lenovo red
+        borderBottom: '1px solid hsl(0 84% 50%)'
+      }}>
+        <div className="max-w-[1200px] mx-auto px-6 py-2 flex gap-3 items-center">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate('/microsites/lenovo')}
+            className="text-white hover:bg-white/20 hover:text-white border-white/30"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Lenovo Site
+          </Button>
+          <div className="h-4 w-px bg-white/30" />
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate('/')}
+            className="text-white hover:bg-white/20 hover:text-white border-white/30"
+          >
+            <Home className="w-4 h-4 mr-2" />
+            Main Portfolio
+          </Button>
+        </div>
+      </div>
+
       {/* Header */}
-      <header ref={headerRef} className="sticky top-0 z-10" style={{
+      <header ref={headerRef} className="sticky z-10" style={{
+        top: '40px', // Account for navigation bar height
         background: 'linear-gradient(180deg, rgba(15,18,32,0.98), rgba(15,18,32,0.85))',
         backdropFilter: 'saturate(1.2) blur(6px)',
         borderBottom: '1px solid hsl(225 15% 15%)'
