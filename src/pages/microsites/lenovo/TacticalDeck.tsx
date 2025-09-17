@@ -217,7 +217,7 @@ const TacticalDeck = () => {
               { name: 'ThinkVision', desc: 'Professional monitors for productivity', summary: 'High‑density screens for trading floors and design teams.' },
               { name: 'ThinkBook', desc: 'Business laptops for SMB and enterprise users', summary: 'Modern productivity devices for growing teams.' },
               { name: 'ThinkShield', desc: 'Comprehensive security platform across devices', summary: 'End-to-end security from chip to cloud.' },
-              { name: 'SE350', desc: 'Edge servers and micro data centers', summary: 'Compact edge compute for constrained spaces.' },
+              { name: 'SE350', desc: 'Edge servers and micro data centres', summary: 'Compact edge compute for constrained spaces.' },
               { name: 'Storage', desc: 'Enterprise storage solutions', summary: 'Storage for AI models, imaging sets, and training data.' },
               { name: 'TruScale', desc: 'As‑a‑service consumption model', summary: 'Elastic spend aligned to usage and peaks.' }
             ].map((p) => (

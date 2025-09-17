@@ -1737,7 +1737,7 @@ const LenovoMicrosite = () => {
               <TableRow>
                 <TableHead>Competitor strength strong</TableHead>
                 <TableCell>Reframe to risk and compliance. ESG reporting and lifecycle proof. Reduce hidden costs from breaches and rework.</TableCell>
-                <TableCell>Bring proof with pilots and Innovation Center. Co sell with partners. Show time to value and adoption curve.</TableCell>
+                <TableCell>Bring proof with pilots and Innovation Centre. Co sell with partners. Show time to value and adoption curve.</TableCell>
               </TableRow>
             </TableBody>
           </Table>
