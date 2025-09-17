@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Home, Users, Target, Zap, Shield, Building, Cog, BarChart3, Image, Presentation } from 'lucide-react';
+import { ArrowLeft, Home, Users, Target, Zap, Shield, Building, Cog, BarChart3, Image, Presentation, Database } from 'lucide-react';
 
 const DemoChoices = () => {
   const navigate = useNavigate();
@@ -69,6 +69,13 @@ const DemoChoices = () => {
       icon: Presentation,
       link: '/microsites/lenovo/tactical-deck',
       color: 'bg-red-50 border-red-200 hover:bg-red-100'
+    },
+    {
+      title: 'TruScale Pilot Scenarios',
+      description: '15+ real-world pilot scenarios across AI, cloud, edge, and enterprise workloads with setup guides and ROI models.',
+      icon: Database,
+      link: '/microsites/lenovo/truscale-scenarios',
+      color: 'bg-cyan-50 border-cyan-200 hover:bg-cyan-100'
     }
   ];
 
