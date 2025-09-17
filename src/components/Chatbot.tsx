@@ -9,6 +9,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { HeyGenAvatar } from './HeyGenAvatar';
 import { useAIAccess } from '@/hooks/useAIAccess';
+import { logger } from '@/utils/logger';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -79,7 +80,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
     setIsLoading(true);
 
     try {
-      console.log('Sending message to chat-with-rag:', { messageText, sessionId, userEmail });
+      logger.log('Sending message to chat-with-rag:', { messageText, sessionId, userEmail });
       
       const { data, error } = await supabase.functions.invoke('chat-with-rag', {
         body: {
@@ -89,10 +90,10 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
         },
       });
 
-      console.log('Chat response:', { data, error });
+      logger.log('Chat response:', { data, error });
 
       if (error) {
-        console.error('Chat error:', error);
+        logger.error('Chat error:', error);
         throw error;
       }
 
@@ -111,7 +112,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
       }
 
     } catch (error) {
-      console.error('Error sending message:', error);
+      logger.error('Error sending message:', error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
@@ -146,7 +147,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
       const audio = new Audio(audioUrl);
       
       audio.play().catch(err => {
-        console.error('Error playing audio:', err);
+        logger.error('Error playing audio:', err);
       });
 
       audio.onended = () => {
@@ -154,7 +155,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
       };
 
     } catch (error) {
-      console.error('Error converting text to speech:', error);
+      logger.error('Error converting text to speech:', error);
     }
   };
 
@@ -194,7 +195,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
       setIsRecording(true);
 
     } catch (error) {
-      console.error('Error starting recording:', error);
+      logger.error('Error starting recording:', error);
       toast({
         title: "Error",
         description: "Failed to access microphone. Please check permissions.",
@@ -243,7 +244,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
       }
 
     } catch (error) {
-      console.error('Error processing voice input:', error);
+      logger.error('Error processing voice input:', error);
       toast({
         title: "Error",
         description: "Failed to process voice input. Please try again.",
@@ -386,7 +387,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ className = '' }) => {
             <HeyGenAvatar 
               onMessageReceived={(message) => {
                 // Handle messages from avatar interactions
-                console.log('Avatar message:', message);
+                logger.log('Avatar message:', message);
               }}
             />
           </TabsContent>
