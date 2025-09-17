@@ -83,7 +83,7 @@ export const SmokeTest = () => {
           navigate(routes[routeIndex + 1].path);
         } else {
           setIsRunning(false);
-          console.log('✅ Smoke test completed');
+          if (import.meta.env.DEV) console.log('✅ Smoke test completed');
         }
       } catch (error) {
         setResults(prev => prev.map((result, i) => 

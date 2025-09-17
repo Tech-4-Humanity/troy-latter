@@ -55,7 +55,7 @@ export const LenovoAccessGate = ({ onAccessGranted }: LenovoAccessGateProps) => 
         });
 
       if (error) {
-        console.error('Error saving Lenovo lead:', error);
+        if (import.meta.env.DEV) console.error('Error saving Lenovo lead:', error);
         throw new Error('Failed to save your information');
       }
 
@@ -76,7 +76,7 @@ export const LenovoAccessGate = ({ onAccessGranted }: LenovoAccessGateProps) => 
       }, 500);
 
     } catch (error) {
-      console.error('Error in Lenovo access gate:', error);
+      if (import.meta.env.DEV) console.error('Error in Lenovo access gate:', error);
       toast({
         title: "Error",
         description: error instanceof Error ? error.message : "Failed to grant access. Please try again.",

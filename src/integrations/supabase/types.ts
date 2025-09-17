@@ -4624,6 +4624,400 @@ export type Database = {
         }
         Relationships: []
       }
+      book_activity: {
+        Row: {
+          action: string
+          book_id: string | null
+          chapter_id: string | null
+          created_at: string | null
+          id: string
+          payload: Json | null
+          user_id: string | null
+        }
+        Insert: {
+          action: string
+          book_id?: string | null
+          chapter_id?: string | null
+          created_at?: string | null
+          id?: string
+          payload?: Json | null
+          user_id?: string | null
+        }
+        Update: {
+          action?: string
+          book_id?: string | null
+          chapter_id?: string | null
+          created_at?: string | null
+          id?: string
+          payload?: Json | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "book_activity_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "book_activity_chapter_id_fkey"
+            columns: ["chapter_id"]
+            isOneToOne: false
+            referencedRelation: "book_chapters"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      book_appendices: {
+        Row: {
+          book_id: string | null
+          content: Json | null
+          id: string
+          key: string
+          updated_at: string
+        }
+        Insert: {
+          book_id?: string | null
+          content?: Json | null
+          id?: string
+          key: string
+          updated_at?: string
+        }
+        Update: {
+          book_id?: string | null
+          content?: Json | null
+          id?: string
+          key?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "book_appendices_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      book_blockers: {
+        Row: {
+          book_id: string | null
+          created_at: string
+          created_by: string | null
+          id: string
+          resolved: boolean | null
+          severity: string | null
+          title: string
+        }
+        Insert: {
+          book_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          resolved?: boolean | null
+          severity?: string | null
+          title: string
+        }
+        Update: {
+          book_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          resolved?: boolean | null
+          severity?: string | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "book_blockers_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      book_chapters: {
+        Row: {
+          book_id: string
+          chapter_order: number
+          chapter_status: Database["public"]["Enums"]["chapter_status"] | null
+          content: string | null
+          created_at: string
+          est_read_minutes: number | null
+          id: string
+          is_published: boolean | null
+          progress_percentage: number | null
+          sections: Json | null
+          slug: string | null
+          title: string
+          updated_at: string
+          word_count: number | null
+        }
+        Insert: {
+          book_id: string
+          chapter_order: number
+          chapter_status?: Database["public"]["Enums"]["chapter_status"] | null
+          content?: string | null
+          created_at?: string
+          est_read_minutes?: number | null
+          id?: string
+          is_published?: boolean | null
+          progress_percentage?: number | null
+          sections?: Json | null
+          slug?: string | null
+          title: string
+          updated_at?: string
+          word_count?: number | null
+        }
+        Update: {
+          book_id?: string
+          chapter_order?: number
+          chapter_status?: Database["public"]["Enums"]["chapter_status"] | null
+          content?: string | null
+          created_at?: string
+          est_read_minutes?: number | null
+          id?: string
+          is_published?: boolean | null
+          progress_percentage?: number | null
+          sections?: Json | null
+          slug?: string | null
+          title?: string
+          updated_at?: string
+          word_count?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "book_chapters_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      book_comments: {
+        Row: {
+          body: string
+          chapter_id: string | null
+          created_at: string | null
+          id: string
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          body: string
+          chapter_id?: string | null
+          created_at?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          body?: string
+          chapter_id?: string | null
+          created_at?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "book_comments_chapter_id_fkey"
+            columns: ["chapter_id"]
+            isOneToOne: false
+            referencedRelation: "book_chapters"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      book_contributions: {
+        Row: {
+          book_id: string | null
+          created_at: string
+          created_by: string | null
+          id: string
+          status: string | null
+          thinker_profile_id: string | null
+        }
+        Insert: {
+          book_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          status?: string | null
+          thinker_profile_id?: string | null
+        }
+        Update: {
+          book_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          status?: string | null
+          thinker_profile_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "book_contributions_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "book_contributions_thinker_profile_id_fkey"
+            columns: ["thinker_profile_id"]
+            isOneToOne: false
+            referencedRelation: "thinker_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      book_leader_mappings: {
+        Row: {
+          book_id: string | null
+          created_at: string
+          id: string
+          priority: number | null
+          thinker_name: string
+        }
+        Insert: {
+          book_id?: string | null
+          created_at?: string
+          id?: string
+          priority?: number | null
+          thinker_name: string
+        }
+        Update: {
+          book_id?: string | null
+          created_at?: string
+          id?: string
+          priority?: number | null
+          thinker_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "book_leader_mappings_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      book_user_contributions: {
+        Row: {
+          author: string
+          book_slug: string
+          cluster_id: string | null
+          content_status: string | null
+          created_at: string
+          exemplar_key: string | null
+          id: string
+          notes: string | null
+          progress: number | null
+          status: string
+          submission: string
+          submission_type: string
+          tags: string[] | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          author: string
+          book_slug: string
+          cluster_id?: string | null
+          content_status?: string | null
+          created_at?: string
+          exemplar_key?: string | null
+          id?: string
+          notes?: string | null
+          progress?: number | null
+          status?: string
+          submission: string
+          submission_type?: string
+          tags?: string[] | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          author?: string
+          book_slug?: string
+          cluster_id?: string | null
+          content_status?: string | null
+          created_at?: string
+          exemplar_key?: string | null
+          id?: string
+          notes?: string | null
+          progress?: number | null
+          status?: string
+          submission?: string
+          submission_type?: string
+          tags?: string[] | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      books: {
+        Row: {
+          collection: string | null
+          cover_url: string | null
+          created_at: string
+          draft_url: string | null
+          due_date: string | null
+          id: string
+          lead_description: string | null
+          owner: string | null
+          progress_percentage: number | null
+          ready_flag: boolean | null
+          series_name: string | null
+          slug: string
+          status: string | null
+          subtitle: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          collection?: string | null
+          cover_url?: string | null
+          created_at?: string
+          draft_url?: string | null
+          due_date?: string | null
+          id?: string
+          lead_description?: string | null
+          owner?: string | null
+          progress_percentage?: number | null
+          ready_flag?: boolean | null
+          series_name?: string | null
+          slug: string
+          status?: string | null
+          subtitle?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          collection?: string | null
+          cover_url?: string | null
+          created_at?: string
+          draft_url?: string | null
+          due_date?: string | null
+          id?: string
+          lead_description?: string | null
+          owner?: string | null
+          progress_percentage?: number | null
+          ready_flag?: boolean | null
+          series_name?: string | null
+          slug?: string
+          status?: string | null
+          subtitle?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       budgetallocations: {
         Row: {
           allocated_amount: number | null
@@ -14833,6 +15227,105 @@ export type Database = {
           },
         ]
       }
+      master_4500: {
+        Row: {
+          ai_era_shift: string | null
+          ai_relevance: string | null
+          author_ai_era_shift: string | null
+          author_ai_relevance: string | null
+          author_original_insight: string | null
+          book_slug: string
+          case_studies: string[] | null
+          core_framework: string | null
+          created_at: string
+          cross_era_evolution: string | null
+          description: string | null
+          era_agentic_ai: string | null
+          era_bci: string | null
+          era_cloud_native: string | null
+          era_gen_ai: string | null
+          era_on_prem: string | null
+          exemplar_type: string
+          id: string
+          implementation_phase1: string | null
+          implementation_phase2: string | null
+          implementation_phase3: string | null
+          notes: string | null
+          original_insight: string | null
+          progress: number | null
+          related_frameworks: string[] | null
+          related_thinkers: string[] | null
+          section_slug: string
+          status: Database["public"]["Enums"]["content_status"]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          ai_era_shift?: string | null
+          ai_relevance?: string | null
+          author_ai_era_shift?: string | null
+          author_ai_relevance?: string | null
+          author_original_insight?: string | null
+          book_slug?: string
+          case_studies?: string[] | null
+          core_framework?: string | null
+          created_at?: string
+          cross_era_evolution?: string | null
+          description?: string | null
+          era_agentic_ai?: string | null
+          era_bci?: string | null
+          era_cloud_native?: string | null
+          era_gen_ai?: string | null
+          era_on_prem?: string | null
+          exemplar_type: string
+          id?: string
+          implementation_phase1?: string | null
+          implementation_phase2?: string | null
+          implementation_phase3?: string | null
+          notes?: string | null
+          original_insight?: string | null
+          progress?: number | null
+          related_frameworks?: string[] | null
+          related_thinkers?: string[] | null
+          section_slug: string
+          status?: Database["public"]["Enums"]["content_status"]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          ai_era_shift?: string | null
+          ai_relevance?: string | null
+          author_ai_era_shift?: string | null
+          author_ai_relevance?: string | null
+          author_original_insight?: string | null
+          book_slug?: string
+          case_studies?: string[] | null
+          core_framework?: string | null
+          created_at?: string
+          cross_era_evolution?: string | null
+          description?: string | null
+          era_agentic_ai?: string | null
+          era_bci?: string | null
+          era_cloud_native?: string | null
+          era_gen_ai?: string | null
+          era_on_prem?: string | null
+          exemplar_type?: string
+          id?: string
+          implementation_phase1?: string | null
+          implementation_phase2?: string | null
+          implementation_phase3?: string | null
+          notes?: string | null
+          original_insight?: string | null
+          progress?: number | null
+          related_frameworks?: string[] | null
+          related_thinkers?: string[] | null
+          section_slug?: string
+          status?: Database["public"]["Enums"]["content_status"]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       matrix_config: {
         Row: {
           created_at: string
@@ -14956,6 +15449,57 @@ export type Database = {
           role_id?: number | null
           stage_transition?: string | null
           uplift_percent?: number | null
+        }
+        Relationships: []
+      }
+      media_assets: {
+        Row: {
+          attribution: string
+          created_at: string | null
+          creator: string | null
+          filename: string
+          id: string
+          license: string
+          license_url: string | null
+          metadata: Json | null
+          original_url: string
+          source_api: string
+          storage_path: string
+          tags: string[] | null
+          title: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          attribution: string
+          created_at?: string | null
+          creator?: string | null
+          filename: string
+          id?: string
+          license: string
+          license_url?: string | null
+          metadata?: Json | null
+          original_url: string
+          source_api?: string
+          storage_path: string
+          tags?: string[] | null
+          title?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          attribution?: string
+          created_at?: string | null
+          creator?: string | null
+          filename?: string
+          id?: string
+          license?: string
+          license_url?: string | null
+          metadata?: Json | null
+          original_url?: string
+          source_api?: string
+          storage_path?: string
+          tags?: string[] | null
+          title?: string | null
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -19938,6 +20482,60 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      reports: {
+        Row: {
+          asset_type: string | null
+          cadence: string | null
+          category: string | null
+          full_text: string | null
+          id: string
+          industry_sector: string | null
+          lifecycle_stage: string | null
+          link: string | null
+          project: string | null
+          run_date: string | null
+          source: string | null
+          summary: string | null
+          tags: string[] | null
+          title: string
+          value_lens: string | null
+        }
+        Insert: {
+          asset_type?: string | null
+          cadence?: string | null
+          category?: string | null
+          full_text?: string | null
+          id?: string
+          industry_sector?: string | null
+          lifecycle_stage?: string | null
+          link?: string | null
+          project?: string | null
+          run_date?: string | null
+          source?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          title: string
+          value_lens?: string | null
+        }
+        Update: {
+          asset_type?: string | null
+          cadence?: string | null
+          category?: string | null
+          full_text?: string | null
+          id?: string
+          industry_sector?: string | null
+          lifecycle_stage?: string | null
+          link?: string | null
+          project?: string | null
+          run_date?: string | null
+          source?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          title?: string
+          value_lens?: string | null
+        }
+        Relationships: []
       }
       requirements: {
         Row: {
@@ -31151,6 +31749,105 @@ export type Database = {
         }
         Relationships: []
       }
+      "4500 Master": {
+        Row: {
+          ai_era_shift: string | null
+          ai_relevance: string | null
+          author_ai_era_shift: string | null
+          author_ai_relevance: string | null
+          author_original_insight: string | null
+          book_slug: string | null
+          case_studies: string[] | null
+          core_framework: string | null
+          created_at: string | null
+          cross_era_evolution: string | null
+          description: string | null
+          era_agentic_ai: string | null
+          era_bci: string | null
+          era_cloud_native: string | null
+          era_gen_ai: string | null
+          era_on_prem: string | null
+          exemplar_type: string | null
+          id: string | null
+          implementation_phase1: string | null
+          implementation_phase2: string | null
+          implementation_phase3: string | null
+          notes: string | null
+          original_insight: string | null
+          progress: number | null
+          related_frameworks: string[] | null
+          related_thinkers: string[] | null
+          section_slug: string | null
+          status: Database["public"]["Enums"]["content_status"] | null
+          title: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          ai_era_shift?: string | null
+          ai_relevance?: string | null
+          author_ai_era_shift?: string | null
+          author_ai_relevance?: string | null
+          author_original_insight?: string | null
+          book_slug?: string | null
+          case_studies?: string[] | null
+          core_framework?: string | null
+          created_at?: string | null
+          cross_era_evolution?: string | null
+          description?: string | null
+          era_agentic_ai?: string | null
+          era_bci?: string | null
+          era_cloud_native?: string | null
+          era_gen_ai?: string | null
+          era_on_prem?: string | null
+          exemplar_type?: string | null
+          id?: string | null
+          implementation_phase1?: string | null
+          implementation_phase2?: string | null
+          implementation_phase3?: string | null
+          notes?: string | null
+          original_insight?: string | null
+          progress?: number | null
+          related_frameworks?: string[] | null
+          related_thinkers?: string[] | null
+          section_slug?: string | null
+          status?: Database["public"]["Enums"]["content_status"] | null
+          title?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          ai_era_shift?: string | null
+          ai_relevance?: string | null
+          author_ai_era_shift?: string | null
+          author_ai_relevance?: string | null
+          author_original_insight?: string | null
+          book_slug?: string | null
+          case_studies?: string[] | null
+          core_framework?: string | null
+          created_at?: string | null
+          cross_era_evolution?: string | null
+          description?: string | null
+          era_agentic_ai?: string | null
+          era_bci?: string | null
+          era_cloud_native?: string | null
+          era_gen_ai?: string | null
+          era_on_prem?: string | null
+          exemplar_type?: string | null
+          id?: string | null
+          implementation_phase1?: string | null
+          implementation_phase2?: string | null
+          implementation_phase3?: string | null
+          notes?: string | null
+          original_insight?: string | null
+          progress?: number | null
+          related_frameworks?: string[] | null
+          related_thinkers?: string[] | null
+          section_slug?: string | null
+          status?: Database["public"]["Enums"]["content_status"] | null
+          title?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       "Agent reuse optimiser": {
         Row: {
           agent_code: string | null
@@ -31220,6 +31917,60 @@ export type Database = {
           agent_display_name?: string | null
           summary?: string | null
           title?: string | null
+        }
+        Relationships: []
+      }
+      annual_reports: {
+        Row: {
+          asset_type: string | null
+          cadence: string | null
+          category: string | null
+          full_text: string | null
+          id: string | null
+          industry_sector: string | null
+          lifecycle_stage: string | null
+          link: string | null
+          project: string | null
+          run_date: string | null
+          source: string | null
+          summary: string | null
+          tags: string[] | null
+          title: string | null
+          value_lens: string | null
+        }
+        Insert: {
+          asset_type?: string | null
+          cadence?: string | null
+          category?: string | null
+          full_text?: string | null
+          id?: string | null
+          industry_sector?: string | null
+          lifecycle_stage?: string | null
+          link?: string | null
+          project?: string | null
+          run_date?: string | null
+          source?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          title?: string | null
+          value_lens?: string | null
+        }
+        Update: {
+          asset_type?: string | null
+          cadence?: string | null
+          category?: string | null
+          full_text?: string | null
+          id?: string | null
+          industry_sector?: string | null
+          lifecycle_stage?: string | null
+          link?: string | null
+          project?: string | null
+          run_date?: string | null
+          source?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          title?: string | null
+          value_lens?: string | null
         }
         Relationships: []
       }
@@ -31452,6 +32203,60 @@ export type Database = {
           overlay_suggested_roles?: string | null
           persona?: string | null
           sfia_level?: string | null
+        }
+        Relationships: []
+      }
+      daily_reports: {
+        Row: {
+          asset_type: string | null
+          cadence: string | null
+          category: string | null
+          full_text: string | null
+          id: string | null
+          industry_sector: string | null
+          lifecycle_stage: string | null
+          link: string | null
+          project: string | null
+          run_date: string | null
+          source: string | null
+          summary: string | null
+          tags: string[] | null
+          title: string | null
+          value_lens: string | null
+        }
+        Insert: {
+          asset_type?: string | null
+          cadence?: string | null
+          category?: string | null
+          full_text?: string | null
+          id?: string | null
+          industry_sector?: string | null
+          lifecycle_stage?: string | null
+          link?: string | null
+          project?: string | null
+          run_date?: string | null
+          source?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          title?: string | null
+          value_lens?: string | null
+        }
+        Update: {
+          asset_type?: string | null
+          cadence?: string | null
+          category?: string | null
+          full_text?: string | null
+          id?: string | null
+          industry_sector?: string | null
+          lifecycle_stage?: string | null
+          link?: string | null
+          project?: string | null
+          run_date?: string | null
+          source?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          title?: string | null
+          value_lens?: string | null
         }
         Relationships: []
       }
@@ -31791,6 +32596,60 @@ export type Database = {
         }
         Relationships: []
       }
+      monthly_reports: {
+        Row: {
+          asset_type: string | null
+          cadence: string | null
+          category: string | null
+          full_text: string | null
+          id: string | null
+          industry_sector: string | null
+          lifecycle_stage: string | null
+          link: string | null
+          project: string | null
+          run_date: string | null
+          source: string | null
+          summary: string | null
+          tags: string[] | null
+          title: string | null
+          value_lens: string | null
+        }
+        Insert: {
+          asset_type?: string | null
+          cadence?: string | null
+          category?: string | null
+          full_text?: string | null
+          id?: string | null
+          industry_sector?: string | null
+          lifecycle_stage?: string | null
+          link?: string | null
+          project?: string | null
+          run_date?: string | null
+          source?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          title?: string | null
+          value_lens?: string | null
+        }
+        Update: {
+          asset_type?: string | null
+          cadence?: string | null
+          category?: string | null
+          full_text?: string | null
+          id?: string | null
+          industry_sector?: string | null
+          lifecycle_stage?: string | null
+          link?: string | null
+          project?: string | null
+          run_date?: string | null
+          source?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          title?: string | null
+          value_lens?: string | null
+        }
+        Relationships: []
+      }
       neural_ennead_members_overview: {
         Row: {
           canonical_keywords: string[] | null
@@ -31941,6 +32800,60 @@ export type Database = {
           match_percentage?: string | null
           required_skills?: string | null
           required_tasks?: string | null
+        }
+        Relationships: []
+      }
+      quarterly_reports: {
+        Row: {
+          asset_type: string | null
+          cadence: string | null
+          category: string | null
+          full_text: string | null
+          id: string | null
+          industry_sector: string | null
+          lifecycle_stage: string | null
+          link: string | null
+          project: string | null
+          run_date: string | null
+          source: string | null
+          summary: string | null
+          tags: string[] | null
+          title: string | null
+          value_lens: string | null
+        }
+        Insert: {
+          asset_type?: string | null
+          cadence?: string | null
+          category?: string | null
+          full_text?: string | null
+          id?: string | null
+          industry_sector?: string | null
+          lifecycle_stage?: string | null
+          link?: string | null
+          project?: string | null
+          run_date?: string | null
+          source?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          title?: string | null
+          value_lens?: string | null
+        }
+        Update: {
+          asset_type?: string | null
+          cadence?: string | null
+          category?: string | null
+          full_text?: string | null
+          id?: string | null
+          industry_sector?: string | null
+          lifecycle_stage?: string | null
+          link?: string | null
+          project?: string | null
+          run_date?: string | null
+          source?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          title?: string | null
+          value_lens?: string | null
         }
         Relationships: []
       }
@@ -32134,6 +33047,60 @@ export type Database = {
           pending_consents: number | null
           total_consents: number | null
           user_id: string | null
+        }
+        Relationships: []
+      }
+      weekly_reports: {
+        Row: {
+          asset_type: string | null
+          cadence: string | null
+          category: string | null
+          full_text: string | null
+          id: string | null
+          industry_sector: string | null
+          lifecycle_stage: string | null
+          link: string | null
+          project: string | null
+          run_date: string | null
+          source: string | null
+          summary: string | null
+          tags: string[] | null
+          title: string | null
+          value_lens: string | null
+        }
+        Insert: {
+          asset_type?: string | null
+          cadence?: string | null
+          category?: string | null
+          full_text?: string | null
+          id?: string | null
+          industry_sector?: string | null
+          lifecycle_stage?: string | null
+          link?: string | null
+          project?: string | null
+          run_date?: string | null
+          source?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          title?: string | null
+          value_lens?: string | null
+        }
+        Update: {
+          asset_type?: string | null
+          cadence?: string | null
+          category?: string | null
+          full_text?: string | null
+          id?: string | null
+          industry_sector?: string | null
+          lifecycle_stage?: string | null
+          link?: string | null
+          project?: string | null
+          run_date?: string | null
+          source?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          title?: string | null
+          value_lens?: string | null
         }
         Relationships: []
       }
@@ -32606,7 +33573,7 @@ export type Database = {
       }
       l2_normalize: {
         Args: { "": string } | { "": unknown } | { "": unknown }
-        Returns: string
+        Returns: unknown
       }
       migrate_partner_data: {
         Args: Record<PropertyKey, never>
@@ -32641,12 +33608,20 @@ export type Database = {
         Args: Record<PropertyKey, never>
         Returns: undefined
       }
+      refresh_book_appendices: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
       refresh_daily_snapshot: {
         Args: Record<PropertyKey, never>
         Returns: undefined
       }
       refresh_snapshot: {
         Args: { scope: string }
+        Returns: undefined
+      }
+      reorder_book_chapters: {
+        Args: { p_book_id: string; p_chapter_ids: string[] }
         Returns: undefined
       }
       reset_user_training_progress: {
@@ -32872,6 +33847,15 @@ export type Database = {
         | "customer_rejected"
         | "completed"
         | "archived"
+      chapter_status:
+        | "draft"
+        | "outline"
+        | "writing"
+        | "review"
+        | "edited"
+        | "approved"
+        | "published"
+      content_status: "scaffold" | "seeded" | "complete"
       ladder_tier: "bronze" | "silver" | "gold" | "platinum" | "elite"
       metric_type: "numeric" | "text" | "boolean" | "date"
       sales_stage:
@@ -33022,6 +34006,16 @@ export const Constants = {
         "completed",
         "archived",
       ],
+      chapter_status: [
+        "draft",
+        "outline",
+        "writing",
+        "review",
+        "edited",
+        "approved",
+        "published",
+      ],
+      content_status: ["scaffold", "seeded", "complete"],
       ladder_tier: ["bronze", "silver", "gold", "platinum", "elite"],
       metric_type: ["numeric", "text", "boolean", "date"],
       sales_stage: [

@@ -10,11 +10,13 @@ if (import.meta.env.DEV) {
   script.type = 'module';
   document.head.appendChild(script);
   
-  // Error logging for development
+  // Error logging for development only
   window.addEventListener('error', (e) => {
     if (e.target && e.target !== window) {
       const target = e.target as HTMLElement & { src?: string; href?: string };
-      console.warn('Resource load error:', target.src || target.href);
+      if (import.meta.env.DEV) {
+        console.warn('Resource load error:', target.src || target.href);
+      }
     }
   });
 }

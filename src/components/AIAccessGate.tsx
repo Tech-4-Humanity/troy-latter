@@ -71,7 +71,7 @@ export const AIAccessGate = ({
         });
 
       if (error) {
-        console.error('Error saving AI lead:', error);
+        if (import.meta.env.DEV) console.error('Error saving AI lead:', error);
         throw new Error('Failed to save your information');
       }
 
@@ -97,7 +97,7 @@ export const AIAccessGate = ({
       }
 
     } catch (error) {
-      console.error('Error in AI access gate:', error);
+      if (import.meta.env.DEV) console.error('Error in AI access gate:', error);
       toast({
         title: "Error",
         description: error instanceof Error ? error.message : "Failed to grant access. Please try again.",
