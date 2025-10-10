@@ -2,7 +2,7 @@
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
-import { Users, TrendingUp, Settings, Briefcase, Award, Target } from 'lucide-react';
+import { Users, TrendingUp, Settings, Briefcase, Award, Target, Brain, Network, Database, Shield, Sparkles, Zap, Workflow, Cloud, Code, Lock, Cpu } from 'lucide-react';
 
 const CoreCompetencies = () => {
   const competencies = [
@@ -57,30 +57,44 @@ const CoreCompetencies = () => {
   ];
 
   const technicalSkills = {
-    "Cloud Platforms & Architecture": [
-      "AWS Professional Solutions Architect (EC2, S3, Lambda, SageMaker, Bedrock)",
-      "Microsoft Azure AI Certified (Functions, ML Studio, Cognitive Services)",
-      "Google Cloud Platform Certified (BigQuery, Kubernetes Engine, Vertex AI)",
-      "Oracle Cloud Infrastructure (Autonomous Database, Analytics Cloud)",
-      "Multi-cloud strategy, hybrid architectures, cost optimization"
+    "AI & Agentic Systems": [
+      "Agentic Orchestration: Model Context Protocol (MCP), AutoGen, CrewAI, LangGraph, HuggingGPT, Semantic Kernel, DSPy, OpenDevin",
+      "Multi-Agent Environments: HoloOrg, AutoGPT, BabyAGI, Aide, SmolAgents, MetaGPT, CAMEL",
+      "Cognitive Frameworks: Neuro-Symbolic AI, Cognitive Reasoning Loops, Synthetic Memory Design",
+      "LLM Ops: Fine-tuning, RAG, model evaluation, vector indexing, prompt caching, retrieval optimization",
+      "Prompting Methods: chain-of-thought, few-shot, multi-shot, self-consistency, tree-of-thought, reflection, tool-calling, persona-stacking, context orchestration",
+      "Model Families: GPT-4o/5, Claude 3, Gemini 1.5, Mistral Large, LLaMA 3, Mixtral, Falcon, Command-R+, Yi-1.5, DeepSeek Coder, Groq-optimized models"
     ],
-    "Data & AI Technologies": [
-      "Data Platforms: Snowflake, Databricks, Supabase, Amazon Redshift, Azure Synapse",
-      "AI/ML Frameworks: TensorFlow, PyTorch, Semantic Kernel, LangChain, OpenAI APIs",
-      "Analytics Tools: Tableau, Power BI, Looker, Apache Spark, Kafka",
-      "Data Engineering: ETL/ELT processes, data lakes, real-time streaming"
+    "Cloud AI & Platform Architecture": [
+      "AWS: Bedrock, SageMaker, Q Developer, Lambda, ECS, Step Functions",
+      "Azure: OpenAI Service, Cognitive Search, AI Studio, Synapse, Fabric, Copilot Studio",
+      "Google: Vertex AI, Gemini APIs, BigQuery ML, Cloud Functions, Duet AI",
+      "Open-source: Ollama, LM Studio, vLLM, LangServe, FastAPI, Supabase Edge Functions",
+      "Micro-Certifications: AWS Bedrock Foundations, Azure AI Engineer Associate, Google Vertex AI Developer, OpenAI Developer, Anthropic Partner Badge, LangChain Certified Builder, MCP Contributor"
     ],
-    "Enterprise Architecture": [
-      "TOGAF, IT4IT, microservices, event-driven architecture",
-      "API Management: REST, GraphQL, API gateways, security",
-      "DevOps & CI/CD: Jenkins, GitLab, Docker, Kubernetes, Terraform",
-      "Security: OAuth, SAML, zero trust, identity management"
+    "Data, Knowledge & AI Tooling": [
+      "Data Systems: Snowflake Cortex, Databricks MosaicML, Supabase, Pinecone, Weaviate, Qdrant",
+      "Workflow Tools: n8n, Make, Pipedream, Airflow, Prefect, Dagster",
+      "Knowledge Management: Notion AI, Mem, Obsidian, Readwise, NotebookLM, Perplexity, ChatGPT Team",
+      "Dev Agents: GitHub Copilot, Cody, Continue, Sourcegraph Agents, Replit Ghostwriter",
+      "Testing & Evaluation: PromptLayer, Evals, Weights & Biases, LangFuse, Helicone, Phoenix"
+    ],
+    "Application & Product AI": [
+      "Integration Layers: REST, GraphQL, gRPC, WebSockets, JSON-RPC, OpenAPI 3.1",
+      "SaaS Connectors: Salesforce Einstein, ServiceNow Now Assist, HubSpot AI, Slack GPT, Notion AI, Asana AI, ClickUp Brain, Figma AI, Canva Magic Studio",
+      "Generative Media: HeyGen, Synthesia, Runway, Pika, Kaiber, Leonardo, Midjourney, Firefly, D-ID, ElevenLabs, Suno, Udio",
+      "Agent Deployment: Hugging Face Spaces, Replicate, Modal, Vercel AI SDK, Gradio, Streamlit, FastAPI, Cloudflare Workers"
+    ],
+    "Security, Ethics & Compliance": [
+      "Responsible AI: fairness, explainability, auditability, alignment",
+      "Privacy Tech: differential privacy, data minimization, AI observability",
+      "Compliance: ISO/IEC 42001 (AI Management), GDPR AI readiness, SOC2, NIST RMF for AI"
     ],
     "Emerging Technologies": [
-      "Brain-Computer Interfaces: BCI standards, assistive technology",
-      "IoT & Edge Computing: Sensor networks, industrial IoT, smart city infrastructure",
-      "Robotics & Automation: ROS, industrial automation, autonomous systems",
-      "Spatial Computing: AR/VR platforms, digital twins, metaverse technologies"
+      "Brain-Computer Interfaces: EEG/EMG decoding, assistive robotics integration",
+      "Robotics & Automation: ROS2, micro-robotic swarms, edge autonomy",
+      "Spatial Intelligence: ARKit, ARCore, Unreal Engine, Omniverse, Unity Sentis",
+      "Bio-Digital Systems: neural sensors, wearables, digital phenotype mapping"
     ]
   };
 
@@ -157,55 +171,99 @@ const CoreCompetencies = () => {
         ))}
       </div>
 
+      {/* AI-Native Executive Skills */}
+      <Card className="overflow-hidden bg-gradient-to-br from-blue-50 to-teal-50 border-2 border-blue-100">
+        <CardContent className="p-10">
+          <div className="flex items-center justify-center mb-8">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-teal-500 rounded-2xl flex items-center justify-center mr-4">
+              <Sparkles className="h-8 w-8 text-white" />
+            </div>
+            <h2 className="text-3xl font-bold text-brand-primary">AI-Native Executive Skills</h2>
+          </div>
+          <ul className="space-y-4 max-w-5xl mx-auto">
+            {[
+              "Leads the design and deployment of agentic ecosystems that merge human decision-making with AI-driven orchestration across cloud, data, and SaaS platforms.",
+              "Drives enterprise transition from traditional automation to context-aware intelligence, using frameworks such as MCP, AutoGen, LangGraph, and Semantic Kernel.",
+              "Builds and scales multi-agent architectures that enable collaboration between LLMs, APIs, and enterprise systems for measurable outcomes in productivity and compliance.",
+              "Translates complex AI models into operational playbooks—governing data flow, context handling, and feedback loops across distributed environments.",
+              "Shapes corporate AI strategy, policy, and governance around Responsible AI, transparency, and emerging ISO/IEC 42001 standards.",
+              "Integrates neuro-symbolic reasoning and human-in-the-loop controls for safety-critical and regulated use cases.",
+              "Champions the use of prompt engineering as a management layer, embedding chain-of-thought, self-reflection, and tool-calling across AI workflows.",
+              "Advises boards and executive teams on AI operating models, cognitive velocity metrics, and business redesign through agentic and orchestration-first thinking.",
+              "Oversees AI product, procurement, and innovation portfolios with emphasis on interoperability, ethical adoption, and measurable ROI.",
+              "Collaborates with hyperscalers and SaaS ecosystems (AWS, Azure, GCP, Snowflake, ServiceNow, Salesforce, OpenAI, Anthropic) to align platform roadmaps with organizational capability.",
+              "Guides emerging teams on AI lifecycle management, MLOps standards, and enterprise prompt repositories for sustainable learning and reuse.",
+              "Delivers outcomes through cross-functional orchestration, uniting data science, architecture, engineering, and business strategy around cognitive transformation."
+            ].map((skill, index) => (
+              <li key={index} className="flex items-start">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                <span className="text-gray-700 leading-relaxed">{skill}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
       {/* Technical Skills Detailed */}
       <div className="space-y-8">
         <h2 className="text-3xl font-bold text-brand-primary text-center">Technical Skills & Certifications</h2>
         
-        <div className="grid md:grid-cols-2 gap-8">
-          {Object.entries(technicalSkills).map(([category, skills], index) => (
-            <Card key={index} className="hover:shadow-lg transition-all">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-teal-500 rounded-xl flex items-center justify-center mr-4">
-                    {index === 0 && <Settings className="h-6 w-6 text-white" />}
-                    {index === 1 && <Target className="h-6 w-6 text-white" />}
-                    {index === 2 && <Award className="h-6 w-6 text-white" />}
-                    {index === 3 && <Briefcase className="h-6 w-6 text-white" />}
+        <div className="grid md:grid-cols-3 gap-6">
+          {Object.entries(technicalSkills).map(([category, skills], index) => {
+            const icons = [Brain, Cloud, Database, Code, Lock, Cpu];
+            const IconComponent = icons[index] || Settings;
+            
+            return (
+              <Card key={index} className="hover:shadow-lg transition-all">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-teal-500 rounded-xl flex items-center justify-center mr-3">
+                      <IconComponent className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-brand-primary">{category}</h3>
                   </div>
-                  <h3 className="text-xl font-semibold text-brand-primary">{category}</h3>
-                </div>
-                <ul className="space-y-3">
-                  {skills.map((skill, skillIndex) => (
-                    <li key={skillIndex} className="flex items-start">
-                      <span className="text-brand-accent mr-3 mt-1 text-sm">▪</span>
-                      <span className="text-gray-700 text-sm">{skill}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
+                  <ul className="space-y-3">
+                    {skills.map((skill, skillIndex) => (
+                      <li key={skillIndex} className="flex items-start">
+                        <span className="text-brand-accent mr-2 mt-1 text-sm">▪</span>
+                        <span className="text-gray-700 text-sm leading-snug">{skill}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
 
       {/* Professional Certifications */}
       <Card className="overflow-hidden">
         <CardContent className="p-10">
-          <h2 className="text-2xl font-bold text-brand-primary mb-8 text-center">Professional Certifications</h2>
-          <div className="grid md:grid-cols-4 gap-4">
+          <h2 className="text-2xl font-bold text-brand-primary mb-8 text-center">Professional Certifications & Recognitions</h2>
+          <div className="grid md:grid-cols-5 gap-4">
             {[
-              "AWS Professional Solutions Architect",
-              "Azure AI Certified", 
-              "GCP Certified",
+              "AWS Professional Solutions Architect (Bedrock & SageMaker)",
+              "Azure AI Engineer Associate",
+              "GCP Vertex AI Developer",
+              "LangChain Certified Builder",
+              "MCP Contributor (Model Context Protocol)",
+              "Snowflake Cortex Practitioner",
+              "Databricks AI Fundamentals",
+              "OpenAI Developer Credential",
+              "Anthropic Partner Certification",
+              "NVIDIA AI Foundations Badge",
+              "Adobe Firefly Creator",
+              "Canva Magic Studio Pro Creator",
+              "Supabase Developer Badge",
               "PRINCE2 Practitioner",
-              "Prosci ADKAR Change Management",
+              "Prosci ADKAR",
               "ITIL v3",
-              "TOGAF Foundations",
-              "IT4IT Foundations",
-              "Science of Happiness (Yale)"
+              "TOGAF",
+              "IT4IT"
             ].map((cert, index) => (
-              <div key={index} className="bg-gradient-to-r from-blue-50 to-teal-50 p-4 rounded-lg text-center border border-blue-100 hover:shadow-md transition-all">
-                <span className="text-sm font-medium text-brand-primary">{cert}</span>
+              <div key={index} className="bg-gradient-to-r from-blue-50 to-teal-50 p-3 rounded-lg text-center border border-blue-100 hover:shadow-md transition-all">
+                <span className="text-xs font-medium text-brand-primary">{cert}</span>
               </div>
             ))}
           </div>
