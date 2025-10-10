@@ -287,7 +287,7 @@ const Projects = () => {
       })
       .filter(project => project.score > 0)
       .sort((a, b) => b.score - a.score);
-  }, [searchQuery, projects]);
+  }, [searchQuery]);
 
   const filteredProjects = selectedCategory 
     ? searchResults.filter(p => p.category === selectedCategory)
