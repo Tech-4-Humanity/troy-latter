@@ -38,7 +38,46 @@ const CustomerAsksStars = () => {
     <div className="animate-fade-in max-w-7xl mx-auto">
       <PageTitle title="Innovation Approach" />
       
-      {/* Hero section with video */}
+      {/* New Leadership in Tech Innovation Podcast */}
+      <div className="mb-10 bg-brand-light rounded-lg overflow-hidden shadow-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6">
+          {/* Video container - takes full width on mobile, half on desktop */}
+          <div className="w-full h-full min-h-[300px]">
+            <VideoEmbed 
+              src="https://www.youtube.com/embed/nKkLd1BOsaA" 
+              caption="Leadership in Tech Innovation"
+              className="h-full"
+            />
+          </div>
+          
+          {/* Text content */}
+          <div className="flex flex-col justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-brand-primary mb-4">Leadership in Tech Innovation</h2>
+              <p className="text-lg mb-6">
+                Leading innovation teams requires balancing technical excellence with strategic vision. I've built high-performing teams that deliver breakthrough solutions by fostering collaboration, empowering talent, and maintaining focus on measurable outcomes that drive business value.
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+              <Button variant="outline" className="flex items-center gap-2 border-brand-accent text-brand-accent hover:bg-brand-accent/10">
+                <Youtube size={16} />
+                <a 
+                  href="https://youtu.be/nKkLd1BOsaA" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  View on YouTube
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <Separator className="my-10 bg-brand-accent/30" />
+      
+      {/* Cloud & IoT Innovation Podcast */}
       <div className="mb-10 bg-brand-light rounded-lg overflow-hidden shadow-xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6">
           {/* Video container - takes full width on mobile, half on desktop */}

@@ -126,8 +126,8 @@ const ExecutiveProfile = () => {
             <div className="flex justify-center">
               <div className="relative">
                 <img 
-                  src="https://pflisxkcxbzboxwidywf.supabase.co/storage/v1/object/public/testimonial-images/Screenshot%202025-10-09%20at%2011.35.19%20am.png" 
-                  alt="Troy Latter" 
+                  src="https://pflisxkcxbzboxwidywf.supabase.co/storage/v1/object/public/testimonial-images/ok%20shot.png" 
+                  alt="Troy Latter"
                   className="w-72 h-72 rounded-2xl shadow-2xl object-cover border-4 border-white/20"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-teal-500/20 rounded-2xl blur-xl transform translate-x-4 translate-y-4 -z-10"></div>

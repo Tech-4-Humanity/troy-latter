@@ -77,7 +77,7 @@ const App = () => (
           <Route path="/resources/90-day-plan" element={<Layout><NinetyDayPlan /></Layout>} />
           <Route path="/resources/whitepapers" element={<Layout><Whitepapers /></Layout>} />
           <Route path="/resources/projects" element={<Layout><Projects /></Layout>} />
-          <Route path="/resources/lean-canvas" element={<Layout><LeanCanvas /></Layout>} />
+          {/* <Route path="/resources/lean-canvas" element={<Layout><LeanCanvas /></Layout>} /> */}
           <Route path="/ai-ethics" element={<Layout><AIEthics /></Layout>} />
           
           {/* Microsite routes with separate layout */}

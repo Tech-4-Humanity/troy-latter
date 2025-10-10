@@ -36,7 +36,7 @@ export const HeroSection = () => {
         <div className="flex justify-center mb-8">
           <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-purple-500/30 shadow-[0_0_30px_rgba(139,92,246,0.3)]">
             <img 
-              src="https://pflisxkcxbzboxwidywf.supabase.co/storage/v1/object/public/testimonial-images/Screenshot%202025-10-09%20at%2011.35.19%20am.png"
+              src="https://pflisxkcxbzboxwidywf.supabase.co/storage/v1/object/public/testimonial-images/ok%20shot.png"
               alt="Troy Latter"
               className="w-full h-full object-cover"
             />
