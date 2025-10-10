@@ -27,6 +27,16 @@ interface LeadCaptureGateProps {
 export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
   const { t } = useTranslation();
   
+  // Admin bypass check
+  React.useEffect(() => {
+    const adminAccess = localStorage.getItem('admin-access');
+    const urlParams = new URLSearchParams(window.location.search);
+    if (adminAccess === 'true' || urlParams.get('admin') === 'true') {
+      localStorage.setItem('projects-access-granted', 'true');
+      onSuccess();
+    }
+  }, [onSuccess]);
+  
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -46,8 +56,8 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
     }));
 
     toast({
-      title: t('projects.gateSuccess'),
-      description: "You now have access to view all projects.",
+      title: t('projects.leadCapture.success.title'),
+      description: t('projects.leadCapture.success.message'),
     });
 
     // Small delay for better UX
@@ -65,10 +75,10 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
           <span className="text-sm font-medium text-primary">Exclusive Access</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-6">
-          {t('projects.gateTitle')}
+          {t('projects.leadCapture.title')}
         </h1>
         <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
-          {t('projects.gateDescription')}
+          {t('projects.leadCapture.subtitle')}
         </p>
       </div>
 
@@ -80,10 +90,10 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
               <Mail className="h-7 w-7 text-primary" />
             </div>
             <h2 className="text-2xl font-semibold text-foreground mb-2">
-              {t('projects.gateSubmit')}
+              {t('projects.leadCapture.form.submit')}
             </h2>
             <p className="text-muted-foreground">
-              Complete the form below to unlock the full project showcase
+              {t('projects.leadCapture.formDescription')}
             </p>
           </div>
 
@@ -94,14 +104,14 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
                   control={form.control}
                   name="name"
                   render={({ field }) => (
-                    <FormItem>
+                     <FormItem>
                       <FormLabel className="text-foreground font-medium">
                         <User className="inline h-4 w-4 mr-2" />
-                        Full Name *
+                        {t('projects.leadCapture.form.name')} *
                       </FormLabel>
                       <FormControl>
                         <Input 
-                          placeholder="Your full name" 
+                          placeholder={t('projects.leadCapture.form.namePlaceholder')} 
                           {...field}
                           className="bg-background/50 border-border/50 focus:border-primary/50"
                         />
@@ -115,15 +125,15 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
                   control={form.control}
                   name="email"
                   render={({ field }) => (
-                    <FormItem>
+                     <FormItem>
                        <FormLabel className="text-foreground font-medium">
                          <Mail className="inline h-4 w-4 mr-2" />
-                         {t('projects.gateEmailLabel')}
+                         {t('projects.leadCapture.form.email')} *
                        </FormLabel>
                        <FormControl>
                          <Input 
                            type="email" 
-                           placeholder={t('projects.gateEmailPlaceholder')} 
+                           placeholder={t('projects.leadCapture.form.emailPlaceholder')} 
                            {...field}
                            className="bg-background/50 border-border/50 focus:border-primary/50"
                          />
@@ -138,14 +148,14 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
                 control={form.control}
                 name="company"
                 render={({ field }) => (
-                  <FormItem>
+                   <FormItem>
                      <FormLabel className="text-foreground font-medium">
                        <Building className="inline h-4 w-4 mr-2" />
-                       Company / {t('common.organisation')}
+                       {t('projects.leadCapture.form.organisation')}
                      </FormLabel>
                     <FormControl>
                       <Input 
-                        placeholder="Your company or organization (optional)" 
+                        placeholder={t('projects.leadCapture.form.organisationPlaceholder')} 
                         {...field}
                         className="bg-background/50 border-border/50 focus:border-primary/50"
                       />
@@ -162,11 +172,11 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
                   <FormItem>
                     <FormLabel className="text-foreground font-medium">
                       <MessageSquare className="inline h-4 w-4 mr-2" />
-                      Message
+                      {t('projects.leadCapture.form.message')}
                     </FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="Tell us about your interest in these projects or how we might collaborate (optional)"
+                        placeholder={t('projects.leadCapture.form.messagePlaceholder')}
                         className="bg-background/50 border-border/50 focus:border-primary/50 min-h-[100px]"
                         {...field}
                       />
@@ -182,12 +192,12 @@ export const LeadCaptureGate = ({ onSuccess }: LeadCaptureGateProps) => {
                   className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-medium py-3 text-base transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
                   disabled={form.formState.isSubmitting}
                 >
-                  {form.formState.isSubmitting ? t('common.loading') : t('projects.gateSubmit')}
+                  {form.formState.isSubmitting ? t('common.buttons.loading') : t('projects.leadCapture.form.submit')}
                 </Button>
               </div>
 
               <div className="text-center text-sm text-muted-foreground mt-6">
-                Your information is secure and will only be used to provide you with relevant updates about our projects.
+                {t('projects.leadCapture.form.privacy')}
               </div>
             </form>
           </Form>

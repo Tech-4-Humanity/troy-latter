@@ -4,7 +4,10 @@
   "leadCapture": {
     "title": "Mở khóa Danh mục Đổi mới của tôi",
     "subtitle": "Có quyền truy cập độc quyền vào các nghiên cứu tình huống chi tiết, phương pháp và hiểu biết từ những dự án có tác động nhất của tôi.",
+    "formDescription": "Hoàn thành biểu mẫu bên dưới để mở khóa toàn bộ danh mục dự án",
     "form": {
+      "name": "Họ và Tên",
+      "namePlaceholder": "Nhập họ và tên của bạn",
       "email": "Địa chỉ Email",
       "emailPlaceholder": "Nhập email chuyên nghiệp của bạn",
       "firstName": "Tên",
@@ -12,11 +15,13 @@
       "lastName": "Họ",
       "lastNamePlaceholder": "Nhập họ của bạn",
       "organisation": "Tổ chức",
-      "organisationPlaceholder": "Nhập tổ chức của bạn",
+      "organisationPlaceholder": "Nhập tổ chức của bạn (tùy chọn)",
       "phone": "Số điện thoại",
       "phonePlaceholder": "Nhập số điện thoại của bạn",
+      "message": "Tin nhắn",
+      "messagePlaceholder": "Cho chúng tôi biết về sự quan tâm của bạn đối với các dự án này hoặc cách chúng tôi có thể hợp tác (tùy chọn)",
       "submit": "Truy cập Danh mục",
-      "privacy": "Bằng cách gửi, bạn đồng ý nhận cập nhật về phương pháp đổi mới và hiểu biết chiến lược. Có thể hủy đăng ký bất cứ lúc nào."
+      "privacy": "Thông tin của bạn được bảo mật và chỉ được sử dụng để cung cấp cho bạn các cập nhật liên quan về các dự án của chúng tôi."
     },
     "success": {
       "title": "Chào mừng đến với Danh mục Đổi mới!",

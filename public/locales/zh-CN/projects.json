@@ -4,7 +4,10 @@
   "leadCapture": {
     "title": "解锁我的创新组合",
     "subtitle": "独家访问详细的案例研究、方法论，以及来自我最具影响力项目的见解。",
+    "formDescription": "填写以下表格以解锁完整的项目展示",
     "form": {
+      "name": "全名",
+      "namePlaceholder": "输入您的全名",
       "email": "电子邮件地址",
       "emailPlaceholder": "输入您的专业邮箱",
       "firstName": "名",
@@ -12,11 +15,13 @@
       "lastName": "姓",
       "lastNamePlaceholder": "输入您的姓",
       "organisation": "组织",
-      "organisationPlaceholder": "输入您的组织",
+      "organisationPlaceholder": "输入您的组织（可选）",
       "phone": "电话号码",
       "phonePlaceholder": "输入您的电话号码",
+      "message": "留言",
+      "messagePlaceholder": "告诉我们您对这些项目的兴趣或我们可能如何合作（可选）",
       "submit": "访问组合",
-      "privacy": "通过提交，您同意接收有关创新方法论和战略见解的更新。可随时取消订阅。"
+      "privacy": "您的信息是安全的，仅用于向您提供有关我们项目的相关更新。"
     },
     "success": {
       "title": "欢迎来到创新组合！",

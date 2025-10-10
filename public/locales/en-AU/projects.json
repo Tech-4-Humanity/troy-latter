@@ -4,7 +4,10 @@
   "leadCapture": {
     "title": "Unlock My Innovation Portfolio",
     "subtitle": "Get exclusive access to detailed case studies, methodologies, and insights from my most impactful projects.",
+    "formDescription": "Complete the form below to unlock the full project showcase",
     "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Enter your full name",
       "email": "Email Address",
       "emailPlaceholder": "Enter your professional email",
       "firstName": "First Name", 
@@ -12,11 +15,13 @@
       "lastName": "Last Name",
       "lastNamePlaceholder": "Enter your last name",
       "organisation": "Organisation",
-      "organisationPlaceholder": "Enter your organisation",
+      "organisationPlaceholder": "Enter your organisation (optional)",
       "phone": "Phone Number",
       "phonePlaceholder": "Enter your phone number",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your interest in these projects or how we might collaborate (optional)",
       "submit": "Access Portfolio",
-      "privacy": "By submitting, you agree to receive updates about innovation methodologies and strategic insights. Unsubscribe anytime."
+      "privacy": "Your information is secure and will only be used to provide you with relevant updates about our projects."
     },
     "success": {
       "title": "Welcome to the Innovation Portfolio!",
