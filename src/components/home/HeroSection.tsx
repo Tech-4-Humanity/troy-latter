@@ -22,7 +22,7 @@ export const HeroSection = () => {
       
       <div className="relative max-w-4xl mx-auto">
         <div className="inline-block bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in backdrop-blur-sm">
-          Rising APAC CTO & AI Strategy Leader
+          Board Member – QLD AI Hub | Founder – Tech 4 Humanity | Standards Australia (BCI)
         </div>
         
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
@@ -30,7 +30,7 @@ export const HeroSection = () => {
         </h1>
         
         <h2 className="text-2xl md:text-4xl font-light mb-8 bg-gradient-to-r from-blue-200 to-teal-200 bg-clip-text text-transparent">
-          Strategic AI & Technology Advisor
+          Strategic AI, Cloud & Emerging Systems Leader
         </h2>
         
         <div className="flex justify-center mb-8">
@@ -44,10 +44,10 @@ export const HeroSection = () => {
         </div>
         
         <p className="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed max-w-3xl mx-auto">
-          Transforming enterprises through strategic AI and sovereign technology leadership. 
-          <span className="text-purple-300 font-semibold"> 15+ years</span> driving 
-          <span className="text-blue-300 font-semibold"> $3B+ transformations</span> across government, 
-          financial services, and telecommunications.
+          Transforming enterprises through AI, cloud, and data innovation. Over 
+          <span className="text-purple-300 font-semibold"> 15 years</span> delivering 
+          <span className="text-blue-300 font-semibold"> $3B+ in digital transformations</span> across government, 
+          financial services, and critical industries.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center">
@@ -67,18 +67,36 @@ export const HeroSection = () => {
           </Button>
           <Button size="lg" className="border-white/30 text-white bg-white/10 hover:bg-white hover:text-[#0A101E] text-lg px-8 py-6 h-auto rounded-lg transition-all backdrop-blur-sm" asChild>
             <Link to="/executive-profile">
-              View Executive Profile
+              View Leadership Profile
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
           <Button size="lg" variant="outline" className="border-white/30 text-white bg-white/10 hover:bg-white hover:text-[#0A101E] text-lg px-8 py-6 h-auto rounded-lg transition-all backdrop-blur-sm" asChild>
-            <Link to="/core-competencies">
-              Explore Capabilities
+            <Link to="/strategic-projects">
+              Explore Projects & Partnerships
             </Link>
           </Button>
         </div>
         
-        <div className="text-lg text-gray-300 flex items-center justify-center gap-2">
+        <div className="hidden md:flex mt-8 items-center justify-center gap-3 text-xl md:text-2xl text-gray-300">
+          <span className="font-light">Specializing in:</span>
+          <div className="relative h-8 w-64 overflow-hidden">
+            <span className="absolute inset-0 flex items-center justify-start font-semibold text-transparent bg-gradient-to-r from-purple-300 via-blue-300 to-teal-300 bg-clip-text animate-rotate-words">
+              AI Strategy
+            </span>
+            <span className="absolute inset-0 flex items-center justify-start font-semibold text-transparent bg-gradient-to-r from-purple-300 via-blue-300 to-teal-300 bg-clip-text animate-rotate-words [animation-delay:2s]">
+              Multi-Cloud Architecture
+            </span>
+            <span className="absolute inset-0 flex items-center justify-start font-semibold text-transparent bg-gradient-to-r from-purple-300 via-blue-300 to-teal-300 bg-clip-text animate-rotate-words [animation-delay:4s]">
+              Neurotech Standards
+            </span>
+            <span className="absolute inset-0 flex items-center justify-start font-semibold text-transparent bg-gradient-to-r from-purple-300 via-blue-300 to-teal-300 bg-clip-text animate-rotate-words [animation-delay:6s]">
+              Responsible Innovation
+            </span>
+          </div>
+        </div>
+        
+        <div className="text-lg text-gray-300 flex items-center justify-center gap-2 mt-4">
           <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
           Sydney, Australia | AGSVA NV2 Security Clearance | AI/ML Certified
         </div>
