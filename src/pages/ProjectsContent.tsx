@@ -86,7 +86,7 @@ const ProjectCard = ({ title, description, url, icon: Icon, category }: ProjectP
 };
 
 const ProjectsContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('projects');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -161,10 +161,10 @@ const ProjectsContent = () => {
           <span className="text-sm font-medium text-primary">Portfolio Showcase</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-6">
-          {t('projects.title')}
+          {t('title', { defaultValue: 'Projects and Work Spaces' })}
         </h1>
         <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto">
-          {t('projects.subtitle')}
+          {t('subtitle', { defaultValue: 'Professional, fun and extreme' })}
         </p>
       </div>
 
