@@ -2,6 +2,7 @@ import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { Award, Shield, Users, Network, Brain, Cloud, CheckCircle, Star } from 'lucide-react';
 
 const CustomerSuccessStories = () => {
   const successStories = [
@@ -44,6 +45,214 @@ const CustomerSuccessStories = () => {
   return (
     <div className="animate-fade-in space-y-12">
       <PageTitle title="Client Success Stories & Project Highlights" />
+      
+      {/* Executive Profile Section */}
+      <div className="space-y-8">
+        {/* Executive Header */}
+        <div className="bg-gradient-to-br from-brand-primary to-[#1a2332] text-white py-12 px-8 rounded-2xl text-center">
+          <h2 className="text-4xl font-bold mb-3">TROY LATTER</h2>
+          <p className="text-xl mb-2">Board Advisor | CTO | Founder – Tech 4 Humanity</p>
+          <p className="text-lg text-gray-200">AI, Multi-Cloud, and Emerging Systems Leader</p>
+        </div>
+
+        {/* Executive Summary */}
+        <Card className="shadow-lg">
+          <CardContent className="p-10">
+            <h3 className="text-2xl font-bold text-brand-primary mb-6">Executive Summary</h3>
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                Strategic technology executive known for turning complex AI and cloud ecosystems into measurable business outcomes. Trusted by boards, C-suite leaders, and governments to deliver transformation that blends foresight, pace, and technical precision.
+              </p>
+              <p>
+                Hands-on across AI orchestration, data architecture, and automation at scale, I design systems that are secure, explainable, and built for human impact. With multi-cloud fluency across AWS, Azure, and Google, I lead programs that align innovation with strategy—accelerating outcomes while maintaining trust and compliance.
+              </p>
+              <p>
+                Recognised globally for connecting the ethics, economics, and execution of technology, I help organisations see what's next and act on it today.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Core Value Proposition */}
+        <Card className="bg-gradient-to-r from-blue-50 to-teal-50 border-l-4 border-brand-primary shadow-lg">
+          <CardContent className="p-10">
+            <h3 className="text-2xl font-bold text-brand-primary mb-6">Core Value Proposition</h3>
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                I bridge the language of innovation and leadership. Through an established network of 200+ CIOs and CTOs across APAC, I translate deep technology into board-level value—clarity, cost reduction, and resilience.
+              </p>
+              <p>
+                My approach unites engineers, strategists, and executives around shared outcomes, proving that AI and automation deliver value when grounded in people and process.
+              </p>
+              <p className="font-semibold">
+                The result: faster delivery, stronger adoption, and measurable business return.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Current Leadership Roles */}
+        <Card className="shadow-lg">
+          <CardContent className="p-10">
+            <h3 className="text-2xl font-bold text-brand-primary mb-6">Current Leadership Roles</h3>
+            <ul className="space-y-3 mb-6">
+              <li className="flex items-start">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                <span className="text-gray-700"><strong>Board Member</strong> – Queensland Government AI Hub</span>
+              </li>
+              <li className="flex items-start">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                <span className="text-gray-700"><strong>Committee Member</strong> – Standards Australia (Brain-Computer Interface)</span>
+              </li>
+              <li className="flex items-start">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                <span className="text-gray-700"><strong>Advisory Board Convenor</strong> – Global Council on BCI & Assistive Technology</span>
+              </li>
+              <li className="flex items-start">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                <span className="text-gray-700"><strong>Founder & CEO</strong> – Tech 4 Humanity</span>
+              </li>
+            </ul>
+            <p className="text-gray-600 italic text-center">
+              All roles align with one mission: advancing responsible, human-centred innovation.
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* Key Certifications and Modern AI Skills */}
+        <div className="bg-gray-50 p-10 rounded-2xl">
+          <h3 className="text-2xl font-bold text-brand-primary mb-6 text-center">Key Certifications and Modern AI Skills</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 mb-3">
+                <Cloud className="w-5 h-5 text-blue-600" />
+                <h4 className="font-semibold text-gray-800">Cloud Certifications</h4>
+              </div>
+              <ul className="text-sm text-gray-700 space-y-1 ml-7">
+                <li>• AWS Professional Solutions Architect</li>
+                <li>• Microsoft Certified AI Engineer Associate</li>
+                <li>• Google Cloud Professional</li>
+              </ul>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 mb-3">
+                <Brain className="w-5 h-5 text-purple-600" />
+                <h4 className="font-semibold text-gray-800">AI Platforms</h4>
+              </div>
+              <ul className="text-sm text-gray-700 space-y-1 ml-7">
+                <li>• IBM watsonx.ai Practitioner</li>
+                <li>• OpenAI & Anthropic Micro-Certifications</li>
+                <li>• LangChain & LlamaIndex</li>
+                <li>• NVIDIA AI Foundations</li>
+              </ul>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 mb-3">
+                <Shield className="w-5 h-5 text-green-600" />
+                <h4 className="font-semibold text-gray-800">AI Governance</h4>
+              </div>
+              <ul className="text-sm text-gray-700 space-y-1 ml-7">
+                <li>• MCP-Native Development</li>
+                <li>• AI Governance & Ethics Credentials</li>
+                <li>• Risk & Transparency Policy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Core Skills and Technical Leadership */}
+        <div>
+          <h3 className="text-2xl font-bold text-brand-primary mb-8 text-center">Core Skills and Technical Leadership</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                icon: Brain,
+                title: "AI Strategy and Orchestration",
+                description: "Architect of intelligent systems that merge human insight with agentic automation. Expert in MCP-native orchestration, LangChain, and contextual memory design for scalable, explainable AI."
+              },
+              {
+                icon: Cloud,
+                title: "Multi-Cloud and Data Architecture",
+                description: "Design and optimisation of hybrid, high-trust environments across AWS, Azure, and Google. Strong in automation, security, and cost-performance governance."
+              },
+              {
+                icon: Network,
+                title: "Enterprise AI Integration",
+                description: "Deployment of generative AI and automation within enterprise workflows, combining APIs, foundation models, and edge intelligence to improve decision speed and efficiency."
+              },
+              {
+                icon: Shield,
+                title: "AI Governance and Responsible Innovation",
+                description: "Contributor to global safety standards and neurotechnology ethics. Experienced embedding explainability and compliance into live AI systems."
+              },
+              {
+                icon: CheckCircle,
+                title: "Data Science and Applied ML",
+                description: "Practical use of models, vector databases, and streaming analytics tied to business KPIs. Focused on turning insight into immediate operational gain."
+              },
+              {
+                icon: Users,
+                title: "Ecosystem Partnerships",
+                description: "Builds cross-sector partnerships with hyperscalers, startups, and academia to expand capability and accelerate innovation cycles."
+              },
+              {
+                icon: Star,
+                title: "Executive Communication",
+                description: "Clear translation of complex technology for boards and policymakers. Regular keynote speaker on AI, robotics, and the human impact of automation."
+              },
+              {
+                icon: Award,
+                title: "Innovation Culture and Delivery Leadership",
+                description: "Creates high-trust, high-speed teams using agile \"kill-or-scale\" cycles, live dashboards, and transparent progress tracking to move prototypes into production."
+              }
+            ].map((skill, index) => (
+              <Card key={index} className="shadow-md hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center flex-shrink-0">
+                      <skill.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-brand-primary mb-2">{skill.title}</h4>
+                      <p className="text-sm text-gray-700 leading-relaxed">{skill.description}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Industry Recognition */}
+        <Card className="border-l-4 border-brand-primary shadow-lg">
+          <CardContent className="p-10">
+            <h3 className="text-2xl font-bold text-brand-primary mb-6">Industry Recognition</h3>
+            <ul className="space-y-3 mb-6">
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                <span className="text-gray-700"><strong>Keynote Speaker</strong> – AWS Public Sector Summit</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                <span className="text-gray-700"><strong>Speaker</strong> – Defence + Industry Conference</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                <span className="text-gray-700"><strong>Author</strong> – Peer-Reviewed Research on Machine Learning, Neurotech, and Security Ethics</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                <span className="text-gray-700"><strong>Advisor</strong> – National and International Committees on AI Policy and Standards</span>
+              </li>
+            </ul>
+            <p className="text-gray-600 italic text-center">
+              Recognised for advancing responsible AI and building bridges between innovation, governance, and measurable human value.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Separator className="my-12" />
       
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-brand-primary to-[#1a2332] text-white py-16 rounded-2xl overflow-hidden">
