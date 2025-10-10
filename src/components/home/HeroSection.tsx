@@ -63,7 +63,7 @@ export const HeroSection = () => {
           </Button>
           <Button size="lg" variant="outline" className="border-white/30 text-white bg-white/10 hover:bg-white hover:text-[#0A101E] text-lg px-8 py-6 h-auto rounded-lg transition-all backdrop-blur-sm" asChild>
             <Link to="/core-competencies">
-              Explore AI Capabilities
+              Explore Capabilities
             </Link>
           </Button>
         </div>
