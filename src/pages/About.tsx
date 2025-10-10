@@ -14,7 +14,7 @@ const About = () => {
       
       <div className="text-lg mb-8">
         <p className="mb-4">
-          As an experienced technology leader, I specialize in tackling the most pressing challenges 
+          As an experienced technology leader, I specialise in tackling the most pressing challenges 
           facing government agencies and critical infrastructure operators. 
         </p>
         <p className="mb-6">
@@ -35,7 +35,7 @@ const About = () => {
               <p className="font-medium">Challenge:</p>
             </div>
             <p className="text-sm">
-              Organizations spend weeks on manual audit preparation, tying up scarce security teams 
+              Organisations spend weeks on manual audit preparation, tying up scarce security teams 
               and delaying critical feature releases.
             </p>
             <div className="flex items-center gap-2 mt-2">
@@ -83,7 +83,7 @@ const About = () => {
               <p className="font-medium">Challenge:</p>
             </div>
             <p className="text-sm">
-              Organizations need generative AI for document analysis but fear sending 
+              Organisations need generative AI for document analysis but fear sending 
               classified data to cloud LLM services.
             </p>
             <div className="flex items-center gap-2 mt-2">
@@ -132,7 +132,7 @@ const About = () => {
             </div>
             <p className="text-sm">
               Critical domain expertise resides with a few experts, creating bottlenecks and 
-              risks when they're unavailable or leave the organization.
+              risks when they're unavailable or leave the organisation.
             </p>
             <div className="flex items-center gap-2 mt-2">
               <Database size={18} className="text-green-600" />

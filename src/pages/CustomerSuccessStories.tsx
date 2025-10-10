@@ -66,9 +66,9 @@ const CustomerSuccessStories = () => {
               <p>
                 Hands-on across AI orchestration, data architecture, and automation at scale, I design systems that are secure, explainable, and built for human impact. With multi-cloud fluency across AWS, Azure, and Google, I lead programs that align innovation with strategy—accelerating outcomes while maintaining trust and compliance.
               </p>
-              <p>
-                Recognised globally for connecting the ethics, economics, and execution of technology, I help organisations see what's next and act on it today.
-              </p>
+               <p>
+                 Recognised globally for connecting the ethics, economics, and execution of technology, I help organisations see what's next and act on it today.
+               </p>
             </div>
           </CardContent>
         </Card>
@@ -208,15 +208,15 @@ const CustomerSuccessStories = () => {
             ].map((skill, index) => (
               <Card key={index} className="shadow-md hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center flex-shrink-0">
-                      <skill.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-brand-primary mb-2">{skill.title}</h4>
-                      <p className="text-sm text-gray-700 leading-relaxed">{skill.description}</p>
-                    </div>
-                  </div>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center flex-shrink-0">
+                  <skill.icon className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-brand-primary mb-2">{skill.title}</h4>
+                  <p className="text-sm text-gray-700 leading-relaxed">{skill.description}</p>
+                </div>
+              </div>
                 </CardContent>
               </Card>
             ))}

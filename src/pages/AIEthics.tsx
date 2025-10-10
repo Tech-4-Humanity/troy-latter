@@ -45,7 +45,7 @@ AUSTRALIAN GOVERNMENT CONTEXT
 • NV2 Security Clearance: National security AI ethics implementation experience
 
 CORE ETHICS PRINCIPLES:
-1. Safety & Security - Defense-grade safety measures and incident response protocols
+1. Safety & Security - Defence-grade safety measures and incident response protocols
 2. Transparency & Explainability - Plain-language citizen explanations and audit trails
 3. Fairness & Bias Mitigation - Cultural competency and demographic equity assurance
 4. Privacy & Data Sovereignty - On-shore processing and Indigenous data sovereignty
@@ -107,7 +107,7 @@ NV2 Security Clearance | Tech 4 Humanity Founder
       description: "AI systems must be designed with robust safety measures, fail-safes, and security protocols to prevent harmful outcomes and protect against misuse.",
       examples: [
         "Comprehensive testing and validation protocols",
-        "Defense-grade security implementations",
+        "Defence-grade security implementations",
         "Incident response and recovery procedures"
       ]
     },
@@ -171,8 +171,8 @@ NV2 Security Clearance | Tech 4 Humanity Founder
       link: "#"
     },
     {
-      title: "Defense AI Ethics Standards",
-      description: "Specialized frameworks for defense and intelligence applications",
+      title: "Defence AI Ethics Standards",
+      description: "Specialised frameworks for defence and intelligence applications",
       status: "Implemented", 
       link: "#"
     },
@@ -199,11 +199,11 @@ NV2 Security Clearance | Tech 4 Humanity Founder
       sector: "Government"
     },
     {
-      title: "Defense Intelligence Analysis",
+      title: "Defence Intelligence Analysis",
       challenge: "Balancing AI capability with operational security and ethical oversight",
       solution: "Multi-layer review process with human-in-the-loop validation and security controls",
       outcome: "Enhanced intelligence analysis capability with maintained ethical standards",
-      sector: "Defense"
+      sector: "Defence"
     },
     {
       title: "Enterprise Risk Management",
@@ -353,7 +353,7 @@ NV2 Security Clearance | Tech 4 Humanity Founder
                   <Badge variant="secondary">Privacy Act Compliance</Badge>
                   <Badge variant="secondary">Data Sovereignty</Badge>
                   <Badge variant="secondary">Government AI Ethics</Badge>
-                  <Badge variant="secondary">Defense Standards</Badge>
+                  <Badge variant="secondary">Defence Standards</Badge>
                   <Badge variant="secondary">Enterprise Governance</Badge>
                 </div>
               </CardContent>

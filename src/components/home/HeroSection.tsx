@@ -79,7 +79,7 @@ export const HeroSection = () => {
         </div>
         
         <div className="hidden md:flex mt-8 items-center justify-center gap-3 text-xl md:text-2xl text-gray-300">
-          <span className="font-light">Specializing in:</span>
+          <span className="font-light">Specialising in:</span>
           <div className="relative h-8 w-64 overflow-hidden">
             <span className="absolute inset-0 flex items-center justify-start font-semibold text-transparent bg-gradient-to-r from-purple-300 via-blue-300 to-teal-300 bg-clip-text animate-rotate-words">
               AI Strategy

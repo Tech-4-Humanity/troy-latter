@@ -171,7 +171,7 @@ export const LenovoAccessGate = ({ onAccessGranted }: LenovoAccessGateProps) => 
                     </FormLabel>
                     <FormControl>
                       <Input 
-                        placeholder="Your organization" 
+                        placeholder="Your organisation" 
                         {...field}
                       />
                     </FormControl>

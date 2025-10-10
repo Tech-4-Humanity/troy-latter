@@ -175,7 +175,7 @@ export const AIAccessGate = ({
                   </FormLabel>
                   <FormControl>
                     <Input 
-                      placeholder="Your organization" 
+                      placeholder="Your organisation" 
                       {...field}
                     />
                   </FormControl>
