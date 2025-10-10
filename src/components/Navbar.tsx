@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 
-// Organized navigation structure
+// Organised navigation structure
 const useNavigationStructure = () => {
   const { t } = useTranslation('nav');
   

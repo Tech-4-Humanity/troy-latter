@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   
-  // Organized navigation sections
+  // Organised navigation sections
   const aboutLinks = [
     { path: '/executive-profile', label: 'Executive Profile' },
     { path: '/core-competencies', label: 'Core Competencies' },
