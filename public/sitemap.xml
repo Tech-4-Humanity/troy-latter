@@ -54,7 +54,17 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://troy-latter-portfolio.lovableproject.com/resources/lean-canvas</loc>
+    <loc>https://troy-latter-portfolio.lovableproject.com/ai-ethics</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://troy-latter-portfolio.lovableproject.com/customer-asks-stars</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://troy-latter-portfolio.lovableproject.com/what-is-innovation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

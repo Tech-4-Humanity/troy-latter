@@ -77,9 +77,11 @@ export const Navbar = () => {
               className="flex items-center hover:opacity-90 transition-opacity"
               onClick={closeMobileMenu}
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 via-blue-500 to-teal-500 rounded-full flex items-center justify-center mr-3 shadow-lg">
-                <span className="text-lg font-bold">TL</span>
-              </div>
+              <img 
+                src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/AHC%20droid%20head.webp"
+                alt="Troy Latter"
+                className="w-10 h-10 rounded-full mr-3 shadow-lg"
+              />
               <div>
                 <span className="text-xl font-semibold">Troy Latter</span>
                 <div className="text-xs text-gray-300">AI & Technology Leader</div>
@@ -92,10 +94,16 @@ export const Navbar = () => {
             <LanguageSwitcher />
             <Button
               onClick={() => {
-                const widget = document.querySelector('[data-floating-chat]');
-                if (widget) {
-                  const button = widget.querySelector('button');
-                  button?.click();
+                try {
+                  const widget = document.querySelector('[data-floating-chat]');
+                  if (widget) {
+                    const button = widget.querySelector('button');
+                    button?.click();
+                  } else {
+                    console.warn('Chat widget not found');
+                  }
+                } catch (error) {
+                  console.error('Failed to open chat:', error);
                 }
               }}
               className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 hover:from-purple-600 hover:via-blue-600 hover:to-teal-600 text-white text-sm px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
@@ -246,10 +254,16 @@ export const Navbar = () => {
               
               <Button
                 onClick={() => {
-                  const widget = document.querySelector('[data-floating-chat]');
-                  if (widget) {
-                    const button = widget.querySelector('button');
-                    button?.click();
+                  try {
+                    const widget = document.querySelector('[data-floating-chat]');
+                    if (widget) {
+                      const button = widget.querySelector('button');
+                      button?.click();
+                    } else {
+                      console.warn('Chat widget not found');
+                    }
+                  } catch (error) {
+                    console.error('Failed to open chat:', error);
                   }
                   closeMobileMenu();
                 }}

@@ -24,7 +24,6 @@ export const Footer = () => {
   
   const resourceLinks = [
     { path: '/resources/projects', label: 'Projects' },
-    { path: '/resources/lean-canvas', label: 'Lean Canvas' },
     { path: '/what-is-innovation', label: 'What is Innovation' },
     { path: '/faqs', label: 'FAQs' },
   ];

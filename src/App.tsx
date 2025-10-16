@@ -17,7 +17,6 @@ import NotFound from "./pages/NotFound";
 import NinetyDayPlan from "./pages/NinetyDayPlan";
 import Whitepapers from "./pages/Whitepapers";
 import Projects from "./pages/Projects";
-import LeanCanvas from "./pages/LeanCanvas";
 import ExperienceAndImpact from "./pages/ExperienceAndImpact";
 import AIEthics from "./pages/AIEthics";
 
