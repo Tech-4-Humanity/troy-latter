@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Link } from 'react-router-dom';
+import { CVGeneratorForm } from '@/components/cv/CVGeneratorForm';
 
 export default function CVGenerator() {
   return (
@@ -45,44 +46,9 @@ export default function CVGenerator() {
           </div>
         </div>
 
-        {/* Embedded CV Generator Tool */}
-        <div className="max-w-6xl mx-auto">
-          <div className="relative">
-            <iframe 
-              src="https://cvgen-ui.vercel.app" 
-              className="w-full border-2 border-border rounded-xl shadow-2xl"
-              style={{ height: '85vh', minHeight: '600px' }}
-              title="AI CV Generator Tool"
-              sandbox="allow-scripts allow-forms allow-popups allow-modals"
-              allow="clipboard-read; clipboard-write"
-              onError={(e) => {
-                console.error('Iframe failed to load:', e);
-                const target = e.target as HTMLIFrameElement;
-                target.style.display = 'none';
-                const errorDiv = document.getElementById('iframe-error');
-                if (errorDiv) errorDiv.style.display = 'block';
-              }}
-            />
-            <div 
-              id="iframe-error" 
-              className="hidden p-8 text-center bg-destructive/10 border-2 border-destructive rounded-xl"
-              style={{ minHeight: '600px', display: 'none' }}
-            >
-              <div className="flex flex-col items-center justify-center h-full gap-4">
-                <div className="text-6xl">⚠️</div>
-                <h3 className="text-xl font-bold text-foreground">CV Generator Temporarily Unavailable</h3>
-                <p className="text-muted-foreground max-w-md">
-                  The CV generation service is currently experiencing issues. Please try again later or contact support.
-                </p>
-                <Link 
-                  to="/contact" 
-                  className="mt-4 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-                >
-                  Contact Support
-                </Link>
-              </div>
-            </div>
-          </div>
+        {/* CV Generator Form */}
+        <div className="max-w-6xl mx-auto mb-12">
+          <CVGeneratorForm />
         </div>
 
         {/* Features Section */}
