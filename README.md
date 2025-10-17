@@ -27,6 +27,7 @@ This portfolio demonstrates deep experience in:
 
 ### AI-Powered Features
 - **Intelligent Chatbot**: Voice and text-enabled assistant for portfolio exploration
+- **AI CV Generator**: Automated CV tailoring based on job descriptions
 - **Dynamic Content**: Context-aware information delivery
 - **Real-time Analytics**: Usage tracking and performance metrics
 
@@ -115,6 +116,7 @@ src/
 - `/innovation-journey` - Transformation methodology
 - `/strategic-projects` - Implementation case studies
 - `/whitepapers` - Technical documentation
+- `/tools/cv-generator` - AI-powered CV generation tool
 - `/faqs` - Frequently asked questions
 
 #### Microsites
