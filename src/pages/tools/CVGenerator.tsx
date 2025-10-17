@@ -53,6 +53,7 @@ export default function CVGenerator() {
               className="w-full border-2 border-border rounded-xl shadow-2xl"
               style={{ height: '85vh', minHeight: '600px' }}
               title="AI CV Generator Tool"
+              sandbox="allow-scripts allow-forms allow-popups allow-modals"
               allow="clipboard-read; clipboard-write"
               onError={(e) => {
                 console.error('Iframe failed to load:', e);
