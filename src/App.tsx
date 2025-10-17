@@ -19,6 +19,7 @@ import Whitepapers from "./pages/Whitepapers";
 import Projects from "./pages/Projects";
 import ExperienceAndImpact from "./pages/ExperienceAndImpact";
 import AIEthics from "./pages/AIEthics";
+import CVGenerator from "./pages/tools/CVGenerator";
 
 // Microsite pages
 import MicrositeIndex from "./pages/microsites/MicrositeIndex";
@@ -73,9 +74,10 @@ const App = () => (
           <Route path="/faqs" element={<Layout><FAQs /></Layout>} />
           
           {/* Resources */}
-          <Route path="/resources/90-day-plan" element={<Layout><NinetyDayPlan /></Layout>} />
-          <Route path="/resources/whitepapers" element={<Layout><Whitepapers /></Layout>} />
-          <Route path="/resources/projects" element={<Layout><Projects /></Layout>} />
+            <Route path="/resources/90-day-plan" element={<Layout><NinetyDayPlan /></Layout>} />
+            <Route path="/resources/whitepapers" element={<Layout><Whitepapers /></Layout>} />
+            <Route path="/resources/projects" element={<Layout><Projects /></Layout>} />
+            <Route path="/tools/cv-generator" element={<Layout><CVGenerator /></Layout>} />
           {/* <Route path="/resources/lean-canvas" element={<Layout><LeanCanvas /></Layout>} /> */}
           <Route path="/ai-ethics" element={<Layout><AIEthics /></Layout>} />
           

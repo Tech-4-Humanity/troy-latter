@@ -50,6 +50,16 @@ const useNavigationStructure = () => {
         { path: '/people-involved', label: t('peopleInvolved') },
       ]
     },
+    {
+      title: 'Resources',
+      mainPath: '/resources/projects',
+      items: [
+        { path: '/resources/projects', label: 'Projects' },
+        { path: '/resources/whitepapers', label: 'Whitepapers' },
+        { path: '/resources/90-day-plan', label: '90-Day Plan' },
+        { path: '/tools/cv-generator', label: '🤖 AI CV Generator' },
+      ]
+    },
   ];
 };
 
