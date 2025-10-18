@@ -42,8 +42,23 @@ serve(async (req) => {
       );
     }
 
+    // PHASE 4: Style guide reference
+    const styleGuide = `
+EXECUTIVE CV FORMATTING STANDARDS:
+- Use clear section headers (Professional Summary, Core Expertise, Professional Experience, Education)
+- Lead with quantified achievements and metrics
+- Focus on strategic impact and business outcomes
+- Use action verbs (Led, Architected, Transformed, Delivered)
+- Keep sentences concise and impactful
+- Highlight leadership and decision-making authority
+- Include technology stack and methodologies where relevant
+- Emphasize C-suite interaction and stakeholder management
+`;
+
     // Build system prompt with Troy's complete profile
     const systemPrompt = `You are an expert CV/resume writer specializing in executive-level positions. Your task is to generate a tailored CV based on a job description.
+
+${styleGuide}
 
 CANDIDATE PROFILE:
 Name: ${profile.full_name}
@@ -194,11 +209,11 @@ Generate a CV optimized for this specific opportunity. Focus on ROI, leadership 
     const matchedKeywords = jobKeywords.filter(keyword => cvKeywords.includes(keyword));
     const matchScore = Math.min(100, (matchedKeywords.length / jobKeywords.length) * 100);
 
-    // Save to database
+    // Save to database (use cv_id, not id)
     const { data: generation, error: saveError } = await supabase
       .from('cv_generations')
       .insert({
-        profile_id: profile.id,
+        profile_id: profile.cv_id,
         job_description: jobDescription,
         generated_cv: generatedCV,
         format: 'executive',

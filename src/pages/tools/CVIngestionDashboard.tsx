@@ -111,11 +111,19 @@ export default function CVIngestionDashboard() {
     }
   };
 
+  const completedLogs = logs?.filter(log => log.status === 'completed') || [];
+  const failedLogs = logs?.filter(log => log.status === 'failed') || [];
+  const processingLogs = logs?.filter(log => log.status === 'processing') || [];
+
+  // PHASE 3: Calculate stuck processing files
+  const stuckInProcessing = processingLogs.filter(log => {
+    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
+    return new Date(log.updated_at || log.processed_at) < oneHourAgo;
+  }).length;
+
   // PHASE 5: Bulk retry failed CVs
   const retryFailedMutation = useMutation({
     mutationFn: async () => {
-      const failedLogs = logs?.filter(log => log.status === 'failed') || [];
-      
       // Mark failed entries as pending
       const { error: updateError } = await supabase
         .from('ingestion_log')
@@ -147,9 +155,32 @@ export default function CVIngestionDashboard() {
     }
   });
 
-  const completedLogs = logs?.filter(log => log.status === 'completed') || [];
-  const failedLogs = logs?.filter(log => log.status === 'failed') || [];
-  const processingLogs = logs?.filter(log => log.status === 'processing') || [];
+  // PHASE 3: Reset stuck processing files
+  const resetStuckMutation = useMutation({
+    mutationFn: async () => {
+      const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+      
+      const { error } = await supabase
+        .from('ingestion_log')
+        .update({ 
+          status: 'pending',
+          error_message: 'Reset from stuck processing state'
+        })
+        .eq('status', 'processing')
+        .lt('updated_at', oneHourAgo);
+      
+      if (error) throw error;
+      
+      return { resetCount: stuckInProcessing };
+    },
+    onSuccess: (data) => {
+      toast.success(`Reset ${data.resetCount} stuck files - ready to retry`);
+      queryClient.invalidateQueries({ queryKey: ['ingestion-logs'] });
+    },
+    onError: (error) => {
+      toast.error(`Failed to reset: ${error.message}`);
+    }
+  });
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -321,6 +352,28 @@ export default function CVIngestionDashboard() {
                     <>
                       <RefreshCw className="h-4 w-4" />
                       Retry {failedLogs.length} Failed
+                    </>
+                  )}
+                </Button>
+              )}
+              
+              {stuckInProcessing > 0 && (
+                <Button
+                  onClick={() => resetStuckMutation.mutate()}
+                  disabled={resetStuckMutation.isPending || !!currentSession}
+                  variant="outline"
+                  size="lg"
+                  className="gap-2"
+                >
+                  {resetStuckMutation.isPending ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Resetting...
+                    </>
+                  ) : (
+                    <>
+                      <RefreshCw className="h-4 w-4" />
+                      Reset {stuckInProcessing} Stuck
                     </>
                   )}
                 </Button>

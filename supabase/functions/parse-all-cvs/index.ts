@@ -51,7 +51,9 @@ serve(async (req) => {
 
     const cvFiles = (files || []).filter(file => 
       file.name.toLowerCase().endsWith('.pdf') || 
-      file.name.toLowerCase().endsWith('.docx')
+      file.name.toLowerCase().endsWith('.docx') ||
+      file.name.toLowerCase().endsWith('.html') ||
+      file.name.toLowerCase().endsWith('.htm')
     );
 
     console.log(`Processing ${cvFiles.length} CV files`);
@@ -173,18 +175,41 @@ serve(async (req) => {
           }
 
           const uint8Array = new Uint8Array(arrayBuffer);
-          let base64: string;
           
-          try {
-            // PHASE 1 FIX: Use Array.from() instead of spread operator to avoid stack overflow on large files
-            base64 = btoa(Array.from(uint8Array, byte => String.fromCharCode(byte)).join(''));
-          } catch (conversionError) {
-            console.error(`Base64 conversion failed for ${fileName}:`, conversionError);
-            throw new Error(`File too large or corrupted: ${conversionError instanceof Error ? conversionError.message : 'Unknown error'}`);
+          // PHASE 1 & 2: Handle HTML files differently (extract text, no base64 needed)
+          let extractionPrompt: string;
+          let base64 = '';
+          
+          if (fileName.toLowerCase().endsWith('.html') || fileName.toLowerCase().endsWith('.htm')) {
+            const htmlText = new TextDecoder().decode(uint8Array);
+            
+            // Extract text from HTML
+            const textContent = htmlText
+              .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+              .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
+              .replace(/<[^>]+>/g, ' ')
+              .replace(/\s+/g, ' ')
+              .trim();
+            
+            extractionPrompt = `Extract CV data from this HTML resume:\n\n${textContent.substring(0, 15000)}`;
+          } else {
+            // PHASE 1: Convert to base64 using chunked approach to avoid call stack limits
+            try {
+              const CHUNK_SIZE = 32768; // 32KB chunks
+              for (let i = 0; i < uint8Array.length; i += CHUNK_SIZE) {
+                const chunk = uint8Array.slice(i, i + CHUNK_SIZE);
+                base64 += btoa(String.fromCharCode(...chunk));
+              }
+            } catch (conversionError) {
+              console.error(`Base64 conversion failed for ${fileName}:`, conversionError);
+              throw new Error(`File too large or corrupted: ${conversionError instanceof Error ? conversionError.message : 'Unknown error'}`);
+            }
+            
+            extractionPrompt = `Extract structured CV data from this document`;
           }
 
           // Use AI to extract structured data from CV
-          const extractionPrompt = `Extract structured information from this CV/resume. Return ONLY valid JSON with this exact structure:
+          const structuredPrompt = `Extract structured information from this CV/resume. Return ONLY valid JSON with this exact structure:
 {
   "name": "Full Name",
   "title": "Professional Title",
@@ -234,7 +259,9 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
                   messages: [
                     { 
                       role: 'user', 
-                      content: `${extractionPrompt}\n\nCV File: ${fileName}\n\nPlease analyze and extract the information.` 
+                      content: fileName.toLowerCase().endsWith('.html') || fileName.toLowerCase().endsWith('.htm')
+                        ? `${extractionPrompt}\n\n${structuredPrompt}\n\nPlease analyze and extract the information.`
+                        : `${extractionPrompt}\n\n${structuredPrompt}\n\nCV File: ${fileName}\n\nPlease analyze and extract the information.` 
                     }
                   ],
                   temperature: 0.3,
