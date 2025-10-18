@@ -30,7 +30,6 @@ serve(async (req) => {
   try {
     console.log('Starting CV ingestion pipeline...');
 
-    // Initialize Supabase client
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseKey);
@@ -50,13 +49,26 @@ serve(async (req) => {
 
     console.log(`Found ${files?.length || 0} files in storage`);
 
-    // Filter for PDF and DOCX files only
     const cvFiles = (files || []).filter(file => 
       file.name.toLowerCase().endsWith('.pdf') || 
       file.name.toLowerCase().endsWith('.docx')
     );
 
     console.log(`Processing ${cvFiles.length} CV files`);
+
+    // Create processing session
+    const { data: session, error: sessionError } = await supabase
+      .from('processing_sessions')
+      .insert({
+        total_files: cvFiles.length,
+        status: 'running'
+      })
+      .select()
+      .single();
+
+    if (sessionError) {
+      console.error('Failed to create processing session:', sessionError);
+    }
 
     const parsedCVs: ParsedCV[] = [];
     const lovableApiKey = Deno.env.get('LOVABLE_API_KEY');
@@ -65,40 +77,113 @@ serve(async (req) => {
       throw new Error('LOVABLE_API_KEY not configured');
     }
 
-    // Process each CV file
-    for (const file of cvFiles.slice(0, 5)) { // Start with first 5 CVs
-      const fileName = file.name;
-      console.log(`Processing: ${fileName}`);
+    // Process ALL files with batch processing
+    const BATCH_SIZE = 10;
+    const FUNCTION_TIMEOUT = 13 * 60 * 1000; // 13 minutes
+    const startTime = Date.now();
+    let totalProcessed = 0;
+    let totalFailed = 0;
+    let totalSkipped = 0;
 
-      // Create ingestion log entry
-      const { data: logEntry } = await supabase
-        .from('ingestion_log')
-        .insert({
-          source_type: 'cv',
-          source_file: fileName,
-          status: 'processing'
-        })
-        .select()
-        .single();
-
-      try {
-        // Download file from storage
-        const { data: fileData, error: downloadError } = await supabase
-          .storage
-          .from('cv-documents')
-          .download(`all_cvs_found/all_cvs_found/${fileName}`);
-
-        if (downloadError) {
-          throw new Error(`Download failed: ${downloadError.message}`);
+    for (let i = 0; i < cvFiles.length; i += BATCH_SIZE) {
+      // Check timeout
+      if (Date.now() - startTime > FUNCTION_TIMEOUT) {
+        console.log('⏱️ Approaching function timeout, stopping gracefully');
+        if (session) {
+          await supabase
+            .from('processing_sessions')
+            .update({
+              status: 'timeout',
+              completed_at: new Date().toISOString(),
+              processed_count: totalProcessed,
+              failed_count: totalFailed,
+              skipped_count: totalSkipped
+            })
+            .eq('session_id', session.session_id);
         }
+        break;
+      }
 
-        // Convert to base64 for AI processing
-        const arrayBuffer = await fileData.arrayBuffer();
-        const uint8Array = new Uint8Array(arrayBuffer);
-        const base64 = btoa(String.fromCharCode(...uint8Array));
+      const batch = cvFiles.slice(i, i + BATCH_SIZE);
+      console.log(`📦 Processing batch ${Math.floor(i/BATCH_SIZE) + 1} of ${Math.ceil(cvFiles.length/BATCH_SIZE)}`);
 
-        // Use AI to extract structured data from CV
-        const extractionPrompt = `Extract structured information from this CV/resume. Return ONLY valid JSON with this exact structure:
+      for (const file of batch) {
+        const fileName = file.name;
+        console.log(`Processing: ${fileName}`);
+
+        // Create ingestion log entry
+        const { data: logEntry } = await supabase
+          .from('ingestion_log')
+          .insert({
+            source_type: 'cv',
+            source_file: fileName,
+            status: 'processing'
+          })
+          .select()
+          .single();
+
+        try {
+          // Download file from storage
+          const { data: fileData, error: downloadError } = await supabase
+            .storage
+            .from('cv-documents')
+            .download(`all_cvs_found/all_cvs_found/${fileName}`);
+
+          if (downloadError) {
+            throw new Error(`Download failed: ${downloadError.message}`);
+          }
+
+          // Convert to base64 with error handling
+          const arrayBuffer = await fileData.arrayBuffer();
+          
+          // Check file size (10MB limit)
+          if (arrayBuffer.byteLength > 10 * 1024 * 1024) {
+            throw new Error('File exceeds 10MB limit');
+          }
+
+          // Calculate file hash for deduplication
+          const hashBuffer = await crypto.subtle.digest(
+            'SHA-256',
+            new TextEncoder().encode(fileName + arrayBuffer.byteLength)
+          );
+          const fileHash = Array.from(new Uint8Array(hashBuffer))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+
+          // Check if already processed
+          const { data: existingLog } = await supabase
+            .from('ingestion_log')
+            .select('id')
+            .eq('file_hash', fileHash)
+            .eq('status', 'completed')
+            .maybeSingle();
+
+          if (existingLog) {
+            console.log(`⏭️ Skipping already processed: ${fileName}`);
+            totalSkipped++;
+            if (session) {
+              await supabase
+                .from('processing_sessions')
+                .update({
+                  skipped_count: totalSkipped
+                })
+                .eq('session_id', session.session_id);
+            }
+            continue;
+          }
+
+          const uint8Array = new Uint8Array(arrayBuffer);
+          let base64: string;
+          
+          try {
+            base64 = btoa(String.fromCharCode(...uint8Array));
+          } catch (conversionError) {
+            console.error(`Base64 conversion failed for ${fileName}:`, conversionError);
+            throw new Error(`File too large or corrupted: ${conversionError instanceof Error ? conversionError.message : 'Unknown error'}`);
+          }
+
+          // Use AI to extract structured data from CV
+          const extractionPrompt = `Extract structured information from this CV/resume. Return ONLY valid JSON with this exact structure:
 {
   "name": "Full Name",
   "title": "Professional Title",
@@ -130,83 +215,115 @@ serve(async (req) => {
 
 Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`;
 
-        const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${lovableApiKey}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            model: 'google/gemini-2.5-flash',
-            messages: [
-              { 
-                role: 'user', 
-                content: `${extractionPrompt}\n\nCV File: ${fileName}\n\nPlease analyze and extract the information.` 
-              }
-            ],
-            temperature: 0.3,
-          }),
-        });
+          const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${lovableApiKey}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              model: 'google/gemini-2.5-flash',
+              messages: [
+                { 
+                  role: 'user', 
+                  content: `${extractionPrompt}\n\nCV File: ${fileName}\n\nPlease analyze and extract the information.` 
+                }
+              ],
+              temperature: 0.3,
+            }),
+          });
 
-        if (!aiResponse.ok) {
-          throw new Error(`AI extraction failed: ${aiResponse.status}`);
-        }
-
-        const aiData = await aiResponse.json();
-        let extractedData = {};
-        
-        try {
-          const content = aiData.choices[0].message.content;
-          // Try to extract JSON from markdown code blocks
-          const jsonMatch = content.match(/```(?:json)?\s*(\{[\s\S]*\})\s*```/) || 
-                          content.match(/(\{[\s\S]*\})/);
-          
-          if (jsonMatch) {
-            extractedData = JSON.parse(jsonMatch[1]);
-          } else {
-            extractedData = JSON.parse(content);
+          if (!aiResponse.ok) {
+            throw new Error(`AI extraction failed: ${aiResponse.status}`);
           }
-        } catch (parseError) {
-          console.error('Failed to parse AI response:', parseError);
-          extractedData = { rawContent: aiData.choices[0].message.content };
-        }
 
-        parsedCVs.push({
-          fileName,
-          fullText: `Processed from ${fileName}`,
-          extractedData: extractedData as any
-        });
+          const aiData = await aiResponse.json();
+          let extractedData = {};
+          
+          try {
+            const content = aiData.choices[0].message.content;
+            const jsonMatch = content.match(/```(?:json)?\s*(\{[\s\S]*\})\s*```/) || 
+                            content.match(/(\{[\s\S]*\})/);
+            
+            if (jsonMatch) {
+              extractedData = JSON.parse(jsonMatch[1]);
+            } else {
+              extractedData = JSON.parse(content);
+            }
+          } catch (parseError) {
+            console.error('Failed to parse AI response:', parseError);
+            extractedData = { rawContent: aiData.choices[0].message.content };
+          }
 
-        // Update ingestion log
-        await supabase
-          .from('ingestion_log')
-          .update({
-            status: 'completed',
-            skills_extracted: (extractedData as any).skills?.length || 0
-          })
-          .eq('id', logEntry?.id);
+          parsedCVs.push({
+            fileName,
+            fullText: `Processed from ${fileName}`,
+            extractedData: extractedData as any
+          });
 
-        console.log(`✓ Completed: ${fileName}`);
+          // Count individual skill keywords, not categories
+          const skillCount = (extractedData as any).skills?.reduce(
+            (sum: number, cat: any) => sum + (cat.items?.length || 0),
+            0
+          ) || 0;
 
-      } catch (fileError) {
-        console.error(`✗ Failed to process ${fileName}:`, fileError);
-        
-        // Update ingestion log with error
-        if (logEntry?.id) {
           await supabase
             .from('ingestion_log')
             .update({
-              status: 'failed',
-              error_message: fileError.message
+              status: 'completed',
+              skills_extracted: skillCount,
+              new_skills_discovered: 0,
+              existing_skills_updated: 0,
+              star_examples_added: 0,
+              file_hash: fileHash
             })
-            .eq('id', logEntry.id);
+            .eq('id', logEntry?.id);
+
+          totalProcessed++;
+          if (session) {
+            await supabase
+              .from('processing_sessions')
+              .update({
+                processed_count: totalProcessed
+              })
+              .eq('session_id', session.session_id);
+          }
+
+          console.log(`✓ Completed: ${fileName}`);
+
+        } catch (fileError) {
+          console.error(`✗ Failed to process ${fileName}:`, fileError);
+          
+          if (logEntry?.id) {
+            await supabase
+              .from('ingestion_log')
+              .update({
+                status: 'failed',
+                error_message: fileError instanceof Error ? fileError.message : 'Unknown error'
+              })
+              .eq('id', logEntry.id);
+          }
+
+          totalFailed++;
+          if (session) {
+            await supabase
+              .from('processing_sessions')
+              .update({
+                failed_count: totalFailed
+              })
+              .eq('session_id', session.session_id);
+          }
         }
+      }
+
+      // Small pause between batches to avoid rate limits
+      if (i + BATCH_SIZE < cvFiles.length) {
+        await new Promise(resolve => setTimeout(resolve, 2000));
       }
     }
 
     // Merge all parsed data into master CV
     if (parsedCVs.length > 0) {
-      // Check if cv_master entry exists
       const { data: existingMaster } = await supabase
         .from('cv_master')
         .select('*')
@@ -224,7 +341,6 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
       };
 
       if (existingMaster) {
-        // Update existing master
         await supabase
           .from('cv_master')
           .update({
@@ -234,7 +350,6 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
           })
           .eq('cv_id', existingMaster.cv_id);
       } else {
-        // Create new master entry
         await supabase
           .from('cv_master')
           .insert({
@@ -265,7 +380,6 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
         }
       });
 
-      // Get latest name, title, summary (from most recent CV)
       const latestCV = parsedCVs[parsedCVs.length - 1];
       
       const { data: existingProfile } = await supabase
@@ -305,16 +419,35 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
       console.log('✓ Master CV and profile updated successfully');
     }
 
+    // Mark session as completed
+    if (session) {
+      await supabase
+        .from('processing_sessions')
+        .update({
+          status: 'completed',
+          completed_at: new Date().toISOString(),
+          processed_count: totalProcessed,
+          failed_count: totalFailed,
+          skipped_count: totalSkipped
+        })
+        .eq('session_id', session.session_id);
+    }
+
     return new Response(
       JSON.stringify({
         success: true,
-        filesProcessed: parsedCVs.length,
+        filesProcessed: totalProcessed,
         totalFiles: cvFiles.length,
+        failed: totalFailed,
+        skipped: totalSkipped,
         parsedCVs: parsedCVs.map(cv => ({
           fileName: cv.fileName,
-          skillsFound: cv.extractedData.skills?.length || 0,
-          experiencesFound: cv.extractedData.experience?.length || 0,
-          achievementsFound: cv.extractedData.achievements?.length || 0
+          skillsFound: cv.extractedData?.skills?.reduce(
+            (sum: number, cat: any) => sum + (cat.items?.length || 0),
+            0
+          ) || 0,
+          experiencesFound: cv.extractedData?.experience?.length || 0,
+          achievementsFound: cv.extractedData?.achievements?.length || 0
         }))
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -323,7 +456,7 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
   } catch (error) {
     console.error('Error in parse-all-cvs function:', error);
     return new Response(
-      JSON.stringify({ error: error.message || 'Internal server error' }),
+      JSON.stringify({ error: error instanceof Error ? error.message : 'Internal server error' }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }

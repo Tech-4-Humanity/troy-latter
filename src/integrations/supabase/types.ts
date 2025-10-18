@@ -15987,6 +15987,7 @@ export type Database = {
         Row: {
           error_message: string | null
           existing_skills_updated: number | null
+          file_hash: string | null
           id: string
           new_skills_discovered: number | null
           processed_at: string | null
@@ -15999,6 +16000,7 @@ export type Database = {
         Insert: {
           error_message?: string | null
           existing_skills_updated?: number | null
+          file_hash?: string | null
           id?: string
           new_skills_discovered?: number | null
           processed_at?: string | null
@@ -16011,6 +16013,7 @@ export type Database = {
         Update: {
           error_message?: string | null
           existing_skills_updated?: number | null
+          file_hash?: string | null
           id?: string
           new_skills_discovered?: number | null
           processed_at?: string | null
@@ -22420,6 +22423,39 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      processing_sessions: {
+        Row: {
+          completed_at: string | null
+          failed_count: number | null
+          processed_count: number | null
+          session_id: string
+          skipped_count: number | null
+          started_at: string | null
+          status: string | null
+          total_files: number
+        }
+        Insert: {
+          completed_at?: string | null
+          failed_count?: number | null
+          processed_count?: number | null
+          session_id?: string
+          skipped_count?: number | null
+          started_at?: string | null
+          status?: string | null
+          total_files: number
+        }
+        Update: {
+          completed_at?: string | null
+          failed_count?: number | null
+          processed_count?: number | null
+          session_id?: string
+          skipped_count?: number | null
+          started_at?: string | null
+          status?: string | null
+          total_files?: number
+        }
+        Relationships: []
       }
       procurement_evaluation_metrics: {
         Row: {
