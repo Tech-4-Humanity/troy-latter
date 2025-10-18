@@ -13,7 +13,7 @@ serve(async (req) => {
   }
 
   try {
-    const { jobDescription, userEmail } = await req.json();
+    const { jobDescription, userEmail, template = 'blue' } = await req.json();
 
     if (!jobDescription || jobDescription.trim().length < 50) {
       return new Response(
@@ -42,7 +42,27 @@ serve(async (req) => {
       );
     }
 
-    // PHASE 4: Style guide reference
+    // Template-specific instructions
+    const templateInstructions = template === 'blue' 
+      ? `
+FORMAT: COMPREHENSIVE (2-3 pages)
+- Full detail for each role
+- All achievements with metrics
+- Complete education and certifications
+- Board positions and advisory roles
+TONE: Traditional, thorough, corporate
+COLOR THEME: Blue accents for headers and bullets
+      `
+      : `
+FORMAT: EXECUTIVE (1-2 pages)
+- Condensed experience highlights
+- Top 3-4 achievements per role
+- Essential credentials only
+- Executive summary focus
+TONE: Dynamic, impact-focused, modern
+COLOR THEME: Green accents for modern executive look
+      `;
+
     const styleGuide = `
 EXECUTIVE CV FORMATTING STANDARDS:
 - Use clear section headers (Professional Summary, Core Expertise, Professional Experience, Education)
@@ -57,6 +77,8 @@ EXECUTIVE CV FORMATTING STANDARDS:
 
     // Build system prompt with Troy's complete profile
     const systemPrompt = `You are an expert CV/resume writer specializing in executive-level positions. Your task is to generate a tailored CV based on a job description.
+
+${templateInstructions}
 
 ${styleGuide}
 

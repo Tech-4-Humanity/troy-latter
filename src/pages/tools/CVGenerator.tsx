@@ -98,62 +98,75 @@ export default function CVGenerator() {
           <CVGeneratorForm />
         </div>
 
-        {/* Features Section */}
+        {/* Features Section - Enhanced Contrast */}
         <div className="max-w-4xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-lg border border-primary/20">
-            <h3 className="font-bold text-lg text-foreground mb-2">
-              🎯 Context-Aware Matching
-            </h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="border-2 border-primary/30 hover:border-primary transition-all hover:shadow-lg p-6 rounded-lg bg-card">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-3xl">🎯</span>
+              <h3 className="font-bold text-xl text-foreground">
+                Context-Aware Matching
+              </h3>
+            </div>
+            <p className="text-base text-foreground/80 leading-relaxed">
               AI understands industry nuances and matches your experience to job requirements 
               with precision, highlighting transferable skills across domains.
             </p>
           </div>
           
-          <div className="bg-gradient-to-br from-secondary/10 to-secondary/5 p-6 rounded-lg border border-secondary/20">
-            <h3 className="font-bold text-lg text-foreground mb-2">
-              ⚡ Instant Generation
-            </h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="border-2 border-secondary/30 hover:border-secondary transition-all hover:shadow-lg p-6 rounded-lg bg-card">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-3xl">⚡</span>
+              <h3 className="font-bold text-xl text-foreground">
+                Instant Generation
+              </h3>
+            </div>
+            <p className="text-base text-foreground/80 leading-relaxed">
               No manual formatting or rewriting. Get a professional, ATS-optimized CV 
               in seconds, ready for executive-level applications.
             </p>
           </div>
           
-          <div className="bg-gradient-to-br from-accent/10 to-accent/5 p-6 rounded-lg border border-accent/20">
-            <h3 className="font-bold text-lg text-foreground mb-2">
-              🔒 Privacy First
-            </h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="border-2 border-accent/30 hover:border-accent transition-all hover:shadow-lg p-6 rounded-lg bg-card">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-3xl">🔒</span>
+              <h3 className="font-bold text-xl text-foreground">
+                Privacy First
+              </h3>
+            </div>
+            <p className="text-base text-foreground/80 leading-relaxed">
               Your data is processed securely and never stored. Generate unlimited CVs 
               without compromising your privacy.
             </p>
           </div>
           
-          <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-6 rounded-lg border border-primary/20">
-            <h3 className="font-bold text-lg text-foreground mb-2">
-              📊 Executive-Ready Format
-            </h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="border-2 border-primary/30 hover:border-primary transition-all hover:shadow-lg p-6 rounded-lg bg-card">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-3xl">📊</span>
+              <h3 className="font-bold text-xl text-foreground">
+                Executive-Ready Format
+              </h3>
+            </div>
+            <p className="text-base text-foreground/80 leading-relaxed">
               Optimised for C-suite and senior leadership roles with emphasis on strategic 
               impact, governance experience, and transformation delivery.
             </p>
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="max-w-3xl mx-auto mt-12 text-center bg-gradient-to-r from-primary via-secondary to-accent text-primary-foreground p-8 rounded-xl shadow-xl">
-          <h3 className="text-2xl font-bold mb-3">Need Strategic AI Advisory?</h3>
-          <p className="mb-6 opacity-90">
-            This tool showcases how AI can transform traditional processes. 
-            Let's discuss how AI can accelerate innovation in your organisation.
+        {/* CTA Section - Improved Contrast */}
+        <div className="max-w-3xl mx-auto mt-12 text-center bg-gradient-to-br from-slate-900 to-slate-800 text-white p-12 rounded-xl shadow-2xl">
+          <h3 className="text-3xl font-bold mb-4 text-white">
+            Need Strategic AI Guidance?
+          </h3>
+          <p className="text-lg text-slate-200 mb-8 leading-relaxed max-w-2xl mx-auto">
+            This tool showcases how AI can transform talent acquisition and 
+            accelerate innovation. Let's discuss how I can help your organization.
           </p>
-          <Link 
-            to="/contact" 
-            className="inline-block bg-background text-foreground px-8 py-3 rounded-lg font-semibold hover:bg-background/90 transition-all transform hover:scale-105 shadow-lg"
-          >
-            Schedule a Consultation
-          </Link>
+          <Button asChild size="lg" variant="secondary" className="bg-white text-slate-900 hover:bg-slate-100 font-semibold px-8 py-6 text-lg">
+            <Link to="/contact">
+              Schedule a Consultation
+            </Link>
+          </Button>
         </div>
       </div>
     </div>

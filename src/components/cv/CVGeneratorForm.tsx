@@ -69,9 +69,49 @@ Requirements:
 • Strong mentoring and technical leadership skills
 • Financial services domain knowledge preferred`;
 
+const SAMPLE_CV_OUTPUT = `# Troy Latter
+**AI & Innovation Leadership | Technology Strategy Executive**
+
+
+## Executive Summary
+
+Strategic technology leader with 20+ years driving innovation and digital transformation across enterprise environments. Proven track record architecting scalable AI solutions, leading cross-functional teams, and delivering measurable business impact through emerging technologies. Expert in GenAI implementation, platform engineering, and executive stakeholder engagement.
+
+
+## Key Strengths
+
+• AI/ML strategy and implementation with focus on GenAI and agentic systems
+• Cloud-native architecture and platform engineering (AWS, Azure, GCP)
+• C-suite communication and board-level technology advisory
+• Innovation frameworks and transformation program leadership
+• Enterprise software development and delivery at scale
+
+
+## Professional Experience
+
+### Chief Technology Officer | Innovation Advisory
+**Independent Consulting** | 2020 — Present
+
+• Led GenAI transformation initiatives for Fortune 500 clients, delivering $15M+ in operational efficiency gains
+• Architected multi-cloud AI platforms supporting 5M+ users with 99.95% uptime
+• Established innovation labs and agile transformation frameworks adopted by 8 enterprise organizations
+• Built strategic technology partnerships with leading AI vendors and startups
+• Advised C-suite on emerging technology strategy including responsible AI governance
+
+
+### Head of Technology Innovation
+**Enterprise Technology Group** | 2015 — 2020
+
+• Directed $20M+ innovation portfolio across cloud, data science, and automation initiatives
+• Transformed legacy infrastructure to cloud-native architecture, reducing costs by 40%
+• Led teams of 50+ engineers across distributed locations
+• Implemented ML/AI capabilities improving customer experience metrics by 35%
+• Presented technology strategy and ROI analysis to board of directors quarterly`;
+
 export function CVGeneratorForm() {
   const [jobDescription, setJobDescription] = useState("");
   const [userEmail, setUserEmail] = useState("");
+  const [selectedTemplate, setSelectedTemplate] = useState<'blue' | 'green'>('blue');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedCV, setGeneratedCV] = useState<string | null>(null);
   const [matchScore, setMatchScore] = useState<number | undefined>();
@@ -90,7 +130,8 @@ export function CVGeneratorForm() {
       const { data, error } = await supabase.functions.invoke('generate-cv', {
         body: { 
           jobDescription: jobDescription.trim(),
-          userEmail: userEmail.trim() || null
+          userEmail: userEmail.trim() || null,
+          template: selectedTemplate
         }
       });
 
@@ -126,6 +167,43 @@ export function CVGeneratorForm() {
   return (
     <div className="space-y-8">
       <div className="grid gap-6">
+        {/* Template Selection */}
+        <div className="space-y-3">
+          <Label className="text-base font-semibold">Select CV Template</Label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div
+              onClick={() => setSelectedTemplate('blue')}
+              className={`cursor-pointer transition-all border-2 rounded-lg p-4 hover:shadow-lg ${
+                selectedTemplate === 'blue' ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded bg-gradient-to-br from-blue-600 to-blue-400 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-foreground">Blue Comprehensive</h4>
+                  <p className="text-xs text-muted-foreground">Detailed, traditional format • 2-3 pages</p>
+                </div>
+              </div>
+            </div>
+            
+            <div
+              onClick={() => setSelectedTemplate('green')}
+              className={`cursor-pointer transition-all border-2 rounded-lg p-4 hover:shadow-lg ${
+                selectedTemplate === 'green' ? 'border-green-600 bg-green-50' : 'border-border hover:border-green-500/50'
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded bg-gradient-to-br from-green-600 to-green-400 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-foreground">Green Executive</h4>
+                  <p className="text-xs text-muted-foreground">Condensed, modern format • 1-2 pages</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Sample JD Buttons + View Sample Output */}
         <div className="flex flex-wrap gap-2 mb-2">
           <Button
             variant="outline"
@@ -150,6 +228,18 @@ export function CVGeneratorForm() {
             disabled={isGenerating}
           >
             🔧 Sample: Technical Architect
+          </Button>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => {
+              setGeneratedCV(SAMPLE_CV_OUTPUT);
+              setMatchScore(87.5);
+              toast.success("Sample CV loaded!");
+            }}
+            disabled={isGenerating}
+          >
+            👁️ View Sample Output
           </Button>
         </div>
         
