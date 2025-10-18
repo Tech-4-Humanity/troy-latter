@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Download, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
+import { jsPDF } from "jspdf";
+import { marked } from "marked";
+import "@/styles/cv-preview.css";
 
 interface CVPreviewProps {
   cv: string;
@@ -23,17 +26,97 @@ export function CVPreview({ cv, matchScore }: CVPreviewProps) {
     }
   };
 
-  const handleDownload = () => {
-    const blob = new Blob([cv], { type: 'text/markdown' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `CV-TroyMagennis-${new Date().toISOString().split('T')[0]}.md`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    toast.success("CV downloaded successfully!");
+  const handleDownload = async () => {
+    try {
+      // Convert markdown to HTML
+      const htmlContent = await marked.parse(cv);
+      
+      // Create PDF with professional settings
+      const doc = new jsPDF({
+        format: 'a4',
+        unit: 'mm',
+        orientation: 'portrait'
+      });
+      
+      // Convert HTML to PDF with styling
+      await doc.html(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <style>
+            body {
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+              font-size: 11pt;
+              line-height: 1.6;
+              color: #1a1a1a;
+            }
+            h1 {
+              font-size: 28pt;
+              font-weight: 800;
+              margin-bottom: 4pt;
+              color: #0f172a;
+              letter-spacing: -0.02em;
+            }
+            h2 {
+              font-size: 16pt;
+              font-weight: 700;
+              margin-top: 24pt;
+              margin-bottom: 12pt;
+              padding-bottom: 8pt;
+              border-bottom: 2px solid #e2e8f0;
+              color: #1e40af;
+            }
+            h3 {
+              font-size: 13pt;
+              font-weight: 600;
+              margin-top: 16pt;
+              margin-bottom: 8pt;
+            }
+            p {
+              margin: 8pt 0;
+            }
+            ul {
+              margin: 8pt 0;
+              padding-left: 20pt;
+              list-style: none;
+            }
+            li {
+              margin: 6pt 0;
+              position: relative;
+            }
+            li::before {
+              content: "•";
+              position: absolute;
+              left: -20pt;
+              color: #1e40af;
+              font-weight: bold;
+            }
+            strong {
+              font-weight: 600;
+              color: #0f172a;
+            }
+          </style>
+        </head>
+        <body>${htmlContent}</body>
+        </html>
+      `, {
+        callback: (pdf) => {
+          pdf.save(`CV-TroyMagennis-${new Date().toISOString().split('T')[0]}.pdf`);
+          toast.success("CV downloaded as PDF!");
+        },
+        x: 15,
+        y: 15,
+        width: 180, // A4 width minus margins
+        windowWidth: 800,
+        html2canvas: {
+          scale: 0.75,
+          useCORS: true,
+        }
+      });
+    } catch (error) {
+      console.error('PDF generation failed:', error);
+      toast.error("Failed to generate PDF");
+    }
   };
 
   return (
@@ -78,7 +161,7 @@ export function CVPreview({ cv, matchScore }: CVPreviewProps) {
         </div>
       </div>
 
-      <div className="border rounded-lg p-6 bg-card max-h-[600px] overflow-y-auto prose prose-sm dark:prose-invert max-w-none">
+      <div className="cv-preview border rounded-lg p-8 bg-card max-h-[800px] overflow-y-auto">
         <ReactMarkdown>{cv}</ReactMarkdown>
       </div>
     </div>

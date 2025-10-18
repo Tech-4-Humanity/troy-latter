@@ -102,7 +102,7 @@ export default function CVIngestionDashboard() {
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span className="text-muted-foreground">Schedule:</span>
-              <span className="ml-2 font-medium">Hourly</span>
+              <span className="ml-2 font-medium">Daily at 2 AM + On-Demand</span>
             </div>
             <div>
               <span className="text-muted-foreground">Last auto-run:</span>

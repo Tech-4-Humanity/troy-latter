@@ -284,7 +284,9 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
             await supabase
               .from('processing_sessions')
               .update({
-                processed_count: totalProcessed
+                processed_count: totalProcessed,
+                failed_count: totalFailed,
+                skipped_count: totalSkipped
               })
               .eq('session_id', session.session_id);
           }
@@ -309,7 +311,9 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
             await supabase
               .from('processing_sessions')
               .update({
-                failed_count: totalFailed
+                processed_count: totalProcessed,
+                failed_count: totalFailed,
+                skipped_count: totalSkipped
               })
               .eq('session_id', session.session_id);
           }
@@ -454,9 +458,29 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
     );
 
   } catch (error) {
-    console.error('Error in parse-all-cvs function:', error);
+    console.error('Fatal error in parse-all-cvs:', error);
+    
+    // Mark session as failed with current counts
+    if (session) {
+      await supabase
+        .from('processing_sessions')
+        .update({
+          status: 'failed',
+          completed_at: new Date().toISOString(),
+          processed_count: totalProcessed,
+          failed_count: totalFailed,
+          skipped_count: totalSkipped
+        })
+        .eq('session_id', session.session_id);
+    }
+    
     return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : 'Internal server error' }),
+      JSON.stringify({ 
+        error: error instanceof Error ? error.message : 'Internal server error',
+        processed: totalProcessed,
+        failed: totalFailed,
+        skipped: totalSkipped
+      }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }

@@ -62,51 +62,79 @@ ${JSON.stringify(profile.achievements, null, 2)}
 EDUCATION:
 ${JSON.stringify(profile.education, null, 2)}
 
-INSTRUCTIONS:
+FORMATTING RULES (CRITICAL - MUST FOLLOW EXACTLY):
+- Use EXACTLY 2 blank lines between major sections (##)
+- Use EXACTLY 1 blank line between subsections (###)
+- Use bullet character • (not * or -)
+- Each bullet point must be ≤ 2 lines maximum
+- Lead all metrics with numbers: "Delivered $5M revenue increase" not "Increased revenue by $5M"
+- Use em-dashes (—) for date ranges: "Jan 2020 — Present"
+
+TYPOGRAPHY STANDARDS:
+- Headings: Sentence case only (Chief Technology Officer, not CHIEF TECHNOLOGY OFFICER)
+- Numbers: Always comma-separated (1,000 not 1000)
+- Currency: Always with symbol first ($2.5M not 2.5M dollars)
+- Percentages: No space before % (95% not 95 %)
+- Company names: Use exact capitalization from their branding
+
+BREVITY RULES:
+- Maximum 6 bullets per role
+- Each bullet ≤ 2 lines
+- Start with action verb or metric
+- Eliminate: "responsible for", "worked on", "helped with", "managed to"
+- Replace with: "Delivered", "Led", "Architected", "Scaled", "Transformed"
+
+CONTENT INSTRUCTIONS:
 1. Analyze the job description to identify key requirements, skills, and priorities
 2. Generate a tailored CV that emphasizes the most relevant experience and skills
-3. Use professional, executive-level language
-4. Include quantifiable achievements where possible
-5. Format as clean, ATS-friendly markdown
-6. Start with a compelling executive summary tailored to the role
-7. Prioritize experiences and skills that match the job requirements
-8. Include a "Key Strengths" section highlighting alignment with the role
-9. Keep the CV to 2-3 pages maximum
-10. Use bullet points for readability
+3. Use professional, executive-level language focused on outcomes
+4. Include quantifiable achievements with metrics
+5. Start with a compelling executive summary tailored to the role
+6. Prioritize experiences and skills that match the job requirements
+7. Include a "Key Strengths" section highlighting alignment with the role
+8. Keep the CV to 2-3 pages maximum
 
 FORMAT:
 # [Candidate Name]
 ### [Tailored Professional Title]
 
+
 ## Executive Summary
-[Compelling 3-4 sentence summary tailored to the specific role]
+[Compelling 3-4 sentence summary tailored to the specific role with quantified impact]
+
 
 ## Key Strengths
-- [Strength aligned with job requirement]
-- [Another aligned strength]
-- [Another aligned strength]
+• [Strength aligned with job requirement]
+• [Another aligned strength]
+• [Another aligned strength]
+
 
 ## Professional Experience
+
 ### [Most Relevant Role]
-**[Company]** | [Period]
-- [Achievement with metrics]
-- [Another achievement]
+**[Company]** | [Period using em-dash]
+
+• [Achievement with metrics - start with number or action verb]
+• [Another achievement - maximum 2 lines]
 
 [Continue with other relevant roles...]
+
 
 ## Core Competencies
 [Organize skills by relevance to the job, using categories]
 
+
 ## Notable Achievements
-- [Quantifiable achievement relevant to role]
-- [Another achievement]
+• [Quantifiable achievement relevant to role]
+• [Another achievement]
+
 
 ## Education & Certifications
 [Relevant credentials]
 
 ---
 
-Generate a CV optimized for this specific opportunity. Focus on ROI, leadership impact, and measurable outcomes.`;
+Generate a CV optimized for this specific opportunity. Focus on ROI, leadership impact, and measurable outcomes. Follow ALL formatting rules precisely.`;
 
     // Call Lovable AI Gateway
     const lovableApiKey = Deno.env.get('LOVABLE_API_KEY');

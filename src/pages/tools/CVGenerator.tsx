@@ -1,11 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Link } from 'react-router-dom';
 import { CVGeneratorForm } from '@/components/cv/CVGeneratorForm';
 import { Button } from '@/components/ui/button';
 import { Database } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 export default function CVGenerator() {
+  // Trigger on-demand CV ingestion when page loads
+  useEffect(() => {
+    const checkAndIngest = async () => {
+      try {
+        // Check if ingestion needed (last run > 1 hour ago)
+        const { data: lastSession } = await supabase
+          .from('processing_sessions')
+          .select('started_at, status')
+          .order('started_at', { ascending: false })
+          .limit(1)
+          .maybeSingle();
+        
+        // Don't trigger if already running
+        if (lastSession?.status === 'running') {
+          console.log('Ingestion already running, skipping...');
+          return;
+        }
+        
+        // Trigger if last run was >1 hour ago
+        const lastRun = lastSession ? new Date(lastSession.started_at) : null;
+        const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
+        
+        if (!lastRun || lastRun < oneHourAgo) {
+          console.log('Triggering CV ingestion on page load...');
+          await supabase.functions.invoke('parse-all-cvs');
+          toast.success('CV ingestion started in background');
+        }
+      } catch (error) {
+        console.error('Failed to trigger ingestion:', error);
+      }
+    };
+    
+    checkAndIngest();
+  }, []);
+
   return (
     <div className="min-h-screen">
       <PageTitle title="AI CV Generator" />

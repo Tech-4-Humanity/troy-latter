@@ -1,0 +1,96 @@
+.cv-preview {
+  @apply max-w-4xl mx-auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  color: hsl(var(--foreground));
+}
+
+/* Executive name - commanding presence */
+.cv-preview h1 {
+  @apply text-5xl font-extrabold tracking-tight mb-1;
+  color: hsl(var(--primary));
+  letter-spacing: -0.02em;
+}
+
+/* Professional title - elegant subtitle */
+.cv-preview h1 + h3 {
+  @apply text-xl font-normal text-muted-foreground mb-12;
+  letter-spacing: 0.02em;
+}
+
+/* Section headers - clear hierarchy */
+.cv-preview h2 {
+  @apply text-2xl font-bold mt-12 mb-6 pb-2 border-b-2;
+  color: hsl(var(--primary));
+  border-color: hsl(var(--primary) / 0.2);
+}
+
+/* Subsection headers (roles/companies) */
+.cv-preview h3 {
+  @apply text-lg font-semibold mt-6 mb-2;
+}
+
+/* Paragraphs - executive summary, etc. */
+.cv-preview p {
+  @apply leading-relaxed text-base mb-4;
+  color: hsl(var(--foreground) / 0.9);
+}
+
+/* Bullets - clean and spaced */
+.cv-preview ul {
+  @apply space-y-3 ml-0 my-6;
+  list-style: none;
+}
+
+.cv-preview li {
+  @apply relative pl-6;
+}
+
+.cv-preview li::before {
+  content: "•";
+  @apply absolute left-0 font-bold text-xl;
+  color: hsl(var(--primary));
+}
+
+/* Strong text (role titles, companies) */
+.cv-preview strong {
+  @apply font-semibold;
+  color: hsl(var(--foreground));
+}
+
+/* Horizontal rules */
+.cv-preview hr {
+  @apply my-8 border-t-2;
+  border-color: hsl(var(--border));
+}
+
+/* Print styles */
+@media print {
+  .cv-preview {
+    @apply text-black bg-white max-w-full;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  
+  .cv-preview h1 {
+    @apply text-3xl;
+    page-break-after: avoid;
+  }
+  
+  .cv-preview h2 {
+    @apply text-xl mt-8;
+    page-break-after: avoid;
+  }
+  
+  .cv-preview h3 {
+    page-break-after: avoid;
+  }
+  
+  .cv-preview ul {
+    page-break-inside: avoid;
+  }
+  
+  .cv-preview li {
+    page-break-inside: avoid;
+  }
+}
