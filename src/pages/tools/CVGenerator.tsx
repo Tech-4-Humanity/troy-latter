@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Link } from 'react-router-dom';
 import { CVGeneratorForm } from '@/components/cv/CVGeneratorForm';
+import { SkillsMatrix } from '@/components/cv/SkillsMatrix';
 import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Database } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
@@ -93,9 +95,26 @@ export default function CVGenerator() {
           </div>
         </div>
 
-        {/* CV Generator Form */}
+        {/* Tabs for CV Generator & Skills Matrix */}
         <div className="max-w-6xl mx-auto mb-12">
-          <CVGeneratorForm />
+          <Tabs defaultValue="cv" className="w-full">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+              <TabsTrigger value="cv" className="text-base">
+                CV Generator
+              </TabsTrigger>
+              <TabsTrigger value="skills" className="text-base">
+                Skills Matrix
+              </TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="cv">
+              <CVGeneratorForm />
+            </TabsContent>
+            
+            <TabsContent value="skills">
+              <SkillsMatrix />
+            </TabsContent>
+          </Tabs>
         </div>
 
         {/* Features Section - Enhanced Contrast */}
