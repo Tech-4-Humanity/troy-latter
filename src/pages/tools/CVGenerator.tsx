@@ -2,6 +2,8 @@ import React from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Link } from 'react-router-dom';
 import { CVGeneratorForm } from '@/components/cv/CVGeneratorForm';
+import { Button } from '@/components/ui/button';
+import { Database } from 'lucide-react';
 
 export default function CVGenerator() {
   return (
@@ -12,9 +14,17 @@ export default function CVGenerator() {
         {/* Intro Section */}
         <div className="max-w-4xl mx-auto mb-8">
           <div className="bg-card rounded-lg shadow-lg p-6 border-l-4 border-primary">
-            <h2 className="text-2xl font-bold text-foreground mb-3">
-              How It Works
-            </h2>
+            <div className="flex justify-between items-start mb-3">
+              <h2 className="text-2xl font-bold text-foreground">
+                How It Works
+              </h2>
+              <Button asChild variant="outline" size="sm">
+                <Link to="/tools/cv-ingestion">
+                  <Database className="h-4 w-4 mr-2" />
+                  CV Ingestion Dashboard
+                </Link>
+              </Button>
+            </div>
             <p className="text-muted-foreground mb-4">
               Paste any job description below to instantly generate a tailored CV that highlights 
               relevant experience, skills, and achievements. Powered by advanced AI that understands 

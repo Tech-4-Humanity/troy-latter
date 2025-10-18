@@ -20,6 +20,7 @@ const NotFound = () => {
     { path: '/executive-profile', label: 'Executive Profile', description: 'Detailed professional background' },
     { path: '/experience-and-impact', label: 'Experience & Impact', description: 'Strategic projects and achievements' },
     { path: '/core-competencies', label: 'Core Competencies', description: 'Technical expertise and skills' },
+    { path: '/tools/cv-ingestion', label: 'CV Ingestion Dashboard', description: 'Build and manage Master CV database' },
     { path: '/contact', label: 'Contact', description: 'Get in touch for opportunities' }
   ];
 

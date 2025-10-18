@@ -58,6 +58,7 @@ const useNavigationStructure = () => {
         { path: '/resources/whitepapers', label: 'Whitepapers' },
         { path: '/resources/90-day-plan', label: '90-Day Plan' },
         { path: '/tools/cv-generator', label: '🤖 AI CV Generator' },
+        { path: '/tools/cv-ingestion', label: '📊 CV Ingestion Dashboard' },
       ]
     },
   ];

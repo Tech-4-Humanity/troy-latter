@@ -80,6 +80,7 @@ const App = () => (
             <Route path="/resources/projects" element={<Layout><Projects /></Layout>} />
             <Route path="/tools/cv-generator" element={<Layout><CVGenerator /></Layout>} />
             <Route path="/tools/cv-ingestion" element={<Layout><CVIngestionDashboard /></Layout>} />
+            <Route path="/cv-ingestion" element={<Navigate to="/tools/cv-ingestion" replace />} />
           {/* <Route path="/resources/lean-canvas" element={<Layout><LeanCanvas /></Layout>} /> */}
           <Route path="/ai-ethics" element={<Layout><AIEthics /></Layout>} />
           
