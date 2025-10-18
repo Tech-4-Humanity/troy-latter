@@ -20,3 +20,6 @@ verify_jwt = false
 
 [functions.generate-cv]
 verify_jwt = false
+
+[functions.parse-all-cvs]
+verify_jwt = false
