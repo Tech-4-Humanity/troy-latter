@@ -90,6 +90,30 @@ export default function CVIngestionDashboard() {
       </div>
 
       <div className="grid gap-6">
+        {/* Auto-ingestion Status */}
+        <Card className="p-6 bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse"></div>
+            <h2 className="text-xl font-semibold">Automatic Ingestion Active</h2>
+          </div>
+          <p className="text-sm text-muted-foreground mb-3">
+            New CVs are automatically processed every hour at the top of the hour
+          </p>
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <span className="text-muted-foreground">Schedule:</span>
+              <span className="ml-2 font-medium">Hourly</span>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Last auto-run:</span>
+              <span className="ml-2 font-medium">
+                {logs?.[0]?.processed_at 
+                  ? new Date(logs[0].processed_at).toLocaleString()
+                  : 'Never'}
+              </span>
+            </div>
+          </div>
+        </Card>
         {/* Real-time Progress */}
         {currentSession && (
           <Card className="p-6 bg-primary/5 border-primary/20">
