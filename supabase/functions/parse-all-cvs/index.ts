@@ -88,6 +88,30 @@ serve(async (req) => {
     let totalSkipped = 0;
 
     for (let i = 0; i < cvFiles.length; i += BATCH_SIZE) {
+      // Check for stop request
+      if (session) {
+        const { data: sessionCheck } = await supabase
+          .from('processing_sessions')
+          .select('stop_requested, status')
+          .eq('session_id', session.session_id)
+          .single();
+        
+        if (sessionCheck?.stop_requested || sessionCheck?.status === 'cancelled') {
+          console.log('🛑 Stop requested, exiting gracefully');
+          await supabase
+            .from('processing_sessions')
+            .update({
+              status: 'cancelled',
+              completed_at: new Date().toISOString(),
+              processed_count: totalProcessed,
+              failed_count: totalFailed,
+              skipped_count: totalSkipped
+            })
+            .eq('session_id', session.session_id);
+          break;
+        }
+      }
+      
       // Check timeout
       if (Date.now() - startTime > FUNCTION_TIMEOUT) {
         console.log('⏱️ Approaching function timeout, stopping gracefully');

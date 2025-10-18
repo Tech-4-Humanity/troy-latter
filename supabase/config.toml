@@ -23,3 +23,6 @@ verify_jwt = false
 
 [functions.parse-all-cvs]
 verify_jwt = false
+
+[functions.cv-ingestion-control]
+verify_jwt = false

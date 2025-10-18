@@ -316,6 +316,38 @@ export default function CVIngestionDashboard() {
               </p>
             </div>
             <div className="flex gap-2">
+              {currentSession && (
+                <Button
+                  onClick={async () => {
+                    try {
+                      const supabaseUrl = 'https://lzfgigiyqpuuxslsygjt.supabase.co';
+                      const response = await fetch(`${supabaseUrl}/functions/v1/cv-ingestion-control?action=cancel-current`, {
+                        method: 'GET',
+                        headers: {
+                          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`
+                        }
+                      });
+                      
+                      if (!response.ok) throw new Error('Failed to cancel session');
+                      
+                      toast.success('Cancelling current session...');
+                      setTimeout(() => {
+                        queryClient.invalidateQueries({ queryKey: ['current-session'] });
+                        queryClient.invalidateQueries({ queryKey: ['ingestion-logs'] });
+                      }, 2000);
+                    } catch (error: any) {
+                      toast.error('Failed to cancel: ' + error.message);
+                    }
+                  }}
+                  variant="destructive"
+                  size="lg"
+                  className="gap-2"
+                >
+                  <XCircle className="h-5 w-5" />
+                  Stop & Cancel
+                </Button>
+              )}
+              
               <Button
                 onClick={handleStartIngestion}
                 disabled={isIngesting || !!currentSession}
