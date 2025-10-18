@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { PageTitle } from "@/components/PageTitle";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Loader2, PlayCircle, CheckCircle, XCircle, FileText } from "lucide-react";
+import { Loader2, PlayCircle, CheckCircle, XCircle, FileText, RefreshCw, AlertCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 
 export default function CVIngestionDashboard() {
   const [isIngesting, setIsIngesting] = useState(false);
   const [ingestionResult, setIngestionResult] = useState<any>(null);
+  const queryClient = useQueryClient();
 
   // Fetch ingestion logs
   const { data: logs, refetch: refetchLogs } = useQuery({
@@ -58,6 +62,33 @@ export default function CVIngestionDashboard() {
     refetchInterval: 2000 // Poll every 2 seconds during ingestion
   });
 
+  // PHASE 3: Fetch storage count for real-time variance
+  const { data: storageStats, isLoading: storageLoading } = useQuery({
+    queryKey: ['cv-storage-count'],
+    queryFn: async () => {
+      const { data: files, error } = await supabase
+        .storage
+        .from('cv-documents')
+        .list('all_cvs_found/all_cvs_found', { 
+          limit: 1000,
+          offset: 0
+        });
+      
+      if (error) throw error;
+      
+      const cvFiles = files.filter(f => 
+        f.name.toLowerCase().endsWith('.pdf') || 
+        f.name.toLowerCase().endsWith('.docx')
+      );
+      
+      return {
+        totalFilesInStorage: cvFiles.length,
+        lastChecked: new Date().toISOString()
+      };
+    },
+    refetchInterval: 30000 // Refresh every 30 seconds
+  });
+
   const handleStartIngestion = async () => {
     setIsIngesting(true);
     setIngestionResult(null);
@@ -79,6 +110,46 @@ export default function CVIngestionDashboard() {
       setIsIngesting(false);
     }
   };
+
+  // PHASE 5: Bulk retry failed CVs
+  const retryFailedMutation = useMutation({
+    mutationFn: async () => {
+      const failedLogs = logs?.filter(log => log.status === 'failed') || [];
+      
+      // Mark failed entries as pending
+      const { error: updateError } = await supabase
+        .from('ingestion_log')
+        .update({ 
+          status: 'pending',
+          error_message: null,
+          updated_at: new Date().toISOString()
+        })
+        .eq('status', 'failed');
+      
+      if (updateError) throw updateError;
+      
+      // Trigger edge function to reprocess
+      const { error: invokeError } = await supabase.functions.invoke('parse-all-cvs', {
+        body: { retryMode: true }
+      });
+      
+      if (invokeError) throw invokeError;
+      
+      return { retriedCount: failedLogs.length };
+    },
+    onSuccess: (data) => {
+      toast.success(`Retrying ${data.retriedCount} failed CVs...`);
+      queryClient.invalidateQueries({ queryKey: ['ingestion-logs'] });
+      queryClient.invalidateQueries({ queryKey: ['current-session'] });
+    },
+    onError: (error) => {
+      toast.error(`Failed to retry: ${error.message}`);
+    }
+  });
+
+  const completedLogs = logs?.filter(log => log.status === 'completed') || [];
+  const failedLogs = logs?.filter(log => log.status === 'failed') || [];
+  const processingLogs = logs?.filter(log => log.status === 'processing') || [];
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -147,6 +218,63 @@ export default function CVIngestionDashboard() {
           </Card>
         )}
 
+        {/* PHASE 3: Storage vs Database Sync */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              📁 Storage vs Database Sync
+            </CardTitle>
+            <CardDescription>Real-time comparison of files in storage vs tracked in database</CardDescription>
+          </CardHeader>
+          <CardContent>
+            {storageLoading ? (
+              <div className="flex items-center gap-2">
+                <Loader2 className="h-4 w-4 animate-spin" />
+                <span className="text-sm">Counting files in storage...</span>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <p className="text-sm text-muted-foreground">Files in Storage</p>
+                    <p className="text-2xl font-bold">{storageStats?.totalFilesInStorage || 0}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-sm text-muted-foreground">Files Tracked in DB</p>
+                    <p className="text-2xl font-bold">{logs?.length || 0}</p>
+                  </div>
+                </div>
+                
+                {(storageStats?.totalFilesInStorage || 0) > (logs?.length || 0) && (
+                  <Alert>
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertTitle>Unprocessed Files Detected</AlertTitle>
+                    <AlertDescription>
+                      {(storageStats?.totalFilesInStorage || 0) - (logs?.length || 0)} files 
+                      in storage have not been ingested yet. They will be processed in the next run.
+                    </AlertDescription>
+                  </Alert>
+                )}
+                
+                <div className="flex items-center justify-between pt-2 border-t">
+                  <span className="text-xs text-muted-foreground">
+                    Last checked: {storageStats?.lastChecked 
+                      ? new Date(storageStats.lastChecked).toLocaleTimeString() 
+                      : 'Never'}
+                  </span>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => queryClient.invalidateQueries({ queryKey: ['cv-storage-count'] })}
+                  >
+                    <RefreshCw className="h-3 w-3" />
+                  </Button>
+                </div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
         {/* Control Panel */}
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
@@ -156,24 +284,48 @@ export default function CVIngestionDashboard() {
                 Parse all CV files from storage, extract structured data, and populate master database
               </p>
             </div>
-            <Button
-              onClick={handleStartIngestion}
-              disabled={isIngesting || !!currentSession}
-              size="lg"
-              className="gap-2"
-            >
-              {isIngesting || currentSession ? (
-                <>
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                  Processing...
-                </>
-              ) : (
-                <>
-                  <PlayCircle className="h-5 w-5" />
-                  Start Ingestion
-                </>
+            <div className="flex gap-2">
+              <Button
+                onClick={handleStartIngestion}
+                disabled={isIngesting || !!currentSession}
+                size="lg"
+                className="gap-2"
+              >
+                {isIngesting || currentSession ? (
+                  <>
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  <>
+                    <PlayCircle className="h-5 w-5" />
+                    Start Ingestion
+                  </>
+                )}
+              </Button>
+              
+              {failedLogs.length > 0 && (
+                <Button
+                  onClick={() => retryFailedMutation.mutate()}
+                  disabled={retryFailedMutation.isPending || !!currentSession}
+                  variant="outline"
+                  size="lg"
+                  className="gap-2"
+                >
+                  {retryFailedMutation.isPending ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Retrying...
+                    </>
+                  ) : (
+                    <>
+                      <RefreshCw className="h-4 w-4" />
+                      Retry {failedLogs.length} Failed
+                    </>
+                  )}
+                </Button>
               )}
-            </Button>
+            </div>
           </div>
 
           {/* Master Stats */}
@@ -266,51 +418,180 @@ export default function CVIngestionDashboard() {
           </Card>
         )}
 
-        {/* Ingestion Log */}
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-4">Ingestion Log</h3>
-          <div className="space-y-2">
-            {logs && logs.length > 0 ? (
-              logs.map((log) => (
-                <div key={log.id} className="flex items-center justify-between p-3 border rounded-lg">
-                  <div className="flex items-center gap-3">
-                    {log.status === 'completed' && (
-                      <CheckCircle className="h-5 w-5 text-green-500" />
-                    )}
-                    {log.status === 'failed' && (
-                      <XCircle className="h-5 w-5 text-red-500" />
-                    )}
-                    {log.status === 'processing' && (
-                      <Loader2 className="h-5 w-5 text-yellow-500 animate-spin" />
-                    )}
-                    <div>
-                      <div className="font-medium text-sm">{log.source_file}</div>
-                      <div className="text-xs text-muted-foreground">
-                        {new Date(log.processed_at).toLocaleString()}
+        {/* PHASE 4: Enhanced Failed CV Display with Error Grouping */}
+        {failedLogs.length > 0 && (
+          <Card>
+            <CardHeader>
+              <CardTitle>❌ Failed CVs ({failedLogs.length})</CardTitle>
+              <CardDescription>Grouped by failure type for easier diagnosis</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Accordion type="single" collapsible className="w-full">
+                {/* Stack Overflow Errors */}
+                {(() => {
+                  const stackOverflowErrors = failedLogs.filter(log => 
+                    log.error_message?.includes('Maximum call stack') || 
+                    log.error_message?.includes('call stack size exceeded')
+                  );
+                  
+                  if (stackOverflowErrors.length === 0) return null;
+                  
+                  return (
+                    <AccordionItem value="stack-overflow">
+                      <AccordionTrigger className="hover:no-underline">
+                        <div className="flex items-center gap-2">
+                          <Badge variant="destructive">{stackOverflowErrors.length}</Badge>
+                          <span>Base64 Encoding Error (File Size)</span>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <Alert variant="destructive" className="mb-4">
+                          <AlertCircle className="h-4 w-4" />
+                          <AlertTitle>Technical Issue - NOW FIXED</AlertTitle>
+                          <AlertDescription>
+                            These CVs were too large for the old base64 encoding method. 
+                            The fix has been deployed - click "Retry Failed" to reprocess.
+                          </AlertDescription>
+                        </Alert>
+                        
+                        <div className="space-y-2">
+                          {stackOverflowErrors.map(log => (
+                            <div key={log.id} className="flex items-start gap-2 p-2 bg-muted rounded-md">
+                              <FileText className="h-4 w-4 mt-0.5 text-muted-foreground" />
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-medium truncate">{log.source_file}</p>
+                                <p className="text-xs text-muted-foreground">
+                                  Attempted: {new Date(log.processed_at).toLocaleString()}
+                                </p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  );
+                })()}
+                
+                {/* JSON Parsing Errors */}
+                {(() => {
+                  const jsonErrors = failedLogs.filter(log => 
+                    log.error_message?.includes('JSON') || 
+                    log.error_message?.includes('parsing')
+                  );
+                  
+                  if (jsonErrors.length === 0) return null;
+                  
+                  return (
+                    <AccordionItem value="json-errors">
+                      <AccordionTrigger className="hover:no-underline">
+                        <div className="flex items-center gap-2">
+                          <Badge variant="destructive">{jsonErrors.length}</Badge>
+                          <span>AI Response Parsing Error</span>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <Alert className="mb-4">
+                          <AlertCircle className="h-4 w-4" />
+                          <AlertTitle>AI Processing Issue - NOW FIXED</AlertTitle>
+                          <AlertDescription>
+                            The AI returned invalid responses for these CVs. 
+                            Retry logic has been added - click "Retry Failed" to reprocess with new validation.
+                          </AlertDescription>
+                        </Alert>
+                        
+                        <div className="space-y-2">
+                          {jsonErrors.map(log => (
+                            <div key={log.id} className="flex items-start gap-2 p-2 bg-muted rounded-md">
+                              <FileText className="h-4 w-4 mt-0.5 text-muted-foreground" />
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-medium truncate">{log.source_file}</p>
+                                <p className="text-xs text-muted-foreground break-words">
+                                  {log.error_message?.substring(0, 100)}...
+                                </p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  );
+                })()}
+                
+                {/* Other Errors */}
+                {(() => {
+                  const otherErrors = failedLogs.filter(log => 
+                    !log.error_message?.includes('Maximum call stack') &&
+                    !log.error_message?.includes('JSON') &&
+                    !log.error_message?.includes('parsing')
+                  );
+                  
+                  if (otherErrors.length === 0) return null;
+                  
+                  return (
+                    <AccordionItem value="other-errors">
+                      <AccordionTrigger className="hover:no-underline">
+                        <div className="flex items-center gap-2">
+                          <Badge variant="destructive">{otherErrors.length}</Badge>
+                          <span>Other Errors</span>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="space-y-2">
+                          {otherErrors.map(log => (
+                            <div key={log.id} className="flex items-start gap-2 p-2 bg-muted rounded-md">
+                              <FileText className="h-4 w-4 mt-0.5 text-muted-foreground" />
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-medium truncate">{log.source_file}</p>
+                                <p className="text-xs text-muted-foreground break-words">
+                                  {log.error_message || 'Unknown error'}
+                                </p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  );
+                })()}
+              </Accordion>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Completed CVs Summary */}
+        {completedLogs.length > 0 && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-500" />
+                Successfully Processed ({completedLogs.length})
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2 max-h-96 overflow-y-auto">
+                {completedLogs.map((log) => (
+                  <div key={log.id} className="flex items-center justify-between p-3 border rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <FileText className="h-4 w-4 text-primary" />
+                      <div>
+                        <div className="font-medium text-sm">{log.source_file}</div>
+                        <div className="text-xs text-muted-foreground">
+                          {new Date(log.processed_at).toLocaleString()}
+                        </div>
                       </div>
                     </div>
+                    <div className="flex gap-4 text-sm">
+                      <span className="text-muted-foreground">
+                        {log.skills_extracted || 0} skill keywords
+                      </span>
+                      <Badge variant="outline" className="bg-green-50">completed</Badge>
+                    </div>
                   </div>
-                  <div className="flex gap-4 text-sm">
-                    <span className="text-muted-foreground">
-                      {log.skills_extracted || 0} skill keywords
-                    </span>
-                    <span className={`px-2 py-1 rounded-full text-xs ${
-                      log.status === 'completed' ? 'bg-green-100 text-green-700' :
-                      log.status === 'failed' ? 'bg-red-100 text-red-700' :
-                      'bg-yellow-100 text-yellow-700'
-                    }`}>
-                      {log.status}
-                    </span>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="text-center py-8 text-muted-foreground">
-                No ingestion logs yet. Click "Start Ingestion" to begin processing CVs.
+                ))}
               </div>
-            )}
-          </div>
-        </Card>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </div>
   );

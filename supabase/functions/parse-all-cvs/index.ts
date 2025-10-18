@@ -176,7 +176,8 @@ serve(async (req) => {
           let base64: string;
           
           try {
-            base64 = btoa(String.fromCharCode(...uint8Array));
+            // PHASE 1 FIX: Use Array.from() instead of spread operator to avoid stack overflow on large files
+            base64 = btoa(Array.from(uint8Array, byte => String.fromCharCode(byte)).join(''));
           } catch (conversionError) {
             console.error(`Base64 conversion failed for ${fileName}:`, conversionError);
             throw new Error(`File too large or corrupted: ${conversionError instanceof Error ? conversionError.message : 'Unknown error'}`);
@@ -215,44 +216,76 @@ serve(async (req) => {
 
 Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`;
 
-          const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${lovableApiKey}`,
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              model: 'google/gemini-2.5-flash',
-              messages: [
-                { 
-                  role: 'user', 
-                  content: `${extractionPrompt}\n\nCV File: ${fileName}\n\nPlease analyze and extract the information.` 
-                }
-              ],
-              temperature: 0.3,
-            }),
-          });
-
-          if (!aiResponse.ok) {
-            throw new Error(`AI extraction failed: ${aiResponse.status}`);
-          }
-
-          const aiData = await aiResponse.json();
+          // PHASE 2: Add retry logic with JSON validation
           let extractedData = {};
-          
-          try {
-            const content = aiData.choices[0].message.content;
-            const jsonMatch = content.match(/```(?:json)?\s*(\{[\s\S]*\})\s*```/) || 
-                            content.match(/(\{[\s\S]*\})/);
-            
-            if (jsonMatch) {
-              extractedData = JSON.parse(jsonMatch[1]);
-            } else {
-              extractedData = JSON.parse(content);
+          let retryCount = 0;
+          const MAX_RETRIES = 2;
+
+          while (retryCount <= MAX_RETRIES) {
+            try {
+              const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                  'Authorization': `Bearer ${lovableApiKey}`,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  model: 'google/gemini-2.5-flash',
+                  messages: [
+                    { 
+                      role: 'user', 
+                      content: `${extractionPrompt}\n\nCV File: ${fileName}\n\nPlease analyze and extract the information.` 
+                    }
+                  ],
+                  temperature: 0.3,
+                }),
+              });
+
+              if (!aiResponse.ok) {
+                throw new Error(`AI extraction failed: ${aiResponse.status}`);
+              }
+
+              const aiData = await aiResponse.json();
+              const content = aiData.choices[0].message.content;
+              
+              // Try to parse JSON
+              const jsonMatch = content.match(/```(?:json)?\s*(\{[\s\S]*\})\s*```/) || 
+                              content.match(/(\{[\s\S]*\})/);
+              
+              if (jsonMatch) {
+                extractedData = JSON.parse(jsonMatch[1]);
+              } else {
+                extractedData = JSON.parse(content);
+              }
+
+              // Validate required fields
+              const requiredFields = ['name', 'title'];
+              const missingFields = requiredFields.filter(field => !(extractedData as any)[field]);
+              
+              if (missingFields.length > 0) {
+                throw new Error(`AI response missing required fields: ${missingFields.join(', ')}`);
+              }
+
+              // Success - break retry loop
+              console.log(`✓ AI extraction successful for ${fileName}`);
+              break;
+              
+            } catch (aiError) {
+              retryCount++;
+              console.error(`AI attempt ${retryCount} failed for ${fileName}:`, aiError);
+              
+              if (retryCount > MAX_RETRIES) {
+                console.error(`Failed after ${MAX_RETRIES} retries, using fallback data`);
+                extractedData = { 
+                  rawContent: 'Failed to extract structured data',
+                  error: aiError instanceof Error ? aiError.message : 'Unknown error'
+                };
+                break;
+              }
+              
+              // Wait 2 seconds before retry
+              await new Promise(resolve => setTimeout(resolve, 2000));
             }
-          } catch (parseError) {
-            console.error('Failed to parse AI response:', parseError);
-            extractedData = { rawContent: aiData.choices[0].message.content };
           }
 
           parsedCVs.push({
