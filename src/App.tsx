@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import { RouteNormalizer } from "./components/RouteNormalizer";
 import { MicrositeLayout } from "./components/microsites/MicrositeLayout";
 import { MicrositeGuard } from "./components/MicrositeGuard";
 
@@ -60,11 +61,12 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <RouteNormalizer />
+          <Routes>
           {/* Main site routes with main layout */}
           <Route path="/" element={<Layout><Index /></Layout>} />
           <Route path="/executive-profile" element={<Layout><ExecutiveProfile /></Layout>} />
