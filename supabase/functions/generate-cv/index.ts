@@ -35,6 +35,24 @@ serve(async (req) => {
       .limit(1)
       .single();
 
+    // Fetch top skills from Skills Matrix for weighted CV generation
+    const { data: topSkills, error: skillsError } = await supabase
+      .from('175+ Skills Matrix')
+      .select('skill, domain, alignment_score, auto_weight, "Proficiency Level", rating, proof')
+      .order('alignment_score', { ascending: false })
+      .limit(30);
+
+    if (skillsError) {
+      console.error('Error fetching skills matrix:', skillsError);
+    }
+
+    // Build weighted skills context for AI
+    const skillsContext = topSkills && topSkills.length > 0
+      ? topSkills
+          .map((s, idx) => `${idx + 1}. ${s.skill} (${s.domain || 'General'}) — ${s['Proficiency Level'] || 'Intermediate'} — Alignment: ${Math.round(Number(s.alignment_score) || 70)}% — Evidence: ${s.proof || 'Available'}`)
+          .join('\n')
+      : 'No skills matrix data available';
+
     if (profileError || !profile) {
       console.error('Error fetching profile:', profileError);
       return new Response(
@@ -115,6 +133,16 @@ ${JSON.stringify(profile.achievements, null, 2)}
 
 EDUCATION:
 ${JSON.stringify(profile.education, null, 2)}
+
+PRIORITY SKILLS (ranked by market alignment and relevance):
+${skillsContext}
+
+CRITICAL INSTRUCTIONS FOR SKILLS:
+- Emphasize the TOP 10 skills from the priority list heavily throughout the CV
+- Integrate high-alignment skills naturally into achievements and responsibilities
+- Use specific examples and metrics when mentioning priority skills
+- Ensure skills with alignment_score > 85% appear multiple times across different sections
+- Match skill proficiency levels to job requirements
 
 FORMATTING RULES (CRITICAL - MUST FOLLOW EXACTLY):
 - Use EXACTLY 2 blank lines between major sections (##)
@@ -260,6 +288,47 @@ Generate a CV optimized for this specific opportunity. Focus on ROI, leadership 
       }
     }
 
+    // Extract which skills were actually used in the generated CV
+    const usedSkills = topSkills
+      ? topSkills
+          .filter(s => generatedCV.toLowerCase().includes(s.skill.toLowerCase()))
+          .map(s => ({
+            skill: s.skill,
+            domain: s.domain,
+            alignment_score: s.alignment_score,
+            proficiency: s['Proficiency Level']
+          }))
+      : [];
+
+    const skillAlignmentScore = topSkills && topSkills.length > 0
+      ? (usedSkills.length / Math.min(topSkills.length, 20)) * 100
+      : 0;
+
+    console.log(`Skills used in CV: ${usedSkills.length}/${topSkills?.length || 0} (${Math.round(skillAlignmentScore)}% alignment)`);
+
+    // Update skills_metrics with CV usage data
+    if (usedSkills.length > 0) {
+      const metricsUpdates = usedSkills.map(s => ({
+        job_id: `cv-gen-${Date.now()}`,
+        skill_name: s.skill,
+        appeared_in_jd: true,
+        present_in_cv: true,
+        action: 'promoted',
+        confidence_score: Number(s.alignment_score) || 70,
+        alignment_delta: 0,
+        old_score: Number(s.alignment_score) || 70,
+        new_score: Number(s.alignment_score) || 70,
+      }));
+
+      const { error: metricsError } = await supabase
+        .from('skills_metrics')
+        .insert(metricsUpdates);
+
+      if (metricsError) {
+        console.error('Failed to log skills metrics:', metricsError);
+      }
+    }
+
     // Save to database (use cv_id, not id)
     const { data: generation, error: saveError } = await supabase
       .from('cv_generations')
@@ -270,6 +339,8 @@ Generate a CV optimized for this specific opportunity. Focus on ROI, leadership 
         format: 'executive',
         match_score: Math.round(matchScore * 100) / 100,
         user_email: userEmail || null,
+        skills_used: usedSkills,
+        skill_alignment_score: skillAlignmentScore,
       })
       .select()
       .single();

@@ -1,0 +1,13 @@
+name: Nightly Skills Update
+on:
+  schedule:
+    - cron: '0 2 * * *' # 2 AM daily
+  workflow_dispatch: # Manual trigger
+jobs:
+  update-skills:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for pending JD extractions
+        run: |
+          echo "Nightly skills update triggered"
+          # Future: Add curl command to trigger extraction

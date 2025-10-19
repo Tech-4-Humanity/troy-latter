@@ -247,11 +247,16 @@ export function CVGeneratorForm() {
           </Button>
         </div>
         
-        <JobDescriptionInput
-          value={jobDescription}
-          onChange={setJobDescription}
-          disabled={isGenerating}
-        />
+        <div className="space-y-2">
+          <JobDescriptionInput
+            value={jobDescription}
+            onChange={setJobDescription}
+            disabled={isGenerating}
+          />
+          {jobDescription.length >= 50 && (
+            <JDSkillsExtractor jobDescription={jobDescription} />
+          )}
+        </div>
 
         <div className="space-y-2">
           <Label htmlFor="email" className="text-sm text-muted-foreground">

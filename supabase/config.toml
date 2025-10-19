@@ -29,3 +29,9 @@ verify_jwt = false
 
 [functions.process-single-cv]
 verify_jwt = false
+
+[functions.extract-skills-from-jd]
+verify_jwt = false
+
+[functions.update-skills-from-jd]
+verify_jwt = false
