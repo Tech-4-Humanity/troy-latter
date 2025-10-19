@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Link } from 'react-router-dom';
 import { CVGeneratorForm } from '@/components/cv/CVGeneratorForm';
@@ -8,19 +8,29 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Database } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export default function CVGenerator() {
-  // Trigger on-demand CV ingestion when page loads
+  const hasRunIngestion = useRef(false);
+
+  // Trigger on-demand CV ingestion when page loads (debounced, runs once)
   useEffect(() => {
+    if (hasRunIngestion.current) return;
+
     const checkAndIngest = async () => {
       try {
         // Check if ingestion needed (last run > 1 hour ago)
-        const { data: lastSession } = await supabase
+        const { data: lastSession, error: sessionError } = await supabase
           .from('processing_sessions')
           .select('started_at, status')
           .order('started_at', { ascending: false })
           .limit(1)
           .maybeSingle();
+        
+        if (sessionError) {
+          console.warn('Could not fetch session status:', sessionError);
+          return;
+        }
         
         // Don't trigger if already running
         if (lastSession?.status === 'running') {
@@ -34,20 +44,30 @@ export default function CVGenerator() {
         
         if (!lastRun || lastRun < oneHourAgo) {
           console.log('Triggering CV ingestion on page load...');
-          await supabase.functions.invoke('parse-all-cvs');
-          toast.success('CV ingestion started in background');
+          hasRunIngestion.current = true;
+          
+          const { error: invokeError } = await supabase.functions.invoke('parse-all-cvs');
+          
+          if (!invokeError) {
+            toast.success('CV ingestion started in background');
+          } else {
+            console.warn('Ingestion invoke error:', invokeError);
+          }
         }
       } catch (error) {
         console.error('Failed to trigger ingestion:', error);
+        // Silent fail - don't block user experience
       }
     };
     
-    checkAndIngest();
+    const timeoutId = setTimeout(checkAndIngest, 500);
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
-    <div className="min-h-screen">
-      <PageTitle title="AI CV Generator" />
+    <ErrorBoundary>
+      <div className="min-h-screen">
+        <PageTitle title="AI CV Generator" />
       
       <div className="container mx-auto px-4 py-8">
         {/* Intro Section */}
@@ -189,5 +209,6 @@ export default function CVGenerator() {
         </div>
       </div>
     </div>
+    </ErrorBoundary>
   );
 }

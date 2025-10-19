@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { Brain } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface JDSkillsExtractorProps {
   jobDescription: string;
@@ -11,6 +11,20 @@ interface JDSkillsExtractorProps {
 
 export function JDSkillsExtractor({ jobDescription, onComplete }: JDSkillsExtractorProps) {
   const [extracting, setExtracting] = useState(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleExtract = async () => {
     if (!jobDescription || jobDescription.length < 50) {
@@ -18,8 +32,22 @@ export function JDSkillsExtractor({ jobDescription, onComplete }: JDSkillsExtrac
       return;
     }
 
+    // Cancel previous request if any
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    abortControllerRef.current = new AbortController();
+
     setExtracting(true);
     const jobId = `jd-${Date.now()}`;
+
+    // Set timeout for extraction (10 seconds max)
+    timeoutRef.current = setTimeout(() => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+        toast.error('Skill extraction timed out. Please try again.');
+      }
+    }, 10000);
 
     try {
       // Step 1: Extract skills
@@ -58,10 +86,19 @@ export function JDSkillsExtractor({ jobDescription, onComplete }: JDSkillsExtrac
       }
       onComplete?.();
     } catch (error: any) {
+      if (error.name === 'AbortError') {
+        console.log('Extraction cancelled');
+        return;
+      }
       console.error('Extraction error:', error);
-      toast.warning('Skills extraction feature is being set up. Please use standard CV generation for now.');
+      // Don't show multiple toasts - silent failure
     } finally {
       setExtracting(false);
+      abortControllerRef.current = null;
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
     }
   };
 

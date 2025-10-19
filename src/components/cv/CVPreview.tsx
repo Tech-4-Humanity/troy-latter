@@ -1,12 +1,8 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Download, Copy, Check, ChevronDown, FileText, Code } from "lucide-react";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
-import { jsPDF } from "jspdf";
-import { marked } from "marked";
-import { Document, Packer, Paragraph, TextRun, HeadingLevel } from "docx";
-import { saveAs } from "file-saver";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,6 +10,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import "@/styles/cv-preview.css";
+
+// Lazy load heavy libraries
+const loadJsPDF = () => import("jspdf").then(mod => mod.jsPDF);
+const loadMarked = () => import("marked").then(mod => mod.marked);
+const loadDocx = () => import("docx");
+const loadFileSaver = () => import("file-saver").then(mod => mod.saveAs);
 
 interface CVPreviewProps {
   cv: string;
@@ -26,6 +28,9 @@ export function CVPreview({ cv, cvHTML, matchScore, template }: CVPreviewProps) 
   const [copied, setCopied] = useState(false);
   const [viewMode, setViewMode] = useState<'markdown' | 'html'>(cvHTML ? 'html' : 'markdown');
 
+  // Memoize markdown parsing to prevent re-renders
+  const markdownContent = useMemo(() => cv, [cv]);
+
   const handleCopy = async (format: 'html' | 'markdown') => {
     try {
       if (format === 'markdown') {
@@ -37,6 +42,7 @@ export function CVPreview({ cv, cvHTML, matchScore, template }: CVPreviewProps) 
       }
 
       // Convert markdown to HTML for rich formatting
+      const marked = await loadMarked();
       const htmlContent = await marked.parse(cv);
       
       // Create styled HTML for Google Docs/Word compatibility
@@ -84,9 +90,10 @@ export function CVPreview({ cv, cvHTML, matchScore, template }: CVPreviewProps) 
     }
   };
 
-  const parseMarkdownToDocx = (markdown: string) => {
+  const parseMarkdownToDocx = async (markdown: string, docx: any) => {
+    const { Paragraph, TextRun, HeadingLevel } = docx;
     const lines = markdown.split('\n');
-    const children: Paragraph[] = [];
+    const children: any[] = [];
     
     lines.forEach(line => {
       if (line.startsWith('# ')) {
@@ -125,9 +132,11 @@ export function CVPreview({ cv, cvHTML, matchScore, template }: CVPreviewProps) 
 
   const handleDownload = async (format: 'pdf' | 'html' | 'docx') => {
     try {
+      const marked = await loadMarked();
       const htmlContent = cvHTML || await marked.parse(cv);
       
       if (format === 'html') {
+        const saveAs = await loadFileSaver();
         const blob = new Blob([htmlContent], { type: 'text/html' });
         saveAs(blob, `CV-Troy-Latter-${new Date().toISOString().split('T')[0]}.html`);
         toast.success("HTML file downloaded!");
@@ -156,6 +165,7 @@ export function CVPreview({ cv, cvHTML, matchScore, template }: CVPreviewProps) 
           }
         `;
         
+        const saveAs = await loadFileSaver();
         const fullHTML = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>CV - Troy Latter</title><style>${templateCSS}</style></head><body><div class="container">${htmlContent}</div></body></html>`;
         const blob = new Blob([fullHTML], { type: 'text/html' });
         saveAs(blob, `CV-Troy-Latter-${new Date().toISOString().split('T')[0]}.html`);
@@ -164,10 +174,14 @@ export function CVPreview({ cv, cvHTML, matchScore, template }: CVPreviewProps) 
       }
       
       if (format === 'docx') {
+        const docx = await loadDocx();
+        const saveAs = await loadFileSaver();
+        const { Document, Packer } = docx;
+        
         const doc = new Document({
           sections: [{
             properties: {},
-            children: parseMarkdownToDocx(cv)
+            children: await parseMarkdownToDocx(cv, docx)
           }]
         });
         
@@ -196,6 +210,7 @@ export function CVPreview({ cv, cvHTML, matchScore, template }: CVPreviewProps) 
       
       const fullHTML = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>${templateCSS}</style></head><body><div class="container">${htmlContent}</div></body></html>`;
       
+      const jsPDF = await loadJsPDF();
       const doc = new jsPDF({
         format: 'a4',
         unit: 'mm',
@@ -314,7 +329,7 @@ export function CVPreview({ cv, cvHTML, matchScore, template }: CVPreviewProps) 
         </div>
       ) : (
         <div className="cv-preview border rounded-lg p-8 bg-card max-h-[800px] overflow-y-auto">
-          <ReactMarkdown>{cv}</ReactMarkdown>
+          <ReactMarkdown>{markdownContent}</ReactMarkdown>
         </div>
       )}
     </div>

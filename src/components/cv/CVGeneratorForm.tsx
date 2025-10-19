@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -117,12 +117,19 @@ export function CVGeneratorForm() {
   const [generatedCV, setGeneratedCV] = useState<string | null>(null);
   const [generatedHTML, setGeneratedHTML] = useState<string | null>(null);
   const [matchScore, setMatchScore] = useState<number | undefined>();
+  const abortControllerRef = useRef<AbortController | null>(null);
 
-  const handleGenerate = async () => {
+  const handleGenerate = useCallback(async () => {
     if (jobDescription.trim().length < 50) {
       toast.error("Please enter a job description with at least 50 characters");
       return;
     }
+
+    // Cancel any in-flight requests
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    abortControllerRef.current = new AbortController();
 
     setIsGenerating(true);
     setGeneratedCV(null);
@@ -164,10 +171,14 @@ export function CVGeneratorForm() {
       }
     } finally {
       setIsGenerating(false);
+      abortControllerRef.current = null;
     }
-  };
+  }, [jobDescription, userEmail, selectedTemplate]);
 
-  const canGenerate = jobDescription.trim().length >= 50 && jobDescription.trim().length <= 5000;
+  const canGenerate = useMemo(
+    () => jobDescription.trim().length >= 50 && jobDescription.trim().length <= 5000,
+    [jobDescription]
+  );
 
   return (
     <div className="space-y-8">

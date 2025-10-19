@@ -57,11 +57,27 @@ export function SkillsMatrix() {
         .from("175+ Skills Matrix")
         .select("*");
 
-      if (error) throw error;
-      setSkills(data || []);
+      if (error) {
+        console.error("Supabase error:", error);
+        throw error;
+      }
+
+      // Defensive null checks and data validation
+      const validatedData = (data || []).map(skill => ({
+        ...skill,
+        rating: skill.rating ?? 0,
+        skill: skill.skill ?? 'Unknown',
+        domain: skill.domain ?? 'General',
+        "Proficiency Level": skill["Proficiency Level"] ?? 'Intermediate',
+        proof: skill.proof ?? '',
+        recency_year: skill.recency_year ?? new Date().getFullYear().toString(),
+        impact_metric: skill.impact_metric ?? ''
+      }));
+
+      setSkills(validatedData);
     } catch (error) {
       console.error("Error fetching skills:", error);
-      toast.error("Failed to load skills");
+      toast.error("Failed to load skills matrix. The data may still be syncing.");
     } finally {
       setLoading(false);
     }
@@ -258,10 +274,22 @@ export function SkillsMatrix() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center p-12">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading skills matrix...</p>
+      <div className="space-y-6">
+        <div className="bg-card p-6 rounded-lg border animate-pulse">
+          <div className="h-8 bg-muted rounded w-1/3 mb-4" />
+          <div className="h-4 bg-muted rounded w-2/3 mb-6" />
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            {[1, 2, 3, 4].map(i => (
+              <div key={i} className="h-10 bg-muted rounded" />
+            ))}
+          </div>
+        </div>
+        <div className="border rounded-lg overflow-hidden">
+          <div className="p-8 space-y-4">
+            {[1, 2, 3, 4, 5].map(i => (
+              <div key={i} className="h-12 bg-muted rounded animate-pulse" />
+            ))}
+          </div>
         </div>
       </div>
     );
