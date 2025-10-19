@@ -24,6 +24,7 @@ import CVGenerator from "./pages/tools/CVGenerator";
 import SkillsMatrix from "./pages/tools/SkillsMatrix";
 import SkillsAnalytics from "./pages/tools/SkillsAnalytics";
 import CVIngestionDashboard from "./pages/tools/CVIngestionDashboard";
+import SkillsVisualizations from "./pages/tools/SkillsVisualizations";
 
 // Microsite pages
 import MicrositeIndex from "./pages/microsites/MicrositeIndex";
@@ -86,6 +87,7 @@ const App = () => (
             <Route path="/tools/cv-ingestion" element={<Layout><CVIngestionDashboard /></Layout>} />
             <Route path="/tools/skills-matrix" element={<Layout><SkillsMatrix /></Layout>} />
             <Route path="/tools/skills-analytics" element={<Layout><SkillsAnalytics /></Layout>} />
+            <Route path="/tools/skills-visualizations" element={<Layout><SkillsVisualizations /></Layout>} />
             <Route path="/cv-ingestion" element={<Navigate to="/tools/cv-ingestion" replace />} />
           {/* <Route path="/resources/lean-canvas" element={<Layout><LeanCanvas /></Layout>} /> */}
           <Route path="/ai-ethics" element={<Layout><AIEthics /></Layout>} />

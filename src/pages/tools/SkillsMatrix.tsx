@@ -5,8 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, TrendingDown, Minus, Plus, Download, Search, Upload, RefreshCw } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus, Plus, Download, Search, Upload, RefreshCw, BarChart } from 'lucide-react';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -28,6 +29,7 @@ interface Skill {
 }
 
 export default function SkillsMatrix() {
+  const navigate = useNavigate();
   const [skills, setSkills] = useState<Skill[]>([]);
   const [filteredSkills, setFilteredSkills] = useState<Skill[]>([]);
   const [loading, setLoading] = useState(true);
@@ -295,13 +297,18 @@ export default function SkillsMatrix() {
             Self-learning skills inventory with {skills.length} tracked competencies
           </p>
         </div>
-        <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
-          <DialogTrigger asChild>
-            <Button>
-              <Plus className="w-4 h-4 mr-2" />
-              Add Skill
-            </Button>
-          </DialogTrigger>
+        <div className="flex gap-2">
+          <Button onClick={() => navigate('/tools/skills-visualizations')} variant="outline">
+            <BarChart className="w-4 h-4 mr-2" />
+            View Visualizations
+          </Button>
+          <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
+            <DialogTrigger asChild>
+              <Button>
+                <Plus className="w-4 h-4 mr-2" />
+                Add Skill
+              </Button>
+            </DialogTrigger>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Add New Skill</DialogTitle>
@@ -354,7 +361,8 @@ export default function SkillsMatrix() {
               <Button onClick={handleAddSkill} className="w-full">Add Skill</Button>
             </div>
           </DialogContent>
-        </Dialog>
+          </Dialog>
+        </div>
       </div>
 
       {/* Filters & Controls */}
