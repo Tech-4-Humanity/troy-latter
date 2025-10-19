@@ -11386,9 +11386,11 @@ export type Database = {
       }
       cv_generations: {
         Row: {
+          ai_model: string | null
           created_at: string | null
           format: string | null
           generated_cv: string
+          generated_html: string | null
           generation_time_ms: number | null
           id: string
           job_description: string
@@ -11397,14 +11399,17 @@ export type Database = {
           skill_alignment_score: number | null
           skills_used: Json | null
           style_version: string | null
+          template_name: string | null
           tokens_used: number | null
           updated_at: string | null
           user_email: string | null
         }
         Insert: {
+          ai_model?: string | null
           created_at?: string | null
           format?: string | null
           generated_cv: string
+          generated_html?: string | null
           generation_time_ms?: number | null
           id?: string
           job_description: string
@@ -11413,14 +11418,17 @@ export type Database = {
           skill_alignment_score?: number | null
           skills_used?: Json | null
           style_version?: string | null
+          template_name?: string | null
           tokens_used?: number | null
           updated_at?: string | null
           user_email?: string | null
         }
         Update: {
+          ai_model?: string | null
           created_at?: string | null
           format?: string | null
           generated_cv?: string
+          generated_html?: string | null
           generation_time_ms?: number | null
           id?: string
           job_description?: string
@@ -11429,6 +11437,7 @@ export type Database = {
           skill_alignment_score?: number | null
           skills_used?: Json | null
           style_version?: string | null
+          template_name?: string | null
           tokens_used?: number | null
           updated_at?: string | null
           user_email?: string | null

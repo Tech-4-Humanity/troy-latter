@@ -14,8 +14,11 @@ interface CVGeneration {
   job_description: string;
   match_score: number;
   generated_cv: string;
+  generated_html: string | null;
+  template_name: string | null;
   user_email: string | null;
   skill_alignment_score: number;
+  ai_model: string | null;
 }
 
 export default function CVGenerationHistory() {
@@ -31,7 +34,7 @@ export default function CVGenerationHistory() {
     try {
       const { data, error } = await supabase
         .from('cv_generations')
-        .select('id, created_at, job_description, match_score, generated_cv, user_email, skill_alignment_score')
+        .select('id, created_at, job_description, match_score, generated_cv, generated_html, template_name, user_email, skill_alignment_score, ai_model')
         .order('created_at', { ascending: false })
         .limit(50);
 
@@ -132,11 +135,37 @@ export default function CVGenerationHistory() {
                           {Math.round(gen.skill_alignment_score)}% Skills Used
                         </Badge>
                       )}
+                      {gen.template_name && (
+                        <Badge variant="outline" className="capitalize">
+                          {gen.template_name} Template
+                        </Badge>
+                      )}
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 flex-wrap">
+                    {gen.generated_html && (
+                      <Button
+                        variant="default"
+                        size="sm"
+                        onClick={() => {
+                          const blob = new Blob([gen.generated_html!], { type: 'text/html' });
+                          const url = URL.createObjectURL(blob);
+                          const a = document.createElement('a');
+                          a.href = url;
+                          a.download = `CV-${gen.id}.html`;
+                          document.body.appendChild(a);
+                          a.click();
+                          document.body.removeChild(a);
+                          URL.revokeObjectURL(url);
+                          toast.success('HTML CV downloaded');
+                        }}
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Download HTML
+                      </Button>
+                    )}
                     <Button
                       variant="outline"
                       size="sm"

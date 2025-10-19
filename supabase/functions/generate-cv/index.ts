@@ -404,18 +404,24 @@ Generate a CV optimized for this specific opportunity. Focus on ROI, leadership 
       }
     }
 
-    // Save to database (use cv_id, not id)
+    // Save EVERYTHING to database for learning and tracking
+    const generationStartTime = Date.now();
+    
     const { data: generation, error: saveError } = await supabase
       .from('cv_generations')
       .insert({
         profile_id: profile.cv_id,
         job_description: jobDescription,
         generated_cv: generatedCV,
+        generated_html: generatedHTML, // NOW SAVING HTML
+        template_name: template, // CORRECT TEMPLATE NAME
+        ai_model: 'google/gemini-2.5-flash', // TRACK WHICH MODEL
         format: 'executive',
         match_score: Math.round(matchScore * 100) / 100,
         user_email: userEmail || null,
         skills_used: usedSkills,
         skill_alignment_score: skillAlignmentScore,
+        generation_time_ms: Date.now() - generationStartTime,
       })
       .select()
       .single();
@@ -423,6 +429,8 @@ Generate a CV optimized for this specific opportunity. Focus on ROI, leadership 
     if (saveError) {
       console.error('Error saving CV generation:', saveError);
       // Don't fail the request, just log the error
+    } else {
+      console.log('CV generation saved successfully with ID:', generation?.id);
     }
 
     console.log('CV generated successfully. Match score:', matchScore.toFixed(2));
