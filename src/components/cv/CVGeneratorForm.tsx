@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Loader2, Sparkles } from "lucide-react";
 import { JobDescriptionInput } from "./JobDescriptionInput";
 import { CVPreview } from "./CVPreview";
+import { JDSkillsExtractor } from "./JDSkillsExtractor";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
