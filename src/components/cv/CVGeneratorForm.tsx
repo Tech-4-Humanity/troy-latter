@@ -137,6 +137,29 @@ export function CVGeneratorForm() {
     setMatchScore(undefined);
 
     try {
+      // PHASE 1: Automatic skill extraction before CV generation
+      toast.info("Extracting skills from job description...");
+      
+      const { data: skillsData, error: skillsError } = await supabase.functions.invoke('extract-skills-from-jd', {
+        body: { jdText: jobDescription.trim(), jobId: `temp-${Date.now()}` }
+      });
+      
+      if (skillsError) {
+        console.warn('Skill extraction warning:', skillsError);
+      } else if (skillsData?.skills) {
+        // Update skills matrix with extracted skills
+        const { error: updateError } = await supabase.functions.invoke('update-skills-from-jd', {
+          body: { extractedSkills: skillsData.skills, jobId: skillsData.jobId }
+        });
+        
+        if (!updateError) {
+          toast.success(`Extracted ${skillsData.skills.length} skills from JD`);
+        }
+      }
+
+      // PHASE 2: Generate CV with updated skills
+      toast.info("Generating tailored CV...");
+      
       const { data, error } = await supabase.functions.invoke('generate-cv', {
         body: { 
           jobDescription: jobDescription.trim(),
@@ -157,7 +180,14 @@ export function CVGeneratorForm() {
       setGeneratedCV(data.cv);
       setGeneratedHTML(data.cvHTML);
       setMatchScore(data.matchScore);
-      toast.success("CV generated successfully!");
+      toast.success(
+        <div>
+          CV generated successfully!{' '}
+          <a href="/tools/cv-generation-history" className="underline font-semibold">
+            View history
+          </a>
+        </div>
+      );
 
     } catch (error: any) {
       console.error('CV generation error:', error);
@@ -265,9 +295,9 @@ export function CVGeneratorForm() {
             onChange={setJobDescription}
             disabled={isGenerating}
           />
-          {jobDescription.length >= 50 && (
-            <JDSkillsExtractor jobDescription={jobDescription} />
-          )}
+          <p className="text-xs text-muted-foreground">
+            ✨ Skills will be automatically extracted when you generate the CV
+          </p>
         </div>
 
         <div className="space-y-2">

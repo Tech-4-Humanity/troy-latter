@@ -110,7 +110,7 @@ EXECUTIVE CV FORMATTING STANDARDS:
 - Emphasize C-suite interaction and stakeholder management
 `;
 
-    // Build system prompt with Troy's complete profile
+    // PHASE 4: Enhanced system prompt for better content quality
     const systemPrompt = `You are an expert CV/resume writer specializing in executive-level positions. Your task is to generate a tailored CV based on a job description.
 
 ${templateInstructions}
@@ -140,9 +140,12 @@ ${skillsContext}
 CRITICAL INSTRUCTIONS FOR SKILLS:
 - Emphasize the TOP 10 skills from the priority list heavily throughout the CV
 - Integrate high-alignment skills naturally into achievements and responsibilities
-- Use specific examples and metrics when mentioning priority skills
+- Use SPECIFIC examples and EXACT metrics when mentioning priority skills
 - Ensure skills with alignment_score > 85% appear multiple times across different sections
 - Match skill proficiency levels to job requirements
+- Include REAL company names from Troy's experience (never use placeholder companies)
+- Use SPECIFIC numbers, percentages, and dollar amounts from achievements
+- Demonstrate HOW each skill was applied in real scenarios
 
 FORMATTING RULES (CRITICAL - MUST FOLLOW EXACTLY):
 - Use EXACTLY 2 blank lines between major sections (##)
@@ -276,13 +279,85 @@ Generate a CV optimized for this specific opportunity. Focus on ROI, leadership 
     const matchedKeywords = jobKeywords.filter(keyword => cvKeywords.includes(keyword));
     const matchScore = Math.min(100, (matchedKeywords.length / jobKeywords.length) * 100);
 
-    // Generate HTML version if template is available
+    // PHASE 2: Generate HTML version using marked library for direct conversion
     let generatedHTML = null;
     if (htmlTemplateData) {
       try {
-        const structuredData = parseMarkdownToStructuredData(generatedCV, profile);
-        generatedHTML = injectContentIntoTemplate(htmlTemplateData.full_html, structuredData);
-        console.log('HTML template generated successfully');
+        // Import marked for markdown to HTML conversion
+        const { marked } = await import('https://esm.sh/marked@11.0.0');
+        
+        // Configure marked for professional formatting
+        marked.setOptions({
+          breaks: true,
+          gfm: true
+        });
+        
+        // Convert markdown to HTML
+        const htmlBody = await marked.parse(generatedCV);
+        
+        // Extract CSS styles from template
+        const cssMatch = htmlTemplateData.full_html.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
+        const cssStyles = cssMatch ? cssMatch[1] : '';
+        
+        // Create professional HTML document with template styling
+        generatedHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${profile.full_name} - CV</title>
+  <style>
+    ${cssStyles}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #fff;
+    }
+    h1 { 
+      color: ${template === 'blue' ? '#2563eb' : '#16a34a'}; 
+      border-bottom: 3px solid ${template === 'blue' ? '#2563eb' : '#16a34a'};
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    h2 { 
+      color: ${template === 'blue' ? '#1e40af' : '#15803d'}; 
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-size: 1.5em;
+    }
+    h3 { 
+      color: #374151; 
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+    ul { 
+      padding-left: 20px; 
+    }
+    li { 
+      margin-bottom: 8px; 
+    }
+    strong { 
+      color: #1f2937; 
+    }
+    @media print {
+      body { 
+        padding: 20px; 
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    ${htmlBody}
+  </div>
+</body>
+</html>`;
+        console.log('HTML generated successfully using marked library');
       } catch (error) {
         console.error('Error generating HTML template:', error);
       }

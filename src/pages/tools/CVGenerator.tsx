@@ -5,7 +5,7 @@ import { CVGeneratorForm } from '@/components/cv/CVGeneratorForm';
 import { SkillsMatrix } from '@/components/cv/SkillsMatrix';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Database } from 'lucide-react';
+import { Database, FileText } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
@@ -77,12 +77,20 @@ export default function CVGenerator() {
               <h2 className="text-2xl font-bold text-foreground">
                 How It Works
               </h2>
-              <Button asChild variant="outline" size="sm">
-                <Link to="/tools/cv-ingestion">
-                  <Database className="h-4 w-4 mr-2" />
-                  CV Ingestion Dashboard
-                </Link>
-              </Button>
+              <div className="flex gap-2">
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/tools/cv-generation-history">
+                    <FileText className="h-4 w-4 mr-2" />
+                    Generation History
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/tools/cv-ingestion">
+                    <Database className="h-4 w-4 mr-2" />
+                    CV Ingestion
+                  </Link>
+                </Button>
+              </div>
             </div>
             <p className="text-muted-foreground mb-4">
               Paste any job description below to instantly generate a tailored CV that highlights 

@@ -21,6 +21,7 @@ import Projects from "./pages/Projects";
 import ExperienceAndImpact from "./pages/ExperienceAndImpact";
 import AIEthics from "./pages/AIEthics";
 import CVGenerator from "./pages/tools/CVGenerator";
+import CVGenerationHistory from "./pages/tools/CVGenerationHistory";
 import SkillsMatrix from "./pages/tools/SkillsMatrix";
 import SkillsAnalytics from "./pages/tools/SkillsAnalytics";
 import CVIngestionDashboard from "./pages/tools/CVIngestionDashboard";
@@ -84,6 +85,7 @@ const App = () => (
             <Route path="/resources/whitepapers" element={<Layout><Whitepapers /></Layout>} />
             <Route path="/resources/projects" element={<Layout><Projects /></Layout>} />
             <Route path="/tools/cv-generator" element={<Layout><CVGenerator /></Layout>} />
+            <Route path="/tools/cv-generation-history" element={<Layout><CVGenerationHistory /></Layout>} />
             <Route path="/tools/cv-ingestion" element={<Layout><CVIngestionDashboard /></Layout>} />
             <Route path="/tools/skills-matrix" element={<Layout><SkillsMatrix /></Layout>} />
             <Route path="/tools/skills-analytics" element={<Layout><SkillsAnalytics /></Layout>} />
