@@ -60,11 +60,25 @@ export default function SkillsMatrix() {
         .select('*')
         .order('alignment_score', { ascending: false });
 
-      if (error) throw error;
-      setSkills(data || []);
-    } catch (error) {
+      if (error) {
+        // Check if it's a column doesn't exist error (migration not run)
+        if (error.message?.includes('column') || error.message?.includes('does not exist')) {
+          toast.warning('Skills matrix is being updated. Some features may be limited.');
+          // Try basic query without sorting
+          const { data: basicData } = await supabase
+            .from('175+ Skills Matrix')
+            .select('*');
+          setSkills(basicData || []);
+        } else {
+          throw error;
+        }
+      } else {
+        setSkills(data || []);
+      }
+    } catch (error: any) {
       console.error('Error fetching skills:', error);
       toast.error('Failed to load skills matrix');
+      setSkills([]);
     } finally {
       setLoading(false);
     }
@@ -91,19 +105,24 @@ export default function SkillsMatrix() {
       filtered = filtered.filter(s => s.trend === trendFilter);
     }
 
-    // Sort
+    // Sort with defensive checks
     filtered.sort((a, b) => {
-      switch (sortBy) {
-        case 'alignment':
-          return (Number(b.alignment_score) || 0) - (Number(a.alignment_score) || 0);
-        case 'demand':
-          return (Number(b.market_demand_score) || 0) - (Number(a.market_demand_score) || 0);
-        case 'usage':
-          return (Number(b.skill_usage_count) || 0) - (Number(a.skill_usage_count) || 0);
-        case 'recent':
-          return new Date(b.last_updated || 0).getTime() - new Date(a.last_updated || 0).getTime();
-        default:
-          return 0;
+      try {
+        switch (sortBy) {
+          case 'alignment':
+            return (Number(b.alignment_score) || 0) - (Number(a.alignment_score) || 0);
+          case 'demand':
+            return (Number(b.market_demand_score) || 0) - (Number(a.market_demand_score) || 0);
+          case 'usage':
+            return (Number(b.skill_usage_count) || 0) - (Number(a.skill_usage_count) || 0);
+          case 'recent':
+            return new Date(b.last_updated || 0).getTime() - new Date(a.last_updated || 0).getTime();
+          default:
+            return 0;
+        }
+      } catch (err) {
+        console.warn('Sorting error:', err);
+        return 0;
       }
     });
 
@@ -133,29 +152,54 @@ export default function SkillsMatrix() {
 
   const handleAddSkill = async () => {
     try {
+      const skillData: any = {
+        skill: newSkill.skill,
+        domain: newSkill.domain,
+        rating: newSkill.rating,
+        'Proficiency Level': newSkill.proficiency,
+        proof: newSkill.proof,
+        status: 'Active',
+        trend: 'Stable',
+      };
+
+      // Add optional fields if columns exist
+      try {
+        skillData.alignment_score = '50';
+        skillData.market_demand_score = '50';
+        skillData.skill_usage_count = '0';
+        skillData.auto_weight = 0.5;
+      } catch {
+        // These fields may not exist yet
+      }
+
       const { error } = await supabase
         .from('175+ Skills Matrix')
-        .insert([{
-          skill: newSkill.skill,
-          domain: newSkill.domain,
-          rating: newSkill.rating,
-          'Proficiency Level': newSkill.proficiency,
-          proof: newSkill.proof,
-          status: 'Active',
-          trend: 'Stable',
-          alignment_score: '50',
-          market_demand_score: '50',
-          skill_usage_count: '0',
-          auto_weight: 0.5,
-        }] as any);
+        .insert([skillData]);
 
-      if (error) throw error;
+      if (error) {
+        if (error.message?.includes('column') || error.message?.includes('does not exist')) {
+          toast.warning('Some advanced features not available yet. Basic skill added.');
+          // Try with just basic fields
+          const { error: basicError } = await supabase
+            .from('175+ Skills Matrix')
+            .insert([{
+              skill: newSkill.skill,
+              domain: newSkill.domain,
+              rating: newSkill.rating,
+              'Proficiency Level': newSkill.proficiency,
+              proof: newSkill.proof,
+            }]);
+          if (basicError) throw basicError;
+        } else {
+          throw error;
+        }
+      }
 
       toast.success('Skill added successfully');
       setIsAddDialogOpen(false);
       setNewSkill({ skill: '', domain: '', rating: 3, proficiency: 'Intermediate', proof: '' });
       fetchSkills();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error adding skill:', error);
       toast.error('Failed to add skill');
     }

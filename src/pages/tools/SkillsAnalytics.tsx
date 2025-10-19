@@ -14,8 +14,31 @@ export default function SkillsAnalytics() {
 
   const fetchMetrics = async () => {
     try {
-      const { data: skillsData } = await supabase.from('175+ Skills Matrix').select('*');
-      const { data: metricsData } = await supabase.from('skills_metrics').select('*').order('timestamp', { ascending: false }).limit(100);
+      const { data: skillsData, error: skillsError } = await supabase
+        .from('175+ Skills Matrix')
+        .select('*');
+
+      if (skillsError) {
+        console.error('Error fetching skills:', skillsError);
+        // If migration not run, show graceful message
+        if (skillsError.message?.includes('column') || skillsError.message?.includes('does not exist')) {
+          console.info('Analytics features are being set up. Migration in progress.');
+          setMetrics({ adoption: 0, drift: 0, velocity: 0 });
+          setLoading(false);
+          return;
+        }
+      }
+
+      // Try to fetch metrics, but don't fail if table doesn't exist yet
+      const { data: metricsData, error: metricsError } = await supabase
+        .from('skills_metrics')
+        .select('*')
+        .order('timestamp', { ascending: false })
+        .limit(100);
+
+      if (metricsError && metricsError.message?.includes('does not exist')) {
+        console.info('Metrics table not available yet. Using basic analytics.');
+      }
 
       const total = skillsData?.length || 0;
       const newSkills = metricsData?.filter(m => m.action === 'added').length || 0;
@@ -24,8 +47,9 @@ export default function SkillsAnalytics() {
       const avgDelta = metricsData?.reduce((acc, m) => acc + (Number(m.alignment_delta) || 0), 0) / (metricsData?.length || 1);
 
       setMetrics({ adoption: Math.round(adoption), drift: Math.round(drift), velocity: Math.round(avgDelta * 10) });
-    } catch (error) {
-      console.error('Error fetching metrics:', error);
+    } catch (error: any) {
+      console.error('Unexpected analytics error:', error);
+      setMetrics({ adoption: 0, drift: 0, velocity: 0 });
     } finally {
       setLoading(false);
     }

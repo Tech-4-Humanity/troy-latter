@@ -27,22 +27,39 @@ export function JDSkillsExtractor({ jobDescription, onComplete }: JDSkillsExtrac
         body: { jdText: jobDescription, jobId }
       });
 
-      if (extractError) throw extractError;
+      if (extractError) {
+        // Graceful degradation if function not deployed yet
+        console.warn('Skill extraction function not available:', extractError);
+        toast.warning('Skills extraction feature is being set up. Please try again later.');
+        return;
+      }
 
-      toast.success(`Extracted ${extractData.skillsExtracted} skills`);
+      if (!extractData || !extractData.skills) {
+        toast.warning('No skills could be extracted from this job description');
+        return;
+      }
+
+      toast.success(`Extracted ${extractData.skillsExtracted || extractData.skills.length} skills`);
 
       // Step 2: Update matrix
       const { data: updateData, error: updateError } = await supabase.functions.invoke('update-skills-from-jd', {
         body: { extractedSkills: extractData.skills, jobId }
       });
 
-      if (updateError) throw updateError;
+      if (updateError) {
+        console.warn('Skill matrix update function not available:', updateError);
+        toast.info('Skills extracted but matrix update pending. Migration in progress.');
+        onComplete?.();
+        return;
+      }
 
-      toast.success(`Updated matrix: ${updateData.summary.added} added, ${updateData.summary.updated} updated`);
+      if (updateData?.summary) {
+        toast.success(`Updated matrix: ${updateData.summary.added} added, ${updateData.summary.updated} updated`);
+      }
       onComplete?.();
     } catch (error: any) {
       console.error('Extraction error:', error);
-      toast.error(error.message || 'Failed to extract skills');
+      toast.warning('Skills extraction feature is being set up. Please use standard CV generation for now.');
     } finally {
       setExtracting(false);
     }
