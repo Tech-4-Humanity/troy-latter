@@ -1,0 +1,12 @@
+{
+  "matrix_csv_path": "skills_master.csv",
+  "cv_template_path": "templates/cv_master.md",
+  "cv_output_path": "cv_updated.md",
+  "token_map_path": "templates/cv_token_map.json",
+  "jd_prompt_path": "prompts/jd_extractor_prompt.txt",
+  "cv_prompt_path": "prompts/cv_extractor_prompt.txt",
+  "top_skill_count": 30,
+  "min_alignment_to_show": 75.0,
+  "decay_months": 6,
+  "weight_gain_factor": 5.0
+}

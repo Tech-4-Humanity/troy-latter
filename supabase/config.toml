@@ -35,3 +35,9 @@ verify_jwt = false
 
 [functions.update-skills-from-jd]
 verify_jwt = false
+
+[functions.sync-csv-to-db]
+verify_jwt = false
+
+[functions.sync-db-to-csv]
+verify_jwt = false

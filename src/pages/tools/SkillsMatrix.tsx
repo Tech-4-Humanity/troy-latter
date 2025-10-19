@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, TrendingDown, Minus, Plus, Download, Search } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus, Plus, Download, Search, Upload, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
@@ -205,6 +205,45 @@ export default function SkillsMatrix() {
     }
   };
 
+  const syncFromCSV = async (file: File) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const { data, error } = await supabase.functions.invoke('sync-csv-to-db', {
+        body: formData
+      });
+
+      if (error) throw error;
+
+      toast.success(`Synced ${data.added} new skills, updated ${data.updated} existing skills`);
+      fetchSkills();
+    } catch (error: any) {
+      console.error('Error syncing CSV:', error);
+      toast.error('Failed to sync CSV to database');
+    }
+  };
+
+  const syncToCSV = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke('sync-db-to-csv');
+      
+      if (error) throw error;
+
+      const blob = new Blob([data], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'skills_master.csv';
+      a.click();
+      
+      toast.success('Downloaded skills matrix as CSV');
+    } catch (error: any) {
+      console.error('Error downloading CSV:', error);
+      toast.error('Failed to export to CSV');
+    }
+  };
+
   const exportSkills = (format: 'csv' | 'json') => {
     if (format === 'csv') {
       const headers = ['Skill', 'Domain', 'Alignment Score', 'Market Demand', 'Usage Count', 'Trend', 'Proficiency'];
@@ -367,7 +406,29 @@ export default function SkillsMatrix() {
               </SelectContent>
             </Select>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
+            <Button variant="outline" size="sm" onClick={syncToCSV}>
+              <RefreshCw className="w-4 h-4 mr-2" />
+              Sync to CSV
+            </Button>
+            <label htmlFor="csv-upload">
+              <Button variant="outline" size="sm" asChild>
+                <span>
+                  <Upload className="w-4 h-4 mr-2" />
+                  Sync from CSV
+                </span>
+              </Button>
+            </label>
+            <input
+              id="csv-upload"
+              type="file"
+              accept=".csv"
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) syncFromCSV(file);
+              }}
+            />
             <Button variant="outline" size="sm" onClick={() => exportSkills('csv')}>
               <Download className="w-4 h-4 mr-2" />
               Export CSV
