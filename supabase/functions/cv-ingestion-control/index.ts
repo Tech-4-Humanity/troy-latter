@@ -14,7 +14,8 @@ serve(async (req) => {
 
   try {
     const url = new URL(req.url);
-    const action = url.searchParams.get('action');
+    const { action: bodyAction } = await req.json().catch(() => ({}));
+    const action = url.searchParams.get('action') ?? bodyAction;
 
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
@@ -156,9 +157,79 @@ serve(async (req) => {
       );
     }
 
+    if (action === 'nuclear-reset') {
+      // Nuclear reset: delete ghost logs + reset processing + timeout stale sessions
+      const cutoffProcessing = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+      const cutoffSessions = new Date(Date.now() - 30 * 60 * 1000).toISOString();
+
+      console.log('💣 Nuclear reset initiated');
+      console.log(`  - Processing cutoff: ${cutoffProcessing}`);
+      console.log(`  - Sessions cutoff: ${cutoffSessions}`);
+
+      // Step 1: Delete ghost logs (processing > 60min)
+      const { data: deletedLogs } = await supabase
+        .from('ingestion_log')
+        .delete()
+        .eq('status', 'processing')
+        .lt('updated_at', cutoffProcessing)
+        .select();
+
+      console.log(`  - Deleted ${deletedLogs?.length || 0} ghost logs`);
+
+      // Step 2: Reset remaining processing → pending
+      const { data: resetLogs } = await supabase
+        .from('ingestion_log')
+        .update({
+          status: 'pending',
+          error_message: 'System nuclear reset - retry',
+          updated_at: new Date().toISOString()
+        })
+        .eq('status', 'processing')
+        .select();
+
+      console.log(`  - Reset ${resetLogs?.length || 0} processing logs to pending`);
+
+      // Step 3: Timeout stale running sessions
+      const { data: staleSessions } = await supabase
+        .from('processing_sessions')
+        .select('session_id')
+        .eq('status', 'running')
+        .lt('started_at', cutoffSessions);
+
+      let timedOutCount = 0;
+      if (staleSessions && staleSessions.length > 0) {
+        for (const session of staleSessions) {
+          await supabase
+            .from('processing_sessions')
+            .update({
+              status: 'timeout',
+              stop_requested: true,
+              completed_at: new Date().toISOString()
+            })
+            .eq('session_id', session.session_id);
+          timedOutCount++;
+        }
+      }
+
+      console.log(`  - Timed out ${timedOutCount} stale sessions`);
+      console.log('✅ Nuclear reset complete');
+
+      return new Response(
+        JSON.stringify({
+          success: true,
+          action: 'nuclear-reset',
+          deletedProcessing: deletedLogs?.length || 0,
+          resetProcessing: resetLogs?.length || 0,
+          timedOutSessions: timedOutCount,
+          timestamp: new Date().toISOString()
+        }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     return new Response(
       JSON.stringify({
-        error: 'Invalid action. Use: cancel-current, reset-stuck, or watchdog'
+        error: 'Invalid action. Use: cancel-current, reset-stuck, watchdog, or nuclear-reset'
       }),
       { 
         status: 400,

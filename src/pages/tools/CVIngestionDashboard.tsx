@@ -182,6 +182,31 @@ export default function CVIngestionDashboard() {
     }
   });
 
+  // Nuclear reset mutation
+  const nuclearResetMutation = useMutation({
+    mutationFn: async () => {
+      const { data, error } = await supabase.functions.invoke('cv-ingestion-control', {
+        body: { action: 'nuclear-reset' }
+      });
+      
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: (data) => {
+      toast.success(
+        `Nuclear reset complete: ${data.deletedProcessing} deleted, ` +
+        `${data.resetProcessing} reset, ${data.timedOutSessions} sessions timed out`
+      );
+      queryClient.invalidateQueries({ queryKey: ['ingestion-logs'] });
+      queryClient.invalidateQueries({ queryKey: ['current-session'] });
+      queryClient.invalidateQueries({ queryKey: ['cv-master-stats'] });
+      queryClient.invalidateQueries({ queryKey: ['cv-storage-count'] });
+    },
+    onError: (error) => {
+      toast.error(`Nuclear reset failed: ${error.message}`);
+    }
+  });
+
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="mb-8">
@@ -410,6 +435,29 @@ export default function CVIngestionDashboard() {
                   )}
                 </Button>
               )}
+              
+              <Button
+                onClick={() => {
+                  if (confirm('Nuclear Reset will delete processing logs older than 60 minutes and reset the rest. This cannot be undone. Proceed?')) {
+                    nuclearResetMutation.mutate();
+                  }
+                }}
+                disabled={nuclearResetMutation.isPending || !!currentSession}
+                variant="destructive"
+                size="lg"
+                className="gap-2"
+              >
+                {nuclearResetMutation.isPending ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Resetting...
+                  </>
+                ) : (
+                  <>
+                    💣 Nuclear Reset
+                  </>
+                )}
+              </Button>
             </div>
           </div>
 
