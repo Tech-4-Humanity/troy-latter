@@ -1,6 +1,7 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
+import { injectContentIntoTemplate, parseMarkdownToStructuredData } from './helpers/template-injector.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -13,7 +14,7 @@ serve(async (req) => {
   }
 
   try {
-    const { jobDescription, userEmail, template = 'blue' } = await req.json();
+    const { jobDescription, userEmail, template = 'blue', useHtmlTemplate = true } = await req.json();
 
     if (!jobDescription || jobDescription.trim().length < 50) {
       return new Response(
@@ -40,6 +41,22 @@ serve(async (req) => {
         JSON.stringify({ error: 'Failed to fetch CV profile' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
+    }
+
+    // Fetch HTML template if requested
+    let htmlTemplateData = null;
+    if (useHtmlTemplate) {
+      const { data: templateData, error: templateError } = await supabase
+        .from('cv_templates')
+        .select('full_html, display_name')
+        .eq('template_name', template)
+        .single();
+      
+      if (!templateError && templateData) {
+        htmlTemplateData = templateData;
+      } else {
+        console.warn('HTML template not found, falling back to markdown only');
+      }
     }
 
     // Template-specific instructions
@@ -231,6 +248,18 @@ Generate a CV optimized for this specific opportunity. Focus on ROI, leadership 
     const matchedKeywords = jobKeywords.filter(keyword => cvKeywords.includes(keyword));
     const matchScore = Math.min(100, (matchedKeywords.length / jobKeywords.length) * 100);
 
+    // Generate HTML version if template is available
+    let generatedHTML = null;
+    if (htmlTemplateData) {
+      try {
+        const structuredData = parseMarkdownToStructuredData(generatedCV, profile);
+        generatedHTML = injectContentIntoTemplate(htmlTemplateData.full_html, structuredData);
+        console.log('HTML template generated successfully');
+      } catch (error) {
+        console.error('Error generating HTML template:', error);
+      }
+    }
+
     // Save to database (use cv_id, not id)
     const { data: generation, error: saveError } = await supabase
       .from('cv_generations')
@@ -255,8 +284,10 @@ Generate a CV optimized for this specific opportunity. Focus on ROI, leadership 
     return new Response(
       JSON.stringify({
         cv: generatedCV,
+        cvHTML: generatedHTML,
         matchScore: Math.round(matchScore * 100) / 100,
         generationId: generation?.id,
+        template: template,
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );

@@ -114,6 +114,7 @@ export function CVGeneratorForm() {
   const [selectedTemplate, setSelectedTemplate] = useState<'blue' | 'green'>('blue');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedCV, setGeneratedCV] = useState<string | null>(null);
+  const [generatedHTML, setGeneratedHTML] = useState<string | null>(null);
   const [matchScore, setMatchScore] = useState<number | undefined>();
 
   const handleGenerate = async () => {
@@ -124,6 +125,7 @@ export function CVGeneratorForm() {
 
     setIsGenerating(true);
     setGeneratedCV(null);
+    setGeneratedHTML(null);
     setMatchScore(undefined);
 
     try {
@@ -131,7 +133,8 @@ export function CVGeneratorForm() {
         body: { 
           jobDescription: jobDescription.trim(),
           userEmail: userEmail.trim() || null,
-          template: selectedTemplate
+          template: selectedTemplate,
+          useHtmlTemplate: true
         }
       });
 
@@ -144,6 +147,7 @@ export function CVGeneratorForm() {
       }
 
       setGeneratedCV(data.cv);
+      setGeneratedHTML(data.cvHTML);
       setMatchScore(data.matchScore);
       toast.success("CV generated successfully!");
 
@@ -297,7 +301,12 @@ export function CVGeneratorForm() {
       )}
 
       {generatedCV && (
-        <CVPreview cv={generatedCV} matchScore={matchScore} />
+        <CVPreview 
+          cv={generatedCV} 
+          cvHTML={generatedHTML || undefined}
+          matchScore={matchScore}
+          template={selectedTemplate}
+        />
       )}
     </div>
   );

@@ -17,11 +17,14 @@ import "@/styles/cv-preview.css";
 
 interface CVPreviewProps {
   cv: string;
+  cvHTML?: string;
   matchScore?: number;
+  template?: string;
 }
 
-export function CVPreview({ cv, matchScore }: CVPreviewProps) {
+export function CVPreview({ cv, cvHTML, matchScore, template }: CVPreviewProps) {
   const [copied, setCopied] = useState(false);
+  const [viewMode, setViewMode] = useState<'markdown' | 'html'>(cvHTML ? 'html' : 'markdown');
 
   const handleCopy = async (format: 'html' | 'markdown') => {
     try {
@@ -122,9 +125,16 @@ export function CVPreview({ cv, matchScore }: CVPreviewProps) {
 
   const handleDownload = async (format: 'pdf' | 'html' | 'docx') => {
     try {
-      const htmlContent = await marked.parse(cv);
+      const htmlContent = cvHTML || await marked.parse(cv);
       
       if (format === 'html') {
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        saveAs(blob, `CV-Troy-Latter-${new Date().toISOString().split('T')[0]}.html`);
+        toast.success("HTML file downloaded!");
+        return;
+      }
+      
+      if (format === 'pdf' && !cvHTML) {
         const templateCSS = `
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
           * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -193,7 +203,9 @@ export function CVPreview({ cv, matchScore }: CVPreviewProps) {
         compress: true
       });
       
-      await doc.html(fullHTML, {
+      const pdfSource = cvHTML || fullHTML;
+      
+      await doc.html(pdfSource, {
         callback: (pdf) => {
           pdf.save(`CV-Troy-Latter-${new Date().toISOString().split('T')[0]}.pdf`);
           toast.success("Professional CV downloaded!");
@@ -218,10 +230,32 @@ export function CVPreview({ cv, matchScore }: CVPreviewProps) {
           {matchScore !== undefined && (
             <p className="text-sm text-muted-foreground">
               Match Score: <span className="font-semibold text-primary">{matchScore.toFixed(1)}%</span>
+              {template && <span className="ml-2 text-xs">• {template === 'blue' ? 'Blue Comprehensive' : 'Green Executive'}</span>}
             </p>
           )}
         </div>
         <div className="flex gap-2">
+          {cvHTML && (
+            <div className="flex gap-1 border rounded-md p-1">
+              <Button
+                variant={viewMode === 'markdown' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => setViewMode('markdown')}
+                className="h-7 px-2 text-xs"
+              >
+                Markdown
+              </Button>
+              <Button
+                variant={viewMode === 'html' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => setViewMode('html')}
+                className="h-7 px-2 text-xs"
+              >
+                Template
+              </Button>
+            </div>
+          )}
+          
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm" className="gap-2">
@@ -268,9 +302,21 @@ export function CVPreview({ cv, matchScore }: CVPreviewProps) {
         </div>
       </div>
 
-      <div className="cv-preview border rounded-lg p-8 bg-card max-h-[800px] overflow-y-auto">
-        <ReactMarkdown>{cv}</ReactMarkdown>
-      </div>
+      {viewMode === 'html' && cvHTML ? (
+        <div className="border rounded-lg overflow-hidden bg-white">
+          <iframe
+            srcDoc={cvHTML}
+            className="w-full border-0"
+            style={{ height: '800px' }}
+            title="CV Template Preview"
+            sandbox="allow-same-origin"
+          />
+        </div>
+      ) : (
+        <div className="cv-preview border rounded-lg p-8 bg-card max-h-[800px] overflow-y-auto">
+          <ReactMarkdown>{cv}</ReactMarkdown>
+        </div>
+      )}
     </div>
   );
 }

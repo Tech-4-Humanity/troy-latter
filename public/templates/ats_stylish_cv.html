@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troy Latter - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8f9fa;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2d5f3f 0%, #3a7d52 100%);
+            color: white;
+            padding: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+        
+        .contact-bar {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+        
+        .contact-bar span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .summary {
+            background: #f0f7f4;
+            padding: 30px 40px;
+            border-left: 4px solid #3a7d52;
+            margin: 30px 40px;
+        }
+        
+        .section {
+            padding: 30px 40px;
+        }
+        
+        .section-title {
+            color: #2d5f3f;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3a7d52;
+            font-weight: 600;
+        }
+        
+        .experience-item {
+            margin-bottom: 30px;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .job-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2d5f3f;
+        }
+        
+        .company {
+            font-weight: 600;
+            color: #555;
+            margin: 5px 0;
+        }
+        
+        .date-location {
+            text-align: right;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .achievements {
+            margin-top: 15px;
+        }
+        
+        .achievements li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .achievements li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #3a7d52;
+            font-weight: bold;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 3px solid #3a7d52;
+        }
+        
+        .skill-category h3 {
+            color: #2d5f3f;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .skill-category ul {
+            list-style: none;
+        }
+        
+        .skill-category li {
+            padding: 5px 0;
+            color: #555;
+        }
+        
+        strong {
+            color: #2d5f3f;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>TROY LATTER</h1>
+            <div class="subtitle">Chief Technology Officer | Strategic Advisor | Digital Transformation Leader</div>
+            <div class="contact-bar">
+                <span>📍 Sydney, NSW, Australia</span>
+                <span>📧 contact@example.com</span>
+                <span>📱 +61 XXX XXX XXX</span>
+                <span>🔗 LinkedIn</span>
+            </div>
+        </div>
+
+        <div class="summary">
+            Senior technology executive with 15+ years driving enterprise transformation across government, defence, and Fortune 100 organisations. Proven track record of delivering multi-million-dollar programs, leading cross-functional teams, and translating complex technical strategies into business outcomes. Expert in AI/ML architecture, cloud platforms, and public sector modernisation.
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">CTO, Alliances & Strategic Foresight - APAC</div>
+                        <div class="company">Unisys</div>
+                    </div>
+                    <div class="date-location">
+                        <div>Jan 2024 - Mar 2025</div>
+                        <div>Australia (Hybrid)</div>
+                    </div>
+                </div>
+                <p>Field CTO for high-value government clients including Home Affairs, Defence, and DFAT. Led technical engagement across pre-sales, architecture, and emerging technology strategy while serving as translator between policy, engineering, and executive priorities.</p>
+                <ul class="achievements">
+                    <li><strong>AI Implementation:</strong> Directed agentic AI and LLM pilots across quoting, procurement, and service workflows using Microsoft, Google Cloud, and AWS platforms</li>
+                    <li><strong>Operational Efficiency:</strong> Embedded internal AI capability frameworks, achieving 30-40% efficiency improvements in compliance and service delivery</li>
+                    <li><strong>Infrastructure Integration:</strong> Integrated Apple, Dell, and Lenovo device fleets into secure cloud-first architectures, aligning procurement with endpoint compliance</li>
+                    <li><strong>Revenue Growth:</strong> Partnered with sales teams on client-specific go-to-market strategies for long-cycle, high-value government pursuits</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Global Capability Advisor - Principal Solution Architect</div>
+                        <div class="company">Amazon Web Services (AWS)</div>
+                    </div>
+                    <div class="date-location">
+                        <div>Dec 2019 - Apr 2023</div>
+                        <div>Sydney, Australia</div>
+                    </div>
+                </div>
+                <p>Trusted advisor to 50+ CIOs and senior technology leaders across Australia, ASEAN, and Pacific regions. Guided strategic programs in AI/ML adoption, public sector transformation, and platform modernisation.</p>
+                <ul class="achievements">
+                    <li><strong>Strategic AI Leadership:</strong> Led AI/ML strategy and architecture for high-impact programs in Defence, healthcare, transport, utilities, and education</li>
+                    <li><strong>Platform Architecture:</strong> Designed predictive analytics and LLM pipelines using SageMaker, Bedrock, and serverless stacks</li>
+                    <li><strong>National Infrastructure:</strong> Supported transformation for Cross River Rail (QLD), Digital Identity (Home Affairs), and ASEAN-wide Disaster Recovery programs</li>
+                    <li><strong>Executive Engagement:</strong> Delivered 100+ executive briefings and architecture workshops</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">CORE COMPETENCIES</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Leadership & Strategy</h3>
+                    <ul>
+                        <li>Executive Advisory</li>
+                        <li>Digital Transformation</li>
+                        <li>Strategic Foresight</li>
+                        <li>Team Leadership</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Technology & Innovation</h3>
+                    <ul>
+                        <li>AI/ML Architecture</li>
+                        <li>Cloud Platforms (AWS, Azure, GCP)</li>
+                        <li>Predictive Analytics</li>
+                        <li>Cybersecurity</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Public Sector Expertise</h3>
+                    <ul>
+                        <li>Government Transformation</li>
+                        <li>National Security</li>
+                        <li>Policy-Technology Translation</li>
+                        <li>Compliance Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
