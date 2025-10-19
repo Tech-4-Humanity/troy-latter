@@ -14,6 +14,13 @@ import { Badge } from "@/components/ui/badge";
 export default function CVIngestionDashboard() {
   const [isIngesting, setIsIngesting] = useState(false);
   const [ingestionResult, setIngestionResult] = useState<any>(null);
+  const [queueStats, setQueueStats] = useState({
+    total: 0,
+    processed: 0,
+    failed: 0,
+    current: null as string | null
+  });
+  const [isProcessingQueue, setIsProcessingQueue] = useState(false);
   const queryClient = useQueryClient();
 
   // Fetch ingestion logs
@@ -207,6 +214,76 @@ export default function CVIngestionDashboard() {
     }
   });
 
+  // Single-file processor mutation
+  const processSingleFileMutation = useMutation({
+    mutationFn: async (filePath: string) => {
+      const { data, error } = await supabase.functions.invoke('process-single-cv', {
+        body: { filePath }
+      });
+      if (error) throw error;
+      return data;
+    }
+  });
+
+  // Queue processor
+  const processQueue = async () => {
+    setIsProcessingQueue(true);
+    
+    try {
+      // Fetch all files from storage
+      const { data: files, error: listError } = await supabase.storage
+        .from('cv-documents')
+        .list('all_cvs_found/all_cvs_found', { limit: 1000 });
+      
+      if (listError) throw listError;
+      
+      const cvFiles = files.filter(f => 
+        f.name.toLowerCase().endsWith('.pdf') || 
+        f.name.toLowerCase().endsWith('.docx') ||
+        f.name.toLowerCase().endsWith('.html') ||
+        f.name.toLowerCase().endsWith('.htm')
+      );
+      
+      setQueueStats({ total: cvFiles.length, processed: 0, failed: 0, current: null });
+      
+      // Process each file sequentially
+      for (let i = 0; i < cvFiles.length; i++) {
+        const file = cvFiles[i];
+        const filePath = `all_cvs_found/all_cvs_found/${file.name}`;
+        
+        setQueueStats(prev => ({ ...prev, current: file.name }));
+        
+        try {
+          const result = await processSingleFileMutation.mutateAsync(filePath);
+          
+          if (result.success && !result.skipped) {
+            setQueueStats(prev => ({ ...prev, processed: prev.processed + 1 }));
+            toast.success(`✓ ${file.name} (${result.skillsExtracted} skills)`);
+          } else if (result.skipped) {
+            setQueueStats(prev => ({ ...prev, processed: prev.processed + 1 }));
+          }
+        } catch (error: any) {
+          setQueueStats(prev => ({ ...prev, failed: prev.failed + 1 }));
+          toast.error(`✗ ${file.name}: ${error.message}`);
+        }
+        
+        // Small delay to avoid rate limits
+        await new Promise(r => setTimeout(r, 500));
+      }
+      
+      toast.success(`Queue complete: ${queueStats.processed} processed, ${queueStats.failed} failed`);
+      queryClient.invalidateQueries({ queryKey: ['ingestion-logs'] });
+      queryClient.invalidateQueries({ queryKey: ['cv-master-stats'] });
+      queryClient.invalidateQueries({ queryKey: ['cv-storage-count'] });
+      
+    } catch (error: any) {
+      toast.error(`Queue processing failed: ${error.message}`);
+    } finally {
+      setIsProcessingQueue(false);
+      setQueueStats(prev => ({ ...prev, current: null }));
+    }
+  };
+
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="mb-8">
@@ -331,13 +408,55 @@ export default function CVIngestionDashboard() {
           </CardContent>
         </Card>
 
+        {/* Single-File Processor */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Single-File Processor</CardTitle>
+            <CardDescription>Process files one at a time with real-time progress</CardDescription>
+          </CardHeader>
+          <CardContent>
+            {isProcessingQueue && (
+              <div className="space-y-4 mb-4">
+                <Progress value={(queueStats.processed + queueStats.failed) / queueStats.total * 100} />
+                <div className="text-sm text-muted-foreground">
+                  Processing: {queueStats.current || '...'} 
+                  ({queueStats.processed + queueStats.failed} / {queueStats.total})
+                </div>
+                <div className="flex gap-2 text-xs">
+                  <Badge variant="outline" className="bg-green-50">✓ {queueStats.processed} success</Badge>
+                  <Badge variant="destructive">✗ {queueStats.failed} failed</Badge>
+                </div>
+              </div>
+            )}
+            
+            <Button 
+              onClick={processQueue}
+              disabled={isProcessingQueue}
+              className="w-full"
+              size="lg"
+            >
+              {isProcessingQueue ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Processing Queue...
+                </>
+              ) : (
+                <>
+                  <PlayCircle className="mr-2 h-4 w-4" />
+                  Start Single-File Queue
+                </>
+              )}
+            </Button>
+          </CardContent>
+        </Card>
+
         {/* Control Panel */}
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-xl font-semibold mb-2">CV Ingestion Pipeline</h2>
+              <h2 className="text-xl font-semibold mb-2">Batch CV Ingestion</h2>
               <p className="text-sm text-muted-foreground">
-                Parse all CV files from storage, extract structured data, and populate master database
+                Process all CVs at once (legacy batch mode - may timeout on large sets)
               </p>
             </div>
             <div className="flex gap-2">

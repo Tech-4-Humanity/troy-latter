@@ -26,3 +26,6 @@ verify_jwt = false
 
 [functions.cv-ingestion-control]
 verify_jwt = false
+
+[functions.process-single-cv]
+verify_jwt = false
