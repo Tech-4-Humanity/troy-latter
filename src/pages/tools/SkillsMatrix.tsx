@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, TrendingDown, Minus, Plus, Download, Search, Upload, RefreshCw, BarChart } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus, Plus, Download, Search, Upload, RefreshCw, BarChart, Star } from 'lucide-react';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -37,6 +37,10 @@ export default function SkillsMatrix() {
   const [domainFilter, setDomainFilter] = useState('all');
   const [trendFilter, setTrendFilter] = useState('all');
   const [sortBy, setSortBy] = useState<'alignment' | 'demand' | 'usage' | 'recent'>('alignment');
+  const [sortColumn, setSortColumn] = useState<'skill' | 'domain' | 'alignment' | 'demand' | 'rating'>('alignment');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(25);
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [newSkill, setNewSkill] = useState({
     skill: '',
@@ -86,6 +90,15 @@ export default function SkillsMatrix() {
     }
   };
 
+  const handleSort = (column: typeof sortColumn) => {
+    if (sortColumn === column) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortColumn(column);
+      setSortDirection('desc');
+    }
+  };
+
   const applyFilters = () => {
     let filtered = [...skills];
 
@@ -109,29 +122,78 @@ export default function SkillsMatrix() {
 
     // Sort with defensive checks
     filtered.sort((a, b) => {
-      try {
-        switch (sortBy) {
-          case 'alignment':
-            return (Number(b.alignment_score) || 0) - (Number(a.alignment_score) || 0);
-          case 'demand':
-            return (Number(b.market_demand_score) || 0) - (Number(a.market_demand_score) || 0);
-          case 'usage':
-            return (Number(b.skill_usage_count) || 0) - (Number(a.skill_usage_count) || 0);
-          case 'recent':
-            return new Date(b.last_updated || 0).getTime() - new Date(a.last_updated || 0).getTime();
-          default:
-            return 0;
-        }
-      } catch (err) {
-        console.warn('Sorting error:', err);
-        return 0;
+      let aVal: any = 0;
+      let bVal: any = 0;
+
+      switch (sortColumn) {
+        case 'skill':
+          aVal = a.skill || '';
+          bVal = b.skill || '';
+          break;
+        case 'domain':
+          aVal = a.domain || '';
+          bVal = b.domain || '';
+          break;
+        case 'alignment':
+          aVal = Number(a.alignment_score) || 0;
+          bVal = Number(b.alignment_score) || 0;
+          break;
+        case 'demand':
+          aVal = Number(a.market_demand_score) || 0;
+          bVal = Number(b.market_demand_score) || 0;
+          break;
+        case 'rating':
+          aVal = Number(a.rating) || 0;
+          bVal = Number(b.rating) || 0;
+          break;
       }
+
+      if (typeof aVal === 'string') {
+        return sortDirection === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+      }
+      return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
     });
 
     setFilteredSkills(filtered);
+    setCurrentPage(1); // Reset to first page when filters change
   };
 
+  const getPaginatedSkills = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return filteredSkills.slice(startIndex, endIndex);
+  };
+
+  const totalPages = Math.ceil(filteredSkills.length / itemsPerPage);
+  const paginatedSkills = getPaginatedSkills();
+
   const domains = ['all', ...Array.from(new Set(skills.map(s => s.domain).filter(Boolean)))];
+
+  const StarRating = ({ rating }: { rating: number }) => (
+    <div className="flex gap-0.5">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <Star
+          key={i}
+          className={`h-4 w-4 ${
+            i <= (rating || 0)
+              ? 'fill-warning text-warning'
+              : 'fill-muted text-muted-foreground/30'
+          }`}
+        />
+      ))}
+    </div>
+  );
+
+  const getProficiencyBadge = (level: string) => {
+    const variants: Record<string, { variant: any; className: string }> = {
+      'Expert': { variant: 'default', className: 'bg-primary' },
+      'Advanced': { variant: 'secondary', className: 'bg-secondary' },
+      'Intermediate': { variant: 'outline', className: '' },
+      'Beginner': { variant: 'outline', className: 'text-muted-foreground' },
+    };
+    const config = variants[level] || variants['Intermediate'];
+    return <Badge variant={config.variant} className={config.className}>{level}</Badge>;
+  };
 
   const getTrendIcon = (trend: string) => {
     switch (trend?.toLowerCase()) {
@@ -143,6 +205,18 @@ export default function SkillsMatrix() {
         return <Minus className="w-4 h-4 text-yellow-500" />;
     }
   };
+
+  const SortButton = ({ column, label }: { column: typeof sortColumn; label: string }) => (
+    <button
+      onClick={() => handleSort(column)}
+      className="flex items-center gap-1 hover:text-foreground transition-colors font-semibold"
+    >
+      {label}
+      {sortColumn === column && (
+        <span className="text-xs">{sortDirection === 'asc' ? '↑' : '↓'}</span>
+      )}
+    </button>
+  );
 
   const getAlignmentColor = (score: string | number) => {
     const numScore = Number(score);
@@ -449,63 +523,126 @@ export default function SkillsMatrix() {
         </CardContent>
       </Card>
 
-      {/* Skills Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredSkills.map((skill, idx) => (
-          <Card key={idx} className="hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <CardTitle className="text-lg">{skill.skill}</CardTitle>
-                  <CardDescription className="flex items-center gap-2 mt-1">
-                    <Badge variant="outline">{skill.domain || 'General'}</Badge>
-                    {getTrendIcon(skill.trend || '')}
-                  </CardDescription>
-                </div>
-                <div className="text-right">
-                  <div className="text-2xl font-bold">{Math.round(Number(skill.alignment_score) || 0)}</div>
-                  <div className="text-xs text-muted-foreground">Alignment</div>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div>
-                <div className="flex justify-between text-sm mb-1">
-                  <span className="text-muted-foreground">Market Demand</span>
-                  <span className="font-medium">{Math.round(Number(skill.market_demand_score) || 0)}%</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div
-                    className={`h-full ${getAlignmentColor(Number(skill.market_demand_score) || 0)}`}
-                    style={{ width: `${Number(skill.market_demand_score) || 0}%` }}
-                  />
-                </div>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Usage Count</span>
-                <Badge variant="secondary">{Number(skill.skill_usage_count) || 0}</Badge>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Proficiency</span>
-                <Badge>{skill['Proficiency Level'] || 'N/A'}</Badge>
-              </div>
-              {skill.last_jd_match && (
-                <div className="text-xs text-muted-foreground pt-2 border-t">
-                  Last matched: {skill.last_jd_match}
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      {/* Skills Table */}
+      <Card>
+        <CardContent className="p-0">
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-muted/50 border-b">
+                <tr>
+                  <th className="text-left p-4 text-muted-foreground">
+                    <SortButton column="skill" label="Skill" />
+                  </th>
+                  <th className="text-left p-4 text-muted-foreground">
+                    <SortButton column="domain" label="Domain" />
+                  </th>
+                  <th className="text-center p-4 text-muted-foreground">
+                    <SortButton column="rating" label="Rating" />
+                  </th>
+                  <th className="text-left p-4 text-muted-foreground">Proficiency</th>
+                  <th className="text-center p-4 text-muted-foreground">
+                    <SortButton column="alignment" label="Alignment" />
+                  </th>
+                  <th className="text-center p-4 text-muted-foreground">
+                    <SortButton column="demand" label="Market" />
+                  </th>
+                  <th className="text-center p-4 text-muted-foreground">Trend</th>
+                </tr>
+              </thead>
+              <tbody>
+                {paginatedSkills.length === 0 ? (
+                  <tr>
+                    <td colSpan={7} className="text-center py-12 text-muted-foreground">
+                      No skills match your filters
+                    </td>
+                  </tr>
+                ) : (
+                  paginatedSkills.map((skill, idx) => (
+                    <tr key={idx} className="border-b hover:bg-muted/30 transition-colors">
+                      <td className="p-4 font-medium">{skill.skill}</td>
+                      <td className="p-4">
+                        <Badge variant="outline" className="text-xs">
+                          {skill.domain || 'General'}
+                        </Badge>
+                      </td>
+                      <td className="p-4">
+                        <div className="flex justify-center">
+                          <StarRating rating={skill.rating || 0} />
+                        </div>
+                      </td>
+                      <td className="p-4">
+                        {getProficiencyBadge(skill['Proficiency Level'] || 'Intermediate')}
+                      </td>
+                      <td className="p-4 text-center">
+                        <div className="inline-flex items-center gap-2">
+                          <span className="text-lg font-bold">{Math.round(Number(skill.alignment_score) || 0)}</span>
+                          <span className="text-xs text-muted-foreground">%</span>
+                        </div>
+                      </td>
+                      <td className="p-4 text-center">
+                        <div className="inline-flex items-center gap-2">
+                          <span className="font-medium">{Math.round(Number(skill.market_demand_score) || 0)}</span>
+                          <span className="text-xs text-muted-foreground">%</span>
+                        </div>
+                      </td>
+                      <td className="p-4">
+                        <div className="flex justify-center">
+                          {getTrendIcon(skill.trend || '')}
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
 
-      {filteredSkills.length === 0 && (
-        <Card>
-          <CardContent className="py-12 text-center">
-            <p className="text-muted-foreground">No skills found matching your filters</p>
-          </CardContent>
-        </Card>
-      )}
+          {/* Pagination Controls */}
+          {filteredSkills.length > 0 && (
+            <div className="flex items-center justify-between p-4 border-t bg-muted/20">
+              <div className="flex items-center gap-4">
+                <div className="text-sm text-muted-foreground">
+                  Showing {(currentPage - 1) * itemsPerPage + 1} to{' '}
+                  {Math.min(currentPage * itemsPerPage, filteredSkills.length)} of{' '}
+                  {filteredSkills.length} skills
+                </div>
+                <Select value={itemsPerPage.toString()} onValueChange={(v) => setItemsPerPage(Number(v))}>
+                  <SelectTrigger className="w-32">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="10">10 per page</SelectItem>
+                    <SelectItem value="25">25 per page</SelectItem>
+                    <SelectItem value="50">50 per page</SelectItem>
+                    <SelectItem value="100">100 per page</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </Button>
+                <div className="text-sm text-muted-foreground">
+                  Page {currentPage} of {totalPages}
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </Button>
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }
