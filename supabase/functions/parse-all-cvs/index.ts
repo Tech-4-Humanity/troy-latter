@@ -137,18 +137,47 @@ serve(async (req) => {
         const fileName = file.name;
         console.log(`Processing: ${fileName}`);
 
-        // Create ingestion log entry
-        const { data: logEntry } = await supabase
-          .from('ingestion_log')
-          .insert({
-            source_type: 'cv',
-            source_file: fileName,
-            status: 'processing'
-          })
-          .select()
-          .single();
-
         try {
+          // Check for existing log entry (pending, processing, or completed)
+          const { data: existingLogEntry } = await supabase
+            .from('ingestion_log')
+            .select('*')
+            .eq('source_file', fileName)
+            .order('created_at', { ascending: false })
+            .limit(1)
+            .maybeSingle();
+
+          let logEntry = existingLogEntry;
+
+          // If no entry exists or previous one failed, create new one
+          if (!existingLogEntry || existingLogEntry.status === 'failed') {
+            const { data: newLogEntry } = await supabase
+              .from('ingestion_log')
+              .insert({
+                source_type: 'cv',
+                source_file: fileName,
+                status: 'processing'
+              })
+              .select()
+              .single();
+            logEntry = newLogEntry;
+          } else if (existingLogEntry.status === 'completed') {
+            console.log(`⏭️ Already completed: ${fileName}`);
+            totalSkipped++;
+            if (session) {
+              await supabase
+                .from('processing_sessions')
+                .update({ skipped_count: totalSkipped })
+                .eq('session_id', session.session_id);
+            }
+            continue;
+          } else {
+            // Update existing pending/processing record to processing
+            await supabase
+              .from('ingestion_log')
+              .update({ status: 'processing', updated_at: new Date().toISOString() })
+              .eq('id', existingLogEntry.id);
+          }
           // Download file from storage
           const { data: fileData, error: downloadError } = await supabase
             .storage
@@ -175,28 +204,6 @@ serve(async (req) => {
           const fileHash = Array.from(new Uint8Array(hashBuffer))
             .map(b => b.toString(16).padStart(2, '0'))
             .join('');
-
-          // Check if already processed
-          const { data: existingLog } = await supabase
-            .from('ingestion_log')
-            .select('id')
-            .eq('file_hash', fileHash)
-            .eq('status', 'completed')
-            .maybeSingle();
-
-          if (existingLog) {
-            console.log(`⏭️ Skipping already processed: ${fileName}`);
-            totalSkipped++;
-            if (session) {
-              await supabase
-                .from('processing_sessions')
-                .update({
-                  skipped_count: totalSkipped
-                })
-                .eq('session_id', session.session_id);
-            }
-            continue;
-          }
 
           const uint8Array = new Uint8Array(arrayBuffer);
           
@@ -351,17 +358,21 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
             0
           ) || 0;
 
-          await supabase
-            .from('ingestion_log')
-            .update({
-              status: 'completed',
-              skills_extracted: skillCount,
-              new_skills_discovered: 0,
-              existing_skills_updated: 0,
-              star_examples_added: 0,
-              file_hash: fileHash
-            })
-            .eq('id', logEntry?.id);
+          // Mark as completed with file hash
+          if (logEntry?.id) {
+            await supabase
+              .from('ingestion_log')
+              .update({
+                status: 'completed',
+                skills_extracted: skillCount,
+                new_skills_discovered: 0,
+                existing_skills_updated: 0,
+                star_examples_added: 0,
+                file_hash: fileHash,
+                updated_at: new Date().toISOString()
+              })
+              .eq('id', logEntry.id);
+          }
 
           totalProcessed++;
           if (session) {
@@ -375,7 +386,7 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
               .eq('session_id', session.session_id);
           }
 
-          console.log(`✓ Completed: ${fileName}`);
+          console.log(`✓ Completed: ${fileName} (${skillCount} skills extracted)`);
 
         } catch (fileError) {
           console.error(`✗ Failed to process ${fileName}:`, fileError);
