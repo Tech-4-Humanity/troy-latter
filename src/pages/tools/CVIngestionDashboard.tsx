@@ -529,15 +529,15 @@ export default function CVIngestionDashboard() {
         </Card>
 
         {/* Control Panel */}
-        <Card className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h2 className="text-xl font-semibold mb-2">Batch CV Ingestion</h2>
-              <p className="text-sm text-muted-foreground">
-                Process all CVs at once (legacy batch mode - may timeout on large sets)
-              </p>
-            </div>
-            <div className="flex gap-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Batch CV Ingestion</CardTitle>
+            <CardDescription>
+              Process all CVs at once (legacy batch mode - may timeout on large sets)
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex gap-2 mb-6">
               {currentSession && (
                 <Button
                   onClick={async () => {
@@ -589,97 +589,97 @@ export default function CVIngestionDashboard() {
                 )}
               </Button>
             </div>
-          </div>
 
-          {/* Cleanup Controls */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-            <Button 
-              onClick={() => completeSessionMutation.mutate()}
-              disabled={completeSessionMutation.isPending || !currentSession || currentSession.status !== 'running'}
-              variant="outline"
-            >
-              {completeSessionMutation.isPending ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              ) : null}
-              Complete Stuck Session
-            </Button>
-
-            <Button 
-              onClick={() => deduplicateMutation.mutate()}
-              disabled={deduplicateMutation.isPending || !hasDuplicates}
-              variant="outline"
-            >
-              {deduplicateMutation.isPending ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              ) : null}
-              Deduplicate ({totalLogEntries - uniqueFiles})
-            </Button>
-            
-            <Button 
-              onClick={() => retryFailedMutation.mutate()}
-              disabled={retryFailedMutation.isPending || failedLogs.length === 0}
-              variant="outline"
-            >
-              {retryFailedMutation.isPending ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              ) : null}
-              Retry Failed ({failedLogs.length})
-            </Button>
-
-            <Button 
-              onClick={() => {
-                if (confirm('This will clean up all stuck sessions and duplicates. Continue?')) {
-                  fullCleanupMutation.mutate();
-                }
-              }}
-              disabled={fullCleanupMutation.isPending}
-              variant="destructive"
-            >
-              {fullCleanupMutation.isPending ? (
-                <>
+            {/* Cleanup Controls */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              <Button 
+                onClick={() => completeSessionMutation.mutate()}
+                disabled={completeSessionMutation.isPending || !currentSession || currentSession.status !== 'running'}
+                variant="outline"
+              >
+                {completeSessionMutation.isPending ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Cleaning...
-                </>
-              ) : (
-                'Full Cleanup'
-              )}
-            </Button>
-          </div>
+                ) : null}
+                Complete Stuck Session
+              </Button>
 
-          {/* Master Stats */}
-          {masterStats && (
-            <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-              <h3 className="font-semibold mb-3">Master CV Database</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div>
-                  <div className="text-2xl font-bold text-primary">
-                    {masterStats.source_files?.length || 0}
+              <Button 
+                onClick={() => deduplicateMutation.mutate()}
+                disabled={deduplicateMutation.isPending || !hasDuplicates}
+                variant="outline"
+              >
+                {deduplicateMutation.isPending ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : null}
+                Deduplicate ({totalLogEntries - uniqueFiles})
+              </Button>
+              
+              <Button 
+                onClick={() => retryFailedMutation.mutate()}
+                disabled={retryFailedMutation.isPending || failedLogs.length === 0}
+                variant="outline"
+              >
+                {retryFailedMutation.isPending ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : null}
+                Retry Failed ({failedLogs.length})
+              </Button>
+
+              <Button 
+                onClick={() => {
+                  if (confirm('This will clean up all stuck sessions and duplicates. Continue?')) {
+                    fullCleanupMutation.mutate();
+                  }
+                }}
+                disabled={fullCleanupMutation.isPending}
+                variant="destructive"
+              >
+                {fullCleanupMutation.isPending ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Cleaning...
+                  </>
+                ) : (
+                  'Full Cleanup'
+                )}
+              </Button>
+            </div>
+
+            {/* Master Stats */}
+            {masterStats && (
+              <div className="p-4 bg-muted/50 rounded-lg">
+                <h3 className="font-semibold mb-3">Master CV Database</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div>
+                    <div className="text-2xl font-bold text-primary">
+                      {masterStats.source_files?.length || 0}
+                    </div>
+                    <div className="text-sm text-muted-foreground">CVs Processed</div>
                   </div>
-                  <div className="text-sm text-muted-foreground">CVs Processed</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-primary">
-                    {(masterStats.parsed_data as any)?.totalCVs || 0}
+                  <div>
+                    <div className="text-2xl font-bold text-primary">
+                      {(masterStats.parsed_data as any)?.totalCVs || 0}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Total CVs</div>
                   </div>
-                  <div className="text-sm text-muted-foreground">Total CVs</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-primary">
-                    {masterStats.last_updated 
-                      ? new Date(masterStats.last_updated).toLocaleDateString()
-                      : 'Never'}
+                  <div>
+                    <div className="text-2xl font-bold text-primary">
+                      {masterStats.last_updated 
+                        ? new Date(masterStats.last_updated).toLocaleDateString()
+                        : 'Never'}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Last Updated</div>
                   </div>
-                  <div className="text-sm text-muted-foreground">Last Updated</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-primary">
-                    {(masterStats.parsed_data as any)?.cvs?.length || 0}
+                  <div>
+                    <div className="text-2xl font-bold text-primary">
+                      {(masterStats.parsed_data as any)?.cvs?.length || 0}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Parsed Files</div>
                   </div>
-                  <div className="text-sm text-muted-foreground">Parsed Files</div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </CardContent>
         </Card>
 
         {/* Ingestion Result */}
