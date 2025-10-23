@@ -86,11 +86,12 @@ const App = () => (
             <Route path="/resources/projects" element={<Layout><Projects /></Layout>} />
             <Route path="/tools/cv-generator" element={<Layout><CVGenerator /></Layout>} />
             <Route path="/tools/cv-generation-history" element={<Layout><CVGenerationHistory /></Layout>} />
-            <Route path="/tools/cv-ingestion" element={<Layout><CVIngestionDashboard /></Layout>} />
+            <Route path="/tools/cv-ingestion-dashboard" element={<Layout><CVIngestionDashboard /></Layout>} />
             <Route path="/tools/skills-matrix" element={<Layout><SkillsMatrix /></Layout>} />
             <Route path="/tools/skills-analytics" element={<Layout><SkillsAnalytics /></Layout>} />
             <Route path="/tools/skills-visualizations" element={<Layout><SkillsVisualizations /></Layout>} />
-            <Route path="/cv-ingestion" element={<Navigate to="/tools/cv-ingestion" replace />} />
+            <Route path="/tools/cv-ingestion" element={<Navigate to="/tools/cv-ingestion-dashboard" replace />} />
+            <Route path="/cv-ingestion" element={<Navigate to="/tools/cv-ingestion-dashboard" replace />} />
           {/* <Route path="/resources/lean-canvas" element={<Layout><LeanCanvas /></Layout>} /> */}
           <Route path="/ai-ethics" element={<Layout><AIEthics /></Layout>} />
           
