@@ -42,6 +42,7 @@ export default function SkillsMatrix() {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(25);
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+  const [newSkillsCount, setNewSkillsCount] = useState(0);
   const [newSkill, setNewSkill] = useState({
     skill: '',
     domain: '',
@@ -67,10 +68,8 @@ export default function SkillsMatrix() {
         .order('alignment_score', { ascending: false });
 
       if (error) {
-        // Check if it's a column doesn't exist error (migration not run)
         if (error.message?.includes('column') || error.message?.includes('does not exist')) {
           toast.warning('Skills matrix is being updated. Some features may be limited.');
-          // Try basic query without sorting
           const { data: basicData } = await supabase
             .from('175+ Skills Matrix')
             .select('*');
@@ -80,7 +79,20 @@ export default function SkillsMatrix() {
         }
       } else {
         setSkills(data || []);
+        console.log('✅ Loaded skills:', data?.length || 0);
       }
+
+      // Fetch new skills count from metrics
+      const thirtyDaysAgo = new Date();
+      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+      
+      const { data: metricsData } = await supabase
+        .from('skills_metrics')
+        .select('*')
+        .eq('action', 'added')
+        .gte('timestamp', thirtyDaysAgo.toISOString());
+      
+      setNewSkillsCount(metricsData?.length || 0);
     } catch (error: any) {
       console.error('Error fetching skills:', error);
       toast.error('Failed to load skills matrix');
@@ -168,6 +180,14 @@ export default function SkillsMatrix() {
   const paginatedSkills = getPaginatedSkills();
 
   const domains = ['all', ...Array.from(new Set(skills.map(s => s.domain).filter(Boolean)))];
+  
+  // Compute highlights
+  const top25Skills = skills
+    .filter(s => Number(s.alignment_score) >= 85)
+    .sort((a, b) => Number(b.alignment_score || 0) - Number(a.alignment_score || 0))
+    .slice(0, 25);
+  
+  const risingSkills = skills.filter(s => s.trend?.toLowerCase() === 'rising').slice(0, 12);
 
   const StarRating = ({ rating }: { rating: number }) => (
     <div className="flex gap-0.5">
@@ -437,6 +457,112 @@ export default function SkillsMatrix() {
           </DialogContent>
           </Dialog>
         </div>
+      </div>
+
+      {/* Visual Highlights Dashboard */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Top 25 Skills */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <Star className="w-5 h-5 text-warning" />
+              Top 25 Skills
+            </CardTitle>
+            <CardDescription>Highest alignment scores (≥85%)</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-2 max-h-64 overflow-y-auto">
+              {top25Skills.length > 0 ? (
+                top25Skills.map((skill, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      setSearchTerm(skill.skill);
+                      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    }}
+                    className="w-full flex items-center justify-between p-2 rounded hover:bg-accent transition-colors text-left"
+                  >
+                    <div className="flex items-center gap-2 flex-1 min-w-0">
+                      <div 
+                        className={`w-2 h-2 rounded-full flex-shrink-0 ${getAlignmentColor(skill.alignment_score || 0)}`}
+                      />
+                      <span className="font-medium truncate">{skill.skill}</span>
+                    </div>
+                    <Badge variant="secondary" className="ml-2 flex-shrink-0">
+                      {Number(skill.alignment_score || 0)}%
+                    </Badge>
+                  </button>
+                ))
+              ) : (
+                <p className="text-muted-foreground text-sm">No skills with 85%+ alignment yet</p>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* New Skills */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <Plus className="w-5 h-5 text-primary" />
+              New Skills
+            </CardTitle>
+            <CardDescription>Added in last 30 days</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="text-center py-8">
+              <div className="text-5xl font-bold text-primary mb-2">{newSkillsCount}</div>
+              <p className="text-sm text-muted-foreground">Skills added this month</p>
+              {newSkillsCount > 0 && (
+                <div className="mt-4">
+                  <Badge variant="default" className="gap-1">
+                    <TrendingUp className="w-3 h-3" />
+                    Growing
+                  </Badge>
+                </div>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Rising Skills */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <TrendingUp className="w-5 h-5 text-green-500" />
+              Rising Stars
+            </CardTitle>
+            <CardDescription>Trending upward in demand</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-2 max-h-64 overflow-y-auto">
+              {risingSkills.length > 0 ? (
+                risingSkills.map((skill, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      setSearchTerm(skill.skill);
+                      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    }}
+                    className="w-full flex items-center justify-between p-2 rounded hover:bg-accent transition-colors text-left"
+                  >
+                    <div className="flex items-center gap-2 flex-1 min-w-0">
+                      <TrendingUp className="w-4 h-4 text-green-500 flex-shrink-0" />
+                      <span className="font-medium truncate">{skill.skill}</span>
+                    </div>
+                    {skill.domain && (
+                      <Badge variant="outline" className="ml-2 flex-shrink-0 text-xs">
+                        {skill.domain}
+                      </Badge>
+                    )}
+                  </button>
+                ))
+              ) : (
+                <p className="text-muted-foreground text-sm">No rising skills detected yet</p>
+              )}
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Filters & Controls */}
