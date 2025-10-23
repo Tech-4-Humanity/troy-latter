@@ -28,12 +28,46 @@ serve(async (req) => {
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Fetch Troy's CV profile
-    const { data: profile, error: profileError } = await supabase
-      .from('cv_profiles')
-      .select('*')
-      .limit(1)
-      .single();
+    // Use Troy's real profile from cv_master.md
+    const profile = {
+      full_name: 'Troy Latter',
+      professional_title: 'Chief Technology Officer',
+      summary: 'Strategic technology executive with proven expertise in AI/ML implementation, digital transformation, and enterprise architecture. Delivered 30-40% efficiency gains through agentic AI pilots and led global capability development across Defence, health, transport, and utilities sectors.',
+      experience: [
+        {
+          company: 'Unisys',
+          title: 'CTO Alliances and Strategic Foresight',
+          period: '2024 to 2025',
+          achievements: [
+            'Directed agentic AI pilots across procurement and service workflows',
+            'Efficiency gains 30 to 40 percent in compliance and delivery',
+            'Partnered go to market for long cycle government pursuits'
+          ]
+        },
+        {
+          company: 'Amazon Web Services',
+          title: 'Principal Solutions Architect and Global Capability Adviser',
+          period: '2019 to 2023',
+          achievements: [
+            'AI and ML strategy across Defence health transport and utilities',
+            'Predictive pipelines on SageMaker and Bedrock',
+            'One hundred plus executive briefings'
+          ]
+        }
+      ],
+      education: [
+        { institution: 'UNSW', degree: 'Master of Commerce' },
+        { institution: 'UoW', degree: 'Bachelor of Economics' }
+      ],
+      achievements: {
+        certifications: [
+          'AWS Professional Solutions Architect',
+          'Azure AI Engineer Associate',
+          'IBM AI Ethics'
+        ]
+      },
+      skills: {}
+    };
 
     // Fetch top skills from Skills Matrix for weighted CV generation
     const { data: topSkills, error: skillsError } = await supabase
@@ -53,13 +87,7 @@ serve(async (req) => {
           .join('\n')
       : 'No skills matrix data available';
 
-    if (profileError || !profile) {
-      console.error('Error fetching profile:', profileError);
-      return new Response(
-        JSON.stringify({ error: 'Failed to fetch CV profile' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
+    // Profile is now hardcoded from cv_master.md template
 
     // Fetch HTML template if requested
     let htmlTemplateData = null;

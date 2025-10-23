@@ -62,6 +62,41 @@ export class ProfessionalCVPDF {
     }
   }
 
+  // Parse text into word-level tokens with formatting
+  private parseToTokens(text: string): Array<{text: string, bold: boolean}> {
+    const tokens: Array<{text: string, bold: boolean}> = [];
+    const parts = this.parseBoldInline(text);
+    
+    for (const part of parts) {
+      // Split into words while preserving spaces
+      const words = part.text.split(/(\s+)/);
+      for (const word of words) {
+        if (word) {
+          tokens.push({ text: word, bold: part.bold });
+        }
+      }
+    }
+    
+    return tokens;
+  }
+
+  // Render a line of tokens
+  private renderTokenLine(tokens: Array<{text: string, bold: boolean}>, x: number) {
+    let currentX = x;
+    
+    for (const token of tokens) {
+      this.doc.setFont('helvetica', token.bold ? 'bold' : 'normal');
+      this.doc.setTextColor(
+        token.bold ? 15 : 51,
+        token.bold ? 23 : 65,
+        token.bold ? 42 : 85
+      );
+      
+      this.doc.text(token.text, currentX, this.y);
+      currentX += this.doc.getTextWidth(token.text);
+    }
+  }
+
   // Parse inline bold text
   private parseBoldInline(text: string): Array<{ text: string; bold: boolean }> {
     const parts: Array<{ text: string; bold: boolean }> = [];
@@ -145,73 +180,82 @@ export class ProfessionalCVPDF {
   addParagraph(text: string) {
     this.checkPageBreak(10);
     this.doc.setFontSize(10);
-    this.doc.setFont('helvetica', 'normal');
-    this.doc.setTextColor(51, 65, 85); // slate-700
-
-    // Word wrap
-    const maxWidth = this.pageWidth - 2 * this.margin;
-    const lines = this.doc.splitTextToSize(text, maxWidth);
-
-    for (const line of lines) {
-      this.checkPageBreak(7);
-      this.doc.text(line, this.margin, this.y);
-      this.y += 5;
+    
+    // Use token-based rendering for proper inline bold support
+    const tokens = this.parseToTokens(text);
+    const maxWidth = this.pageWidth - (2 * this.margin);
+    
+    let currentLine: typeof tokens = [];
+    let currentLineWidth = 0;
+    
+    for (const token of tokens) {
+      this.doc.setFont('helvetica', token.bold ? 'bold' : 'normal');
+      const tokenWidth = this.doc.getTextWidth(token.text);
+      
+      if (currentLineWidth + tokenWidth > maxWidth && currentLine.length > 0) {
+        this.renderTokenLine(currentLine, this.margin);
+        this.y += 5;
+        this.checkPageBreak(7);
+        currentLine = [token];
+        currentLineWidth = tokenWidth;
+      } else {
+        currentLine.push(token);
+        currentLineWidth += tokenWidth;
+      }
     }
-    this.y += 2;
+    
+    if (currentLine.length > 0) {
+      this.renderTokenLine(currentLine, this.margin);
+    }
+    
+    this.y += 7;
   }
 
   // Render bullet point with inline bold support
   addBullet(text: string) {
     this.checkPageBreak(8);
     this.doc.setFontSize(10);
-
+    
     // Bullet symbol
     this.doc.setTextColor(37, 99, 235);
     this.doc.setFont('helvetica', 'bold');
     this.doc.text('•', this.margin + 2, this.y);
-
-    // Parse inline formatting
-    const parts = this.parseBoldInline(text);
-    const maxWidth = this.pageWidth - 2 * this.margin - 8;
-
-    let currentX = this.margin + 8;
-    let currentLineText = '';
-
-    for (const part of parts) {
-      this.doc.setFont('helvetica', part.bold ? 'bold' : 'normal');
-      this.doc.setTextColor(
-        part.bold ? 15 : 51,
-        part.bold ? 23 : 65,
-        part.bold ? 42 : 85
-      );
-
-      const words = part.text.split(' ');
-
-      for (let i = 0; i < words.length; i++) {
-        const word = words[i] + (i < words.length - 1 ? ' ' : '');
-        const testLine = currentLineText + word;
-        const testWidth = this.doc.getTextWidth(testLine);
-
-        if (testWidth > maxWidth && currentLineText !== '') {
-          // Print current line and move to next
-          this.doc.text(currentLineText, currentX, this.y);
-          this.y += 5;
-          this.checkPageBreak(6);
-          currentX = this.margin + 8;
-          currentLineText = word;
-        } else {
-          currentLineText = testLine;
-        }
-      }
-
-      // Print remaining text from this part
-      if (currentLineText) {
-        this.doc.text(currentLineText, currentX, this.y);
-        currentX += this.doc.getTextWidth(currentLineText);
-        currentLineText = '';
+    
+    // Parse into word-level tokens with formatting
+    const tokens = this.parseToTokens(text);
+    const maxWidth = this.pageWidth - (2 * this.margin) - 8;
+    const indent = this.margin + 8;
+    
+    let currentLine: typeof tokens = [];
+    let currentLineWidth = 0;
+    
+    for (const token of tokens) {
+      // Set font for width calculation
+      this.doc.setFont('helvetica', token.bold ? 'bold' : 'normal');
+      const tokenWidth = this.doc.getTextWidth(token.text);
+      
+      // Check if adding this token exceeds line width
+      if (currentLineWidth + tokenWidth > maxWidth && currentLine.length > 0) {
+        // Render current line
+        this.renderTokenLine(currentLine, indent);
+        this.y += 5;
+        this.checkPageBreak(6);
+        
+        // Start new line
+        currentLine = [token];
+        currentLineWidth = tokenWidth;
+      } else {
+        // Add token to current line
+        currentLine.push(token);
+        currentLineWidth += tokenWidth;
       }
     }
-
+    
+    // Render final line
+    if (currentLine.length > 0) {
+      this.renderTokenLine(currentLine, indent);
+    }
+    
     this.y += 6;
   }
 
