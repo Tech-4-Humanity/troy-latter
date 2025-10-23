@@ -148,38 +148,10 @@ export default function SkillsVisualizations() {
             </p>
           </div>
         </div>
-
-        {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card>
-            <CardContent className="pt-6">
-              <div className="text-2xl font-bold">{skills.length}</div>
-              <p className="text-xs text-muted-foreground">Total Skills</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="pt-6">
-              <div className="text-2xl font-bold">{expertCount}</div>
-              <p className="text-xs text-muted-foreground">Expert-Level</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="pt-6">
-              <div className="text-2xl font-bold">{avgRating}/5</div>
-              <p className="text-xs text-muted-foreground">Avg Proficiency</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="pt-6">
-              <div className="text-2xl font-bold">{risingSkills.length}</div>
-              <p className="text-xs text-muted-foreground">Rising Skills</p>
-            </CardContent>
-          </Card>
-        </div>
       </div>
 
       {/* TOP 25 COMPREHENSIVE TABLE */}
-      <Card className="mt-8">
+      <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-yellow-500" />
@@ -262,6 +234,34 @@ export default function SkillsVisualizations() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Quick Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Card>
+          <CardContent className="pt-6">
+            <div className="text-2xl font-bold">{skills.length}</div>
+            <p className="text-xs text-muted-foreground">Total Skills</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="pt-6">
+            <div className="text-2xl font-bold">{expertCount}</div>
+            <p className="text-xs text-muted-foreground">Expert-Level</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="pt-6">
+            <div className="text-2xl font-bold">{avgRating}/5</div>
+            <p className="text-xs text-muted-foreground">Avg Proficiency</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="pt-6">
+            <div className="text-2xl font-bold">{risingSkills.length}</div>
+            <p className="text-xs text-muted-foreground">Rising Skills</p>
+          </CardContent>
+        </Card>
+      </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full mt-8">
         <TabsList className="grid w-full grid-cols-3 lg:w-auto">
