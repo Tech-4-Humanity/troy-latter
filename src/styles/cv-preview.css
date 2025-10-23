@@ -64,6 +64,70 @@
   border-color: hsl(var(--border));
 }
 
+/* Multi-column layout for categorized skills - detect skills sections */
+.cv-preview h2:has(+ strong) {
+  @apply mb-6;
+}
+
+/* Skills section container with 2-column grid */
+.cv-preview h2:has(+ strong) ~ strong,
+.cv-preview h2:has(+ strong) ~ strong ~ ul,
+.cv-preview h2:has(+ strong) ~ strong ~ ul ~ strong,
+.cv-preview h2:has(+ strong) ~ strong ~ ul ~ strong ~ ul {
+  column-count: 2;
+  column-gap: 3rem;
+  break-inside: avoid;
+}
+
+/* Category headings in skills sections */
+.cv-preview strong:has(+ ul) {
+  display: block;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+/* First category has no top margin */
+.cv-preview h2 + strong {
+  margin-top: 0;
+}
+
+/* Skills bullets in categorized sections */
+.cv-preview strong + ul {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
+.cv-preview strong + ul li {
+  break-inside: avoid;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 0.25rem;
+  padding-left: 0.25rem;
+}
+
+.cv-preview strong + ul li::before {
+  display: none; /* Use default list bullets for skills */
+}
+
+/* Responsive: single column on mobile */
+@media (max-width: 768px) {
+  .cv-preview h2:has(+ strong) ~ strong,
+  .cv-preview h2:has(+ strong) ~ strong ~ ul,
+  .cv-preview h2:has(+ strong) ~ strong ~ ul ~ strong,
+  .cv-preview h2:has(+ strong) ~ strong ~ ul ~ strong ~ ul {
+    column-count: 1;
+  }
+}
+
 /* Print styles */
 @media print {
   .cv-preview {
@@ -92,5 +156,22 @@
   
   .cv-preview li {
     page-break-inside: avoid;
+  }
+
+  /* Maintain 2 columns in print for skills */
+  .cv-preview h2:has(+ strong) ~ strong,
+  .cv-preview h2:has(+ strong) ~ strong ~ ul,
+  .cv-preview h2:has(+ strong) ~ strong ~ ul ~ strong,
+  .cv-preview h2:has(+ strong) ~ strong ~ ul ~ strong ~ ul {
+    column-count: 2;
+    column-gap: 1.5rem;
+  }
+  
+  .cv-preview strong:has(+ ul) {
+    page-break-after: avoid;
+  }
+  
+  .cv-preview strong + ul {
+    page-break-before: avoid;
   }
 }

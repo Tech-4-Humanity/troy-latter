@@ -62,6 +62,161 @@ export class ProfessionalCVPDF {
     }
   }
 
+  // Detect if this is a categorized skills section
+  private isCategorizedSkills(sections: CVSection[], startIndex: number): boolean {
+    if (startIndex === 0) return false;
+    
+    const prevSection = sections[startIndex - 1];
+    if (prevSection?.type === 'heading2') {
+      const heading = prevSection.content.toLowerCase();
+      if (heading.includes('competenc') || 
+          heading.includes('skill') || 
+          heading.includes('strength')) {
+        
+        // Look ahead: do we have bold headings followed by bullets?
+        let hasCategories = false;
+        for (let i = startIndex; i < Math.min(startIndex + 10, sections.length); i++) {
+          if (sections[i].type === 'bold' && 
+              i + 1 < sections.length && 
+              sections[i + 1].type === 'bullet') {
+            hasCategories = true;
+            break;
+          }
+        }
+        return hasCategories;
+      }
+    }
+    return false;
+  }
+
+  // Render categorized skills in 2-column layout
+  private addCategorizedSkills(sections: CVSection[], startIndex: number): number {
+    interface SkillCategory {
+      name: string;
+      skills: string[];
+    }
+    
+    const categories: SkillCategory[] = [];
+    let currentCategory: SkillCategory | null = null;
+    let i = startIndex;
+    
+    // Collect all categories and their skills
+    while (i < sections.length) {
+      const section = sections[i];
+      
+      // Stop at next major heading
+      if (section.type === 'heading1' || section.type === 'heading2') {
+        break;
+      }
+      
+      // New category header
+      if (section.type === 'bold') {
+        if (currentCategory) {
+          categories.push(currentCategory);
+        }
+        currentCategory = {
+          name: section.content,
+          skills: []
+        };
+      }
+      
+      // Add skill to current category
+      if (section.type === 'bullet' && currentCategory) {
+        currentCategory.skills.push(section.content);
+      }
+      
+      i++;
+    }
+    
+    // Don't forget the last category
+    if (currentCategory) {
+      categories.push(currentCategory);
+    }
+    
+    // Now render in 2-column layout
+    if (categories.length === 0) return i;
+    
+    const colWidth = (this.pageWidth - (3 * this.margin)) / 2;
+    const colGap = this.margin;
+    const leftX = this.margin;
+    const rightX = this.margin + colWidth + colGap;
+    
+    let leftY = this.y;
+    let rightY = this.y;
+    let useLeftColumn = true;
+    
+    for (const category of categories) {
+      // Determine target column (balance by height)
+      const targetX = useLeftColumn ? leftX : rightX;
+      let currentY = useLeftColumn ? leftY : rightY;
+      
+      // Check page break
+      if (currentY > 260) {
+        this.doc.addPage();
+        leftY = 20;
+        rightY = 20;
+        currentY = 20;
+        this.y = 20;
+      }
+      
+      // Render category heading
+      this.doc.setFontSize(10);
+      this.doc.setFont('helvetica', 'bold');
+      this.doc.setTextColor(15, 23, 42); // slate-900
+      
+      // Word wrap category name if needed
+      const categoryLines = this.doc.splitTextToSize(category.name, colWidth);
+      for (const line of categoryLines) {
+        this.doc.text(line, targetX, currentY);
+        currentY += 5;
+      }
+      currentY += 2;
+      
+      // Render skills
+      this.doc.setFontSize(9);
+      this.doc.setFont('helvetica', 'normal');
+      this.doc.setTextColor(51, 65, 85); // slate-700
+      
+      for (const skill of category.skills) {
+        // Bullet
+        this.doc.setTextColor(37, 99, 235);
+        this.doc.setFont('helvetica', 'bold');
+        this.doc.text('•', targetX + 1, currentY);
+        
+        // Skill text with word wrap
+        this.doc.setFont('helvetica', 'normal');
+        this.doc.setTextColor(51, 65, 85);
+        const skillLines = this.doc.splitTextToSize(skill, colWidth - 6);
+        
+        for (let lineIdx = 0; lineIdx < skillLines.length; lineIdx++) {
+          this.doc.text(skillLines[lineIdx], targetX + 6, currentY);
+          if (lineIdx < skillLines.length - 1) {
+            currentY += 4;
+          }
+        }
+        currentY += 5;
+      }
+      
+      // Add spacing after category
+      currentY += 4;
+      
+      // Update column heights
+      if (useLeftColumn) {
+        leftY = currentY;
+      } else {
+        rightY = currentY;
+      }
+      
+      // Switch columns for better balance
+      useLeftColumn = leftY <= rightY;
+    }
+    
+    // Set Y to the tallest column
+    this.y = Math.max(leftY, rightY) + 6;
+    
+    return i;
+  }
+
   // Parse text into word-level tokens with formatting
   private parseToTokens(text: string): Array<{text: string, bold: boolean}> {
     const tokens: Array<{text: string, bold: boolean}> = [];
@@ -284,8 +439,23 @@ export class ProfessionalCVPDF {
   // Generate complete PDF
   generate(markdown: string): jsPDF {
     const sections = this.parseMarkdown(markdown);
-
-    for (const section of sections) {
+    let i = 0;
+    
+    while (i < sections.length) {
+      const section = sections[i];
+      
+      // Check if this is a categorized skills section
+      if (section.type === 'heading2' && this.isCategorizedSkills(sections, i + 1)) {
+        // Render the heading
+        this.addHeading2(section.content);
+        i++;
+        
+        // Render skills in columns
+        i = this.addCategorizedSkills(sections, i);
+        continue;
+      }
+      
+      // Regular rendering for all other sections
       switch (section.type) {
         case 'heading1':
           this.addHeading1(section.content);
@@ -306,6 +476,8 @@ export class ProfessionalCVPDF {
           this.addParagraph(section.content);
           break;
       }
+      
+      i++;
     }
 
     this.finalizeDocument();

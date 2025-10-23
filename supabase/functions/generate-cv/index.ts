@@ -234,7 +234,33 @@ FORMAT:
 
 
 ## Core Competencies
-[Organize skills by relevance to the job, using categories]
+
+**[Primary Category Name - e.g., "AI & Digital Transformation"]**
+• [Specific skill 1]
+• [Specific skill 2]
+• [Specific skill 3]
+• [Specific skill 4]
+• [Specific skill 5]
+
+**[Secondary Category Name - e.g., "Leadership & Strategic Consulting"]**
+• [Specific skill 1]
+• [Specific skill 2]
+• [Specific skill 3]
+• [Specific skill 4]
+
+**[Tertiary Category Name - e.g., "Cloud Architecture & DevOps"]**
+• [Specific skill 1]
+• [Specific skill 2]
+• [Specific skill 3]
+
+SKILL CATEGORIZATION RULES:
+- Group skills into 2-4 thematic categories based on the job requirements
+- Each category MUST have a bold heading on its own line: **Category Name**
+- List 4-8 specific skills per category using bullet points (•)
+- Category names should be descriptive and aligned with job requirements
+- Categories typically include: Technical/Domain expertise, Leadership/Soft Skills, Industry/Business knowledge, Methodologies & Frameworks
+- Keep individual skills concise (1-5 words each)
+- Example category names: "AI & Digital Transformation", "Cloud Architecture & Engineering", "Leadership & Strategic Consulting", "Industry Expertise", "Security & Compliance"
 
 
 ## Notable Achievements
