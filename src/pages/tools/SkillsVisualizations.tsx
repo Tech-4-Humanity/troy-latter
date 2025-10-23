@@ -16,6 +16,18 @@ interface Skill {
   rating: number;
   'Proficiency Level': string;
   alignment_score?: string | number;
+  Certification?: string;
+  proof?: string;
+  'Project Examples'?: string;
+  'Tools Used'?: string;
+  'Job Keywords Matched'?: string;
+  impact_metric?: string;
+  market_trend?: string;
+  recency_year?: number | string;
+  role_alignment?: string;
+  evidence_level?: string;
+  'Endorsements Count'?: number | string;
+  [key: string]: any; // Allow other columns from DB
 }
 
 // Emoji mapping for domains
@@ -54,7 +66,7 @@ export default function SkillsVisualizations() {
     try {
       const { data, error } = await supabase
         .from('175+ Skills Matrix')
-        .select('skill, domain, rating, "Proficiency Level", alignment_score')
+        .select('*')
         .order('rating', { ascending: false });
 
       if (error) throw error;
@@ -67,7 +79,7 @@ export default function SkillsVisualizations() {
     }
   };
 
-  const topSkills = skills.slice(0, 25);
+  const topSkills = skills.slice(0, 50); // Show top 50 in table
   const domains = Array.from(new Set(skills.map(s => s.domain))).filter(Boolean);
 
   // Domain distribution data
@@ -166,11 +178,96 @@ export default function SkillsVisualizations() {
         </div>
       </div>
 
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+      {/* TOP 25 COMPREHENSIVE TABLE */}
+      <Card className="mt-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Sparkles className="h-5 w-5 text-yellow-500" />
+            Troy's Top 25 Skills - Comprehensive View
+          </CardTitle>
+          <CardDescription>
+            Expert-level capabilities with certifications, proof points, and impact metrics
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b">
+                  <th className="text-left p-2 font-semibold">#</th>
+                  <th className="text-left p-2 font-semibold min-w-[200px]">Skill</th>
+                  <th className="text-left p-2 font-semibold">Domain</th>
+                  <th className="text-left p-2 font-semibold">Rating</th>
+                  <th className="text-left p-2 font-semibold min-w-[150px]">Certification</th>
+                  <th className="text-left p-2 font-semibold min-w-[200px]">Proof / Evidence</th>
+                  <th className="text-left p-2 font-semibold min-w-[200px]">Project Examples</th>
+                  <th className="text-left p-2 font-semibold">Tools</th>
+                  <th className="text-left p-2 font-semibold">Impact</th>
+                  <th className="text-left p-2 font-semibold">Trend</th>
+                </tr>
+              </thead>
+              <tbody>
+                {topSkills.map((skill, idx) => (
+                  <tr key={idx} className="border-b hover:bg-muted/50 transition-colors">
+                    <td className="p-2 text-muted-foreground">{idx + 1}</td>
+                    <td className="p-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">{domainEmojis[skill.domain] || '📌'}</span>
+                        <div>
+                          <div className="font-semibold">{skill.skill}</div>
+                          <div className="text-xs text-muted-foreground">
+                            {skill.role_alignment || skill['Proficiency Level']}
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="p-2">
+                      <Badge variant="outline" className="text-xs whitespace-nowrap">
+                        {skill.domain}
+                      </Badge>
+                    </td>
+                    <td className="p-2">
+                      <StarRating rating={skill.rating} />
+                    </td>
+                    <td className="p-2 text-xs">
+                      {skill.Certification || '-'}
+                    </td>
+                    <td className="p-2 text-xs text-muted-foreground">
+                      {skill.proof || '-'}
+                    </td>
+                    <td className="p-2 text-xs text-muted-foreground">
+                      {skill['Project Examples'] || '-'}
+                    </td>
+                    <td className="p-2 text-xs">
+                      {skill['Tools Used'] || '-'}
+                    </td>
+                    <td className="p-2 text-xs text-muted-foreground">
+                      {skill.impact_metric || '-'}
+                    </td>
+                    <td className="p-2">
+                      {skill.market_trend && (
+                        <Badge 
+                          variant={skill.market_trend === 'Rising' ? 'default' : 'secondary'}
+                          className="text-xs"
+                        >
+                          {skill.market_trend === 'Rising' && <TrendingUp className="h-3 w-3 mr-1" />}
+                          {skill.market_trend}
+                        </Badge>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full mt-8">
         <TabsList className="grid w-full grid-cols-3 lg:w-auto">
-          <TabsTrigger value="overview" className="gap-2">
+          <TabsTrigger value="summary" className="gap-2">
             <Sparkles className="h-4 w-4" />
-            Top 25
+            Summary
           </TabsTrigger>
           <TabsTrigger value="all" className="gap-2">
             <Activity className="h-4 w-4" />
@@ -178,53 +275,44 @@ export default function SkillsVisualizations() {
           </TabsTrigger>
           <TabsTrigger value="charts" className="gap-2">
             <BarChart className="h-4 w-4" />
-            Insights
+            Coverage
           </TabsTrigger>
         </TabsList>
 
-        {/* Top 25 Skills */}
-        <TabsContent value="overview" className="space-y-6 mt-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Sparkles className="h-5 w-5 text-yellow-500" />
-                Troy's Top 25 Skills
-              </CardTitle>
-              <CardDescription>
-                Expert-level capabilities spanning AI Engineering to Executive Leadership
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {topSkills.map((skill, idx) => (
-                  <div
-                    key={idx}
-                    className="p-4 rounded-lg border bg-card hover:shadow-md transition-shadow"
-                  >
-                    <div className="flex items-start justify-between mb-2">
-                      <span className="text-2xl">{domainEmojis[skill.domain] || '📌'}</span>
-                      {String(skill.alignment_score).toLowerCase().includes('rising') && (
-                        <Badge variant="secondary" className="gap-1">
-                          <TrendingUp className="h-3 w-3" />
-                          Rising
-                        </Badge>
-                      )}
-                    </div>
-                    <h3 className="font-semibold mb-1 line-clamp-2">{skill.skill}</h3>
-                    <Badge variant="outline" className="mb-2 text-xs">
-                      {skill.domain}
-                    </Badge>
-                    <div className="mt-2">
-                      <StarRating rating={skill.rating} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
+        {/* Summary Tab */}
+        <TabsContent value="summary" className="space-y-6 mt-6">
           {/* Radar Chart */}
           <RadarChart />
+          
+          {/* Rising Skills */}
+          {risingSkills.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <TrendingUp className="h-5 w-5 text-green-600" />
+                  Rising Skills
+                </CardTitle>
+                <CardDescription>Skills with strong upward momentum</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {risingSkills.map((skill, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3 rounded-lg border bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20"
+                    >
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-lg">{domainEmojis[skill.domain] || '📌'}</span>
+                        <Badge variant="secondary" className="text-xs">Rising</Badge>
+                      </div>
+                      <div className="font-medium text-sm">{skill.skill}</div>
+                      <div className="text-xs text-muted-foreground mt-1">{skill.domain}</div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </TabsContent>
 
         {/* All Skills Table */}
