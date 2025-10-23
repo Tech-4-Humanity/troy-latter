@@ -38,6 +38,11 @@ export default function CVIngestionDashboard() {
     }
   });
 
+  // Get unique file count and detect duplicates
+  const uniqueFiles = new Set(logs?.map(log => log.source_file) || []).size;
+  const totalLogEntries = logs?.length || 0;
+  const hasDuplicates = totalLogEntries > uniqueFiles;
+
   // Fetch CV master stats
   const { data: masterStats } = useQuery({
     queryKey: ['cv-master-stats'],
@@ -214,6 +219,63 @@ export default function CVIngestionDashboard() {
     }
   });
 
+  // Complete stuck session
+  const completeSessionMutation = useMutation({
+    mutationFn: async () => {
+      const { data, error } = await supabase.functions.invoke('cv-ingestion-cleanup', {
+        body: { action: 'complete-session' }
+      });
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => {
+      toast.success("Session completed");
+      queryClient.invalidateQueries({ queryKey: ['ingestion-logs'] });
+      queryClient.invalidateQueries({ queryKey: ['current-session'] });
+    },
+    onError: (error) => {
+      toast.error(`Failed: ${error.message}`);
+    }
+  });
+
+  // Deduplicate log entries
+  const deduplicateMutation = useMutation({
+    mutationFn: async () => {
+      const { data, error } = await supabase.functions.invoke('cv-ingestion-cleanup', {
+        body: { action: 'deduplicate-logs' }
+      });
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: (data) => {
+      toast.success(`Removed ${data.duplicatesRemoved} duplicates`);
+      queryClient.invalidateQueries({ queryKey: ['ingestion-logs'] });
+    },
+    onError: (error) => {
+      toast.error(`Failed: ${error.message}`);
+    }
+  });
+
+  // Full cleanup
+  const fullCleanupMutation = useMutation({
+    mutationFn: async () => {
+      const { data, error } = await supabase.functions.invoke('cv-ingestion-cleanup', {
+        body: { action: 'full-cleanup' }
+      });
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: (data) => {
+      toast.success(`Cleanup complete: ${data.uniqueFiles} unique files`);
+      queryClient.invalidateQueries({ queryKey: ['ingestion-logs'] });
+      queryClient.invalidateQueries({ queryKey: ['cv-master-stats'] });
+      queryClient.invalidateQueries({ queryKey: ['current-session'] });
+    },
+    onError: (error) => {
+      toast.error(`Failed: ${error.message}`);
+    }
+  });
+
   // Single-file processor mutation
   const processSingleFileMutation = useMutation({
     mutationFn: async (filePath: string) => {
@@ -367,23 +429,39 @@ export default function CVIngestionDashboard() {
               </div>
             ) : (
               <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
                     <p className="text-sm text-muted-foreground">Files in Storage</p>
                     <p className="text-2xl font-bold">{storageStats?.totalFilesInStorage || 0}</p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">Files Tracked in DB</p>
-                    <p className="text-2xl font-bold">{logs?.length || 0}</p>
+                    <p className="text-sm text-muted-foreground">Unique Files in DB</p>
+                    <p className="text-2xl font-bold">{uniqueFiles}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-sm text-muted-foreground">Total Log Entries</p>
+                    <p className={`text-2xl font-bold ${hasDuplicates ? 'text-destructive' : ''}`}>
+                      {totalLogEntries}
+                    </p>
                   </div>
                 </div>
                 
-                {(storageStats?.totalFilesInStorage || 0) > (logs?.length || 0) && (
+                {hasDuplicates && (
+                  <Alert variant="destructive">
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertTitle>Duplicate Entries Detected</AlertTitle>
+                    <AlertDescription>
+                      {totalLogEntries - uniqueFiles} duplicate log entries found. Use "Deduplicate Logs" to clean up.
+                    </AlertDescription>
+                  </Alert>
+                )}
+                
+                {(storageStats?.totalFilesInStorage || 0) > uniqueFiles && !hasDuplicates && (
                   <Alert>
                     <AlertCircle className="h-4 w-4" />
                     <AlertTitle>Unprocessed Files Detected</AlertTitle>
                     <AlertDescription>
-                      {(storageStats?.totalFilesInStorage || 0) - (logs?.length || 0)} files 
+                      {(storageStats?.totalFilesInStorage || 0) - uniqueFiles} files 
                       in storage have not been ingested yet. They will be processed in the next run.
                     </AlertDescription>
                   </Alert>
@@ -510,74 +588,62 @@ export default function CVIngestionDashboard() {
                   </>
                 )}
               </Button>
-              
-              {failedLogs.length > 0 && (
-                <Button
-                  onClick={() => retryFailedMutation.mutate()}
-                  disabled={retryFailedMutation.isPending || !!currentSession}
-                  variant="outline"
-                  size="lg"
-                  className="gap-2"
-                >
-                  {retryFailedMutation.isPending ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                      Retrying...
-                    </>
-                  ) : (
-                    <>
-                      <RefreshCw className="h-4 w-4" />
-                      Retry {failedLogs.length} Failed
-                    </>
-                  )}
-                </Button>
-              )}
-              
-              {stuckInProcessing > 0 && (
-                <Button
-                  onClick={() => resetStuckMutation.mutate()}
-                  disabled={resetStuckMutation.isPending || !!currentSession}
-                  variant="outline"
-                  size="lg"
-                  className="gap-2"
-                >
-                  {resetStuckMutation.isPending ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                      Resetting...
-                    </>
-                  ) : (
-                    <>
-                      <RefreshCw className="h-4 w-4" />
-                      Reset {stuckInProcessing} Stuck
-                    </>
-                  )}
-                </Button>
-              )}
-              
-              <Button
-                onClick={() => {
-                  if (confirm('Nuclear Reset will delete processing logs older than 60 minutes and reset the rest. This cannot be undone. Proceed?')) {
-                    nuclearResetMutation.mutate();
-                  }
-                }}
-                disabled={nuclearResetMutation.isPending || !!currentSession}
-                variant="destructive"
-                size="lg"
-                className="gap-2"
-              >
-                {nuclearResetMutation.isPending ? (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    Resetting...
-                  </>
-                ) : (
-                  <>
-                    💣 Nuclear Reset
-                  </>
-                )}
-              </Button>
             </div>
+          </div>
+
+          {/* Cleanup Controls */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+            <Button 
+              onClick={() => completeSessionMutation.mutate()}
+              disabled={completeSessionMutation.isPending || !currentSession || currentSession.status !== 'running'}
+              variant="outline"
+            >
+              {completeSessionMutation.isPending ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : null}
+              Complete Stuck Session
+            </Button>
+
+            <Button 
+              onClick={() => deduplicateMutation.mutate()}
+              disabled={deduplicateMutation.isPending || !hasDuplicates}
+              variant="outline"
+            >
+              {deduplicateMutation.isPending ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : null}
+              Deduplicate ({totalLogEntries - uniqueFiles})
+            </Button>
+            
+            <Button 
+              onClick={() => retryFailedMutation.mutate()}
+              disabled={retryFailedMutation.isPending || failedLogs.length === 0}
+              variant="outline"
+            >
+              {retryFailedMutation.isPending ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : null}
+              Retry Failed ({failedLogs.length})
+            </Button>
+
+            <Button 
+              onClick={() => {
+                if (confirm('This will clean up all stuck sessions and duplicates. Continue?')) {
+                  fullCleanupMutation.mutate();
+                }
+              }}
+              disabled={fullCleanupMutation.isPending}
+              variant="destructive"
+            >
+              {fullCleanupMutation.isPending ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Cleaning...
+                </>
+              ) : (
+                'Full Cleanup'
+              )}
+            </Button>
           </div>
 
           {/* Master Stats */}
