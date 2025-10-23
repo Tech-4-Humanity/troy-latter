@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { GlassmorphismCard, GlassmorphismCardContent } from '@/components/ui/glassmorphism-card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { ExternalLink, Globe, Users, Zap, Shield, Building, Bot, Star, Wrench, Heart, Brain, ChartBar, Activity, Filter, Search, X } from 'lucide-react';
+import { ExternalLink, Globe, Users, Zap, Shield, Building, Bot, Star, Wrench, Heart, Brain, ChartBar, Activity, Filter, Search, X, ArrowRight, FileText } from 'lucide-react';
 
 interface ProjectProps {
   title: string;
@@ -12,9 +13,13 @@ interface ProjectProps {
   url: string;
   icon: React.ElementType;
   category: string;
+  isInternal?: boolean;
 }
 
-const ProjectCard = ({ title, description, url, icon: Icon, category }: ProjectProps) => {
+const ProjectCard = ({ title, description, url, icon: Icon, category, isInternal }: ProjectProps) => {
+  const navigate = useNavigate();
+  const isInternalLink = isInternal || url.startsWith('/');
+  
   const getFaviconUrl = (url: string) => {
     try {
       const domain = new URL(url).hostname;
@@ -24,7 +29,15 @@ const ProjectCard = ({ title, description, url, icon: Icon, category }: ProjectP
     }
   };
 
-  const faviconUrl = getFaviconUrl(url);
+  const handleClick = () => {
+    if (isInternalLink) {
+      navigate(url);
+    } else {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const faviconUrl = !isInternalLink ? getFaviconUrl(url) : null;
 
   return (
     <GlassmorphismCard className="group hover:scale-[1.02] hover:shadow-xl transition-all duration-500 h-full flex flex-col border border-white/10 hover:border-primary/30 bg-gradient-to-br from-background/50 to-background/30 backdrop-blur-md">
@@ -53,10 +66,14 @@ const ProjectCard = ({ title, description, url, icon: Icon, category }: ProjectP
           <Button 
             variant="ghost" 
             size="sm"
-            onClick={() => window.open(url, '_blank', 'noopener,noreferrer')}
+            onClick={handleClick}
             className="opacity-60 hover:opacity-100 transition-all duration-300 shrink-0 hover:bg-primary/10"
           >
-            <ExternalLink className="h-4 w-4" />
+            {isInternalLink ? (
+              <ArrowRight className="h-4 w-4" />
+            ) : (
+              <ExternalLink className="h-4 w-4" />
+            )}
           </Button>
         </div>
         
@@ -74,11 +91,15 @@ const ProjectCard = ({ title, description, url, icon: Icon, category }: ProjectP
         <Button 
           variant="outline" 
           size="sm" 
-          onClick={() => window.open(url, '_blank', 'noopener,noreferrer')}
+          onClick={handleClick}
           className="w-full group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-primary/80 group-hover:text-primary-foreground group-hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/20"
         >
-          Visit Project
-          <ExternalLink className="ml-2 h-3 w-3 group-hover:translate-x-0.5 transition-transform duration-300" />
+          {isInternalLink ? 'Open Tool' : 'Visit Project'}
+          {isInternalLink ? (
+            <ArrowRight className="ml-2 h-3 w-3 group-hover:translate-x-0.5 transition-transform duration-300" />
+          ) : (
+            <ExternalLink className="ml-2 h-3 w-3 group-hover:translate-x-0.5 transition-transform duration-300" />
+          )}
         </Button>
       </GlassmorphismCardContent>
     </GlassmorphismCard>
@@ -91,6 +112,7 @@ const ProjectsContent = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const projects: ProjectProps[] = [
+    { title: "CV Generator Tool", description: "AI-powered CV generation tailored to job descriptions. Upload your master CV and generate customized versions matched to specific roles with intelligent skill matching.", url: "/tools/cv-generator", icon: FileText, category: "Professional Tools", isInternal: true },
     { title: "Tech4Humanity", description: "Technology solutions focused on human-centered innovation and social impact. Developing sustainable tech initiatives that benefit communities worldwide.", url: "https://tech4humanity.com.au", icon: Heart, category: "Social Impact Tech" },
     { title: "Augmented Humanity Coach", description: "Personal development and coaching platform leveraging AI and human potential optimization. Empowering individuals through technology-enhanced growth strategies.", url: "https://augmentedhumanity.coach", icon: Brain, category: "AI Coaching" },
     { title: "Holo-Org", description: "Next-generation organizational structures and holographic business models. Reimagining how modern organizations operate in the digital age.", url: "https://holo-org.com", icon: Building, category: "Organizational Innovation" },
