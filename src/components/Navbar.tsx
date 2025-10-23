@@ -33,21 +33,24 @@ const useNavigationStructure = () => {
       ]
     },
     {
-      title: t('experienceAndImpact'),
+      title: 'Experience',
       mainPath: '/experience-and-impact',
       items: [
         { path: '/strategic-projects', label: t('strategicProjects') },
         { path: '/responsibilities', label: 'Customer Initiatives' },
         { path: '/customer-asks-stars', label: 'Innovation Approach' },
+        { path: '/ai-ethics', label: 'AI Ethics' },
+        { path: '/faqs', label: 'FAQs' },
       ]
     },
     {
-      title: t('coreCompetencies'),
+      title: 'Expertise',
       mainPath: '/core-competencies',
       items: [
         { path: '/core-competencies', label: t('coreCompetencies') },
         { path: '/industry-expertise', label: t('industryExpertise') },
         { path: '/people-involved', label: t('peopleInvolved') },
+        { path: '/tools/skills-visualizations', label: '📊 Skills Portfolio' },
       ]
     },
     {
@@ -57,8 +60,8 @@ const useNavigationStructure = () => {
         { path: '/resources/projects', label: 'Projects' },
         { path: '/resources/whitepapers', label: 'Whitepapers' },
         { path: '/resources/90-day-plan', label: '90-Day Plan' },
-        { path: '/tools/cv-generator', label: '🤖 AI CV Generator' },
-        { path: '/tools/cv-ingestion', label: '📊 CV Ingestion Dashboard' },
+        { path: '/tools/cv-generator', label: '🤖 CV Generator' },
+        { path: '/tools/cv-ingestion-dashboard', label: '📊 CV Dashboard' },
       ]
     },
   ];
