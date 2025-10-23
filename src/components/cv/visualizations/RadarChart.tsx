@@ -53,7 +53,13 @@ export default function RadarChart() {
 
       data.forEach((skill: Skill) => {
         const domain = skill.domain || 'Uncategorized';
-        const yourScore = parseFloat(String(skill.alignment_score || 0));
+        
+        // Fix: Handle non-numeric alignment_score (e.g., "Rising")
+        const alignmentValue = typeof skill.alignment_score === 'number' 
+          ? skill.alignment_score 
+          : parseFloat(String(skill.alignment_score || 0));
+        
+        const yourScore = isNaN(alignmentValue) ? 75 : alignmentValue; // Fallback to 75 for "Rising" skills
         const marketScore = parseFloat(String(skill.market_demand_score || 50));
 
         if (!domainMap.has(domain)) {
@@ -158,9 +164,9 @@ export default function RadarChart() {
       <CardHeader>
         <div className="flex items-start justify-between">
           <div className="space-y-1">
-            <CardTitle>Skills Competency Radar</CardTitle>
+            <CardTitle>Troy's Domain Coverage</CardTitle>
             <CardDescription>
-              Compare your skill portfolio across domains vs market benchmarks
+              Comprehensive expertise across multiple disciplines
             </CardDescription>
           </div>
           <Button onClick={handleExportPNG} variant="outline" size="sm">
@@ -174,12 +180,12 @@ export default function RadarChart() {
         <div className="flex items-start gap-2 p-3 rounded-lg bg-muted/50 border border-border">
           <Info className="h-4 w-4 mt-0.5 text-muted-foreground flex-shrink-0" />
           <div className="text-sm space-y-1">
-            <p className="font-medium">How to Read This Chart:</p>
+            <p className="font-medium">Troy's Multi-Domain Expertise:</p>
             <ul className="text-muted-foreground space-y-0.5 list-disc list-inside">
-              <li><span className="text-[hsl(217.2,91.2%,59.8%)]">Blue filled area</span> = Your current competency</li>
-              <li><span className="text-[hsl(142.1,76.2%,36.3%)]">Green line</span> = Market average benchmark</li>
-              <li>Larger gaps = Learning/growth opportunities</li>
-              <li>Uneven shape = Specialization vs generalization</li>
+              <li><span className="text-[hsl(217.2,91.2%,59.8%)]">Blue area</span> shows Troy's competency across domains</li>
+              <li><span className="text-[hsl(142.1,76.2%,36.3%)]">Green line</span> represents market benchmarks</li>
+              <li>Larger coverage = broader expertise depth</li>
+              <li>Strong focus: AI Engineering, Leadership, Cloud Architecture</li>
             </ul>
           </div>
         </div>
