@@ -191,46 +191,14 @@ export function CVPreview({ cv, cvHTML, matchScore, template }: CVPreviewProps) 
         return;
       }
       
-      // PDF format (default)
-      const templateCSS = `
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11pt; line-height: 1.6; color: #1a1a1a; background: #f9fafb; padding: 40px 20px; }
-        .container { max-width: 850px; margin: 0 auto; background: white; padding: 60px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        h1 { font-size: 36pt; font-weight: 800; margin-bottom: 8pt; color: #0f172a; padding-bottom: 16pt; border-bottom: 3px solid #2563eb; }
-        h2 { font-size: 16pt; font-weight: 700; margin-top: 32pt; margin-bottom: 16pt; padding-bottom: 8pt; border-bottom: 2px solid #2563eb; color: #2563eb; }
-        h3 { font-size: 13pt; font-weight: 600; margin-top: 20pt; margin-bottom: 8pt; color: #1e293b; }
-        p { margin: 8pt 0; line-height: 1.6; }
-        ul { margin: 12pt 0; padding-left: 24pt; list-style: none; }
-        li { margin: 8pt 0; position: relative; padding-left: 4pt; }
-        li::before { content: "•"; position: absolute; left: -20pt; color: #2563eb; font-weight: bold; font-size: 14pt; }
-        strong { font-weight: 600; color: #0f172a; }
-        @media print { .container { padding: 40px; box-shadow: none; } h2 { page-break-after: avoid; } h3 { page-break-after: avoid; } }
-      `;
+      // PDF format - use professional PDF generator
+      const { generateProfessionalPDF } = await import('@/utils/pdfGenerator');
+      const saveAs = await loadFileSaver();
       
-      const fullHTML = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>${templateCSS}</style></head><body><div class="container">${htmlContent}</div></body></html>`;
-      
-      const jsPDF = await loadJsPDF();
-      const doc = new jsPDF({
-        format: 'a4',
-        unit: 'mm',
-        orientation: 'portrait',
-        compress: true
-      });
-      
-      const pdfSource = cvHTML || fullHTML;
-      
-      await doc.html(pdfSource, {
-        callback: (pdf) => {
-          pdf.save(`CV-Troy-Latter-${new Date().toISOString().split('T')[0]}.pdf`);
-          toast.success("Professional CV downloaded!");
-        },
-        x: 10,
-        y: 10,
-        width: 190,
-        windowWidth: 850,
-        html2canvas: { scale: 0.8, useCORS: true, letterRendering: true, logging: false }
-      });
+      const doc = generateProfessionalPDF(cv);
+      doc.save(`CV-Troy-Latter-${new Date().toISOString().split('T')[0]}.pdf`);
+      toast.success("Professional CV downloaded!");
+      return;
     } catch (error) {
       console.error('Download failed:', error);
       toast.error("Failed to download CV");
