@@ -169,16 +169,6 @@ export const Navbar = () => {
               </div>
             ))}
             
-            
-            <Link
-              to="/ai-ethics"
-              className={`text-white hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-3 py-2 ${
-                isActivePath('/ai-ethics') ? 'text-[#56A4E3]' : ''
-              }`}
-            >
-              AI Ethics
-            </Link>
-            
             <Link
               to="/contact"
               className={`text-white hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-3 py-2 ${
@@ -235,17 +225,6 @@ export const Navbar = () => {
                   ))}
                 </div>
               ))}
-              
-              
-              <Link
-                to="/ai-ethics"
-                className={`text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-3 rounded-lg hover:bg-white/10 active:bg-white/20 ${
-                  isActivePath('/ai-ethics') ? 'bg-white/10 text-[#56A4E3]' : ''
-                }`}
-                onClick={closeMobileMenu}
-              >
-                AI Ethics
-              </Link>
               
               <Link
                 to="/contact"

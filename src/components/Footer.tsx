@@ -27,6 +27,7 @@ export const Footer = () => {
     { path: '/what-is-innovation', label: 'What is Innovation' },
     { path: '/tools/cv-generator', label: 'AI CV Generator' },
     { path: '/faqs', label: 'FAQs' },
+    { path: '/ai-ethics', label: 'AI Ethics' },
   ];
   
   return (
