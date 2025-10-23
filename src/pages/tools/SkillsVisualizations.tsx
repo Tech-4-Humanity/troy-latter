@@ -9,6 +9,7 @@ import RadarChart from '@/components/cv/visualizations/RadarChart';
 import { BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { Activity, TrendingUp, Star, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
+import { PageTitle } from '@/components/PageTitle';
 
 interface Skill {
   skill: string;
@@ -71,11 +72,13 @@ export default function SkillsVisualizations() {
 
       if (error) {
         console.error('Supabase error:', error);
-        throw error;
+        toast.error('Failed to load skills data');
+        setLoading(false);
+        return;
       }
       
       console.log('Fetched skills:', data?.length || 0);
-      setSkills(data || []);
+      setSkills((data as any) || []);
     } catch (error) {
       console.error('Error fetching skills:', error);
       toast.error('Failed to load skills data');
@@ -143,11 +146,13 @@ export default function SkillsVisualizations() {
 
   return (
     <div className="container mx-auto py-8 space-y-8">
+      <PageTitle title="Skills Portfolio & Analytics" />
+      
       {/* Hero Section */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold tracking-tight">Troy's Skills Portfolio</h1>
+            <h2 className="text-3xl font-bold tracking-tight">Troy Latter</h2>
             <p className="text-muted-foreground mt-2">
               {skills.length} tracked skills across {domains.length} domains
             </p>

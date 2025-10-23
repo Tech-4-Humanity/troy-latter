@@ -15,19 +15,21 @@ export const Footer = () => {
     { path: '/strategic-projects', label: 'Strategic Projects' },
     { path: '/responsibilities', label: 'Customer Initiatives' },
     { path: '/your-profile-stars', label: 'Customer Activations' },
+    { path: '/ai-ethics', label: 'AI Ethics' },
+    { path: '/faqs', label: 'FAQs' },
   ];
   
   const expertiseLinks = [
     { path: '/industry-expertise', label: 'Industry Expertise' },
     { path: '/customer-asks-stars', label: 'Innovation Approach' },
+    { path: '/tools/skills-visualizations', label: 'Skills Portfolio' },
   ];
   
   const resourceLinks = [
     { path: '/resources/projects', label: 'Projects' },
     { path: '/what-is-innovation', label: 'What is Innovation' },
-    { path: '/tools/cv-generator', label: 'AI CV Generator' },
-    { path: '/faqs', label: 'FAQs' },
-    { path: '/ai-ethics', label: 'AI Ethics' },
+    { path: '/tools/cv-generator', label: 'CV Generator' },
+    { path: '/resources/90-day-plan', label: '90-Day Plan' },
   ];
   
   return (
