@@ -22,8 +22,6 @@ import ExperienceAndImpact from "./pages/ExperienceAndImpact";
 import AIEthics from "./pages/AIEthics";
 import CVGenerator from "./pages/tools/CVGenerator";
 import CVGenerationHistory from "./pages/tools/CVGenerationHistory";
-import SkillsMatrix from "./pages/tools/SkillsMatrix";
-import SkillsAnalytics from "./pages/tools/SkillsAnalytics";
 import CVIngestionDashboard from "./pages/tools/CVIngestionDashboard";
 import SkillsVisualizations from "./pages/tools/SkillsVisualizations";
 
@@ -87,9 +85,9 @@ const App = () => (
             <Route path="/tools/cv-generator" element={<Layout><CVGenerator /></Layout>} />
             <Route path="/tools/cv-generation-history" element={<Layout><CVGenerationHistory /></Layout>} />
             <Route path="/tools/cv-ingestion-dashboard" element={<Layout><CVIngestionDashboard /></Layout>} />
-            <Route path="/tools/skills-matrix" element={<Layout><SkillsMatrix /></Layout>} />
-            <Route path="/tools/skills-analytics" element={<Layout><SkillsAnalytics /></Layout>} />
             <Route path="/tools/skills-visualizations" element={<Layout><SkillsVisualizations /></Layout>} />
+            <Route path="/tools/skills-matrix" element={<Navigate to="/tools/skills-visualizations" replace />} />
+            <Route path="/tools/skills-analytics" element={<Navigate to="/tools/skills-visualizations" replace />} />
             <Route path="/tools/cv-ingestion" element={<Navigate to="/tools/cv-ingestion-dashboard" replace />} />
             <Route path="/cv-ingestion" element={<Navigate to="/tools/cv-ingestion-dashboard" replace />} />
           {/* <Route path="/resources/lean-canvas" element={<Layout><LeanCanvas /></Layout>} /> */}

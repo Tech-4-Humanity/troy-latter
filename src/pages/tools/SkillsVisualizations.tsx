@@ -69,7 +69,12 @@ export default function SkillsVisualizations() {
         .select('*')
         .order('rating', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+      
+      console.log('Fetched skills:', data?.length || 0);
       setSkills(data || []);
     } catch (error) {
       console.error('Error fetching skills:', error);
