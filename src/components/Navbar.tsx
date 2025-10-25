@@ -50,7 +50,6 @@ const useNavigationStructure = () => {
         { path: '/core-competencies', label: t('coreCompetencies') },
         { path: '/industry-expertise', label: t('industryExpertise') },
         { path: '/people-involved', label: t('peopleInvolved') },
-        { path: '/tools/skills-visualizations', label: '📊 Skills Portfolio' },
       ]
     },
     {
@@ -173,6 +172,15 @@ export const Navbar = () => {
             ))}
             
             <Link
+              to="/tools/skills-visualizations"
+              className={`text-white hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-3 py-2 ${
+                isActivePath('/tools/skills-visualizations') ? 'text-[#56A4E3]' : ''
+              }`}
+            >
+              Skills Portfolio
+            </Link>
+            
+            <Link
               to="/contact"
               className={`text-white hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-3 py-2 ${
                 isActivePath('/contact') ? 'text-[#56A4E3]' : ''
@@ -228,6 +236,16 @@ export const Navbar = () => {
                   ))}
                 </div>
               ))}
+              
+              <Link
+                to="/tools/skills-visualizations"
+                className={`text-gray-200 hover:text-[#56A4E3] transition-colors duration-200 text-sm font-medium px-2 py-3 rounded-lg hover:bg-white/10 active:bg-white/20 ${
+                  isActivePath('/tools/skills-visualizations') ? 'bg-white/10 text-[#56A4E3]' : ''
+                }`}
+                onClick={closeMobileMenu}
+              >
+                Skills Portfolio
+              </Link>
               
               <Link
                 to="/contact"
