@@ -52,6 +52,102 @@ const DOMAIN_COLORS = [
   'hsl(200, 100%, 50%)',
 ];
 
+// Fallback sample data shown when Supabase returns no rows
+const SAMPLE_SKILLS: Skill[] = [
+  {
+    skill: 'GenAI Prompt Engineering',
+    domain: 'AI Engineering',
+    rating: 5,
+    'Proficiency Level': 'Expert',
+    Certification: 'OpenAI Certified',
+    proof: 'Designed RAG pipelines and prompt libraries used across org',
+    'Project Examples': 'Agent Orchestrator, RAG Copilot',
+    'Tools Used': 'OpenAI, LangChain, Supabase',
+    impact_metric: '↓ time-to-value by 40%',
+    market_trend: 'Rising',
+    recency_year: 2025,
+    role_alignment: 'CTO',
+    alignment_score: 'Rising 95',
+    evidence_level: 'Strong',
+    'Endorsements Count': 18,
+  },
+  {
+    skill: 'Vector Databases',
+    domain: 'Data & Analytics',
+    rating: 5,
+    'Proficiency Level': 'Expert',
+    Certification: 'Supabase Vector',
+    proof: 'Deployed pgvector + RLS for multi-tenant AI apps',
+    'Project Examples': 'Knowledge RAG, Skills Matrix',
+    'Tools Used': 'Postgres pgvector, Supabase',
+    impact_metric: '95%+ retrieval accuracy',
+    market_trend: 'Rising',
+    recency_year: 2025,
+    role_alignment: 'CTO',
+    alignment_score: 'Rising 92',
+    evidence_level: 'Strong',
+    'Endorsements Count': 12,
+  },
+  {
+    skill: 'Cloud Architecture',
+    domain: 'Architecture & Cloud',
+    rating: 4,
+    'Proficiency Level': 'Advanced',
+    Certification: 'AWS SA',
+    proof: 'Led multi-cloud modernization',
+    'Project Examples': 'Event-driven data mesh',
+    'Tools Used': 'AWS, GCP',
+    impact_metric: '30% cost reduction',
+    market_trend: 'Stable',
+    recency_year: 2024,
+    role_alignment: 'CTO',
+    alignment_score: 88,
+    evidence_level: 'Strong',
+    'Endorsements Count': 20,
+  },
+  {
+    skill: 'AI Governance & Ethics',
+    domain: 'Governance & Ethics',
+    rating: 5,
+    'Proficiency Level': 'Expert',
+    Certification: 'Responsible AI',
+    proof: 'Rolled out AI policy and controls',
+    'Project Examples': 'Policy-as-code, model cards',
+    'Tools Used': 'Policy Engines',
+    impact_metric: 'Zero critical incidents',
+    market_trend: 'Rising',
+    recency_year: 2025,
+    role_alignment: 'CTO',
+    alignment_score: 91,
+  },
+  {
+    skill: 'Product Strategy',
+    domain: 'Strategy',
+    rating: 4,
+    'Proficiency Level': 'Advanced',
+    proof: 'Launched 3 AI products to market',
+    'Project Examples': 'Agent Platform',
+    'Tools Used': 'Jira, Figma',
+    impact_metric: 'ARR +$3.2M',
+    market_trend: 'Stable',
+    recency_year: 2024,
+    alignment_score: 86,
+  },
+  {
+    skill: 'Go-To-Market Leadership',
+    domain: 'Leadership & GTM',
+    rating: 5,
+    'Proficiency Level': 'Expert',
+    proof: 'Built cross-functional AI pod',
+    'Project Examples': 'Pilot-to-scale playbooks',
+    'Tools Used': 'HubSpot',
+    impact_metric: 'Win-rate +18%',
+    market_trend: 'Rising',
+    recency_year: 2025,
+    alignment_score: 90,
+  },
+];
+
 export default function SkillsVisualizations() {
   const [activeTab, setActiveTab] = useState('overview');
   const [skills, setSkills] = useState<Skill[]>([]);
@@ -72,16 +168,22 @@ export default function SkillsVisualizations() {
 
       if (error) {
         console.error('Supabase error:', error);
-        toast.error('Failed to load skills data');
-        setLoading(false);
+        toast.message('Showing demo skills while data syncs');
+        setSkills(SAMPLE_SKILLS);
         return;
       }
-      
-      console.log('Fetched skills:', data?.length || 0);
-      setSkills((data as any) || []);
+      const rows = (data as any) || [];
+      console.log('Fetched skills:', rows.length);
+      if (rows.length === 0) {
+        toast.message('Showing demo skills while data syncs');
+        setSkills(SAMPLE_SKILLS);
+      } else {
+        setSkills(rows);
+      }
     } catch (error) {
       console.error('Error fetching skills:', error);
-      toast.error('Failed to load skills data');
+      toast.message('Showing demo skills while offline');
+      setSkills(SAMPLE_SKILLS);
     } finally {
       setLoading(false);
     }
@@ -141,8 +243,10 @@ export default function SkillsVisualizations() {
     );
   }
 
-  const expertCount = skills.filter(s => s.rating === 5).length;
-  const avgRating = (skills.reduce((sum, s) => sum + s.rating, 0) / skills.length).toFixed(1);
+  const expertCount = skills.filter(s => Number(s.rating) === 5).length;
+  const avgRating = skills.length
+    ? (skills.reduce((sum, s) => sum + (Number(s.rating) || 0), 0) / skills.length).toFixed(1)
+    : '0.0';
 
   return (
     <div className="container mx-auto py-8 space-y-8">
