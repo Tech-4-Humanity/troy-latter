@@ -87,7 +87,7 @@ export default function SkillsVisualizations() {
     }
   };
 
-  const topSkills = skills.slice(0, 50); // Show top 50 in table
+  const topSkills = skills.slice(0, 25); // Show top 25 in comprehensive table
   const domains = Array.from(new Set(skills.map(s => s.domain))).filter(Boolean);
 
   // Domain distribution data
@@ -160,82 +160,171 @@ export default function SkillsVisualizations() {
         </div>
       </div>
 
-      {/* TOP 25 COMPREHENSIVE TABLE */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-yellow-500" />
-            Troy's Top 25 Skills - Comprehensive View
+      {/* TOP 25 COMPREHENSIVE SKILLS MATRIX */}
+      <Card className="border-2">
+        <CardHeader className="bg-gradient-to-r from-primary/10 to-accent/10">
+          <CardTitle className="flex items-center gap-2 text-2xl">
+            <Sparkles className="h-6 w-6 text-yellow-500 animate-pulse" />
+            Top 25 Skills - Full Matrix View
           </CardTitle>
-          <CardDescription>
-            Expert-level capabilities with certifications, proof points, and impact metrics
+          <CardDescription className="text-base">
+            Complete portfolio with certifications, proof points, impact metrics, and market trends
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-0">
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b">
-                  <th className="text-left p-2 font-semibold">#</th>
-                  <th className="text-left p-2 font-semibold min-w-[200px]">Skill</th>
-                  <th className="text-left p-2 font-semibold">Domain</th>
-                  <th className="text-left p-2 font-semibold">Rating</th>
-                  <th className="text-left p-2 font-semibold min-w-[150px]">Certification</th>
-                  <th className="text-left p-2 font-semibold min-w-[200px]">Proof / Evidence</th>
-                  <th className="text-left p-2 font-semibold min-w-[200px]">Project Examples</th>
-                  <th className="text-left p-2 font-semibold">Tools</th>
-                  <th className="text-left p-2 font-semibold">Impact</th>
-                  <th className="text-left p-2 font-semibold">Trend</th>
+            <table className="w-full text-sm border-collapse">
+              <thead className="bg-muted/50 sticky top-0 z-10">
+                <tr>
+                  <th className="text-left p-3 font-bold border-b-2 border-primary/20">#</th>
+                  <th className="text-left p-3 font-bold border-b-2 border-primary/20 min-w-[220px]">💼 Skill & Alignment</th>
+                  <th className="text-left p-3 font-bold border-b-2 border-primary/20 min-w-[140px]">🏷️ Domain</th>
+                  <th className="text-left p-3 font-bold border-b-2 border-primary/20">⭐ Rating</th>
+                  <th className="text-left p-3 font-bold border-b-2 border-primary/20 min-w-[180px]">🎓 Certification</th>
+                  <th className="text-left p-3 font-bold border-b-2 border-primary/20 min-w-[200px]">✅ Proof Points</th>
+                  <th className="text-left p-3 font-bold border-b-2 border-primary/20 min-w-[240px]">🚀 Project Examples</th>
+                  <th className="text-left p-3 font-bold border-b-2 border-primary/20 min-w-[160px]">🛠️ Tools</th>
+                  <th className="text-left p-3 font-bold border-b-2 border-primary/20 min-w-[200px]">📊 Impact Metrics</th>
+                  <th className="text-left p-3 font-bold border-b-2 border-primary/20 min-w-[120px]">📈 Trend</th>
+                  <th className="text-left p-3 font-bold border-b-2 border-primary/20">🔥 Match</th>
+                  <th className="text-left p-3 font-bold border-b-2 border-primary/20">📅 Year</th>
                 </tr>
               </thead>
               <tbody>
                 {topSkills.map((skill, idx) => (
-                  <tr key={idx} className="border-b hover:bg-muted/50 transition-colors">
-                    <td className="p-2 text-muted-foreground">{idx + 1}</td>
-                    <td className="p-2">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl">{domainEmojis[skill.domain] || '📌'}</span>
+                  <tr 
+                    key={idx} 
+                    className={`border-b hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 transition-all ${
+                      idx % 2 === 0 ? 'bg-muted/20' : ''
+                    }`}
+                  >
+                    <td className="p-3 font-bold text-primary">{idx + 1}</td>
+                    <td className="p-3">
+                      <div className="flex items-start gap-3">
+                        <span className="text-2xl flex-shrink-0">{domainEmojis[skill.domain] || '📌'}</span>
                         <div>
-                          <div className="font-semibold">{skill.skill}</div>
-                          <div className="text-xs text-muted-foreground">
-                            {skill.role_alignment || skill['Proficiency Level']}
+                          <div className="font-bold text-base mb-1">{skill.skill}</div>
+                          <div className="text-xs text-muted-foreground flex flex-wrap gap-1">
+                            {skill.role_alignment && (
+                              <Badge variant="secondary" className="text-xs">
+                                {skill.role_alignment}
+                              </Badge>
+                            )}
+                            {skill['Proficiency Level'] && (
+                              <Badge variant="outline" className="text-xs">
+                                {skill['Proficiency Level']}
+                              </Badge>
+                            )}
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td className="p-2">
-                      <Badge variant="outline" className="text-xs whitespace-nowrap">
+                    <td className="p-3">
+                      <Badge 
+                        variant="default" 
+                        className="whitespace-nowrap text-xs font-semibold"
+                      >
                         {skill.domain}
                       </Badge>
                     </td>
-                    <td className="p-2">
+                    <td className="p-3">
                       <StarRating rating={skill.rating} />
+                      <div className="text-xs text-muted-foreground mt-1">
+                        {skill.rating}/5
+                      </div>
                     </td>
-                    <td className="p-2 text-xs">
-                      {skill.Certification || '-'}
+                    <td className="p-3">
+                      {skill.Certification && skill.Certification !== 'None' ? (
+                        <div className="flex items-start gap-1">
+                          <span className="text-green-600">✓</span>
+                          <span className="text-xs font-medium">{skill.Certification}</span>
+                        </div>
+                      ) : (
+                        <span className="text-xs text-muted-foreground">No certification</span>
+                      )}
                     </td>
-                    <td className="p-2 text-xs text-muted-foreground">
-                      {skill.proof || '-'}
+                    <td className="p-3">
+                      <div className="text-xs leading-relaxed">
+                        {skill.proof ? (
+                          <div className="flex items-start gap-1">
+                            <span className="text-blue-600 flex-shrink-0">💎</span>
+                            <span className="font-medium">{skill.proof}</span>
+                          </div>
+                        ) : (
+                          <span className="text-muted-foreground">-</span>
+                        )}
+                        {skill.evidence_level && (
+                          <Badge variant="outline" className="text-xs mt-1">
+                            {skill.evidence_level}
+                          </Badge>
+                        )}
+                      </div>
                     </td>
-                    <td className="p-2 text-xs text-muted-foreground">
-                      {skill['Project Examples'] || '-'}
+                    <td className="p-3">
+                      <div className="text-xs leading-relaxed">
+                        {skill['Project Examples'] ? (
+                          <div className="flex items-start gap-1">
+                            <span className="flex-shrink-0">🎯</span>
+                            <span>{skill['Project Examples']}</span>
+                          </div>
+                        ) : (
+                          <span className="text-muted-foreground">-</span>
+                        )}
+                      </div>
                     </td>
-                    <td className="p-2 text-xs">
-                      {skill['Tools Used'] || '-'}
+                    <td className="p-3">
+                      <div className="text-xs">
+                        {skill['Tools Used'] ? (
+                          <Badge variant="secondary" className="text-xs">
+                            {skill['Tools Used']}
+                          </Badge>
+                        ) : (
+                          <span className="text-muted-foreground">-</span>
+                        )}
+                      </div>
                     </td>
-                    <td className="p-2 text-xs text-muted-foreground">
-                      {skill.impact_metric || '-'}
+                    <td className="p-3">
+                      <div className="text-xs font-semibold">
+                        {skill.impact_metric ? (
+                          <div className="flex items-start gap-1 text-green-700 dark:text-green-400">
+                            <span>📊</span>
+                            <span>{skill.impact_metric}</span>
+                          </div>
+                        ) : (
+                          <span className="text-muted-foreground">-</span>
+                        )}
+                      </div>
                     </td>
-                    <td className="p-2">
-                      {skill.market_trend && (
+                    <td className="p-3">
+                      {skill.market_trend ? (
                         <Badge 
                           variant={skill.market_trend === 'Rising' ? 'default' : 'secondary'}
-                          className="text-xs"
+                          className="text-xs font-semibold"
                         >
                           {skill.market_trend === 'Rising' && <TrendingUp className="h-3 w-3 mr-1" />}
                           {skill.market_trend}
                         </Badge>
+                      ) : (
+                        <span className="text-xs text-muted-foreground">Stable</span>
                       )}
+                    </td>
+                    <td className="p-3">
+                      {skill.alignment_score && (
+                        <div className="text-center">
+                          <div className={`text-xs font-bold ${
+                            Number(skill.alignment_score) >= 90 ? 'text-green-600' :
+                            Number(skill.alignment_score) >= 80 ? 'text-blue-600' :
+                            'text-yellow-600'
+                          }`}>
+                            {skill.alignment_score}%
+                          </div>
+                        </div>
+                      )}
+                    </td>
+                    <td className="p-3 text-center">
+                      <Badge variant="outline" className="text-xs">
+                        {skill.recency_year || 'N/A'}
+                      </Badge>
                     </td>
                   </tr>
                 ))}
