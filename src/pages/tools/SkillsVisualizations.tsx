@@ -7,7 +7,8 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import RadarChart from '@/components/cv/visualizations/RadarChart';
 import { BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import { Activity, TrendingUp, Star, Sparkles, Search } from 'lucide-react';
+import { Activity, TrendingUp, Star, Sparkles } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { toast } from 'sonner';
 import { PageTitle } from '@/components/PageTitle';
 
