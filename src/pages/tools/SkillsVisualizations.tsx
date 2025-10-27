@@ -164,7 +164,7 @@ export default function SkillsVisualizations() {
       <Card className="border-2">
         <CardHeader className="bg-gradient-to-r from-primary/10 to-accent/10">
           <CardTitle className="flex items-center gap-2 text-2xl">
-            <Sparkles className="h-6 w-6 text-yellow-500 animate-pulse" />
+            <Sparkles className="h-6 w-6 text-primary animate-pulse" />
             Top 25 Skills - Full Matrix View
           </CardTitle>
           <CardDescription className="text-base">
@@ -236,7 +236,7 @@ export default function SkillsVisualizations() {
                     <td className="p-3">
                       {skill.Certification && skill.Certification !== 'None' ? (
                         <div className="flex items-start gap-1">
-                          <span className="text-green-600">✓</span>
+                          <span className="text-primary">✓</span>
                           <span className="text-xs font-medium">{skill.Certification}</span>
                         </div>
                       ) : (
@@ -247,7 +247,7 @@ export default function SkillsVisualizations() {
                       <div className="text-xs leading-relaxed">
                         {skill.proof ? (
                           <div className="flex items-start gap-1">
-                            <span className="text-blue-600 flex-shrink-0">💎</span>
+                            <span className="text-primary flex-shrink-0">💎</span>
                             <span className="font-medium">{skill.proof}</span>
                           </div>
                         ) : (
@@ -286,7 +286,7 @@ export default function SkillsVisualizations() {
                     <td className="p-3">
                       <div className="text-xs font-semibold">
                         {skill.impact_metric ? (
-                          <div className="flex items-start gap-1 text-green-700 dark:text-green-400">
+                          <div className="flex items-start gap-1 text-primary">
                             <span>📊</span>
                             <span>{skill.impact_metric}</span>
                           </div>
@@ -312,9 +312,9 @@ export default function SkillsVisualizations() {
                       {skill.alignment_score && (
                         <div className="text-center">
                           <div className={`text-xs font-bold ${
-                            Number(skill.alignment_score) >= 90 ? 'text-green-600' :
-                            Number(skill.alignment_score) >= 80 ? 'text-blue-600' :
-                            'text-yellow-600'
+                            Number(skill.alignment_score) >= 90 ? 'text-primary' :
+                            Number(skill.alignment_score) >= 80 ? 'text-foreground' :
+                            'text-muted-foreground'
                           }`}>
                             {skill.alignment_score}%
                           </div>
@@ -388,7 +388,7 @@ export default function SkillsVisualizations() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-green-600" />
+                  <TrendingUp className="h-5 w-5 text-primary" />
                   Rising Skills
                 </CardTitle>
                 <CardDescription>Skills with strong upward momentum</CardDescription>
@@ -398,7 +398,7 @@ export default function SkillsVisualizations() {
                   {risingSkills.map((skill, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-lg border bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20"
+                      className="p-3 rounded-lg border bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20"
                     >
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-lg">{domainEmojis[skill.domain] || '📌'}</span>
@@ -545,7 +545,7 @@ export default function SkillsVisualizations() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-green-600" />
+                  <TrendingUp className="h-5 w-5 text-primary" />
                   Rising Skills
                 </CardTitle>
                 <CardDescription>Skills with strong upward momentum</CardDescription>
@@ -555,7 +555,7 @@ export default function SkillsVisualizations() {
                   {risingSkills.map((skill, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-lg border bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20"
+                      className="p-3 rounded-lg border bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20"
                     >
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-lg">{domainEmojis[skill.domain] || '📌'}</span>
