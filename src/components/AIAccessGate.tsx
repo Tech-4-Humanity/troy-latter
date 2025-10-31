@@ -75,10 +75,26 @@ export const AIAccessGate = ({
         throw new Error('Failed to save your information');
       }
 
+      // Send notification emails
+      try {
+        await supabase.functions.invoke('send-notification', {
+          body: {
+            userEmail: data.email.toLowerCase(),
+            userName: data.name,
+            userCompany: data.company,
+            userMessage: data.message,
+          }
+        });
+        console.log('Notification emails sent successfully');
+      } catch (emailError) {
+        console.error('Error sending notification emails:', emailError);
+        // Don't block access if email fails
+      }
+
       if (waitlistOnly) {
         toast({
           title: "Thanks!",
-          description: "We'll let you know as soon as it's available.",
+          description: "We'll let you know as soon as it's available. Check your email for confirmation.",
         });
       } else {
         // Store access in localStorage for this session
@@ -87,7 +103,7 @@ export const AIAccessGate = ({
 
         toast({
           title: "Access Granted!",
-          description: "You now have access to Troy's AI assistant.",
+          description: "You now have access to Troy's AI assistant. Check your email for more info.",
         });
 
         // Small delay for better UX

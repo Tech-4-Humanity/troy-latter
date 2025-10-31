@@ -44,3 +44,6 @@ verify_jwt = false
 
 [functions.sync-db-to-csv]
 verify_jwt = false
+
+[functions.send-notification]
+verify_jwt = false

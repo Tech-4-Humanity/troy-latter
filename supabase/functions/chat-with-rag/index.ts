@@ -127,15 +127,15 @@ serve(async (req) => {
       }
     }
 
-    // Call OpenAI
-    const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+    // Call Lovable AI (Free Model)
+    const lovableAIResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${Deno.env.get('OPENAI_API_KEY')}`,
+        'Authorization': `Bearer ${Deno.env.get('LOVABLE_API_KEY')}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'google/gemini-2.5-flash',
         messages: [
           {
             role: 'system',
@@ -159,17 +159,27 @@ serve(async (req) => {
           }
         ],
         max_tokens: 1000,
-        temperature: 0.7,
       }),
     });
 
-    if (!openaiResponse.ok) {
-      const error = await openaiResponse.json();
-      console.error('OpenAI API error:', error);
+    if (!lovableAIResponse.ok) {
+      const error = await lovableAIResponse.json();
+      console.error('Lovable AI API error:', error);
+      
+      // Handle rate limiting
+      if (lovableAIResponse.status === 429) {
+        throw new Error('Rate limit exceeded. Please try again in a moment.');
+      }
+      
+      // Handle payment required
+      if (lovableAIResponse.status === 402) {
+        throw new Error('AI credits exhausted. Please contact support.');
+      }
+      
       throw new Error(error.error?.message || 'Failed to generate response');
     }
 
-    const aiResponse = await openaiResponse.json();
+    const aiResponse = await lovableAIResponse.json();
     const assistantMessage = aiResponse.choices[0].message.content;
 
     // Save assistant message
@@ -179,7 +189,7 @@ serve(async (req) => {
         session_id: chatSessionId,
         role: 'assistant',
         content: assistantMessage,
-        metadata: { model: 'gpt-4o-mini', context_used: context.length > 0, userEmail }
+        metadata: { model: 'google/gemini-2.5-flash', context_used: context.length > 0, userEmail }
       });
 
     if (assistantMessageError) {
