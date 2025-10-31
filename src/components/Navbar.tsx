@@ -40,7 +40,6 @@ const useNavigationStructure = () => {
         { path: '/responsibilities', label: 'Customer Initiatives' },
         { path: '/customer-asks-stars', label: 'Innovation Approach' },
         { path: '/ai-ethics', label: 'AI Ethics' },
-        { path: '/faqs', label: 'FAQs' },
       ]
     },
     {
@@ -58,8 +57,7 @@ const useNavigationStructure = () => {
       items: [
         { path: '/resources/projects', label: 'Projects' },
         { path: '/resources/whitepapers', label: 'Whitepapers' },
-        { path: '/resources/90-day-plan', label: '90-Day Plan' },
-        { path: '/tools/cv-generator', label: '🤖 CV Generator' },
+        { path: '/tools/cv-generator', label: "🤖 Troy's Tailored CV Generator" },
         { path: '/tools/cv-ingestion-dashboard', label: '📊 CV Dashboard' },
       ]
     },

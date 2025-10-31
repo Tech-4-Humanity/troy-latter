@@ -9,6 +9,7 @@ export const Footer = () => {
     { path: '/executive-profile', label: 'Executive Profile' },
     { path: '/core-competencies', label: 'Core Competencies' },
     { path: '/leadership-style', label: 'Leadership Style' },
+    { path: '/faqs', label: 'FAQs' },
   ];
   
   const experienceLinks = [
@@ -16,7 +17,6 @@ export const Footer = () => {
     { path: '/responsibilities', label: 'Customer Initiatives' },
     { path: '/your-profile-stars', label: 'Customer Activations' },
     { path: '/ai-ethics', label: 'AI Ethics' },
-    { path: '/faqs', label: 'FAQs' },
   ];
   
   const expertiseLinks = [
@@ -28,8 +28,7 @@ export const Footer = () => {
   const resourceLinks = [
     { path: '/resources/projects', label: 'Projects' },
     { path: '/what-is-innovation', label: 'What is Innovation' },
-    { path: '/tools/cv-generator', label: 'CV Generator' },
-    { path: '/resources/90-day-plan', label: '90-Day Plan' },
+    { path: '/tools/cv-generator', label: "Troy's Tailored CV Generator" },
   ];
   
   return (
