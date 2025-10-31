@@ -72,6 +72,32 @@ export const AIAccessGate = ({
 
       if (error) {
         if (import.meta.env.DEV) console.error('Error saving AI lead:', error);
+        
+        // Handle duplicate entry (user already registered)
+        if (error.code === '23505') {
+          if (waitlistOnly) {
+            toast({
+              title: "Already Registered",
+              description: "You're already on the waitlist! We'll notify you when it's ready.",
+            });
+            return;
+          } else {
+            // For non-waitlist mode, grant access since they already registered
+            localStorage.setItem('ai-assistant-access-granted', 'true');
+            localStorage.setItem('ai-assistant-user-email', data.email.toLowerCase());
+            
+            toast({
+              title: "Welcome Back!",
+              description: "You're already registered. Granting access now.",
+            });
+            
+            setTimeout(() => {
+              onAccessGranted();
+            }, 500);
+            return;
+          }
+        }
+        
         throw new Error('Failed to save your information');
       }
 
