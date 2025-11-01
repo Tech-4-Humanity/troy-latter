@@ -1,54 +1,56 @@
 .cv-preview {
   @apply max-w-4xl mx-auto;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  line-height: 1.7;
+  line-height: 1.6;
   color: hsl(var(--foreground));
+  padding: 2rem 1rem;
 }
 
 /* Executive name - commanding presence */
 .cv-preview h1 {
-  @apply text-5xl font-extrabold tracking-tight mb-1;
+  @apply text-4xl font-bold tracking-tight mb-1;
   color: hsl(var(--primary));
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 /* Professional title - elegant subtitle */
 .cv-preview h1 + h3 {
-  @apply text-xl font-normal text-muted-foreground mb-12;
-  letter-spacing: 0.02em;
+  @apply text-lg font-normal text-muted-foreground mb-6;
+  letter-spacing: 0.01em;
 }
 
 /* Section headers - clear hierarchy */
 .cv-preview h2 {
-  @apply text-2xl font-bold mt-12 mb-6 pb-2 border-b-2;
+  @apply text-xl font-bold mt-6 mb-4 pb-1 border-b-2;
   color: hsl(var(--primary));
   border-color: hsl(var(--primary) / 0.2);
 }
 
 /* Subsection headers (roles/companies) */
 .cv-preview h3 {
-  @apply text-lg font-semibold mt-6 mb-2;
+  @apply text-base font-semibold mt-4 mb-1;
 }
 
 /* Paragraphs - executive summary, etc. */
 .cv-preview p {
-  @apply leading-relaxed text-base mb-4;
+  @apply leading-relaxed text-sm mb-3;
   color: hsl(var(--foreground) / 0.9);
 }
 
 /* Bullets - clean and spaced */
 .cv-preview ul {
-  @apply space-y-3 ml-0 my-6;
+  @apply space-y-1 ml-0 my-3;
   list-style: none;
 }
 
 .cv-preview li {
-  @apply relative pl-6;
+  @apply relative pl-5 text-sm;
+  line-height: 1.5;
 }
 
 .cv-preview li::before {
   content: "•";
-  @apply absolute left-0 font-bold text-xl;
+  @apply absolute left-0 font-bold text-lg;
   color: hsl(var(--primary));
 }
 
@@ -60,7 +62,7 @@
 
 /* Horizontal rules */
 .cv-preview hr {
-  @apply my-8 border-t-2;
+  @apply my-4 border-t;
   border-color: hsl(var(--border));
 }
 
@@ -75,7 +77,7 @@
 .cv-preview h2:has(+ strong) ~ strong ~ ul ~ strong,
 .cv-preview h2:has(+ strong) ~ strong ~ ul ~ strong ~ ul {
   column-count: 2;
-  column-gap: 3rem;
+  column-gap: 2rem;
   break-inside: avoid;
 }
 
@@ -84,9 +86,9 @@
   display: block;
   break-inside: avoid;
   page-break-inside: avoid;
-  margin-top: 1.25rem;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: hsl(var(--foreground));
 }
@@ -100,18 +102,18 @@
 .cv-preview strong + ul {
   break-inside: avoid;
   page-break-inside: avoid;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
   margin-bottom: 0;
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
   list-style: disc;
 }
 
 .cv-preview strong + ul li {
   break-inside: avoid;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 0.25rem;
-  padding-left: 0.25rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 0.15rem;
+  padding-left: 0.15rem;
 }
 
 .cv-preview strong + ul li::before {
@@ -132,30 +134,36 @@
 @media print {
   .cv-preview {
     @apply text-black bg-white max-w-full;
-    font-size: 11pt;
-    line-height: 1.5;
+    font-size: 10pt;
+    line-height: 1.4;
+    padding: 0.5rem;
   }
   
   .cv-preview h1 {
-    @apply text-3xl;
+    @apply text-2xl;
     page-break-after: avoid;
+    margin-bottom: 0.25rem;
   }
   
   .cv-preview h2 {
-    @apply text-xl mt-8;
+    @apply text-lg mt-4;
     page-break-after: avoid;
+    margin-bottom: 0.5rem;
   }
   
   .cv-preview h3 {
     page-break-after: avoid;
+    margin-top: 0.5rem;
   }
   
   .cv-preview ul {
     page-break-inside: avoid;
+    margin: 0.5rem 0;
   }
   
   .cv-preview li {
     page-break-inside: avoid;
+    font-size: 9pt;
   }
 
   /* Maintain 2 columns in print for skills */
@@ -164,11 +172,12 @@
   .cv-preview h2:has(+ strong) ~ strong ~ ul ~ strong,
   .cv-preview h2:has(+ strong) ~ strong ~ ul ~ strong ~ ul {
     column-count: 2;
-    column-gap: 1.5rem;
+    column-gap: 1rem;
   }
   
   .cv-preview strong:has(+ ul) {
     page-break-after: avoid;
+    font-size: 9pt;
   }
   
   .cv-preview strong + ul {

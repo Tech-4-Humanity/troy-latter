@@ -176,19 +176,21 @@ CRITICAL INSTRUCTIONS FOR SKILLS:
 - Demonstrate HOW each skill was applied in real scenarios
 
 FORMATTING RULES (CRITICAL - MUST FOLLOW EXACTLY):
-- Use EXACTLY 2 blank lines between major sections (##)
+- Use EXACTLY 1 blank line between major sections (##)
 - Use EXACTLY 1 blank line between subsections (###)
 - Use bullet character • (not * or -)
 - Each bullet point must be ≤ 2 lines maximum
 - Lead all metrics with numbers: "Delivered $5M revenue increase" not "Increased revenue by $5M"
-- Use em-dashes (—) for date ranges: "Jan 2020 — Present"
+- Use " to " for date ranges: "Jan 2020 to Present" (NO em dashes or hyphens)
 
 TYPOGRAPHY STANDARDS:
 - Headings: Sentence case only (Chief Technology Officer, not CHIEF TECHNOLOGY OFFICER)
 - Numbers: Always comma-separated (1,000 not 1000)
 - Currency: Always with symbol first ($2.5M not 2.5M dollars)
 - Percentages: No space before % (95% not 95 %)
-- Company names: Use exact capitalization from their branding
+- Company names: Use exact capitalisation from their branding
+- Australian English spelling: Use -ise (organise, realise), -our (colour, behaviour), -re (centre, metre)
+- NO em dashes anywhere - use " to " for ranges
 
 BREVITY RULES:
 - Maximum 6 bullets per role
@@ -211,27 +213,23 @@ FORMAT:
 # [Candidate Name]
 ### [Tailored Professional Title]
 
-
 ## Executive Summary
 [Compelling 3-4 sentence summary tailored to the specific role with quantified impact]
-
 
 ## Key Strengths
 • [Strength aligned with job requirement]
 • [Another aligned strength]
 • [Another aligned strength]
 
-
 ## Professional Experience
 
 ### [Most Relevant Role]
-**[Company]** | [Period using em-dash]
+**[Company]** | [Period using "to" - e.g., Jan 2020 to Present]
 
 • [Achievement with metrics - start with number or action verb]
 • [Another achievement - maximum 2 lines]
 
 [Continue with other relevant roles...]
-
 
 ## Core Competencies
 
@@ -240,7 +238,6 @@ FORMAT:
 • [Specific skill 2]
 • [Specific skill 3]
 • [Specific skill 4]
-• [Specific skill 5]
 
 **[Secondary Category Name - e.g., "Leadership & Strategic Consulting"]**
 • [Specific skill 1]
@@ -253,27 +250,37 @@ FORMAT:
 • [Specific skill 2]
 • [Specific skill 3]
 
-SKILL CATEGORIZATION RULES:
+SKILL CATEGORISATION RULES:
 - Group skills into 2-4 thematic categories based on the job requirements
 - Each category MUST have a bold heading on its own line: **Category Name**
-- List 4-8 specific skills per category using bullet points (•)
+- List 4-6 specific skills per category using bullet points (•) - KEEP IT CONCISE
 - Category names should be descriptive and aligned with job requirements
 - Categories typically include: Technical/Domain expertise, Leadership/Soft Skills, Industry/Business knowledge, Methodologies & Frameworks
 - Keep individual skills concise (1-5 words each)
 - Example category names: "AI & Digital Transformation", "Cloud Architecture & Engineering", "Leadership & Strategic Consulting", "Industry Expertise", "Security & Compliance"
 
-
 ## Notable Achievements
 • [Quantifiable achievement relevant to role]
 • [Another achievement]
-
 
 ## Education & Certifications
 [Relevant credentials]
 
 ---
 
-Generate a CV optimized for this specific opportunity. Focus on ROI, leadership impact, and measurable outcomes. Follow ALL formatting rules precisely.`;
+SPACE UTILISATION:
+- Maximise white space for readability - no dense blocks of text
+- Single line spacing between bullet points
+- Clear visual hierarchy with consistent spacing
+- Ensure CV fits 1-2 pages for executive level
+
+FINAL REMINDER - CRITICAL:
+- Australian English spelling throughout (organise, realise, colour, centre, etc.)
+- NO em dashes (—) anywhere - use " to " for all date ranges
+- Tight, concise spacing - reduce blank lines to maximise content density
+- Use bullet character • consistently
+
+Generate a CV optimised for this specific opportunity. Focus on ROI, leadership impact, and measurable outcomes. Follow ALL formatting rules precisely.`;
 
     // Call Lovable AI Gateway
     const lovableApiKey = Deno.env.get('LOVABLE_API_KEY');

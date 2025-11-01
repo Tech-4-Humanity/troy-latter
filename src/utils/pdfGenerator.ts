@@ -7,9 +7,9 @@ interface CVSection {
 
 export class ProfessionalCVPDF {
   private doc: jsPDF;
-  private y: number = 20;
+  private y: number = 15;
   private pageWidth: number;
-  private margin: number = 20;
+  private margin: number = 15;
 
   constructor() {
     this.doc = new jsPDF({
@@ -28,6 +28,7 @@ export class ProfessionalCVPDF {
     });
 
     this.pageWidth = this.doc.internal.pageSize.getWidth();
+    this.margin = 15; // Reduced margins for better space utilisation
   }
 
   // Parse markdown into structured sections
@@ -279,62 +280,62 @@ export class ProfessionalCVPDF {
 
   // Render heading 1 (Name)
   addHeading1(text: string) {
-    this.checkPageBreak(20);
-    this.doc.setFontSize(28);
+    this.checkPageBreak(18);
+    this.doc.setFontSize(24);
     this.doc.setFont('helvetica', 'bold');
     this.doc.setTextColor(15, 23, 42); // slate-900
     this.doc.text(text, this.margin, this.y);
-    this.y += 12;
+    this.y += 8;
 
     // Underline
     this.doc.setDrawColor(37, 99, 235); // blue-600
-    this.doc.setLineWidth(0.8);
+    this.doc.setLineWidth(0.6);
     this.doc.line(this.margin, this.y, this.pageWidth - this.margin, this.y);
-    this.y += 8;
+    this.y += 6;
   }
 
   // Render heading 2 (Section titles)
   addHeading2(text: string) {
-    this.checkPageBreak(15);
-    this.y += 6;
-    this.doc.setFontSize(14);
+    this.checkPageBreak(12);
+    this.y += 4;
+    this.doc.setFontSize(13);
     this.doc.setFont('helvetica', 'bold');
     this.doc.setTextColor(37, 99, 235); // blue-600
     this.doc.text(text, this.margin, this.y);
-    this.y += 6;
+    this.y += 5;
 
     // Thin underline
     this.doc.setDrawColor(37, 99, 235);
-    this.doc.setLineWidth(0.5);
+    this.doc.setLineWidth(0.4);
     this.doc.line(this.margin, this.y, this.pageWidth - this.margin, this.y);
-    this.y += 6;
+    this.y += 4;
   }
 
   // Render heading 3 (Job titles)
   addHeading3(text: string) {
-    this.checkPageBreak(12);
-    this.y += 4;
-    this.doc.setFontSize(12);
+    this.checkPageBreak(10);
+    this.y += 3;
+    this.doc.setFontSize(11);
     this.doc.setFont('helvetica', 'bold');
     this.doc.setTextColor(30, 41, 59); // slate-800
     this.doc.text(text, this.margin, this.y);
-    this.y += 7;
+    this.y += 5;
   }
 
   // Render bold text (company names, dates)
   addBold(text: string) {
-    this.checkPageBreak(8);
-    this.doc.setFontSize(10);
+    this.checkPageBreak(6);
+    this.doc.setFontSize(9.5);
     this.doc.setFont('helvetica', 'bold');
     this.doc.setTextColor(15, 23, 42);
     this.doc.text(text, this.margin, this.y);
-    this.y += 6;
+    this.y += 4;
   }
 
   // Render paragraph
   addParagraph(text: string) {
-    this.checkPageBreak(10);
-    this.doc.setFontSize(10);
+    this.checkPageBreak(8);
+    this.doc.setFontSize(9.5);
     
     // Use token-based rendering for proper inline bold support
     const tokens = this.parseToTokens(text);
@@ -349,8 +350,8 @@ export class ProfessionalCVPDF {
       
       if (currentLineWidth + tokenWidth > maxWidth && currentLine.length > 0) {
         this.renderTokenLine(currentLine, this.margin);
-        this.y += 5;
-        this.checkPageBreak(7);
+        this.y += 4;
+        this.checkPageBreak(6);
         currentLine = [token];
         currentLineWidth = tokenWidth;
       } else {
@@ -363,23 +364,23 @@ export class ProfessionalCVPDF {
       this.renderTokenLine(currentLine, this.margin);
     }
     
-    this.y += 7;
+    this.y += 5;
   }
 
   // Render bullet point with inline bold support
   addBullet(text: string) {
-    this.checkPageBreak(8);
-    this.doc.setFontSize(10);
+    this.checkPageBreak(6);
+    this.doc.setFontSize(9.5);
     
     // Bullet symbol
     this.doc.setTextColor(37, 99, 235);
     this.doc.setFont('helvetica', 'bold');
-    this.doc.text('•', this.margin + 2, this.y);
+    this.doc.text('•', this.margin + 1, this.y);
     
     // Parse into word-level tokens with formatting
     const tokens = this.parseToTokens(text);
-    const maxWidth = this.pageWidth - (2 * this.margin) - 8;
-    const indent = this.margin + 8;
+    const maxWidth = this.pageWidth - (2 * this.margin) - 6;
+    const indent = this.margin + 6;
     
     let currentLine: typeof tokens = [];
     let currentLineWidth = 0;
@@ -393,8 +394,8 @@ export class ProfessionalCVPDF {
       if (currentLineWidth + tokenWidth > maxWidth && currentLine.length > 0) {
         // Render current line
         this.renderTokenLine(currentLine, indent);
-        this.y += 5;
-        this.checkPageBreak(6);
+        this.y += 4;
+        this.checkPageBreak(5);
         
         // Start new line
         currentLine = [token];
@@ -411,7 +412,7 @@ export class ProfessionalCVPDF {
       this.renderTokenLine(currentLine, indent);
     }
     
-    this.y += 6;
+    this.y += 4;
   }
 
   // Add footer with page numbers
