@@ -2,10 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Link } from 'react-router-dom';
 import { CVGeneratorForm } from '@/components/cv/CVGeneratorForm';
-import { SkillsMatrix } from '@/components/cv/SkillsMatrix';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Database, FileText } from 'lucide-react';
+import { Database, FileText, BarChart3 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
@@ -73,6 +71,12 @@ export default function CVGenerator() {
         <div className="max-w-4xl mx-auto mb-8">
           <div className="flex justify-end gap-2">
             <Button asChild variant="outline" size="sm">
+              <Link to="/tools/skills">
+                <BarChart3 className="h-4 w-4 mr-2" />
+                Skills Matrix
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="sm">
               <Link to="/tools/cv-generation-history">
                 <FileText className="h-4 w-4 mr-2" />
                 Generation History
@@ -87,26 +91,8 @@ export default function CVGenerator() {
           </div>
         </div>
 
-        {/* Tabs for CV Generator & Skills Matrix */}
-        <div className="max-w-6xl mx-auto mb-12">
-          <Tabs defaultValue="cv" className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
-              <TabsTrigger value="cv" className="text-base">
-                CV Generator
-              </TabsTrigger>
-              <TabsTrigger value="skills" className="text-base">
-                Skills Matrix
-              </TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="cv">
-              <CVGeneratorForm />
-            </TabsContent>
-            
-            <TabsContent value="skills">
-              <SkillsMatrix />
-            </TabsContent>
-          </Tabs>
+        <div className="max-w-4xl mx-auto mb-12">
+          <CVGeneratorForm />
         </div>
       </div>
     </div>
