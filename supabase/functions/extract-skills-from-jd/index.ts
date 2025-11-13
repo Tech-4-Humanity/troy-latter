@@ -133,8 +133,7 @@ ${jdText}`;
       .from('job_descriptions')
       .update({ 
         extracted_skills: extractedSkills,
-        skill_extraction_status: 'completed',
-        updated_at: new Date().toISOString()
+        skill_extraction_status: 'completed'
       })
       .eq('id', jobId);
 

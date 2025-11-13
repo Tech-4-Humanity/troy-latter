@@ -345,6 +345,18 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
     const aiData = await aiResponse.json();
     const generatedCV = aiData.choices[0].message.content;
 
+    // Extract which skills were actually used in the generated CV
+    const usedSkills = topSkills
+      ? topSkills
+          .filter(s => generatedCV.toLowerCase().includes(s.skill.toLowerCase()))
+          .map(s => ({
+            skill: s.skill,
+            domain: s.domain,
+            alignment_score: s.alignment_score,
+            proficiency: s['Proficiency Level']
+          }))
+      : [];
+
     // Calculate intelligent match score based on skills used and content alignment
     const jdLower = jobDescription.toLowerCase();
     const cvLower = generatedCV.toLowerCase();
@@ -532,18 +544,6 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
         console.error('Error generating HTML template:', error);
       }
     }
-
-    // Extract which skills were actually used in the generated CV
-    const usedSkills = topSkills
-      ? topSkills
-          .filter(s => generatedCV.toLowerCase().includes(s.skill.toLowerCase()))
-          .map(s => ({
-            skill: s.skill,
-            domain: s.domain,
-            alignment_score: s.alignment_score,
-            proficiency: s['Proficiency Level']
-          }))
-      : [];
 
     const skillAlignmentScore = topSkills && topSkills.length > 0
       ? (usedSkills.length / Math.min(topSkills.length, 20)) * 100
