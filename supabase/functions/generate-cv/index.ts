@@ -201,13 +201,19 @@ BREVITY RULES:
 
 CONTENT INSTRUCTIONS:
 1. Analyze the job description to identify key requirements, skills, and priorities
-2. Generate a tailored CV that emphasizes the most relevant experience and skills
-3. Use professional, executive-level language focused on outcomes
-4. Include quantifiable achievements with metrics
-5. Start with a compelling executive summary tailored to the role
+2. Generate a COMPREHENSIVE, tailored CV that demonstrates deep relevant experience
+3. Use professional, executive-level language focused on outcomes and measurable impact
+4. Include quantifiable achievements with specific metrics for EVERY major role
+5. Start with a compelling executive summary tailored to the specific role (4-5 sentences)
 6. Prioritize experiences and skills that match the job requirements
-7. Include a "Key Strengths" section highlighting alignment with the role
-8. Keep the CV to 2-3 pages maximum
+7. Include a "Key Strengths" section with 5-7 bullet points highlighting alignment
+8. For each major role, include:
+   - Clear role context and scope (team size, budget, geographic coverage)
+   - 4-6 detailed, quantified achievements showing progression and impact
+   - Specific technologies, methodologies, and frameworks used
+   - Leadership and stakeholder management accomplishments
+9. Show career progression and increasing responsibility over time
+10. Include ALL relevant experience - don't artificially compress for length
 
 FORMAT:
 # [Candidate Name]
@@ -268,11 +274,15 @@ SKILL CATEGORISATION RULES:
 
 ---
 
-SPACE UTILISATION:
-- Maximise white space for readability - no dense blocks of text
-- Single line spacing between bullet points
-- Clear visual hierarchy with consistent spacing
-- Ensure CV fits 1-2 pages for executive level
+SPACE UTILISATION & LENGTH:
+- For executive roles (CTO, VP, Director level): Target 3-4 pages with comprehensive detail
+- For senior individual contributor roles: Target 2-3 pages
+- Use clear section breaks with consistent spacing (one blank line between sections)
+- Single line spacing between bullet points within a section
+- Clear visual hierarchy with proper heading levels
+- Include 4-6 detailed achievements per major role
+- Earlier roles (5+ years ago) can be more concise (2-3 bullets)
+- DEPTH OVER BREVITY: Better to show comprehensive experience than artificially compress
 
 FINAL REMINDER - CRITICAL:
 - Australian English spelling throughout (organise, realise, colour, centre, etc.)
@@ -335,11 +345,39 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
     const aiData = await aiResponse.json();
     const generatedCV = aiData.choices[0].message.content;
 
-    // Calculate a simple match score based on keyword overlap
-    const jobKeywords = jobDescription.toLowerCase().match(/\b\w{4,}\b/g) || [];
-    const cvKeywords = generatedCV.toLowerCase().match(/\b\w{4,}\b/g) || [];
-    const matchedKeywords = jobKeywords.filter(keyword => cvKeywords.includes(keyword));
-    const matchScore = Math.min(100, (matchedKeywords.length / jobKeywords.length) * 100);
+    // Calculate intelligent match score based on skills used and content alignment
+    const jdLower = jobDescription.toLowerCase();
+    const cvLower = generatedCV.toLowerCase();
+    
+    // 1. Skills Match (40% weight) - Check which required skills appear in CV
+    const skillsMatched = usedSkills.length > 0 
+      ? (usedSkills.length / Math.min(topSkills?.length || 20, 20)) * 100 
+      : 0;
+    
+    // 2. Technical Terms Match (30% weight) - Extract and match technical keywords
+    const technicalTerms = [
+      'ai', 'ml', 'machine learning', 'artificial intelligence', 'cloud', 'aws', 'azure', 'gcp',
+      'architecture', 'leadership', 'transformation', 'strategy', 'agile', 'devops',
+      'security', 'data', 'analytics', 'platform', 'infrastructure', 'automation'
+    ];
+    const techMatches = technicalTerms.filter(term => 
+      jdLower.includes(term) && cvLower.includes(term)
+    ).length;
+    const techScore = (techMatches / Math.max(technicalTerms.filter(t => jdLower.includes(t)).length, 1)) * 100;
+    
+    // 3. Seniority Alignment (30% weight) - Check if CV shows appropriate level
+    const seniorityTerms = ['cto', 'director', 'vp', 'head of', 'chief', 'principal', 'lead', 'senior', 'executive'];
+    const seniorityMatches = seniorityTerms.filter(term => 
+      jdLower.includes(term) && cvLower.includes(term)
+    ).length;
+    const seniorityScore = jdLower.match(/\b(cto|director|vp|head of|chief)\b/i) 
+      ? (seniorityMatches / Math.max(seniorityTerms.filter(t => jdLower.includes(t)).length, 1)) * 100
+      : 90; // Default high if not executive role
+    
+    // Weighted average: Skills(40%) + Technical(30%) + Seniority(30%)
+    const matchScore = Math.round(
+      (skillsMatched * 0.4) + (techScore * 0.3) + (seniorityScore * 0.3)
+    );
 
     // PHASE 2: Generate HTML version using marked library for direct conversion
     let generatedHTML = null;
@@ -361,7 +399,7 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
         const cssMatch = htmlTemplateData.full_html.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
         const cssStyles = cssMatch ? cssMatch[1] : '';
         
-        // Create professional HTML document with template styling
+        // Create professional HTML document with enhanced spacing and formatting
         generatedHTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -369,46 +407,116 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${profile.full_name} - CV</title>
   <style>
-    ${cssStyles}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      max-width: 900px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      color: #1f2937;
+      max-width: 850px;
       margin: 0 auto;
-      padding: 40px 20px;
-      background: #fff;
+      padding: 50px 40px;
+      background: #ffffff;
     }
+    
     h1 { 
-      color: ${template === 'blue' ? '#2563eb' : '#16a34a'}; 
-      border-bottom: 3px solid ${template === 'blue' ? '#2563eb' : '#16a34a'};
-      padding-bottom: 10px;
-      margin-bottom: 20px;
+      color: ${template === 'blue' ? '#1e40af' : '#15803d'}; 
+      font-size: 2.5em;
+      font-weight: 700;
+      border-bottom: 4px solid ${template === 'blue' ? '#2563eb' : '#16a34a'};
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      letter-spacing: -0.5px;
     }
+    
     h2 { 
       color: ${template === 'blue' ? '#1e40af' : '#15803d'}; 
-      margin-top: 30px;
-      margin-bottom: 15px;
-      font-size: 1.5em;
+      font-size: 1.8em;
+      font-weight: 600;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      padding-top: 15px;
+      border-top: 2px solid #e5e7eb;
     }
+    
     h3 { 
       color: #374151; 
-      font-size: 1.2em;
+      font-size: 1.3em;
+      font-weight: 600;
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+    
+    h4 {
+      color: #4b5563;
+      font-size: 1.1em;
+      font-weight: 600;
       margin-top: 20px;
+      margin-bottom: 10px;
     }
+    
+    p { 
+      margin-bottom: 15px;
+      line-height: 1.7;
+    }
+    
     ul { 
-      padding-left: 20px; 
+      margin: 15px 0;
+      padding-left: 25px;
     }
+    
     li { 
-      margin-bottom: 8px; 
+      margin-bottom: 12px;
+      line-height: 1.7;
+      padding-left: 5px;
     }
-    strong { 
-      color: #1f2937; 
+    
+    li::marker {
+      color: ${template === 'blue' ? '#2563eb' : '#16a34a'};
+      font-weight: bold;
     }
+    
+    strong, b { 
+      color: #111827;
+      font-weight: 600;
+    }
+    
+    /* Professional section spacing */
+    .section {
+      margin-bottom: 35px;
+    }
+    
+    /* Ensure proper spacing after headers */
+    h1 + p, h2 + p, h3 + p, h4 + p {
+      margin-top: 12px;
+    }
+    
+    /* Print optimization */
     @media print {
       body { 
-        padding: 20px; 
+        padding: 30px 40px;
         max-width: 100%;
+      }
+      
+      h1 {
+        font-size: 2.2em;
+      }
+      
+      h2 {
+        page-break-after: avoid;
+        margin-top: 30px;
+      }
+      
+      h3, h4 {
+        page-break-after: avoid;
+      }
+      
+      li {
+        page-break-inside: avoid;
       }
     }
   </style>
