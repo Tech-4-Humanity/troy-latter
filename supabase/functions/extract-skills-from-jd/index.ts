@@ -52,6 +52,7 @@ Rules:
 JOB DESCRIPTION:
 ${jdText}`;
 
+    console.log('Calling OpenAI API with model: gpt-4o-mini');
     const aiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -59,12 +60,13 @@ ${jdText}`;
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-5-mini-2025-08-07',
+        model: 'gpt-4o-mini',
         messages: [
           { role: 'system', content: 'You are a skill extraction expert. Return ONLY valid JSON arrays.' },
           { role: 'user', content: prompt }
         ],
-        max_completion_tokens: 2000,
+        temperature: 0.3,
+        max_tokens: 2000,
       }),
     });
 
@@ -89,10 +91,19 @@ ${jdText}`;
     }
 
     const aiData = await aiResponse.json();
+    console.log('Full AI response:', JSON.stringify(aiData, null, 2));
+    
     const content = aiData.choices?.[0]?.message?.content;
 
     if (!content) {
-      throw new Error('No content in AI response');
+      console.error('AI response structure:', {
+        hasChoices: !!aiData.choices,
+        choicesLength: aiData.choices?.length,
+        firstChoice: aiData.choices?.[0],
+        hasMessage: !!aiData.choices?.[0]?.message,
+        messageKeys: aiData.choices?.[0]?.message ? Object.keys(aiData.choices[0].message) : []
+      });
+      throw new Error(`No content in AI response. Response: ${JSON.stringify(aiData)}`);
     }
 
     // Parse the JSON array from AI response

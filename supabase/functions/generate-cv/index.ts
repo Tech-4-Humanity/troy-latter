@@ -289,6 +289,7 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
     }
 
     console.log('Generating CV for job description length:', jobDescription.length);
+    console.log('Using OpenAI model: gpt-4o-mini');
 
     const aiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -297,7 +298,7 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-5-mini-2025-08-07',
+        model: 'gpt-4o-mini',
         messages: [
           { role: 'system', content: systemPrompt },
           { 
@@ -305,7 +306,8 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
             content: `Generate a tailored CV for this job opportunity:\n\n${jobDescription}` 
           }
         ],
-        max_completion_tokens: 4000,
+        temperature: 0.7,
+        max_tokens: 4000,
       }),
     });
 
@@ -475,7 +477,7 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
         generated_cv: generatedCV,
         generated_html: generatedHTML, // NOW SAVING HTML
         template_name: template, // CORRECT TEMPLATE NAME
-        ai_model: 'gpt-5-mini-2025-08-07', // TRACK WHICH MODEL
+        ai_model: 'gpt-4o-mini', // TRACK WHICH MODEL
         format: 'executive',
         match_score: Math.round(matchScore * 100) / 100,
         user_email: userEmail || null,
