@@ -282,22 +282,22 @@ FINAL REMINDER - CRITICAL:
 
 Generate a CV optimised for this specific opportunity. Focus on ROI, leadership impact, and measurable outcomes. Follow ALL formatting rules precisely.`;
 
-    // Call Lovable AI Gateway
-    const lovableApiKey = Deno.env.get('LOVABLE_API_KEY');
-    if (!lovableApiKey) {
-      throw new Error('LOVABLE_API_KEY not configured');
+    // Call OpenAI API
+    const openaiApiKey = Deno.env.get('OPENAI_API_KEY');
+    if (!openaiApiKey) {
+      throw new Error('OPENAI_API_KEY not configured');
     }
 
     console.log('Generating CV for job description length:', jobDescription.length);
 
-    const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+    const aiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${lovableApiKey}`,
+        'Authorization': `Bearer ${openaiApiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.5-flash',
+        model: 'gpt-5-mini-2025-08-07',
         messages: [
           { role: 'system', content: systemPrompt },
           { 
@@ -305,8 +305,7 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
             content: `Generate a tailored CV for this job opportunity:\n\n${jobDescription}` 
           }
         ],
-        temperature: 0.7,
-        max_tokens: 4000,
+        max_completion_tokens: 4000,
       }),
     });
 
@@ -323,7 +322,7 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
       
       if (aiResponse.status === 402) {
         return new Response(
-          JSON.stringify({ error: 'AI credits exhausted. Please contact support.' }),
+          JSON.stringify({ error: 'OpenAI API credits exhausted. Please check your OpenAI account.' }),
           { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
@@ -476,7 +475,7 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
         generated_cv: generatedCV,
         generated_html: generatedHTML, // NOW SAVING HTML
         template_name: template, // CORRECT TEMPLATE NAME
-        ai_model: 'google/gemini-2.5-flash', // TRACK WHICH MODEL
+        ai_model: 'gpt-5-mini-2025-08-07', // TRACK WHICH MODEL
         format: 'executive',
         match_score: Math.round(matchScore * 100) / 100,
         user_email: userEmail || null,

@@ -22,14 +22,14 @@ serve(async (req) => {
       );
     }
 
-    const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
-    if (!LOVABLE_API_KEY) {
-      throw new Error('LOVABLE_API_KEY not configured');
+    const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
+    if (!OPENAI_API_KEY) {
+      throw new Error('OPENAI_API_KEY not configured');
     }
 
     console.log(`Extracting skills from JD: ${jobId}`);
 
-    // Call Lovable AI to extract structured skills
+    // Call OpenAI to extract structured skills
     const prompt = `Extract ALL technical and professional skills from this job description. 
 Return a JSON array ONLY (no markdown, no explanations) with this exact format:
 [
@@ -52,19 +52,19 @@ Rules:
 JOB DESCRIPTION:
 ${jdText}`;
 
-    const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+    const aiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.5-flash',
+        model: 'gpt-5-mini-2025-08-07',
         messages: [
           { role: 'system', content: 'You are a skill extraction expert. Return ONLY valid JSON arrays.' },
           { role: 'user', content: prompt }
         ],
-        temperature: 0.3,
+        max_completion_tokens: 2000,
       }),
     });
 
@@ -80,7 +80,7 @@ ${jdText}`;
       }
       if (aiResponse.status === 402) {
         return new Response(
-          JSON.stringify({ error: 'Payment required. Please add credits to your Lovable workspace.' }),
+          JSON.stringify({ error: 'OpenAI API credits exhausted. Please check your OpenAI account.' }),
           { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
