@@ -108,34 +108,56 @@ serve(async (req) => {
     // Template-specific instructions
     const templateInstructions = template === 'blue' 
       ? `
-FORMAT: COMPREHENSIVE (2-3 pages)
-- Full detail for each role
-- All achievements with metrics
-- Complete education and certifications
-- Board positions and advisory roles
-TONE: Traditional, thorough, corporate
+FORMAT: GOOGLE/FAANG-QUALITY COMPREHENSIVE (3-4 pages)
+- 4-6 detailed achievements per major role with SPECIFIC metrics
+- EVERY bullet must have quantified impact (%, $, timelines, team sizes)
+- Complete technical stack details with real-world applications
+- Full education, certifications, and advisory roles
+- Demonstrate thought leadership and industry impact
+TONE: Professional, data-driven, executive-level
 COLOR THEME: Blue accents for headers and bullets
+QUALITY STANDARD: Match the caliber of resumes that land FAANG/tier-1 interviews
       `
       : `
-FORMAT: EXECUTIVE (1-2 pages)
-- Condensed experience highlights
-- Top 3-4 achievements per role
-- Essential credentials only
-- Executive summary focus
-TONE: Dynamic, impact-focused, modern
+FORMAT: GOOGLE/FAANG-QUALITY EXECUTIVE (2-3 pages)
+- 4-5 high-impact achievements per role with measurable outcomes
+- Focus on strategic initiatives with business-level metrics
+- Technical depth balanced with executive perspective
+- Essential credentials with emphasis on thought leadership
+TONE: Dynamic, results-focused, sophisticated
 COLOR THEME: Green accents for modern executive look
+QUALITY STANDARD: Match the caliber of resumes that land FAANG/tier-1 interviews
       `;
 
     const styleGuide = `
-EXECUTIVE CV FORMATTING STANDARDS:
-- Use clear section headers (Professional Summary, Core Expertise, Professional Experience, Education)
-- Lead with quantified achievements and metrics
-- Focus on strategic impact and business outcomes
-- Use action verbs (Led, Architected, Transformed, Delivered)
-- Keep sentences concise and impactful
-- Highlight leadership and decision-making authority
-- Include technology stack and methodologies where relevant
-- Emphasize C-suite interaction and stakeholder management
+GOOGLE/FAANG-LEVEL CV STANDARDS:
+
+MANDATORY QUALITY REQUIREMENTS:
+- EVERY achievement bullet MUST include specific metrics (percentages, dollar amounts, timelines, team sizes)
+- Use the STAR method: Situation, Task, Action, Result - focus heavily on quantified Results
+- NO generic statements like "Led team" - instead "Led 25-person engineering team delivering $15M platform migration"
+- NO weak verbs: "helped", "worked on", "responsible for", "managed to", "assisted with"
+- ONLY strong executive verbs: "Architected", "Spearheaded", "Transformed", "Delivered", "Scaled", "Drove"
+
+CONTENT DEPTH:
+- 4-6 achievement bullets per major role (not 2-3)
+- Each bullet must tell a complete story with measurable business impact
+- Show HOW you achieved results, not just WHAT you did
+- Include technical specifics: exact technologies, methodologies, frameworks used
+- Demonstrate scale: team sizes, budget amounts, user bases, data volumes
+
+EXECUTIVE LANGUAGE PATTERNS:
+- Lead with impact: "$5M cost reduction through automated compliance workflows" not "Automated compliance workflows saving money"
+- Quantify everything: timeline improvements (50% faster), quality gains (99.9% uptime), financial impact (20% ROI)
+- Show strategic thinking: tie technical achievements to business outcomes
+- Demonstrate leadership: cross-functional collaboration, stakeholder management, organizational change
+- Use industry-standard terminology that resonates with technical and executive audiences
+
+TECHNICAL CREDIBILITY:
+- Name specific technologies and platforms (AWS SageMaker, Azure OpenAI, Terraform, Kubernetes)
+- Show architectural thinking: microservices, event-driven, serverless, distributed systems
+- Include methodology expertise: Agile, DevOps, CI/CD, Site Reliability Engineering
+- Demonstrate modern best practices: security-first design, observability, cost optimization
 `;
 
     // PHASE 4: Enhanced system prompt for better content quality
@@ -198,6 +220,42 @@ BREVITY RULES:
 - Start with action verb or metric
 - Eliminate: "responsible for", "worked on", "helped with", "managed to"
 - Replace with: "Delivered", "Led", "Architected", "Scaled", "Transformed"
+
+FAANG-LEVEL CONTENT REQUIREMENTS:
+
+PROFESSIONAL SUMMARY (3-4 lines):
+- Open with years of experience and core expertise areas
+- Include 2-3 most impressive quantified achievements
+- Highlight unique value proposition relevant to the target role
+- Use executive-level language that demonstrates strategic thinking
+
+CORE COMPETENCIES/TECHNICAL EXPERTISE:
+- Organize into clear categories (Leadership & Strategy, Technical Architecture, Domain Expertise)
+- Include 8-12 key competencies that directly align with job requirements
+- Use industry-standard terminology
+- Balance technical skills with leadership capabilities
+
+PROFESSIONAL EXPERIENCE:
+- For EACH major role, include 4-6 achievement bullets (minimum 4, never less)
+- EVERY bullet must follow this pattern: [Action Verb] + [What You Did] + [Specific Technology/Method] + [Quantified Result]
+- Example: "Architected enterprise AI platform using AWS Bedrock and SageMaker, reducing ML model deployment time by 70% and enabling 50+ data scientists"
+- Include the full technology stack for each initiative
+- Show progression of responsibility and impact across roles
+- Recent roles (last 5 years) get more detail than older roles
+
+QUANTIFICATION EXAMPLES YOU MUST FOLLOW:
+- Cost savings: "$2.5M annual cost reduction through infrastructure optimization"
+- Efficiency: "Improved deployment velocity by 300%, reducing release cycles from 2 weeks to 2 days"
+- Scale: "Scaled platform to support 10M+ daily transactions with 99.99% uptime"
+- Team impact: "Led 30-person engineering organization across 4 global locations"
+- Revenue: "Delivered $15M incremental revenue through new AI-powered product features"
+- Time savings: "Reduced compliance review time by 65% (from 3 days to 8 hours) via automated workflows"
+
+AVOID THESE COMMON MISTAKES:
+- ❌ "Responsible for managing AI initiatives" → ✅ "Directed $5M AI transformation program delivering 40% efficiency gains"
+- ❌ "Worked on cloud migration" → ✅ "Orchestrated 200+ application migration to AWS, achieving 35% cost reduction"
+- ❌ "Led team of developers" → ✅ "Built and led 25-person engineering team delivering mission-critical defense platform"
+- ❌ "Improved processes" → ✅ "Re-engineered procurement workflows reducing cycle time from 14 to 3 days (78% improvement)"
 
 CONTENT INSTRUCTIONS:
 1. Analyze the job description to identify key requirements, skills, and priorities
@@ -299,7 +357,7 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
     }
 
     console.log('Generating CV for job description length:', jobDescription.length);
-    console.log('Using OpenAI model: gpt-4o-mini');
+    console.log('Using OpenAI model: gpt-4o (upgraded for quality)');
 
     const aiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -308,16 +366,16 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: systemPrompt },
           { 
             role: 'user', 
-            content: `Generate a tailored CV for this job opportunity:\n\n${jobDescription}` 
+            content: `Generate a comprehensive, FAANG-quality tailored CV for this job opportunity. Ensure EVERY achievement bullet includes specific quantified metrics:\n\n${jobDescription}` 
           }
         ],
         temperature: 0.7,
-        max_tokens: 4000,
+        max_tokens: 10000,
       }),
     });
 
@@ -344,6 +402,38 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
 
     const aiData = await aiResponse.json();
     const generatedCV = aiData.choices[0].message.content;
+
+    // QUALITY VALIDATION - Ensure Google/FAANG-level standards
+    const qualityIssues: string[] = [];
+    
+    // Check 1: Count achievement bullets in experience section
+    const experienceSection = generatedCV.match(/##\s*Professional Experience.*?(?=##|$)/is)?.[0] || '';
+    const bulletCount = (experienceSection.match(/•/g) || []).length;
+    if (bulletCount < 12) {
+      qualityIssues.push(`Only ${bulletCount} achievement bullets found (expected 15-20 for comprehensive executive CV)`);
+    }
+    
+    // Check 2: Verify presence of quantified metrics (numbers, %, $)
+    const metricsCount = (generatedCV.match(/\d+%|\$\d+[KMB]?|\d+\+|\d{1,3}(,\d{3})+/g) || []).length;
+    if (metricsCount < 15) {
+      qualityIssues.push(`Only ${metricsCount} quantified metrics found (expected 20+ for FAANG-quality CV)`);
+    }
+    
+    // Check 3: Check for weak/generic language that shouldn't be there
+    const weakPhrases = ['responsible for', 'worked on', 'helped with', 'assisted', 'managed to'];
+    const foundWeakPhrases = weakPhrases.filter(phrase => 
+      generatedCV.toLowerCase().includes(phrase)
+    );
+    if (foundWeakPhrases.length > 0) {
+      qualityIssues.push(`Contains weak phrases: ${foundWeakPhrases.join(', ')}`);
+    }
+    
+    // Log quality issues for monitoring (but still return the CV)
+    if (qualityIssues.length > 0) {
+      console.warn('CV Quality Issues Detected:', qualityIssues);
+    } else {
+      console.log('✓ CV passed all quality validation checks');
+    }
 
     // Extract which skills were actually used in the generated CV
     const usedSkills = topSkills
@@ -426,65 +516,71 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
     }
     
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-      line-height: 1.7;
-      color: #1f2937;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.5;
+      color: #111827;
       max-width: 850px;
       margin: 0 auto;
-      padding: 50px 40px;
+      padding: 48px 42px;
       background: #ffffff;
+      font-size: 11pt;
     }
     
     h1 { 
       color: ${template === 'blue' ? '#1e40af' : '#15803d'}; 
-      font-size: 2.5em;
+      font-size: 2.4em;
       font-weight: 700;
-      border-bottom: 4px solid ${template === 'blue' ? '#2563eb' : '#16a34a'};
-      padding-bottom: 15px;
-      margin-bottom: 25px;
+      border-bottom: 3px solid ${template === 'blue' ? '#2563eb' : '#16a34a'};
+      padding-bottom: 12px;
+      margin-bottom: 20px;
       letter-spacing: -0.5px;
+      line-height: 1.2;
     }
     
     h2 { 
       color: ${template === 'blue' ? '#1e40af' : '#15803d'}; 
-      font-size: 1.8em;
+      font-size: 1.6em;
       font-weight: 600;
-      margin-top: 40px;
-      margin-bottom: 20px;
-      padding-top: 15px;
+      margin-top: 32px;
+      margin-bottom: 14px;
+      padding-top: 12px;
       border-top: 2px solid #e5e7eb;
+      line-height: 1.3;
     }
     
     h3 { 
       color: #374151; 
-      font-size: 1.3em;
+      font-size: 1.2em;
       font-weight: 600;
-      margin-top: 25px;
-      margin-bottom: 12px;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      line-height: 1.4;
     }
     
     h4 {
       color: #4b5563;
-      font-size: 1.1em;
+      font-size: 1.05em;
       font-weight: 600;
-      margin-top: 20px;
-      margin-bottom: 10px;
+      margin-top: 14px;
+      margin-bottom: 8px;
+      line-height: 1.4;
     }
     
     p { 
-      margin-bottom: 15px;
-      line-height: 1.7;
+      margin-bottom: 10px;
+      line-height: 1.5;
     }
     
     ul { 
-      margin: 15px 0;
-      padding-left: 25px;
+      margin: 10px 0 16px 0;
+      padding-left: 22px;
+      list-style-type: disc;
     }
     
     li { 
-      margin-bottom: 12px;
-      line-height: 1.7;
-      padding-left: 5px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+      padding-left: 4px;
     }
     
     li::marker {
@@ -499,28 +595,38 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
     
     /* Professional section spacing */
     .section {
-      margin-bottom: 35px;
+      margin-bottom: 28px;
     }
     
     /* Ensure proper spacing after headers */
     h1 + p, h2 + p, h3 + p, h4 + p {
-      margin-top: 12px;
+      margin-top: 8px;
+    }
+    
+    /* Better list spacing within sections */
+    h3 + ul, h4 + ul {
+      margin-top: 8px;
     }
     
     /* Print optimization */
     @media print {
       body { 
-        padding: 30px 40px;
+        padding: 32px 38px;
         max-width: 100%;
+        font-size: 10.5pt;
+        line-height: 1.45;
       }
       
       h1 {
-        font-size: 2.2em;
+        font-size: 2.1em;
+        margin-bottom: 16px;
       }
       
       h2 {
         page-break-after: avoid;
-        margin-top: 30px;
+        margin-top: 26px;
+        margin-bottom: 12px;
+        font-size: 1.5em;
       }
       
       h3, h4 {
@@ -529,6 +635,11 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
       
       li {
         page-break-inside: avoid;
+        margin-bottom: 7px;
+      }
+      
+      ul {
+        margin: 8px 0 14px 0;
       }
     }
   </style>
