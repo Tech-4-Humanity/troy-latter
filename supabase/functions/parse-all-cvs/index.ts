@@ -73,11 +73,13 @@ serve(async (req) => {
     }
 
     const parsedCVs: ParsedCV[] = [];
-    const lovableApiKey = Deno.env.get('LOVABLE_API_KEY');
+    const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     
-    if (!lovableApiKey) {
+    if (!LOVABLE_API_KEY) {
       throw new Error('LOVABLE_API_KEY not configured');
     }
+
+    console.log('Using Lovable AI (google/gemini-2.5-flash) for CV parsing');
 
     // Process ALL files with batch processing
     const BATCH_SIZE = 10;
@@ -282,7 +284,7 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
               const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
                 method: 'POST',
                 headers: {
-                  'Authorization': `Bearer ${lovableApiKey}`,
+                  'Authorization': `Bearer ${LOVABLE_API_KEY}`,
                   'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
@@ -295,7 +297,6 @@ Extract ALL experiences, skills, and achievements. Focus on quantified metrics.`
                         : `${extractionPrompt}\n\n${structuredPrompt}\n\nCV File: ${fileName}\n\nPlease analyze and extract the information.` 
                     }
                   ],
-                  temperature: 0.3,
                 }),
               });
 

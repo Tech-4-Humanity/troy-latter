@@ -22,9 +22,9 @@ serve(async (req) => {
       );
     }
 
-    const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
-    if (!OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY not configured');
+    const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
+    if (!LOVABLE_API_KEY) {
+      throw new Error('LOVABLE_API_KEY not configured');
     }
 
     console.log(`Extracting skills from JD: ${jobId}`);
@@ -52,21 +52,20 @@ Rules:
 JOB DESCRIPTION:
 ${jdText}`;
 
-    console.log('Calling OpenAI API with model: gpt-4o-mini');
-    const aiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+    console.log('Calling Lovable AI with model: google/gemini-2.5-flash');
+    const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${OPENAI_API_KEY}`,
+        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'google/gemini-2.5-flash',
         messages: [
           { role: 'system', content: 'You are a skill extraction expert. Return ONLY valid JSON arrays.' },
           { role: 'user', content: prompt }
         ],
-        temperature: 0.3,
-        max_tokens: 2000,
+        max_completion_tokens: 2000,
       }),
     });
 
@@ -143,6 +142,29 @@ ${jdText}`;
     }
 
     console.log(`Updated job_descriptions table for ${jobId}`);
+
+    // Auto-invoke update-skills-from-jd function
+    try {
+      console.log('Auto-calling update-skills-from-jd...');
+      const { data: updateResult, error: updateError } = await supabase.functions.invoke(
+        'update-skills-from-jd',
+        {
+          body: {
+            jobId: jobId,
+            extractedSkills: extractedSkills
+          }
+        }
+      );
+
+      if (updateError) {
+        console.error('Failed to auto-update skills matrix:', updateError);
+      } else {
+        console.log('✅ Skills matrix auto-updated:', updateResult);
+      }
+    } catch (autoUpdateError) {
+      console.error('Error in auto-update:', autoUpdateError);
+      // Don't fail the whole request
+    }
 
     return new Response(
       JSON.stringify({ 

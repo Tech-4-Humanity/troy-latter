@@ -47,3 +47,6 @@ verify_jwt = false
 
 [functions.send-notification]
 verify_jwt = false
+
+[functions.cv-session-cleanup]
+verify_jwt = false
