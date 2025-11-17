@@ -45,10 +45,6 @@ export const MicrositeGuard = ({ children }: MicrositeGuardProps) => {
     return <>{children}</>;
   }
   
-  // Block all other microsite access - redirect to homepage
-  if (location.pathname.startsWith('/microsites')) {
-    return <Navigate to="/" replace />;
-  }
-  
+  // All other microsites are accessible via direct link
   return <>{children}</>;
 };

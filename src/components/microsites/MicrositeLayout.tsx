@@ -28,7 +28,8 @@ export const MicrositeLayout = ({ children }: MicrositeLayoutProps) => {
               <h1 className="text-xl font-semibold text-gray-900">
                 {location.pathname.includes('interview-prep') ? 'Shield AI' : 
                  location.pathname.includes('agentforce') ? 'Agentforce' :
-                 location.pathname.includes('lenovo') ? 'Lenovo ANZ' : 'Micro-Sites'}
+                 location.pathname.includes('lenovo') ? 'Lenovo ANZ' :
+                 location.pathname.includes('wns') ? 'WNS - Lead Technical Consultant' : 'Micro-Sites'}
               </h1>
             </div>
           </div>

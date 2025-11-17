@@ -5,53 +5,8 @@ import { Link } from 'react-router-dom';
 import { BriefcaseIcon, ArrowRight, Target, Building } from 'lucide-react';
 
 const MicrositeIndex = () => {
-  const microsites = [
-    {
-      id: 'envato',
-      title: 'Envato Strategic Paths',
-      description: 'Strategic analysis and execution frameworks for Envato\'s AI transformation and market expansion',
-      icon: Target,
-      path: '/microsites/envato',
-      status: 'Available',
-      features: ['Strategic planning', 'AI transformation', 'Market expansion']
-    },
-    {
-      id: 'interview-prep',
-      title: 'Shield AI',
-      description: 'Comprehensive Shield AI interview preparation materials for executive technology leadership roles',
-      icon: BriefcaseIcon,
-      path: '/microsites/interview-prep',
-      status: 'Available',
-      features: ['Executive frameworks', 'Case studies', 'Strategic thinking tools']
-    },
-    {
-      id: 'agentforce',
-      title: 'Agentforce Portfolio',
-      description: 'Strategic portfolio covering Agentforce implementation strategies and technical architecture',
-      icon: Building,
-      path: '/microsites/agentforce',
-      status: 'Available',
-      features: ['Implementation strategies', 'Technical architecture', 'Market insights']
-    },
-    {
-      id: 'lab3',
-      title: 'Lab3 Strategic Analysis',
-      description: 'Comprehensive Lab3 analysis with strategic positioning and technical strengths',
-      icon: Target,
-      path: '/microsites/lab3',
-      status: 'Available',
-      features: ['Strategic positioning', 'Technical analysis', 'Market insights']
-    },
-    {
-      id: 'pega',
-      title: 'PEGA',
-      description: 'Enterprise BPM and case management expertise showcase for PEGA platform leadership roles',
-      icon: Building,
-      path: '/microsites/pega',
-      status: 'Available',
-      features: ['BPM frameworks', 'Case management solutions', 'Enterprise transformation strategies']
-    }
-  ];
+  // Microsites are accessible via direct link only, not publicly listed
+  const microsites: any[] = [];
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
@@ -64,59 +19,15 @@ const MicrositeIndex = () => {
         </p>
       </div>
 
-      <div className="grid gap-6">
-        {microsites.map((site) => (
-          <Card key={site.id} className="hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="flex items-start justify-between">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <site.icon className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-xl">{site.title}</CardTitle>
-                    <CardDescription className="text-base mt-1">
-                      {site.description}
-                    </CardDescription>
-                  </div>
-                </div>
-                <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">
-                  {site.status}
-                </span>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-medium text-gray-900 mb-2">Key Features:</h4>
-                  <ul className="space-y-1">
-                    {site.features.map((feature, index) => (
-                      <li key={index} className="flex items-center text-sm text-gray-600">
-                        <Target className="h-3 w-3 text-blue-500 mr-2 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <Button asChild className="w-full">
-                  <Link to={site.path}>
-                    Access {site.title}
-                    <ArrowRight className="h-4 w-4 ml-2" />
-                  </Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      <div className="bg-blue-50 rounded-lg p-6 text-center">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-          More Micro-Sites Coming Soon
-        </h3>
-        <p className="text-gray-600">
-          Additional specialized resources and tools are in development to support various professional scenarios.
-        </p>
+      <div className="text-center py-12">
+        <div className="bg-muted/50 rounded-lg p-8 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-2">
+            Microsites are accessible via direct link only
+          </p>
+          <p className="text-sm text-muted-foreground">
+            No publicly listed microsites available at this time
+          </p>
+        </div>
       </div>
     </div>
   );
