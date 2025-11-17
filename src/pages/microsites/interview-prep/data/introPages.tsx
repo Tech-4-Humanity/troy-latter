@@ -3,6 +3,74 @@ import { PresentationPage } from '../types';
 
 export const introPages: PresentationPage[] = [
   {
+    id: 0,
+    title: "Certifications & Credentials",
+    subtitle: "Technical Excellence Portfolio",
+    content: (
+      <div className="space-y-6">
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-white p-4 rounded-lg shadow">
+            <h4 className="font-semibold text-blue-600 mb-2">Cloud Platforms</h4>
+            <ul className="text-sm space-y-1">
+              <li>• AWS Solutions Architect</li>
+              <li>• Azure AI Engineer</li>
+              <li>• Google Cloud Architect</li>
+              <li>• Oracle Cloud</li>
+            </ul>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow">
+            <h4 className="font-semibold text-blue-600 mb-2">AI & ML Platforms</h4>
+            <ul className="text-sm space-y-1">
+              <li>• OpenAI</li>
+              <li>• Claude (Anthropic)</li>
+              <li>• Hugging Face</li>
+              <li>• NVIDIA NIM</li>
+              <li>• Snowflake</li>
+              <li>• Databricks</li>
+            </ul>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow">
+            <h4 className="font-semibold text-blue-600 mb-2">Agentic Frameworks</h4>
+            <ul className="text-sm space-y-1">
+              <li>• LangChain</li>
+              <li>• LangGraph</li>
+              <li>• Semantic Kernel</li>
+              <li>• MCP Practitioner</li>
+            </ul>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow">
+            <h4 className="font-semibold text-blue-600 mb-2">Automation</h4>
+            <ul className="text-sm space-y-1">
+              <li>• n8n</li>
+              <li>• Make</li>
+              <li>• Pipedream</li>
+              <li>• Supabase</li>
+              <li>• Relevance AI</li>
+            </ul>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow">
+            <h4 className="font-semibold text-blue-600 mb-2">AI Governance</h4>
+            <ul className="text-sm space-y-1">
+              <li>• Responsible AI Governance</li>
+              <li>• AI Ethics and Policy</li>
+              <li>• Data Privacy & Security</li>
+            </ul>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow">
+            <h4 className="font-semibold text-blue-600 mb-2">Delivery</h4>
+            <ul className="text-sm space-y-1">
+              <li>• PRINCE2</li>
+              <li>• Prosci ADKAR</li>
+              <li>• ITIL</li>
+              <li>• TOGAF</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    ),
+    speakerNotes: "27 active certifications across cloud, AI, automation, and governance frameworks"
+  },
+  {
     id: 1,
     title: "Why Shield AI & Why Me",
     subtitle: "Mission-Ready Autonomy",

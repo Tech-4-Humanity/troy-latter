@@ -203,7 +203,6 @@ PRIORITY SKILLS (ranked by market alignment and relevance):
 ${skillsContext}
 ${certsContext}
 
-CRITICAL: Use LOVABLE AI for generation - model: google/gemini-2.5-pro
 
 CRITICAL INSTRUCTIONS FOR SKILLS:
 - Emphasize the TOP 10 skills from the priority list heavily throughout the CV
@@ -368,23 +367,23 @@ FINAL REMINDER - CRITICAL:
 
 Generate a CV optimised for this specific opportunity. Focus on ROI, leadership impact, and measurable outcomes. Follow ALL formatting rules precisely.`;
 
-    // Call OpenAI API
-    const openaiApiKey = Deno.env.get('OPENAI_API_KEY');
-    if (!openaiApiKey) {
-      throw new Error('OPENAI_API_KEY not configured');
+    // Call Lovable AI Gateway
+    const lovableApiKey = Deno.env.get('LOVABLE_API_KEY');
+    if (!lovableApiKey) {
+      throw new Error('LOVABLE_API_KEY not configured');
     }
 
     console.log('Generating CV for job description length:', jobDescription.length);
-    console.log('Using OpenAI model: gpt-4o (upgraded for quality)');
+    console.log('Using Lovable AI model: google/gemini-2.5-pro');
 
-    const aiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+    const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${openaiApiKey}`,
+        'Authorization': `Bearer ${lovableApiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o',
+        model: 'google/gemini-2.5-pro',
         messages: [
           { role: 'system', content: systemPrompt },
           { 
@@ -393,13 +392,12 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
           }
         ],
         temperature: 0.7,
-        max_tokens: 10000,
       }),
     });
 
     if (!aiResponse.ok) {
       const errorText = await aiResponse.text();
-      console.error('AI API error:', aiResponse.status, errorText);
+      console.error('Lovable AI error:', aiResponse.status, errorText);
       
       if (aiResponse.status === 429) {
         return new Response(
@@ -410,15 +408,16 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
       
       if (aiResponse.status === 402) {
         return new Response(
-          JSON.stringify({ error: 'OpenAI API credits exhausted. Please check your OpenAI account.' }),
+          JSON.stringify({ error: 'AI credits exhausted. Please add credits to your workspace.' }),
           { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
 
-      throw new Error(`AI API error: ${aiResponse.status}`);
+      throw new Error(`Lovable AI error: ${aiResponse.status}`);
     }
 
     const aiData = await aiResponse.json();
+    const generatedCV = aiData.choices[0].message.content;
     const generatedCV = aiData.choices[0].message.content;
 
     // QUALITY VALIDATION - Ensure Google/FAANG-level standards
