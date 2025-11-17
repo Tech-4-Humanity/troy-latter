@@ -75,6 +75,71 @@ export const TechnicalStrengthsSection = () => {
           </div>
         </CardContent>
       </Card>
+
+      {/* Certifications */}
+      <Card className="bg-white border border-gray-200 shadow-lg mt-8">
+        <CardContent className="p-8">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">Complete Certification Portfolio</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div>
+              <h4 className="font-semibold text-blue-600 mb-2">Cloud Platforms</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>AWS Solutions Architect</li>
+                <li>Azure AI Engineer</li>
+                <li>Google Cloud Architect</li>
+                <li>Oracle Cloud</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-blue-600 mb-2">AI & ML Platforms</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>OpenAI</li>
+                <li>Claude (Anthropic)</li>
+                <li>Hugging Face</li>
+                <li>NVIDIA NIM</li>
+                <li>Snowflake</li>
+                <li>Databricks</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-blue-600 mb-2">Agentic Frameworks</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>LangChain</li>
+                <li>LangGraph</li>
+                <li>Semantic Kernel</li>
+                <li>MCP Practitioner</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-blue-600 mb-2">Automation & Integration</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>n8n</li>
+                <li>Make</li>
+                <li>Pipedream</li>
+                <li>Supabase</li>
+                <li>Relevance AI</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-blue-600 mb-2">AI Governance</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>Responsible AI Governance</li>
+                <li>AI Ethics and Policy</li>
+                <li>Data Privacy and Security</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-blue-600 mb-2">Delivery Methodologies</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>PRINCE2</li>
+                <li>Prosci ADKAR</li>
+                <li>ITIL</li>
+                <li>TOGAF</li>
+              </ul>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };
