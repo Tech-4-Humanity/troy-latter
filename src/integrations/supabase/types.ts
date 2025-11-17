@@ -19212,6 +19212,33 @@ export type Database = {
         }
         Relationships: []
       }
+      intelligence_reports: {
+        Row: {
+          created_at: string | null
+          id: string
+          insights: Json | null
+          metrics: Json
+          notion_url: string | null
+          report_date: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          insights?: Json | null
+          metrics: Json
+          notion_url?: string | null
+          report_date: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          insights?: Json | null
+          metrics?: Json
+          notion_url?: string | null
+          report_date?: string
+        }
+        Relationships: []
+      }
       investment_scenarios: {
         Row: {
           created_at: string

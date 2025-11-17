@@ -107,6 +107,87 @@ export const TechnicalStrengthsSection = () => {
         </Card>
       </div>
 
+      {/* Micro Credentials & Technical Certifications */}
+      <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-gray-900">
+            Micro Credentials & Technical Certifications
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">Cloud Platforms</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>AWS Solutions Architect</li>
+                <li>Azure AI Engineer</li>
+                <li>Google Cloud Architect</li>
+                <li>Oracle Cloud</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">AI & ML Platforms</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>OpenAI</li>
+                <li>Claude (Anthropic)</li>
+                <li>Hugging Face</li>
+                <li>NVIDIA NIM</li>
+                <li>Snowflake</li>
+                <li>Databricks</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">Agentic Frameworks</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>LangChain</li>
+                <li>LangGraph</li>
+                <li>Semantic Kernel</li>
+                <li>MCP Practitioner</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">Automation & Integration</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>n8n</li>
+                <li>Make</li>
+                <li>Pipedream</li>
+                <li>Supabase</li>
+                <li>Relevance AI</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">Development Tools</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>GitHub Copilot</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">AI Governance & Ethics</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>Responsible AI Governance</li>
+                <li>AI Ethics and Policy</li>
+                <li>Data Privacy and Security</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">Delivery Methodologies</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>PRINCE2</li>
+                <li>Prosci ADKAR</li>
+                <li>ITIL</li>
+                <li>TOGAF</li>
+              </ul>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       <Card className="bg-gradient-to-r from-gray-50 to-blue-50 border-gray-200">
         <CardContent className="p-6">
           <h3 className="text-xl font-semibold text-gray-900 mb-4">Architectural Patterns & Best Practices</h3>
