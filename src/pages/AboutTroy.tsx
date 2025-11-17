@@ -86,6 +86,75 @@ const AboutTroy = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* Certifications */}
+        <div className="mb-10">
+          <Card className="bg-white shadow-sm">
+            <CardContent className="p-6">
+              <h2 className="text-2xl font-semibold mb-5 text-brand-primary">Certifications & Credentials</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Cloud Platforms</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                    <li>AWS Solutions Architect</li>
+                    <li>Azure AI Engineer</li>
+                    <li>Google Cloud Architect</li>
+                    <li>Oracle Cloud</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">AI & ML Platforms</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                    <li>OpenAI</li>
+                    <li>Claude (Anthropic)</li>
+                    <li>Hugging Face</li>
+                    <li>NVIDIA NIM</li>
+                    <li>Snowflake</li>
+                    <li>Databricks</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Agentic Frameworks</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                    <li>LangChain</li>
+                    <li>LangGraph</li>
+                    <li>Semantic Kernel</li>
+                    <li>MCP Practitioner</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Automation & Integration</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                    <li>n8n</li>
+                    <li>Make</li>
+                    <li>Pipedream</li>
+                    <li>Supabase</li>
+                    <li>Relevance AI</li>
+                    <li>GitHub Copilot</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">AI Governance & Ethics</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                    <li>Responsible AI Governance</li>
+                    <li>AI Ethics and Policy</li>
+                    <li>Data Privacy and Security</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Delivery Methodologies</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                    <li>PRINCE2</li>
+                    <li>Prosci ADKAR</li>
+                    <li>ITIL</li>
+                    <li>TOGAF</li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        
         
         {/* Motivated by Mission */}
         <div className="mb-12">

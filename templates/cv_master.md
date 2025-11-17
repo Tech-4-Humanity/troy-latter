@@ -29,7 +29,22 @@ Principal Solutions Architect and Global Capability Adviser
 UNSW Master of Commerce
 UoW Bachelor of Economics
 
-## Certifications
-AWS Professional Solutions Architect
-Azure AI Engineer Associate
-IBM AI Ethics
+## Certifications & Credentials
+
+**Cloud Platforms:**
+AWS Solutions Architect | Azure AI Engineer | Google Cloud Architect | Oracle Cloud
+
+**AI & ML Platforms:**
+OpenAI | Claude (Anthropic) | Hugging Face | NVIDIA NIM | Snowflake | Databricks
+
+**Agentic Frameworks:**
+LangChain | LangGraph | Semantic Kernel | MCP Practitioner
+
+**Automation & Integration:**
+n8n | Make | Pipedream | Supabase | Relevance AI | GitHub Copilot
+
+**AI Governance & Ethics:**
+Responsible AI Governance | AI Ethics and Policy | Data Privacy and Security
+
+**Delivery Methodologies:**
+PRINCE2 | Prosci ADKAR | ITIL | TOGAF

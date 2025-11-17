@@ -69,10 +69,11 @@ serve(async (req) => {
       skills: {}
     };
 
-    // Fetch top skills from Skills Matrix for weighted CV generation
+    // Fetch top skills from Skills Matrix (EXCLUDE certifications)
     const { data: topSkills, error: skillsError } = await supabase
       .from('175+ Skills Matrix')
       .select('skill, domain, alignment_score, auto_weight, "Proficiency Level", rating, proof')
+      .neq('domain', 'Certifications & Credentials')
       .order('alignment_score', { ascending: false })
       .limit(30);
 
@@ -80,14 +81,28 @@ serve(async (req) => {
       console.error('Error fetching skills matrix:', skillsError);
     }
 
+    // Fetch ALL certifications separately
+    const { data: certifications, error: certsError } = await supabase
+      .from('175+ Skills Matrix')
+      .select('skill')
+      .eq('domain', 'Certifications & Credentials')
+      .order('skill', { ascending: true });
+
+    if (certsError) {
+      console.error('Error fetching certifications:', certsError);
+    }
+
     // Build weighted skills context for AI
     const skillsContext = topSkills && topSkills.length > 0
       ? topSkills
-          .map((s, idx) => `${idx + 1}. ${s.skill} (${s.domain || 'General'}) — ${s['Proficiency Level'] || 'Intermediate'} — Alignment: ${Math.round(Number(s.alignment_score) || 70)}% — Evidence: ${s.proof || 'Available'}`)
+          .map((s, idx) => `${idx + 1}. ${s.skill} (${s.domain || 'General'}) — ${s['Proficiency Level'] || 'Intermediate'} — Alignment: ${Math.round(Number(s.alignment_score) || 70)}%`)
           .join('\n')
       : 'No skills matrix data available';
 
-    // Profile is now hardcoded from cv_master.md template
+    // Build certifications context
+    const certsContext = certifications && certifications.length > 0
+      ? `\n\nCRITICAL: Include ALL ${certifications.length} certifications:\n${certifications.map(c => c.skill).join(', ')}`
+      : '';
 
     // Fetch HTML template if requested
     let htmlTemplateData = null;
@@ -186,6 +201,9 @@ ${JSON.stringify(profile.education, null, 2)}
 
 PRIORITY SKILLS (ranked by market alignment and relevance):
 ${skillsContext}
+${certsContext}
+
+CRITICAL: Use LOVABLE AI for generation - model: google/gemini-2.5-pro
 
 CRITICAL INSTRUCTIONS FOR SKILLS:
 - Emphasize the TOP 10 skills from the priority list heavily throughout the CV

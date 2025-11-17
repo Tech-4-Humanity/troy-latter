@@ -98,22 +98,88 @@ const WnsIndex = () => {
           </ul>
         </section>
 
-        {/* Micro Credentials & Certifications */}
+        {/* Micro Credentials & Technical Certifications */}
         <section className="mb-8">
-          <h2 className="text-2xl font-bold text-foreground mb-4">Micro Credentials & Certifications</h2>
-          <ul className="grid md:grid-cols-2 gap-x-6 gap-y-2 list-disc list-inside text-muted-foreground">
-            <li>AWS Solutions Architect</li>
-            <li>Azure AI Engineer</li>
-            <li>Google Cloud Architect</li>
-            <li>Oracle Cloud</li>
-            <li>OpenAI, Claude, LangChain, LangGraph, Semantic Kernel</li>
-            <li>MCP Practitioner</li>
-            <li>Supabase, n8n, Make, Pipedream, Hugging Face, Relevance AI, GitHub Copilot, Snowflake, Databricks, NVIDIA NIM</li>
-            <li>Responsible AI Governance</li>
-            <li>AI Ethics & Policy</li>
-            <li>Data Privacy & Security</li>
-            <li>PRINCE2, Prosci ADKAR, ITIL, TOGAF</li>
-          </ul>
+          <h2 className="text-2xl font-bold text-foreground mb-4">
+            Micro Credentials & Technical Certifications
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Cloud Platforms */}
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-foreground">Cloud Platforms</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>AWS Solutions Architect</li>
+                <li>Azure AI Engineer</li>
+                <li>Google Cloud Architect</li>
+                <li>Oracle Cloud</li>
+              </ul>
+            </div>
+            
+            {/* AI & ML Platforms */}
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-foreground">AI & ML Platforms</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>OpenAI</li>
+                <li>Claude (Anthropic)</li>
+                <li>Hugging Face</li>
+                <li>NVIDIA NIM</li>
+                <li>Snowflake</li>
+                <li>Databricks</li>
+              </ul>
+            </div>
+            
+            {/* Agentic Frameworks */}
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-foreground">Agentic Frameworks</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>LangChain</li>
+                <li>LangGraph</li>
+                <li>Semantic Kernel</li>
+                <li>MCP Practitioner</li>
+              </ul>
+            </div>
+            
+            {/* Automation & Integration */}
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-foreground">Automation & Integration</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>n8n</li>
+                <li>Make</li>
+                <li>Pipedream</li>
+                <li>Supabase</li>
+                <li>Relevance AI</li>
+              </ul>
+            </div>
+            
+            {/* Development Tools */}
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-foreground">Development Tools</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>GitHub Copilot</li>
+              </ul>
+            </div>
+            
+            {/* AI Governance & Ethics */}
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-foreground">AI Governance & Ethics</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>Responsible AI Governance</li>
+                <li>AI Ethics and Policy</li>
+                <li>Data Privacy and Security</li>
+              </ul>
+            </div>
+            
+            {/* Delivery Methodologies */}
+            <div>
+              <h3 className="font-semibold text-lg mb-2 text-foreground">Delivery Methodologies</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>PRINCE2</li>
+                <li>Prosci ADKAR</li>
+                <li>ITIL</li>
+                <li>TOGAF</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         {/* Professional Experience */}

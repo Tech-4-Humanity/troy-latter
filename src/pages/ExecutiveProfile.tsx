@@ -238,6 +238,81 @@ const ExecutiveProfile = () => {
           </CardContent>
         </Card>
       </section>
+
+      {/* Certifications & Credentials */}
+      <section>
+        <Card className="border-0 shadow-xl">
+          <CardHeader>
+            <CardTitle className="text-3xl text-brand-primary text-center">Certifications & Credentials</CardTitle>
+          </CardHeader>
+          <CardContent className="p-10">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-gradient-to-r from-blue-50 to-white p-6 rounded-xl border border-blue-200">
+                <h4 className="text-lg font-bold text-brand-primary mb-4">Cloud Platforms</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center"><Award className="h-4 w-4 text-blue-500 mr-2" /> AWS Solutions Architect</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-blue-500 mr-2" /> Azure AI Engineer</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-blue-500 mr-2" /> Google Cloud Architect</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-blue-500 mr-2" /> Oracle Cloud</li>
+                </ul>
+              </div>
+              
+              <div className="bg-gradient-to-r from-teal-50 to-white p-6 rounded-xl border border-teal-200">
+                <h4 className="text-lg font-bold text-brand-primary mb-4">AI & ML Platforms</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center"><Award className="h-4 w-4 text-teal-500 mr-2" /> OpenAI</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-teal-500 mr-2" /> Claude (Anthropic)</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-teal-500 mr-2" /> Hugging Face</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-teal-500 mr-2" /> NVIDIA NIM</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-teal-500 mr-2" /> Snowflake</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-teal-500 mr-2" /> Databricks</li>
+                </ul>
+              </div>
+              
+              <div className="bg-gradient-to-r from-purple-50 to-white p-6 rounded-xl border border-purple-200">
+                <h4 className="text-lg font-bold text-brand-primary mb-4">Agentic Frameworks</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center"><Award className="h-4 w-4 text-purple-500 mr-2" /> LangChain</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-purple-500 mr-2" /> LangGraph</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-purple-500 mr-2" /> Semantic Kernel</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-purple-500 mr-2" /> MCP Practitioner</li>
+                </ul>
+              </div>
+              
+              <div className="bg-gradient-to-r from-green-50 to-white p-6 rounded-xl border border-green-200">
+                <h4 className="text-lg font-bold text-brand-primary mb-4">Automation & Integration</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center"><Award className="h-4 w-4 text-green-500 mr-2" /> n8n</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-green-500 mr-2" /> Make</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-green-500 mr-2" /> Pipedream</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-green-500 mr-2" /> Supabase</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-green-500 mr-2" /> Relevance AI</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-green-500 mr-2" /> GitHub Copilot</li>
+                </ul>
+              </div>
+              
+              <div className="bg-gradient-to-r from-orange-50 to-white p-6 rounded-xl border border-orange-200">
+                <h4 className="text-lg font-bold text-brand-primary mb-4">AI Governance & Ethics</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center"><Award className="h-4 w-4 text-orange-500 mr-2" /> Responsible AI Governance</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-orange-500 mr-2" /> AI Ethics and Policy</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-orange-500 mr-2" /> Data Privacy and Security</li>
+                </ul>
+              </div>
+              
+              <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border border-gray-200">
+                <h4 className="text-lg font-bold text-brand-primary mb-4">Delivery Methodologies</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center"><Award className="h-4 w-4 text-gray-500 mr-2" /> PRINCE2</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-gray-500 mr-2" /> Prosci ADKAR</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-gray-500 mr-2" /> ITIL</li>
+                  <li className="flex items-center"><Award className="h-4 w-4 text-gray-500 mr-2" /> TOGAF</li>
+                </ul>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
     </div>
   );
 };
