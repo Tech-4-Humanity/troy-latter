@@ -4,12 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Troy Latter - CV</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .match-score-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+    
+    .match-score-badge.score-high {
+      background: linear-gradient(135deg, #10b981, #059669);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    
+    .match-score-badge.score-medium {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+    
+    .match-score-badge.score-low {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    }
+    
+    .match-score-badge .score {
+      display: block;
+      font-size: 32px;
+      font-weight: bold;
+      line-height: 1;
+    }
+    
+    .match-score-badge .label {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+      opacity: 0.9;
+    }
+    
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 15px;
+    }
+    
+    .cert-category h3 {
+      color: #1e3a8a;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      border-bottom: 2px solid #3b82f6;
+      padding-bottom: 4px;
+    }
+    
+    .cert-category ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .cert-category li {
+      padding: 4px 0 4px 16px;
+      position: relative;
+      font-size: 14px;
+      color: #374151;
+    }
+    
+    .cert-category li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+      font-weight: bold;
+    }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -173,233 +252,33 @@
 </head>
 <body>
     <div class="container">
+        {{matchScore}}
+        
         <div class="header">
-            <h1>TROY LATTER</h1>
-            <div class="subtitle">Chief Technology Officer | Strategic Advisor | Digital Transformation Leader</div>
+            <h1>{{name}}</h1>
+            <div class="subtitle">{{title}}</div>
             <div class="contact-bar">
-                <span>📍 Sydney, NSW, Australia</span>
-                <span>📧 contact@troylaatter.com</span>
-                <span>📱 +61 XXX XXX XXX</span>
-                <span>🔗 linkedin.com/in/troylaatter</span>
+                {{contact}}
             </div>
         </div>
 
         <div class="summary">
-            Senior technology executive with 15+ years driving enterprise transformation across government, defence, and Fortune 100 organisations. Proven track record of delivering multi-million-dollar programs, leading cross-functional teams, and translating complex technical strategies into business outcomes. Expert in AI/ML architecture, cloud platforms, and public sector modernisation.
+            {{summary}}
         </div>
 
         <div class="section">
             <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
-            
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">CTO, Alliances & Strategic Foresight - APAC</div>
-                        <div class="company">Unisys</div>
-                    </div>
-                    <div class="date-location">
-                        <div>Jan 2024 - Mar 2025</div>
-                        <div>Australia (Hybrid)</div>
-                    </div>
-                </div>
-                <p class="job-description">Field CTO for high-value government clients including Home Affairs, Defence, and DFAT. Led technical engagement across pre-sales, architecture, and emerging technology strategy while serving as translator between policy, engineering, and executive priorities.</p>
-                <ul class="achievements">
-                    <li><strong>AI Implementation:</strong> Directed agentic AI and LLM pilots across quoting, procurement, and service workflows using Microsoft, Google Cloud, and AWS platforms</li>
-                    <li><strong>Operational Efficiency:</strong> Embedded internal AI capability frameworks, achieving 30-40% efficiency improvements in compliance and service delivery</li>
-                    <li><strong>Infrastructure Integration:</strong> Integrated Apple, Dell, and Lenovo device fleets into secure cloud-first architectures, aligning procurement with endpoint compliance</li>
-                    <li><strong>Multi-Cloud Leadership:</strong> Led transformation programs in high-trust environments, bridging field devices with enterprise platforms and sovereign controls</li>
-                    <li><strong>Revenue Growth:</strong> Partnered with sales teams on client-specific go-to-market strategies for long-cycle, high-value government pursuits</li>
-                    <li><strong>Advisory Services:</strong> Provided CIO-level guidance on responsible AI, digital identity, and governance models with direct portfolio KPI alignment</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Global Capability Advisor - Principal Solution Architect</div>
-                        <div class="company">Amazon Web Services (AWS)</div>
-                    </div>
-                    <div class="date-location">
-                        <div>Dec 2019 - Apr 2023</div>
-                        <div>Sydney, Australia</div>
-                    </div>
-                </div>
-                <p class="job-description">Trusted advisor to 50+ CIOs and senior technology leaders across Australia, ASEAN, and Pacific regions. Guided strategic programs in AI/ML adoption, public sector transformation, and platform modernisation with hands-on leadership spanning infrastructure and innovation.</p>
-                <ul class="achievements">
-                    <li><strong>Strategic AI Leadership:</strong> Led AI/ML strategy and architecture for high-impact programs in Defence, healthcare, transport, utilities, and education for AWS's largest regional clients</li>
-                    <li><strong>Platform Architecture:</strong> Designed predictive analytics and LLM pipelines using SageMaker, Bedrock, and serverless stacks powering systems handling millions of daily events</li>
-                    <li><strong>National Infrastructure:</strong> Supported transformation for Cross River Rail (QLD), Digital Identity (Home Affairs), and ASEAN-wide Disaster Recovery programs</li>
-                    <li><strong>IoT & Digital Twins:</strong> Advised on spatial computing and IoT modernisation for ministries and agencies across 10+ countries</li>
-                    <li><strong>Crisis Response:</strong> Contributed to national COVID-response platforms, building rapid-scale, fault-tolerant systems for citizen engagement and resource planning</li>
-                    <li><strong>Executive Engagement:</strong> Delivered 100+ executive briefings and architecture workshops, helping clients validate AI investment and accelerate adoption</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Innovation Adviser - APAC</div>
-                        <div class="company">Oracle</div>
-                    </div>
-                    <div class="date-location">
-                        <div>Jun 2018 - Sep 2019</div>
-                        <div>Canberra, Australia</div>
-                    </div>
-                </div>
-                <p class="job-description">Trusted advisor to national security and law enforcement agencies across Australia, Singapore, Malaysia, and wider ASEAN region. Worked directly with senior executives and program leads in Defence, Home Affairs, Immigration, and Intelligence on secure cloud modernisation.</p>
-                <ul class="achievements">
-                    <li><strong>Cloud Strategy:</strong> Guided cloud-first delivery strategies for intelligence workflows, visa and identity systems, and secure collaboration platforms</li>
-                    <li><strong>Cross-Agency Coordination:</strong> Worked across policy and engineering teams to address bandwidth, sovereignty, and inter-agency constraints in multi-jurisdictional programs</li>
-                    <li><strong>Program Restructuring:</strong> Helped reshape strategic programs for clients where delivery pressure was high and legacy infrastructure presented operational risk</li>
-                    <li><strong>Regional Operations:</strong> Operated across border environments with deep understanding of political, operational, and procurement realities</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Industry Innovation Advisor (ANZ) - National Security</div>
-                        <div class="company">Oracle</div>
-                    </div>
-                    <div class="date-location">
-                        <div>Jun 2017 - Sep 2019</div>
-                        <div>Canberra, Australia</div>
-                    </div>
-                </div>
-                <p class="job-description">Led cross-border advisory across Southeast Asia and Pacific, supporting digital transformation in health, immigration, and smart infrastructure. Partnered with ministries and national CIO offices across multiple countries on cloud adoption and platform uplift programs.</p>
-                <ul class="achievements">
-                    <li><strong>Infrastructure Rebuilding:</strong> Re-architected 150-site Malaysian health network, rebuilding delivery plans after initial overrun and connectivity issues</li>
-                    <li><strong>National Systems:</strong> Supported visa and immigration transformation for Department of Home Affairs, including platform planning and procurement alignment</li>
-                    <li><strong>Smart City Implementation:</strong> Provided input into Singapore's 100,000 light pole smart infrastructure program, offering practical guidance on platform integration</li>
-                    <li><strong>Regional Bridge:</strong> Acted as connector between Oracle's technical portfolio and on-the-ground public sector execution requirements</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Business Value Consultant</div>
-                        <div class="company">DXC Technology</div>
-                    </div>
-                    <div class="date-location">
-                        <div>Apr 2017 - May 2017</div>
-                        <div>Canberra, ACT</div>
-                    </div>
-                </div>
-                <p class="job-description">Led service and platform transformation programs for Australian government clients, focusing on mission-critical workflows, secure collaboration, and measurable outcomes across Defence, Finance, and Human Services.</p>
-                <ul class="achievements">
-                    <li><strong>Major Program Leadership:</strong> Directed $250M SC2S program to modernise secure content sharing across Defence, enabling real-time classified information access in disconnected environments</li>
-                    <li><strong>Performance Improvement:</strong> Implemented platform-wide information management systems, increasing operational intelligence and decision-making efficiency by 25%</li>
-                    <li><strong>Agile Transformation:</strong> Introduced Agile delivery into waterfall-heavy environments, managing 20+ team members and reducing delivery timelines by 40%</li>
-                    <li><strong>Framework Development:</strong> Delivered cross-agency guidance on ITSM uplift, SIAM frameworks, and benefit modelling for platform modernisation initiatives</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Business Value Consultant</div>
-                        <div class="company">Hewlett Packard Enterprise</div>
-                    </div>
-                    <div class="date-location">
-                        <div>Jan 2016 - Mar 2017</div>
-                        <div>Canberra, ACT</div>
-                    </div>
-                </div>
-                <p class="job-description">Led pre-sales architecture and value modelling for complex Defence programs including secure content sharing, disconnected access, and cross-domain information workflows. Bridge between client needs and delivery design across internal and external stakeholders.</p>
-                <ul class="achievements">
-                    <li><strong>Technical Proposals:</strong> Developed technical proposals and business cases for SC2S program, enabling real-time classified access in disconnected environments</li>
-                    <li><strong>Solution Architecture:</strong> Shaped solution architectures and platform enablement plans for secure information sharing, identity frameworks, and workflow automation</li>
-                    <li><strong>Stakeholder Management:</strong> Clarified constraints, risk appetite, and value assumptions across complex stakeholder environments</li>
-                    <li><strong>Go-to-Market Strategy:</strong> Supported strategies for high-value federal accounts, aligning proposals to capability uplift goals and procurement cycles</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Senior Consultant</div>
-                        <div class="company">SMS Management & Technology</div>
-                    </div>
-                    <div class="date-location">
-                        <div>Jul 2013 - Dec 2015</div>
-                        <div>Canberra, ACT</div>
-                    </div>
-                </div>
-                <p class="job-description">Supported 10+ federal government departments across interconnected digital transformation initiatives critical to Australia's Whole-of-Government agenda. Programs directly shaped citizen engagement with government services, ensuring secure, consistent, and interoperable platforms.</p>
-                <ul class="achievements">
-                    <li><strong>Cross-Department Alignment:</strong> Aligned business and program owners across departments, translating individual agency goals into unified Whole-of-Government outcomes</li>
-                    <li><strong>Standards Integration:</strong> Standardised and integrated enterprise architecture, technology frameworks, and delivery processes across departmental boundaries</li>
-                    <li><strong>Digital Workflows:</strong> Supported design and rollout of secure, digital-first workflows streamlining citizen identity, benefit access, and case management</li>
-                    <li><strong>Foundation Programs:</strong> Contributed to foundational reforms in Tell Us Once, Digital Identity, Voice Biometrics, and data sharing protocols</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Organisational Change Specialist</div>
-                        <div class="company">Australian Federal Police</div>
-                    </div>
-                    <div class="date-location">
-                        <div>Mar 2013 - Jul 2013</div>
-                        <div>Canberra, ACT</div>
-                    </div>
-                </div>
-                <p class="job-description">Led change strategy and implementation for rollout of major technology platforms including new intranet and secure mobility solution across Microsoft and Apple iOS environments for domestic and international users.</p>
-                <ul class="achievements">
-                    <li><strong>Change Management:</strong> Developed and executed change, communication, and training plans tailored to highly secure operational contexts</li>
-                    <li><strong>Platform Adoption:</strong> Enabled successful adoption of platforms handling classified and sensitive data while balancing usability with compliance</li>
-                    <li><strong>Workforce Satisfaction:</strong> Achieved strong satisfaction and uptake across AFP workforce, supporting frontline and intelligence personnel across multiple jurisdictions</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Senior Organisational Change Manager</div>
-                        <div class="company">Canberra Consulting (Department of Immigration)</div>
-                    </div>
-                    <div class="date-location">
-                        <div>Sep 2010 - Jun 2013</div>
-                        <div>Canberra, ACT</div>
-                    </div>
-                </div>
-                <p class="job-description">Led enterprise change activities across 65 countries, supporting global business transformation initiatives driven by new technologies, operating models, and reporting structures. Focused on effective delivery with emphasis on adoption, consistency, and long-term business integration.</p>
-                <ul class="achievements">
-                    <li><strong>Global Change Management:</strong> Planned and implemented full change lifecycle from stakeholder analysis and readiness planning to communications, training, and post-implementation support</li>
-                    <li><strong>Scale Delivery:</strong> Worked across internal teams and external partners to embed change at scale, supporting business units through organisational structure shifts and system rollouts</li>
-                    <li><strong>Multi-Jurisdiction Coordination:</strong> Balanced cultural, operational, and compliance differences across jurisdictions while maintaining consistent global objectives</li>
-                </ul>
-            </div>
+            {{experience}}
         </div>
 
         <div class="section">
             <h2 class="section-title">CORE COMPETENCIES</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Leadership & Strategy</h3>
-                    <p>Executive Advisory, Digital Transformation, Strategic Foresight, Cross-Functional Team Leadership, Stakeholder Management</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Technology & Innovation</h3>
-                    <p>AI/ML Architecture, Cloud Platforms (AWS, Azure, Google Cloud, Oracle), Predictive Analytics, IoT & Digital Twins, Cybersecurity</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Public Sector Expertise</h3>
-                    <p>Government Transformation, National Security, Multi-Agency Coordination, Procurement & Compliance, Policy-Technology Translation</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Delivery & Operations</h3>
-                    <p>Agile Methodologies, Program Management, Change Management, ITSM/SIAM Frameworks, Performance Improvement</p>
-                </div>
-            </div>
+            {{skills}}
         </div>
-
+        
         <div class="section">
-            <h2 class="section-title">ADDITIONAL INFORMATION</h2>
-            <p><strong>Location:</strong> Sydney, NSW, Australia</p>
-            <p><strong>Availability:</strong> Open to hybrid and remote arrangements</p>
+            <h2 class="section-title">MICRO CREDENTIALS & TECHNICAL CERTIFICATIONS</h2>
+            {{certifications}}
         </div>
     </div>
 </body>

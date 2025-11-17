@@ -498,9 +498,25 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
       (skillsMatched * 0.4) + (techScore * 0.3) + (seniorityScore * 0.3)
     );
 
-    // PHASE 2: Generate HTML version using marked library for direct conversion
-    let generatedHTML = null;
-    if (htmlTemplateData) {
+
+    // PHASE 2A: Generate HTML using template injection (for professional ATS-friendly output)
+    let templateBasedHTML = '';
+    try {
+      const templateName = template === 'green_executive' ? 'ats_stylish_cv.html' : 'ats_blue_cv.html';
+      const templatePath = `${Deno.cwd()}/public/templates/${templateName}`;
+      
+      const htmlTemplate = await Deno.readTextFile(templatePath);
+      const structuredData = parseMarkdownToStructuredData(generatedCV, profile, matchScore);
+      templateBasedHTML = injectContentIntoTemplate(htmlTemplate, structuredData);
+      console.log('✓ Professional HTML template generated with certifications and match score');
+    } catch (templateError) {
+      console.error('Template HTML generation failed:', templateError);
+      // Continue - we have fallback HTML below
+    }
+
+    // PHASE 2B: Generate fallback HTML version using marked library for direct conversion
+    let generatedHTML = templateBasedHTML; // Use template-based HTML as primary
+    if (!generatedHTML && htmlTemplateData) {
       try {
         // Import marked for markdown to HTML conversion
         const { marked } = await import('https://esm.sh/marked@11.0.0');
@@ -548,43 +564,39 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
       font-size: 2.4em;
       font-weight: 700;
       border-bottom: 3px solid ${template === 'blue' ? '#2563eb' : '#16a34a'};
-      padding-bottom: 12px;
-      margin-bottom: 20px;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
     }
     
     h2 { 
-      color: ${template === 'blue' ? '#1e40af' : '#15803d'}; 
-      font-size: 1.6em;
+      color: ${template === 'blue' ? '#1e3a8a' : '#166534'}; 
+      font-size: 1.5em;
       font-weight: 600;
       margin-top: 32px;
       margin-bottom: 14px;
-      padding-top: 12px;
-      border-top: 2px solid #e5e7eb;
-      line-height: 1.3;
+      border-bottom: 2px solid ${template === 'blue' ? '#93c5fd' : '#86efac'};
+      padding-bottom: 8px;
     }
     
     h3 { 
-      color: #374151; 
+      color: #1f2937;
       font-size: 1.2em;
       font-weight: 600;
-      margin-top: 18px;
-      margin-bottom: 8px;
-      line-height: 1.4;
+      margin-top: 22px;
+      margin-bottom: 10px;
     }
     
     h4 {
-      color: #4b5563;
+      color: #374151;
       font-size: 1.05em;
-      font-weight: 600;
-      margin-top: 14px;
+      font-weight: 500;
+      margin-top: 16px;
       margin-bottom: 8px;
-      line-height: 1.4;
     }
     
     p { 
-      margin-bottom: 10px;
+      margin-bottom: 14px;
+      color: #374151;
       line-height: 1.5;
     }
     
@@ -620,43 +632,44 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
       margin-top: 8px;
     }
     
-    /* Better list spacing within sections */
-    h3 + ul, h4 + ul {
-      margin-top: 8px;
+    /* Professional table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+    
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    th {
+      background-color: ${template === 'blue' ? '#eff6ff' : '#f0fdf4'};
+      font-weight: 600;
+      color: ${template === 'blue' ? '#1e3a8a' : '#166534'};
     }
     
     /* Print optimization */
     @media print {
-      body { 
-        padding: 32px 38px;
-        max-width: 100%;
-        font-size: 10.5pt;
-        line-height: 1.45;
+      body {
+        padding: 24px;
+        font-size: 10pt;
       }
       
-      h1 {
-        font-size: 2.1em;
-        margin-bottom: 16px;
-      }
+      h1 { font-size: 2em; }
+      h2 { font-size: 1.3em; page-break-after: avoid; }
+      h3 { font-size: 1.1em; page-break-after: avoid; }
       
-      h2 {
-        page-break-after: avoid;
-        margin-top: 26px;
-        margin-bottom: 12px;
-        font-size: 1.5em;
-      }
-      
-      h3, h4 {
-        page-break-after: avoid;
-      }
-      
-      li {
+      /* Prevent page breaks inside elements */
+      ul, ol, p {
         page-break-inside: avoid;
-        margin-bottom: 7px;
       }
       
-      ul {
-        margin: 8px 0 14px 0;
+      /* Keep job entries together */
+      .job-entry {
+        page-break-inside: avoid;
       }
     }
   </style>
