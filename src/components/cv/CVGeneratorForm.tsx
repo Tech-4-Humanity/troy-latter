@@ -170,10 +170,24 @@ export function CVGeneratorForm() {
       });
 
       if (error) {
+        // Handle specific HTTP error codes
+        if (error.message?.includes('402')) {
+          throw new Error('AI credits exhausted. Please add credits in Settings → Workspace → Usage');
+        } else if (error.message?.includes('429')) {
+          throw new Error('Too many requests. Please wait a moment and try again.');
+        } else if (error.message?.includes('Failed to fetch') || error.message?.includes('NetworkError')) {
+          throw new Error('Connection failed. Please check your internet connection.');
+        }
         throw error;
       }
 
       if (data.error) {
+        // Parse error from edge function response
+        if (data.error.includes('credits exhausted') || data.error.includes('402')) {
+          throw new Error('AI credits exhausted. Please add credits in Settings → Workspace → Usage');
+        } else if (data.error.includes('Rate limit') || data.error.includes('429')) {
+          throw new Error('Too many requests. Please wait a moment and try again.');
+        }
         throw new Error(data.error);
       }
 
@@ -192,10 +206,19 @@ export function CVGeneratorForm() {
     } catch (error: any) {
       console.error('CV generation error:', error);
       
-      if (error.message?.includes('Rate limit')) {
-        toast.error("Rate limit exceeded. Please wait a moment and try again.");
-      } else if (error.message?.includes('credits')) {
-        toast.error("AI credits exhausted. Please contact support.");
+      // Show user-friendly error messages
+      if (error.message?.includes('credits exhausted')) {
+        toast.error(
+          <div className="flex flex-col gap-1">
+            <div className="font-semibold">AI Credits Exhausted</div>
+            <div className="text-sm">Please add credits in Settings → Workspace → Usage</div>
+          </div>,
+          { duration: 6000 }
+        );
+      } else if (error.message?.includes('Too many requests') || error.message?.includes('Rate limit')) {
+        toast.error("Too many requests. Please wait a moment and try again.", { duration: 4000 });
+      } else if (error.message?.includes('Connection failed')) {
+        toast.error("Connection failed. Please check your internet connection.", { duration: 4000 });
       } else {
         toast.error(error.message || "Failed to generate CV. Please try again.");
       }
