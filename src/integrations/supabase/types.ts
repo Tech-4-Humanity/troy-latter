@@ -3086,6 +3086,195 @@ export type Database = {
         }
         Relationships: []
       }
+      ahc_enterprise_clients: {
+        Row: {
+          company_name: string
+          contract_end: string | null
+          contract_start: string | null
+          employees_count: number | null
+          id: string
+          industry: string | null
+          monthly_revenue: number | null
+          neurodiverse_percentage: number | null
+          primary_contact_email: string | null
+          primary_contact_name: string | null
+          status: string | null
+        }
+        Insert: {
+          company_name: string
+          contract_end?: string | null
+          contract_start?: string | null
+          employees_count?: number | null
+          id?: string
+          industry?: string | null
+          monthly_revenue?: number | null
+          neurodiverse_percentage?: number | null
+          primary_contact_email?: string | null
+          primary_contact_name?: string | null
+          status?: string | null
+        }
+        Update: {
+          company_name?: string
+          contract_end?: string | null
+          contract_start?: string | null
+          employees_count?: number | null
+          id?: string
+          industry?: string | null
+          monthly_revenue?: number | null
+          neurodiverse_percentage?: number | null
+          primary_contact_email?: string | null
+          primary_contact_name?: string | null
+          status?: string | null
+        }
+        Relationships: []
+      }
+      ahc_interventions: {
+        Row: {
+          effectiveness_score: number | null
+          id: string
+          intervention_timestamp: string | null
+          intervention_type: string | null
+          session_id: string | null
+          user_response: string | null
+        }
+        Insert: {
+          effectiveness_score?: number | null
+          id?: string
+          intervention_timestamp?: string | null
+          intervention_type?: string | null
+          session_id?: string | null
+          user_response?: string | null
+        }
+        Update: {
+          effectiveness_score?: number | null
+          id?: string
+          intervention_timestamp?: string | null
+          intervention_type?: string | null
+          session_id?: string | null
+          user_response?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ahc_interventions_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "ahc_user_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ahc_productivity_gains: {
+        Row: {
+          baseline_productivity: number | null
+          client_id: string | null
+          current_productivity: number | null
+          id: string
+          measured_at: string | null
+          measurement_period: string | null
+          percentage_gain: number | null
+          period_end: string | null
+          period_start: string | null
+          sample_size: number | null
+          statistical_significance: number | null
+          user_cohort: string | null
+        }
+        Insert: {
+          baseline_productivity?: number | null
+          client_id?: string | null
+          current_productivity?: number | null
+          id?: string
+          measured_at?: string | null
+          measurement_period?: string | null
+          percentage_gain?: number | null
+          period_end?: string | null
+          period_start?: string | null
+          sample_size?: number | null
+          statistical_significance?: number | null
+          user_cohort?: string | null
+        }
+        Update: {
+          baseline_productivity?: number | null
+          client_id?: string | null
+          current_productivity?: number | null
+          id?: string
+          measured_at?: string | null
+          measurement_period?: string | null
+          percentage_gain?: number | null
+          period_end?: string | null
+          period_start?: string | null
+          sample_size?: number | null
+          statistical_significance?: number | null
+          user_cohort?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ahc_productivity_gains_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "ahc_enterprise_clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ahc_user_sessions: {
+        Row: {
+          ai_interactions_count: number | null
+          ai_scaffolding_level: string | null
+          client_id: string | null
+          distraction_count: number | null
+          focus_time_minutes: number | null
+          id: string
+          metrics: Json | null
+          productivity_score: number | null
+          session_duration_minutes: number | null
+          session_end: string | null
+          session_start: string | null
+          tasks_completed: number | null
+          user_id: string | null
+          user_type: string | null
+        }
+        Insert: {
+          ai_interactions_count?: number | null
+          ai_scaffolding_level?: string | null
+          client_id?: string | null
+          distraction_count?: number | null
+          focus_time_minutes?: number | null
+          id?: string
+          metrics?: Json | null
+          productivity_score?: number | null
+          session_duration_minutes?: number | null
+          session_end?: string | null
+          session_start?: string | null
+          tasks_completed?: number | null
+          user_id?: string | null
+          user_type?: string | null
+        }
+        Update: {
+          ai_interactions_count?: number | null
+          ai_scaffolding_level?: string | null
+          client_id?: string | null
+          distraction_count?: number | null
+          focus_time_minutes?: number | null
+          id?: string
+          metrics?: Json | null
+          productivity_score?: number | null
+          session_duration_minutes?: number | null
+          session_end?: string | null
+          session_start?: string | null
+          tasks_completed?: number | null
+          user_id?: string | null
+          user_type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ahc_user_sessions_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "ahc_enterprise_clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       "AI enablement streams": {
         Row: {
           created_at: string
@@ -5764,6 +5953,57 @@ export type Database = {
           },
         ]
       }
+      bci_companies: {
+        Row: {
+          application_domain: string | null
+          company_name: string
+          employee_count_range: string | null
+          founded_year: number | null
+          funding_stage: string | null
+          funding_total_usd: number | null
+          headquarters_country: string | null
+          headquarters_location: string | null
+          id: string
+          last_updated: string | null
+          market_segment: string | null
+          status: string | null
+          technology_category: string | null
+          website: string | null
+        }
+        Insert: {
+          application_domain?: string | null
+          company_name: string
+          employee_count_range?: string | null
+          founded_year?: number | null
+          funding_stage?: string | null
+          funding_total_usd?: number | null
+          headquarters_country?: string | null
+          headquarters_location?: string | null
+          id?: string
+          last_updated?: string | null
+          market_segment?: string | null
+          status?: string | null
+          technology_category?: string | null
+          website?: string | null
+        }
+        Update: {
+          application_domain?: string | null
+          company_name?: string
+          employee_count_range?: string | null
+          founded_year?: number | null
+          funding_stage?: string | null
+          funding_total_usd?: number | null
+          headquarters_country?: string | null
+          headquarters_location?: string | null
+          id?: string
+          last_updated?: string | null
+          market_segment?: string | null
+          status?: string | null
+          technology_category?: string | null
+          website?: string | null
+        }
+        Relationships: []
+      }
       bci_company: {
         Row: {
           certifications: Json | null
@@ -6134,6 +6374,53 @@ export type Database = {
         }
         Relationships: []
       }
+      bci_device_connections: {
+        Row: {
+          device_id: string | null
+          device_name: string | null
+          device_type: string
+          firmware_version: string | null
+          id: string
+          last_sync: string | null
+          metadata: Json | null
+          status: string | null
+          sync_frequency_minutes: number | null
+          vault_id: string | null
+        }
+        Insert: {
+          device_id?: string | null
+          device_name?: string | null
+          device_type: string
+          firmware_version?: string | null
+          id?: string
+          last_sync?: string | null
+          metadata?: Json | null
+          status?: string | null
+          sync_frequency_minutes?: number | null
+          vault_id?: string | null
+        }
+        Update: {
+          device_id?: string | null
+          device_name?: string | null
+          device_type?: string
+          firmware_version?: string | null
+          id?: string
+          last_sync?: string | null
+          metadata?: Json | null
+          status?: string | null
+          sync_frequency_minutes?: number | null
+          vault_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bci_device_connections_vault_id_fkey"
+            columns: ["vault_id"]
+            isOneToOne: false
+            referencedRelation: "neural_data_vaults"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       bci_ecosystem_master: {
         Row: {
           application_domain: string | null
@@ -6286,6 +6573,50 @@ export type Database = {
           year_founded?: number | null
         }
         Relationships: []
+      }
+      bci_funding_rounds: {
+        Row: {
+          amount_usd: number | null
+          announced_date: string | null
+          company_id: string | null
+          id: string
+          investors: string[] | null
+          lead_investor: string | null
+          round_type: string | null
+          source_url: string | null
+          valuation_usd: number | null
+        }
+        Insert: {
+          amount_usd?: number | null
+          announced_date?: string | null
+          company_id?: string | null
+          id?: string
+          investors?: string[] | null
+          lead_investor?: string | null
+          round_type?: string | null
+          source_url?: string | null
+          valuation_usd?: number | null
+        }
+        Update: {
+          amount_usd?: number | null
+          announced_date?: string | null
+          company_id?: string | null
+          id?: string
+          investors?: string[] | null
+          lead_investor?: string | null
+          round_type?: string | null
+          source_url?: string | null
+          valuation_usd?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bci_funding_rounds_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "bci_companies"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       bci_industries: {
         Row: {
@@ -6850,6 +7181,47 @@ export type Database = {
           },
         ]
       }
+      bci_products: {
+        Row: {
+          company_id: string | null
+          id: string
+          launch_date: string | null
+          price_usd: number | null
+          product_name: string
+          product_type: string | null
+          status: string | null
+          target_market: string | null
+        }
+        Insert: {
+          company_id?: string | null
+          id?: string
+          launch_date?: string | null
+          price_usd?: number | null
+          product_name: string
+          product_type?: string | null
+          status?: string | null
+          target_market?: string | null
+        }
+        Update: {
+          company_id?: string | null
+          id?: string
+          launch_date?: string | null
+          price_usd?: number | null
+          product_name?: string
+          product_type?: string | null
+          status?: string | null
+          target_market?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bci_products_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "bci_companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       bci_products_catalog: {
         Row: {
           created_at: string | null
@@ -7016,6 +7388,50 @@ export type Database = {
           updated_at?: string | null
         }
         Relationships: []
+      }
+      bci_research_papers: {
+        Row: {
+          abstract: string | null
+          authors: string[] | null
+          citation_count: number | null
+          company_id: string | null
+          doi: string | null
+          id: string
+          journal: string | null
+          publication_date: string | null
+          title: string
+        }
+        Insert: {
+          abstract?: string | null
+          authors?: string[] | null
+          citation_count?: number | null
+          company_id?: string | null
+          doi?: string | null
+          id?: string
+          journal?: string | null
+          publication_date?: string | null
+          title: string
+        }
+        Update: {
+          abstract?: string | null
+          authors?: string[] | null
+          citation_count?: number | null
+          company_id?: string | null
+          doi?: string | null
+          id?: string
+          journal?: string | null
+          publication_date?: string | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bci_research_papers_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "bci_companies"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       bci_research_publications: {
         Row: {
@@ -8249,6 +8665,36 @@ export type Database = {
         }
         Relationships: []
       }
+      bridge_activities: {
+        Row: {
+          activity_data: Json | null
+          activity_type: string | null
+          id: string
+          platform: string
+          status: string | null
+          timestamp: string | null
+          user_id: string | null
+        }
+        Insert: {
+          activity_data?: Json | null
+          activity_type?: string | null
+          id?: string
+          platform: string
+          status?: string | null
+          timestamp?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          activity_data?: Json | null
+          activity_type?: string | null
+          id?: string
+          platform?: string
+          status?: string | null
+          timestamp?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       bridge_audit: {
         Row: {
           checked_at: string | null
@@ -8333,6 +8779,36 @@ export type Database = {
           id?: number
           state?: Json | null
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      bridge_sync_log: {
+        Row: {
+          error_details: Json | null
+          errors_count: number | null
+          id: string
+          records_synced: number | null
+          source_platform: string | null
+          status: string | null
+          sync_timestamp: string | null
+        }
+        Insert: {
+          error_details?: Json | null
+          errors_count?: number | null
+          id?: string
+          records_synced?: number | null
+          source_platform?: string | null
+          status?: string | null
+          sync_timestamp?: string | null
+        }
+        Update: {
+          error_details?: Json | null
+          errors_count?: number | null
+          id?: string
+          records_synced?: number | null
+          source_platform?: string | null
+          status?: string | null
+          sync_timestamp?: string | null
         }
         Relationships: []
       }
@@ -10901,6 +11377,57 @@ export type Database = {
         }
         Relationships: []
       }
+      cognitive_load_snapshots: {
+        Row: {
+          cognitive_load: number | null
+          family_id: string | null
+          id: string
+          member_id: string | null
+          recommendations: string[] | null
+          snapshot_timestamp: string | null
+          stress_indicators: Json | null
+          task_count: number | null
+          total_cognitive_weight: number | null
+        }
+        Insert: {
+          cognitive_load?: number | null
+          family_id?: string | null
+          id?: string
+          member_id?: string | null
+          recommendations?: string[] | null
+          snapshot_timestamp?: string | null
+          stress_indicators?: Json | null
+          task_count?: number | null
+          total_cognitive_weight?: number | null
+        }
+        Update: {
+          cognitive_load?: number | null
+          family_id?: string | null
+          id?: string
+          member_id?: string | null
+          recommendations?: string[] | null
+          snapshot_timestamp?: string | null
+          stress_indicators?: Json | null
+          task_count?: number | null
+          total_cognitive_weight?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cognitive_load_snapshots_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "family_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "cognitive_load_snapshots_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "family_members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       collaboration_sessions: {
         Row: {
           completed_at: string | null
@@ -11323,6 +11850,161 @@ export type Database = {
           },
         ]
       }
+      compliance_audits: {
+        Row: {
+          audit_date: string
+          audit_type: string
+          auditor_id: string | null
+          client_id: string | null
+          compliance_score: number | null
+          findings: Json | null
+          id: string
+          next_audit_due: string | null
+          report_url: string | null
+          risk_level: string | null
+          status: string | null
+        }
+        Insert: {
+          audit_date: string
+          audit_type: string
+          auditor_id?: string | null
+          client_id?: string | null
+          compliance_score?: number | null
+          findings?: Json | null
+          id?: string
+          next_audit_due?: string | null
+          report_url?: string | null
+          risk_level?: string | null
+          status?: string | null
+        }
+        Update: {
+          audit_date?: string
+          audit_type?: string
+          auditor_id?: string | null
+          client_id?: string | null
+          compliance_score?: number | null
+          findings?: Json | null
+          id?: string
+          next_audit_due?: string | null
+          report_url?: string | null
+          risk_level?: string | null
+          status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "compliance_audits_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "compliance_clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      compliance_clients: {
+        Row: {
+          client_name: string
+          company_size: string | null
+          contract_end: string | null
+          contract_start: string | null
+          id: string
+          industry: string | null
+          monthly_revenue: number | null
+          primary_contact_email: string | null
+          primary_contact_name: string | null
+          renewal_date: string | null
+          status: string | null
+          subscription_tier: string | null
+        }
+        Insert: {
+          client_name: string
+          company_size?: string | null
+          contract_end?: string | null
+          contract_start?: string | null
+          id?: string
+          industry?: string | null
+          monthly_revenue?: number | null
+          primary_contact_email?: string | null
+          primary_contact_name?: string | null
+          renewal_date?: string | null
+          status?: string | null
+          subscription_tier?: string | null
+        }
+        Update: {
+          client_name?: string
+          company_size?: string | null
+          contract_end?: string | null
+          contract_start?: string | null
+          id?: string
+          industry?: string | null
+          monthly_revenue?: number | null
+          primary_contact_email?: string | null
+          primary_contact_name?: string | null
+          renewal_date?: string | null
+          status?: string | null
+          subscription_tier?: string | null
+        }
+        Relationships: []
+      }
+      compliance_issues: {
+        Row: {
+          audit_id: string | null
+          category: string | null
+          client_id: string | null
+          due_date: string | null
+          id: string
+          identified_date: string | null
+          issue_description: string | null
+          issue_title: string
+          resolution_notes: string | null
+          resolved_date: string | null
+          severity: string | null
+          status: string | null
+        }
+        Insert: {
+          audit_id?: string | null
+          category?: string | null
+          client_id?: string | null
+          due_date?: string | null
+          id?: string
+          identified_date?: string | null
+          issue_description?: string | null
+          issue_title: string
+          resolution_notes?: string | null
+          resolved_date?: string | null
+          severity?: string | null
+          status?: string | null
+        }
+        Update: {
+          audit_id?: string | null
+          category?: string | null
+          client_id?: string | null
+          due_date?: string | null
+          id?: string
+          identified_date?: string | null
+          issue_description?: string | null
+          issue_title?: string
+          resolution_notes?: string | null
+          resolved_date?: string | null
+          severity?: string | null
+          status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "compliance_issues_audit_id_fkey"
+            columns: ["audit_id"]
+            isOneToOne: false
+            referencedRelation: "compliance_audits"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "compliance_issues_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "compliance_clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       computeresources: {
         Row: {
           resource_id: string
@@ -11560,6 +12242,50 @@ export type Database = {
         }
         Relationships: []
       }
+      consent_audit_log: {
+        Row: {
+          action: string
+          actor_id: string | null
+          actor_type: string | null
+          blockchain_proof: string | null
+          consent_id: string | null
+          id: string
+          ip_address: unknown
+          metadata: Json | null
+          timestamp: string | null
+        }
+        Insert: {
+          action: string
+          actor_id?: string | null
+          actor_type?: string | null
+          blockchain_proof?: string | null
+          consent_id?: string | null
+          id?: string
+          ip_address?: unknown
+          metadata?: Json | null
+          timestamp?: string | null
+        }
+        Update: {
+          action?: string
+          actor_id?: string | null
+          actor_type?: string | null
+          blockchain_proof?: string | null
+          consent_id?: string | null
+          id?: string
+          ip_address?: unknown
+          metadata?: Json | null
+          timestamp?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "consent_audit_log_consent_id_fkey"
+            columns: ["consent_id"]
+            isOneToOne: false
+            referencedRelation: "consent_records"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       consent_categories: {
         Row: {
           created_at: string | null
@@ -11645,76 +12371,86 @@ export type Database = {
           },
         ]
       }
-      consent_templates: {
+      consent_records: {
         Row: {
-          automated_processing: boolean | null
-          can_customize: boolean | null
-          category_id: string
-          created_at: string | null
-          created_by: string | null
-          data_types: string[] | null
-          default_expiry_months: number | null
-          description: string
+          blockchain_network: string | null
+          blockchain_tx_hash: string | null
+          consent_given: boolean
+          consent_scope: string | null
+          data_type: string
+          expires_at: string | null
           id: string
-          is_active: boolean | null
-          is_required: boolean | null
-          legal_basis: string | null
-          privacy_impact_score: number | null
-          retention_period_months: number | null
-          template_version: number | null
-          third_party_sharing: boolean | null
-          title: string
-          updated_at: string | null
+          metadata: Json | null
+          purpose: string
+          revoked: boolean | null
+          revoked_at: string | null
+          smart_contract_address: string | null
+          timestamp: string | null
+          user_id: string
         }
         Insert: {
-          automated_processing?: boolean | null
-          can_customize?: boolean | null
-          category_id: string
-          created_at?: string | null
-          created_by?: string | null
-          data_types?: string[] | null
-          default_expiry_months?: number | null
-          description: string
+          blockchain_network?: string | null
+          blockchain_tx_hash?: string | null
+          consent_given: boolean
+          consent_scope?: string | null
+          data_type: string
+          expires_at?: string | null
           id?: string
-          is_active?: boolean | null
-          is_required?: boolean | null
-          legal_basis?: string | null
-          privacy_impact_score?: number | null
-          retention_period_months?: number | null
-          template_version?: number | null
-          third_party_sharing?: boolean | null
-          title: string
-          updated_at?: string | null
+          metadata?: Json | null
+          purpose: string
+          revoked?: boolean | null
+          revoked_at?: string | null
+          smart_contract_address?: string | null
+          timestamp?: string | null
+          user_id: string
         }
         Update: {
-          automated_processing?: boolean | null
-          can_customize?: boolean | null
-          category_id?: string
-          created_at?: string | null
-          created_by?: string | null
-          data_types?: string[] | null
-          default_expiry_months?: number | null
-          description?: string
+          blockchain_network?: string | null
+          blockchain_tx_hash?: string | null
+          consent_given?: boolean
+          consent_scope?: string | null
+          data_type?: string
+          expires_at?: string | null
           id?: string
-          is_active?: boolean | null
-          is_required?: boolean | null
-          legal_basis?: string | null
-          privacy_impact_score?: number | null
-          retention_period_months?: number | null
-          template_version?: number | null
-          third_party_sharing?: boolean | null
-          title?: string
-          updated_at?: string | null
+          metadata?: Json | null
+          purpose?: string
+          revoked?: boolean | null
+          revoked_at?: string | null
+          smart_contract_address?: string | null
+          timestamp?: string | null
+          user_id?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "consent_templates_category_id_fkey"
-            columns: ["category_id"]
-            isOneToOne: false
-            referencedRelation: "consent_categories"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
+      }
+      consent_templates: {
+        Row: {
+          created_at: string | null
+          data_types: string[] | null
+          default_duration_days: number | null
+          id: string
+          legal_text: string
+          template_name: string
+          version: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          data_types?: string[] | null
+          default_duration_days?: number | null
+          id?: string
+          legal_text: string
+          template_name: string
+          version?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          data_types?: string[] | null
+          default_duration_days?: number | null
+          id?: string
+          legal_text?: string
+          template_name?: string
+          version?: string | null
+        }
+        Relationships: []
       }
       consultant_performance_metrics: {
         Row: {
@@ -14016,6 +14752,65 @@ export type Database = {
             columns: ["partner_integration_id"]
             isOneToOne: false
             referencedRelation: "partner_integrations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      data_marketplace_listings: {
+        Row: {
+          anonymization_level: string | null
+          buyer_requirements: string | null
+          currency: string | null
+          data_category: string | null
+          data_sample_size: number | null
+          data_type: string
+          expires_at: string | null
+          id: string
+          listed_at: string | null
+          price: number | null
+          status: string | null
+          user_id: string
+          vault_id: string | null
+          views_count: number | null
+        }
+        Insert: {
+          anonymization_level?: string | null
+          buyer_requirements?: string | null
+          currency?: string | null
+          data_category?: string | null
+          data_sample_size?: number | null
+          data_type: string
+          expires_at?: string | null
+          id?: string
+          listed_at?: string | null
+          price?: number | null
+          status?: string | null
+          user_id: string
+          vault_id?: string | null
+          views_count?: number | null
+        }
+        Update: {
+          anonymization_level?: string | null
+          buyer_requirements?: string | null
+          currency?: string | null
+          data_category?: string | null
+          data_sample_size?: number | null
+          data_type?: string
+          expires_at?: string | null
+          id?: string
+          listed_at?: string | null
+          price?: number | null
+          status?: string | null
+          user_id?: string
+          vault_id?: string | null
+          views_count?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "data_marketplace_listings_vault_id_fkey"
+            columns: ["vault_id"]
+            isOneToOne: false
+            referencedRelation: "neural_data_vaults"
             referencedColumns: ["id"]
           },
         ]
@@ -16844,47 +17639,152 @@ export type Database = {
       }
       family_members: {
         Row: {
-          contact_email: string | null
+          age_group: string | null
+          burnout_risk_level: string | null
+          cognitive_load_baseline: number | null
+          cognitive_load_current: number | null
           created_at: string | null
-          date_of_birth: string | null
-          family_group_id: string
-          guardian_id: string | null
+          family_id: string | null
           id: string
-          is_minor: boolean | null
-          name: string
-          relationship: string | null
-          updated_at: string | null
+          member_name: string | null
+          personality_type: string | null
+          preferences: Json | null
+          role: string | null
         }
         Insert: {
-          contact_email?: string | null
+          age_group?: string | null
+          burnout_risk_level?: string | null
+          cognitive_load_baseline?: number | null
+          cognitive_load_current?: number | null
           created_at?: string | null
-          date_of_birth?: string | null
-          family_group_id: string
-          guardian_id?: string | null
+          family_id?: string | null
           id?: string
-          is_minor?: boolean | null
-          name: string
-          relationship?: string | null
-          updated_at?: string | null
+          member_name?: string | null
+          personality_type?: string | null
+          preferences?: Json | null
+          role?: string | null
         }
         Update: {
-          contact_email?: string | null
+          age_group?: string | null
+          burnout_risk_level?: string | null
+          cognitive_load_baseline?: number | null
+          cognitive_load_current?: number | null
           created_at?: string | null
-          date_of_birth?: string | null
-          family_group_id?: string
-          guardian_id?: string | null
+          family_id?: string | null
           id?: string
-          is_minor?: boolean | null
-          name?: string
-          relationship?: string | null
-          updated_at?: string | null
+          member_name?: string | null
+          personality_type?: string | null
+          preferences?: Json | null
+          role?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "family_members_family_group_id_fkey"
-            columns: ["family_group_id"]
+            foreignKeyName: "family_members_family_id_fkey"
+            columns: ["family_id"]
             isOneToOne: false
-            referencedRelation: "family_groups"
+            referencedRelation: "family_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      family_profiles: {
+        Row: {
+          calendar_connected: boolean | null
+          created_at: string | null
+          family_name: string | null
+          id: string
+          members_count: number | null
+          primary_contact_email: string | null
+          primary_contact_id: string | null
+          subscription_tier: string | null
+          timezone: string | null
+        }
+        Insert: {
+          calendar_connected?: boolean | null
+          created_at?: string | null
+          family_name?: string | null
+          id?: string
+          members_count?: number | null
+          primary_contact_email?: string | null
+          primary_contact_id?: string | null
+          subscription_tier?: string | null
+          timezone?: string | null
+        }
+        Update: {
+          calendar_connected?: boolean | null
+          created_at?: string | null
+          family_name?: string | null
+          id?: string
+          members_count?: number | null
+          primary_contact_email?: string | null
+          primary_contact_id?: string | null
+          subscription_tier?: string | null
+          timezone?: string | null
+        }
+        Relationships: []
+      }
+      family_tasks: {
+        Row: {
+          assigned_to: string | null
+          cognitive_weight: number | null
+          completed_at: string | null
+          due_date: string | null
+          due_time: string | null
+          emotional_weight: number | null
+          family_id: string | null
+          id: string
+          notes: string | null
+          recurrence_pattern: string | null
+          status: string | null
+          task_category: string | null
+          task_description: string
+          time_estimate_minutes: number | null
+        }
+        Insert: {
+          assigned_to?: string | null
+          cognitive_weight?: number | null
+          completed_at?: string | null
+          due_date?: string | null
+          due_time?: string | null
+          emotional_weight?: number | null
+          family_id?: string | null
+          id?: string
+          notes?: string | null
+          recurrence_pattern?: string | null
+          status?: string | null
+          task_category?: string | null
+          task_description: string
+          time_estimate_minutes?: number | null
+        }
+        Update: {
+          assigned_to?: string | null
+          cognitive_weight?: number | null
+          completed_at?: string | null
+          due_date?: string | null
+          due_time?: string | null
+          emotional_weight?: number | null
+          family_id?: string | null
+          id?: string
+          notes?: string | null
+          recurrence_pattern?: string | null
+          status?: string | null
+          task_category?: string | null
+          task_description?: string
+          time_estimate_minutes?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "family_tasks_assigned_to_fkey"
+            columns: ["assigned_to"]
+            isOneToOne: false
+            referencedRelation: "family_members"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "family_tasks_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "family_profiles"
             referencedColumns: ["id"]
           },
         ]
@@ -18276,6 +19176,56 @@ export type Database = {
         }
         Relationships: []
       }
+      governance_policies: {
+        Row: {
+          approved_by: string | null
+          client_id: string | null
+          created_by: string | null
+          effective_date: string | null
+          id: string
+          policy_category: string | null
+          policy_content: string | null
+          policy_name: string
+          review_date: string | null
+          status: string | null
+          version: string | null
+        }
+        Insert: {
+          approved_by?: string | null
+          client_id?: string | null
+          created_by?: string | null
+          effective_date?: string | null
+          id?: string
+          policy_category?: string | null
+          policy_content?: string | null
+          policy_name: string
+          review_date?: string | null
+          status?: string | null
+          version?: string | null
+        }
+        Update: {
+          approved_by?: string | null
+          client_id?: string | null
+          created_by?: string | null
+          effective_date?: string | null
+          id?: string
+          policy_category?: string | null
+          policy_content?: string | null
+          policy_name?: string
+          review_date?: string | null
+          status?: string | null
+          version?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "governance_policies_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "compliance_clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       gpt_conversations: {
         Row: {
           content: string | null
@@ -18574,6 +19524,192 @@ export type Database = {
           name?: string
           personality_distribution?: Json
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      holorg_agents: {
+        Row: {
+          agent_name: string | null
+          agent_type: string
+          business_function: string | null
+          capabilities: Json | null
+          cloud_provider: string | null
+          cost_per_execution: number | null
+          created_at: string | null
+          id: string
+          last_active: string | null
+          performance_metrics: Json | null
+          personality_type: string | null
+          status: string | null
+          workflow_stage: string | null
+        }
+        Insert: {
+          agent_name?: string | null
+          agent_type: string
+          business_function?: string | null
+          capabilities?: Json | null
+          cloud_provider?: string | null
+          cost_per_execution?: number | null
+          created_at?: string | null
+          id?: string
+          last_active?: string | null
+          performance_metrics?: Json | null
+          personality_type?: string | null
+          status?: string | null
+          workflow_stage?: string | null
+        }
+        Update: {
+          agent_name?: string | null
+          agent_type?: string
+          business_function?: string | null
+          capabilities?: Json | null
+          cloud_provider?: string | null
+          cost_per_execution?: number | null
+          created_at?: string | null
+          id?: string
+          last_active?: string | null
+          performance_metrics?: Json | null
+          personality_type?: string | null
+          status?: string | null
+          workflow_stage?: string | null
+        }
+        Relationships: []
+      }
+      holorg_clients: {
+        Row: {
+          client_name: string
+          id: string
+          industry: string | null
+          monthly_agent_hours_included: number | null
+          monthly_agent_hours_used: number | null
+          overage_rate_per_hour: number | null
+          status: string | null
+          subscription_tier: string | null
+        }
+        Insert: {
+          client_name: string
+          id?: string
+          industry?: string | null
+          monthly_agent_hours_included?: number | null
+          monthly_agent_hours_used?: number | null
+          overage_rate_per_hour?: number | null
+          status?: string | null
+          subscription_tier?: string | null
+        }
+        Update: {
+          client_name?: string
+          id?: string
+          industry?: string | null
+          monthly_agent_hours_included?: number | null
+          monthly_agent_hours_used?: number | null
+          overage_rate_per_hour?: number | null
+          status?: string | null
+          subscription_tier?: string | null
+        }
+        Relationships: []
+      }
+      holorg_executions: {
+        Row: {
+          agent_id: string | null
+          cost_usd: number | null
+          error_message: string | null
+          execution_end: string | null
+          execution_stage: string | null
+          execution_start: string | null
+          id: string
+          input_data: Json | null
+          output_data: Json | null
+          result: string | null
+          status: string | null
+          workflow_id: string | null
+        }
+        Insert: {
+          agent_id?: string | null
+          cost_usd?: number | null
+          error_message?: string | null
+          execution_end?: string | null
+          execution_stage?: string | null
+          execution_start?: string | null
+          id?: string
+          input_data?: Json | null
+          output_data?: Json | null
+          result?: string | null
+          status?: string | null
+          workflow_id?: string | null
+        }
+        Update: {
+          agent_id?: string | null
+          cost_usd?: number | null
+          error_message?: string | null
+          execution_end?: string | null
+          execution_stage?: string | null
+          execution_start?: string | null
+          id?: string
+          input_data?: Json | null
+          output_data?: Json | null
+          result?: string | null
+          status?: string | null
+          workflow_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "holorg_executions_agent_id_fkey"
+            columns: ["agent_id"]
+            isOneToOne: false
+            referencedRelation: "holorg_agents"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "holorg_executions_workflow_id_fkey"
+            columns: ["workflow_id"]
+            isOneToOne: false
+            referencedRelation: "holorg_workflows"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      holorg_workflows: {
+        Row: {
+          agent_assignments: Json | null
+          client_id: string | null
+          completed_at: string | null
+          created_at: string | null
+          current_stage: string | null
+          id: string
+          priority: number | null
+          started_at: string | null
+          status: string | null
+          workflow_definition: Json | null
+          workflow_description: string | null
+          workflow_name: string
+        }
+        Insert: {
+          agent_assignments?: Json | null
+          client_id?: string | null
+          completed_at?: string | null
+          created_at?: string | null
+          current_stage?: string | null
+          id?: string
+          priority?: number | null
+          started_at?: string | null
+          status?: string | null
+          workflow_definition?: Json | null
+          workflow_description?: string | null
+          workflow_name: string
+        }
+        Update: {
+          agent_assignments?: Json | null
+          client_id?: string | null
+          completed_at?: string | null
+          created_at?: string | null
+          current_stage?: string | null
+          id?: string
+          priority?: number | null
+          started_at?: string | null
+          status?: string | null
+          workflow_definition?: Json | null
+          workflow_description?: string | null
+          workflow_name?: string
         }
         Relationships: []
       }
@@ -20957,66 +22093,50 @@ export type Database = {
       }
       marketplace_transactions: {
         Row: {
-          client_organization: string
-          contract_reference: string | null
-          created_at: string | null
-          end_date: string | null
-          hours_purchased: number | null
+          blockchain_tx_hash: string | null
+          buyer_id: string
+          data_access_expires: string | null
+          data_access_key: string | null
           id: string
-          marketplace_listing_id: string | null
-          pack_id: string | null
-          payment_terms: string | null
-          start_date: string
-          status: string
-          total_amount: number
-          transaction_type: string
-          updated_at: string | null
+          listing_id: string | null
+          platform_fee: number | null
+          seller_id: string
+          seller_payout: number | null
+          transaction_amount: number | null
+          transaction_date: string | null
         }
         Insert: {
-          client_organization: string
-          contract_reference?: string | null
-          created_at?: string | null
-          end_date?: string | null
-          hours_purchased?: number | null
+          blockchain_tx_hash?: string | null
+          buyer_id: string
+          data_access_expires?: string | null
+          data_access_key?: string | null
           id?: string
-          marketplace_listing_id?: string | null
-          pack_id?: string | null
-          payment_terms?: string | null
-          start_date: string
-          status?: string
-          total_amount: number
-          transaction_type: string
-          updated_at?: string | null
+          listing_id?: string | null
+          platform_fee?: number | null
+          seller_id: string
+          seller_payout?: number | null
+          transaction_amount?: number | null
+          transaction_date?: string | null
         }
         Update: {
-          client_organization?: string
-          contract_reference?: string | null
-          created_at?: string | null
-          end_date?: string | null
-          hours_purchased?: number | null
+          blockchain_tx_hash?: string | null
+          buyer_id?: string
+          data_access_expires?: string | null
+          data_access_key?: string | null
           id?: string
-          marketplace_listing_id?: string | null
-          pack_id?: string | null
-          payment_terms?: string | null
-          start_date?: string
-          status?: string
-          total_amount?: number
-          transaction_type?: string
-          updated_at?: string | null
+          listing_id?: string | null
+          platform_fee?: number | null
+          seller_id?: string
+          seller_payout?: number | null
+          transaction_amount?: number | null
+          transaction_date?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "marketplace_transactions_marketplace_listing_id_fkey"
-            columns: ["marketplace_listing_id"]
+            foreignKeyName: "marketplace_transactions_listing_id_fkey"
+            columns: ["listing_id"]
             isOneToOne: false
-            referencedRelation: "excess_capacity_marketplace"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "marketplace_transactions_pack_id_fkey"
-            columns: ["pack_id"]
-            isOneToOne: false
-            referencedRelation: "agent_packs"
+            referencedRelation: "data_marketplace_listings"
             referencedColumns: ["id"]
           },
         ]
@@ -21938,6 +23058,59 @@ export type Database = {
         }
         Relationships: []
       }
+      mns_neural_data: {
+        Row: {
+          created_at: string | null
+          device_type: string
+          id: string
+          raw_data: Json
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          device_type: string
+          id?: string
+          raw_data: Json
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          device_type?: string
+          id?: string
+          raw_data?: Json
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mns_neural_data_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "mns_users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mns_users: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          subscription_tier: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          subscription_tier?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          subscription_tier?: string | null
+        }
+        Relationships: []
+      }
       multilingual_content: {
         Row: {
           achieved_outputs: string[] | null
@@ -22471,6 +23644,126 @@ export type Database = {
           tenant_id?: string | null
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      neural_data_points: {
+        Row: {
+          channel_name: string | null
+          data_type: string
+          data_value: Json
+          device_id: string | null
+          id: string
+          metadata: Json | null
+          quality_score: number | null
+          timestamp: string
+          vault_id: string | null
+        }
+        Insert: {
+          channel_name?: string | null
+          data_type: string
+          data_value: Json
+          device_id?: string | null
+          id?: string
+          metadata?: Json | null
+          quality_score?: number | null
+          timestamp: string
+          vault_id?: string | null
+        }
+        Update: {
+          channel_name?: string | null
+          data_type?: string
+          data_value?: Json
+          device_id?: string | null
+          id?: string
+          metadata?: Json | null
+          quality_score?: number | null
+          timestamp?: string
+          vault_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "neural_data_points_device_id_fkey"
+            columns: ["device_id"]
+            isOneToOne: false
+            referencedRelation: "bci_device_connections"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "neural_data_points_vault_id_fkey"
+            columns: ["vault_id"]
+            isOneToOne: false
+            referencedRelation: "neural_data_vaults"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      neural_data_vaults: {
+        Row: {
+          created_at: string | null
+          encryption_key_hash: string
+          id: string
+          storage_capacity_gb: number | null
+          subscription_tier: string | null
+          updated_at: string | null
+          used_capacity_gb: number | null
+          user_id: string
+          vault_name: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          encryption_key_hash: string
+          id?: string
+          storage_capacity_gb?: number | null
+          subscription_tier?: string | null
+          updated_at?: string | null
+          used_capacity_gb?: number | null
+          user_id: string
+          vault_name?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          encryption_key_hash?: string
+          id?: string
+          storage_capacity_gb?: number | null
+          subscription_tier?: string | null
+          updated_at?: string | null
+          used_capacity_gb?: number | null
+          user_id?: string
+          vault_name?: string | null
+        }
+        Relationships: []
+      }
+      neural_ennead_agents: {
+        Row: {
+          agent_code: string
+          business_function: string | null
+          capabilities: Json | null
+          created_at: string | null
+          id: string
+          personality_type: string | null
+          prompt_template: string | null
+          workflow_stage: string | null
+        }
+        Insert: {
+          agent_code: string
+          business_function?: string | null
+          capabilities?: Json | null
+          created_at?: string | null
+          id?: string
+          personality_type?: string | null
+          prompt_template?: string | null
+          workflow_stage?: string | null
+        }
+        Update: {
+          agent_code?: string
+          business_function?: string | null
+          capabilities?: Json | null
+          created_at?: string | null
+          id?: string
+          personality_type?: string | null
+          prompt_template?: string | null
+          workflow_stage?: string | null
         }
         Relationships: []
       }
@@ -32431,6 +33724,90 @@ export type Database = {
         }
         Relationships: []
       }
+      state_analytics: {
+        Row: {
+          analysis_period: string | null
+          avg_cognitive_load: number | null
+          cognitive_load_trend: string | null
+          emotional_stability_score: number | null
+          generated_at: string | null
+          id: string
+          insights: Json | null
+          period_end: string | null
+          period_start: string | null
+          physical_wellness_score: number | null
+          recommendations: string[] | null
+          trends: Json | null
+          user_id: string
+        }
+        Insert: {
+          analysis_period?: string | null
+          avg_cognitive_load?: number | null
+          cognitive_load_trend?: string | null
+          emotional_stability_score?: number | null
+          generated_at?: string | null
+          id?: string
+          insights?: Json | null
+          period_end?: string | null
+          period_start?: string | null
+          physical_wellness_score?: number | null
+          recommendations?: string[] | null
+          trends?: Json | null
+          user_id: string
+        }
+        Update: {
+          analysis_period?: string | null
+          avg_cognitive_load?: number | null
+          cognitive_load_trend?: string | null
+          emotional_stability_score?: number | null
+          generated_at?: string | null
+          id?: string
+          insights?: Json | null
+          period_end?: string | null
+          period_start?: string | null
+          physical_wellness_score?: number | null
+          recommendations?: string[] | null
+          trends?: Json | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      state_correlations: {
+        Row: {
+          analysis_period_end: string | null
+          analysis_period_start: string | null
+          correlation_coefficient: number | null
+          id: string
+          metric_a: string | null
+          metric_b: string | null
+          sample_size: number | null
+          statistical_significance: number | null
+          user_id: string
+        }
+        Insert: {
+          analysis_period_end?: string | null
+          analysis_period_start?: string | null
+          correlation_coefficient?: number | null
+          id?: string
+          metric_a?: string | null
+          metric_b?: string | null
+          sample_size?: number | null
+          statistical_significance?: number | null
+          user_id: string
+        }
+        Update: {
+          analysis_period_end?: string | null
+          analysis_period_start?: string | null
+          correlation_coefficient?: number | null
+          id?: string
+          metric_a?: string | null
+          metric_b?: string | null
+          sample_size?: number | null
+          statistical_significance?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       stg_project_demand: {
         Row: {
           created_at: string
@@ -33954,6 +35331,27 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      system_heartbeat: {
+        Row: {
+          id: string
+          status: string
+          system: string
+          timestamp: string
+        }
+        Insert: {
+          id?: string
+          status: string
+          system: string
+          timestamp?: string
+        }
+        Update: {
+          id?: string
+          status?: string
+          system?: string
+          timestamp?: string
+        }
+        Relationships: []
       }
       tags: {
         Row: {
@@ -35908,6 +37306,54 @@ export type Database = {
         }
         Relationships: []
       }
+      tracked_tasks: {
+        Row: {
+          actual_hours: number | null
+          assigned_to: string | null
+          business_unit: string | null
+          created_at: string | null
+          dependencies: string[] | null
+          due_date: string | null
+          estimated_hours: number | null
+          id: string
+          notes: string | null
+          priority: string | null
+          status: string | null
+          task_name: string
+          updated_at: string | null
+        }
+        Insert: {
+          actual_hours?: number | null
+          assigned_to?: string | null
+          business_unit?: string | null
+          created_at?: string | null
+          dependencies?: string[] | null
+          due_date?: string | null
+          estimated_hours?: number | null
+          id?: string
+          notes?: string | null
+          priority?: string | null
+          status?: string | null
+          task_name: string
+          updated_at?: string | null
+        }
+        Update: {
+          actual_hours?: number | null
+          assigned_to?: string | null
+          business_unit?: string | null
+          created_at?: string | null
+          dependencies?: string[] | null
+          due_date?: string | null
+          estimated_hours?: number | null
+          id?: string
+          notes?: string | null
+          priority?: string | null
+          status?: string | null
+          task_name?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       training_modules: {
         Row: {
           category: string
@@ -36397,6 +37843,45 @@ export type Database = {
           },
         ]
       }
+      ubi_payouts: {
+        Row: {
+          id: string
+          net_payout: number | null
+          paid_at: string | null
+          payment_method: string | null
+          payment_status: string | null
+          period_end: string | null
+          period_start: string | null
+          platform_fees: number | null
+          total_earnings: number | null
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          net_payout?: number | null
+          paid_at?: string | null
+          payment_method?: string | null
+          payment_status?: string | null
+          period_end?: string | null
+          period_start?: string | null
+          platform_fees?: number | null
+          total_earnings?: number | null
+          user_id: string
+        }
+        Update: {
+          id?: string
+          net_payout?: number | null
+          paid_at?: string | null
+          payment_method?: string | null
+          payment_status?: string | null
+          period_end?: string | null
+          period_start?: string | null
+          platform_fees?: number | null
+          total_earnings?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       unified_registry: {
         Row: {
           created_at: string | null
@@ -36850,15 +38335,7 @@ export type Database = {
           user_id?: string
           withdrawn_at?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "user_consents_template_id_fkey"
-            columns: ["template_id"]
-            isOneToOne: false
-            referencedRelation: "consent_templates"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       user_data_export_requests: {
         Row: {
@@ -36946,6 +38423,45 @@ export type Database = {
           scheduled_deletion_at?: string
           status?: string
           updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_earnings: {
+        Row: {
+          amount: number | null
+          buyer_id: string | null
+          currency: string | null
+          data_contribution_id: string | null
+          earning_type: string
+          id: string
+          status: string | null
+          timestamp: string | null
+          transaction_hash: string | null
+          user_id: string
+        }
+        Insert: {
+          amount?: number | null
+          buyer_id?: string | null
+          currency?: string | null
+          data_contribution_id?: string | null
+          earning_type: string
+          id?: string
+          status?: string | null
+          timestamp?: string | null
+          transaction_hash?: string | null
+          user_id: string
+        }
+        Update: {
+          amount?: number | null
+          buyer_id?: string | null
+          currency?: string | null
+          data_contribution_id?: string | null
+          earning_type?: string
+          id?: string
+          status?: string | null
+          timestamp?: string | null
+          transaction_hash?: string | null
           user_id?: string
         }
         Relationships: []
@@ -37449,6 +38965,48 @@ export type Database = {
         }
         Relationships: []
       }
+      user_states: {
+        Row: {
+          cognitive_load: number | null
+          context_tags: string[] | null
+          created_at: string | null
+          data_sources: string[] | null
+          emotional_state: Json | null
+          id: string
+          location_general: string | null
+          notes: string | null
+          physical_metrics: Json | null
+          state_timestamp: string
+          user_id: string
+        }
+        Insert: {
+          cognitive_load?: number | null
+          context_tags?: string[] | null
+          created_at?: string | null
+          data_sources?: string[] | null
+          emotional_state?: Json | null
+          id?: string
+          location_general?: string | null
+          notes?: string | null
+          physical_metrics?: Json | null
+          state_timestamp: string
+          user_id: string
+        }
+        Update: {
+          cognitive_load?: number | null
+          context_tags?: string[] | null
+          created_at?: string | null
+          data_sources?: string[] | null
+          emotional_state?: Json | null
+          id?: string
+          location_general?: string | null
+          notes?: string | null
+          physical_metrics?: Json | null
+          state_timestamp?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_task_selections: {
         Row: {
           assessment_id: string
@@ -37620,6 +39178,47 @@ export type Database = {
           WeightedScore?: number | null
         }
         Relationships: []
+      }
+      vault_access_logs: {
+        Row: {
+          access_type: string
+          accessor_id: string | null
+          id: string
+          ip_address: unknown
+          success: boolean | null
+          timestamp: string | null
+          user_agent: string | null
+          vault_id: string | null
+        }
+        Insert: {
+          access_type: string
+          accessor_id?: string | null
+          id?: string
+          ip_address?: unknown
+          success?: boolean | null
+          timestamp?: string | null
+          user_agent?: string | null
+          vault_id?: string | null
+        }
+        Update: {
+          access_type?: string
+          accessor_id?: string | null
+          id?: string
+          ip_address?: unknown
+          success?: boolean | null
+          timestamp?: string | null
+          user_agent?: string | null
+          vault_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vault_access_logs_vault_id_fkey"
+            columns: ["vault_id"]
+            isOneToOne: false
+            referencedRelation: "neural_data_vaults"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       vercel_projects_map: {
         Row: {
@@ -40819,6 +42418,14 @@ export type Database = {
         }
         Relationships: []
       }
+      revenue_projections: {
+        Row: {
+          business_unit: string | null
+          customers: number | null
+          monthly_revenue: number | null
+        }
+        Relationships: []
+      }
       "RFT Metrics Final": {
         Row: {
           note: string | null
@@ -40897,6 +42504,17 @@ export type Database = {
           resource_type: string | null
           severity: string | null
           user_email: string | null
+        }
+        Relationships: []
+      }
+      task_dashboard: {
+        Row: {
+          business_unit: string | null
+          priority: string | null
+          status: string | null
+          task_count: number | null
+          total_actual_hours: number | null
+          total_estimated_hours: number | null
         }
         Relationships: []
       }

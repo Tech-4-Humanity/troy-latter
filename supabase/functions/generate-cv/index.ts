@@ -418,7 +418,6 @@ Generate a CV optimised for this specific opportunity. Focus on ROI, leadership 
 
     const aiData = await aiResponse.json();
     const generatedCV = aiData.choices[0].message.content;
-    const generatedCV = aiData.choices[0].message.content;
 
     // QUALITY VALIDATION - Ensure Google/FAANG-level standards
     const qualityIssues: string[] = [];
