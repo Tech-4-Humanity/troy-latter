@@ -19107,6 +19107,63 @@ export type Database = {
           },
         ]
       }
+      github_repos: {
+        Row: {
+          archived: boolean | null
+          created_at: string | null
+          description: string | null
+          forks: number | null
+          full_name: string
+          id: string
+          language: string | null
+          name: string
+          open_issues: number | null
+          private: boolean | null
+          repo_created_at: string | null
+          repo_updated_at: string | null
+          stars: number | null
+          topics: Json | null
+          updated_at: string | null
+          url: string | null
+        }
+        Insert: {
+          archived?: boolean | null
+          created_at?: string | null
+          description?: string | null
+          forks?: number | null
+          full_name: string
+          id?: string
+          language?: string | null
+          name: string
+          open_issues?: number | null
+          private?: boolean | null
+          repo_created_at?: string | null
+          repo_updated_at?: string | null
+          stars?: number | null
+          topics?: Json | null
+          updated_at?: string | null
+          url?: string | null
+        }
+        Update: {
+          archived?: boolean | null
+          created_at?: string | null
+          description?: string | null
+          forks?: number | null
+          full_name?: string
+          id?: string
+          language?: string | null
+          name?: string
+          open_issues?: number | null
+          private?: boolean | null
+          repo_created_at?: string | null
+          repo_updated_at?: string | null
+          stars?: number | null
+          topics?: Json | null
+          updated_at?: string | null
+          url?: string | null
+        }
+        Relationships: []
+      }
       global_labor_rates: {
         Row: {
           base_hourly_rate: number
@@ -20345,6 +20402,39 @@ export type Database = {
           name?: string | null
           status?: string | null
           type?: string | null
+        }
+        Relationships: []
+      }
+      intelligence_assets: {
+        Row: {
+          asset_id: string
+          content: string | null
+          created_at: string | null
+          id: string
+          metadata: Json | null
+          source: string
+          title: string | null
+          url: string | null
+        }
+        Insert: {
+          asset_id: string
+          content?: string | null
+          created_at?: string | null
+          id?: string
+          metadata?: Json | null
+          source: string
+          title?: string | null
+          url?: string | null
+        }
+        Update: {
+          asset_id?: string
+          content?: string | null
+          created_at?: string | null
+          id?: string
+          metadata?: Json | null
+          source?: string
+          title?: string | null
+          url?: string | null
         }
         Relationships: []
       }
@@ -35353,6 +35443,87 @@ export type Database = {
         }
         Relationships: []
       }
+      t4h_supabase_audit: {
+        Row: {
+          actionable_command: string | null
+          audit_date: string
+          created_at: string | null
+          cross_domain_score: number | null
+          dead_flag: boolean | null
+          dead_reasons: string[] | null
+          duplicate_flag: boolean | null
+          duplicate_of: string | null
+          duplicate_similarity: number | null
+          high_value_flag: boolean | null
+          id: string
+          importance_score: number | null
+          last_read: string | null
+          last_updated: string | null
+          read_frequency: number | null
+          recommendation: string | null
+          row_count: number | null
+          size_bytes: number | null
+          size_human: string | null
+          table_name: string
+          unused_flag: boolean | null
+          usage_score: number | null
+          value_score: number | null
+          write_frequency: number | null
+        }
+        Insert: {
+          actionable_command?: string | null
+          audit_date: string
+          created_at?: string | null
+          cross_domain_score?: number | null
+          dead_flag?: boolean | null
+          dead_reasons?: string[] | null
+          duplicate_flag?: boolean | null
+          duplicate_of?: string | null
+          duplicate_similarity?: number | null
+          high_value_flag?: boolean | null
+          id?: string
+          importance_score?: number | null
+          last_read?: string | null
+          last_updated?: string | null
+          read_frequency?: number | null
+          recommendation?: string | null
+          row_count?: number | null
+          size_bytes?: number | null
+          size_human?: string | null
+          table_name: string
+          unused_flag?: boolean | null
+          usage_score?: number | null
+          value_score?: number | null
+          write_frequency?: number | null
+        }
+        Update: {
+          actionable_command?: string | null
+          audit_date?: string
+          created_at?: string | null
+          cross_domain_score?: number | null
+          dead_flag?: boolean | null
+          dead_reasons?: string[] | null
+          duplicate_flag?: boolean | null
+          duplicate_of?: string | null
+          duplicate_similarity?: number | null
+          high_value_flag?: boolean | null
+          id?: string
+          importance_score?: number | null
+          last_read?: string | null
+          last_updated?: string | null
+          read_frequency?: number | null
+          recommendation?: string | null
+          row_count?: number | null
+          size_bytes?: number | null
+          size_human?: string | null
+          table_name?: string
+          unused_flag?: boolean | null
+          usage_score?: number | null
+          value_score?: number | null
+          write_frequency?: number | null
+        }
+        Relationships: []
+      }
       tags: {
         Row: {
           name: string | null
@@ -42684,6 +42855,14 @@ export type Database = {
     }
     Functions: {
       anonymize_user_data: { Args: { p_user_id: string }; Returns: Json }
+      approve_clean_dead: {
+        Args: never
+        Returns: {
+          action: string
+          status: string
+          table_name: string
+        }[]
+      }
       auto_sweep: { Args: never; Returns: number }
       bump_agent_metrics: {
         Args: { p_agent: string; p_latency_ms: number; p_success: boolean }
@@ -43249,6 +43428,16 @@ export type Database = {
       run_cleanup: { Args: never; Returns: undefined }
       run_logic_sync: { Args: never; Returns: Json }
       run_logic_sync_sql: { Args: never; Returns: undefined }
+      run_supabase_audit: {
+        Args: never
+        Returns: {
+          audit_complete: boolean
+          dead_tables: number
+          duplicate_tables: number
+          high_value_tables: number
+          total_tables: number
+        }[]
+      }
       search_bci_matrix: {
         Args: {
           p_dual_use_only?: boolean
