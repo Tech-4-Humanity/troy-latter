@@ -61,22 +61,25 @@ export const AtlassianExperience = () => {
 
   return (
     <section>
-      <h2 className="text-sm font-semibold uppercase tracking-wider text-[#6B778C] mb-6 flex items-center gap-2">
-        <span className="w-5 h-0.5 rounded-full bg-gradient-to-r from-[#0052CC] to-[#2684FF]"></span>
+      <h2 className="text-sm font-bold tracking-[0.1em] uppercase text-[#6B778C] mb-6 flex items-center gap-2"
+          style={{ fontFamily: 'Inter, sans-serif', textShadow: '0 0 16px rgba(0, 82, 204, 0.1)' }}>
+        <span className="w-8 h-0.5 bg-gradient-to-r from-[#0052CC] via-[#0747A6] to-[#2684FF] rounded-full"></span>
         Experience
       </h2>
       <div className="space-y-6">
         {roles.map((role, index) => (
-          <article key={index} className="pb-6 border-b border-[#DFE1E6] last:border-0">
+          <article key={index} className="pb-6 border-b border-[#DFE1E6] last:border-0 hover:-translate-y-0.5 transition-all duration-200 ease-in-out p-4 rounded-lg hover:shadow-[0_4px_12px_rgba(0,82,204,0.15)]">
             <div className="flex flex-wrap gap-2 items-baseline mb-2">
-              <h3 className="text-sm font-semibold text-[#172B4D]">{role.title}</h3>
-              <span className="text-sm text-[#6B778C]">{role.company}</span>
-              <span className="text-xs text-[#6B778C]">{role.period}</span>
+              <h3 className="text-base font-bold text-[#172B4D] bg-[#FAFBFC] px-2 py-0.5 rounded inline-block"
+                  style={{ fontFamily: 'Inter, sans-serif' }}>{role.title}</h3>
+              <span className="text-sm text-[#6B778C] font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>{role.company}</span>
+              <span className="text-xs text-[#6B778C]" style={{ fontFamily: 'Inter, sans-serif' }}>· {role.period}</span>
             </div>
-            <p className="text-sm text-[#172B4D] mb-3">{role.description}</p>
-            <ul className="space-y-2 pl-4">
+            <p className="text-sm text-[#172B4D] mb-3" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>{role.description}</p>
+            <ul className="space-y-2">
               {role.achievements.map((achievement, idx) => (
-                <li key={idx} className="text-sm text-[#172B4D] list-disc">
+                <li key={idx} className="text-sm text-[#172B4D] pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-[#0052CC] before:text-base"
+                    style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
                   {achievement}
                 </li>
               ))}

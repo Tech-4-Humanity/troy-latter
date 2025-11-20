@@ -5,41 +5,42 @@ export const AtlassianSkills = () => {
     <>
       {/* Design Technology Focus */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-[#6B778C] mb-4 flex items-center gap-2">
-          <span className="w-5 h-0.5 rounded-full bg-gradient-to-r from-[#0052CC] to-[#2684FF]"></span>
+        <h2 className="text-sm font-bold tracking-[0.1em] uppercase text-[#6B778C] mb-4 flex items-center gap-2"
+            style={{ fontFamily: 'Inter, sans-serif', textShadow: '0 0 16px rgba(0, 82, 204, 0.1)' }}>
+          <span className="w-8 h-0.5 bg-gradient-to-r from-[#0052CC] via-[#0747A6] to-[#2684FF] rounded-full"></span>
           Design technology focus
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-          <div>
-            <h3 className="text-xs font-semibold text-[#6B778C] mb-1">Prototyping and motion</h3>
-            <p className="text-sm text-[#172B4D]">
+          <div className="p-3 bg-[#FAFBFC] rounded-lg hover:bg-white transition-all duration-200">
+            <h3 className="text-xs font-bold text-[#6B778C] mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>Prototyping and motion</h3>
+            <p className="text-sm text-[#172B4D]" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
               Figma interactive prototypes<br />
               Motion and micro interaction exploration<br />
               Framer and similar tools for live flows<br />
               Storyboards and system maps for complex journeys
             </p>
           </div>
-          <div>
-            <h3 className="text-xs font-semibold text-[#6B778C] mb-1">Code for design</h3>
-            <p className="text-sm text-[#172B4D]">
+          <div className="p-3 bg-[#FAFBFC] rounded-lg hover:bg-white transition-all duration-200">
+            <h3 className="text-xs font-bold text-[#6B778C] mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>Code for design</h3>
+            <p className="text-sm text-[#172B4D]" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
               React and modern JS frameworks<br />
               Design token usage<br />
               Simple component libraries for quick tests<br />
               API integration for real data inside prototypes
             </p>
           </div>
-          <div>
-            <h3 className="text-xs font-semibold text-[#6B778C] mb-1">AI in design practice</h3>
-            <p className="text-sm text-[#172B4D]">
+          <div className="p-3 bg-[#FAFBFC] rounded-lg hover:bg-white transition-all duration-200">
+            <h3 className="text-xs font-bold text-[#6B778C] mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>AI in design practice</h3>
+            <p className="text-sm text-[#172B4D]" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
               LLM supported research and synthesis<br />
               RAG patterns for design context<br />
               AI guided flows for service and support journeys<br />
               Attention to safety, logging, and audit needs
             </p>
           </div>
-          <div>
-            <h3 className="text-xs font-semibold text-[#6B778C] mb-1">Collaboration</h3>
-            <p className="text-sm text-[#172B4D]">
+          <div className="p-3 bg-[#FAFBFC] rounded-lg hover:bg-white transition-all duration-200">
+            <h3 className="text-xs font-bold text-[#6B778C] mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>Collaboration</h3>
+            <p className="text-sm text-[#172B4D]" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
               Partnering with product, research, and engineering<br />
               Enabling design teams with small tools and templates<br />
               Clear storytelling for executive and team reviews<br />
@@ -51,8 +52,9 @@ export const AtlassianSkills = () => {
 
       {/* Key Skills */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-[#6B778C] mb-4 flex items-center gap-2">
-          <span className="w-5 h-0.5 rounded-full bg-gradient-to-r from-[#0052CC] to-[#2684FF]"></span>
+        <h2 className="text-sm font-bold tracking-[0.1em] uppercase text-[#6B778C] mb-4 flex items-center gap-2"
+            style={{ fontFamily: 'Inter, sans-serif', textShadow: '0 0 16px rgba(0, 82, 204, 0.1)' }}>
+          <span className="w-8 h-0.5 bg-gradient-to-r from-[#0052CC] via-[#0747A6] to-[#2684FF] rounded-full"></span>
           Key skills
         </h2>
         <div className="flex flex-wrap gap-2">
@@ -68,7 +70,8 @@ export const AtlassianSkills = () => {
           ].map((skill, idx) => (
             <span 
               key={idx} 
-              className="px-2.5 py-1 text-xs border border-[#DFE1E6] rounded-full bg-white/90"
+              className="px-3 py-1.5 text-xs font-medium border border-[#B3D4FF] rounded-full bg-[#DEEBFF] text-[#0052CC] hover:bg-[#B3D4FF] hover:scale-105 transition-all duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#0052CC] focus-visible:ring-offset-2"
+              style={{ fontFamily: 'Inter, sans-serif' }}
             >
               {skill}
             </span>
@@ -100,23 +103,28 @@ export const AtlassianSkills = () => {
           <span className="w-5 h-0.5 rounded-full bg-gradient-to-r from-[#0052CC] to-[#2684FF]"></span>
           Micro credentials and certifications
         </h2>
-        <div className="space-y-3 text-sm text-[#172B4D]">
-          <p>
+        <div className="space-y-3 text-sm text-[#172B4D]" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
+          <div className="border-l-2 border-[#DFE1E6] pl-3 hover:border-[#0052CC] transition-colors">
+            <span className="text-xs font-bold text-[#6B778C]">Cloud (4):</span><br />
             AWS Solutions Architect · Azure AI Engineer · Google Cloud Architect · Oracle Cloud
-          </p>
-          <p>
+          </div>
+          <div className="border-l-2 border-[#DFE1E6] pl-3 hover:border-[#0052CC] transition-colors">
+            <span className="text-xs font-bold text-[#6B778C]">AI Tools (6):</span><br />
             OpenAI · Claude · LangChain · LangGraph · Semantic Kernel · MCP Practitioner
-          </p>
-          <p>
+          </div>
+          <div className="border-l-2 border-[#DFE1E6] pl-3 hover:border-[#0052CC] transition-colors">
+            <span className="text-xs font-bold text-[#6B778C]">Automation (7):</span><br />
             Supabase · n8n · Make · Pipedream · Hugging Face · Relevance AI · GitHub Copilot
-          </p>
-          <p>
+          </div>
+          <div className="border-l-2 border-[#DFE1E6] pl-3 hover:border-[#0052CC] transition-colors">
+            <span className="text-xs font-bold text-[#6B778C]">Data & Governance (6):</span><br />
             Snowflake · Databricks · NVIDIA NIM · Responsible AI Governance · AI Ethics and Policy · Data Privacy and Security
-          </p>
-          <p>
+          </div>
+          <div className="border-l-2 border-[#DFE1E6] pl-3 hover:border-[#0052CC] transition-colors">
+            <span className="text-xs font-bold text-[#6B778C]">Management (4):</span><br />
             PRINCE2 · Prosci ADKAR · ITIL · TOGAF
-          </p>
-          <p className="text-xs text-[#6B778C] mt-2">
+          </div>
+          <p className="text-xs text-[#6B778C] mt-4 italic" style={{ fontFamily: 'Inter, sans-serif' }}>
             Certifications support practical work in AI, automation, and design technology rather than drive it.
           </p>
         </div>
