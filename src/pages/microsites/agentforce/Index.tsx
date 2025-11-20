@@ -18,12 +18,6 @@ const AgentforceIndex = () => {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link to="/microsites">Microsites</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
               <BreadcrumbPage>Agentforce Portfolio</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>

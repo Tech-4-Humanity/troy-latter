@@ -32,12 +32,6 @@ const Lab3Index = () => {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link to="/microsites">Microsites</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
               <BreadcrumbPage>Lab3 Analysis</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>

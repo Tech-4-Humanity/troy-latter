@@ -11,10 +11,6 @@ const WnsIndex = () => {
           Home
         </Link>
         <ChevronRight className="h-4 w-4" />
-        <Link to="/microsites" className="hover:text-foreground transition-colors">
-          Microsites
-        </Link>
-        <ChevronRight className="h-4 w-4" />
         <span className="text-foreground">WNS</span>
       </nav>
 

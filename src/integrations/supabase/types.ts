@@ -15363,6 +15363,51 @@ export type Database = {
         }
         Relationships: []
       }
+      discount_sources: {
+        Row: {
+          active: boolean | null
+          channel: string | null
+          conditions: Json | null
+          created_at: string | null
+          expires_at: string | null
+          id: string
+          name: string
+          tenant_id: string | null
+          type: string
+          updated_at: string | null
+          value: number
+          value_type: string
+        }
+        Insert: {
+          active?: boolean | null
+          channel?: string | null
+          conditions?: Json | null
+          created_at?: string | null
+          expires_at?: string | null
+          id?: string
+          name: string
+          tenant_id?: string | null
+          type: string
+          updated_at?: string | null
+          value: number
+          value_type: string
+        }
+        Update: {
+          active?: boolean | null
+          channel?: string | null
+          conditions?: Json | null
+          created_at?: string | null
+          expires_at?: string | null
+          id?: string
+          name?: string
+          tenant_id?: string | null
+          type?: string
+          updated_at?: string | null
+          value?: number
+          value_type?: string
+        }
+        Relationships: []
+      }
       document_access_log: {
         Row: {
           access_type: string
@@ -17376,6 +17421,41 @@ export type Database = {
           view_count?: number | null
         }
         Relationships: []
+      }
+      external_plans: {
+        Row: {
+          created_at: string | null
+          id: string
+          parsed: Json | null
+          raw: string
+          source: string
+          trip_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          parsed?: Json | null
+          raw: string
+          source: string
+          trip_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          parsed?: Json | null
+          raw?: string
+          source?: string
+          trip_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "external_plans_trip_id_fkey"
+            columns: ["trip_id"]
+            isOneToOne: false
+            referencedRelation: "trips"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       extractions: {
         Row: {
@@ -20630,6 +20710,59 @@ export type Database = {
         }
         Relationships: []
       }
+      jobs: {
+        Row: {
+          completed_at: string | null
+          created_at: string | null
+          error: string | null
+          id: string
+          payload: Json | null
+          result: Json | null
+          started_at: string | null
+          status: string | null
+          tenant_id: string | null
+          trip_id: string | null
+          type: string
+          updated_at: string | null
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string | null
+          error?: string | null
+          id?: string
+          payload?: Json | null
+          result?: Json | null
+          started_at?: string | null
+          status?: string | null
+          tenant_id?: string | null
+          trip_id?: string | null
+          type: string
+          updated_at?: string | null
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string | null
+          error?: string | null
+          id?: string
+          payload?: Json | null
+          result?: Json | null
+          started_at?: string | null
+          status?: string | null
+          tenant_id?: string | null
+          trip_id?: string | null
+          type?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "jobs_trip_id_fkey"
+            columns: ["trip_id"]
+            isOneToOne: false
+            referencedRelation: "trips"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       knowledge_applications: {
         Row: {
           applied_action: string
@@ -21480,6 +21613,79 @@ export type Database = {
           "Organ Lobe"?: string | null
         }
         Relationships: []
+      }
+      logs: {
+        Row: {
+          created_at: string | null
+          id: number
+          job_id: string | null
+          level: string
+          message: string
+          meta: Json | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          job_id?: string | null
+          level: string
+          message: string
+          meta?: Json | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          job_id?: string | null
+          level?: string
+          message?: string
+          meta?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "logs_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      loyalty_accounts: {
+        Row: {
+          balance: number | null
+          created_at: string | null
+          id: string
+          last_updated: string | null
+          membership_number: string | null
+          program: string
+          traveller_id: string | null
+        }
+        Insert: {
+          balance?: number | null
+          created_at?: string | null
+          id?: string
+          last_updated?: string | null
+          membership_number?: string | null
+          program: string
+          traveller_id?: string | null
+        }
+        Update: {
+          balance?: number | null
+          created_at?: string | null
+          id?: string
+          last_updated?: string | null
+          membership_number?: string | null
+          program?: string
+          traveller_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "loyalty_accounts_traveller_id_fkey"
+            columns: ["traveller_id"]
+            isOneToOne: false
+            referencedRelation: "travellers"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       lrs_api_keys: {
         Row: {
@@ -25542,6 +25748,45 @@ export type Database = {
           sfia_level?: string | null
           summary_bio?: string | null
           task_coverage_pct?: number | null
+        }
+        Relationships: []
+      }
+      partner_channels: {
+        Row: {
+          base_url: string | null
+          code: string
+          commission_rate: number | null
+          created_at: string | null
+          id: string
+          meta: Json | null
+          name: string
+          payout_currency: string | null
+          tenant_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          base_url?: string | null
+          code: string
+          commission_rate?: number | null
+          created_at?: string | null
+          id?: string
+          meta?: Json | null
+          name: string
+          payout_currency?: string | null
+          tenant_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          base_url?: string | null
+          code?: string
+          commission_rate?: number | null
+          created_at?: string | null
+          id?: string
+          meta?: Json | null
+          name?: string
+          payout_currency?: string | null
+          tenant_id?: string | null
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -32194,6 +32439,77 @@ export type Database = {
         }
         Relationships: []
       }
+      segments: {
+        Row: {
+          booking_reference: string | null
+          cash_cost: number | null
+          channel: string | null
+          check_in: string | null
+          check_out: string | null
+          created_at: string | null
+          currency: string | null
+          details: Json | null
+          discount_json: Json | null
+          from_code: string | null
+          id: string
+          points_cost: number | null
+          provider: string
+          status: string | null
+          to_code: string | null
+          trip_id: string | null
+          type: string
+          updated_at: string | null
+        }
+        Insert: {
+          booking_reference?: string | null
+          cash_cost?: number | null
+          channel?: string | null
+          check_in?: string | null
+          check_out?: string | null
+          created_at?: string | null
+          currency?: string | null
+          details?: Json | null
+          discount_json?: Json | null
+          from_code?: string | null
+          id?: string
+          points_cost?: number | null
+          provider: string
+          status?: string | null
+          to_code?: string | null
+          trip_id?: string | null
+          type: string
+          updated_at?: string | null
+        }
+        Update: {
+          booking_reference?: string | null
+          cash_cost?: number | null
+          channel?: string | null
+          check_in?: string | null
+          check_out?: string | null
+          created_at?: string | null
+          currency?: string | null
+          details?: Json | null
+          discount_json?: Json | null
+          from_code?: string | null
+          id?: string
+          points_cost?: number | null
+          provider?: string
+          status?: string | null
+          to_code?: string | null
+          trip_id?: string | null
+          type?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "segments_trip_id_fkey"
+            columns: ["trip_id"]
+            isOneToOne: false
+            referencedRelation: "trips"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       service_catalog_master: {
         Row: {
           A: string | null
@@ -37731,6 +38047,126 @@ export type Database = {
           success_criteria?: Json | null
           target_date?: string | null
           updated_at?: string
+        }
+        Relationships: []
+      }
+      travellers: {
+        Row: {
+          created_at: string | null
+          date_of_birth: string | null
+          email: string | null
+          full_name: string | null
+          id: string
+          tenant_id: string | null
+          updated_at: string | null
+          user_label: string
+        }
+        Insert: {
+          created_at?: string | null
+          date_of_birth?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          tenant_id?: string | null
+          updated_at?: string | null
+          user_label: string
+        }
+        Update: {
+          created_at?: string | null
+          date_of_birth?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          tenant_id?: string | null
+          updated_at?: string | null
+          user_label?: string
+        }
+        Relationships: []
+      }
+      trip_travellers: {
+        Row: {
+          traveller_id: string
+          trip_id: string
+        }
+        Insert: {
+          traveller_id: string
+          trip_id: string
+        }
+        Update: {
+          traveller_id?: string
+          trip_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trip_travellers_traveller_id_fkey"
+            columns: ["traveller_id"]
+            isOneToOne: false
+            referencedRelation: "travellers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "trip_travellers_trip_id_fkey"
+            columns: ["trip_id"]
+            isOneToOne: false
+            referencedRelation: "trips"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      trips: {
+        Row: {
+          adults: number | null
+          children: number | null
+          created_at: string | null
+          created_by: string | null
+          destination: string
+          end_date: string
+          id: string
+          max_cash_topup_aud: number | null
+          origin: string
+          start_date: string
+          status: string | null
+          strategy_mode: string | null
+          tenant_id: string | null
+          title: string
+          updated_at: string | null
+          updated_by: string | null
+        }
+        Insert: {
+          adults?: number | null
+          children?: number | null
+          created_at?: string | null
+          created_by?: string | null
+          destination: string
+          end_date: string
+          id?: string
+          max_cash_topup_aud?: number | null
+          origin: string
+          start_date: string
+          status?: string | null
+          strategy_mode?: string | null
+          tenant_id?: string | null
+          title: string
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Update: {
+          adults?: number | null
+          children?: number | null
+          created_at?: string | null
+          created_by?: string | null
+          destination?: string
+          end_date?: string
+          id?: string
+          max_cash_topup_aud?: number | null
+          origin?: string
+          start_date?: string
+          status?: string | null
+          strategy_mode?: string | null
+          tenant_id?: string | null
+          title?: string
+          updated_at?: string | null
+          updated_by?: string | null
         }
         Relationships: []
       }
