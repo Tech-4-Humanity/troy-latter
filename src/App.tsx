@@ -40,6 +40,7 @@ import LenovoTechnicalStack from "./pages/microsites/lenovo/TechnicalStack";
 import LenovoDemoChoices from "./pages/microsites/lenovo/DemoChoices";
 import LenovoTruScaleScenarios from "./pages/microsites/lenovo/TruScaleScenarios";
 import WnsIndex from "./pages/microsites/wns/Index";
+import AtlassianIndex from "./pages/microsites/atlassian/Index";
 
 // Legacy pages that are still accessible but redirected
 import InnovationDefinition from "./pages/InnovationDefinition";
@@ -95,6 +96,7 @@ const App = () => (
           
           {/* Microsite routes with separate layout */}
           <Route path="/microsites" element={<MicrositeGuard><MicrositeLayout><MicrositeIndex /></MicrositeLayout></MicrositeGuard>} />
+          <Route path="/microsites/atlassian" element={<MicrositeGuard><MicrositeLayout><AtlassianIndex /></MicrositeLayout></MicrositeGuard>} />
           <Route path="/microsites/interview-prep" element={<MicrositeGuard><MicrositeLayout><InterviewPrepIndex /></MicrositeLayout></MicrositeGuard>} />
           <Route path="/microsites/agentforce" element={<MicrositeGuard><MicrositeLayout><AgentforceIndex /></MicrositeLayout></MicrositeGuard>} />
           <Route path="/microsites/lab3" element={<MicrositeGuard><MicrositeLayout><Lab3Index /></MicrositeLayout></MicrositeGuard>} />
