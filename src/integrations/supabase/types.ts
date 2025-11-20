@@ -19456,6 +19456,36 @@ export type Database = {
         }
         Relationships: []
       }
+      grok_conversations: {
+        Row: {
+          created_at: string | null
+          id: string
+          metadata: Json | null
+          model: string
+          response: string
+          thread_id: string
+          tokens_used: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          metadata?: Json | null
+          model: string
+          response: string
+          thread_id: string
+          tokens_used?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          metadata?: Json | null
+          model?: string
+          response?: string
+          thread_id?: string
+          tokens_used?: number | null
+        }
+        Relationships: []
+      }
       handover_intake: {
         Row: {
           checksum: string | null
@@ -26428,6 +26458,36 @@ export type Database = {
           metric_value?: number
           recorded_at?: string | null
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      perplexity_conversations: {
+        Row: {
+          created_at: string | null
+          id: string
+          metadata: Json | null
+          model: string
+          response: string
+          thread_id: string
+          tokens_used: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          metadata?: Json | null
+          model: string
+          response: string
+          thread_id: string
+          tokens_used?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          metadata?: Json | null
+          model?: string
+          response?: string
+          thread_id?: string
+          tokens_used?: number | null
         }
         Relationships: []
       }
