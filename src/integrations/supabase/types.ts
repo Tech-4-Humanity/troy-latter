@@ -483,6 +483,71 @@ export type Database = {
         }
         Relationships: []
       }
+      accommodation: {
+        Row: {
+          booking_url: string | null
+          check_in: string | null
+          check_out: string | null
+          confirmation_number: string | null
+          created_at: string | null
+          currency: string | null
+          hotel_brand: string | null
+          hotel_name: string
+          id: string
+          location: string | null
+          nights: number | null
+          points_required: number | null
+          price: number | null
+          room_type: string | null
+          trip_id: string | null
+          using_points: boolean | null
+        }
+        Insert: {
+          booking_url?: string | null
+          check_in?: string | null
+          check_out?: string | null
+          confirmation_number?: string | null
+          created_at?: string | null
+          currency?: string | null
+          hotel_brand?: string | null
+          hotel_name: string
+          id?: string
+          location?: string | null
+          nights?: number | null
+          points_required?: number | null
+          price?: number | null
+          room_type?: string | null
+          trip_id?: string | null
+          using_points?: boolean | null
+        }
+        Update: {
+          booking_url?: string | null
+          check_in?: string | null
+          check_out?: string | null
+          confirmation_number?: string | null
+          created_at?: string | null
+          currency?: string | null
+          hotel_brand?: string | null
+          hotel_name?: string
+          id?: string
+          location?: string | null
+          nights?: number | null
+          points_required?: number | null
+          price?: number | null
+          room_type?: string | null
+          trip_id?: string | null
+          using_points?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "accommodation_trip_id_fkey"
+            columns: ["trip_id"]
+            isOneToOne: false
+            referencedRelation: "trips"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       actions: {
         Row: {
           id: string
@@ -550,6 +615,59 @@ export type Database = {
           value_score?: string | null
         }
         Relationships: []
+      }
+      activities: {
+        Row: {
+          activity_name: string
+          activity_type: string | null
+          booking_url: string | null
+          commission_rate: number | null
+          created_at: string | null
+          currency: string | null
+          date: string | null
+          description: string | null
+          id: string
+          location: string | null
+          price: number | null
+          trip_id: string | null
+        }
+        Insert: {
+          activity_name: string
+          activity_type?: string | null
+          booking_url?: string | null
+          commission_rate?: number | null
+          created_at?: string | null
+          currency?: string | null
+          date?: string | null
+          description?: string | null
+          id?: string
+          location?: string | null
+          price?: number | null
+          trip_id?: string | null
+        }
+        Update: {
+          activity_name?: string
+          activity_type?: string | null
+          booking_url?: string | null
+          commission_rate?: number | null
+          created_at?: string | null
+          currency?: string | null
+          date?: string | null
+          description?: string | null
+          id?: string
+          location?: string | null
+          price?: number | null
+          trip_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "activities_trip_id_fkey"
+            columns: ["trip_id"]
+            isOneToOne: false
+            referencedRelation: "trips"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       activity_participants: {
         Row: {
@@ -5770,6 +5888,45 @@ export type Database = {
         }
         Relationships: []
       }
+      automation_status: {
+        Row: {
+          completed_at: string | null
+          created_at: string | null
+          error_message: string | null
+          id: string
+          last_run: string | null
+          metadata: Json | null
+          process_name: string
+          started_at: string | null
+          status: string | null
+          trip_id: string | null
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string | null
+          error_message?: string | null
+          id?: string
+          last_run?: string | null
+          metadata?: Json | null
+          process_name: string
+          started_at?: string | null
+          status?: string | null
+          trip_id?: string | null
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string | null
+          error_message?: string | null
+          id?: string
+          last_run?: string | null
+          metadata?: Json | null
+          process_name?: string
+          started_at?: string | null
+          status?: string | null
+          trip_id?: string | null
+        }
+        Relationships: []
+      }
       automation_survey_responses: {
         Row: {
           created_at: string
@@ -8590,6 +8747,131 @@ export type Database = {
           tags?: string[] | null
           updated_at?: string
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      booking_status_updates: {
+        Row: {
+          booking_id: string
+          created_at: string
+          details: Json | null
+          id: string
+          message: string
+          status_type: string
+        }
+        Insert: {
+          booking_id: string
+          created_at?: string
+          details?: Json | null
+          id?: string
+          message: string
+          status_type: string
+        }
+        Update: {
+          booking_id?: string
+          created_at?: string
+          details?: Json | null
+          id?: string
+          message?: string
+          status_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "booking_status_updates_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      bookings: {
+        Row: {
+          cabin_class: string
+          calendar_ics_url: string | null
+          completed_at: string | null
+          confirmation_codes: Json | null
+          created_at: string
+          departure_date: string
+          destination: string | null
+          guarantee_triggered: boolean | null
+          id: string
+          ihg_points: number | null
+          origin_airport: string
+          price_paid: number
+          qantas_points: number
+          refund_amount: number | null
+          refund_reason: string | null
+          return_date: string | null
+          status: string
+          temporal_run_id: string | null
+          temporal_workflow_id: string | null
+          tickets_pdf_url: string | null
+          tier: string
+          travelers_count: number
+          travelers_details: string | null
+          trip_details: Json | null
+          updated_at: string
+          user_id: string
+          virgin_points: number | null
+        }
+        Insert: {
+          cabin_class?: string
+          calendar_ics_url?: string | null
+          completed_at?: string | null
+          confirmation_codes?: Json | null
+          created_at?: string
+          departure_date: string
+          destination?: string | null
+          guarantee_triggered?: boolean | null
+          id?: string
+          ihg_points?: number | null
+          origin_airport: string
+          price_paid: number
+          qantas_points: number
+          refund_amount?: number | null
+          refund_reason?: string | null
+          return_date?: string | null
+          status?: string
+          temporal_run_id?: string | null
+          temporal_workflow_id?: string | null
+          tickets_pdf_url?: string | null
+          tier: string
+          travelers_count?: number
+          travelers_details?: string | null
+          trip_details?: Json | null
+          updated_at?: string
+          user_id: string
+          virgin_points?: number | null
+        }
+        Update: {
+          cabin_class?: string
+          calendar_ics_url?: string | null
+          completed_at?: string | null
+          confirmation_codes?: Json | null
+          created_at?: string
+          departure_date?: string
+          destination?: string | null
+          guarantee_triggered?: boolean | null
+          id?: string
+          ihg_points?: number | null
+          origin_airport?: string
+          price_paid?: number
+          qantas_points?: number
+          refund_amount?: number | null
+          refund_reason?: string | null
+          return_date?: string | null
+          status?: string
+          temporal_run_id?: string | null
+          temporal_workflow_id?: string | null
+          tickets_pdf_url?: string | null
+          tier?: string
+          travelers_count?: number
+          travelers_details?: string | null
+          trip_details?: Json | null
+          updated_at?: string
+          user_id?: string
+          virgin_points?: number | null
         }
         Relationships: []
       }
@@ -15366,45 +15648,75 @@ export type Database = {
       discount_sources: {
         Row: {
           active: boolean | null
-          channel: string | null
+          channel: string
           conditions: Json | null
           created_at: string | null
           expires_at: string | null
           id: string
           name: string
-          tenant_id: string | null
           type: string
-          updated_at: string | null
           value: number
           value_type: string
         }
         Insert: {
           active?: boolean | null
-          channel?: string | null
+          channel: string
           conditions?: Json | null
           created_at?: string | null
           expires_at?: string | null
           id?: string
           name: string
-          tenant_id?: string | null
           type: string
-          updated_at?: string | null
           value: number
           value_type: string
         }
         Update: {
           active?: boolean | null
-          channel?: string | null
+          channel?: string
           conditions?: Json | null
           created_at?: string | null
           expires_at?: string | null
           id?: string
           name?: string
-          tenant_id?: string | null
           type?: string
-          updated_at?: string | null
           value?: number
           value_type?: string
+        }
+        Relationships: []
+      }
+      discounts: {
+        Row: {
+          active: boolean | null
+          code: string
+          created_at: string | null
+          description: string | null
+          discount_type: string | null
+          discount_value: number | null
+          id: string
+          valid_from: string | null
+          valid_until: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          code: string
+          created_at?: string | null
+          description?: string | null
+          discount_type?: string | null
+          discount_value?: number | null
+          id?: string
+          valid_from?: string | null
+          valid_until?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          code?: string
+          created_at?: string | null
+          description?: string | null
+          discount_type?: string | null
+          discount_value?: number | null
+          id?: string
+          valid_from?: string | null
+          valid_until?: string | null
         }
         Relationships: []
       }
@@ -17447,15 +17759,7 @@ export type Database = {
           source?: string
           trip_id?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "external_plans_trip_id_fkey"
-            columns: ["trip_id"]
-            isOneToOne: false
-            referencedRelation: "trips"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       extractions: {
         Row: {
@@ -18156,6 +18460,59 @@ export type Database = {
           Workstream?: string | null
         }
         Relationships: []
+      }
+      flights: {
+        Row: {
+          airline: string | null
+          arrival_time: string | null
+          booking_url: string | null
+          created_at: string | null
+          currency: string | null
+          departure_time: string | null
+          destination: string | null
+          flight_number: string | null
+          id: string
+          origin: string | null
+          price: number | null
+          trip_id: string | null
+        }
+        Insert: {
+          airline?: string | null
+          arrival_time?: string | null
+          booking_url?: string | null
+          created_at?: string | null
+          currency?: string | null
+          departure_time?: string | null
+          destination?: string | null
+          flight_number?: string | null
+          id?: string
+          origin?: string | null
+          price?: number | null
+          trip_id?: string | null
+        }
+        Update: {
+          airline?: string | null
+          arrival_time?: string | null
+          booking_url?: string | null
+          created_at?: string | null
+          currency?: string | null
+          departure_time?: string | null
+          destination?: string | null
+          flight_number?: string | null
+          id?: string
+          origin?: string | null
+          price?: number | null
+          trip_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "flights_trip_id_fkey"
+            columns: ["trip_id"]
+            isOneToOne: false
+            referencedRelation: "trips"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       frameworks: {
         Row: {
@@ -20783,15 +21140,7 @@ export type Database = {
           type?: string
           updated_at?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "jobs_trip_id_fkey"
-            columns: ["trip_id"]
-            isOneToOne: false
-            referencedRelation: "trips"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       knowledge_applications: {
         Row: {
@@ -25783,40 +26132,37 @@ export type Database = {
       }
       partner_channels: {
         Row: {
-          base_url: string | null
-          code: string
+          active: boolean | null
+          api_endpoint: string | null
+          api_url: string | null
+          code: string | null
           commission_rate: number | null
           created_at: string | null
           id: string
-          meta: Json | null
           name: string
-          payout_currency: string | null
-          tenant_id: string | null
-          updated_at: string | null
+          type: string | null
         }
         Insert: {
-          base_url?: string | null
-          code: string
+          active?: boolean | null
+          api_endpoint?: string | null
+          api_url?: string | null
+          code?: string | null
           commission_rate?: number | null
           created_at?: string | null
           id?: string
-          meta?: Json | null
           name: string
-          payout_currency?: string | null
-          tenant_id?: string | null
-          updated_at?: string | null
+          type?: string | null
         }
         Update: {
-          base_url?: string | null
-          code?: string
+          active?: boolean | null
+          api_endpoint?: string | null
+          api_url?: string | null
+          code?: string | null
           commission_rate?: number | null
           created_at?: string | null
           id?: string
-          meta?: Json | null
           name?: string
-          payout_currency?: string | null
-          tenant_id?: string | null
-          updated_at?: string | null
+          type?: string | null
         }
         Relationships: []
       }
@@ -32504,19 +32850,27 @@ export type Database = {
           booking_reference: string | null
           cash_cost: number | null
           channel: string | null
+          channel_id: string | null
           check_in: string | null
           check_out: string | null
+          commission: number | null
+          commission_earned: number | null
           created_at: string | null
           currency: string | null
           details: Json | null
+          discount: number | null
+          discount_applied: number | null
           discount_json: Json | null
+          duration_hours: number | null
           from_code: string | null
+          gross_cash: number | null
           id: string
+          net_cash: number | null
           points_cost: number | null
           provider: string
-          status: string | null
+          status: string
           to_code: string | null
-          trip_id: string | null
+          trip_id: string
           type: string
           updated_at: string | null
         }
@@ -32524,19 +32878,27 @@ export type Database = {
           booking_reference?: string | null
           cash_cost?: number | null
           channel?: string | null
+          channel_id?: string | null
           check_in?: string | null
           check_out?: string | null
+          commission?: number | null
+          commission_earned?: number | null
           created_at?: string | null
           currency?: string | null
           details?: Json | null
+          discount?: number | null
+          discount_applied?: number | null
           discount_json?: Json | null
+          duration_hours?: number | null
           from_code?: string | null
+          gross_cash?: number | null
           id?: string
+          net_cash?: number | null
           points_cost?: number | null
           provider: string
-          status?: string | null
+          status?: string
           to_code?: string | null
-          trip_id?: string | null
+          trip_id: string
           type: string
           updated_at?: string | null
         }
@@ -32544,28 +32906,36 @@ export type Database = {
           booking_reference?: string | null
           cash_cost?: number | null
           channel?: string | null
+          channel_id?: string | null
           check_in?: string | null
           check_out?: string | null
+          commission?: number | null
+          commission_earned?: number | null
           created_at?: string | null
           currency?: string | null
           details?: Json | null
+          discount?: number | null
+          discount_applied?: number | null
           discount_json?: Json | null
+          duration_hours?: number | null
           from_code?: string | null
+          gross_cash?: number | null
           id?: string
+          net_cash?: number | null
           points_cost?: number | null
           provider?: string
-          status?: string | null
+          status?: string
           to_code?: string | null
-          trip_id?: string | null
+          trip_id?: string
           type?: string
           updated_at?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "segments_trip_id_fkey"
-            columns: ["trip_id"]
+            foreignKeyName: "segments_channel_id_fkey"
+            columns: ["channel_id"]
             isOneToOne: false
-            referencedRelation: "trips"
+            referencedRelation: "partner_channels"
             referencedColumns: ["id"]
           },
         ]
@@ -38110,6 +38480,53 @@ export type Database = {
         }
         Relationships: []
       }
+      travelers: {
+        Row: {
+          created_at: string | null
+          date_of_birth: string | null
+          full_name: string
+          id: string
+          nationality: string | null
+          passport_expiry: string | null
+          passport_number: string | null
+          place_of_birth: string | null
+          trip_id: string | null
+          user_label: string
+        }
+        Insert: {
+          created_at?: string | null
+          date_of_birth?: string | null
+          full_name: string
+          id?: string
+          nationality?: string | null
+          passport_expiry?: string | null
+          passport_number?: string | null
+          place_of_birth?: string | null
+          trip_id?: string | null
+          user_label: string
+        }
+        Update: {
+          created_at?: string | null
+          date_of_birth?: string | null
+          full_name?: string
+          id?: string
+          nationality?: string | null
+          passport_expiry?: string | null
+          passport_number?: string | null
+          place_of_birth?: string | null
+          trip_id?: string | null
+          user_label?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "travelers_trip_id_fkey"
+            columns: ["trip_id"]
+            isOneToOne: false
+            referencedRelation: "trips"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       travellers: {
         Row: {
           created_at: string | null
@@ -38143,6 +38560,105 @@ export type Database = {
         }
         Relationships: []
       }
+      trip_activities: {
+        Row: {
+          activity_name: string
+          activity_type: string | null
+          booking_reference: string | null
+          booking_status: string | null
+          cost_aud: number | null
+          created_at: string | null
+          duration_minutes: number | null
+          id: string
+          location: string | null
+          notes: string | null
+          scheduled_date: string | null
+          scheduled_time: string | null
+          trip_id: string | null
+          updated_at: string | null
+          url: string | null
+        }
+        Insert: {
+          activity_name: string
+          activity_type?: string | null
+          booking_reference?: string | null
+          booking_status?: string | null
+          cost_aud?: number | null
+          created_at?: string | null
+          duration_minutes?: number | null
+          id?: string
+          location?: string | null
+          notes?: string | null
+          scheduled_date?: string | null
+          scheduled_time?: string | null
+          trip_id?: string | null
+          updated_at?: string | null
+          url?: string | null
+        }
+        Update: {
+          activity_name?: string
+          activity_type?: string | null
+          booking_reference?: string | null
+          booking_status?: string | null
+          cost_aud?: number | null
+          created_at?: string | null
+          duration_minutes?: number | null
+          id?: string
+          location?: string | null
+          notes?: string | null
+          scheduled_date?: string | null
+          scheduled_time?: string | null
+          trip_id?: string | null
+          updated_at?: string | null
+          url?: string | null
+        }
+        Relationships: []
+      }
+      trip_tasks: {
+        Row: {
+          assigned_to: string | null
+          automated: boolean | null
+          automation_config: Json | null
+          completed_at: string | null
+          created_at: string | null
+          due_date: string | null
+          id: string
+          priority: string | null
+          status: string | null
+          task_name: string
+          task_type: string | null
+          trip_id: string | null
+        }
+        Insert: {
+          assigned_to?: string | null
+          automated?: boolean | null
+          automation_config?: Json | null
+          completed_at?: string | null
+          created_at?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string | null
+          status?: string | null
+          task_name: string
+          task_type?: string | null
+          trip_id?: string | null
+        }
+        Update: {
+          assigned_to?: string | null
+          automated?: boolean | null
+          automation_config?: Json | null
+          completed_at?: string | null
+          created_at?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string | null
+          status?: string | null
+          task_name?: string
+          task_type?: string | null
+          trip_id?: string | null
+        }
+        Relationships: []
+      }
       trip_travellers: {
         Row: {
           traveller_id: string
@@ -38164,71 +38680,60 @@ export type Database = {
             referencedRelation: "travellers"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "trip_travellers_trip_id_fkey"
-            columns: ["trip_id"]
-            isOneToOne: false
-            referencedRelation: "trips"
-            referencedColumns: ["id"]
-          },
         ]
       }
       trips: {
         Row: {
-          adults: number | null
-          children: number | null
+          booking_id: string | null
           created_at: string | null
-          created_by: string | null
           destination: string
-          end_date: string
+          end_date: string | null
           id: string
-          max_cash_topup_aud: number | null
-          origin: string
-          start_date: string
+          start_date: string | null
           status: string | null
-          strategy_mode: string | null
-          tenant_id: string | null
-          title: string
+          total_cost_aud: number | null
+          total_points: number | null
+          trip_name: string
           updated_at: string | null
-          updated_by: string | null
+          user_id: string | null
         }
         Insert: {
-          adults?: number | null
-          children?: number | null
+          booking_id?: string | null
           created_at?: string | null
-          created_by?: string | null
           destination: string
-          end_date: string
+          end_date?: string | null
           id?: string
-          max_cash_topup_aud?: number | null
-          origin: string
-          start_date: string
+          start_date?: string | null
           status?: string | null
-          strategy_mode?: string | null
-          tenant_id?: string | null
-          title: string
+          total_cost_aud?: number | null
+          total_points?: number | null
+          trip_name: string
           updated_at?: string | null
-          updated_by?: string | null
+          user_id?: string | null
         }
         Update: {
-          adults?: number | null
-          children?: number | null
+          booking_id?: string | null
           created_at?: string | null
-          created_by?: string | null
           destination?: string
-          end_date?: string
+          end_date?: string | null
           id?: string
-          max_cash_topup_aud?: number | null
-          origin?: string
-          start_date?: string
+          start_date?: string | null
           status?: string | null
-          strategy_mode?: string | null
-          tenant_id?: string | null
-          title?: string
+          total_cost_aud?: number | null
+          total_points?: number | null
+          trip_name?: string
           updated_at?: string | null
-          updated_by?: string | null
+          user_id?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "trips_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       troy_consultations: {
         Row: {
@@ -39003,6 +39508,50 @@ export type Database = {
           withdrawn_at?: string | null
         }
         Relationships: []
+      }
+      user_credits: {
+        Row: {
+          amount: number
+          created_at: string
+          expires_at: string | null
+          id: string
+          source: string
+          source_booking_id: string | null
+          updated_at: string
+          used_amount: number
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          created_at?: string
+          expires_at?: string | null
+          id?: string
+          source: string
+          source_booking_id?: string | null
+          updated_at?: string
+          used_amount?: number
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          expires_at?: string | null
+          id?: string
+          source?: string
+          source_booking_id?: string | null
+          updated_at?: string
+          used_amount?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_credits_source_booking_id_fkey"
+            columns: ["source_booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_data_export_requests: {
         Row: {

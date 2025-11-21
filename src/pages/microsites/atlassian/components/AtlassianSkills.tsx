@@ -81,26 +81,28 @@ export const AtlassianSkills = () => {
 
       {/* Education */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-[#6B778C] mb-4 flex items-center gap-2">
-          <span className="w-5 h-0.5 rounded-full bg-gradient-to-r from-[#0052CC] to-[#2684FF]"></span>
+        <h2 className="text-sm font-bold tracking-[0.1em] uppercase text-[#6B778C] mb-4 flex items-center gap-2"
+            style={{ fontFamily: 'Inter, sans-serif', textShadow: '0 0 16px rgba(0, 82, 204, 0.1)' }}>
+          <span className="w-8 h-0.5 bg-gradient-to-r from-[#0052CC] via-[#0747A6] to-[#2684FF] rounded-full"></span>
           Education
         </h2>
-        <div className="space-y-2 text-sm text-[#172B4D]">
-          <p>
+        <div className="space-y-3 text-sm text-[#172B4D]">
+          <p className="font-medium" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
             Master of Commerce (Marketing)<br />
-            <span className="text-[#6B778C]">University of New South Wales</span>
+            <span className="text-xs text-[#6B778C] font-normal">University of New South Wales</span>
           </p>
-          <p>
+          <p className="font-medium" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
             Bachelor of Economics (Law and Industrial Relations)<br />
-            <span className="text-[#6B778C]">University of Wollongong</span>
+            <span className="text-xs text-[#6B778C] font-normal">University of Wollongong</span>
           </p>
         </div>
       </section>
 
       {/* Certifications */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-[#6B778C] mb-4 flex items-center gap-2">
-          <span className="w-5 h-0.5 rounded-full bg-gradient-to-r from-[#0052CC] to-[#2684FF]"></span>
+        <h2 className="text-sm font-bold tracking-[0.1em] uppercase text-[#6B778C] mb-4 flex items-center gap-2"
+            style={{ fontFamily: 'Inter, sans-serif', textShadow: '0 0 16px rgba(0, 82, 204, 0.1)' }}>
+          <span className="w-8 h-0.5 bg-gradient-to-r from-[#0052CC] via-[#0747A6] to-[#2684FF] rounded-full"></span>
           Micro credentials and certifications
         </h2>
         <div className="space-y-3 text-sm text-[#172B4D]" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
@@ -132,22 +134,23 @@ export const AtlassianSkills = () => {
 
       {/* Advisory Work */}
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-[#6B778C] mb-4 flex items-center gap-2">
-          <span className="w-5 h-0.5 rounded-full bg-gradient-to-r from-[#0052CC] to-[#2684FF]"></span>
+        <h2 className="text-sm font-bold tracking-[0.1em] uppercase text-[#6B778C] mb-4 flex items-center gap-2"
+            style={{ fontFamily: 'Inter, sans-serif', textShadow: '0 0 16px rgba(0, 82, 204, 0.1)' }}>
+          <span className="w-8 h-0.5 bg-gradient-to-r from-[#0052CC] via-[#0747A6] to-[#2684FF] rounded-full"></span>
           Advisory work
         </h2>
-        <div className="space-y-2 text-sm text-[#172B4D]">
-          <p>
+        <div className="space-y-3 text-sm text-[#172B4D]">
+          <p className="font-medium" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
             Advisory Board Member<br />
-            <span className="text-[#6B778C]">Queensland Government AI Hub</span>
+            <span className="text-xs text-[#6B778C] font-normal">Queensland Government AI Hub</span>
           </p>
-          <p>
+          <p className="font-medium" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
             Committee Member<br />
-            <span className="text-[#6B778C]">Standards Australia Brain Computer Interface and Robotics</span>
+            <span className="text-xs text-[#6B778C] font-normal">Standards Australia Brain Computer Interface and Robotics</span>
           </p>
-          <p>
+          <p className="font-medium" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
             Former Board Member<br />
-            <span className="text-[#6B778C]">IT Service Management Forum Australia</span>
+            <span className="text-xs text-[#6B778C] font-normal">IT Service Management Forum Australia</span>
           </p>
         </div>
       </section>
