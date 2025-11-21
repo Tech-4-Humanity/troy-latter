@@ -15,8 +15,9 @@ import { ElevatorPitch } from "./ElevatorPitch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Sparkles, Briefcase, UserCheck, Zap } from "lucide-react";
+import { Loader2, Sparkles, Briefcase, UserCheck, Zap, BarChart3 } from "lucide-react";
 import { toast } from "sonner";
+import { SkillsAnalysis } from "./SkillsAnalysis";
 
 export function MCPBridgeAICVGenerator() {
   const [jobDescription, setJobDescription] = useState("");
@@ -345,9 +346,10 @@ Format each pitch clearly with scenario headers.`,
           </Card>
 
           <Tabs defaultValue="score" className="w-full">
-            <TabsList className="grid w-full grid-cols-3">
+            <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="score">Match Score</TabsTrigger>
               <TabsTrigger value="analysis">Job Analysis</TabsTrigger>
+              <TabsTrigger value="skills"><BarChart3 className="h-4 w-4 mr-1" />Skills</TabsTrigger>
               <TabsTrigger value="strategy">Strategy</TabsTrigger>
             </TabsList>
             
@@ -357,6 +359,10 @@ Format each pitch clearly with scenario headers.`,
             
             <TabsContent value="analysis" className="space-y-4">
               <JobAnalysisDisplay analysis={jobAnalysis} />
+            </TabsContent>
+            
+            <TabsContent value="skills" className="space-y-4">
+              <SkillsAnalysis analysis={jobAnalysis} matchScore={matchScore} />
             </TabsContent>
             
             <TabsContent value="strategy" className="space-y-4">
