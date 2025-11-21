@@ -1,110 +1,157 @@
-import { MatchScore } from "@/lib/match-scoring";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { CheckCircle2, AlertCircle, XCircle } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import type { MatchScore } from "@/lib/match-scoring";
 
-interface MatchScoreProps {
+interface MatchScoreDisplayProps {
   score: MatchScore;
 }
 
-export function MatchScoreDisplay({ score }: MatchScoreProps) {
+export function MatchScoreDisplay({ score }: MatchScoreDisplayProps) {
   const getScoreColor = (value: number) => {
-    if (value >= 75) return "text-green-600";
-    if (value >= 60) return "text-yellow-600";
-    return "text-red-600";
+    if (value >= 75) return "hsl(var(--chart-2))"; // Green
+    if (value >= 60) return "hsl(var(--chart-3))"; // Yellow  
+    return "hsl(var(--destructive))"; // Red
   };
 
-  const getScoreIcon = (value: number) => {
-    if (value >= 75) return <CheckCircle2 className="h-5 w-5 text-green-600" />;
-    if (value >= 60) return <AlertCircle className="h-5 w-5 text-yellow-600" />;
-    return <XCircle className="h-5 w-5 text-red-600" />;
+  const getScoreTextColor = (value: number) => {
+    if (value >= 75) return "text-green-600 dark:text-green-400";
+    if (value >= 60) return "text-yellow-600 dark:text-yellow-400";
+    return "text-destructive";
   };
+
+  const getScoreBadgeVariant = (value: number): "default" | "secondary" | "destructive" => {
+    if (value >= 75) return "default";
+    if (value >= 60) return "secondary";
+    return "destructive";
+  };
+
+  // Radial progress calculation
+  const radius = 70;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (score.overall / 100) * circumference;
 
   return (
-    <div className="space-y-4">
-      {/* Overall Score */}
-      <Card className="border-2">
-        <CardHeader>
-          <CardTitle className="flex items-center justify-between">
-            <span>Overall Match Score</span>
-            <div className="flex items-center gap-2">
-              {getScoreIcon(score.overall)}
-              <span className={`text-3xl font-bold ${getScoreColor(score.overall)}`}>
+    <Card className="border-2">
+      <CardHeader>
+        <CardTitle>Match Score Analysis</CardTitle>
+        <CardDescription>AI-powered alignment assessment</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        {/* Radial Overall Score */}
+        <div className="flex flex-col items-center space-y-4">
+          <div className="relative w-48 h-48">
+            <svg className="transform -rotate-90 w-48 h-48">
+              {/* Background circle */}
+              <circle
+                cx="96"
+                cy="96"
+                r={radius}
+                stroke="hsl(var(--muted))"
+                strokeWidth="12"
+                fill="none"
+              />
+              {/* Progress circle */}
+              <circle
+                cx="96"
+                cy="96"
+                r={radius}
+                stroke={getScoreColor(score.overall)}
+                strokeWidth="12"
+                fill="none"
+                strokeDasharray={circumference}
+                strokeDashoffset={strokeDashoffset}
+                strokeLinecap="round"
+                className="transition-all duration-1000 ease-out"
+              />
+            </svg>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <div className={`text-5xl font-bold ${getScoreTextColor(score.overall)}`}>
                 {score.overall}%
-              </span>
+              </div>
+              <div className="text-xs text-muted-foreground mt-1">OVERALL</div>
             </div>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <div className="text-lg font-semibold">{score.interpretation}</div>
-          <Progress value={score.overall} className="h-3" />
-          <p className="text-sm text-muted-foreground">{score.recommendation}</p>
-        </CardContent>
-      </Card>
+          </div>
+          <Badge variant={getScoreBadgeVariant(score.overall)} className="text-base px-6 py-2">
+            {score.interpretation}
+          </Badge>
+        </div>
 
-      {/* Detailed Breakdown */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Score Breakdown</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {/* Technical Fit */}
+        {/* Score Breakdown with Color Bars */}
+        <div className="space-y-4 pt-4 border-t">
+          <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
+            Detailed Breakdown
+          </h4>
+          
           <div className="space-y-2">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between text-sm">
               <span className="font-medium">Technical Fit</span>
-              <span className={`font-bold ${getScoreColor(score.technical)}`}>
-                {score.technical}%
-              </span>
+              <span className={getScoreTextColor(score.technical)}>{score.technical}%</span>
             </div>
-            <Progress value={score.technical} className="h-2" />
-            <p className="text-xs text-muted-foreground">
-              Alignment with required technical skills and expertise
-            </p>
+            <div className="h-2.5 bg-muted rounded-full overflow-hidden">
+              <div 
+                className="h-full transition-all duration-1000 ease-out rounded-full"
+                style={{ 
+                  width: `${score.technical}%`,
+                  backgroundColor: getScoreColor(score.technical)
+                }}
+              />
+            </div>
           </div>
 
-          {/* Leadership Alignment */}
           <div className="space-y-2">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between text-sm">
               <span className="font-medium">Leadership Alignment</span>
-              <span className={`font-bold ${getScoreColor(score.leadership)}`}>
-                {score.leadership}%
-              </span>
+              <span className={getScoreTextColor(score.leadership)}>{score.leadership}%</span>
             </div>
-            <Progress value={score.leadership} className="h-2" />
-            <p className="text-xs text-muted-foreground">
-              Match with leadership level and scope of responsibility
-            </p>
+            <div className="h-2.5 bg-muted rounded-full overflow-hidden">
+              <div 
+                className="h-full transition-all duration-1000 ease-out rounded-full"
+                style={{ 
+                  width: `${score.leadership}%`,
+                  backgroundColor: getScoreColor(score.leadership)
+                }}
+              />
+            </div>
           </div>
 
-          {/* Domain Relevance */}
           <div className="space-y-2">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between text-sm">
               <span className="font-medium">Domain Relevance</span>
-              <span className={`font-bold ${getScoreColor(score.domain)}`}>
-                {score.domain}%
-              </span>
+              <span className={getScoreTextColor(score.domain)}>{score.domain}%</span>
             </div>
-            <Progress value={score.domain} className="h-2" />
-            <p className="text-xs text-muted-foreground">
-              Industry and sector experience alignment
-            </p>
+            <div className="h-2.5 bg-muted rounded-full overflow-hidden">
+              <div 
+                className="h-full transition-all duration-1000 ease-out rounded-full"
+                style={{ 
+                  width: `${score.domain}%`,
+                  backgroundColor: getScoreColor(score.domain)
+                }}
+              />
+            </div>
           </div>
 
-          {/* Cultural Fit */}
           <div className="space-y-2">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between text-sm">
               <span className="font-medium">Cultural Fit</span>
-              <span className={`font-bold ${getScoreColor(score.cultural)}`}>
-                {score.cultural}%
-              </span>
+              <span className={getScoreTextColor(score.cultural)}>{score.cultural}%</span>
             </div>
-            <Progress value={score.cultural} className="h-2" />
-            <p className="text-xs text-muted-foreground">
-              Work style and company culture alignment
-            </p>
+            <div className="h-2.5 bg-muted rounded-full overflow-hidden">
+              <div 
+                className="h-full transition-all duration-1000 ease-out rounded-full"
+                style={{ 
+                  width: `${score.cultural}%`,
+                  backgroundColor: getScoreColor(score.cultural)
+                }}
+              />
+            </div>
           </div>
-        </CardContent>
-      </Card>
-    </div>
+        </div>
+
+        {/* Recommendation */}
+        <div className="pt-4 border-t bg-muted/30 rounded-lg p-4">
+          <p className="text-sm font-medium">{score.recommendation}</p>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
