@@ -1,15 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PageTitle } from '@/components/PageTitle';
 import { Link } from 'react-router-dom';
 import { CVGeneratorForm } from '@/components/cv/CVGeneratorForm';
+import { MCPBridgeAICVGenerator } from '@/components/cv/MCPBridgeAICVGenerator';
 import { Button } from '@/components/ui/button';
-import { Database, FileText, BarChart3 } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Database, FileText, BarChart3, Sparkles, Zap } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { isMCPBridgeAIAvailable } from '@/lib/ai-utils';
 
 export default function CVGenerator() {
   const hasRunIngestion = useRef(false);
+  const hasMCPBridge = isMCPBridgeAIAvailable();
+  const [activeTab, setActiveTab] = useState(hasMCPBridge ? 'mcp-bridge' : 'supabase');
 
   // Trigger on-demand CV ingestion when page loads (debounced, runs once)
   useEffect(() => {
@@ -92,7 +97,30 @@ export default function CVGenerator() {
         </div>
 
         <div className="max-w-4xl mx-auto mb-12">
-          <CVGeneratorForm />
+          {hasMCPBridge ? (
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+              <TabsList className="grid w-full grid-cols-2 mb-6">
+                <TabsTrigger value="mcp-bridge" className="flex items-center gap-2">
+                  <Sparkles className="h-4 w-4" />
+                  MCP Bridge AI
+                </TabsTrigger>
+                <TabsTrigger value="supabase" className="flex items-center gap-2">
+                  <Zap className="h-4 w-4" />
+                  Standard Generator
+                </TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="mcp-bridge" className="mt-0">
+                <MCPBridgeAICVGenerator />
+              </TabsContent>
+              
+              <TabsContent value="supabase" className="mt-0">
+                <CVGeneratorForm />
+              </TabsContent>
+            </Tabs>
+          ) : (
+            <CVGeneratorForm />
+          )}
         </div>
       </div>
     </div>
