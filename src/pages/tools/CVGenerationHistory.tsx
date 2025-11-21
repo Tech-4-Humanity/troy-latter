@@ -14,11 +14,18 @@ interface CVGeneration {
   job_description: string;
   match_score: number;
   generated_cv: string;
-  generated_html: string | null;
-  template_name: string | null;
-  user_email: string | null;
-  skill_alignment_score: number;
-  ai_model: string | null;
+  generated_html?: string | null;
+  cover_letter?: string | null;
+  interview_prep?: string | null;
+  elevator_pitches?: string | null;
+  opportunity_track?: string | null;
+  template_name?: string | null;
+  user_email?: string | null;
+  skill_alignment_score?: number;
+  ai_model?: string | null;
+  tone_setting?: string | null;
+  length_setting?: string | null;
+  focus_area?: string | null;
 }
 
 export default function CVGenerationHistory() {
@@ -34,7 +41,7 @@ export default function CVGenerationHistory() {
     try {
       const { data, error } = await supabase
         .from('cv_generations')
-        .select('id, created_at, job_description, match_score, generated_cv, generated_html, template_name, user_email, skill_alignment_score, ai_model')
+        .select('*')
         .order('created_at', { ascending: false })
         .limit(50);
 
@@ -137,7 +144,17 @@ export default function CVGenerationHistory() {
                       )}
                       {gen.template_name && (
                         <Badge variant="outline" className="capitalize">
-                          {gen.template_name} Template
+                          {gen.template_name}
+                        </Badge>
+                      )}
+                      {gen.opportunity_track && (
+                        <Badge variant="default">
+                          {gen.opportunity_track} Track
+                        </Badge>
+                      )}
+                      {gen.tone_setting && (
+                        <Badge variant="secondary" className="capitalize">
+                          {gen.tone_setting} Tone
                         </Badge>
                       )}
                     </div>
@@ -174,14 +191,48 @@ export default function CVGenerationHistory() {
                       <Download className="h-4 w-4 mr-2" />
                       Download MD
                     </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => downloadCV(gen.generated_cv, gen.id, 'txt')}
-                    >
-                      <Download className="h-4 w-4 mr-2" />
-                      Download TXT
-                    </Button>
+                    {gen.cover_letter && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          const blob = new Blob([gen.cover_letter!], { type: 'text/plain' });
+                          const url = URL.createObjectURL(blob);
+                          const a = document.createElement('a');
+                          a.href = url;
+                          a.download = `Cover-Letter-${gen.id}.txt`;
+                          document.body.appendChild(a);
+                          a.click();
+                          document.body.removeChild(a);
+                          URL.revokeObjectURL(url);
+                          toast.success('Cover letter downloaded');
+                        }}
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Cover Letter
+                      </Button>
+                    )}
+                    {gen.interview_prep && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          const blob = new Blob([gen.interview_prep!], { type: 'text/plain' });
+                          const url = URL.createObjectURL(blob);
+                          const a = document.createElement('a');
+                          a.href = url;
+                          a.download = `Interview-Prep-${gen.id}.txt`;
+                          document.body.appendChild(a);
+                          a.click();
+                          document.body.removeChild(a);
+                          URL.revokeObjectURL(url);
+                          toast.success('Interview prep downloaded');
+                        }}
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Interview Prep
+                      </Button>
+                    )}
                     <Button
                       variant="ghost"
                       size="sm"
@@ -191,7 +242,7 @@ export default function CVGenerationHistory() {
                       }}
                     >
                       <FileText className="h-4 w-4 mr-2" />
-                      Copy
+                      Copy CV
                     </Button>
                   </div>
                 </CardContent>

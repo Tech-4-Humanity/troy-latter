@@ -5,6 +5,7 @@ import { calculateMatchScore, MatchScore } from "@/lib/match-scoring";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CVPreview } from "./CVPreview";
 import { JobAnalysisDisplay } from "./JobAnalysis";
 import { MatchScoreDisplay } from "./MatchScore";
@@ -15,9 +16,11 @@ import { ElevatorPitch } from "./ElevatorPitch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Sparkles, Briefcase, UserCheck, Zap, BarChart3 } from "lucide-react";
+import { Loader2, Sparkles, Briefcase, UserCheck, Zap, BarChart3, Download, Save, FileText } from "lucide-react";
 import { toast } from "sonner";
 import { SkillsAnalysis } from "./SkillsAnalysis";
+import { generateProfessionalPDF } from "@/utils/pdfGenerator";
+import { supabase } from "@/integrations/supabase/client";
 
 export function MCPBridgeAICVGenerator() {
   const [jobDescription, setJobDescription] = useState("");
@@ -32,6 +35,11 @@ export function MCPBridgeAICVGenerator() {
   const [elevatorPitch, setElevatorPitch] = useState("");
   const [currentStep, setCurrentStep] = useState<'input' | 'analysis' | 'generation'>('input');
   const [selectedTrack, setSelectedTrack] = useState<'WORK' | 'JOB' | null>(null);
+  
+  // Fine-tuning controls
+  const [tone, setTone] = useState<'professional' | 'technical' | 'executive'>('professional');
+  const [length, setLength] = useState<'concise' | 'detailed' | 'comprehensive'>('detailed');
+  const [focusArea, setFocusArea] = useState<'technical' | 'leadership' | 'transformation' | 'balanced'>('balanced');
 
   const handleAnalyze = useCallback(async () => {
     if (!jobDescription.trim()) {
@@ -56,11 +64,67 @@ export function MCPBridgeAICVGenerator() {
     }
   }, [jobDescription]);
 
+  const saveGeneration = async (
+    cvMd: string, 
+    cvHtml: string, 
+    coverLetter: string, 
+    interviewPrep: string, 
+    pitches: string,
+    track: string
+  ) => {
+    try {
+      const { error } = await supabase.from('cv_generations').insert({
+        job_description: jobDescription,
+        match_score: matchScore?.overall || 0,
+        generated_cv: cvMd,
+        generated_html: cvHtml,
+        cover_letter: coverLetter,
+        interview_prep: interviewPrep,
+        elevator_pitches: pitches,
+        opportunity_track: track,
+        tone_setting: tone,
+        length_setting: length,
+        focus_area: focusArea,
+        template_name: 'professional',
+        ai_model: 'gemini-2.0-flash-exp',
+        skill_alignment_score: matchScore?.technical || 0,
+      });
+
+      if (error) throw error;
+      toast.success("Application package saved to history");
+    } catch (error) {
+      console.error('Error saving generation:', error);
+      // Don't fail the whole operation if save fails
+      toast.error("Note: Failed to save to history");
+    }
+  };
+
   const handleGenerate = useCallback(async () => {
     if (!jobAnalysis || !matchScore) return;
     
     // Use selected track or fall back to analysis recommendation
     const effectiveTrack = selectedTrack || jobAnalysis.opportunityType;
+    
+    // Build enhanced prompts with fine-tuning parameters
+    const toneGuidance = tone === 'executive' 
+      ? 'senior executive voice with strategic focus and board-level gravitas' 
+      : tone === 'technical' 
+      ? 'technical depth with architectural insights and precise terminology' 
+      : 'balanced professional tone with clear communication';
+    
+    const lengthGuidance = length === 'concise' 
+      ? '2 pages maximum, bullet points preferred, high-impact statements only'
+      : length === 'comprehensive' 
+      ? '3-4 pages with detailed examples, full STAR stories, comprehensive skill coverage'
+      : '2-3 pages with STAR-format achievements, balanced detail';
+    
+    const focusGuidance = focusArea === 'technical' 
+      ? 'emphasize technical architecture, cloud platforms, AI/ML implementation, and deep technical skills'
+      : focusArea === 'leadership' 
+      ? 'highlight strategic leadership, team development, executive decision-making, and organizational impact'
+      : focusArea === 'transformation' 
+      ? 'focus on change management, business transformation, innovation programs, and measurable organizational outcomes'
+      : 'balanced coverage of technical expertise, leadership capability, and transformation execution';
     
     setIsGenerating(true);
     try {
@@ -77,10 +141,9 @@ export function MCPBridgeAICVGenerator() {
 
       // Generate all content in parallel for efficiency
       const [cvMarkdown, cvHTML, coverLetterContent, interviewPrepContent, pitchContent] = await Promise.all([
-        // Generate markdown CV
+        // Generate markdown CV with fine-tuning
         generateContent({
-          prompt: `Generate a highly tailored CV for Troy Latter based on this job opportunity analysis.
-
+          prompt: `Generate a highly tailored CV for Troy Latter based on this job opportunity analysis.\n
 Troy Latter's Core Profile:
 - Chief Technology Officer with 15+ years enterprise transformation experience
 - Current: CEO of Tech 4 Humanity, Advisory Board Member at Queensland AI Hub
@@ -100,10 +163,15 @@ Job Analysis Results:
 Positioning Strategy:
 ${trackContext}
 
+CUSTOMIZATION PARAMETERS:
+- Tone: ${toneGuidance}
+- Length: ${lengthGuidance}
+- Focus: ${focusGuidance}
+
 Job Description:
 ${jobDescription}
 
-Generate a professional CV (2-3 pages) that:
+Generate a professional CV that:
 1. Opens with executive summary directly addressing their top priority
 2. Uses SFIA Level 7 framing for technical roles
 3. Emphasizes relevant transformation outcomes (quantified where possible)
@@ -112,7 +180,7 @@ Generate a professional CV (2-3 pages) that:
 6. Uses their terminology and language from job description
 7. Addresses any identified red flags proactively
 8. ATS-friendly formatting
-9. Maximum impact in minimum words
+9. Adheres to the specified tone, length, and focus parameters
 
 Format as clean markdown with clear sections.`,
           type: 'cv',
@@ -122,8 +190,7 @@ Format as clean markdown with clear sections.`,
 
         // Generate HTML version
         generateContent({
-          prompt: `Convert this CV to clean, professional HTML suitable for viewing in a browser.
-
+          prompt: `Convert this CV to clean, professional HTML suitable for viewing in a browser.\n
 Requirements:
 - Clean, modern design
 - Professional typography
@@ -137,10 +204,8 @@ Wrap in a complete HTML document with minimal inline CSS.`,
           domain: detectedDomain,
         }),
 
-        // Generate cover letter
         generateContent({
-          prompt: `Write a cover letter for Troy Latter for this ${effectiveTrack} opportunity.
-
+          prompt: `Write a cover letter for Troy Latter for this ${effectiveTrack} opportunity.\n
 Key Context:
 - Troy needs WORK (consulting/fractional) AND JOB (full-time) opportunities
 - Currently building Tech 4 Humanity while seeking next major role
@@ -171,10 +236,8 @@ Subject Line: [your subject]`,
           domain: detectedDomain,
         }),
 
-        // Generate interview prep
         generateContent({
-          prompt: `Generate interview preparation for Troy Latter for this role.
-
+          prompt: `Generate interview preparation for Troy Latter for this role.\n
 Job Analysis:
 - Opportunity Type: ${effectiveTrack}
 - Match Score: ${matchScore.overall}% overall
@@ -202,10 +265,8 @@ Format clearly with sections.`,
           domain: detectedDomain,
         }),
 
-        // Generate elevator pitch
         generateContent({
-          prompt: `Generate 30-second elevator pitches for Troy Latter for this ${effectiveTrack} opportunity.
-
+          prompt: `Generate 30-second elevator pitches for Troy Latter for this ${effectiveTrack} opportunity.\n
 Track: ${effectiveTrack}
 ${effectiveTrack === 'WORK' ? 'Focus: Fractional CTO positioning, consulting engagements' : 'Focus: Full-time executive role positioning'}
 
@@ -238,6 +299,10 @@ Format each pitch clearly with scenario headers.`,
       setCoverLetter(coverLetterContent);
       setInterviewPrep(interviewPrepContent);
       setElevatorPitch(pitchContent);
+      
+      // Save to database
+      await saveGeneration(cvMarkdown, cvHTML, coverLetterContent, interviewPrepContent, pitchContent, effectiveTrack);
+      
       setCurrentStep('generation');
       toast.success('Complete application package generated!');
     } catch (error) {
@@ -246,11 +311,24 @@ Format each pitch clearly with scenario headers.`,
     } finally {
       setIsGenerating(false);
     }
-  }, [jobDescription, jobAnalysis, matchScore, selectedTrack]);
+  }, [jobDescription, jobAnalysis, matchScore, selectedTrack, tone, length, focusArea]);
+
+  const handleDownloadPDF = () => {
+    if (!generatedCV) return;
+    
+    try {
+      const pdf = generateProfessionalPDF(generatedCV);
+      pdf.save(`Troy-Latter-CV-${Date.now()}.pdf`);
+      toast.success("PDF downloaded successfully");
+    } catch (error) {
+      console.error('PDF generation error:', error);
+      toast.error("Failed to generate PDF");
+    }
+  };
 
   return (
     <div className="space-y-6">
-      {/* Step 1: Input Job Description */}
+      {/* Step 1: Input Job Description & Preferences */}
       {currentStep === 'input' && (
         <div className="space-y-4">
           <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3">
@@ -264,17 +342,91 @@ Format each pitch clearly with scenario headers.`,
             </div>
           </div>
 
-          <div>
-            <Label htmlFor="job-desc">Job Description</Label>
-            <Textarea
-              id="job-desc"
-              value={jobDescription}
-              onChange={(e) => setJobDescription(e.target.value)}
-              placeholder="Paste the complete job description here..."
-              className="min-h-[200px] font-mono text-sm"
-              disabled={isAnalyzing}
-            />
-          </div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Job Description</CardTitle>
+              <CardDescription>Paste the complete job description to analyze</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Textarea
+                id="job-desc"
+                value={jobDescription}
+                onChange={(e) => setJobDescription(e.target.value)}
+                placeholder="Paste the complete job description here..."
+                className="min-h-[200px] font-mono text-sm"
+                disabled={isAnalyzing}
+              />
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Customize Your Application</CardTitle>
+              <CardDescription>Fine-tune the tone, length, and focus of your generated materials</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="tone">Tone</Label>
+                  <Select value={tone} onValueChange={(v: any) => setTone(v)}>
+                    <SelectTrigger id="tone">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="professional">Professional</SelectItem>
+                      <SelectItem value="technical">Technical</SelectItem>
+                      <SelectItem value="executive">Executive</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <p className="text-xs text-muted-foreground">
+                    {tone === 'professional' && 'Balanced, clear communication'}
+                    {tone === 'technical' && 'Deep technical insights'}
+                    {tone === 'executive' && 'Strategic, board-level voice'}
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="length">Length</Label>
+                  <Select value={length} onValueChange={(v: any) => setLength(v)}>
+                    <SelectTrigger id="length">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="concise">Concise</SelectItem>
+                      <SelectItem value="detailed">Detailed</SelectItem>
+                      <SelectItem value="comprehensive">Comprehensive</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <p className="text-xs text-muted-foreground">
+                    {length === 'concise' && '2 pages, high-impact only'}
+                    {length === 'detailed' && '2-3 pages, balanced'}
+                    {length === 'comprehensive' && '3-4 pages, full examples'}
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="focus">Focus Area</Label>
+                  <Select value={focusArea} onValueChange={(v: any) => setFocusArea(v)}>
+                    <SelectTrigger id="focus">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="balanced">Balanced</SelectItem>
+                      <SelectItem value="technical">Technical</SelectItem>
+                      <SelectItem value="leadership">Leadership</SelectItem>
+                      <SelectItem value="transformation">Transformation</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <p className="text-xs text-muted-foreground">
+                    {focusArea === 'balanced' && 'All competencies'}
+                    {focusArea === 'technical' && 'Architecture & implementation'}
+                    {focusArea === 'leadership' && 'Strategic & team impact'}
+                    {focusArea === 'transformation' && 'Change & outcomes'}
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
           <Button
             onClick={handleAnalyze}
@@ -413,13 +565,34 @@ Format each pitch clearly with scenario headers.`,
       {currentStep === 'generation' && generatedCV && (
         <div className="space-y-4">
           {/* Track indicator */}
-          <div className="flex items-center gap-2">
-            <Badge variant={selectedTrack === 'WORK' ? 'default' : 'secondary'} className="text-sm">
-              {selectedTrack || jobAnalysis?.opportunityType} Track
-            </Badge>
-            <span className="text-sm text-muted-foreground">
-              Application package tailored for {selectedTrack === 'WORK' ? 'consulting engagement' : 'full-time role'}
-            </span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Badge variant={selectedTrack === 'WORK' ? 'default' : 'secondary'} className="text-sm">
+                {selectedTrack || jobAnalysis?.opportunityType} Track
+              </Badge>
+              <span className="text-sm text-muted-foreground">
+                Application package tailored for {selectedTrack === 'WORK' ? 'consulting engagement' : 'full-time role'}
+              </span>
+            </div>
+            <div className="flex gap-2">
+              <Button onClick={handleDownloadPDF} variant="default" size="sm">
+                <Download className="mr-2 h-4 w-4" />
+                Download PDF
+              </Button>
+              <Button onClick={() => {
+                navigator.clipboard.writeText(generatedCV);
+                toast.success("CV copied to clipboard");
+              }} variant="outline" size="sm">
+                <FileText className="mr-2 h-4 w-4" />
+                Copy CV
+              </Button>
+              <Button asChild variant="outline" size="sm">
+                <a href="/tools/cv-generation-history">
+                  <Save className="mr-2 h-4 w-4" />
+                  View History
+                </a>
+              </Button>
+            </div>
           </div>
 
           <Tabs defaultValue="cv" className="w-full">
@@ -441,58 +614,54 @@ Format each pitch clearly with scenario headers.`,
             </TabsContent>
             
             <TabsContent value="cover" className="space-y-4">
-              {coverLetter && jobAnalysis && (
-                <CoverLetterGenerator 
-                  coverLetter={coverLetter}
-                  jobAnalysis={jobAnalysis}
-                />
-              )}
+              <CoverLetterGenerator 
+                coverLetter={coverLetter} 
+                jobAnalysis={jobAnalysis!}
+              />
             </TabsContent>
             
             <TabsContent value="strategy" className="space-y-4">
-              {jobAnalysis && matchScore && (
-                <ApplicationStrategy 
-                  jobDescription={jobDescription}
-                  analysis={jobAnalysis}
-                  matchScore={matchScore}
-                />
-              )}
+              <ApplicationStrategy 
+                jobDescription={jobDescription}
+                analysis={jobAnalysis!}
+                matchScore={matchScore!}
+              />
             </TabsContent>
             
             <TabsContent value="interview" className="space-y-4">
-              {interviewPrep && jobAnalysis && matchScore && (
-                <InterviewPrep
-                  jobDescription={jobDescription}
-                  analysis={jobAnalysis}
-                  matchScore={matchScore}
-                  prepContent={interviewPrep}
-                />
-              )}
+              <InterviewPrep 
+                jobDescription={jobDescription}
+                analysis={jobAnalysis!}
+                matchScore={matchScore!}
+                prepContent={interviewPrep}
+              />
             </TabsContent>
-            
+
             <TabsContent value="pitch" className="space-y-4">
-              {elevatorPitch && (
-                <ElevatorPitch 
-                  content={elevatorPitch} 
-                  trackType={(selectedTrack || jobAnalysis?.opportunityType) as "WORK" | "JOB"} 
-                />
-              )}
+              <ElevatorPitch 
+                content={elevatorPitch}
+                trackType={(selectedTrack || jobAnalysis?.opportunityType) as "WORK" | "JOB"}
+              />
             </TabsContent>
           </Tabs>
-          
+
           <Button
             variant="outline"
             onClick={() => {
-              setCurrentStep('analysis');
+              setCurrentStep('input');
+              setJobDescription("");
+              setJobAnalysis(null);
+              setMatchScore(null);
               setGeneratedCV("");
               setGeneratedHTML("");
               setCoverLetter("");
               setInterviewPrep("");
               setElevatorPitch("");
+              setSelectedTrack(null);
             }}
             className="w-full"
           >
-            Back to Analysis
+            Generate Another Application
           </Button>
         </div>
       )}
