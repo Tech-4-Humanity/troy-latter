@@ -9,8 +9,12 @@ import { CVPreview } from "./CVPreview";
 import { JobAnalysisDisplay } from "./JobAnalysis";
 import { MatchScoreDisplay } from "./MatchScore";
 import { ApplicationStrategy } from "./ApplicationStrategy";
+import { InterviewPrep } from "./InterviewPrep";
+import { CoverLetterGenerator } from "./CoverLetterGenerator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2, Sparkles } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Loader2, Sparkles, Briefcase, UserCheck } from "lucide-react";
 import { toast } from "sonner";
 
 export function MCPBridgeAICVGenerator() {
@@ -21,7 +25,10 @@ export function MCPBridgeAICVGenerator() {
   const [matchScore, setMatchScore] = useState<MatchScore | null>(null);
   const [generatedCV, setGeneratedCV] = useState("");
   const [generatedHTML, setGeneratedHTML] = useState("");
+  const [coverLetter, setCoverLetter] = useState("");
+  const [interviewPrep, setInterviewPrep] = useState("");
   const [currentStep, setCurrentStep] = useState<'input' | 'analysis' | 'generation'>('input');
+  const [selectedTrack, setSelectedTrack] = useState<'WORK' | 'JOB' | null>(null);
 
   const handleAnalyze = useCallback(async () => {
     if (!jobDescription.trim()) {
@@ -49,11 +56,14 @@ export function MCPBridgeAICVGenerator() {
   const handleGenerate = useCallback(async () => {
     if (!jobAnalysis || !matchScore) return;
     
+    // Use selected track or fall back to analysis recommendation
+    const effectiveTrack = selectedTrack || jobAnalysis.opportunityType;
+    
     setIsGenerating(true);
     try {
-      const trackContext = jobAnalysis.opportunityType === 'WORK' 
+      const trackContext = effectiveTrack === 'WORK' 
         ? 'Position for fractional CTO engagement (3-6 month, $5-10K/month). Emphasize Tech 4 Humanity as proof of execution.'
-        : jobAnalysis.opportunityType === 'JOB'
+        : effectiveTrack === 'JOB'
         ? 'Position for full-time executive role ($250-350K + equity). Emphasize transformation leadership at scale.'
         : 'Position for flexible engagement. Emphasize both consulting capability and executive leadership.';
 
@@ -61,9 +71,11 @@ export function MCPBridgeAICVGenerator() {
         ? `\nDecision-Maker Priorities:\n${jobAnalysis.decisionMakerPriorities.map((p: string) => `- ${p}`).join('\n')}`
         : '';
 
-      // Generate markdown CV with intelligence
-      const cvMarkdown = await generateContent({
-        prompt: `Generate a highly tailored CV for Troy Latter based on this job opportunity analysis.
+      // Generate all content in parallel for efficiency
+      const [cvMarkdown, cvHTML, coverLetterContent, interviewPrepContent] = await Promise.all([
+        // Generate markdown CV
+        generateContent({
+          prompt: `Generate a highly tailored CV for Troy Latter based on this job opportunity analysis.
 
 Troy Latter's Core Profile:
 - Chief Technology Officer with 15+ years enterprise transformation experience
@@ -76,7 +88,7 @@ Troy Latter's Core Profile:
 - Track Record: Led AI pilots achieving 30-40% efficiency gains, 100+ executive briefings
 
 Job Analysis Results:
-- Opportunity Type: ${jobAnalysis.opportunityType}
+- Opportunity Type: ${effectiveTrack}
 - Match Score: ${matchScore.overall}% overall
 - Company Stage: ${jobAnalysis.companySignals.stage}
 - Transformation Focus: ${jobAnalysis.companySignals.transformationType}${prioritiesContext}
@@ -99,16 +111,13 @@ Generate a professional CV (2-3 pages) that:
 9. Maximum impact in minimum words
 
 Format as clean markdown with clear sections.`,
-        type: 'cv',
-        maxTokens: 3000,
-      });
+          type: 'cv',
+          maxTokens: 3000,
+        }),
 
-      // Generate HTML version
-      const cvHTML = await generateContent({
-        prompt: `Convert this CV to clean, professional HTML suitable for viewing in a browser.
-
-CV Content:
-${cvMarkdown}
+        // Generate HTML version
+        generateContent({
+          prompt: `Convert this CV to clean, professional HTML suitable for viewing in a browser.
 
 Requirements:
 - Clean, modern design
@@ -118,21 +127,87 @@ Requirements:
 - Semantic HTML5
 
 Wrap in a complete HTML document with minimal inline CSS.`,
-        type: 'cv',
-        maxTokens: 3000,
-      });
+          type: 'cv',
+          maxTokens: 3000,
+        }),
+
+        // Generate cover letter
+        generateContent({
+          prompt: `Write a cover letter for Troy Latter for this ${effectiveTrack} opportunity.
+
+Key Context:
+- Troy needs WORK (consulting/fractional) AND JOB (full-time) opportunities
+- Currently building Tech 4 Humanity while seeking next major role
+- Available immediately for right opportunity
+
+Job Analysis:
+- Match Score: ${matchScore.overall}% overall
+- Company Stage: ${jobAnalysis.companySignals.stage}
+- Key Requirements: ${jobAnalysis.keyRequirements.technical.slice(0, 3).join(', ')}
+- Decision-Maker Priorities: ${jobAnalysis.decisionMakerPriorities.slice(0, 2).join(', ')}
+
+Job Description:
+${jobDescription}
+
+Write a letter that:
+- Opens with specific insight about their challenge (not generic)
+- Positions Troy's unique combination: technical depth + strategic vision + execution track record
+- Shows understanding of their business context
+- Addresses any red flags proactively if present
+- Closes with clear next step
+- Max 300 words, no fluff
+- Use Troy's authentic voice (direct, outcome-focused, no buzzwords)
+
+Also provide an email subject line at the top in format:
+Subject Line: [your subject]`,
+          type: 'communication',
+          maxTokens: 1500,
+        }),
+
+        // Generate interview prep
+        generateContent({
+          prompt: `Generate interview preparation for Troy Latter for this role.
+
+Job Analysis:
+- Opportunity Type: ${effectiveTrack}
+- Match Score: ${matchScore.overall}% overall
+- Key Requirements: ${JSON.stringify(jobAnalysis.keyRequirements)}
+- Decision-Maker Priorities: ${jobAnalysis.decisionMakerPriorities.join(', ')}
+
+Job Description:
+${jobDescription}
+
+Provide:
+
+1. LIKELY INTERVIEW QUESTIONS (3-5 questions)
+For each question include:
+- The question itself
+- Framework: Suggested answer approach (e.g., STAR method, Problem-Solution-Impact)
+- Your story: Which specific Troy project/experience to reference
+- Key message: The outcome they care about
+
+2. QUESTIONS TO ASK THEM (3-5 questions)
+Strategic questions that show Troy's depth and understanding of their business context.
+
+Format clearly with sections.`,
+          type: 'strategic',
+          maxTokens: 2000,
+        }),
+      ]);
 
       setGeneratedCV(cvMarkdown);
       setGeneratedHTML(cvHTML);
+      setCoverLetter(coverLetterContent);
+      setInterviewPrep(interviewPrepContent);
       setCurrentStep('generation');
-      toast.success('CV generated successfully!');
+      toast.success('Complete application package generated!');
     } catch (error) {
-      console.error("CV generation failed:", error);
-      toast.error('Failed to generate CV');
+      console.error("Generation failed:", error);
+      toast.error('Failed to generate application package');
     } finally {
       setIsGenerating(false);
     }
-  }, [jobDescription, jobAnalysis, matchScore]);
+  }, [jobDescription, jobAnalysis, matchScore, selectedTrack]);
 
   return (
     <div className="space-y-6">
@@ -186,6 +261,51 @@ Wrap in a complete HTML document with minimal inline CSS.`,
       {/* Step 2: Analysis Results */}
       {currentStep === 'analysis' && jobAnalysis && matchScore && (
         <div className="space-y-4">
+          {/* Track Selection */}
+          <Card className="border-2 border-primary/20">
+            <CardHeader>
+              <CardTitle className="text-base">Select Application Track</CardTitle>
+              <CardDescription>
+                Choose how to position this application. Default recommendation: {jobAnalysis.opportunityType}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex gap-3">
+                <Button
+                  variant={selectedTrack === 'WORK' ? 'default' : 'outline'}
+                  onClick={() => setSelectedTrack('WORK')}
+                  className="flex-1 h-auto py-4"
+                >
+                  <div className="flex flex-col items-center gap-2">
+                    <Briefcase className="h-5 w-5" />
+                    <div className="text-center">
+                      <div className="font-semibold">WORK Track</div>
+                      <div className="text-xs opacity-80">Fractional CTO / Consulting</div>
+                    </div>
+                  </div>
+                </Button>
+                <Button
+                  variant={selectedTrack === 'JOB' ? 'default' : 'outline'}
+                  onClick={() => setSelectedTrack('JOB')}
+                  className="flex-1 h-auto py-4"
+                >
+                  <div className="flex flex-col items-center gap-2">
+                    <UserCheck className="h-5 w-5" />
+                    <div className="text-center">
+                      <div className="font-semibold">JOB Track</div>
+                      <div className="text-xs opacity-80">Full-time Executive</div>
+                    </div>
+                  </div>
+                </Button>
+              </div>
+              {selectedTrack && selectedTrack !== jobAnalysis.opportunityType && (
+                <div className="mt-3 text-sm text-muted-foreground text-center">
+                  Note: AI recommended {jobAnalysis.opportunityType}, but you've selected {selectedTrack}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
           <Tabs defaultValue="score" className="w-full">
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="score">Match Score</TabsTrigger>
@@ -217,6 +337,7 @@ Wrap in a complete HTML document with minimal inline CSS.`,
                 setCurrentStep('input');
                 setJobAnalysis(null);
                 setMatchScore(null);
+                setSelectedTrack(null);
               }}
               className="flex-1"
             >
@@ -231,12 +352,12 @@ Wrap in a complete HTML document with minimal inline CSS.`,
               {isGenerating ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Generating CV...
+                  Generating Package...
                 </>
               ) : (
                 <>
                   <Sparkles className="mr-2 h-4 w-4" />
-                  Generate Tailored CV
+                  Generate Application Package
                 </>
               )}
             </Button>
@@ -244,15 +365,66 @@ Wrap in a complete HTML document with minimal inline CSS.`,
         </div>
       )}
 
-      {/* Step 3: Generated CV */}
+      {/* Step 3: Generated Application Package */}
       {currentStep === 'generation' && generatedCV && (
         <div className="space-y-4">
-          <CVPreview
-            cv={generatedCV}
-            cvHTML={generatedHTML}
-            matchScore={matchScore?.overall || 0}
-            template="mcp-bridge"
-          />
+          {/* Track indicator */}
+          <div className="flex items-center gap-2">
+            <Badge variant={selectedTrack === 'WORK' ? 'default' : 'secondary'} className="text-sm">
+              {selectedTrack || jobAnalysis?.opportunityType} Track
+            </Badge>
+            <span className="text-sm text-muted-foreground">
+              Application package tailored for {selectedTrack === 'WORK' ? 'consulting engagement' : 'full-time role'}
+            </span>
+          </div>
+
+          <Tabs defaultValue="cv" className="w-full">
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger value="cv">CV</TabsTrigger>
+              <TabsTrigger value="cover">Cover Letter</TabsTrigger>
+              <TabsTrigger value="strategy">Strategy</TabsTrigger>
+              <TabsTrigger value="interview">Interview</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="cv" className="space-y-4">
+              <CVPreview
+                cv={generatedCV}
+                cvHTML={generatedHTML}
+                matchScore={matchScore?.overall || 0}
+                template="mcp-bridge"
+              />
+            </TabsContent>
+            
+            <TabsContent value="cover" className="space-y-4">
+              {coverLetter && jobAnalysis && (
+                <CoverLetterGenerator 
+                  coverLetter={coverLetter}
+                  jobAnalysis={jobAnalysis}
+                />
+              )}
+            </TabsContent>
+            
+            <TabsContent value="strategy" className="space-y-4">
+              {jobAnalysis && matchScore && (
+                <ApplicationStrategy 
+                  jobDescription={jobDescription}
+                  analysis={jobAnalysis}
+                  matchScore={matchScore}
+                />
+              )}
+            </TabsContent>
+            
+            <TabsContent value="interview" className="space-y-4">
+              {interviewPrep && jobAnalysis && matchScore && (
+                <InterviewPrep
+                  jobDescription={jobDescription}
+                  analysis={jobAnalysis}
+                  matchScore={matchScore}
+                  prepContent={interviewPrep}
+                />
+              )}
+            </TabsContent>
+          </Tabs>
           
           <Button
             variant="outline"
@@ -260,6 +432,8 @@ Wrap in a complete HTML document with minimal inline CSS.`,
               setCurrentStep('analysis');
               setGeneratedCV("");
               setGeneratedHTML("");
+              setCoverLetter("");
+              setInterviewPrep("");
             }}
             className="w-full"
           >
