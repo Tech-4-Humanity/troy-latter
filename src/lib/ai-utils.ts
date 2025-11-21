@@ -5,7 +5,7 @@
 
 export interface GenerateContentOptions {
   prompt: string;
-  type: 'cv' | 'communication' | 'strategic' | 'technical';
+  type: 'cv' | 'communication' | 'strategic' | 'technical' | 'analysis';
   context?: Record<string, any>;
   maxTokens?: number;
 }
