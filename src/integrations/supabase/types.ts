@@ -6199,6 +6199,36 @@ export type Database = {
         }
         Relationships: []
       }
+      batch_status: {
+        Row: {
+          batch_id: string
+          completed_at: string | null
+          conversations_processed: number | null
+          errors_count: number | null
+          source: string | null
+          started_at: string | null
+          status: string | null
+        }
+        Insert: {
+          batch_id: string
+          completed_at?: string | null
+          conversations_processed?: number | null
+          errors_count?: number | null
+          source?: string | null
+          started_at?: string | null
+          status?: string | null
+        }
+        Update: {
+          batch_id?: string
+          completed_at?: string | null
+          conversations_processed?: number | null
+          errors_count?: number | null
+          source?: string | null
+          started_at?: string | null
+          status?: string | null
+        }
+        Relationships: []
+      }
       "BCI Snippet": {
         Row: {
           column_name: string | null
@@ -11667,9 +11697,11 @@ export type Database = {
           code: string | null
           conversation_id: string | null
           created_at: string | null
+          created_by: string | null
           description: string | null
           id: string
           language: string | null
+          line_count: number | null
           lines: number | null
           project: string | null
           relevance_score: number | null
@@ -11680,9 +11712,11 @@ export type Database = {
           code?: string | null
           conversation_id?: string | null
           created_at?: string | null
+          created_by?: string | null
           description?: string | null
           id?: string
           language?: string | null
+          line_count?: number | null
           lines?: number | null
           project?: string | null
           relevance_score?: number | null
@@ -11693,9 +11727,11 @@ export type Database = {
           code?: string | null
           conversation_id?: string | null
           created_at?: string | null
+          created_by?: string | null
           description?: string | null
           id?: string
           language?: string | null
+          line_count?: number | null
           lines?: number | null
           project?: string | null
           relevance_score?: number | null
@@ -13546,6 +13582,7 @@ export type Database = {
       conversations: {
         Row: {
           content: string
+          content_search: unknown
           conversation_id: string
           created_at: string
           created_by: string | null
@@ -13558,6 +13595,7 @@ export type Database = {
         }
         Insert: {
           content: string
+          content_search?: unknown
           conversation_id: string
           created_at: string
           created_by?: string | null
@@ -13570,6 +13608,7 @@ export type Database = {
         }
         Update: {
           content?: string
+          content_search?: unknown
           conversation_id?: string
           created_at?: string
           created_by?: string | null
@@ -18035,6 +18074,33 @@ export type Database = {
         }
         Relationships: []
       }
+      extraction_errors: {
+        Row: {
+          conversation_id: string | null
+          created_at: string | null
+          error_data: Json | null
+          error_message: string | null
+          id: string
+          source: string | null
+        }
+        Insert: {
+          conversation_id?: string | null
+          created_at?: string | null
+          error_data?: Json | null
+          error_message?: string | null
+          id?: string
+          source?: string | null
+        }
+        Update: {
+          conversation_id?: string | null
+          created_at?: string | null
+          error_data?: Json | null
+          error_message?: string | null
+          id?: string
+          source?: string | null
+        }
+        Relationships: []
+      }
       extractions: {
         Row: {
           applied: boolean | null
@@ -22063,6 +22129,42 @@ export type Database = {
           monthly_price?: number
           name?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      linkedin_articles: {
+        Row: {
+          content: string | null
+          created_at: string | null
+          created_by: string | null
+          engagement: Json | null
+          id: string
+          published_at: string | null
+          title: string | null
+          topics: string[] | null
+          url: string | null
+        }
+        Insert: {
+          content?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          engagement?: Json | null
+          id?: string
+          published_at?: string | null
+          title?: string | null
+          topics?: string[] | null
+          url?: string | null
+        }
+        Update: {
+          content?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          engagement?: Json | null
+          id?: string
+          published_at?: string | null
+          title?: string | null
+          topics?: string[] | null
+          url?: string | null
         }
         Relationships: []
       }
@@ -43261,6 +43363,54 @@ export type Database = {
         }
         Relationships: []
       }
+      agent_executive_mapping: {
+        Row: {
+          agent_code: string | null
+          agent_function: string | null
+          agent_name: string | null
+          certifications: string | null
+          clearance_required: string | null
+          core_skills: string | null
+          domain: string | null
+          executive_leader: string | null
+          fit_for_defence: string | null
+          industry: string | null
+          sfia_level: string | null
+          summary_bio: string | null
+          tech_stack: string | null
+        }
+        Insert: {
+          agent_code?: string | null
+          agent_function?: string | null
+          agent_name?: string | null
+          certifications?: string | null
+          clearance_required?: string | null
+          core_skills?: string | null
+          domain?: string | null
+          executive_leader?: never
+          fit_for_defence?: string | null
+          industry?: string | null
+          sfia_level?: string | null
+          summary_bio?: string | null
+          tech_stack?: string | null
+        }
+        Update: {
+          agent_code?: string | null
+          agent_function?: string | null
+          agent_name?: string | null
+          certifications?: string | null
+          clearance_required?: string | null
+          core_skills?: string | null
+          domain?: string | null
+          executive_leader?: never
+          fit_for_defence?: string | null
+          industry?: string | null
+          sfia_level?: string | null
+          summary_bio?: string | null
+          tech_stack?: string | null
+        }
+        Relationships: []
+      }
       "AI Agents by categories and agent names": {
         Row: {
           Agent_Name: string | null
@@ -43914,6 +44064,23 @@ export type Database = {
         Row: {
           note: string | null
           status: string | null
+        }
+        Relationships: []
+      }
+      cv_to_three_prices: {
+        Row: {
+          agent_code: string | null
+          agent_function: string | null
+          agent_name: string | null
+          augmented_price: number | null
+          automated_price: number | null
+          delivery_type: string | null
+          domain: string | null
+          executive_leader: string | null
+          human_price: number | null
+          industry: string | null
+          roi_multiple: number | null
+          sfia_level: string | null
         }
         Relationships: []
       }
