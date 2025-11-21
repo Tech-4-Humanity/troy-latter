@@ -9039,6 +9039,7 @@ export type Database = {
           qantas_points: number
           refund_amount: number | null
           refund_reason: string | null
+          retry_count: number | null
           return_date: string | null
           status: string
           stripe_payment_intent: string | null
@@ -9077,6 +9078,7 @@ export type Database = {
           qantas_points: number
           refund_amount?: number | null
           refund_reason?: string | null
+          retry_count?: number | null
           return_date?: string | null
           status?: string
           stripe_payment_intent?: string | null
@@ -9115,6 +9117,7 @@ export type Database = {
           qantas_points?: number
           refund_amount?: number | null
           refund_reason?: string | null
+          retry_count?: number | null
           return_date?: string | null
           status?: string
           stripe_payment_intent?: string | null

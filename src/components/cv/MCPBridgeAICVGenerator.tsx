@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { generateContent } from "@/lib/ai-utils";
+import { generateContent, detectDomain } from "@/lib/ai-utils";
 import { analyzeJobDescription, JobAnalysis } from "@/lib/job-analyzer";
 import { calculateMatchScore, MatchScore } from "@/lib/match-scoring";
 import { Button } from "@/components/ui/button";
@@ -11,10 +11,11 @@ import { MatchScoreDisplay } from "./MatchScore";
 import { ApplicationStrategy } from "./ApplicationStrategy";
 import { InterviewPrep } from "./InterviewPrep";
 import { CoverLetterGenerator } from "./CoverLetterGenerator";
+import { ElevatorPitch } from "./ElevatorPitch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Sparkles, Briefcase, UserCheck } from "lucide-react";
+import { Loader2, Sparkles, Briefcase, UserCheck, Zap } from "lucide-react";
 import { toast } from "sonner";
 
 export function MCPBridgeAICVGenerator() {
@@ -27,6 +28,7 @@ export function MCPBridgeAICVGenerator() {
   const [generatedHTML, setGeneratedHTML] = useState("");
   const [coverLetter, setCoverLetter] = useState("");
   const [interviewPrep, setInterviewPrep] = useState("");
+  const [elevatorPitch, setElevatorPitch] = useState("");
   const [currentStep, setCurrentStep] = useState<'input' | 'analysis' | 'generation'>('input');
   const [selectedTrack, setSelectedTrack] = useState<'WORK' | 'JOB' | null>(null);
 
@@ -61,6 +63,7 @@ export function MCPBridgeAICVGenerator() {
     
     setIsGenerating(true);
     try {
+      const detectedDomain = detectDomain(jobDescription);
       const trackContext = effectiveTrack === 'WORK' 
         ? 'Position for fractional CTO engagement (3-6 month, $5-10K/month). Emphasize Tech 4 Humanity as proof of execution.'
         : effectiveTrack === 'JOB'
@@ -72,7 +75,7 @@ export function MCPBridgeAICVGenerator() {
         : '';
 
       // Generate all content in parallel for efficiency
-      const [cvMarkdown, cvHTML, coverLetterContent, interviewPrepContent] = await Promise.all([
+      const [cvMarkdown, cvHTML, coverLetterContent, interviewPrepContent, pitchContent] = await Promise.all([
         // Generate markdown CV
         generateContent({
           prompt: `Generate a highly tailored CV for Troy Latter based on this job opportunity analysis.
@@ -113,6 +116,7 @@ Generate a professional CV (2-3 pages) that:
 Format as clean markdown with clear sections.`,
           type: 'cv',
           maxTokens: 3000,
+          domain: detectedDomain,
         }),
 
         // Generate HTML version
@@ -129,6 +133,7 @@ Requirements:
 Wrap in a complete HTML document with minimal inline CSS.`,
           type: 'cv',
           maxTokens: 3000,
+          domain: detectedDomain,
         }),
 
         // Generate cover letter
@@ -162,6 +167,7 @@ Also provide an email subject line at the top in format:
 Subject Line: [your subject]`,
           type: 'communication',
           maxTokens: 1500,
+          domain: detectedDomain,
         }),
 
         // Generate interview prep
@@ -192,6 +198,37 @@ Strategic questions that show Troy's depth and understanding of their business c
 Format clearly with sections.`,
           type: 'strategic',
           maxTokens: 2000,
+          domain: detectedDomain,
+        }),
+
+        // Generate elevator pitch
+        generateContent({
+          prompt: `Generate 30-second elevator pitches for Troy Latter for this ${effectiveTrack} opportunity.
+
+Track: ${effectiveTrack}
+${effectiveTrack === 'WORK' ? 'Focus: Fractional CTO positioning, consulting engagements' : 'Focus: Full-time executive role positioning'}
+
+Job Context:
+${JSON.stringify(jobAnalysis, null, 2)}
+
+Generate 4 variations for different scenarios:
+1. NETWORKING PITCH: In-person introductions, conferences, meetups
+2. COLD EMAIL PITCH: First contact via email
+3. LINKEDIN PITCH: Professional networking, connection requests
+4. PHONE SCREEN PITCH: Initial recruiter calls
+
+Each pitch should:
+- Be exactly 30 seconds when spoken (roughly 75-90 words)
+- Open with value proposition relevant to ${effectiveTrack} track
+- Include relevant credential that matters most for this opportunity
+- Close with clear call to action
+- Use Troy's authentic voice (direct, confident, outcome-focused)
+- Reference specific expertise from job requirements
+
+Format each pitch clearly with scenario headers.`,
+          type: 'pitch',
+          maxTokens: 1500,
+          domain: detectedDomain,
         }),
       ]);
 
@@ -199,6 +236,7 @@ Format clearly with sections.`,
       setGeneratedHTML(cvHTML);
       setCoverLetter(coverLetterContent);
       setInterviewPrep(interviewPrepContent);
+      setElevatorPitch(pitchContent);
       setCurrentStep('generation');
       toast.success('Complete application package generated!');
     } catch (error) {
@@ -379,11 +417,12 @@ Format clearly with sections.`,
           </div>
 
           <Tabs defaultValue="cv" className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
+            <TabsList className="grid w-full grid-cols-5">
               <TabsTrigger value="cv">CV</TabsTrigger>
               <TabsTrigger value="cover">Cover Letter</TabsTrigger>
               <TabsTrigger value="strategy">Strategy</TabsTrigger>
               <TabsTrigger value="interview">Interview</TabsTrigger>
+              <TabsTrigger value="pitch"><Zap className="h-4 w-4 mr-1" />Pitches</TabsTrigger>
             </TabsList>
             
             <TabsContent value="cv" className="space-y-4">
@@ -424,6 +463,15 @@ Format clearly with sections.`,
                 />
               )}
             </TabsContent>
+            
+            <TabsContent value="pitch" className="space-y-4">
+              {elevatorPitch && (
+                <ElevatorPitch 
+                  content={elevatorPitch} 
+                  trackType={(selectedTrack || jobAnalysis?.opportunityType) as "WORK" | "JOB"} 
+                />
+              )}
+            </TabsContent>
           </Tabs>
           
           <Button
@@ -434,6 +482,7 @@ Format clearly with sections.`,
               setGeneratedHTML("");
               setCoverLetter("");
               setInterviewPrep("");
+              setElevatorPitch("");
             }}
             className="w-full"
           >
