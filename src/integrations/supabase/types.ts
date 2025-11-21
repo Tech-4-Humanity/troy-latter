@@ -10690,6 +10690,62 @@ export type Database = {
           },
         ]
       }
+      campus_kits: {
+        Row: {
+          annual_fee: number | null
+          created_at: string | null
+          faculty_count: number | null
+          id: string
+          integration_status: Json | null
+          kit_components: Json | null
+          project_id: string | null
+          student_count: number | null
+          subscription_end_date: string | null
+          subscription_start_date: string | null
+          university_name: string
+          updated_at: string | null
+          usage_metrics: Json | null
+        }
+        Insert: {
+          annual_fee?: number | null
+          created_at?: string | null
+          faculty_count?: number | null
+          id?: string
+          integration_status?: Json | null
+          kit_components?: Json | null
+          project_id?: string | null
+          student_count?: number | null
+          subscription_end_date?: string | null
+          subscription_start_date?: string | null
+          university_name: string
+          updated_at?: string | null
+          usage_metrics?: Json | null
+        }
+        Update: {
+          annual_fee?: number | null
+          created_at?: string | null
+          faculty_count?: number | null
+          id?: string
+          integration_status?: Json | null
+          kit_components?: Json | null
+          project_id?: string | null
+          student_count?: number | null
+          subscription_end_date?: string | null
+          subscription_start_date?: string | null
+          university_name?: string
+          updated_at?: string | null
+          usage_metrics?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "campus_kits_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "traveltech_projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       candidates: {
         Row: {
           availability: string
@@ -18337,6 +18393,44 @@ export type Database = {
         }
         Relationships: []
       }
+      family_autopilot_bookings: {
+        Row: {
+          booking_id: string | null
+          bulk_discount_applied: boolean | null
+          campus_partnership: boolean | null
+          created_at: string | null
+          family_count: number | null
+          id: string
+          school_name: string | null
+        }
+        Insert: {
+          booking_id?: string | null
+          bulk_discount_applied?: boolean | null
+          campus_partnership?: boolean | null
+          created_at?: string | null
+          family_count?: number | null
+          id?: string
+          school_name?: string | null
+        }
+        Update: {
+          booking_id?: string | null
+          bulk_discount_applied?: boolean | null
+          campus_partnership?: boolean | null
+          created_at?: string | null
+          family_count?: number | null
+          id?: string
+          school_name?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "family_autopilot_bookings_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       family_groups: {
         Row: {
           created_at: string | null
@@ -20660,6 +20754,53 @@ export type Database = {
         }
         Relationships: []
       }
+      hospitality_labs: {
+        Row: {
+          created_at: string | null
+          deployment_phase: string | null
+          hotel_chain: string | null
+          hotel_name: string
+          id: string
+          lab_modules: Json | null
+          performance_metrics: Json | null
+          project_id: string | null
+          property_type: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          deployment_phase?: string | null
+          hotel_chain?: string | null
+          hotel_name: string
+          id?: string
+          lab_modules?: Json | null
+          performance_metrics?: Json | null
+          project_id?: string | null
+          property_type?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          deployment_phase?: string | null
+          hotel_chain?: string | null
+          hotel_name?: string
+          id?: string
+          lab_modules?: Json | null
+          performance_metrics?: Json | null
+          project_id?: string | null
+          property_type?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hospitality_labs_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "traveltech_projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       huge: {
         Row: {
           Agent_ID: string | null
@@ -20823,6 +20964,56 @@ export type Database = {
             columns: ["conversation_id"]
             isOneToOne: false
             referencedRelation: "stalled_projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      infrastructure_projects: {
+        Row: {
+          contract_duration_months: number | null
+          created_at: string | null
+          deployment_phases: Json | null
+          efficiency_improvement: number | null
+          id: string
+          location_name: string
+          location_type: string
+          passenger_volume: number | null
+          project_id: string | null
+          scope: Json | null
+          updated_at: string | null
+        }
+        Insert: {
+          contract_duration_months?: number | null
+          created_at?: string | null
+          deployment_phases?: Json | null
+          efficiency_improvement?: number | null
+          id?: string
+          location_name: string
+          location_type: string
+          passenger_volume?: number | null
+          project_id?: string | null
+          scope?: Json | null
+          updated_at?: string | null
+        }
+        Update: {
+          contract_duration_months?: number | null
+          created_at?: string | null
+          deployment_phases?: Json | null
+          efficiency_improvement?: number | null
+          id?: string
+          location_name?: string
+          location_type?: string
+          passenger_volume?: number | null
+          project_id?: string | null
+          scope?: Json | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "infrastructure_projects_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "traveltech_projects"
             referencedColumns: ["id"]
           },
         ]
@@ -37569,6 +37760,62 @@ export type Database = {
         }
         Relationships: []
       }
+      tech_circuits: {
+        Row: {
+          bookings_count: number | null
+          capacity: number | null
+          circuit_name: string
+          companies_included: Json | null
+          created_at: string | null
+          duration_days: number | null
+          id: string
+          itinerary: Json | null
+          next_departure_date: string | null
+          price_per_person: number | null
+          project_id: string | null
+          region: string
+          updated_at: string | null
+        }
+        Insert: {
+          bookings_count?: number | null
+          capacity?: number | null
+          circuit_name: string
+          companies_included?: Json | null
+          created_at?: string | null
+          duration_days?: number | null
+          id?: string
+          itinerary?: Json | null
+          next_departure_date?: string | null
+          price_per_person?: number | null
+          project_id?: string | null
+          region: string
+          updated_at?: string | null
+        }
+        Update: {
+          bookings_count?: number | null
+          capacity?: number | null
+          circuit_name?: string
+          companies_included?: Json | null
+          created_at?: string | null
+          duration_days?: number | null
+          id?: string
+          itinerary?: Json | null
+          next_departure_date?: string | null
+          price_per_person?: number | null
+          project_id?: string | null
+          region?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tech_circuits_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "traveltech_projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       tech_stack_canonical: {
         Row: {
           added_date: string | null
@@ -39150,6 +39397,121 @@ export type Database = {
           user_label?: string
         }
         Relationships: []
+      }
+      traveltech_projects: {
+        Row: {
+          assigned_agent_id: string | null
+          client_email: string
+          client_name: string
+          client_organization: string | null
+          completion_date: string | null
+          contract_value: number | null
+          created_at: string | null
+          deployment_date: string | null
+          health_status: string | null
+          id: string
+          project_details: Json | null
+          project_type: string
+          quote_amount: number | null
+          status: string
+          updated_at: string | null
+        }
+        Insert: {
+          assigned_agent_id?: string | null
+          client_email: string
+          client_name: string
+          client_organization?: string | null
+          completion_date?: string | null
+          contract_value?: number | null
+          created_at?: string | null
+          deployment_date?: string | null
+          health_status?: string | null
+          id?: string
+          project_details?: Json | null
+          project_type: string
+          quote_amount?: number | null
+          status?: string
+          updated_at?: string | null
+        }
+        Update: {
+          assigned_agent_id?: string | null
+          client_email?: string
+          client_name?: string
+          client_organization?: string | null
+          completion_date?: string | null
+          contract_value?: number | null
+          created_at?: string | null
+          deployment_date?: string | null
+          health_status?: string | null
+          id?: string
+          project_details?: Json | null
+          project_type?: string
+          quote_amount?: number | null
+          status?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "traveltech_projects_assigned_agent_id_fkey"
+            columns: ["assigned_agent_id"]
+            isOneToOne: false
+            referencedRelation: "autonomous_agents"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      traveltech_quotes: {
+        Row: {
+          created_at: string | null
+          id: string
+          organization: string | null
+          product_type: string
+          project_id: string | null
+          quote_amount: number | null
+          quote_document_url: string | null
+          requester_email: string
+          requester_name: string
+          requirements: Json | null
+          responded_at: string | null
+          status: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          organization?: string | null
+          product_type: string
+          project_id?: string | null
+          quote_amount?: number | null
+          quote_document_url?: string | null
+          requester_email: string
+          requester_name: string
+          requirements?: Json | null
+          responded_at?: string | null
+          status?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          organization?: string | null
+          product_type?: string
+          project_id?: string | null
+          quote_amount?: number | null
+          quote_document_url?: string | null
+          requester_email?: string
+          requester_name?: string
+          requirements?: Json | null
+          responded_at?: string | null
+          status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "traveltech_quotes_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "traveltech_projects"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       trip_activities: {
         Row: {
@@ -45367,6 +45729,7 @@ export type Database = {
         }[]
       }
       ts_to_date: { Args: { t: string }; Returns: string }
+      update_agent_last_run: { Args: never; Returns: undefined }
       update_vignette_featured_status: { Args: never; Returns: undefined }
       urlencode:
         | { Args: { data: Json }; Returns: string }
