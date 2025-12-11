@@ -68,6 +68,13 @@ const micrositeConfig: Record<string, MicrositeConfig> = {
   'interview-prep': { 
     protected: false, 
     publicPaths: []
+  },
+  adobe: { 
+    protected: false, 
+    publicPaths: [],
+    brandColor: 'red',
+    title: 'Adobe Forward Deployed AI Engineer',
+    description: "Troy Latter's portfolio showcasing GenAI expertise for Adobe's creative AI ecosystem."
   }
 };
 
