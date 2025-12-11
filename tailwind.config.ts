@@ -31,11 +31,18 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				brand: {
-					primary: '#0F172A',   // Deep navy blue
-					secondary: '#64748B', // Light steel blue
-					accent: '#0EA5E9',    // Bright teal
-					muted: '#F8FAFC',     // Very light gray
-					light: '#F1F5F9',     // Light background
+					primary: '#0F172A',
+					secondary: '#64748B',
+					accent: '#0EA5E9',
+					muted: '#F8FAFC',
+					light: '#F1F5F9',
+				},
+				adobe: {
+					red: '#EB1000',
+					'deep-red': '#C5000E',
+					orange: '#FF9500',
+					purple: '#7B61FF',
+					blue: '#0066FF',
 				},
 				envato: {
 					green: {

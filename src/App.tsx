@@ -41,6 +41,7 @@ import LenovoDemoChoices from "./pages/microsites/lenovo/DemoChoices";
 import LenovoTruScaleScenarios from "./pages/microsites/lenovo/TruScaleScenarios";
 import WnsIndex from "./pages/microsites/wns/Index";
 import AtlassianIndex from "./pages/microsites/atlassian/Index";
+import AdobeIndex from "./pages/microsites/adobe/Index";
 
 // Legacy pages that are still accessible but redirected
 import InnovationDefinition from "./pages/InnovationDefinition";
@@ -111,6 +112,7 @@ const App = () => (
           <Route path="/microsites/lenovo/demo-choices" element={<MicrositeGuard><LenovoDemoChoices /></MicrositeGuard>} />
           <Route path="/microsites/lenovo/truscale-scenarios" element={<MicrositeGuard><LenovoTruScaleScenarios /></MicrositeGuard>} />
           <Route path="/microsites/wns" element={<MicrositeGuard><MicrositeLayout><WnsIndex /></MicrositeLayout></MicrositeGuard>} />
+          <Route path="/microsites/adobe" element={<MicrositeGuard><AdobeIndex /></MicrositeGuard>} />
           
           {/* Navigation redirects - consolidate similar content */}
           <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />
