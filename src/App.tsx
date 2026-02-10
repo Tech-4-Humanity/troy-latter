@@ -47,6 +47,7 @@ import AdobeIndex from "./pages/microsites/adobe/Index";
 import HashiCorpKit from "./pages/kits/HashiCorpKit";
 import ActGovKit from "./pages/kits/ActGovKit";
 import AnthropicKit from "./pages/kits/AnthropicKit";
+import KitsIndex from "./pages/kits/KitsIndex";
 
 // Legacy pages that are still accessible but redirected
 import InnovationDefinition from "./pages/InnovationDefinition";
@@ -120,6 +121,7 @@ const App = () => (
           <Route path="/microsites/adobe" element={<MicrositeGuard><AdobeIndex /></MicrositeGuard>} />
 
           {/* Application Kit routes — standalone pages (no main Layout) */}
+          <Route path="/kits" element={<KitsIndex />} />
           <Route path="/kits/hashicorp" element={<HashiCorpKit />} />
           <Route path="/kits/act-gov" element={<ActGovKit />} />
           <Route path="/kits/anthropic" element={<AnthropicKit />} />
