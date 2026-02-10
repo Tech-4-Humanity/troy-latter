@@ -6,8 +6,8 @@ const HashiCorpKit = () => (
     role="Field CTO — Asia Pacific Japan"
     location="APAC"
     date="February 2026"
-    fitScore={65}
-    fitLabel="Cluster Match 81%"
+    fitScore={89}
+    fitLabel="Strong Fit — Executive Technical Leadership"
     accentColor="#7C3AED"
     accentLight="rgba(124,58,237,0.08)"
     coverLetter={

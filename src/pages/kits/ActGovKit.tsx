@@ -6,8 +6,8 @@ const ActGovKit = () => (
     role="Executive Branch Manager — Data, AI & Digital Records"
     location="Canberra, ACT"
     date="February 2026"
-    fitScore={60}
-    fitLabel="Seniority Match 85%"
+    fitScore={87}
+    fitLabel="Strong Fit — Government AI & Data Leadership"
     accentColor="#1D4ED8"
     accentLight="rgba(29,78,216,0.08)"
     coverLetter={

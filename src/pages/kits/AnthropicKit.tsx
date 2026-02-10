@@ -6,8 +6,8 @@ const AnthropicKit = () => (
     role="Principal Solutions Architect"
     location="APAC / Remote"
     date="February 2026"
-    fitScore={56}
-    fitLabel="Cluster Match 100%"
+    fitScore={85}
+    fitLabel="Strong Fit — Production Claude Practitioner"
     accentColor="#D97706"
     accentLight="rgba(217,119,6,0.08)"
     coverLetter={
