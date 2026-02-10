@@ -43,6 +43,11 @@ import WnsIndex from "./pages/microsites/wns/Index";
 import AtlassianIndex from "./pages/microsites/atlassian/Index";
 import AdobeIndex from "./pages/microsites/adobe/Index";
 
+// Application Kit pages
+import HashiCorpKit from "./pages/kits/HashiCorpKit";
+import ActGovKit from "./pages/kits/ActGovKit";
+import AnthropicKit from "./pages/kits/AnthropicKit";
+
 // Legacy pages that are still accessible but redirected
 import InnovationDefinition from "./pages/InnovationDefinition";
 import InnovationJourney from "./pages/InnovationJourney";
@@ -113,7 +118,12 @@ const App = () => (
           <Route path="/microsites/lenovo/truscale-scenarios" element={<MicrositeGuard><LenovoTruScaleScenarios /></MicrositeGuard>} />
           <Route path="/microsites/wns" element={<MicrositeGuard><MicrositeLayout><WnsIndex /></MicrositeLayout></MicrositeGuard>} />
           <Route path="/microsites/adobe" element={<MicrositeGuard><AdobeIndex /></MicrositeGuard>} />
-          
+
+          {/* Application Kit routes — standalone pages (no main Layout) */}
+          <Route path="/kits/hashicorp" element={<HashiCorpKit />} />
+          <Route path="/kits/act-gov" element={<ActGovKit />} />
+          <Route path="/kits/anthropic" element={<AnthropicKit />} />
+
           {/* Navigation redirects - consolidate similar content */}
           <Route path="/current-roles" element={<Navigate to="/executive-profile" replace />} />
           
