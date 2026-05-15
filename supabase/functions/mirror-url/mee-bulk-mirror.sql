@@ -1,6 +1,8 @@
 -- supabase/functions/mirror-url/mee-bulk-mirror.sql
 -- One-shot: mirror Westpac + Microsoft MEE docx into the public `documents` bucket.
--- Run AFTER `mirror-url` edge function is deployed.
+-- Run AFTER `mirror-url` edge function is deployed (with verify_jwt=false).
+--
+-- No auth header required — mirror-url is allowlisted by URL host + bucket + prefix.
 
 DO $$
 DECLARE
@@ -25,10 +27,7 @@ BEGIN
         'content_type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         'upsert',       true
       ),
-      headers := jsonb_build_object(
-        'Content-Type',  'application/json',
-        'Authorization', 'Bearer ' || (SELECT decrypted_secret FROM vault.decrypted_secrets WHERE name='supabase_anon_key' LIMIT 1)
-      ),
+      headers := jsonb_build_object('Content-Type', 'application/json'),
       timeout_milliseconds := 30000
     ) INTO req_id;
     RAISE NOTICE 'queued mirror % → documents/% (req=%)', f->>'url', f->>'path', req_id;
@@ -36,7 +35,18 @@ BEGIN
 END $$;
 
 -- After ~10s, check results:
--- SELECT * FROM net._http_response WHERE created > now() - interval '5 minutes' ORDER BY created DESC LIMIT 10;
+-- SELECT id, status_code, content::jsonb AS response, created
+-- FROM net._http_response
+-- WHERE created > now() - interval '5 minutes'
+-- ORDER BY created DESC LIMIT 10;
 
--- Then update emp_packs with the canonical Supabase URLs:
--- UPDATE public.emp_packs SET talking_points = jsonb_set(...) WHERE job_id IN (...);
+-- Canonical Supabase URLs after mirror succeeds:
+-- https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/documents/mee-applications/westpac/cv.docx
+-- (etc.)
+
+-- Then update emp_packs to make Supabase the canonical store:
+-- UPDATE public.emp_packs SET talking_points = jsonb_set(
+--   ...,
+--   '{documents,cv,url}',
+--   '"https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/documents/mee-applications/westpac/cv.docx"'::jsonb
+-- ) WHERE id = 'c5a93b14-8e2f-4d77-b9c8-3a6e7d5f2c10';
