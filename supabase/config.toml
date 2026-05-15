@@ -1,52 +1,9 @@
+# supabase/config.toml
+# Project-local config for Supabase CLI.
+
 project_id = "lzfgigiyqpuuxslsygjt"
 
-[functions.heygen-session]
+[functions.mirror-url]
 verify_jwt = false
-
-[functions.chat-with-rag]
-verify_jwt = false
-
-[functions.text-to-speech]
-verify_jwt = false
-
-[functions.voice-to-text]
-verify_jwt = false
-
-[functions.lenovo-advisor]
-verify_jwt = false
-
-[functions.tactical-engine]
-verify_jwt = false
-
-[functions.generate-cv]
-verify_jwt = false
-
-[functions.parse-all-cvs]
-verify_jwt = false
-
-[functions.cv-ingestion-control]
-verify_jwt = false
-
-[functions.cv-ingestion-cleanup]
-verify_jwt = false
-
-[functions.process-single-cv]
-verify_jwt = false
-
-[functions.extract-skills-from-jd]
-verify_jwt = false
-
-[functions.update-skills-from-jd]
-verify_jwt = false
-
-[functions.sync-csv-to-db]
-verify_jwt = false
-
-[functions.sync-db-to-csv]
-verify_jwt = false
-
-[functions.send-notification]
-verify_jwt = false
-
-[functions.cv-session-cleanup]
-verify_jwt = false
+# verify_jwt = false because mirror-url has its own URL allowlist + service-role-only side effects.
+# This lets pg_net call it from SQL without managing JWT plumbing.
