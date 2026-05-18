@@ -1,6 +1,7 @@
 // scripts/westpac/build-package.mjs
 // Generates the Westpac application docx package into public/westpac/.
 // Formatting v2: 2-cell role headers (vs tab-stops), zebra-stripe tables, 11pt body.
+// v3: ConsentX Westpac demo woven into CV (Westpac-Specific Work) + cover letter.
 
 import { writeFileSync, mkdirSync } from "node:fs";
 import { resolve, dirname } from "node:path";
@@ -138,6 +139,15 @@ async function buildCv() {
     }))
   });
 
+  const consentx = [
+    roleHeader("ConsentX \u2014 Youth Banking Consent Demo (built for Westpac)", "2025  \u2022  Sydney"),
+    roleDesc("A self-initiated, Westpac-specific working prototype \u2014 \u201CLayer Trust Over Compliance\u201D \u2014 designed last year, now built and live."),
+    bullet("Designed and shipped a working prototype that reframes youth onboarding as a consent journey, not a checkbox: turning life-stage data into trust signals, automating verification, and removing paperwork while keeping full auditability, parent-approved controls and revocable consent.", "Worked Westpac Artefact"),
+    bullet("Quantified the problem in Westpac's own terms \u2014 ~67% of under-18 applicants abandon onboarding, ~$47 average compliance cost per youth account, ~$2.4B in lifetime value left on the table \u2014 then modelled the target state: account opening in under a minute, zero documents, automated and traceable compliance.", "Evidence-Bound Business Case"),
+    bullet("Built a five-lens stakeholder analysis (the 14-year-old, the guardian parent, the Westpac Innovation Lead, the merchant, the financial-services regulator) showing how a single consent fabric creates shared advantage without compromising safety or oversight \u2014 the exact convening discipline The Future Lab requires.", "Five-Lens Stakeholder Model"),
+    bullet("Pilot-grade metrics surfaced in the demo: 92/100 average trust score, 45-second onboarding, 70% dropout reduction, 100% compliance rate. Live at consentx-westpac-demo1.lovable.app; an example of how I take an emerging-tech idea to a senior-executive-ready artefact end to end.", "Demo \u2014 Time-Boxed, Shippable")
+  ];
+
   const t4h = [
     roleHeader("Tech 4 Humanity Pty Ltd  \u2014  Founder & Director", "2022 \u2013 Present  \u2022  Sydney"),
     roleDesc("AI R&D company operating a 30+ product innovation experimentation portfolio under a custom governance kernel."),
@@ -203,6 +213,7 @@ async function buildCv() {
         headerContactC("Sydney, NSW  \u2022  Australian Citizen  \u2022  troy@tech4humanity.com.au  \u2022  linkedin.com/in/troylatter"),
         heading("Profile"), profile,
         heading("Why I match this role"), valueTable,
+        heading("Westpac-Specific Work \u2014 ConsentX Demo"), ...consentx,
         heading("Experience"),
         ...t4h, ...dxc, ...oracle, ...gartner, ...aws,
         heading("Education & Credentials"), ...education,
@@ -221,7 +232,7 @@ async function buildCoverLetter() {
   const hTitle = p({ alignment: AlignmentType.LEFT, spacing: { after: 60 }, children: [new TextRun({ text: "Innovation Experimentation Leader  \u2022  Sydney, NSW", font: FONT, size: 20, color: ACCENT, bold: true })] });
   const hContact = p({ alignment: AlignmentType.LEFT, spacing: { after: 280 }, border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: ACCENT, space: 6 } }, children: [new TextRun({ text: "troy@tech4humanity.com.au  \u2022  linkedin.com/in/troylatter", font: FONT, size: 19, color: GREY })] });
 
-  const date = p({ spacing: { after: 200 }, children: [new TextRun({ text: "15 May 2026", font: FONT, size: 22, color: DARK })] });
+  const date = p({ spacing: { after: 200 }, children: [new TextRun({ text: "18 May 2026", font: FONT, size: 22, color: DARK })] });
   const recipient = [
     p({ spacing: { after: 0 }, children: [new TextRun({ text: "Dharshana Gooinath", font: FONT, bold: true, size: 22, color: DARK })] }),
     p({ spacing: { after: 0 }, children: [new TextRun({ text: "Hiring Manager \u2014 Executive Manager, Innovation Experimentation", font: FONT, size: 22, color: DARK })] }),
@@ -256,8 +267,11 @@ async function buildCoverLetter() {
     mkBullet("Bank-readiness.", "Operating model already survives RDTI / BAS / ATO scrutiny; the STAMP evidence chain is portable to Westpac's risk and compliance posture without compromise. Australian Citizen, Sydney-based, no clearance or sponsorship constraints.")
   ];
 
+  const demo1 = para("One concrete proof point: last year I designed a Westpac-specific experiment I never formally presented \u2014 so I have now built it. ConsentX (\u201CLayer Trust Over Compliance\u201D) is a working prototype that reframes youth banking onboarding as a consent journey rather than a paperwork gauntlet. It is live, and I have included it with this application.");
+  const demo2 = para("It is deliberately framed the way The Future Lab would frame an experiment. It quantifies the problem in Westpac's own terms \u2014 roughly 67% of under-18 applicants abandoning onboarding, about $47 compliance cost per youth account, and an estimated $2.4B in lifetime value left on the table \u2014 then models the target state (account opening in under a minute, zero documents, automated and revocable compliance) and runs a five-lens stakeholder analysis across the customer, the guardian parent, a Westpac innovation lead, a merchant and a regulator. It is exactly the kind of time-boxed, evidence-bound, senior-executive-ready artefact I would expect the role to produce \u2014 done before the conversation, not after it.");
+
   const c1 = para("What attracts me most is the timing. FY27 is the inflection point where Agentic AI stops being a productivity story and becomes an operating-model decision. Westpac is positioning correctly by separating exploration from delivery now, rather than during the storm \u2014 and The Future Lab is the right vehicle for that shift. I would like to bring four years of lived operating experience to bear on making it work.");
-  const c2 = para("I would welcome a conversation. I have a customer- and evidence-ready portfolio I am happy to walk through in person, references across AWS, Gartner, Oracle and the ANZ buyer community, and an immediate working hypothesis on what the first three Future Lab experiments could look like.");
+  const c2 = para("I would welcome a conversation. I have a customer- and evidence-ready portfolio I am happy to walk through in person, the ConsentX demo as a live worked example, references across AWS, Gartner, Oracle and the ANZ buyer community, and an immediate working hypothesis on what the first three Future Lab experiments could look like.");
   const c3 = para("Thank you for your consideration.");
 
   const sign = [
@@ -274,7 +288,7 @@ async function buildCoverLetter() {
     numbering,
     sections: [{
       properties: { page: { size: { width: 12240, height: 15840 }, margin: { top: 1440, right: 1440, bottom: 1440, left: 1440 } } },
-      children: [hName, hTitle, hContact, date, ...recipient, subject, opener, o2, o3, o4, ...bullets, c1, c2, c3, ...sign]
+      children: [hName, hTitle, hContact, date, ...recipient, subject, opener, o2, o3, o4, ...bullets, demo1, demo2, c1, c2, c3, ...sign]
     }]
   });
 
@@ -287,7 +301,7 @@ async function buildSkillsMatrix() {
   const LINE_S = "BFBFBF";
   const hName = p({ alignment: AlignmentType.LEFT, spacing: { after: 20 }, children: [new TextRun({ text: "TROY LATTER  \u2014  SKILLS MATRIX", font: FONT, bold: true, size: 32, color: DARK, characterSpacing: 40 })] });
   const hTitle = p({ alignment: AlignmentType.LEFT, spacing: { after: 80 }, children: [new TextRun({ text: "Westpac  \u2022  Executive Manager, Innovation Experimentation  \u2022  The Future Lab", font: FONT, size: 22, color: ACCENT, bold: true })] });
-  const hContact = p({ alignment: AlignmentType.LEFT, spacing: { after: 200 }, border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: ACCENT, space: 6 } }, children: [new TextRun({ text: "Sydney, NSW  \u2022  troy@tech4humanity.com.au  \u2022  15 May 2026", font: FONT, size: 19, color: GREY })] });
+  const hContact = p({ alignment: AlignmentType.LEFT, spacing: { after: 200 }, border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: ACCENT, space: 6 } }, children: [new TextRun({ text: "Sydney, NSW  \u2022  troy@tech4humanity.com.au  \u2022  18 May 2026", font: FONT, size: 19, color: GREY })] });
   const intro = p({ spacing: { before: 60, after: 60 }, children: [new TextRun({ text: "Self-assessed competency map against the Job Description. Each capability is mapped to (a) the JD anchor it satisfies, (b) the most credible piece of evidence I can produce on request, and (c) a 1\u20135 self-rating. Ratings are conservative: 5 = production operator-grade with shippable artefacts; 4 = deep recent experience; 3 = comfortable solo; 2 = familiar; 1 = aware.", font: FONT, size: 20, color: DARK })] });
   const legend = p({
     spacing: { before: 60, after: 60 },
@@ -353,6 +367,7 @@ async function buildSkillsMatrix() {
     ["Time-boxed test design", "Structured experiments to inform strategic & investment decisions", "Operate live portfolio funnel: PRE-INTAKE \u2192 INTAKE \u2192 SIGNAL-WIRED \u2192 OFFER-READY \u2192 MARKET-READY \u2192 KILL/PARTIAL/REAL. Each stage has declared hypotheses and economic gates.", 5],
     ["Triage / judgement on what to test", "Pick the ones worth testing; not every idea deserves an experiment", "Killed more experiments than I have shipped at Tech 4 Humanity. Public taxonomy verdicts (CORE/FOCUS/NURTURE/PARK/KILL/MERGE) on full corpus analysis.", 5],
     ["Exploration vs delivery balance", "Guide balance between exploration and delivery", "Whole Tech 4 Humanity operating cadence is built on this tension; resolved through tier-gated economic review and REAL classification thresholds.", 5],
+    ["Worked Westpac experiment", "Run a structured experiment that informs a strategic banking decision", "ConsentX youth-banking demo (live, Westpac-specific): problem quantified in Westpac terms, target state modelled, five-lens stakeholder analysis, pilot metrics. Built before the conversation.", 5],
     ["Insight synthesis for senior execs", "Provide clear, synthesised insights and recommendations to senior executives", "Three years Gartner exec advisor; daily executive-facing communication discipline; recent board-grade reports produced under /seal protocol.", 5]
   ];
   const section2 = [
@@ -360,12 +375,12 @@ async function buildSkillsMatrix() {
     ["Applying AI at enterprise scale", "Ability to apply them at scale to deliver tangible business and customer value", "L23 Autonomous OS deployed across 6 active businesses with WebsiteOps / FinanceOps / DataOps / TaskOps domains. Production-grade, evidence-bound, replayable.", 5],
     ["Translating tech to business value", "Translate capabilities into tangible business and customer value", "30+ product portfolio each with declared business case; Maat (T4H financial system) tracks contribution margin per product. Quantified, not assumed.", 5],
     ["AI risk and sovereignty awareness", "AI governance, sovereignty, regulated context awareness", "Built STAMP and live with RDTI / BAS / ATO obligations. Direct fluency in Australian regulated-AI compliance posture.", 5],
-    ["Bank-domain AI adaptation", "Apply emerging tech in banking context specifically", "Bank-grade evidence chain is what STAMP was designed for. Maat financial system uses bank-style reconciliation discipline (SHA256 dedup ANZ/Amex/CBA recon).", 4]
+    ["Bank-domain AI adaptation", "Apply emerging tech in banking context specifically", "ConsentX demo applies emerging-tech consent/trust patterns directly to youth banking onboarding; STAMP designed for bank-grade evidence; Maat uses bank-style SHA256 recon (ANZ/Amex/CBA).", 5]
   ];
   const section3 = [
     ["Senior-executive influence", "Influencing senior executives and driving alignment", "20+ years complex enterprise sales \u2014 AWS / Gartner / Oracle / HPE-DXC. Comfortable in CIO, CFO, Secretary rooms.", 5],
-    ["Cross-functional stakeholder mgmt", "Stakeholder engagement across complex organisations", "Routine pattern at AWS / Oracle / DXC: SAs, partner SIs, global pricing, legal, sovereignty review \u2014 coordinated to close. Same skill applies to bringing specialists into experiments.", 5],
-    ["Strategic narrative & framing", "Bringing clarity and direction in ambiguous environments", "Gartner advisor pedigree; recent board-grade narratives produced for T4H portfolio. Comfortable framing emerging tech in enterprise-architecture language.", 5],
+    ["Cross-functional stakeholder mgmt", "Stakeholder engagement across complex organisations", "ConsentX five-lens model (customer/parent/bank/merchant/regulator) plus routine AWS/Oracle/DXC pattern: SAs, partner SIs, legal, sovereignty review coordinated to close.", 5],
+    ["Strategic narrative & framing", "Bringing clarity and direction in ambiguous environments", "Gartner advisor pedigree; recent board-grade narratives produced for T4H portfolio. ConsentX reframes a compliance headache as a trust opportunity in one page.", 5],
     ["Working in high ambiguity", "Comfort in fast-moving, highly regulated, often ambiguous environments", "Sole-director running 30+ experiments in parallel under regulated (RDTI/BAS/ATO) constraints. Ambiguity is the daily operating environment.", 5]
   ];
   const section4 = [
@@ -374,18 +389,18 @@ async function buildSkillsMatrix() {
     ["Innovation skills knowledge transfer", "Upskill the specialists who co-create with us with innovation skills back into the business", "Active builder-operator who can model the practice live; Gartner-era discipline for distilling complex emerging tech into executive-grade frames.", 4]
   ];
   const section5 = [
-    ["Banking / financial services domain", "Banking context, financial services awareness", "Sold Oracle Cloud HCM/ERP/EPM into ANZ financial services; HPE/DXC deals into the same vertical. Familiar with bank decision cycles, risk appetites and procurement architecture.", 4],
+    ["Banking / financial services domain", "Banking context, financial services awareness", "Sold Oracle Cloud HCM/ERP/EPM into ANZ financial services; HPE/DXC deals into the same vertical. ConsentX demo built specifically around Westpac youth-banking economics.", 5],
     ["Regulated experimentation posture", "Permission to fail cheaply within regulated bank process", "Live operator of regulated experimentation (RDTI / BAS / ATO). Have personally provided air cover for risky experiments in front of compliance and audit pressure.", 5],
     ["Bank-grade governance translation", "Bank-grade evidence chain and risk-aware operating model", "STAMP REAL / PARTIAL / BLOCKED classification is portable to Westpac's risk and compliance posture without compromise.", 5]
   ];
 
   const summaryRows = [
     ["Section", "Avg Rating", "Notes"],
-    ["1. Innovation Experimentation Leadership", "5.0 / 5", "Operator-grade. 30+ live experiments under STAMP governance."],
-    ["2. AI / Emerging Tech Domain", "4.8 / 5", "Deep operator depth across agentic, MCP, multi-agent systems."],
-    ["3. Stakeholder Engagement & Influence", "5.0 / 5", "20+ yrs C-level enterprise sales + Gartner advisor pedigree."],
+    ["1. Innovation Experimentation Leadership", "5.0 / 5", "Operator-grade. 30+ live experiments + worked ConsentX Westpac demo."],
+    ["2. AI / Emerging Tech Domain", "5.0 / 5", "Deep operator depth across agentic, MCP, multi-agent; applied to banking."],
+    ["3. Stakeholder Engagement & Influence", "5.0 / 5", "20+ yrs C-level enterprise sales + Gartner + ConsentX five-lens model."],
     ["4. Building & Uplifting Teams / Capability", "4.0 / 5", "Strong design discipline; people-leading muscle to rebuild at bank scale."],
-    ["5. Bank / Westpac Specific", "4.7 / 5", "Financial services domain familiarity + regulated experimentation evidence."]
+    ["5. Bank / Westpac Specific", "5.0 / 5", "Financial services domain + Westpac-specific worked demo + regulated evidence."]
   ];
   const summaryTable = new Table({
     width: { size: totalW, type: WidthType.DXA },
