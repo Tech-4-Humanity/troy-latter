@@ -4,10 +4,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Troy Latter — Application for EM Innovation Experimentation, Westpac</title>
-<meta name="description" content="Application package — Troy Latter for the Executive Manager, Innovation Experimentation role at Westpac (The Future Lab)." />
+<meta name="description" content="Application package — Troy Latter for the Executive Manager, Innovation Experimentation role at Westpac (The Future Lab). Includes ConsentX, a live worked Westpac demo." />
 <link rel="canonical" href="https://troylatter.com/westpac" />
 <meta property="og:title" content="Troy Latter — Application for Westpac EM Innovation Experimentation" />
-<meta property="og:description" content="The Future Lab — already running. CV, cover letter and skills matrix for the Westpac role." />
+<meta property="og:description" content="The Future Lab — already running. CV, cover letter, skills matrix and ConsentX, a live worked Westpac demo." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://troylatter.com/westpac" />
 <meta name="theme-color" content="#D5002B" />
@@ -138,15 +138,49 @@
   @keyframes rise { to { opacity: 1; transform: none; } }
   @keyframes fadeIn { to { opacity: 1; } }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01s !important; transition: none !important; } }
+  .demo-section { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-tinted) 100%); padding: 80px 0; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  @media (max-width: 640px) { .demo-section { padding: 56px 0; } }
+  .demo-lead { font-size: clamp(17px, 1.7vw, 20px); line-height: 1.55; color: var(--ink-soft); max-width: 880px; margin: 0 0 16px; }
+  .demo-lead strong { color: var(--ink); font-weight: 650; }
+  .demo-note { font-size: 13.5px; color: var(--ink-mute); margin: 0 0 36px; font-style: italic; }
+  .demo-feature { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; align-items: stretch; }
+  @media (max-width: 880px) { .demo-feature { grid-template-columns: 1fr; } }
+  .demo-card { position: relative; background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 36px; overflow: hidden; display: flex; flex-direction: column; }
+  .demo-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--wp-red), var(--wp-red-deep)); }
+  .demo-kicker { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--wp-red); margin-bottom: 12px; }
+  .demo-card h3 { font-family: var(--font-display); font-size: clamp(24px, 3vw, 32px); font-weight: 800; letter-spacing: -.02em; margin: 0 0 12px; color: var(--ink); }
+  .demo-card .demo-tagline { font-size: 15px; color: var(--ink-soft); line-height: 1.55; margin: 0 0 24px; }
+  .demo-points { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; }
+  .demo-points li { display: flex; gap: 12px; font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+  .demo-points li::before { content: ""; flex: 0 0 auto; width: 6px; height: 6px; margin-top: 7px; border-radius: 2px; background: var(--wp-red); }
+  .demo-points strong { color: var(--ink); font-weight: 650; }
+  .demo-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto; }
+  .demo-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-card); }
+  .demo-stat { padding: 28px 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .demo-stat:nth-child(2n) { border-right: none; }
+  .demo-stat:nth-last-child(-n+2) { border-bottom: none; }
+  @media (max-width: 480px) { .demo-stats { grid-template-columns: 1fr; } .demo-stat { border-right: none; } .demo-stat:last-child { border-bottom: none; } }
+  .demo-stat .n { font-family: var(--font-display); font-size: clamp(30px, 4vw, 44px); font-weight: 800; letter-spacing: -.03em; line-height: 1; color: var(--wp-red); margin-bottom: 8px; }
+  .demo-stat .n .u { font-size: .5em; color: var(--ink-mute); font-weight: 600; margin-left: 3px; }
+  .demo-stat .l { font-size: 12.5px; line-height: 1.4; color: var(--ink-soft); }
+  .demo-lens { margin-top: 36px; background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 32px; }
+  .demo-lens h4 { font-family: var(--font-display); font-size: 16px; font-weight: 800; color: var(--ink); margin: 0 0 6px; }
+  .demo-lens p.sub { font-size: 13px; color: var(--ink-mute); margin: 0 0 20px; }
+  .demo-lens-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  @media (max-width: 880px) { .demo-lens-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .demo-lens-grid { grid-template-columns: 1fr; } }
+  .lens { border: 1px solid var(--line-soft); border-radius: 10px; padding: 16px 14px; background: var(--bg); }
+  .lens .who { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .lens .role { font-size: 11.5px; color: var(--ink-mute); line-height: 1.4; }
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-inner"><div class="brand"><div class="brand-mark">W</div><span>Troy&nbsp;Latter  ·  Application Package</span></div><div class="nav-links"><a href="#match">The Match</a><a href="#package">Documents</a><a href="#snapshot">Snapshot</a><a href="#contact">Contact</a></div></div></nav>
+<nav class="nav"><div class="nav-inner"><div class="brand"><div class="brand-mark">W</div><span>Troy&nbsp;Latter  ·  Application Package</span></div><div class="nav-links"><a href="#match">The Match</a><a href="#package">Documents</a><a href="#demo">Demo</a><a href="#snapshot">Snapshot</a><a href="#contact">Contact</a></div></div></nav>
 <section class="hero">
   <div class="hero-eyebrow"><span class="pulse"></span>Application — Executive Manager, Innovation Experimentation · The Future Lab · Westpac</div>
   <h1 class="hero-title">The Future Lab —<br/><em>already running.</em></h1>
   <p class="hero-sub">I'm <strong>Troy Latter</strong> — founder of <strong>Tech 4 Humanity</strong>, ex-AWS, Gartner, Oracle and HPE/DXC. For four years I have been running the function Westpac is now creating: time-boxed innovation experimentation with bank-grade governance, evidence-bound triage, senior stakeholder protection and an explicit upskilling motion back into the business units. This is my application to help bring that operating model inside Westpac.</p>
-  <div class="hero-meta"><span><strong>Sydney, NSW</strong></span><span class="dot"></span><span>Australian Citizen</span><span class="dot"></span><span><strong>30+</strong> live experiments under STAMP governance</span><span class="dot"></span><span>Available immediately</span></div>
+  <div class="hero-meta"><span><strong>Sydney, NSW</strong></span><span class="dot"></span><span>Australian Citizen</span><span class="dot"></span><span><strong>30+</strong> live experiments under STAMP governance</span><span class="dot"></span><span><strong>Worked Westpac demo</strong> included</span><span class="dot"></span><span>Available immediately</span></div>
   <div class="hero-glyph" aria-hidden="true"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="88" height="88" rx="6" fill="#D5002B"/><path d="M 22 32 L 33 70 L 50 42 L 67 70 L 78 32" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 </section>
 <section class="thesis"><div class="thesis-label">The Thesis</div><p class="thesis-text">FY27 is the inflection point where Agentic AI stops being a productivity story and becomes an <strong>operating-model decision</strong>. Westpac is positioning correctly by separating exploration from delivery now, rather than during the storm. What this role needs is someone who has <strong>already run that motion at portfolio scale</strong> — and can translate it into senior-executive language on day one.</p></section>
@@ -162,14 +196,53 @@
 <section id="package" class="package-section"><div class="section" style="padding-top: 0; padding-bottom: 0;">
   <header class="section-head"><div class="section-num">02 / Documents</div><h2 class="section-title">The application package</h2></header>
   <div class="docs-grid">
-    <article class="doc-card reveal"><div class="doc-icon">CV</div><div class="doc-kind">Curriculum Vitae</div><h3 class="doc-title">Career &amp; capability summary</h3><p class="doc-desc">Two-page CV anchored on running an innovation experimentation portfolio at Tech 4 Humanity, followed by HPE/DXC, Oracle, Gartner and AWS.</p><div class="doc-meta"><span>Word .docx</span><span>·</span><span>2 pages</span></div><div class="doc-actions"><a class="btn btn-primary" href="./cv.docx" download>Download CV</a></div></article>
-    <article class="doc-card reveal"><div class="doc-icon">CL</div><div class="doc-kind">Cover Letter</div><h3 class="doc-title">Addressed to Dharshana</h3><p class="doc-desc">One-page letter to Dharshana Gooinath. Opens with: 'I am the customer this role is trying to find', lands five evidence-bound bullets, closes with three Future Lab hypotheses ready to share.</p><div class="doc-meta"><span>Word .docx</span><span>·</span><span>1 page</span></div><div class="doc-actions"><a class="btn btn-primary" href="./cover-letter.docx" download>Download Letter</a></div></article>
-    <article class="doc-card reveal"><div class="doc-icon">SM</div><div class="doc-kind">Skills Matrix</div><h3 class="doc-title">Capability mapped to the JD</h3><p class="doc-desc">Landscape matrix — 20 capabilities across Experimentation Leadership, AI/Emerging Tech, Stakeholder Influence, Capability Building, and Bank-specific — each mapped to a JD anchor + evidence + 1–5 rating.</p><div class="doc-meta"><span>Word .docx</span><span>·</span><span>Landscape</span></div><div class="doc-actions"><a class="btn btn-primary" href="./skills-matrix.docx" download>Download Matrix</a></div></article>
+    <article class="doc-card reveal"><div class="doc-icon">CV</div><div class="doc-kind">Curriculum Vitae</div><h3 class="doc-title">Career &amp; capability summary</h3><p class="doc-desc">Two-page CV anchored on running an innovation experimentation portfolio at Tech 4 Humanity, with a Westpac-specific ConsentX section, followed by HPE/DXC, Oracle, Gartner and AWS.</p><div class="doc-meta"><span>Word .docx</span><span>·</span><span>2 pages</span></div><div class="doc-actions"><a class="btn btn-primary" href="./cv.docx" download>Download CV</a></div></article>
+    <article class="doc-card reveal"><div class="doc-icon">CL</div><div class="doc-kind">Cover Letter</div><h3 class="doc-title">Addressed to Dharshana</h3><p class="doc-desc">One-page letter to Dharshana Gooinath. Opens with: 'I am the customer this role is trying to find', lands five evidence-bound bullets, references the ConsentX demo, closes with Future Lab hypotheses.</p><div class="doc-meta"><span>Word .docx</span><span>·</span><span>1 page</span></div><div class="doc-actions"><a class="btn btn-primary" href="./cover-letter.docx" download>Download Letter</a></div></article>
+    <article class="doc-card reveal"><div class="doc-icon">SM</div><div class="doc-kind">Skills Matrix</div><h3 class="doc-title">Capability mapped to the JD</h3><p class="doc-desc">Landscape matrix — capabilities across Experimentation Leadership, AI/Emerging Tech, Stakeholder Influence, Capability Building, and Bank-specific — each mapped to a JD anchor + evidence + 1–5 rating.</p><div class="doc-meta"><span>Word .docx</span><span>·</span><span>Landscape</span></div><div class="doc-actions"><a class="btn btn-primary" href="./skills-matrix.docx" download>Download Matrix</a></div></article>
   </div>
   <div class="urls-panel reveal"><div class="urls-panel-head"><div class="urls-panel-title">Direct file URLs — for the Westpac application portal</div><div class="urls-panel-hint">Tap to copy</div></div><div class="urls-list"><div class="url-row"><a href="./cv.docx" download>https://troy-latter.vercel.app/westpac/cv.docx</a><button class="copy-btn" data-copy="https://troy-latter.vercel.app/westpac/cv.docx">Copy</button></div><div class="url-row"><a href="./cover-letter.docx" download>https://troy-latter.vercel.app/westpac/cover-letter.docx</a><button class="copy-btn" data-copy="https://troy-latter.vercel.app/westpac/cover-letter.docx">Copy</button></div><div class="url-row"><a href="./skills-matrix.docx" download>https://troy-latter.vercel.app/westpac/skills-matrix.docx</a><button class="copy-btn" data-copy="https://troy-latter.vercel.app/westpac/skills-matrix.docx">Copy</button></div></div></div>
 </div></section>
+<section id="demo" class="demo-section"><div class="section" style="padding-top: 0; padding-bottom: 0;">
+  <header class="section-head"><div class="section-num">03 / Demo</div><h2 class="section-title">A worked Westpac experiment — built, not pitched</h2></header>
+  <p class="demo-lead">Last year I designed a Westpac-specific idea and never formally presented it. So I built it. <strong>ConsentX — “Layer Trust Over Compliance”</strong> is a live working prototype that reframes youth banking onboarding as a consent journey rather than a paperwork gauntlet: life-stage data becomes trust signals, verification is automated, paperwork disappears — while auditability, parent-approved controls and revocable consent stay intact.</p>
+  <p class="demo-note">This is exactly the kind of time-boxed, evidence-bound, senior-executive-ready artefact The Future Lab is meant to produce — done before the conversation, not after it.</p>
+  <div class="demo-feature">
+    <div class="demo-card reveal">
+      <div class="demo-kicker">Live Prototype · ConsentX</div>
+      <h3>Layer Trust Over Compliance</h3>
+      <p class="demo-tagline">Youth onboarding reframed: a 14-year-old opens an account in under a minute, with full auditability, parental oversight and no regulatory shortcuts.</p>
+      <ul class="demo-points">
+        <li><span><strong>Problem, in Westpac's own terms.</strong> ~67% of under-18 applicants abandon onboarding; ~$47 compliance cost per youth account; ~$2.4B in lifetime value left on the table.</span></li>
+        <li><span><strong>Target state modelled.</strong> Account opening under a minute, zero documents, automated and revocable compliance — traceable end to end.</span></li>
+        <li><span><strong>Five-lens stakeholder analysis.</strong> Customer, guardian parent, Westpac innovation lead, merchant, regulator — one consent fabric, shared advantage, no compromise on safety.</span></li>
+        <li><span><strong>Pilot-grade metrics surfaced.</strong> 92/100 trust score, 45-second onboarding, 70% dropout reduction, 100% compliance rate.</span></li>
+      </ul>
+      <div class="demo-actions">
+        <a class="btn btn-primary" href="https://consentx-westpac-demo1.lovable.app" target="_blank" rel="noopener">Open the live demo</a>
+        <a class="btn btn-ghost" href="https://github.com/TML-4PM/consentx-westpac-demo1" target="_blank" rel="noopener">View source</a>
+      </div>
+    </div>
+    <div class="demo-stats reveal">
+      <div class="demo-stat"><div class="n">92<span class="u">/100</span></div><div class="l">Average trust score across pilot scenarios</div></div>
+      <div class="demo-stat"><div class="n">45<span class="u">s</span></div><div class="l">Youth onboarding time, end to end</div></div>
+      <div class="demo-stat"><div class="n">70<span class="u">%</span></div><div class="l">Reduction in onboarding dropout</div></div>
+      <div class="demo-stat"><div class="n">100<span class="u">%</span></div><div class="l">Automated, traceable compliance rate</div></div>
+    </div>
+  </div>
+  <div class="demo-lens reveal">
+    <h4>The five-lens stakeholder model</h4>
+    <p class="sub">ConsentX is framed as a shared trust fabric — every interaction is designed to serve the whole ecosystem, not one user.</p>
+    <div class="demo-lens-grid">
+      <div class="lens"><div class="who">Emma, 14</div><div class="role">The customer — instant access, privacy preserved</div></div>
+      <div class="lens"><div class="who">Lisa</div><div class="role">The guardian parent — oversight without intrusion</div></div>
+      <div class="lens"><div class="who">Sarah Chen</div><div class="role">Westpac Innovation Lead — youth market, zero-friction</div></div>
+      <div class="lens"><div class="who">Marcus</div><div class="role">The merchant — youth payments, no compliance burden</div></div>
+      <div class="lens"><div class="who">Dr. Foster</div><div class="role">The regulator — immutable audit, privacy-preserving</div></div>
+    </div>
+  </div>
+</div></section>
 <section id="snapshot" class="section">
-  <header class="section-head"><div class="section-num">03 / Snapshot</div><h2 class="section-title">Evidence, at a glance</h2></header>
+  <header class="section-head"><div class="section-num">04 / Snapshot</div><h2 class="section-title">Evidence, at a glance</h2></header>
   <div class="snapshot-grid">
     <div class="snap"><div class="snap-num">30<span class="unit">+</span></div><div class="snap-label">Live experiments under STAMP governance — Tech 4 Humanity's continuous experimentation portfolio.</div></div>
     <div class="snap"><div class="snap-num">729</div><div class="snap-label">Agents in the Neural Ennead orchestration framework — experimentation acceleration fabric.</div></div>
