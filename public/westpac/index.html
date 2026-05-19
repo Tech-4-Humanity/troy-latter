@@ -3,21 +3,239 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Troy Latter</title>
+<title>Troy Latter — Application for EM Innovation Experimentation, Westpac</title>
+<meta name="description" content="Application package — Troy Latter for the Executive Manager, Innovation Experimentation role at Westpac (The Future Lab). 15+ years embedding AI into regulated environments." />
 <meta name="robots" content="noindex,nofollow" />
+<meta property="og:title" content="Troy Latter — Application for Westpac EM Innovation Experimentation" />
+<meta property="og:description" content="AI transformation in regulated environments. CV, cover letter, skills matrix and the ConsentX concept prototype." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#D5002B" />
 <style>
-  body { margin: 0; min-height: 100vh; display: grid; place-items: center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #FAFAFA; color: #1B1B1B; }
-  .card { max-width: 520px; padding: 48px 40px; text-align: center; }
-  h1 { font-size: 28px; font-weight: 700; margin: 0 0 12px; }
-  p { font-size: 15px; line-height: 1.6; color: #5A5A5A; margin: 0 0 8px; }
-  a { color: #1B1B1B; }
+  :root { --wp-red: #D5002B; --wp-red-deep: #A60020; --wp-red-ink: #7C0017; --bg: #FAFAFA; --bg-card: #FFFFFF; --bg-tinted: #FDF5F6; --ink: #1B1B1B; --ink-soft: #4A4A4A; --ink-mute: #7A7A7A; --line: #E5E5E5; --line-soft: #EFEFEF; --shadow-sm: 0 1px 2px rgba(0,0,0,.04), 0 1px 3px rgba(0,0,0,.06); --shadow-md: 0 4px 8px rgba(0,0,0,.04), 0 12px 28px rgba(0,0,0,.08); --shadow-lg: 0 8px 16px rgba(0,0,0,.06), 0 24px 64px rgba(60,0,10,.12); --radius: 12px; --radius-lg: 20px; --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif; --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; --font-mono: ui-monospace, "SF Mono", Monaco, Consolas, monospace; }
+  * { box-sizing: border-box; } html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--font-sans); color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden; }
+  .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); background: rgba(250,250,250,.78); border-bottom: 1px solid var(--line-soft); }
+  .nav-inner { max-width: 1200px; margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 600; letter-spacing: -.01em; font-size: 15px; }
+  .brand-mark { width: 24px; height: 24px; border-radius: 4px; background: var(--wp-red); color: white; display: grid; place-items: center; font-weight: 800; font-size: 14px; letter-spacing: -.02em; font-family: var(--font-display); }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-soft); }
+  .nav-links a { color: inherit; text-decoration: none; padding: 4px 0; position: relative; transition: color .2s ease; }
+  .nav-links a:hover { color: var(--wp-red); }
+  @media (max-width: 640px) { .nav-links { display: none; } .nav-inner { padding: 14px 20px; } }
+  .hero { position: relative; padding: 96px 32px 80px; max-width: 1200px; margin: 0 auto; overflow: hidden; }
+  @media (max-width: 640px) { .hero { padding: 56px 20px; } }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px; border: 1px solid var(--line); border-radius: 100px; background: var(--bg-card); font-size: 12.5px; font-weight: 500; letter-spacing: .02em; color: var(--ink-soft); margin-bottom: 32px; box-shadow: var(--shadow-sm); }
+  .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--wp-red); }
+  .hero-title { font-family: var(--font-display); font-size: clamp(40px, 6.6vw, 84px); line-height: .98; letter-spacing: -.035em; font-weight: 800; margin: 0 0 28px; color: var(--ink); }
+  .hero-title em { font-style: normal; color: var(--wp-red); }
+  .hero-sub { font-size: clamp(17px, 1.8vw, 21px); line-height: 1.5; color: var(--ink-soft); max-width: 760px; margin: 0 0 40px; }
+  .hero-sub strong { color: var(--ink); font-weight: 600; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 14px; color: var(--ink-mute); }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-meta strong { color: var(--ink); font-weight: 600; }
+  .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
+  .thesis { max-width: 1200px; margin: 0 auto; padding: 48px 32px 96px; border-top: 1px solid var(--line); }
+  @media (max-width: 640px) { .thesis { padding: 40px 20px 64px; } }
+  .thesis-label { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--wp-red); font-weight: 700; margin-bottom: 24px; }
+  .thesis-text { font-family: var(--font-display); font-size: clamp(22px, 3.1vw, 36px); line-height: 1.28; letter-spacing: -.02em; font-weight: 400; max-width: 980px; color: var(--ink); }
+  .thesis-text strong { font-weight: 700; color: var(--wp-red-ink); background: linear-gradient(180deg, transparent 70%, rgba(213,0,43,.16) 70%); }
+  .section { max-width: 1200px; margin: 0 auto; padding: 64px 32px; }
+  @media (max-width: 640px) { .section { padding: 48px 20px; } }
+  .section-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 40px; border-bottom: 1px solid var(--line); padding-bottom: 20px; }
+  .section-num { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--wp-red); letter-spacing: .04em; }
+  .section-title { font-family: var(--font-display); font-size: clamp(26px, 3vw, 38px); font-weight: 800; letter-spacing: -.02em; margin: 0; }
+  .match-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 720px) { .match-grid { grid-template-columns: 1fr; } }
+  .match-card { position: relative; padding: 28px 28px 28px 32px; background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
+  .match-card:hover { border-color: var(--wp-red); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .match-card::before { content: ""; position: absolute; left: 0; top: 28px; bottom: 28px; width: 4px; border-radius: 2px; background: var(--wp-red); }
+  .match-card h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
+  .match-card p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
+  .match-card .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--wp-red); margin-bottom: 10px; }
+  .package-section { background: linear-gradient(180deg, var(--bg-tinted) 0%, var(--bg) 100%); padding: 80px 0; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  @media (max-width: 640px) { .package-section { padding: 56px 0; } }
+  .docs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 880px) { .docs-grid { grid-template-columns: 1fr; } }
+  .doc-card { position: relative; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--line); padding: 32px; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease; overflow: hidden; display: flex; flex-direction: column; min-height: 300px; }
+  .doc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .doc-icon { width: 48px; height: 48px; border-radius: 10px; display: grid; place-items: center; margin-bottom: 22px; font-weight: 800; font-size: 17px; color: white; letter-spacing: .02em; background: linear-gradient(135deg, var(--wp-red), var(--wp-red-deep)); }
+  .doc-kind { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-mute); margin-bottom: 8px; }
+  .doc-title { font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: -.015em; margin: 0 0 12px; }
+  .doc-desc { font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 24px; flex: 1; }
+  .doc-meta { font-size: 12px; color: var(--ink-mute); margin-bottom: 16px; display: flex; gap: 14px; }
+  .doc-actions { display: flex; gap: 10px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 6px; font-size: 14px; font-weight: 600; text-decoration: none; border: 1px solid transparent; transition: background .2s ease, color .2s ease, border-color .2s ease, transform .15s ease; cursor: pointer; font-family: inherit; }
+  .btn-primary { background: var(--wp-red); color: white; }
+  .btn-primary:hover { background: var(--wp-red-deep); }
+  .btn-primary:active { transform: translateY(1px); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--wp-red); color: var(--wp-red); }
+  .urls-panel { margin-top: 40px; background: var(--bg-card); border: 1px dashed var(--line); border-radius: var(--radius); padding: 28px 32px; }
+  .urls-panel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+  .urls-panel-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--wp-red); }
+  .urls-panel-hint { font-size: 12.5px; color: var(--ink-mute); }
+  .urls-list { display: grid; gap: 10px; }
+  .url-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; background: var(--bg); border: 1px solid var(--line-soft); border-radius: 8px; font-family: var(--font-mono); font-size: 13px; color: var(--ink); }
+  .url-row a { color: var(--wp-red); text-decoration: none; word-break: break-all; }
+  .url-row a:hover { text-decoration: underline; }
+  .copy-btn { flex: 0 0 auto; font-family: var(--font-sans); font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 5px; background: white; border: 1px solid var(--line); color: var(--ink-soft); cursor: pointer; transition: all .15s ease; }
+  .copy-btn:hover { color: var(--wp-red); border-color: var(--wp-red); }
+  .copy-btn.copied { background: var(--wp-red); color: white; border-color: var(--wp-red); }
+  .demo-section { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-tinted) 100%); padding: 80px 0; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  @media (max-width: 640px) { .demo-section { padding: 56px 0; } }
+  .demo-lead { font-size: clamp(17px, 1.7vw, 20px); line-height: 1.55; color: var(--ink-soft); max-width: 880px; margin: 0 0 16px; }
+  .demo-lead strong { color: var(--ink); font-weight: 650; }
+  .demo-note { font-size: 13.5px; color: var(--ink-mute); margin: 0 0 36px; font-style: italic; }
+  .demo-feature { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; align-items: stretch; }
+  @media (max-width: 880px) { .demo-feature { grid-template-columns: 1fr; } }
+  .demo-card { position: relative; background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 36px; overflow: hidden; display: flex; flex-direction: column; }
+  .demo-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--wp-red), var(--wp-red-deep)); }
+  .demo-kicker { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--wp-red); margin-bottom: 12px; }
+  .demo-card h3 { font-family: var(--font-display); font-size: clamp(24px, 3vw, 32px); font-weight: 800; letter-spacing: -.02em; margin: 0 0 12px; color: var(--ink); }
+  .demo-card .demo-tagline { font-size: 15px; color: var(--ink-soft); line-height: 1.55; margin: 0 0 24px; }
+  .demo-points { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; }
+  .demo-points li { display: flex; gap: 12px; font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+  .demo-points li::before { content: ""; flex: 0 0 auto; width: 6px; height: 6px; margin-top: 7px; border-radius: 2px; background: var(--wp-red); }
+  .demo-points strong { color: var(--ink); font-weight: 650; }
+  .demo-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto; }
+  .demo-aside { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; }
+  .demo-aside h4 { font-family: var(--font-display); font-size: 15px; font-weight: 800; color: var(--ink); margin: 0 0 6px; }
+  .demo-aside p.sub { font-size: 12.5px; color: var(--ink-mute); margin: 0 0 18px; }
+  .lens-list { display: grid; gap: 10px; }
+  .lens { border: 1px solid var(--line-soft); border-radius: 10px; padding: 12px 14px; background: var(--bg); }
+  .lens .who { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+  .lens .role { font-size: 11.5px; color: var(--ink-mute); line-height: 1.4; }
+  .timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; margin-top: 24px; }
+  .timeline::before { content: ""; position: absolute; top: 22px; left: 24px; right: 24px; height: 2px; background: var(--wp-red); border-radius: 2px; opacity: .3; }
+  @media (max-width: 720px) { .timeline { grid-template-columns: 1fr; gap: 24px; } .timeline::before { display: none; } }
+  .tl-item { position: relative; padding-top: 56px; padding-right: 16px; color: var(--wp-red); }
+  @media (max-width: 720px) { .tl-item { padding-top: 0; padding-left: 20px; border-left: 2px solid var(--line); } }
+  .tl-dot { position: absolute; top: 14px; left: 0; width: 18px; height: 18px; border-radius: 50%; border: 3px solid var(--bg); box-shadow: 0 0 0 2px currentColor; background: currentColor; }
+  @media (max-width: 720px) { .tl-dot { top: 4px; left: -10px; } }
+  .tl-years { font-family: var(--font-display); font-size: 13px; font-weight: 800; letter-spacing: .04em; color: var(--ink); margin-bottom: 4px; }
+  .tl-company { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 4px; letter-spacing: -.005em; }
+  .tl-role { font-size: 12.5px; color: var(--ink-mute); line-height: 1.4; }
+  .contact { background: var(--ink); color: #EFEFEF; padding: 80px 0 64px; }
+  .contact-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 640px) { .contact-inner { padding: 0 20px; } }
+  .contact-label { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--wp-red); font-weight: 700; margin-bottom: 20px; }
+  .contact-title { font-family: var(--font-display); font-size: clamp(30px, 4.2vw, 52px); font-weight: 800; letter-spacing: -.025em; line-height: 1.08; margin: 0 0 32px; max-width: 900px; }
+  .contact-title span { color: var(--wp-red); }
+  .contact-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: end; }
+  @media (max-width: 720px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .contact-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; font-size: 14px; }
+  .contact-meta dt { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+  .contact-meta dd { margin: 0; color: #EFEFEF; font-weight: 500; }
+  .contact-meta a { color: inherit; text-decoration: none; border-bottom: 1px solid #555; }
+  .contact-meta a:hover { border-color: var(--wp-red); }
+  .contact-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .contact-actions .btn { font-size: 15px; padding: 14px 24px; }
+  .contact-actions .btn-secondary { background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(255,255,255,0.18); }
+  .contact-actions .btn-secondary:hover { background: rgba(255,255,255,0.14); }
+  .contact-actions .btn-secondary.copied { background: var(--wp-red); border-color: var(--wp-red); }
+  .contact-bottom { margin-top: 72px; padding-top: 32px; border-top: 1px solid #2A2A2A; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: #888; gap: 16px; flex-wrap: wrap; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } .reveal { opacity: 1; transform: none; } }
 </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Troy Latter</h1>
-    <p>This page is being updated.</p>
-    <p>Contact: <a href="mailto:troy@tech4humanity.com.au">troy@tech4humanity.com.au</a></p>
+<nav class="nav"><div class="nav-inner"><div class="brand"><div class="brand-mark">W</div><span>Troy&nbsp;Latter  ·  Application Package</span></div><div class="nav-links"><a href="#match">The Match</a><a href="#package">Documents</a><a href="#demo">Prototype</a><a href="#snapshot">Career</a><a href="#contact">Contact</a></div></div></nav>
+<section class="hero">
+  <div class="hero-eyebrow"><span class="pulse"></span>Application — Executive Manager, Innovation Experimentation · The Future Lab · Westpac</div>
+  <h1 class="hero-title">Getting AI <em>adopted</em><br/>where it&#39;s hardest.</h1>
+  <p class="hero-sub">I&#39;m <strong>Troy Latter</strong> — an AI transformation lead with 15+ years embedding emerging technology into complex, regulated organisations: aviation, border systems, defence and health. Founder of <strong>Tech 4 Humanity</strong>, builder of the Holo-Org AI platform, Prosci-certified, NV2 cleared. This is my application for the innovation experimentation role in The Future Lab.</p>
+  <div class="hero-meta"><span><strong>Sydney / Brisbane</strong></span><span class="dot"></span><span>Australian Citizen</span><span class="dot"></span><span>AGSVA <strong>NV2</strong> cleared</span><span class="dot"></span><span>Prosci ADKAR</span><span class="dot"></span><span>Available immediately</span></div>
+</section>
+<section class="thesis"><div class="thesis-label">The Thesis</div><p class="thesis-text">An innovation experiment is only worth running if it can <strong>survive a regulated environment and end in real adoption</strong>. For fifteen years that has been my actual job — in aviation, border, defence and health, where a failed experiment is not an option. The Future Lab needs that discipline, not just enthusiasm for new technology.</p></section>
+<section id="match" class="section">
+  <header class="section-head"><div class="section-num">01 / Match</div><h2 class="section-title">Why this role fits</h2></header>
+  <div class="match-grid">
+    <article class="match-card reveal"><span class="tag">Experimentation</span><h3>Tested in regulated environments</h3><p>15+ years running emerging-technology programs in aviation, border, defence and health — environments where experiments must be safe, evidenced and adoption-led. NV2 cleared, TOGAF 9, delivery inside defence and health governance frameworks.</p></article>
+    <article class="match-card reveal"><span class="tag">Judgement</span><h3>Triage at scale</h3><p>50+ CIO/CDO engagements at AWS and 100+ SME workshops at Unisys spent deciding which AI ideas are worth real investment and which should be retired. Triage is the core skill of an experimentation function.</p></article>
+    <article class="match-card reveal"><span class="tag">A built artefact</span><h3>Holo-Org, not a deck</h3><p>Founded Tech 4 Humanity and built Holo-Org — a working 5,000-agent AI operating platform mapping agents to real business functions with adoption metrics. Evidence I take ideas concept-to-production, not just slideware.</p></article>
+    <article class="match-card reveal"><span class="tag">Adoption</span><h3>Change built in</h3><p>Prosci ADKAR certified. Every initiative I run ships with a change-management playbook, training plan and continuous-improvement loop — the upskilling motion The Future Lab pushes back into the business units.</p></article>
   </div>
+</section>
+<section id="package" class="package-section"><div class="section" style="padding-top: 0; padding-bottom: 0;">
+  <header class="section-head"><div class="section-num">02 / Documents</div><h2 class="section-title">The application package</h2></header>
+  <div class="docs-grid">
+    <article class="doc-card reveal"><div class="doc-icon">CV</div><div class="doc-kind">Curriculum Vitae</div><h3 class="doc-title">Career &amp; capability</h3><p class="doc-desc">Two pages: AI transformation across Tech 4 Humanity (Holo-Org), AWS, Unisys, Oracle and HP — aviation, border, defence and health, with a Westpac-specific ConsentX section.</p><div class="doc-meta"><span>Word .docx</span><span>·</span><span>2 pages</span></div><div class="doc-actions"><a class="btn btn-primary" href="/westpac/cv.docx" download>Download CV</a></div></article>
+    <article class="doc-card reveal"><div class="doc-icon">CL</div><div class="doc-kind">Cover Letter</div><h3 class="doc-title">The case, in one page</h3><p class="doc-desc">One page on the three things the role asks for — experimentation in regulated environments, judgement on what to test, and adoption — each evidenced from real engagements.</p><div class="doc-meta"><span>Word .docx</span><span>·</span><span>1 page</span></div><div class="doc-actions"><a class="btn btn-primary" href="/westpac/cover-letter.docx" download>Download Letter</a></div></article>
+    <article class="doc-card reveal"><div class="doc-icon">SM</div><div class="doc-kind">Skills Matrix</div><h3 class="doc-title">Capability mapped to the JD</h3><p class="doc-desc">Landscape matrix — every evidence cell drawn from verified career history (AWS, Unisys, Oracle, HP, Tech 4 Humanity), each mapped to a JD anchor with a conservative 1–5 rating.</p><div class="doc-meta"><span>Word .docx</span><span>·</span><span>Landscape</span></div><div class="doc-actions"><a class="btn btn-primary" href="/westpac/skills-matrix.docx" download>Download Matrix</a></div></article>
+  </div>
+  <div class="urls-panel reveal"><div class="urls-panel-head"><div class="urls-panel-title">Direct file URLs — for the Westpac application portal</div><div class="urls-panel-hint">Tap to copy</div></div><div class="urls-list"><div class="url-row"><a href="/westpac/cv.docx" download>https://troy-latter.vercel.app/westpac/cv.docx</a><button class="copy-btn" data-copy="https://troy-latter.vercel.app/westpac/cv.docx">Copy</button></div><div class="url-row"><a href="/westpac/cover-letter.docx" download>https://troy-latter.vercel.app/westpac/cover-letter.docx</a><button class="copy-btn" data-copy="https://troy-latter.vercel.app/westpac/cover-letter.docx">Copy</button></div><div class="url-row"><a href="/westpac/skills-matrix.docx" download>https://troy-latter.vercel.app/westpac/skills-matrix.docx</a><button class="copy-btn" data-copy="https://troy-latter.vercel.app/westpac/skills-matrix.docx">Copy</button></div></div></div>
+</div></section>
+<section id="demo" class="demo-section"><div class="section" style="padding-top: 0; padding-bottom: 0;">
+  <header class="section-head"><div class="section-num">03 / Prototype</div><h2 class="section-title">A Westpac-specific idea, built</h2></header>
+  <p class="demo-lead">I built a Westpac-specific prototype rather than just describing one. <strong>ConsentX — &#8220;Layer Trust Over Compliance&#8221;</strong> reframes youth banking onboarding as a consent journey rather than a paperwork process: life-stage data becomes trust signals, verification is automated, while auditability, parent-approved controls and revocable consent stay intact.</p>
+  <p class="demo-note">To be precise about what this is: a self-built concept prototype — not a pilot, and it carries no pilot results. Its value is making the idea concrete and testable, exactly the kind of cheap, fast artefact an experimentation function should produce before a big conversation.</p>
+  <div class="demo-feature">
+    <div class="demo-card reveal">
+      <div class="demo-kicker">Concept Prototype · ConsentX</div>
+      <h3>Layer Trust Over Compliance</h3>
+      <p class="demo-tagline">Youth onboarding reframed as a consent journey — fast, document-light, revocable, with parental oversight and full auditability designed in from the start.</p>
+      <ul class="demo-points">
+        <li><span><strong>Problem hypothesis.</strong> Youth onboarding friction loses customers and adds compliance cost — framed as a hypothesis to test, not a stated fact.</span></li>
+        <li><span><strong>Target state, modelled.</strong> Fast, document-light onboarding with automated, revocable, traceable compliance — modelled, not measured.</span></li>
+        <li><span><strong>Five-lens stakeholder analysis.</strong> Customer, guardian parent, bank innovation lead, merchant and regulator — one consent fabric, no compromise on safety.</span></li>
+        <li><span><strong>Honest scope.</strong> A working prototype to make the idea tangible. Any numbers shown in the demo are illustrative model inputs, not validated results.</span></li>
+      </ul>
+      <div class="demo-actions">
+        <a class="btn btn-primary" href="https://consentx-westpac-demo1.lovable.app" target="_blank" rel="noopener">Open the prototype</a>
+        <a class="btn btn-ghost" href="https://github.com/TML-4PM/consentx-westpac-demo1" target="_blank" rel="noopener">View source</a>
+      </div>
+    </div>
+    <div class="demo-aside reveal">
+      <h4>The five-lens model</h4>
+      <p class="sub">Designed as a shared trust fabric — every interaction serves the whole ecosystem, not one user.</p>
+      <div class="lens-list">
+        <div class="lens"><div class="who">The young customer</div><div class="role">Instant access, privacy preserved</div></div>
+        <div class="lens"><div class="who">The guardian parent</div><div class="role">Oversight without intrusion</div></div>
+        <div class="lens"><div class="who">The bank innovation lead</div><div class="role">Youth market, low friction</div></div>
+        <div class="lens"><div class="who">The merchant</div><div class="role">Youth payments, no compliance burden</div></div>
+        <div class="lens"><div class="who">The regulator</div><div class="role">Immutable audit, privacy-preserving</div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+<section id="snapshot" class="section">
+  <header class="section-head"><div class="section-num">04 / Career</div><h2 class="section-title">Fifteen years, regulated environments</h2></header>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-years">2008 – 2012</div><div class="tl-company">HP Enterprise Services</div><div class="tl-role">Solutions Architect · Government &amp; Defence · Canberra</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-years">2012 – 2016</div><div class="tl-company">Oracle</div><div class="tl-role">Enterprise Architect · Government &amp; Aviation · Visa Transformation Program</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-years">2016 – 2020</div><div class="tl-company">Unisys</div><div class="tl-role">Senior Consultant, Digital Transformation · Changi / HK / Sri Lanka airports</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-years">2019 – 2023</div><div class="tl-company">AWS</div><div class="tl-role">Senior Consultant, AI &amp; Data Strategy · Border reopening · 50+ CIO engagements</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-years">2023 – Now</div><div class="tl-company">Tech 4 Humanity</div><div class="tl-role">Founder · Holo-Org 5,000-agent AI platform · WorkFamilyAI</div></div>
+  </div>
+</section>
+<section id="contact" class="contact"><div class="contact-inner">
+  <div class="contact-label">Let&#39;s talk</div>
+  <h2 class="contact-title">Happy to walk through <span>Holo-Org and the ConsentX prototype</span> as live worked examples.</h2>
+  <div class="contact-grid">
+    <dl class="contact-meta"><div><dt>Email</dt><dd><a href="mailto:troy.latter@gmail.com">troy.latter@gmail.com</a></dd></div><div><dt>Phone</dt><dd>0424 882 136</dd></div><div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/theinnovater" target="_blank" rel="noopener">linkedin.com/in/theinnovater</a></dd></div><div><dt>Location</dt><dd>Sydney / Brisbane · Australian Citizen · NV2 cleared</dd></div></dl>
+    <div class="contact-actions"><a class="btn btn-primary" href="mailto:troy.latter@gmail.com?subject=Westpac%20EM%20Innovation%20Experimentation%20%E2%80%94%20Troy%20Latter">Open in mail</a><button class="btn btn-secondary" id="copy-email" data-copy="troy.latter@gmail.com">Copy email address</button></div>
+  </div>
+  <div class="contact-bottom"><div>© 2026 Troy Latter — Application for Executive Manager, Innovation Experimentation · Westpac.</div><div>References available on request.</div></div>
+</div></section>
+<script>
+const io = new IntersectionObserver((entries) => { entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), i * 80); io.unobserve(e.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+function copyText(text, btn, normalLabel = 'Copy', successLabel = 'Copied') {
+  const finish = () => { btn.textContent = successLabel; btn.classList.add('copied'); setTimeout(() => { btn.textContent = normalLabel; btn.classList.remove('copied'); }, 2000); };
+  if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(finish).catch(() => fallback(text, finish)); }
+  else { fallback(text, finish); }
+}
+function fallback(text, done) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); } catch (_) {}
+  document.body.removeChild(ta); done();
+}
+document.querySelectorAll('.copy-btn').forEach(btn => { btn.addEventListener('click', () => copyText(btn.dataset.copy, btn)); });
+const copyEmail = document.getElementById('copy-email');
+if (copyEmail) { const original = copyEmail.textContent; copyEmail.addEventListener('click', () => copyText(copyEmail.dataset.copy, copyEmail, original, 'Email copied')); }
+</script>
 </body>
 </html>
