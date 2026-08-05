@@ -1,8 +1,8 @@
 # Troy Latter
 
-## Business Transformation Executive
+## Business Transformation, Program and Change Executive
 
-**Business Analysis (CCBA) | Organisational Change (Prosci) | Program Delivery | AI Business Enablement | Executive Advisory | Australian Government**
+**Program & Portfolio Delivery | Project Management | Business Analysis (CCBA) | Organisational Change (Prosci) | Executive Advisory | Australian Government**
 
 Sydney, Australia | 0424 882 136 | troy.latter@gmail.com | linkedin.com/in/theinnovater
 
@@ -10,36 +10,54 @@ Sydney, Australia | 0424 882 136 | troy.latter@gmail.com | linkedin.com/in/thein
 
 **People lead change. Policy and process sustain it. Technology accelerates it.**
 
-Business Transformation Executive with more than 20 years' experience helping organisations navigate complex transformation across Commonwealth Government, Defence, regulated industries and enterprise organisations throughout Australia and the Asia-Pacific region.
+Business Transformation, Program and Change Executive with more than 20 years' experience leading complex programs, projects and organisational transformation across Commonwealth Government, Defence, regulated industries and enterprise organisations throughout Australia and the Asia-Pacific region.
 
-Successful transformation isn't determined by the technology, policy or organisational landscape. It is achieved by aligning people, policy, process, governance and technology around a shared outcome. That's where I focus my work—helping organisations navigate complexity and deliver transformation that is practical, sustainable and measurable.
+Career experience spans program and project leadership, PMO and governance, business analysis, organisational change, service redesign, operating model transformation, enterprise modernisation and AI business enablement. Experienced in taking ambiguous, multi-stakeholder initiatives from discovery and business case through planning, mobilisation, delivery, adoption, benefits realisation and continuous improvement.
+
+Successful transformation isn't determined by the technology, policy or organisational landscape. It is achieved by aligning people, policy, process, governance and technology around a shared outcome. That's where I focus my work—helping organisations navigate complexity and deliver programs and change that are practical, sustainable and measurable.
 
 ## Executive Snapshot
 
 | Measure | Evidence |
 |---|---|
-| 20+ years | Business, digital and organisational transformation |
-| 65 countries | Global transformation and change delivery |
-| 50+ CIOs and executives | Executive advisory across Australia and APAC |
+| 20+ years | Program, project, business and organisational transformation |
+| 65 countries | Global program delivery and change implementation |
+| 50+ CIOs and executives | Executive advisory, governance and investment decision support |
 | Commonwealth experience | Home Affairs, Defence, DFAT, AFP, Immigration, Human Services, Finance and DVA |
-| CCBA and Prosci | Formal Business Analysis and Change Management credentials |
-| AI Business Enablement | Responsible AI, operating models, intelligent automation and adoption |
+| Program scale | Major multi-stream, cross-agency and national transformation environments |
+| CCBA, Prosci and PRINCE2 | Formal Business Analysis, Change and Project Delivery credentials |
 
 ## Executive Capability
+
+### Program, Portfolio and Project Delivery
+- Program and portfolio leadership
+- End-to-end project management
+- Program mobilisation and delivery planning
+- PMO establishment and uplift
+- Integrated schedules, milestones and dependencies
+- Scope, budget, resourcing and delivery control
+- Risk, issue, assumption and dependency management
+- Steering committees and executive reporting
+- Vendor, partner and procurement management
+- Delivery assurance and governance
+- Agile, hybrid and waterfall delivery
+- Benefits management and realisation
+- Transition to operations and service continuity
+- Program recovery and delivery reset
 
 ### Business and Enterprise Transformation
 - Enterprise transformation
 - Business Analysis (CCBA)
-- Program and portfolio delivery
 - Organisational Change (Prosci)
 - Operating model design
 - Business process improvement
 - Service design
-- Benefits realisation
-- Executive workshops
-- Executive advisory
+- Business cases and investment justification
+- Transformation roadmaps
+- Executive workshops and discovery
 - Stakeholder engagement
-- Governance and risk
+- Governance, policy and risk alignment
+- Organisational readiness and adoption
 
 ### Enterprise Business Platforms
 Experience supporting transformation across finance, ERP, HR, payroll, procurement, CRM, customer and citizen services, case management, service management, knowledge and records management, data, analytics, AI and enterprise integration.
@@ -49,7 +67,7 @@ Worked across environments incorporating Microsoft, SAP, Oracle, Salesforce, Ser
 ### AI Business Enablement
 - AI strategy and executive advisory
 - AI opportunity discovery
-- Rapid prototyping
+- Rapid prototyping and proof of value
 - Enterprise AI adoption
 - Intelligent automation
 - Digital workers and agentic AI
@@ -58,131 +76,140 @@ Worked across environments incorporating Microsoft, SAP, Oracle, Salesforce, Ser
 - Privacy, security and explainability
 - Organisational adoption and capability uplift
 
-## Signature Transformation Portfolio
+## Signature Program and Transformation Portfolio
 
-| Transformation | Organisation / Environment | Impact |
+| Program / Transformation | Organisation / Environment | Delivery Scope and Impact |
 |---|---|---|
-| Immigration Transformation | Department of Immigration | Global operating model, business process and change delivery across 65 countries |
-| Government Modernisation | Home Affairs, Defence and DFAT | Executive advisory, AI-enabled transformation and secure service modernisation |
-| Digital Identity and Citizen Services | Department of Human Services / SMS | Whole-of-Government transformation including Digital Identity and Tell Us Once |
+| Immigration Global Transformation | Department of Immigration | Program and change delivery across 65 countries, including operating model, process, systems, readiness and adoption |
+| Government Modernisation | Home Affairs, Defence and DFAT | Executive advisory, program shaping, delivery roadmaps, governance and secure service modernisation |
+| Digital Identity and Citizen Services | Department of Human Services / SMS | Whole-of-Government program support across Digital Identity, Tell Us Once, Voice Biometrics and enterprise data |
+| Defence Secure Content Collaboration and Search | HPE / DXC / Defence | Business value, program governance, Agile uplift, adoption and benefits support within a major secure Defence environment |
 | Cross River Rail | AWS | Digital engineering and transformation support for Queensland's largest transport infrastructure program |
-| Malaysia National Health | Oracle | Recovery and redesign of a major national health transformation program |
-| ASEAN Government Modernisation | Oracle and AWS | Executive advisory across multiple governments on resilience, service reform and digital modernisation |
-| Responsible AI and Human Capability | Tech4Humanity | Human-centred AI, operating models, governance, research and practical products |
+| Malaysia National Health | Oracle | Program recovery, replanning, vendor realignment and redesign of a 150-site national health transformation |
+| ASEAN Government Modernisation | Oracle and AWS | Multi-country advisory, resilience, service continuity and digital modernisation across regional governments |
+| Responsible AI and Human Capability | Tech4Humanity | Portfolio leadership across research, products, consulting, operating models and responsible AI adoption |
 
 ## Professional Experience
 
-### Founder | Business Transformation and Human-Centred AI
+### Founder | Business Transformation, Program Delivery and Human-Centred AI
 **Tech4Humanity | March 2023 – Present | Sydney**
 
-Leading a human-centred AI and business transformation ecosystem that brings together research, consulting, products and AI-enabled services for governments, enterprises and communities.
+Leading a portfolio of research, consulting, products and AI-enabled services helping governments, enterprises and communities redesign how work is delivered.
 
 Key contributions:
-- Help organisations identify where AI creates genuine business value through business analysis, discovery and executive workshops.
-- Design AI-enabled operating models where people and AI work together to improve decision-making, productivity and customer outcomes.
-- Build practical AI products, digital workers and agentic organisations that augment people rather than replace them.
+- Direct strategy, prioritisation and delivery across multiple concurrent transformation, research and product initiatives.
+- Establish program roadmaps, workstreams, governance, delivery rhythms, dependencies and decision points across the portfolio.
+- Lead discovery, business analysis, operating model design and implementation planning for AI-enabled transformation.
+- Coordinate product, research, technical and business contributors from concept through build, adoption and continuous improvement.
+- Manage delivery risk, scope trade-offs, sequencing and stakeholder expectations across a fast-moving innovation environment.
 - Develop Responsible AI governance incorporating Human-in-the-Loop decision-making, explainability, privacy and trust.
-- Lead research into the future of work, human capability, organisational intelligence and AI adoption.
-- Advise executives, boards and government leaders on AI strategy, operating model transformation and responsible implementation.
+- Advise executives, boards and government leaders on AI strategy, program design, operating model transformation and responsible implementation.
 
 ### CTO, Alliances and Strategic Foresight – APAC
 **Unisys | January 2024 – March 2025 | Australia**
 
-Partnered with senior executives across the Australian Public Sector to help organisations modernise services, improve operational performance and responsibly adopt Artificial Intelligence. Worked primarily with Home Affairs, Defence and DFAT, bridging business strategy, government policy and emerging technology.
+Partnered with senior executives across the Australian Public Sector to shape and progress major technology-enabled transformation programs. Worked primarily with Home Affairs, Defence and DFAT, bridging business strategy, government policy, program delivery and emerging technology.
 
 Key contributions:
-- Facilitated executive workshops and discovery sessions to identify business challenges, redesign operational processes and define AI-enabled opportunities.
-- Advised CIOs, business executives and delivery leaders on AI strategy, governance, digital identity and secure technology adoption.
+- Led program shaping, discovery and mobilisation activities for complex government and enterprise transformation initiatives.
+- Facilitated executive workshops to define scope, outcomes, priorities, delivery roadmaps and governance requirements.
+- Translated strategic objectives into sequenced workstreams, delivery artefacts, investment narratives and implementation pathways.
+- Coordinated business, architecture, engineering, alliance, vendor and delivery stakeholders across long-cycle pursuits and programs.
+- Identified and managed delivery risks, dependencies, governance obligations and adoption considerations in highly regulated environments.
 - Led rapid AI and automation initiatives using Microsoft 365, Azure and Copilot, together with AWS and Google Cloud.
-- Translated strategic priorities into executable roadmaps and transformation initiatives across business, architecture and delivery teams.
-- Embedded Responsible AI principles including governance, security, privacy, Human-in-the-Loop decision-making and organisational oversight.
-- Facilitated stakeholder alignment across business, technology and operational leadership.
+- Embedded Responsible AI, security, privacy, Human-in-the-Loop controls and organisational oversight into delivery planning.
 
 ### Principal Solutions Architect and Executive Transformation Adviser
 **Amazon Web Services | December 2019 – April 2023 | Sydney / APAC**
 
-Worked with executives across government and enterprise throughout Australia, ASEAN and the Pacific to redesign operating models, modernise services and adopt cloud and AI technologies in ways that delivered measurable business value.
+Advised and supported major government and enterprise programs across Australia, ASEAN and the Pacific, working from strategy and business case through planning, architecture, mobilisation and implementation.
 
 Key contributions:
-- Advised more than 50 CIOs and executive leadership teams on business transformation, digital strategy, resilience and AI adoption.
-- Delivered more than 100 executive workshops, innovation sessions and architecture briefings.
-- Supported transformation across Defence, transport, healthcare, utilities, education and national infrastructure.
-- Helped organisations translate strategic objectives and policy intent into practical transformation roadmaps.
-- Supported national-scale programs including COVID response systems, border reopening, Digital Identity and Cross River Rail.
-- Worked across business, architecture, partner and engineering teams to move from strategy through implementation.
+- Advised more than 50 CIOs and executive leadership teams on program strategy, transformation roadmaps, operating models, resilience and AI adoption.
+- Delivered more than 100 executive workshops, discovery sessions, program planning engagements and architecture briefings.
+- Supported multi-stream programs across Defence, transport, healthcare, utilities, education and national infrastructure.
+- Helped organisations convert policy intent and strategic objectives into funded, governed and executable delivery programs.
+- Coordinated partner, vendor, architecture, engineering and business stakeholders across complex implementation environments.
+- Supported national-scale programs including COVID response systems, border reopening, Digital Identity, disaster recovery and Cross River Rail.
+- Contributed to program governance, risk framing, delivery sequencing, dependency management and transition planning.
 
 ### Industry Innovation Adviser – Public Sector and National Security (APAC)
 **Oracle | June 2017 – September 2019 | Canberra / APAC**
 
-Partnered with Defence, Home Affairs, Immigration and governments across Australia, Southeast Asia and the Pacific to modernise critical public services through business transformation, cloud adoption and enterprise innovation.
+Partnered with Defence, Home Affairs, Immigration and governments across Australia, Southeast Asia and the Pacific to shape and deliver critical public-sector modernisation programs.
 
 Key contributions:
-- Facilitated executive workshops, business discovery and strategic planning across complex government transformation programs.
-- Advised on operating model improvement, technology modernisation and cloud adoption in highly regulated environments.
-- Supported visa and immigration transformation, Digital Identity, national health modernisation and smart infrastructure initiatives.
-- Recovered and re-planned a 150-site Malaysian healthcare transformation following major delivery challenges.
-- Worked across business, policy and technical teams to align organisational objectives, governance and delivery outcomes.
-- Acted as the bridge between Oracle's global technology capability and public-sector operational realities across the region.
+- Led program discovery, business case development, delivery planning and executive alignment across complex government transformation initiatives.
+- Advised on operating model improvement, enterprise modernisation, cloud adoption and program governance in highly regulated environments.
+- Supported visa and immigration transformation, Digital Identity, national health modernisation and smart infrastructure programs.
+- Recovered and re-planned a 150-site Malaysian healthcare transformation following significant delivery challenges.
+- Reset scope, delivery sequencing, vendor responsibilities and stakeholder alignment to restore program confidence.
+- Worked across business, policy, procurement and technical teams to align outcomes, governance, dependencies and implementation plans.
+- Acted as the bridge between Oracle's global capability and public-sector operational realities across the region.
 
 ### Business Value Consultant
 **DXC Technology | April 2017 – May 2017 | Canberra**
 
-Supported Defence and Australian Government clients to improve operational capability through business transformation, Agile delivery and measurable business value.
+Supported Defence and Australian Government clients to improve program performance, delivery governance and measurable business value.
 
 Key contributions:
 - Led business value and transformation activities for major Defence capability programs.
 - Introduced Agile delivery approaches into complex program environments.
-- Supported executive decision-making through benefits modelling, stakeholder engagement and business case development.
-- Worked across technical and business teams to align investments with measurable outcomes.
+- Supported program planning, governance, executive reporting, benefits modelling and stakeholder alignment.
+- Worked across technical and business teams to clarify scope, priorities, risks and measurable outcomes.
 
 ### Business Value Consultant
 **Hewlett Packard Enterprise | January 2016 – March 2017 | Canberra**
 
-Partnered with Defence and Federal Government customers to develop business cases, transformation strategies and secure information-sharing capabilities.
+Supported major Defence and Federal Government programs through business case development, program shaping, investment justification and delivery planning.
 
 Key contributions:
-- Developed business cases and value propositions for major Defence transformation initiatives.
-- Supported solution planning, investment justification and procurement activities.
-- Bridged business requirements, architecture and delivery teams to create practical and fundable outcomes.
+- Developed business cases and value propositions for major Defence transformation programs.
+- Supported scope definition, delivery models, procurement activities and executive approvals.
+- Bridged business requirements, architecture, commercial and delivery teams to create practical and fundable programs.
 - Helped shape secure collaboration and information-sharing capabilities supporting Defence operations.
+- Contributed to governance, benefits, adoption and transition planning.
 
 ### Senior Consultant – Program, PMO, Change and Business Transformation
 **SMS Management & Technology | July 2013 – December 2015 | Canberra**
 
-Supported more than ten Commonwealth departments in delivering Whole-of-Government transformation initiatives affecting how Australians interact with public services.
+Worked as a Project Manager, Program/PMO consultant, Senior Business Analyst and Change practitioner across more than ten Commonwealth departments delivering Whole-of-Government transformation.
 
 Key contributions:
-- Led BA, PM, PMO and organisational change activities across major federal programs.
+- Led project management, program coordination, PMO, business analysis and organisational change activities across major federal programs.
+- Developed plans, schedules, governance artefacts, status reporting, risks, issues, dependencies and executive briefings.
 - Supported Digital Identity, Tell Us Once, Voice Biometrics and enterprise data initiatives.
-- Facilitated cross-agency collaboration and aligned business outcomes, governance and delivery priorities.
-- Validated business requirements and improved implementation readiness across complex programs.
-- Supported Defence ITSM and SIAM transformation across vendor environments.
+- Coordinated cross-agency stakeholders, delivery teams and vendors around common milestones and outcomes.
+- Validated business requirements, clarified scope and improved implementation readiness.
+- Supported Defence ITSM and SIAM transformation across complex vendor environments.
 
-### Organisational Change Specialist
+### Organisational Change Specialist / Project Delivery Lead
 **Australian Federal Police | March 2013 – July 2013 | Canberra**
 
-Led organisational change supporting secure collaboration and mobility capabilities.
+Led change and project delivery activities supporting secure collaboration and mobility capabilities.
 
 Key contributions:
-- Developed communication, training and stakeholder engagement strategies.
-- Supported business readiness and adoption across highly secure operational environments.
-- Worked with executive sponsors, frontline teams and operational leaders to minimise disruption and maximise uptake.
+- Coordinated delivery planning, stakeholder engagement, communications, training and business readiness.
+- Managed implementation dependencies across executive sponsors, technical teams, operational users and vendors.
+- Supported rollout governance, issue resolution and adoption across highly secure operational environments.
+- Minimed disruption while helping frontline and intelligence teams transition to new ways of working.
 
-### Senior Organisational Change Manager – Department of Immigration
+### Senior Organisational Change Manager / Program Change Lead – Department of Immigration
 **Canberra Consulting | September 2010 – June 2013 | Canberra**
 
-Led organisational change and business transformation supporting Immigration operations across more than 65 countries.
+Led program change, business readiness and implementation activities across global Immigration transformation programs spanning more than 65 countries.
 
 Key contributions:
-- Led end-to-end change across global transformation programs.
-- Conducted stakeholder analysis, business readiness and change impact assessments.
-- Designed communication, engagement and training strategies supporting sustainable adoption.
-- Worked with executives and operational leaders across diverse cultural and regulatory environments.
+- Led end-to-end change and implementation planning across multi-workstream global programs.
+- Managed stakeholder analysis, change impacts, business readiness, communications, training and adoption.
+- Worked with Program and Project Managers to align delivery milestones, dependencies, system releases and operating model changes.
+- Coordinated executives, offshore operations, business teams, technology teams and external partners across diverse jurisdictions.
+- Supported program governance, risk management, implementation sequencing and transition to business-as-usual.
 - Helped embed new processes and operating models while maintaining service continuity.
 
 ## Earlier Experience
 
-Additional roles included Defence Housing Australia, ActewAGL / TransACT, Datacom, DVA, Health and Social Services, spanning program leadership, sales, partnerships, organisational change, secure mobility, citizen services and service modernisation.
+Additional roles included Defence Housing Australia, ActewAGL / TransACT, Datacom, DVA, Health and Social Services, spanning project management, program leadership, sales, partnerships, organisational change, secure mobility, citizen services and service modernisation.
 
 ## Education
 
