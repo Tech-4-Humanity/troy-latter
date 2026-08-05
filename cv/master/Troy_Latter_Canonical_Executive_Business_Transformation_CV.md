@@ -192,7 +192,7 @@ Key contributions:
 - Coordinated delivery planning, stakeholder engagement, communications, training and business readiness.
 - Managed implementation dependencies across executive sponsors, technical teams, operational users and vendors.
 - Supported rollout governance, issue resolution and adoption across highly secure operational environments.
-- Minimed disruption while helping frontline and intelligence teams transition to new ways of working.
+- Minimised disruption while helping frontline and intelligence teams transition to new ways of working.
 
 ### Senior Organisational Change Manager / Program Change Lead – Department of Immigration
 **Canberra Consulting | September 2010 – June 2013 | Canberra**
