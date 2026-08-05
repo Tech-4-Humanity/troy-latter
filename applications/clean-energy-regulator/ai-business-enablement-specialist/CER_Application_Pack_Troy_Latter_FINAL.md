@@ -14,14 +14,20 @@ Canonical submission source for Troy Latter.
 
 Business Transformation | Business Analysis | Organisational Change | AI Business Enablement | Australian Government
 
+## Confirmed professional credentials
+
+- CCBA - Certified Capability in Business Analysis
+- Prosci Certified Change Practitioner
+- AGSVA NV2 clearance previously attained; currently on hold while not aligned to a sponsoring agency and eligible for reactivation upon employment. Clearance standing supports NV1 and Baseline suitability.
+
 ## Source evidence used
 
 - Career foundation in Senior Business Analysis and Change Management across Immigration, AFP, Human Services, Finance and Defence.
 - Principal Commonwealth clients at Unisys: Home Affairs, Defence and DFAT.
-- Microsoft-oriented Unisys environment: Microsoft 365, Azure, identity, security, collaboration, Copilot/Azure AI scenarios.
+- Microsoft-oriented Unisys environment: Microsoft 365, Azure, identity, security, collaboration, Copilot and Azure AI scenarios.
 - Executive advisory and workshops through AWS and Oracle.
 - Responsible AI, governance and standards contributions.
 
-## Submission caution
+## Final pack status
 
-Confirm the current status of the AGSVA NV2 clearance and the exact names of any Business Analysis qualifications before lodging. The DOCX and PDF retain cautious wording where evidence was not precise.
+Updated throughout to include CCBA, Prosci Change Management and accurate AGSVA clearance wording. No unresolved qualification or clearance placeholders remain.
