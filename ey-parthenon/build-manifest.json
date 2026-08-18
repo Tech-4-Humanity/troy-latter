@@ -1,0 +1,19 @@
+{
+  "packageName": "Troy_Latter_EY_Parthenon_Application_Package",
+  "version": "1.0.0",
+  "targetRole": "Senior Manager — Strategy Practice",
+  "company": "EY-Parthenon",
+  "date": "2026-08-18",
+  "components": {
+    "htmlMatrix": true,
+    "embeddedCss": true,
+    "validator": true
+  },
+  "filesVerified": [
+    "index.html",
+    "cover-letter.html",
+    "cv.html",
+    "infographic.html",
+    "build-manifest.json"
+  ]
+}
