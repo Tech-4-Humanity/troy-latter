@@ -28,7 +28,6 @@ export const Footer = () => {
   const resourceLinks = [
     { path: '/resources/projects', label: 'Projects' },
     { path: '/what-is-innovation', label: 'What is Innovation' },
-    { path: '/tools/cv-generator', label: "Troy's Tailored CV Generator" },
   ];
   
   return (

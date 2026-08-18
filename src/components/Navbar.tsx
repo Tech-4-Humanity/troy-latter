@@ -57,8 +57,6 @@ const useNavigationStructure = () => {
       items: [
         { path: '/resources/projects', label: 'Projects' },
         { path: '/resources/whitepapers', label: 'Whitepapers' },
-        { path: '/tools/cv-generator', label: "🤖 Troy's Tailored CV Generator" },
-        { path: '/tools/cv-ingestion-dashboard', label: '📊 CV Dashboard' },
       ]
     },
   ];
