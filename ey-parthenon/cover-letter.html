@@ -1,70 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cover Letter — Troy Latter | EY-Parthenon</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troy Latter — EY-Parthenon Cover Letter</title>
   <style>
     :root {
-      --ey-black: #1A1A1A;
-      --ey-navy: #002147;
-      --ey-yellow: #FFE600;
-      --ey-bg: #F4F5F7;
-      --ey-border: #E2E8F0;
-      --text-dark: #1E293B;
-      --text-muted: #64748B;
+      --bg-main: #111827;
+      --card-bg: #1f2937;
+      --accent-gold: #f1c40f;
+      --text-white: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-color: #374151;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif; background: var(--ey-bg); color: var(--text-dark); line-height: 1.6; }
-    nav { background: var(--ey-black); padding: 18px 6vw; border-bottom: 4px solid var(--ey-yellow); display: flex; justify-content: space-between; align-items: center; }
-    nav a { color: #FFF; text-decoration: none; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-left: 20px; }
-    nav a.active { color: var(--ey-yellow); }
-    .doc-container { max-width: 900px; margin: 40px auto; background: #FFF; padding: 60px; border: 1px solid var(--ey-border); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-    .header-block { border-bottom: 3px solid var(--ey-yellow); padding-bottom: 20px; margin-bottom: 30px; }
-    .header-block h1 { font-family: Georgia, serif; font-size: 28px; color: var(--ey-navy); }
-    .meta-line { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
-    .content p { margin-bottom: 18px; font-size: 15px; }
-    .bullets { margin: 20px 0 25px 20px; }
-    .bullets li { margin-bottom: 12px; font-size: 14.5px; }
-    .bullets li strong { color: var(--ey-navy); }
-    .signature { margin-top: 40px; font-family: Georgia, serif; color: var(--ey-navy); font-weight: bold; }
+    * { box-sizing: border-box; }
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-white);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.65;
+    }
+    
+    nav.global-nav {
+      background-color: #0b0f19;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.8rem 1.5rem;
+    }
+    .nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-brand { font-weight: 700; font-size: 1.05rem; color: var(--text-white); }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a {
+      color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.4rem 0.6rem; border-radius: 4px;
+    }
+    .nav-links a:hover { color: var(--accent-gold); }
+    .nav-links a.active { color: var(--accent-gold); background-color: var(--card-bg); border: 1px solid var(--border-color); }
+
+    .content-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 3rem 1.5rem;
+    }
+    header {
+      border-bottom: 2px solid var(--accent-gold);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    h1 { color: var(--text-white); font-size: 1.8rem; margin: 0 0 0.4rem 0; }
+    h1 span { color: var(--accent-gold); }
+    .subtitle { color: var(--text-muted); font-size: 0.95rem; }
+    
+    .letter-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem;
+      border-radius: 6px;
+      color: #e5e7eb;
+      font-size: 0.95rem;
+    }
+    .letter-card p { margin-bottom: 1.2rem; }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">← Back to Portal</a>
-    <div>
-      <a href="cover-letter.html" class="active">Cover Letter</a>
-      <a href="cv.html">CV</a>
-      <a href="infographic.html">Matrix</a>
+
+  <nav class="global-nav">
+    <div class="nav-container">
+      <div class="nav-brand">TROY LATTER</div>
+      <div class="nav-links">
+        <a href="./index.html">Strategy Matrix</a>
+        <a href="./cv.html">Executive CV</a>
+        <a href="./cover-letter.html" class="active">Cover Letter</a>
+      </div>
     </div>
   </nav>
-  <div class="doc-container">
-    <div class="header-block">
-      <h1>TROY LATTER</h1>
-      <div class="meta-line">Senior Manager — Corporate Strategy, Commercial Growth &amp; Organisational Transformation</div>
-      <div class="meta-line">Sydney NSW | 0424 882 136 | troy.latter@gmail.com | August 18, 2026</div>
-    </div>
-    <div class="content">
-      <p><strong>Hiring Partner &amp; Strategy Practice Leadership</strong><br>EY-Parthenon Australia, Sydney NSW</p>
-      <p><strong>RE: Expression of Interest — Senior Manager (Strategy / Corporate &amp; Commercial Growth)</strong></p>
-      <p>Dear Hiring Partner,</p>
-      <p>I am writing to express my strong interest in joining EY-Parthenon as a Senior Manager within the Strategy Practice. Having built a 20+ year advisory career spanning pure-play management consulting, commercial research, and customer-side growth leadership across enterprise platforms like AWS, Oracle, and Unisys, I offer EY-Parthenon a rare blend: deep business problem-structuring capability paired with a proven history of operationalising multi-billion-dollar strategies alongside MBB and Big 4 partners.</p>
-      <p>Throughout my career—starting in pure strategy and management advisory at SMS Consulting and Canberra Consulting through to leading C-suite client growth at AWS and Oracle—my core focus has never been technical execution, but rather organisational redevelopment, commercial positioning, and strategic value creation. Technology has always been an enabler; the core challenge is structuring ambiguous commercial problems, aligning C-suite stakeholders, and architecting sustainable growth models.</p>
-      <p><strong>Why My Background Uniquely Complements EY-Parthenon's Strategy Practice:</strong></p>
-      <ul class="bullets">
-        <li><strong>Tier-1 Strategy Delivery Alignment:</strong> While at AWS and Oracle, I sat customer-side to directly co-deliver and execute board-level transformation strategies designed by BCG, McKinsey, and Big 4 partners—unlocking over $3B in funded growth programs for enterprise clients.</li>
-        <li><strong>Pure Strategy &amp; Commercial Pedigree:</strong> Holding a Master of Commerce (Research focus) and a 100% billability track record across tier-1 management consulting environments, I bring rigorous analytical frameworks, structured storyboarding, and quantitative value-engineering.</li>
-        <li><strong>Customer-Side Growth &amp; Account Expansion:</strong> Sitting customer-side across top-tier enterprise accounts, I authored commercial playbooks and client growth strategies that generated ~$60M in APAC pipeline while leading cross-functional consulting teams.</li>
-        <li><strong>Complex Operating Model Redesign:</strong> Led large-scale organisational restructuring and process simplification across 65 offshore jurisdictions for global government programs (e.g., Department of Immigration).</li>
-      </ul>
-      <p>EY-Parthenon’s reputation for providing unvarnished, high-impact strategic advice to CEOs, Boards, and Private Equity clients directly matches my advisory ethos. Having maintained a continuous billable posture while coaching engagement teams, building commercial practice pipelines, and leading C-suite alignment workshops, I am fully equipped to lead EY-P project teams, drive high-margin client engagements, and mentor the next generation of Strategy Managers and Consultants.</p>
-      <p>I welcome the opportunity to discuss how my commercial strategy background, client growth expertise, and strategy execution track record can contribute to the continued expansion of EY-Parthenon’s Strategy practice.</p>
-      <div class="signature">
-        Yours sincerely,<br><br>
-        Troy Latter<br>
-        <span style="font-family: sans-serif; font-size: 12px; font-weight: normal; color: var(--text-muted);">Master of Commerce | Senior Strategy &amp; Transformation Leader</span>
-      </div>
+
+  <div class="content-container">
+    <header>
+      <h1>EY-PARTHENON — <span>EXECUTIVE COVER LETTER</span></h1>
+      <div class="subtitle">Senior Manager Application | Strategy & Transformation Practice</div>
+    </header>
+
+    <div class="letter-card">
+      <p>Dear Hiring Team & Practice Leaders at EY-Parthenon,</p>
+      
+      <p>I am writing to express my strong interest in joining EY-Parthenon’s Strategy & Transformation practice as a Senior Manager. With over 20 years of commercial advisory, strategy execution, and organizational transformation experience across APAC, my background aligns directly with EY-Parthenon’s mandate of delivering high-impact, actionable boardroom strategy.</p>
+
+      <p>Throughout my career, I have operated at the intersection of corporate growth, organizational redevelopment, and technology-enabled business model transformation. Having maintained a continuous 100% billability record across tier-1 consulting environments (including SMS Consulting, Canberra Consulting, and Gartner), I bring both rigorous engagement management discipline and a proven ability to lead high-stakes pursuits.</p>
+
+      <p>A key strength I bring to EY-Parthenon is my experience sitting customer-side alongside BCG, McKinsey, and Big 4 partners to operationalise and execute multi-billion-dollar transformation strategies across banking, government, and telecommunications. Furthermore, embedded at platform leaders like AWS, Unisys, and Oracle, I have led over 100 C-suite alignment workshops and directly generated ~$60M in commercial growth while driving target operating model redesigns across 65 international jurisdictions.</p>
+
+      <p>I welcome the opportunity to discuss how my strategic pedigree, team leadership, and client development track record can contribute to EY-Parthenon’s ongoing growth in Australia and across APAC.</p>
+
+      <p>Sincerely,</p>
+      <p><strong style="color:var(--text-white);">Troy Latter</strong><br>
+      <span style="color:var(--text-muted);">MCom (UNSW) | BEcon (UOW)</span></p>
     </div>
   </div>
 </body>

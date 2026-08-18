@@ -6,169 +6,99 @@
   <title>Troy Latter — Senior Manager CV | EY-Parthenon Alignment</title>
   <style>
     :root {
-      --bg-main: #111827;         /* Soft dark gray/slate */
-      --card-bg: #1f2937;         /* Slightly lighter slate for cards */
-      --accent-yellow: #f1c40f;   /* Clean gold accent */
-      --text-white: #f9fafb;      /* Soft white */
+      --bg-main: #111827;         /* Executive slate */
+      --card-bg: #1f2937;         /* Soft container dark gray */
+      --accent-gold: #f1c40f;     /* Sophisticated gold */
+      --text-white: #f9fafb;      /* Crisp text */
       --text-muted: #9ca3af;      /* Muted gray */
-      --border-color: #374151;    /* Subtle border */
+      --border-color: #374151;    /* Subtle dividers */
     }
+    * { box-sizing: border-box; }
     body {
       background-color: var(--bg-main);
       color: var(--text-white);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
-      padding: 2.5rem 1.5rem;
+      padding: 0;
       line-height: 1.6;
     }
-    .cv-container {
+    
+    nav.global-nav {
+      background-color: #0b0f19;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.8rem 1.5rem;
+    }
+    .nav-container {
       max-width: 900px;
       margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-brand { font-weight: 700; font-size: 1.05rem; color: var(--text-white); }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a {
+      color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.4rem 0.6rem; border-radius: 4px;
+    }
+    .nav-links a:hover { color: var(--accent-gold); }
+    .nav-links a.active { color: var(--accent-gold); background-color: var(--card-bg); border: 1px solid var(--border-color); }
+
+    .cv-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 3rem 1.5rem;
     }
     header {
-      border-bottom: 2px solid var(--accent-yellow);
+      border-bottom: 2px solid var(--accent-gold);
       padding-bottom: 1.25rem;
       margin-bottom: 2rem;
     }
-    h1 {
-      color: var(--accent-yellow);
-      font-size: 2.2rem;
-      margin: 0 0 0.4rem 0;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .subtitle {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-    .contact-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
+    h1 { color: var(--accent-gold); font-size: 2.2rem; margin: 0 0 0.4rem 0; text-transform: uppercase; }
+    .subtitle { font-size: 1.05rem; font-weight: 600; color: var(--text-muted); margin-bottom: 1rem; }
+    .contact-bar { display: flex; flex-wrap: wrap; gap: 1.2rem; font-size: 0.88rem; color: var(--text-muted); }
     .section-title {
-      color: var(--accent-yellow);
-      font-size: 1.2rem;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.4rem;
-      margin-top: 2.2rem;
-      margin-bottom: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-weight: 700;
+      color: var(--accent-gold); font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem; margin-top: 2.2rem; margin-bottom: 1.2rem; text-transform: uppercase; font-weight: 700;
     }
-    .profile-text {
-      font-size: 0.95rem;
-      color: #e5e7eb;
-      line-height: 1.65;
-    }
-    .highlights-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
+    .profile-text { font-size: 0.95rem; color: #e5e7eb; line-height: 1.65; }
+    .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
     .highlight-card {
-      background-color: var(--card-bg);
-      border-left: 3px solid var(--accent-yellow);
-      padding: 1rem;
-      border-radius: 4px;
-      border-top: 1px solid var(--border-color);
-      border-right: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
+      background-color: var(--card-bg); border-left: 3px solid var(--accent-gold); padding: 1rem; border-radius: 4px; border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
     }
-    .highlight-card h3 {
-      margin: 0 0 0.3rem 0;
-      color: var(--accent-yellow);
-      font-size: 0.95rem;
-    }
-    .highlight-card p {
-      margin: 0;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .capabilities-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-    .capability-card {
-      background-color: var(--card-bg);
-      padding: 1rem;
-      border-radius: 4px;
-      border: 1px solid var(--border-color);
-    }
-    .capability-card h4 {
-      margin: 0 0 0.4rem 0;
-      color: var(--accent-yellow);
-      font-size: 0.92rem;
-    }
-    .capability-card p {
-      margin: 0;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .job-block {
-      margin-bottom: 1.8rem;
-    }
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.4rem;
-    }
-    .job-title {
-      font-weight: 600;
-      color: var(--text-white);
-      font-size: 1rem;
-    }
-    .job-company {
-      color: var(--accent-yellow);
-      font-weight: 600;
-    }
-    .job-date {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .job-bullets {
-      margin: 0;
-      padding-left: 1.2rem;
-      font-size: 0.9rem;
-      color: #d1d5db;
-    }
-    .job-bullets li {
-      margin-bottom: 0.4rem;
-    }
-    table.portfolio-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-      font-size: 0.88rem;
-    }
-    table.portfolio-table th {
-      background-color: var(--card-bg);
-      color: var(--accent-yellow);
-      text-align: left;
-      padding: 10px;
-      border: 1px solid var(--border-color);
-    }
-    table.portfolio-table td {
-      padding: 10px;
-      border: 1px solid var(--border-color);
-      color: #d1d5db;
-    }
-    .education-list {
-      font-size: 0.9rem;
-      color: #d1d5db;
-      line-height: 1.6;
-    }
+    .highlight-card h3 { margin: 0 0 0.3rem 0; color: var(--accent-gold); font-size: 0.95rem; }
+    .highlight-card p { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
+    .capabilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    .capability-card { background-color: var(--card-bg); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color); }
+    .capability-card h4 { margin: 0 0 0.4rem 0; color: var(--accent-gold); font-size: 0.92rem; }
+    .capability-card p { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
+    .job-block { margin-bottom: 1.8rem; }
+    .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem; }
+    .job-title { font-weight: 600; color: var(--text-white); font-size: 1rem; }
+    .job-company { color: var(--accent-gold); font-weight: 600; }
+    .job-date { font-size: 0.85rem; color: var(--text-muted); }
+    .job-bullets { margin: 0; padding-left: 1.2rem; font-size: 0.9rem; color: #d1d5db; }
+    .job-bullets li { margin-bottom: 0.4rem; }
+    table.portfolio-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.88rem; }
+    table.portfolio-table th { background-color: var(--card-bg); color: var(--accent-gold); text-align: left; padding: 10px; border: 1px solid var(--border-color); }
+    table.portfolio-table td { padding: 10px; border: 1px solid var(--border-color); color: #d1d5db; }
+    .education-list { font-size: 0.9rem; color: #d1d5db; line-height: 1.6; }
   </style>
 </head>
 <body>
+
+  <nav class="global-nav">
+    <div class="nav-container">
+      <div class="nav-brand">TROY LATTER</div>
+      <div class="nav-links">
+        <a href="./index.html">Strategy Matrix</a>
+        <a href="./cv.html" class="active">Executive CV</a>
+        <a href="./cover-letter.html">Cover Letter</a>
+      </div>
+    </div>
+  </nav>
+
   <div class="cv-container">
     <header>
       <h1>Troy Latter</h1>
