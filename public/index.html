@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Troy Latter — EY-Parthenon Senior Manager Application</title>
+  <style>
+    :root {
+      --ey-black: #1A1A1A;
+      --ey-navy: #002147;
+      --ey-yellow: #FFE600;
+      --ey-gray-bg: #F4F5F7;
+      --ey-card-border: #E2E8F0;
+      --text-main: #2E3A45;
+      --text-muted: #64748B;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif; background: var(--ey-gray-bg); color: var(--text-main); -webkit-font-smoothing: antialiased; }
+    nav { background: var(--ey-black); display: flex; justify-content: space-between; align-items: center; padding: 20px 6vw; border-bottom: 4px solid var(--ey-yellow); }
+    .brand { font-size: 26px; font-weight: 900; letter-spacing: -1px; color: #FFFFFF; text-transform: uppercase; }
+    .brand span { color: var(--ey-yellow); }
+    .brand small { display: block; font-size: 10px; letter-spacing: 1.5px; color: #A0AEC0; margin-top: 2px; }
+    nav .nav-links a { color: #FFFFFF; text-decoration: none; margin-left: 24px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    nav .nav-links a:hover { color: var(--ey-yellow); }
+    .hero { padding: 64px 6vw 56px; background: linear-gradient(135deg, #001226 0%, var(--ey-navy) 100%); color: #FFFFFF; position: relative; }
+    .eyebrow { color: var(--ey-yellow); text-transform: uppercase; letter-spacing: 2px; font-weight: 800; font-size: 11px; margin-bottom: 12px; }
+    h1 { font-family: Georgia, serif; font-size: 46px; line-height: 1.15; font-weight: 700; margin-bottom: 16px; color: #FFFFFF; }
+    .hero p { max-width: 820px; font-size: 18px; line-height: 1.6; color: #E2E8F0; font-weight: 300; }
+    .ref-tag { display: inline-flex; margin-top: 24px; padding: 6px 16px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #FFFFFF; }
+    .cards-section { padding: 48px 6vw; background: var(--ey-gray-bg); }
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto; }
+    .card { background: #FFFFFF; border: 1px solid var(--ey-card-border); border-radius: 4px; padding: 28px; position: relative; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--ey-yellow); }
+    .card h2 { font-family: Georgia, serif; font-size: 22px; color: var(--ey-navy); margin-bottom: 12px; }
+    .card p { font-size: 14px; color: var(--text-muted); line-height: 1.55; margin-bottom: 20px; flex-grow: 1; }
+    .card a { display: inline-block; color: var(--ey-navy); font-weight: 800; text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; padding-bottom: 2px; border-bottom: 2px solid var(--ey-yellow); width: fit-content; }
+    .card a:hover { color: #000; border-bottom-color: var(--ey-navy); }
+    .matrix-section { padding: 48px 6vw 64px; background: #FFFFFF; border-top: 1px solid var(--ey-card-border); }
+    .matrix-container { max-width: 1280px; margin: 0 auto; }
+    .section-header { font-family: Georgia, serif; font-size: 28px; color: var(--ey-navy); margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; }
+    .section-header span { font-family: "Segoe UI", sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; }
+    .alignment-table { width: 100%; border-collapse: collapse; margin-top: 16px; background: #FFFFFF; border: 1px solid var(--ey-card-border); }
+    .alignment-table th { background: var(--ey-navy); color: #FFFFFF; text-align: left; padding: 14px 18px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; border-bottom: 3px solid var(--ey-yellow); }
+    .alignment-table td { padding: 18px; font-size: 13px; line-height: 1.5; border-bottom: 1px solid var(--ey-card-border); vertical-align: top; }
+    .alignment-table tr:hover { background: #F8FAFC; }
+    .pillar-title { font-weight: 700; color: var(--ey-navy); font-size: 14px; }
+    .proof-highlight { font-weight: 700; color: #000000; }
+    footer { padding: 24px 6vw; background: var(--ey-black); color: #A0AEC0; display: flex; justify-content: space-between; align-items: center; font-size: 11px; border-top: 1px solid #333; }
+    footer span strong { color: #FFFFFF; }
+    @media (max-width: 900px) { .cards-grid { grid-template-columns: 1fr; } h1 { font-size: 34px; } nav { flex-direction: column; gap: 12px; align-items: flex-start; } nav .nav-links { margin-top: 8px; } nav .nav-links a { margin-left: 0; margin-right: 16px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">EY<span>-Parthenon</span><small>Senior Manager Application · Troy Latter</small></div>
+    <div class="nav-links">
+      <a href="cover-letter.html">Cover Letter</a>
+      <a href="cv.html">CV</a>
+      <a href="infographic.html">Strategy Matrix</a>
+    </div>
+  </nav>
+  <section class="hero">
+    <div class="eyebrow">Corporate Strategy · Commercial Growth · M&amp;A / CDD Alignment</div>
+    <h1>Senior Manager — Strategy Practice</h1>
+    <p>Bridging pure-play commercial strategy, buy-side CDD equivalencies, and customer-side strategy execution to deliver high-margin growth and operational transformation.</p>
+    <div class="ref-tag">EY-Parthenon Australia · Sydney NSW</div>
+  </section>
+  <section class="cards-section">
+    <div class="cards-grid">
+      <article class="card">
+        <div>
+          <h2>Cover Letter</h2>
+          <p>Targeted executive narrative connecting 20+ years of advisory experience, 100% billability track record, and co-delivery alongside MBB/Big 4 practices.</p>
+        </div>
+        <a href="cover-letter.html">Open Document →</a>
+      </article>
+      <article class="card">
+        <div>
+          <h2>Curriculum Vitae</h2>
+          <p>Detailed career evidence spanning corporate strategy, operating model redesign across 65 offshore jurisdictions, and C-suite client leadership.</p>
+        </div>
+        <a href="cv.html">Open Document →</a>
+      </article>
+      <article class="card">
+        <div>
+          <h2>Strategy &amp; CDD Matrix</h2>
+          <p>Quantitative alignment mapping EY-P strategy pillars to customer-side commercial due diligence, market entry, and $3B+ transformation proofs.</p>
+        </div>
+        <a href="infographic.html">Open Visualizer →</a>
+      </article>
+    </div>
+  </section>
+  <section class="matrix-section">
+    <div class="matrix-container">
+      <div class="section-header">
+        EY-Parthenon Capability &amp; Commercial Alignment
+        <span>Executive Evidence Snapshot</span>
+      </div>
+      <table class="alignment-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">EY-P Strategy Pillar</th>
+            <th style="width: 40%;">CDD &amp; Commercial Equivalent</th>
+            <th style="width: 35%;">Quantified Proof Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pillar-title">Corporate &amp; Commercial Growth Strategy</td>
+            <td>Addressable market sizing (TAM/SAM/SOM), revenue expansion, market entry feasibility, and quantitative growth modeling.</td>
+            <td>Generated <span class="proof-highlight">~$60M APAC pipeline</span> at Unisys; led 100+ C-suite growth and positioning workshops.</td>
+          </tr>
+          <tr>
+            <td class="pillar-title">Strategy Execution &amp; Co-Delivery</td>
+            <td>Post-Merger Integration (PMI), value delivery, cross-functional workstream governance, and capital allocation tracking.</td>
+            <td>Co-delivered <span class="proof-highlight">&gt;$3B transformation programs</span> alongside MBB and Big 4 strategy partners across APAC accounts.</td>
+          </tr>
+          <tr>
+            <td class="pillar-title">Organisational Redevelopment</td>
+            <td>Target Operating Model (TOM) design, cost-structure optimization, workforce restructuring, and process simplification.</td>
+            <td>Architected global operating model redesign across <span class="proof-highlight">65 offshore jurisdictions</span> for Dept of Immigration.</td>
+          </tr>
+          <tr>
+            <td class="pillar-title">Engagement Leadership</td>
+            <td>Consulting engagement economics, project margin protection, resource leverage models, and proposal pursuit leadership.</td>
+            <td>Maintained continuous <span class="proof-highlight">100% billability record</span> across management consulting engagements (never on bench).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <footer>
+    <span>© Troy Latter · <strong>EY-Parthenon Strategy Practice Application</strong></span>
+    <span>Location: Sydney NSW · Master of Commerce</span>
+  </footer>
+</body>
+</html>
