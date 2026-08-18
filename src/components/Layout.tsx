@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
-import { FloatingChatWidget } from './FloatingChatWidget';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,9 +14,6 @@ export const Layout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <Footer />
-      <div data-floating-chat>
-        <FloatingChatWidget />
-      </div>
     </div>
   );
 };
