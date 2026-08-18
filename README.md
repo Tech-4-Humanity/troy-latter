@@ -253,3 +253,18 @@ For technical inquiries or collaboration opportunities:
 ---
 
 *Built with modern web technologies to showcase executive leadership in the AI and innovation space.*
+
+## Custom CV Packs Deployment
+
+Individual HTML application packs (CV, Cover Letter, Infographic) can be deployed natively and served as isolated pages without triggering site header/footer navigation.
+
+### Uploading a New CV Pack
+1. Create a new directory under `public/` matching your desired URL slug (e.g., `public/google`).
+2. Add your HTML files directly inside this directory (`index.html`, `cv.html`, `cover-letter.html`, `infographic.html`).
+3. Commit and push to `main`.
+
+### Accessing Isolated Links
+* **Landing Page:** `https://your-domain.com/google`
+* **CV File:** `https://your-domain.com/google/cv.html`
+* **Cover Letter:** `https://your-domain.com/google/cover-letter.html`
+* **Infographic:** `https://your-domain.com/google/infographic.html`
