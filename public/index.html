@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Troy Latter — EY-Parthenon Strategy & Transformation Matrix</title>
+  <title>Troy Latter — Senior Manager CV | EY-Parthenon Alignment</title>
   <style>
     :root {
       --bg-main: #111827;         /* Executive slate */
       --card-bg: #1f2937;         /* Soft container dark gray */
       --accent-gold: #f1c40f;     /* Sophisticated gold */
-      --accent-gold-hover: #d97706;
       --text-white: #f9fafb;      /* Crisp text */
       --text-muted: #9ca3af;      /* Muted gray */
       --border-color: #374151;    /* Subtle dividers */
@@ -24,7 +23,6 @@
       line-height: 1.6;
     }
     
-    /* Top Global Navigation Bar */
     nav.global-nav {
       background-color: #0b0f19;
       border-bottom: 1px solid var(--border-color);
@@ -34,242 +32,251 @@
       padding: 0.8rem 1.5rem;
     }
     .nav-container {
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .nav-brand {
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--text-white);
-      letter-spacing: 0.5px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-    }
+    .nav-brand { font-weight: 700; font-size: 1.05rem; color: var(--text-white); }
+    .nav-links { display: flex; gap: 1.5rem; }
     .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s ease;
-      padding: 0.4rem 0.6rem;
-      border-radius: 4px;
+      color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.4rem 0.6rem; border-radius: 4px;
     }
-    .nav-links a:hover {
-      color: var(--accent-gold);
-    }
-    .nav-links a.active {
-      color: var(--accent-gold);
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-    }
+    .nav-links a:hover { color: var(--accent-gold); }
+    .nav-links a.active { color: var(--accent-gold); background-color: var(--card-bg); border: 1px solid var(--border-color); }
 
-    .matrix-container {
-      max-width: 1200px;
+    .cv-container {
+      max-width: 900px;
       margin: 2rem auto;
       padding: 0 1.5rem 3rem 1.5rem;
     }
     header {
       border-bottom: 2px solid var(--accent-gold);
-      padding-bottom: 1rem;
+      padding-bottom: 1.25rem;
       margin-bottom: 2rem;
     }
-    h1 {
-      color: var(--text-white);
-      font-size: 1.8rem;
-      margin: 0 0 0.5rem 0;
-      letter-spacing: 0.5px;
+    h1 { color: var(--accent-gold); font-size: 2.2rem; margin: 0 0 0.4rem 0; text-transform: uppercase; }
+    .subtitle { font-size: 1.05rem; font-weight: 600; color: var(--text-muted); margin-bottom: 1rem; }
+    .contact-bar { display: flex; flex-wrap: wrap; gap: 1.2rem; font-size: 0.88rem; color: var(--text-muted); }
+    .section-title {
+      color: var(--accent-gold); font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem; margin-top: 2.2rem; margin-bottom: 1.2rem; text-transform: uppercase; font-weight: 700;
     }
-    h1 span {
-      color: var(--accent-gold);
+    .profile-text { font-size: 0.95rem; color: #e5e7eb; line-height: 1.65; }
+    .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .highlight-card {
+      background-color: var(--card-bg); border-left: 3px solid var(--accent-gold); padding: 1rem; border-radius: 4px; border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
     }
-    .subtitle {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    table.matrix-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1.5rem;
-      font-size: 0.9rem;
-    }
-    table.matrix-table th {
-      background-color: var(--card-bg);
-      color: var(--accent-gold);
-      text-align: left;
-      padding: 14px 12px;
-      border: 1px solid var(--border-color);
-      font-size: 0.92rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    table.matrix-table td {
-      padding: 14px 12px;
-      border: 1px solid var(--border-color);
-      vertical-align: top;
-      color: #d1d5db;
-    }
-    .pillar-title {
-      color: var(--text-white);
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-    
-    .callout-box {
-      margin-top: 2.5rem;
-      padding: 1.25rem;
-      background-color: var(--card-bg);
-      border-left: 4px solid var(--accent-gold);
-      font-size: 0.9rem;
-      line-height: 1.6;
-      border-radius: 0 6px 6px 0;
-      border-top: 1px solid var(--border-color);
-      border-right: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-    }
-    .callout-title {
-      color: var(--accent-gold);
-      font-weight: 700;
-      display: block;
-      margin-bottom: 0.4rem;
-    }
+    .highlight-card h3 { margin: 0 0 0.3rem 0; color: var(--accent-gold); font-size: 0.95rem; }
+    .highlight-card p { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
+    .capabilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    .capability-card { background-color: var(--card-bg); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color); }
+    .capability-card h4 { margin: 0 0 0.4rem 0; color: var(--accent-gold); font-size: 0.92rem; }
+    .capability-card p { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
+    .job-block { margin-bottom: 1.8rem; }
+    .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem; }
+    .job-title { font-weight: 600; color: var(--text-white); font-size: 1rem; }
+    .job-company { color: var(--accent-gold); font-weight: 600; }
+    .job-date { font-size: 0.85rem; color: var(--text-muted); }
+    .job-bullets { margin: 0; padding-left: 1.2rem; font-size: 0.9rem; color: #d1d5db; }
+    .job-bullets li { margin-bottom: 0.4rem; }
+    table.portfolio-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.88rem; }
+    table.portfolio-table th { background-color: var(--card-bg); color: var(--accent-gold); text-align: left; padding: 10px; border: 1px solid var(--border-color); }
+    table.portfolio-table td { padding: 10px; border: 1px solid var(--border-color); color: #d1d5db; }
+    .education-list { font-size: 0.9rem; color: #d1d5db; line-height: 1.6; }
   </style>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
   <nav class="global-nav">
     <div class="nav-container">
       <div class="nav-brand">TROY LATTER</div>
       <div class="nav-links">
-        <a href="./index.html" class="active">Strategy Matrix</a>
-        <a href="./cv.html">Executive CV</a>
-        <a href="./cover-letter.html">Cover Letter</a>
+        <a href="/cv" class="active">Executive CV</a>
+        <a href="/ey-parthenon">Strategy Matrix</a>
+        <a href="/cover-letter">Cover Letter</a>
       </div>
     </div>
   </nav>
 
-  <div class="matrix-container">
+  <div class="cv-container">
     <header>
-      <h1>EY-PARTHENON SENIOR MANAGER ALIGNMENT — <span>STRATEGY MATRIX</span></h1>
-      <div class="subtitle">Commercial Strategy | Organisational Redevelopment | 100% Billability Track Record</div>
+      <h1>Troy Latter</h1>
+      <div class="subtitle">SENIOR MANAGER — CORPORATE STRATEGY, COMMERCIAL GROWTH & ORGANISATIONAL TRANSFORMATION</div>
+      <div class="contact-bar">
+        <span>Location: Sydney NSW (Warrang)</span>
+        <span>Phone: 0424 882 136</span>
+        <span>Email: troy.latter@gmail.com</span>
+        <span>LinkedIn: linkedin.com/in/theinnovater</span>
+        <span>Citizenship: Australian Citizen</span>
+      </div>
     </header>
 
-    <table class="matrix-table">
+    <div class="section-title">Executive Profile</div>
+    <p class="profile-text">
+      Senior Strategy, Commercial Growth, and Organisational Transformation Leader with 20+ years of advisory experience helping enterprise and government clients navigate complex commercial, structural, and market shifts across APAC. Master of Commerce-educated researcher and commercial strategist, specialising in business problem structuring, customer-side growth, organisational re-development, and strategic value creation.<br><br>
+      Proven career history operating across top-tier strategy and management consulting environments (SMS Consulting, Canberra Consulting, Gartner), as well as sitting customer-side at enterprise technology platforms (AWS, Oracle, Unisys) to drive client growth. Frequently embedded alongside BCG, MBB, and Big 4 partners to operationalise and execute multi-billion-dollar corporate strategies.<br><br>
+      Continuous 100% billability track record with deep expertise coaching engagement teams, leading C-suite workshops, and building high-performing consulting practices.
+    </p>
+
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <h3>100% Billable & Utilised</h3>
+        <p>Continuous high-margin client delivery history across tier-1 consulting and advisory roles.</p>
+      </div>
+      <div class="highlight-card">
+        <h3>>$3B Strategy Execution</h3>
+        <p>Delivered transformation strategies co-designed with Big 4, BCG, and Tier-1 strategy partners.</p>
+      </div>
+      <div class="highlight-card">
+        <h3>Customer-Side Growth</h3>
+        <p>Embedded within enterprise accounts (AWS, Oracle, Unisys) to drive client revenue & scale.</p>
+      </div>
+      <div class="highlight-card">
+        <h3>65-Country Change</h3>
+        <p>Led global organisational redesign, commercial processes, and operating model transformation.</p>
+      </div>
+    </div>
+
+    <div class="section-title">EY-Parthenon Strategy Core Capabilities</div>
+    <div class="capabilities-grid">
+      <div class="capability-card">
+        <h4>Corporate Strategy & Problem Structuring</h4>
+        <p>Structuring complex, ambiguous commercial issues, market analysis, business case synthesis, and evidence-based recommendation design.</p>
+      </div>
+      <div class="capability-card">
+        <h4>Organisational Redevelopment & Change</h4>
+        <p>Operating model redesign, structural realignment, change leadership, and customer-centric organisational transformation.</p>
+      </div>
+      <div class="capability-card">
+        <h4>Tier-1 Strategy Delivery Alignment</h4>
+        <p>Collaborating with MBB / Big 4 partners to translate high-level strategy into executable, funded client roadmaps.</p>
+      </div>
+      <div class="capability-card">
+        <h4>Engagement Leadership & Practice Growth</h4>
+        <p>Managing multi-stream engagements, team coaching (Managers & Consultants), proposal pursuits, and margin optimisation.</p>
+      </div>
+      <div class="capability-card">
+        <h4>Client Relationships & Executive Workshops</h4>
+        <p>Trusted C-suite advisory, leading board presentations, structured interviews, discovery workshops, and executive alignment.</p>
+      </div>
+      <div class="capability-card">
+        <h4>Technology-Enabled Commercial Advisory</h4>
+        <p>Translating emerging digital, data, and AI capability into strategic competitive advantage and measurable P&L impact.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Professional Experience</div>
+
+    <div class="job-block">
+      <div class="job-header">
+        <div><span class="job-company">Tech 4 Humanity</span> — <span class="job-title">Founder & Principal Strategy Advisor</span></div>
+        <div class="job-date">2025 – Present | Sydney</div>
+      </div>
+      <ul class="job-bullets">
+        <li><strong>Commercial & Operating Model Strategy:</strong> Lead strategy advisory engagements focusing on organisational redevelopment, workforce transformation, and strategic alignment.</li>
+        <li><strong>Problem Structuring & Evidence Frameworks:</strong> Design structured governance and operating models that pinpoint high-friction operational bottlenecks, linking adoption directly to P&L outcomes.</li>
+        <li><strong>Consultant Mentorship:</strong> Coach client strategy leads and consultants in structured problem-solving methodologies, storyboarding, and quantitative value-engineering.</li>
+      </ul>
+    </div>
+
+    <div class="job-block">
+      <div class="job-header">
+        <div><span class="job-company">Unisys</span> — <span class="job-title">APAC CTO, Alliances & Strategic Foresight</span></div>
+        <div class="job-date">Jan 2024 – Jul 2025 | Sydney / APAC</div>
+      </div>
+      <ul class="job-bullets">
+        <li><strong>Customer-Side Growth & Strategy:</strong> Embedded directly on the customer side across enterprise banking, government, and telco accounts to drive commercial growth and operating model modernisation.</li>
+        <li><strong>Business Development & Pipeline:</strong> Authored executive strategy playbooks and pursuit frameworks, generating ~$60M in APAC commercial pipeline growth while maintaining billable advisory posture.</li>
+        <li><strong>Executive Alignment:</strong> Served as primary strategy advisor to C-level stakeholders, aligning cross-functional consulting teams across multi-million-dollar pursuits.</li>
+      </ul>
+    </div>
+
+    <div class="job-block">
+      <div class="job-header">
+        <div><span class="job-company">Amazon Web Services (AWS)</span> — <span class="job-title">Principal Strategic Advisor & Global Capability Adviser</span></div>
+        <div class="job-date">Dec 2019 – May 2023 | Sydney / APAC</div>
+      </div>
+      <ul class="job-bullets">
+        <li><strong>Strategy Delivery with BCG & Big 4:</strong> Consulted directly alongside BCG, McKinsey, and Big 4 strategy teams to operationalize and deliver overarching corporate transformations across APAC enterprise accounts.</li>
+        <li><strong>Customer-Side Commercial Growth:</strong> Sat on the customer side to re-engineer business processes and operating models, guiding 50+ CIOs/CEOs through business case synthesis and funded growth roadmaps.</li>
+        <li><strong>Executive Workshops:</strong> Led 100+ C-suite alignment workshops, translating board-level objectives into practical, evidence-based recommendations and delivery structures.</li>
+      </ul>
+    </div>
+
+    <div class="job-block">
+      <div class="job-header">
+        <div><span class="job-company">Gartner</span> — <span class="job-title">Executive Partner</span></div>
+        <div class="job-date">2019 | Sydney</div>
+      </div>
+      <ul class="job-bullets">
+        <li><strong>C-Suite Strategic Advisory:</strong> Advised enterprise executives on corporate growth strategy, organisational structure, technology investment prioritization, and cost optimization.</li>
+        <li><strong>Research-Backed Synthesis:</strong> Synthesised complex market intelligence and competitive research into actionable strategic roadmaps and board-level presentations.</li>
+      </ul>
+    </div>
+
+    <div class="job-block">
+      <div class="job-header">
+        <div><span class="job-company">Oracle</span> — <span class="job-title">Innovation & Strategy Adviser – APAC</span></div>
+        <div class="job-date">Jun 2017 – Sep 2019 | Canberra / APAC</div>
+      </div>
+      <ul class="job-bullets">
+        <li>Partnered with Big 4 strategy practices on major government transformations (including Dept of Home Affairs); sat customer-side to structure multi-year commercial roadmaps and business cases.</li>
+      </ul>
+    </div>
+
+    <div class="job-block">
+      <div class="job-header">
+        <div><span class="job-title">Strategy, Management Consulting & Organisational Change Leadership Roles</span></div>
+        <div class="job-date">2005 – 2017 | Canberra & National</div>
+      </div>
+      <ul class="job-bullets">
+        <li><strong>HPE / DXC (2016-2017):</strong> Directed business-value workstreams for Defence's $250M program; structured executive narratives and investment cases linking strategic platforms to operational capability.</li>
+        <li><strong>SMS Management & Technology (2013-2015):</strong> Senior Strategy Consultant (100% billable). Directed business architecture, PMO, and organisational redesign for federal digital identity and data warehouse initiatives.</li>
+        <li><strong>Department of Immigration / Canberra Consulting (2010-2013):</strong> Senior Organisational Change & Strategy Manager. Led operating model redesign and process simplification across 65 countries.</li>
+        <li><strong>Defence Housing Australia (2005-2010):</strong> Commercial sales, partnership, and organisational transformation leadership across a $300M annual program environment.</li>
+      </ul>
+    </div>
+
+    <div class="section-title">Selected Strategy & Transformation Portfolio</div>
+    <table class="portfolio-table">
       <thead>
         <tr>
-          <th style="width: 20%;">EY-P STRATEGY PILLAR</th>
-          <th style="width: 25%;">COMMERCIAL DUE DILIGENCE EQUIVALENTS</th>
-          <th style="width: 25%;">STRATEGIC POSITIONING & RE-FRAMING</th>
-          <th style="width: 30%;">QUANTIFIED PROOF POINTS & CLIENT IMPACT</th>
+          <th style="width: 25%;">Engagement Context</th>
+          <th style="width: 40%;">Role & Strategic Approach</th>
+          <th style="width: 35%;">Outcome & Strategic Impact</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="pillar-title">Corporate & Commercial Growth Strategy</td>
-          <td>
-            <strong style="color:var(--text-white);">Buy-Side / Market Opportunity Due Diligence:</strong><br>
-            • Addressable market sizing (TAM/SAM/SOM), customer segmentation, and market entry feasibility.<br>
-            • Value-driver mapping and quantitative growth modeling for enterprise platform monetization.
-          </td>
-          <td>
-            <strong style="color:var(--text-white);">MCom Commercial Researcher:</strong><br>
-            • Framed client growth, product-market fit, and revenue expansion strategies.<br>
-            • Embedded customer-side at AWS, Oracle, and Unisys to drive organic account expansion and business case synthesis.
-          </td>
-          <td>
-            <strong style="color:var(--text-white);">High-Impact Outcomes:</strong><br>
-            • Generated ~$60M in APAC commercial pipeline growth at Unisys while maintaining billable posture.<br>
-            • Led 100+ C-suite workshops to translate executive growth agendas into funded client transformation roadmaps.
-          </td>
+          <td><strong>Department of Immigration</strong><br>(Global Transformation)</td>
+          <td>Led global operating model redesign, commercial process simplification, and organizational change.</td>
+          <td>Successful operating model rollout across 65 offshore jurisdictions; improved efficiency and compliance.</td>
         </tr>
-
         <tr>
-          <td class="pillar-title">Strategy Execution & Tier-1 Co-Delivery</td>
-          <td>
-            <strong style="color:var(--text-white);">Post-Merger Integration (PMI) & Value Realisation:</strong><br>
-            • Translating high-level boardroom strategies into structured, actionable operational execution plans.<br>
-            • Cross-functional workstream governance, risk mitigation, and capital allocation tracking.
-          </td>
-          <td>
-            <strong style="color:var(--text-white);">Customer-Side Delivery Partner to MBB / Big 4:</strong><br>
-            • Sat on the customer side to operationalise and execute strategies designed alongside BCG, McKinsey, and Big 4 partners.<br>
-            • Bridged the gap between high-level advisory and executable, funded client programs.
-          </td>
-          <td>
-            <strong style="color:var(--text-white);">High-Impact Outcomes:</strong><br>
-            • Co-delivered >$3B in enterprise transformation programs across APAC banking, government, and telco accounts.<br>
-            • Directly partnered with Big 4 strategy practices on multi-year government programs (e.g., Dept of Home Affairs).
-          </td>
+          <td><strong>BCG / Big 4 Strategy Delivery</strong><br>(AWS & Oracle Accounts)</td>
+          <td>Embedded alongside Tier-1 strategy firms to translate high-level corporate strategies into executable client roadmaps.</td>
+          <td>Successfully unlocked multi-year growth plans and funded transformation programs for 50+ enterprise clients.</td>
         </tr>
-
         <tr>
-          <td class="pillar-title">Organisational Redevelopment & Operating Models</td>
-          <td>
-            <strong style="color:var(--text-white);">Operational & Structural Due Diligence:</strong><br>
-            • Target Operating Model (TOM) design, cost-structure optimization, and organizational efficiency audits.<br>
-            • Workforce restructuring, headcount rationalization, and process simplification across complex matrix structures.
-          </td>
-          <td>
-            <strong style="color:var(--text-white);">Organisational Redevelopment Specialist:</strong><br>
-            • Core focus on organizational redesign, structural realignment, change leadership, and culture transformation.<br>
-            • Technology treated strictly as a business lever for operating model transformation rather than IT delivery.
-          </td>
-          <td>
-            <strong style="color:var(--text-white);">High-Impact Outcomes:</strong><br>
-            • Architected global operating model redesign and process simplification across 65 offshore jurisdictions (Immigration).<br>
-            • Directed business-value workstreams for Defence's $250M SC2S program, structuring clear governance.
-          </td>
+          <td><strong>Defence SC2S Program</strong><br>($250M Initiative)</td>
+          <td>Directed business-value workstreams, strategic discovery, and organizational structure alignment.</td>
+          <td>Established clear governance frameworks, optimized information access, and defined explicit value realization.</td>
         </tr>
-
         <tr>
-          <td class="pillar-title">Engagement Leadership & Practice Growth</td>
-          <td>
-            <strong style="color:var(--text-white);">Consulting Engagement Economics & Margin Management:</strong><br>
-            • Engagement profitability, project margin protection, resource leverage models, and proposal pursuit leadership.<br>
-            • Team development, consultant coaching, and quality assurance across complex multi-stream projects.
-          </td>
-          <td>
-            <strong style="color:var(--text-white);">100% Billable Management Consultant:</strong><br>
-            • Deep pure management consulting background (SMS Consulting, Canberra Consulting).<br>
-            • Proven track record managing multi-stream engagements, leading client pursuits, and mentoring junior managers/consultants.
-          </td>
-          <td>
-            <strong style="color:var(--text-white);">High-Impact Outcomes:</strong><br>
-            • Maintained a continuous 100% billability record across tier-1 management advisory roles (never on bench).<br>
-            • Coached client strategy leads and consultants in structured problem-solving methodologies and storyboarding.
-          </td>
-        </tr>
-
-        <tr>
-          <td class="pillar-title">Technology-Enabled Commercial Advisory</td>
-          <td>
-            <strong style="color:var(--text-white);">Digital & AI Due Diligence / Value Creation:</strong><br>
-            • Assessing digital maturity, emerging tech disruption risks, and data/AI monetization opportunities.<br>
-            • Evaluating enterprise architecture scalability and technology-driven cost efficiency levers.
-          </td>
-          <td>
-            <strong style="color:var(--text-white);">Commercial Value Architect:</strong><br>
-            • Translating emerging AI, cloud, and data capability into strategic board-level competitive advantage.<br>
-            • Guiding C-suite stakeholders through business case synthesis, cost optimization, and capital allocation.
-          </td>
-          <td>
-            <strong style="color:var(--text-white);">High-Impact Outcomes:</strong><br>
-            • Advised 50+ enterprise CEOs/CIOs on business case synthesis, cost optimization, and value-engineering.<br>
-            • Board & Advisory: QLD Govt AI Hub, Standards Australia (Robotics/AI), Former Board Member ITSMF Australia.
-          </td>
+          <td><strong>Unisys Commercial Growth</strong><br>(APAC Enterprise Accounts)</td>
+          <td>Sat customer-side to design operational and commercial growth patterns for enterprise client workflows.</td>
+          <td>Generated ~$60M in commercial pipeline while maintaining 100% billability and client satisfaction.</td>
         </tr>
       </tbody>
     </table>
 
-    <div class="callout-box">
-      <span class="callout-title">EXECUTIVE BRIEFING NOTE — INTERVIEW STRATEGY FOR COMMERCIAL DUE DILIGENCE (CDD) INQUIRIES:</span>
-      <em>"When EY-Parthenon interviewers probe on classic Commercial Due Diligence (CDD) or M&A strategy, reframe using this matrix: 'While classic buy-side CDD is a key EY-P strength, my focus has been the functional equivalent on the customer side—evaluating commercial market entry, structuring complex business cases, and designing Target Operating Models to unlock value. Furthermore, I have sat customer-side executing post-merger and corporate strategies designed by BCG and Big 4 partners across $3B+ in transformations.'"</em>
+    <div class="section-title">Education, Governance, Research & Certifications</div>
+    <div class="education-list">
+      <p><strong>Education:</strong> Master of Commerce (Marketing & Commercial Strategy - Research Focus) – University of New South Wales | Bachelor of Economics (Law / Industrial Relations) – University of Wollongong.</p>
+      <p><strong>Core Consulting Pedigree:</strong> Pure management consulting background across SMS Consulting and Canberra Consulting (100% billability record).</p>
+      <p><strong>Board & Advisory Roles:</strong> Advisory Board Member – Queensland Government AI Hub | Committee Member – Standards Australia BCI/Robotics | Former Board Member – ITSMF Australia.</p>
+      <p><strong>Certifications & Security:</strong> PRINCE2 Practitioner | Prosci ADKAR Change Management | ITIL | AWS Solutions Architect Professional | Previously held AGSVA NV2 Security Clearance.</p>
     </div>
   </div>
 </body>
