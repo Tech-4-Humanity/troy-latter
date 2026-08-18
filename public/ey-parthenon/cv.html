@@ -6,40 +6,39 @@
   <title>Troy Latter — Senior Manager CV | EY-Parthenon Alignment</title>
   <style>
     :root {
-      --bg-dark: #0b1329;
-      --card-bg: #162447;
-      --accent-yellow: #ffe600;
-      --text-white: #ffffff;
-      --text-muted: #cbd5e1;
-      --border-color: #1f4068;
+      --bg-main: #111827;         /* Soft dark gray/slate */
+      --card-bg: #1f2937;         /* Slightly lighter slate for cards */
+      --accent-yellow: #f1c40f;   /* Clean gold accent */
+      --text-white: #f9fafb;      /* Soft white */
+      --text-muted: #9ca3af;      /* Muted gray */
+      --border-color: #374151;    /* Subtle border */
     }
     body {
-      background-color: var(--bg-dark);
+      background-color: var(--bg-main);
       color: var(--text-white);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
-      padding: 2rem;
-      line-height: 1.5;
+      padding: 2.5rem 1.5rem;
+      line-height: 1.6;
     }
     .cv-container {
-      max-width: 1000px;
+      max-width: 900px;
       margin: 0 auto;
-      background: var(--bg-dark);
     }
     header {
       border-bottom: 2px solid var(--accent-yellow);
-      padding-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
       margin-bottom: 2rem;
     }
     h1 {
       color: var(--accent-yellow);
       font-size: 2.2rem;
-      margin: 0 0 0.5rem 0;
+      margin: 0 0 0.4rem 0;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
     .subtitle {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 600;
       color: var(--text-muted);
       margin-bottom: 1rem;
@@ -48,44 +47,44 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1.2rem;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
-    }
-    .contact-bar span {
-      display: flex;
-      align-items: center;
     }
     .section-title {
       color: var(--accent-yellow);
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 0.4rem;
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
+      margin-top: 2.2rem;
+      margin-bottom: 1.2rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      font-weight: 700;
     }
     .profile-text {
-      font-size: 0.98rem;
-      color: var(--text-muted);
-      line-height: 1.6;
+      font-size: 0.95rem;
+      color: #e5e7eb;
+      line-height: 1.65;
     }
     .highlights-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
       margin: 1.5rem 0;
     }
     .highlight-card {
       background-color: var(--card-bg);
-      border-left: 4px solid var(--accent-yellow);
+      border-left: 3px solid var(--accent-yellow);
       padding: 1rem;
-      border-radius: 0 6px 6px 0;
+      border-radius: 4px;
+      border-top: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
     }
     .highlight-card h3 {
       margin: 0 0 0.3rem 0;
       color: var(--accent-yellow);
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
     .highlight-card p {
       margin: 0;
@@ -94,19 +93,19 @@
     }
     .capabilities-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1rem;
     }
     .capability-card {
       background-color: var(--card-bg);
       padding: 1rem;
-      border-radius: 6px;
+      border-radius: 4px;
       border: 1px solid var(--border-color);
     }
     .capability-card h4 {
-      margin: 0 0 0.5rem 0;
+      margin: 0 0 0.4rem 0;
       color: var(--accent-yellow);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
     .capability-card p {
       margin: 0;
@@ -120,26 +119,26 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
     .job-title {
-      font-weight: bold;
-      color: #ffffff;
-      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-white);
+      font-size: 1rem;
     }
     .job-company {
       color: var(--accent-yellow);
+      font-weight: 600;
     }
     .job-date {
       font-size: 0.85rem;
       color: var(--text-muted);
-      white-space: nowrap;
     }
     .job-bullets {
       margin: 0;
       padding-left: 1.2rem;
       font-size: 0.9rem;
-      color: var(--text-muted);
+      color: #d1d5db;
     }
     .job-bullets li {
       margin-bottom: 0.4rem;
@@ -160,11 +159,11 @@
     table.portfolio-table td {
       padding: 10px;
       border: 1px solid var(--border-color);
-      color: var(--text-muted);
+      color: #d1d5db;
     }
     .education-list {
       font-size: 0.9rem;
-      color: var(--text-muted);
+      color: #d1d5db;
       line-height: 1.6;
     }
   </style>
