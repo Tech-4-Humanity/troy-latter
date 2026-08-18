@@ -5,7 +5,7 @@ import { ArrowRight, MessageCircle } from 'lucide-react';
 
 export const HeroSection = () => {
   return (
-    <div className="relative bg-gradient-to-br from-[#0A101E] via-[#1a2332] to-[#0f1b2e] text-white px-8 py-24 md:py-32 text-center -mt-8 mx-[-24px] overflow-hidden">
+    <div className="relative bg-gradient-to-br from-[#0A101E] via-[#1a2332] to-[#0f1b2e] text-white px-8 py-24 md:py-32 text-center -mt-8 mx-[-24px] overflow-visible">
       {/* Enhanced animated background elements with parallax effect */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-pulse blur-xl"></div>
@@ -34,7 +34,7 @@ export const HeroSection = () => {
         </h2>
         
         <div className="flex justify-center mb-8">
-          <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-purple-500/30 shadow-[0_0_30px_rgba(139,92,246,0.3)]">
+          <div className="relative w-40 h-40 rounded-full overflow-visible border-4 border-purple-500/30 shadow-[0_0_30px_rgba(139,92,246,0.3)]">
             <img 
               src="https://pflisxkcxbzboxwidywf.supabase.co/storage/v1/object/public/testimonial-images/ok%20shot.png"
               alt="Troy Latter"
@@ -80,7 +80,7 @@ export const HeroSection = () => {
         
         <div className="hidden md:flex mt-8 items-center justify-center gap-3 text-xl md:text-2xl text-gray-300">
           <span className="font-light">Specialising in:</span>
-          <div className="relative h-8 w-64 overflow-hidden">
+          <div className="relative min-h-[3.5rem] w-64 overflow-visible">
             <span className="absolute inset-0 flex items-center justify-start font-semibold text-transparent bg-gradient-to-r from-purple-300 via-blue-300 to-teal-300 bg-clip-text animate-rotate-words">
               AI Strategy
             </span>
