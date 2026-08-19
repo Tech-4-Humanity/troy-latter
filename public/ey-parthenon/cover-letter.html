@@ -37,6 +37,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      row-gap: 0.6rem;
     }
     .nav-brand { font-weight: 700; font-size: 1.05rem; color: var(--text-white); }
     .nav-links { display: flex; gap: 1.5rem; }
@@ -44,6 +46,16 @@
       color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.4rem 0.6rem; border-radius: 4px;
     }
     .nav-links a:hover { color: var(--accent-gold); }
+    
+    .nav-arrows { display: flex; gap: 0.5rem; }
+    .nav-arrows a {
+      color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500;
+      padding: 0.4rem 0.7rem; border-radius: 4px; border: 1px solid var(--border-color);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .nav-arrows a:hover { color: var(--accent-gold); border-color: var(--accent-gold); }
+    .nav-arrows a.disabled { color: #4b5563; pointer-events: none; opacity: 0.4; }
+
     .nav-links a.active { color: var(--accent-gold); background-color: var(--card-bg); border: 1px solid var(--border-color); }
 
     .content-container {
@@ -77,9 +89,15 @@
     <div class="nav-container">
       <div class="nav-brand">TROY LATTER</div>
       <div class="nav-links">
-        <a href="./index.html">Strategy Matrix</a>
+        <a href="./index.html">Home</a>
+        <a href="./strategy-matrix.html">Strategy Matrix</a>
         <a href="./cv.html">Executive CV</a>
         <a href="./cover-letter.html" class="active">Cover Letter</a>
+        <a href="./infographic.html">Infographic</a>
+      </div>
+      <div class="nav-arrows">
+        <a href="./cv.html">&larr; Back</a>
+        <a href="./infographic.html">Forward &rarr;</a>
       </div>
     </div>
   </nav>

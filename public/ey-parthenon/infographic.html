@@ -41,11 +41,22 @@
     .proof-tag { font-size: 12px; font-weight: 700; color: #000; background: var(--ey-yellow); padding: 4px 8px; border-radius: 2px; display: inline-block; }
     .manifest-card { background: var(--ey-black); color: #A0AEC0; padding: 20px; border-radius: 4px; margin-top: 32px; font-family: monospace; font-size: 12px; line-height: 1.5; }
     .manifest-card h3 { color: var(--ey-yellow); font-family: Georgia, serif; font-size: 14px; margin-bottom: 10px; text-transform: uppercase; }
+    .back-nav { display: flex; gap: 12px; align-items: center; }
+    .back-nav a {
+      color: #FFFFFF; text-decoration: none; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px; padding: 6px 12px;
+      border: 1px solid #3A3A3A; border-radius: 4px; transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .back-nav a:hover { border-color: var(--ey-yellow); color: var(--ey-yellow); }
   </style>
 </head>
 <body>
   <nav>
     <div class="brand">EY<span>-Parthenon</span><small>Package Validation & Strategy Matrix Visualizer</small></div>
+    <div class="back-nav">
+      <a href="./cover-letter.html">&larr; Back</a>
+      <a href="./index.html">Home</a>
+    </div>
   </nav>
   <div class="main-container">
     <div class="validation-card">

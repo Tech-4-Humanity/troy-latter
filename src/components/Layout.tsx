@@ -10,7 +10,7 @@ export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-brand-light/30">
       <Navbar />
-      <main className="flex-grow container mx-auto px-4 sm:px-6 py-8 animate-fade-in max-w-7xl">
+      <main className="flex-grow container mx-auto px-4 sm:px-6 py-8 max-w-7xl">
         {children}
       </main>
       <Footer />
