@@ -3,20 +3,16 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/snowflake/index.html"
+    },
+    {
       "source": "/ey-parthenon",
       "destination": "/ey-parthenon/index.html"
     },
     {
-      "source": "/ey-parthenon/:path*",
-      "destination": "/ey-parthenon/:path*"
-    },
-    {
       "source": "/snowflake",
       "destination": "/snowflake/index.html"
-    },
-    {
-      "source": "/snowflake/:path*",
-      "destination": "/snowflake/:path*"
     }
   ]
 }
