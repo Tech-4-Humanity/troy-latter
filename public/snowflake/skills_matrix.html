@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: 'Inter', -apple-system, sans-serif; color: #0f172a; line-height: 1.35; margin: 0; padding: 0; font-size: 8.5pt; }
+    .header { border-bottom: 2px solid #0284c7; padding-bottom: 8px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .name { font-size: 18pt; font-weight: 800; color: #0f172a; margin: 0; letter-spacing: -0.5px; }
+    .title { font-size: 10pt; font-weight: 600; color: #0284c7; margin-top: 1px; }
+    .contact { text-align: right; font-size: 8pt; color: #475569; line-height: 1.3; }
+    
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; table-layout: fixed; }
+    th { background: #f8fafc; color: #0369a1; text-align: left; padding: 6px 8px; font-weight: 700; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #cbd5e1; border-top: 1px solid #e2e8f0; }
+    td { padding: 6px 8px; border-bottom: 1px solid #e2e8f0; vertical-align: top; word-wrap: break-word; }
+    tr:nth-child(even) td { background-color: #f8fafc; }
+    
+    .col-jd { width: 30%; font-weight: 600; color: #0f172a; }
+    .col-evidence { width: 57%; color: #334155; }
+    .col-level { width: 13%; text-align: center; font-weight: 700; }
+
+    .badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.3px; text-align: center; }
+    .badge-strong { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+    .badge-partial { background: #fef9c3; color: #a16207; border: 1px solid #fef08a; }
+    .badge-watch { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <h1 class="name">Troy Latter</h1>
+      <div class="title">Role Requirements & Skills Matrix</div>
+    </div>
+    <div class="contact">
+      Sydney, Australia | troy@example.com<br />
+      Solutions Engineering Alignment Matrix
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="col-jd">JD Requirement</th>
+        <th class="col-evidence">Evidence / Experience</th>
+        <th class="col-level">Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-jd">Customer-facing solutions engineering/sales engineering/solution architecture/technical pre-sales experience</td>
+        <td class="col-evidence">20+ years in technical pre-sales and solution architecture (AWS Principal Solutions Architect, Unisys APAC CTO, Oracle Cloud Architect). Owned the technical win across enterprise sales cycles.</td>
+        <td class="col-level"><span class="badge badge-strong">Strong</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Strong competency across modern data stacks ETL/ELT, data warehouses, data lakes, analytics, cloud-native platforms</td>
+        <td class="col-evidence">Architecture-level depth across AWS, Azure, GCP, and Oracle Cloud data services. Experienced in TCO/workload-placement analysis and Postgres schema design.</td>
+        <td class="col-level"><span class="badge badge-partial">Partial</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Experience working with enterprise customers in complex technical and stakeholder environments</td>
+        <td class="col-evidence">Delivered 50+ CIO/CTO advisories across banking, retail, government, and critical infrastructure, driving $3B+ in transformation value.</td>
+        <td class="col-level"><span class="badge badge-strong">Strong</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Strong hands-on technical capability, including SQL and Python</td>
+        <td class="col-evidence">Active, hands-on SQL experience designing production schemas for Tech 4 Humanity’s Postgres/Supabase data platform.</td>
+        <td class="col-level"><span class="badge badge-partial">Partial</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Ability to connect customer's technical and business challenges to a practical Snowflake solution</td>
+        <td class="col-evidence">Proven operating model across every role: lead discovery, translate business challenges into architectural solution patterns, and deliver compelling executive narratives. Frequently architected surrounding cloud environments and business cases alongside Snowflake at AWS and Unisys.</td>
+        <td class="col-level"><span class="badge badge-strong">Strong</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Excellent communication and presentation skills technical and executive audiences</td>
+        <td class="col-evidence">Delivered 100+ executive briefings, architecture sessions, and technical workshops across career.</td>
+        <td class="col-level"><span class="badge badge-strong">Strong</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Confidence facilitating whiteboarding sessions, technical workshops, solution discussions</td>
+        <td class="col-evidence">Extensive workshop facilitation history across AWS, Unisys, and Oracle, leading deep-dive architecture reviews and executive workshops.</td>
+        <td class="col-level"><span class="badge badge-strong">Strong</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Pragmatic, collaborative approach; hands-on in driving customer success</td>
+        <td class="col-evidence">End-to-end ownership from presales to production. Built reusable technical and commercial patterns that reduced sales quoting cycles by 30–40% at Unisys.</td>
+        <td class="col-level"><span class="badge badge-strong">Strong</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Strong relationship-building; simplifying complex technical concepts into business narratives</td>
+        <td class="col-evidence">Core strength built over 20+ years of trusted advisor positioning, simplifying complex technical domains into clear executive value propositions.</td>
+        <td class="col-level"><span class="badge badge-strong">Strong</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Nice to have: experience with AI/ML deployment workflows</td>
+        <td class="col-evidence">Deep architecture expertise in GenAI, agentic AI systems, AI operating models, orchestration, and governance (Unisys, Tech 4 Humanity).</td>
+        <td class="col-level"><span class="badge badge-strong">Strong</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Nice to have: experience with cloud platforms-AWS, Azure, Google Cloud</td>
+        <td class="col-evidence">AWS Solutions Architect Professional certified. Holds Azure and GCP credentials with hands-on commercial experience across all three major clouds.</td>
+        <td class="col-level"><span class="badge badge-strong">Strong</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Nice to have: familiarity with BI/data visualisation tools - Tableau, Power BI</td>
+        <td class="col-evidence">Hands-on experience translating data into executive insights using modern BI tools—focusing on visual storytelling to drive business decisions.</td>
+        <td class="col-level"><span class="badge badge-partial">Partial</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Nice to have: large-scale database technologies and cloud data platforms</td>
+        <td class="col-evidence">Regularly worked alongside Snowflake in enterprise environments at AWS and Unisys, backed by a deep background in cloud data platform architecture.</td>
+        <td class="col-level"><span class="badge badge-partial">Partial</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Nice to have: background in enterprise SaaS and complex technical sales cycles</td>
+        <td class="col-evidence">Entire career dedicated to enterprise technical sales and executive advisory across AWS, Unisys, Oracle, and Gartner.</td>
+        <td class="col-level"><span class="badge badge-strong">Strong</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Nice to have: degree in Computer Science, Engineering, Maths, Data, or equivalent practical experience</td>
+        <td class="col-evidence">Master of Commerce (Marketing) and Bachelor of Economics (Law & Industrial Relations). Complemented by 20+ years of hands-on engineering experience, AWS Professional Certification, and technical credentials.</td>
+        <td class="col-level"><span class="badge badge-partial">Partial</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Success criterion: creates technical champions and trusted relationships within the customer environment</td>
+        <td class="col-evidence">Consistent mentoring and coaching track record across every role for junior architects, consultants, and customer stakeholders. Trusted-advisor positioning is the throughline of career.</td>
+        <td class="col-level"><span class="badge badge-strong">Strong</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Culture: "AI-native thinker," agentic enterprise, experimental mindset, low-ego</td>
+        <td class="col-evidence">Founder-operator of an autonomous multi-agent AI runtime managing ~30 brands at Tech 4 Humanity. Hands-on daily with agentic AI implementations.</td>
+        <td class="col-level"><span class="badge badge-strong">Strong</span></td>
+      </tr>
+      <tr>
+        <td class="col-jd">Seniority/ role fit</td>
+        <td class="col-evidence">Seniority level is Principal/CTO; target role is individual-contributor Solutions Engineer.</td>
+        <td class="col-level"><span class="badge badge-watch">Watch</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

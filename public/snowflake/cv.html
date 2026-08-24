@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: 'Inter', -apple-system, sans-serif; color: #0f172a; line-height: 1.35; margin: 0; padding: 0; font-size: 8.5pt; }
+    .header { border-bottom: 2px solid #0284c7; padding-bottom: 6px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .name { font-size: 18pt; font-weight: 800; color: #0f172a; margin: 0; letter-spacing: -0.5px; }
+    .title { font-size: 9.5pt; font-weight: 600; color: #0284c7; margin-top: 1px; }
+    .contact { text-align: right; font-size: 7.5pt; color: #475569; line-height: 1.3; }
+    .contact a { color: #0284c7; text-decoration: none; }
+    
+    .section-title { font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #0284c7; border-bottom: 1px solid #cbd5e1; padding-bottom: 2px; margin: 10px 0 6px 0; }
+    
+    .summary { font-size: 8.5pt; color: #334155; margin-bottom: 8px; line-height: 1.35; }
+    
+    .metrics-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 10px; text-align: center; }
+    .metric-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 4px; }
+    .metric-val { font-size: 10pt; font-weight: 800; color: #0369a1; }
+    .metric-lbl { font-size: 6.5pt; font-weight: 600; color: #475569; text-transform: uppercase; }
+
+    .capabilities-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 8pt; margin-bottom: 8px; }
+    .cap-title { font-weight: 700; color: #0f172a; }
+    .cap-desc { color: #334155; }
+
+    .experience-item { margin-bottom: 8px; }
+    .role-header { display: flex; justify-content: space-between; font-size: 8.5pt; }
+    .role-title-group { font-weight: 700; color: #0f172a; }
+    .role-title { color: #0369a1; font-weight: 600; }
+    .location-date { color: #64748b; font-weight: 500; font-size: 7.5pt; }
+    ul { margin: 3px 0 0 14px; padding: 0; }
+    li { margin-bottom: 2px; color: #334155; font-size: 8pt; }
+
+    .credentials { font-size: 8pt; color: #334155; line-height: 1.4; }
+    .cred-label { font-weight: 700; color: #0f172a; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <h1 class="name">Troy Latter</h1>
+      <div class="title">Solutions Engineer | Technical Pre-Sales | Cloud, Data & AI Platform Advisory</div>
+    </div>
+    <div class="contact">
+      Sydney NSW | 0424 882 136 | <a href="mailto:troy.latter@gmail.com">troy.latter@gmail.com</a><br />
+      <a href="https://linkedin.com/in/theinnovater">linkedin.com/in/theinnovater</a> | NV2 Clearance (Reinstatable)
+    </div>
+  </div>
+
+  <div class="section-title">Executive Profile</div>
+  <div class="summary">
+    Technical pre-sales and solutions leader with 20+ years' experience driving the technical win across complex enterprise sales cycles — leading discovery sessions, demonstrations, architecture workshops, and proof-of-concept engagements that connect customer business challenges directly to modern data, cloud, and AI platforms. Career spans AWS, Unisys, and Oracle as a forward-deployed technical resource embedded in revenue-generating sales engagements, complemented by founder-led AI advisory and product development through Tech 4 Humanity. Delivered 100+ executive briefings and technical workshops, advising 50+ CIOs and technology leaders across APAC on cloud modernization, data architecture, and AI/ML adoption.
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card"><div class="metric-val">50+</div><div class="metric-lbl">C-Suite Advisories</div></div>
+    <div class="metric-card"><div class="metric-val">100+</div><div class="metric-lbl">Tech Workshops</div></div>
+    <div class="metric-card"><div class="metric-val">$3B+</div><div class="metric-lbl">Transformation Value</div></div>
+    <div class="metric-card"><div class="metric-val">$60M+</div><div class="metric-lbl">Pipeline Growth</div></div>
+    <div class="metric-card"><div class="metric-val">30-40%</div><div class="metric-lbl">Quoting Efficiency</div></div>
+  </div>
+
+  <div class="section-title">Executive Capabilities</div>
+  <div class="capabilities-grid">
+    <div>
+      <span class="cap-title">Technical Pre-Sales & Solution Architecture:</span>
+      <span class="cap-desc">Technical win ownership alongside Account Executives; expert discovery, POC execution, live demonstrations, whiteboarding, and workshop facilitation.</span>
+    </div>
+    <div>
+      <span class="cap-title">Executive Alignment & Coaching:</span>
+      <span class="cap-desc">C-suite presentations, trusted stakeholder relationships, executive value narratives, and mentoring technical teams into internal champions.</span>
+    </div>
+    <div>
+      <span class="cap-title">Data & AI Platform Expertise:</span>
+      <span class="cap-desc">Cloud-native analytics, modern data stack (ETL/ELT, DW, Data Lakes), hands-on Postgres SQL/schema design, and enterprise AI/ML deployment workflows (agentic AI architecture).</span>
+    </div>
+    <div>
+      <span class="cap-title">Cloud & Partner Ecosystems:</span>
+      <span class="cap-desc">Multi-cloud depth across AWS (Solutions Architect Professional), Azure, GCP, and Oracle; active partner co-selling alongside ecosystem leaders like Snowflake and NVIDIA.</span>
+    </div>
+  </div>
+
+  <div class="section-title">Professional Experience</div>
+
+  <div class="experience-item">
+    <div class="role-header">
+      <div class="role-title-group"><span class="role-title">Founder & Principal</span> — Tech 4 Humanity</div>
+      <div class="location-date">Sydney | 2025–Present</div>
+    </div>
+    <div class="summary" style="margin-bottom:2px;"><em>Independent AI advisory, research, and product development practice.</em></div>
+    <ul>
+      <li>Architected reusable AI operating models, agentic systems, and governance frameworks for enterprise environments.</li>
+      <li>Built and managed hands-on Postgres data platforms leading schema design, SQL optimization, and data infrastructure.</li>
+    </ul>
+  </div>
+
+  <div class="experience-item">
+    <div class="role-header">
+      <div class="role-title-group"><span class="role-title">APAC CTO, Alliances & Strategic Foresight</span> — Unisys</div>
+      <div class="location-date">Sydney/APAC | Jan 2024–Jul 2025</div>
+    </div>
+    <div class="summary" style="margin-bottom:2px;"><em>Client-facing technology strategy and AI-enabled service transformation across enterprise accounts.</em></div>
+    <ul>
+      <li>Ran technical discovery, solution design, and POC engagements across key accounts including BlueScope and Officeworks.</li>
+      <li>Architected surrounding AWS, Azure, GCP, and NVIDIA environments alongside Snowflake for shared enterprise customers.</li>
+      <li>Contributed to $60M+ in APAC pipeline growth and accelerated quoting cycles by 30-40% through reusable technical patterns.</li>
+    </ul>
+  </div>
+
+  <div class="experience-item">
+    <div class="role-header">
+      <div class="role-title-group"><span class="role-title">Principal Solutions Architect</span> — AWS</div>
+      <div class="location-date">Sydney/APAC | Dec 2019–May 2023</div>
+    </div>
+    <div class="summary" style="margin-bottom:2px;"><em>Cloud, data, infrastructure, and digital transformation advisory at national scale.</em></div>
+    <ul>
+      <li>Advised 50+ CIOs/CTOs via architecture reviews and transformation roadmaps; delivered 100+ executive briefings.</li>
+      <li>Architected AWS environments supporting Snowflake workloads for shared enterprise data platform accounts.</li>
+      <li>Mentored junior solutions architects through complex customer-facing architecture reviews and evaluations.</li>
+    </ul>
+  </div>
+
+  <div class="experience-item">
+    <div class="role-header">
+      <div class="role-title-group"><span class="role-title">Executive Partner & Cloud Architect</span> — Gartner & Oracle</div>
+      <div class="location-date">APAC | 2017–2019</div>
+    </div>
+    <ul>
+      <li>Advised C-level executives on technology strategy; supported secure visa transformation across 200+ systems for Home Affairs.</li>
+    </ul>
+  </div>
+
+  <div class="experience-item">
+    <div class="role-header">
+      <div class="role-title-group"><span class="role-title">Transformation Leader</span> — HPE / DXC, SMS Management & Dept. of Immigration</div>
+      <div class="location-date">Canberra | 2010–2017</div>
+    </div>
+    <ul>
+      <li>Directed transformation frameworks for Defence's $250M SC2S program and led 65-country operating model changes.</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Education & Credentials</div>
+  <div class="credentials">
+    <div><span class="cred-label">Degrees:</span> Master of Commerce (Marketing) UNSW | Bachelor of Economics (Law & IR) – Univ. of Wollongong</div>
+    <div><span class="cred-label">Certifications:</span> AWS Solutions Architect – Professional, PRINCE2 Practitioner, Prosci ADKAR, ITIL, TOGAF/IT4IT, Azure, GCP & Oracle Credentials</div>
+  </div>
+
+</body>
+</html>
