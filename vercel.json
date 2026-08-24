@@ -9,6 +9,14 @@
     {
       "source": "/ey-parthenon/:path*",
       "destination": "/ey-parthenon/:path*"
+    },
+    {
+      "source": "/snowflake",
+      "destination": "/snowflake/index.html"
+    },
+    {
+      "source": "/snowflake/:path*",
+      "destination": "/snowflake/:path*"
     }
   ]
 }
